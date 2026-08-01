@@ -1,0 +1,110 @@
+// @ts-nocheck
+import {
+  Command,
+  CreditCard,
+  ChefHat,
+  Monitor,
+  Smartphone,
+  Store,
+  BarChart3,
+  Users,
+  ClipboardList,
+  Gift,
+  Star,
+  Megaphone,
+  Phone,
+  Truck,
+} from "lucide-react";
+
+export const platformProducts = [
+  {
+    icon: Command,
+    title: "Point of Sale",
+    desc: "Manage orders, tables & menus",
+    color: "from-orange-500 to-amber-600",
+  },
+  {
+    icon: CreditCard,
+    title: "Payments",
+    desc: "Cards, tap, mobile at 1.8% flat",
+    color: "from-blue-500 to-cyan-600",
+  },
+  {
+    icon: ChefHat,
+    title: "Kitchen Display",
+    desc: "Real-time order routing",
+    color: "from-emerald-500 to-green-600",
+  },
+  {
+    icon: Monitor,
+    title: "Self-Service Kiosk",
+    desc: "Cut lines, boost order size",
+    color: "from-zinc-500 to-gray-600",
+  },
+  {
+    icon: Smartphone,
+    title: "Handheld POS",
+    desc: "Take orders tableside",
+    color: "from-indigo-500 to-violet-600",
+  },
+  {
+    icon: Store,
+    title: "Online Ordering",
+    desc: "Your brand, zero commissions",
+    color: "from-lime-500 to-green-600",
+  },
+  {
+    icon: BarChart3,
+    title: "Analytics",
+    desc: "Live reporting & insights",
+    color: "from-amber-500 to-yellow-600",
+  },
+  {
+    icon: Users,
+    title: "Workforce",
+    desc: "Scheduling & labor control",
+    color: "from-pink-500 to-rose-600",
+  },
+  {
+    icon: ClipboardList,
+    title: "Inventory",
+    desc: "Track waste, automate orders",
+    color: "from-teal-500 to-cyan-600",
+  },
+  {
+    icon: Gift,
+    title: "Gift Cards",
+    desc: "Sell branded gift cards",
+    color: "from-rose-500 to-pink-600",
+  },
+  {
+    icon: Star,
+    title: "Loyalty",
+    desc: "Rewards that drive repeats",
+    color: "from-yellow-500 to-amber-600",
+  },
+  {
+    icon: Megaphone,
+    title: "Marketing",
+    desc: "Automated guest outreach",
+    color: "from-violet-500 to-purple-600",
+  },
+  {
+    icon: Phone,
+    title: "Tableside Order & Pay",
+    desc: "Scan, order, pay at the table",
+    color: "from-fuchsia-500 to-pink-600",
+  },
+  {
+    icon: Monitor,
+    title: "Customer Display",
+    desc: "Transparent checkout for guests",
+    color: "from-sky-500 to-blue-600",
+  },
+  {
+    icon: Truck,
+    title: "Delivery",
+    desc: "Autonomous & 3rd-party delivery",
+    color: "from-slate-500 to-gray-600",
+  },
+];
