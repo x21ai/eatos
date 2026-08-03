@@ -1,6 +1,15 @@
 # eatOS 2.0 — Handoff Log
 
-## Current snapshot (2026-08-03T17:45Z)
+## Current snapshot (2026-08-03T18:10Z)
+- **Lovable preview:** branch `lovable` on `x21ai/eatos-snap-capture` includes Lovable
+  harness fixes (root `dev`/`build` on port **8080**, `date-fns` in `apps/web`).
+  Local `main` fast-forwarded to `26250ad` + cleanup commit (no `.wrangler` in git).
+  Plan doc: `.lovable/plan/load-the-imported-eatos-repo-into-the-lovable-preview-2026-08-03.md`.
+- **LIVE:** https://s.eatos.dev — Cloudflare deploy path unchanged (`yarn cf:deploy` from
+  `apps/web`). Lovable uses root `yarn dev` / `build` → `apps/web` only.
+- Soft-404 P0 (`use(params)` on product/career/blog detail) still open on production.
+
+## Prior snapshot (2026-08-03T17:45Z)
 - **GitHub (Lovable source):** full Yarn monorepo pushed to
   `https://github.com/x21ai/eatos-snap-capture` branch **`lovable`** (HEAD
   `f370255`). Remote `main` stays the TanStack Lovable app; **`lovable`** holds
@@ -82,6 +91,21 @@
 ---
 
 ## Log
+
+### 2026-08-03T18:10Z — Align local repo with Lovable preview fixes
+- **Requested:** Context from Lovable — preview blank until root `dev` on 8080 and
+  `date-fns` added; routes verified in preview.
+- **Done:** Fast-forwarded local `main` to `origin/lovable` (`26250ad` Lovable commits).
+  Removed accidental `.wrangler/` miniflare sqlite from git; added root `.gitignore`
+  entry. `yarn install` + root `yarn build` PASS. Pushed cleanup `7015dde` to
+  `lovable`. Updated HANDOFF snapshot.
+- **Issues:** Lovable added `bun.lock` for sandbox; repo still uses `yarn@4.12.0` for
+  local/CF deploy — both lockfiles coexist. CORS on `status.eatos.com` widget in
+  preview is expected. D1/API routes may still degrade in preview without bindings.
+- **Stand / next:** Lovable should pull `lovable` @ `7015dde`. Production deploy still
+  `apps/web` OpenNext path, not Lovable publish.
+- **Who / where:** Cursor agent, `/Users/aa/Downloads/eatOS-2.0`.
+- **Timestamp:** 2026-08-03T18:10Z
 
 ### 2026-08-03T17:45Z — Push full monorepo to x21ai/eatos-snap-capture branch lovable
 - **Requested:** Push full site repo for Lovable on
