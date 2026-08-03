@@ -1,16 +1,19 @@
 # eatOS 2.0 — Handoff Log
 
-## Current snapshot (2026-08-02T19:05Z)
-- **LIVE homepage type update on https://s.eatos.dev:** hero subheading ("The
-  restaurant operating system that sees, thinks, acts...") reduced ~25-27% on all
-  screens: `text-xl md:text-3xl` → `text-[15px] md:text-[22px]` (20/30px →
-  15/22px). Worker version `d47a2cb9-a08f-43d8-b0dc-79d76da5ebdd`. R2
-  incremental-cache wiped (49 objects) + zone purge_everything. Browser PASS:
-  base utility 15px, md 22px.
-- Prior homepage edits still live ($300M+ stat; 10k removed; restaurant strip
-  one-line + "thousands more").
-- Soft-404 backlog (`docs/DEV-PENDING-PAGES-2026-08-02.md`) still open.
-- Uncommitted local changes; no remote.
+## Current snapshot (2026-08-03T17:45Z)
+- **GitHub (Lovable source):** full Yarn monorepo pushed to
+  `https://github.com/x21ai/eatos-snap-capture` branch **`lovable`** (HEAD
+  `f370255`). Remote `main` stays the TanStack Lovable app; **`lovable`** holds
+  the s.eatos.dev Next.js monorepo (`apps/web` + `apps/mobile` + `publisher/`).
+  Pushed via `PointofSaleAi` (write access). No secrets in commit (.env /
+  `.dev.vars` gitignored).
+- **LIVE:** https://s.eatos.dev — prior homepage/deploy state unchanged from
+  2026-08-02 snapshots below.
+
+## Prior snapshot (2026-08-02T19:05Z)
+- **LIVE homepage type update on https://s.eatos.dev:** hero subheading reduced
+  ~25-27% (`text-[15px] md:text-[22px]`). Worker `d47a2cb9`. Soft-404 backlog
+  still open.
 
 ## Prior snapshot (2026-08-02T18:20Z)
 - **LIVE homepage copy update on https://s.eatos.dev:** social-proof stat
@@ -79,6 +82,23 @@
 ---
 
 ## Log
+
+### 2026-08-03T17:45Z — Push full monorepo to x21ai/eatos-snap-capture branch lovable
+- **Requested:** Push full site repo for Lovable on
+  `https://github.com/x21ai/eatos-snap-capture.git` branch `lovable` (hospitalityOS
+  style: full monorepo, no secrets in git).
+- **Done:** Committed `f370255` on local `main` (Cloudflare D1/OpenNext, homepage
+  edits, docs). Added remote `origin` → eatos-snap-capture. Pushed `main:lovable`
+  (new branch; unrelated history to remote `main` TanStack app). Verified branch
+  HEAD `f3702556707577c8305213c8b87c132fa5d0e1a0`. GitHub account `PointofSaleAi`
+  (push); `eigital` is read-only on this repo.
+- **Issues:** none. Lovable project on `main` unchanged; import from `lovable` for
+  Next.js source (`apps/web`).
+- **Stand / next:** Point Lovable at branch `lovable` or open PR if merging into
+  `main` is desired later.
+- **Who / where:** Cursor agent, repo `/Users/aa/Downloads/eatOS-2.0`,
+  `origin` tracking `lovable`.
+- **Timestamp:** 2026-08-03T17:45Z
 
 ### 2026-08-02T19:05Z — Homepage: shrink hero subheading ~25-27%
 - **Requested:** Reduce the hero subheading ("The restaurant operating system
