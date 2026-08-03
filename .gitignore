@@ -46,6 +46,9 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 # Finder (MacOS) folder config
 .DS_Store
 
+# Cloudflare wrangler local state (never commit)
+.wrangler/
+
 e2b.local.toml
 e2b.*.local.toml
 
