@@ -127,7 +127,7 @@ export default function TermsOfServicePage() {
                 </h2>
                 <p className="text-gray-600 leading-relaxed">
                   <strong>eatOS</strong> and its logos, software, and design are
-                  owned by <strong>eatOS</strong> Inc. You may not copy, modify,
+                  owned by <strong>eatOS POS Inc.</strong> You may not copy, modify,
                   or distribute them except as allowed by law or with our
                   written permission.
                 </p>

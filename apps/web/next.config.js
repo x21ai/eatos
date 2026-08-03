@@ -11,12 +11,21 @@ const nextConfig = {
     NEXT_PUBLIC_CREATE_HOST: process.env.NEXT_PUBLIC_CREATE_HOST,
     NEXT_PUBLIC_PROJECT_GROUP_ID: process.env.NEXT_PUBLIC_PROJECT_GROUP_ID,
   },
-  serverExternalPackages: [
-    '@neondatabase/serverless',
-    'ws',
-    '@better-auth/kysely-adapter',
-    'kysely',
-  ],
+  serverExternalPackages: ['@better-auth/kysely-adapter', 'kysely', 'kysely-d1'],
+  // Force-include better-auth's dist files. Next traces imports under the
+  // `node` condition, so the `workerd`-only files (e.g. instrumentation/
+  // pure.index.mjs) are never copied, and the OpenNext (Workers) esbuild pass
+  // then fails to resolve them. Including the whole dist trees fixes that.
+  outputFileTracingIncludes: {
+    '/**': [
+      './node_modules/@better-auth/core/dist/**',
+      './node_modules/better-auth/dist/**',
+    ],
+    '**/*': [
+      './node_modules/@better-auth/core/dist/**',
+      './node_modules/better-auth/dist/**',
+    ],
+  },
   // Resolve leftover `@auth/create` imports to local shims (see src/__create/@auth/create).
   turbopack: {
     resolveAlias: {
@@ -50,3 +59,19 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+
+// Enables Cloudflare bindings (D1 `DB`, R2 cache) inside `next dev` so
+// getCloudflareContext() works locally the same way it does on Workers.
+// No-op in production builds.
+if (process.env.NODE_ENV === 'development') {
+  (async () => {
+    try {
+      const { initOpenNextCloudflareForDev } = await import(
+        '@opennextjs/cloudflare'
+      );
+      await initOpenNextCloudflareForDev();
+    } catch {
+      // Adapter not available (e.g. plain `next build`); safe to ignore.
+    }
+  })();
+}

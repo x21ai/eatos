@@ -66,7 +66,7 @@ export default function HomePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
-            className="text-xl md:text-3xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed font-light"
+            className="text-[15px] md:text-[22px] text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed font-light"
           >
             The restaurant operating system that sees, thinks, acts quietly and reliably at scale.
             Beautiful hardware. Invisible software.
@@ -112,9 +112,8 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row items-stretch justify-center divide-y sm:divide-y-0 sm:divide-x divide-white/10 max-w-3xl mx-auto">
               {[
-                { value: '10,000+', label: 'Restaurants served' },
                 { value: '99.9%', label: 'Uptime' },
-                { value: '$2B+', label: 'Processed annually' },
+                { value: '$300M+', label: 'Processed annually' },
                 { value: '24/7', label: 'Live support' },
               ].map((stat) => (
                 <div
@@ -136,19 +135,27 @@ export default function HomePage() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="flex flex-wrap items-center justify-center gap-10 md:gap-16 mb-16 opacity-40"
+            className="flex flex-col items-center mb-16 opacity-40"
           >
-            {[
-              'Selfie Fusion Kitchen',
-              'Local Pho',
-              'Bollywood Bites',
-              'Figaro Bistro',
-              "Becky's Taqueria",
-            ].map((name) => (
-              <div key={name} className="text-xl md:text-2xl font-bold tracking-tight text-white">
-                {name}
-              </div>
-            ))}
+            <div className="flex flex-nowrap items-center justify-center gap-2 sm:gap-4 md:gap-6 w-full max-w-5xl px-2">
+              {[
+                'Selfie Fusion Kitchen',
+                'Local Pho',
+                'Bollywood Bites',
+                'Figaro Bistro',
+                "Becky's Taqueria",
+              ].map((name) => (
+                <div
+                  key={name}
+                  className="shrink-0 whitespace-nowrap text-[10px] sm:text-xs md:text-sm lg:text-base font-bold tracking-tight text-white"
+                >
+                  {name}
+                </div>
+              ))}
+            </div>
+            <p className="mt-3 text-[10px] sm:text-xs md:text-sm text-gray-400 tracking-wide">
+              + thousands more
+            </p>
           </motion.div>
 
           {/* Testimonial block removed */}

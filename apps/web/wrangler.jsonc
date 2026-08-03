@@ -1,0 +1,37 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "eatos-web",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-07-30",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  // D1 (SQLite) replaces Neon Postgres. Run `wrangler d1 create eatos-web-db`
+  // and paste the returned database_id below before deploying.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "eatos-web-db",
+      "database_id": "fc72b629-a94c-407b-9528-ea4e8ec72425",
+      "migrations_dir": "migrations"
+    }
+  ],
+  // R2 bucket used by the OpenNext incremental (ISR) cache.
+  // Run `wrangler r2 bucket create eatos-web-cache` before deploying.
+  "r2_buckets": [
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "eatos-web-cache"
+    }
+  ],
+  "vars": {
+    "BETTER_AUTH_URL": "https://s.eatos.dev",
+    "BETTER_AUTH_TRUSTED_ORIGINS": "https://s.eatos.dev",
+    "NEXT_PUBLIC_CREATE_HOST": "s.eatos.dev"
+  }
+}

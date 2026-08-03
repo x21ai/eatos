@@ -489,7 +489,7 @@ export default function Footer({ variant = 'light' }) {
           className={`border-t ${bottomBorder} pt-6 flex flex-col md:flex-row justify-between items-center gap-4 ${bottomText}`}
         >
           <p suppressHydrationWarning>
-            &copy; 2026 <strong>eatOS</strong> Inc. All rights reserved.
+            &copy; 2026 <strong>eatOS POS Inc.</strong> All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center gap-5">
             <a href="/privacy" className={bottomLink}>

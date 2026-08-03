@@ -12,5 +12,10 @@ next-env.d.ts
 .env.production.local
 .env.development.local
 
+# Cloudflare / Wrangler / OpenNext
+.dev.vars
+.open-next/
+.wrangler/
+
 # TypeScript
 *.tsbuildinfo

@@ -15,75 +15,73 @@
  *           socialProviders block (the platform injects the OAuth credentials
  *           via env vars when a provider is enabled in project settings).
  */
-import { Pool, neonConfig } from '@neondatabase/serverless';
 import { argon2Verify } from 'argon2-wasm-edge';
 import { betterAuth } from 'better-auth';
 import { createAuthMiddleware } from 'better-auth/api';
 import { verifyPassword } from 'better-auth/crypto';
 import { bearer } from 'better-auth/plugins';
-import ws from 'ws';
+import { getCloudflareContext } from '@opennextjs/cloudflare';
+import { D1Dialect } from 'kysely-d1';
 
-neonConfig.webSocketConstructor = ws;
+// --- Cloudflare D1 port note ---------------------------------------------
+// Previously this used a Neon (Postgres) Pool. On Cloudflare Workers the
+// database is D1 (SQLite), reached through a per-request binding, so the auth
+// instance must be created lazily inside a request (where getCloudflareContext
+// can resolve `env.DB`). Everything ELSE below (hooks.before name backfill,
+// bearer plugin, trustedOrigins, socialProviders, cookie attributes) is kept
+// exactly as shipped — only the database wiring changed.
+// -------------------------------------------------------------------------
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
+// Read a config value from the Worker env first, falling back to process.env
+// (populated by the OpenNext adapter). Called at request time.
+function readEnv(cfEnv: Record<string, any>, key: string): string | undefined {
+  return (cfEnv?.[key] as string | undefined) ?? process.env[key];
+}
 
-// Origins we accept auth requests from. Include every URL the app may be
-// served under so better-auth's CSRF check doesn't reject legitimate requests
-// as "Invalid origin". The request's own origin + known sandbox / published
-// URLs + the mobile iframe proxy URL are all listed here.
-//
-// BETTER_AUTH_TRUSTED_ORIGINS is a comma-separated list the platform sets at
-// publish time to every attached free-host + custom domain. Without it, only
-// the first published URL (historically the free host) is trusted and signup
-// on a custom domain returns INVALID_ORIGIN after domain attach.
-const trustedOrigins = Array.from(
-  new Set(
-    [
-      process.env.BETTER_AUTH_URL,
-      process.env.EXPO_PUBLIC_PROXY_BASE_URL,
-      process.env.NEXT_PUBLIC_CREATE_BASE_URL,
-      process.env.NEXT_PUBLIC_CREATE_HOST
-        ? `https://${process.env.NEXT_PUBLIC_CREATE_HOST}`
-        : null,
-      ...(process.env.BETTER_AUTH_TRUSTED_ORIGINS ?? '')
-        .split(',')
-        .map((s) => s.trim())
-        .filter(Boolean),
-    ].filter((v): v is string => Boolean(v))
-  )
-);
+function buildTrustedOrigins(cfEnv: Record<string, any>): string[] {
+  return Array.from(
+    new Set(
+      [
+        readEnv(cfEnv, 'BETTER_AUTH_URL'),
+        readEnv(cfEnv, 'EXPO_PUBLIC_PROXY_BASE_URL'),
+        readEnv(cfEnv, 'NEXT_PUBLIC_CREATE_BASE_URL'),
+        readEnv(cfEnv, 'NEXT_PUBLIC_CREATE_HOST')
+          ? `https://${readEnv(cfEnv, 'NEXT_PUBLIC_CREATE_HOST')}`
+          : null,
+        ...(readEnv(cfEnv, 'BETTER_AUTH_TRUSTED_ORIGINS') ?? '')
+          .split(',')
+          .map((s) => s.trim())
+          .filter(Boolean),
+      ].filter((v): v is string => Boolean(v))
+    )
+  );
+}
 
-// Social providers self-activate when the platform has injected their OAuth
-// credentials (set in project settings → Authentication, pushed in as env
-// vars). A provider with missing credentials is simply not registered, so the
-// corresponding sign-in button never reaches a half-configured backend.
-const socialProviders = {
-  ...(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET
-    ? {
-        google: {
-          clientId: process.env.GOOGLE_CLIENT_ID,
-          clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        },
-      }
-    : {}),
-  ...(process.env.APPLE_CLIENT_ID && process.env.APPLE_CLIENT_SECRET
-    ? {
-        apple: {
-          clientId: process.env.APPLE_CLIENT_ID,
-          clientSecret: process.env.APPLE_CLIENT_SECRET,
-          // Required to verify the identity token from native "Sign in with
-          // Apple"; harmless when only web is used.
-          ...(process.env.APPLE_APP_BUNDLE_IDENTIFIER
-            ? {
-                appBundleIdentifier: process.env.APPLE_APP_BUNDLE_IDENTIFIER,
-              }
-            : {}),
-        },
-      }
-    : {}),
-};
+function buildSocialProviders(cfEnv: Record<string, any>) {
+  const g = {
+    id: readEnv(cfEnv, 'GOOGLE_CLIENT_ID'),
+    secret: readEnv(cfEnv, 'GOOGLE_CLIENT_SECRET'),
+  };
+  const a = {
+    id: readEnv(cfEnv, 'APPLE_CLIENT_ID'),
+    secret: readEnv(cfEnv, 'APPLE_CLIENT_SECRET'),
+    bundle: readEnv(cfEnv, 'APPLE_APP_BUNDLE_IDENTIFIER'),
+  };
+  return {
+    ...(g.id && g.secret
+      ? { google: { clientId: g.id, clientSecret: g.secret } }
+      : {}),
+    ...(a.id && a.secret
+      ? {
+          apple: {
+            clientId: a.id,
+            clientSecret: a.secret,
+            ...(a.bundle ? { appBundleIdentifier: a.bundle } : {}),
+          },
+        }
+      : {}),
+  };
+}
 
 async function verifyCompatiblePassword({
   hash,
@@ -105,65 +103,107 @@ async function verifyCompatiblePassword({
   });
 }
 
-export const auth = betterAuth({
-  database: pool,
-  trustedOrigins,
-  socialProviders,
-  emailAndPassword: {
-    enabled: true,
-    requireEmailVerification: false,
-    password: {
-      verify: verifyCompatiblePassword,
+type AuthInstance = ReturnType<typeof betterAuth>;
+
+// Memoize the auth instance per D1 binding (stable within a Worker isolate).
+let cachedAuth: AuthInstance | null = null;
+let cachedDb: unknown = null;
+
+function createAuth(db: any, cfEnv: Record<string, any>): AuthInstance {
+  return betterAuth({
+    database: { dialect: new D1Dialect({ database: db }), type: 'sqlite' },
+    // Session/token signing secret. Must be set in the Worker env
+    // (BETTER_AUTH_SECRET) in every non-dev environment; better-auth refuses
+    // to run with its built-in default secret on Workers.
+    secret: readEnv(cfEnv, 'BETTER_AUTH_SECRET'),
+    trustedOrigins: buildTrustedOrigins(cfEnv),
+    socialProviders: buildSocialProviders(cfEnv),
+    emailAndPassword: {
+      enabled: true,
+      requireEmailVerification: false,
+      password: {
+        verify: verifyCompatiblePassword,
+      },
     },
-  },
-  hooks: {
-    // better-auth's /sign-up/email schema requires `name`. Generated user apps
-    // often collect only email+password, so backfill a name from the email
-    // local-part to keep signup working without a visible name field.
-    before: createAuthMiddleware(async (ctx) => {
-      if (ctx.path !== '/sign-up/email') return;
-      const body = ctx.body as { email?: unknown; name?: unknown } | undefined;
-      if (!body || typeof body.email !== 'string') return;
-      if (typeof body.name === 'string' && body.name.trim().length > 0) return;
-      const derived = body.email.split('@')[0];
-      body.name = derived && derived.length > 0 ? derived : 'User';
-    }),
-  },
-  advanced: {
-    cookiePrefix: 'better-auth',
-    defaultCookieAttributes: {
-      sameSite: 'none', // Required for iframes
-      secure: true,
-      httpOnly: true,
-      path: '/',
+    hooks: {
+      // better-auth's /sign-up/email schema requires `name`. Generated user
+      // apps often collect only email+password, so backfill a name from the
+      // email local-part to keep signup working without a visible name field.
+      before: createAuthMiddleware(async (ctx) => {
+        if (ctx.path !== '/sign-up/email') return;
+        const body = ctx.body as { email?: unknown; name?: unknown } | undefined;
+        if (!body || typeof body.email !== 'string') return;
+        if (typeof body.name === 'string' && body.name.trim().length > 0) return;
+        const derived = body.email.split('@')[0];
+        body.name = derived && derived.length > 0 ? derived : 'User';
+      }),
     },
-    cookies: {
-      sessionToken: {
-        attributes: {
-          sameSite: 'none', // Required for iframes
-          secure: true,
+    advanced: {
+      cookiePrefix: 'better-auth',
+      defaultCookieAttributes: {
+        sameSite: 'none', // Required for iframes
+        secure: true,
+        httpOnly: true,
+        path: '/',
+      },
+      cookies: {
+        sessionToken: {
+          attributes: {
+            sameSite: 'none', // Required for iframes
+            secure: true,
+          },
         },
       },
     },
-  },
-  session: {
-    cookieCache: {
-      enabled: true,
-      maxAge: 60 * 60 * 24 * 7, // 7 days
-    },
-  },
-  user: {
-    additionalFields: {
-      image: {
-        type: 'string',
-        required: false,
+    session: {
+      cookieCache: {
+        enabled: true,
+        maxAge: 60 * 60 * 24 * 7, // 7 days
       },
     },
+    user: {
+      additionalFields: {
+        image: {
+          type: 'string',
+          required: false,
+        },
+      },
+    },
+    // Enable Authorization: Bearer <session-token> so mobile apps (which can't
+    // carry cookies through a WebView) authenticate API calls with the token
+    // returned from /api/auth/token.
+    plugins: [bearer()],
+  });
+}
+
+// Resolve the D1-backed better-auth instance. Must be called at request time so
+// getCloudflareContext() can access the `DB` binding.
+export function getAuth(): AuthInstance {
+  const { env } = getCloudflareContext();
+  const db = (env as any).DB;
+  if (!db) {
+    throw new Error(
+      'No D1 database binding `DB` was found for better-auth. Check wrangler.jsonc d1_databases.'
+    );
+  }
+  if (cachedAuth && cachedDb === db) return cachedAuth;
+  cachedDb = db;
+  cachedAuth = createAuth(db, env as Record<string, any>);
+  return cachedAuth;
+}
+
+// Lazy proxy so existing consumers can keep `import { auth }` and use
+// `auth.handler`, `auth.api.getSession(...)`, and `toNextJsHandler(auth)`
+// unchanged. Property access resolves the real instance at request time.
+export const auth = new Proxy({} as AuthInstance, {
+  get(_target, prop, receiver) {
+    const instance = getAuth();
+    const value = Reflect.get(instance as object, prop, receiver);
+    return typeof value === 'function' ? value.bind(instance) : value;
   },
-  // Enable Authorization: Bearer <session-token> so mobile apps (which can't
-  // carry cookies through a WebView) authenticate API calls with the token
-  // returned from /api/auth/token.
-  plugins: [bearer()],
+  has(_target, prop) {
+    return prop in (getAuth() as object);
+  },
 });
 
-export type Session = typeof auth.$Infer.Session;
+export type Session = AuthInstance['$Infer']['Session'];

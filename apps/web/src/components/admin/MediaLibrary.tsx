@@ -11,7 +11,7 @@ import {
   Link as LinkIcon,
   Settings2,
 } from "lucide-react";
-import { useUpload } from "@/utils/useUpload";
+import useUpload from "@/utils/useUpload";
 import { toast } from "sonner";
 
 export default function MediaLibrary({ onSelect, onClose }) {

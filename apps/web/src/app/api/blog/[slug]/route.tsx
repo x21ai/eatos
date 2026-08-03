@@ -98,7 +98,7 @@ export async function PATCH(request, { params }) {
         slug = COALESCE(${new_slug}, slug),
         status = COALESCE(${status}, status),
         published_at = COALESCE(${published_at}, published_at),
-        updated_at = NOW()
+        updated_at = CURRENT_TIMESTAMP
       WHERE slug = ${slug}
       RETURNING *
     `;

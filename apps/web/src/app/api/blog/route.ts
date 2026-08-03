@@ -51,7 +51,7 @@ export async function GET(request) {
     }
 
     const countArgs = [];
-    let countQuery = `SELECT COUNT(*) FROM blog_posts WHERE 1=1`;
+    let countQuery = `SELECT COUNT(*) AS count FROM blog_posts WHERE 1=1`;
 
     if (status) {
       countArgs.push(status);

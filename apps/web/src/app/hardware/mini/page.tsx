@@ -5,7 +5,6 @@ import {
   Wifi,
   CreditCard,
   Scan,
-  Pocket,
 } from "lucide-react";
 
 export default function MiniPage() {
@@ -93,7 +92,7 @@ export default function MiniPage() {
               </p>
             </div>
             <div className="bg-zinc-900/50 p-8 rounded-3xl border border-white/5 hover:bg-zinc-900 transition-colors">
-              <Pocket size={32} className="text-purple-400 mb-6" />
+              <Smartphone size={32} className="text-purple-400 mb-6" />
               <h3 className="text-xl font-bold mb-3">Pocket Ready</h3>
               <p className="text-gray-500">
                 Slim profile fits in an apron or back pocket comfortably.

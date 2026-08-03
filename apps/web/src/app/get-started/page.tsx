@@ -349,7 +349,7 @@ export default function GetStartedPage() {
 
         {/* Simple Footer */}
         <footer className="py-6 border-t border-gray-100 text-center text-sm text-gray-400">
-          &copy; 2026 <strong>eatOS</strong> Inc.
+          &copy; 2026 <strong>eatOS POS Inc.</strong>
         </footer>
       </div>
     </div>

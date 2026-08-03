@@ -9,6 +9,43 @@
     --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
 }
 
+/*
+ * Global UI scale (single source of truth).
+ * The design shipped with an oversized display scale (hero up to 128px,
+ * section headings up to 96px) and large vertical rhythm (section padding
+ * up to 192px). These token overrides shrink the whole site uniformly via
+ * Tailwind v4 theme variables, so every page/component using standard
+ * utilities scales together. Body text (xs/sm/base) is left intact for
+ * readability; only the larger display tiers are compressed.
+ *
+ * To tune: raise/lower the display tokens and/or --spacing below.
+ * - Bigger site  -> increase these values.
+ * - Smaller site -> decrease these values.
+ * Note: does NOT touch h-[100dvh]/vh sections (no hero gaps) and does not
+ * affect hardcoded text-[NNpx] utilities (a few bespoke components).
+ */
+@theme {
+    /* Display type scale: compressed ~30-44% at the large end. */
+    --text-lg: 1.05rem;   /* 18px  -> 16.8px */
+    --text-xl: 1.15rem;   /* 20px  -> 18.4px */
+    --text-2xl: 1.3rem;   /* 24px  -> 20.8px */
+    --text-3xl: 1.55rem;  /* 30px  -> 24.8px */
+    --text-4xl: 1.85rem;  /* 36px  -> 29.6px */
+    --text-5xl: 2.35rem;  /* 48px  -> 37.6px */
+    --text-6xl: 2.7rem;   /* 60px  -> 43.2px */
+    --text-7xl: 3.15rem;  /* 72px  -> 50.4px */
+    --text-8xl: 3.9rem;   /* 96px  -> 62.4px */
+    --text-9xl: 4.75rem;  /* 128px -> 76px   */
+
+    /* Tighter line-heights for the mid display tiers (defaults are loose). */
+    --text-2xl--line-height: 1.3;
+    --text-3xl--line-height: 1.2;
+    --text-4xl--line-height: 1.15;
+
+    /* Global spacing unit: 0.25rem default -> 0.19rem (~-24% rhythm). */
+    --spacing: 0.19rem;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
