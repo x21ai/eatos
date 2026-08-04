@@ -1,14 +1,15 @@
 // @ts-nocheck
 import { ImageIcon } from 'lucide-react';
 
-// Neutral image placeholder. Swap a slot by replacing this element with an <img>.
 // `tone` adapts the surface to the light or dark band it sits in.
+// `pad` adds safe padding around a real image and switches to object-contain so it never gets cropped or touches the edges.
 export function Placeholder({
   label,
   ratio = 'aspect-[16/10]',
   tone = 'dark',
   className = '',
   src,
+  pad = false,
 }) {
   const dark = tone === 'dark';
 
@@ -25,7 +26,11 @@ export function Placeholder({
           src={src}
           alt={label}
           loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover"
+          className={
+            pad
+              ? 'absolute inset-0 h-full w-full p-4 object-contain sm:p-6 md:p-8'
+              : 'absolute inset-0 h-full w-full object-cover'
+          }
         />
       </div>
     );
