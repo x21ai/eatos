@@ -136,7 +136,7 @@ function Spotlight({ feature, index }) {
         <Reveal delay={0.08} className="mt-12 md:mt-16">
           <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-14 lg:gap-20">
             <div className={flip ? 'md:order-2' : ''}>
-              <Placeholder label={feature.imageLabel} tone="light" src={feature.image} />
+              <Placeholder label={feature.imageLabel} tone="light" src={feature.image} pad />
             </div>
 
             <div className={`min-w-0 ${flip ? 'md:order-1' : ''}`}>
