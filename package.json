@@ -3,11 +3,11 @@
     "apps/*"
   ],
   "scripts": {
-    "dev": "./apps/web/node_modules/.bin/next dev apps/web --port 8080",
+    "dev": "./apps/web/node_modules/.bin/next dev apps/web",
     "build:dev": "./apps/web/node_modules/.bin/next build apps/web",
     "build": "./apps/web/node_modules/.bin/next build apps/web",
     "start": "./apps/web/node_modules/.bin/next start apps/web --port 8080",
-    "typecheck": "./apps/web/node_modules/.bin/tsc --noEmit -p apps/web/tsconfig.json"
+    "typecheck": "yarn workspace web typecheck"
   },
   "resolutions": {
     "react-native": "patch:react-native@npm%3A0.81.4#~/.yarn/patches/react-native+0.81.4.patch",
