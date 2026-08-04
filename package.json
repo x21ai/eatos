@@ -4,10 +4,10 @@
   ],
   "scripts": {
     "dev": "./apps/web/node_modules/.bin/next dev apps/web",
-    "build:dev": "./apps/web/node_modules/.bin/next build apps/web",
-    "build": "./apps/web/node_modules/.bin/next build apps/web",
+    "build:dev": "./apps/web/node_modules/.bin/next build apps/web && node scripts/prepare-dist.mjs",
+    "build": "./apps/web/node_modules/.bin/next build apps/web && node scripts/prepare-dist.mjs",
     "start": "./apps/web/node_modules/.bin/next start apps/web --port 8080",
-    "typecheck": "yarn workspace web typecheck"
+    "typecheck": "cd apps/web && ./node_modules/.bin/tsc --noEmit -p tsconfig.json"
   },
   "resolutions": {
     "react-native": "patch:react-native@npm%3A0.81.4#~/.yarn/patches/react-native+0.81.4.patch",
