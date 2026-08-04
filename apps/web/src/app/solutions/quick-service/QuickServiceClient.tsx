@@ -75,6 +75,7 @@ function Hero() {
         <motion.div style={reduce ? undefined : { scale }}>
           <Placeholder
             label={hero.imageLabel}
+            src={hero.image}
             ratio="aspect-[4/3] sm:aspect-[16/9]"
             className="rounded-none sm:rounded-[32px]"
           />
@@ -119,7 +120,7 @@ function Spotlight({ pillar, index }) {
         <Reveal delay={0.08} className="mt-12 md:mt-16">
           <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-14 lg:gap-20">
             <div className={flip ? 'md:order-2' : ''}>
-              <Placeholder label={pillar.imageLabel} tone="light" pad />
+              <Placeholder label={pillar.imageLabel} src={pillar.image} tone="light" pad />
             </div>
 
             <div className={`min-w-0 ${flip ? 'md:order-1' : ''}`}>
@@ -189,7 +190,7 @@ function Bundle() {
         </Reveal>
 
         <Reveal delay={0.08} className="mt-12 md:mt-16">
-          <Placeholder label={bundle.imageLabel} ratio="aspect-[16/9]" pad />
+          <Placeholder label={bundle.imageLabel} src={bundle.image} ratio="aspect-[16/9]" pad />
         </Reveal>
 
         <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8 md:mt-20">

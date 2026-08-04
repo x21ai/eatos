@@ -1,6 +1,12 @@
 // @ts-nocheck
 // All copy for the Quick Service solution page. Edit here.
 
+import heroImg from './assets/qs-hero.png.asset.json';
+import versatileImg from './assets/qs-versatile.jpg.asset.json';
+import offlineImg from './assets/qs-offline.jpg.asset.json';
+import repeatImg from './assets/qs-repeat.jpg.asset.json';
+import bundleImg from './assets/qs-bundle.jpg.asset.json';
+
 export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
   title: 'Solution for Quick Service',
@@ -9,6 +15,7 @@ export const hero = {
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Quick service counter setup',
+  image: heroImg.url,
 };
 
 export const marquee = [
@@ -27,6 +34,7 @@ export const pillars = [
     more:
       'Counter, kiosk, handheld, web and delivery orders land in one queue, so a single team runs every channel without switching systems.',
     imageLabel: 'Counter ordering flow',
+    image: versatileImg.url,
     metrics: [
       { value: '6', label: 'Ordering channels' },
       { value: '1', label: 'Unified queue' },
@@ -40,6 +48,7 @@ export const pillars = [
     more:
       'Payments, tickets and totals queue locally and reconcile automatically, with no manual re-entry after service.',
     imageLabel: 'Offline mode payment',
+    image: offlineImg.url,
     metrics: [
       { value: '0', label: 'Lost sales offline' },
       { value: '100%', label: 'Auto reconciled' },
@@ -53,6 +62,7 @@ export const pillars = [
     more:
       'Update an item once and it changes across every register, kiosk and online menu instantly, so pricing and availability never drift.',
     imageLabel: 'Loyalty and menu management',
+    image: repeatImg.url,
     metrics: [
       { value: '1x', label: 'Edit menu once' },
       { value: '10x', label: 'Fewer order errors' },
@@ -74,6 +84,7 @@ export const bundle = {
   title: 'Get the Quick Service Bundle',
   description: '$0 hardware upfront cost with Pay As You Go.',
   imageLabel: 'Quick service hardware bundle',
+  image: bundleImg.url,
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'Shop Now', href: '/shop' },
   note:
