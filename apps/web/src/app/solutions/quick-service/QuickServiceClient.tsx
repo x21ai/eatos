@@ -5,7 +5,7 @@ import { useRef, useState } from 'react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
-import { bundle, capabilities, ecosystem, hero, marquee, pillars } from './content';
+import { bundle, hero, marquee, pillars } from './content';
 
 const rise = {
   initial: { opacity: 0, y: 28 },
@@ -211,36 +211,6 @@ function Bundle() {
   );
 }
 
-/* ------------------------------ Ecosystem ------------------------------ */
-
-function Ecosystem() {
-  return (
-    <section className="bg-[#f5f5f7] text-black">
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <Eyebrow>All-In-One</Eyebrow>
-          <h2 className="mt-4 font-semibold leading-[1.08] tracking-[-0.03em] text-[clamp(1.75rem,4vw,3rem)]">
-            Every technology you need to grow
-          </h2>
-          <p className="mt-5 text-base leading-8 text-zinc-600 sm:text-lg">
-            One restaurant technology cloud for the counter, the kitchen and everything after.
-          </p>
-        </Reveal>
-
-        <div className="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-3 md:mt-16 lg:grid-cols-5 lg:gap-5">
-          {ecosystem.map((item, i) => (
-            <Reveal key={item.title} delay={(i % 5) * 0.05} className="min-w-0">
-              <Placeholder label={item.imageLabel} tone="light" ratio="aspect-[4/5]" />
-              <h3 className="mt-4 text-sm font-semibold leading-6 tracking-tight text-black">
-                {item.title}
-              </h3>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* -------------------------------- Closing -------------------------------- */
 
@@ -280,29 +250,11 @@ export default function QuickServiceClient() {
     <div className="bg-white font-montserrat antialiased">
       <Hero />
 
-      <section className="bg-white text-black">
-        <div className="mx-auto w-full max-w-[1120px] px-5 py-16 sm:px-8 md:py-24">
-          <Reveal className="text-center">
-            <Eyebrow>Key Capabilities</Eyebrow>
-          </Reveal>
-          <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
-            {capabilities.map((c, i) => (
-              <Reveal key={c} delay={(i % 3) * 0.05}>
-                <div className="border-t border-zinc-200 pt-4 text-sm font-medium text-zinc-700">
-                  {c}
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {pillars.map((pillar, i) => (
         <Spotlight key={pillar.id} pillar={pillar} index={i} />
       ))}
 
       <Bundle />
-      <Ecosystem />
       <Closing />
     </div>
   );
