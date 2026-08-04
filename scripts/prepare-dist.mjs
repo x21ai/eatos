@@ -8,6 +8,7 @@ import {
   readdirSync,
   rmSync,
   statSync,
+  writeFileSync,
 } from "node:fs";
 import path from "node:path";
 
@@ -29,7 +30,7 @@ if (existsSync("apps/web/public")) {
 
 // Copy every prerendered page: .next/server/app/<route>.html -> dist/<route>/index.html
 const appDir = `${next}/server/app`;
-let pages = 0;
+const found = [];
 
 function walk(dir) {
   if (!existsSync(dir)) return;
@@ -40,34 +41,74 @@ function walk(dir) {
       continue;
     }
     if (!entry.endsWith(".html")) continue;
-
-    const route = path.relative(appDir, full).replace(/\.html$/, "");
-    const target =
-      route === "index"
-        ? "dist/index.html"
-        : route === "_not-found"
-          ? "dist/404.html"
-          : path.join("dist", route, "index.html");
-
-    mkdirSync(path.dirname(target), { recursive: true });
-    cpSync(full, target);
-
-    // Some static hosts resolve extensionless URLs to "<route>.html" instead of
-    // "<route>/index.html". Emit both so every page resolves either way.
-    if (target.endsWith("/index.html") && target !== "dist/index.html") {
-      const flat = `${path.dirname(target)}.html`;
-      mkdirSync(path.dirname(flat), { recursive: true });
-      cpSync(full, flat);
-    }
-    pages += 1;
+    found.push({
+      source: full,
+      route: path.relative(appDir, full).replace(/\.html$/, ""),
+    });
   }
 }
 
 walk(appDir);
+
+// A route is a "parent" when another route lives beneath it (e.g. /products and
+// /products/loyalty). Its clean path must stay a directory on disk, so it only
+// gets "<route>/index.html" + "<route>.html".
+const isParent = (route) =>
+  found.some((f) => f.route.startsWith(`${route}/`));
+
+const routes = [];
+let pages = 0;
+
+for (const { source, route } of found) {
+  if (route === "index" || route === "_not-found") {
+    const target = route === "index" ? "dist/index.html" : "dist/404.html";
+    cpSync(source, target);
+    pages += 1;
+    continue;
+  }
+
+  // Flat "<route>.html" copy for hosts that append the extension.
+  const flat = path.join("dist", `${route}.html`);
+  mkdirSync(path.dirname(flat), { recursive: true });
+  cpSync(source, flat);
+
+  if (isParent(route)) {
+    // Directory index copy - the clean URL relies on host rewriting here.
+    const indexTarget = path.join("dist", route, "index.html");
+    mkdirSync(path.dirname(indexTarget), { recursive: true });
+    cpSync(source, indexTarget);
+  } else {
+    // Lovable hosting serves exact file paths only: it does not map the clean
+    // URL "/pricing" onto "pricing.html" or "pricing/index.html". Write the
+    // page at the extensionless path the browser actually requests.
+    const bare = path.join("dist", route);
+    mkdirSync(path.dirname(bare), { recursive: true });
+    cpSync(source, bare);
+  }
+
+  routes.push(`/${route}`);
+  pages += 1;
+}
 
 if (!existsSync("dist/index.html")) {
   console.error("dist/index.html missing - no prerendered home page found.");
   process.exit(1);
 }
 
-console.log(`dist/ prepared from apps/web/.next (${pages} pages)`);
+// Hosts that honour these files get correct clean-URL handling and the right
+// content type for the extensionless page copies above. Hosts that ignore them
+// still resolve because the exact-path files exist.
+writeFileSync(
+  "dist/_headers",
+  `${routes
+    .map((r) => `${r}\n  Content-Type: text/html; charset=utf-8`)
+    .join("\n")}\n`,
+);
+writeFileSync(
+  "dist/_redirects",
+  `${routes.map((r) => `${r} ${r}.html 200`).join("\n")}\n`,
+);
+
+console.log(
+  `dist/ prepared from apps/web/.next (${pages} pages, ${routes.length} clean URLs)`,
+);
