@@ -6,7 +6,6 @@ import { ArrowRight, ChevronDown } from 'lucide-react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import { Placeholder } from './Placeholder';
 import {
-  cloudProducts,
   features,
   hardware,
   hero,
@@ -14,7 +13,6 @@ import {
   marquee,
   offerNote,
   offers,
-  testimonial,
 } from './content';
 
 const rise = {
