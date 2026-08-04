@@ -50,14 +50,16 @@ export default function PartnersPage() {
             </div>
 
             <div className="relative">
-              <div className="overflow-hidden rounded-[28px] bg-zinc-100 shadow-[0_40px_90px_-50px_rgba(0,0,0,0.45)] md:rounded-[36px]">
-                <img
-                  src={heroImage}
-                  alt="A restaurant operator and an eatOS partner shaking hands over a point-of-sale terminal"
-                  width={1600}
-                  height={1200}
-                  className="aspect-[4/3] w-full object-cover"
-                />
+              <div className="overflow-hidden rounded-[28px] bg-zinc-50 shadow-[0_40px_90px_-50px_rgba(0,0,0,0.45)] md:rounded-[36px]">
+                <div className="p-6 sm:p-8 md:p-10">
+                  <img
+                    src={heroImage}
+                    alt="A restaurant operator and an eatOS partner shaking hands over a point-of-sale terminal"
+                    width={1600}
+                    height={1200}
+                    className="w-full object-contain"
+                  />
+                </div>
               </div>
             </div>
           </div>
