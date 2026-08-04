@@ -6,7 +6,6 @@ import { ArrowRight, ChevronDown } from 'lucide-react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import { Placeholder } from './Placeholder';
 import {
-  cloudProducts,
   features,
   hardware,
   hero,
@@ -14,7 +13,6 @@ import {
   marquee,
   offerNote,
   offers,
-  testimonial,
 } from './content';
 
 const rise = {
@@ -217,67 +215,6 @@ function Hardware() {
   );
 }
 
-/* ------------------------------ Ecosystem ------------------------------ */
-
-function Ecosystem() {
-  return (
-    <section className="bg-[#f5f5f7] text-black">
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28 lg:py-32">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <Eyebrow>The Platform</Eyebrow>
-          <h2 className="mt-4 font-semibold leading-[1.08] tracking-[-0.03em] text-[clamp(1.75rem,4vw,3rem)]">
-            One restaurant technology cloud
-          </h2>
-          <p className="mt-5 text-base leading-8 text-zinc-600 sm:text-lg">
-            The kitchen display shares its data layer with everything else you run.
-          </p>
-        </Reveal>
-
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
-          {cloudProducts.map((p, i) => (
-            <Reveal key={p.title} delay={(i % 3) * 0.06}>
-              <a href={p.href} className="group block">
-                <div className="transition-transform duration-300 group-hover:-translate-y-1.5">
-                  <Placeholder label={p.title} tone="light" />
-                </div>
-                <div className="mt-4 flex items-center justify-between gap-3">
-                  <span className="min-w-0 truncate text-sm font-semibold">{p.title}</span>
-                  <ArrowRight
-                    size={16}
-                    className="shrink-0 text-zinc-400 transition-transform group-hover:translate-x-1 group-hover:text-black"
-                  />
-                </div>
-              </a>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ----------------------------- Testimonial ----------------------------- */
-
-function Testimonial() {
-  return (
-    <section className="bg-white text-black">
-      <div className="mx-auto w-full max-w-[900px] px-5 py-20 text-center sm:px-8 md:py-28 lg:py-32">
-        <Reveal>
-          <blockquote className="font-semibold leading-[1.25] tracking-[-0.025em] text-[clamp(1.375rem,3.4vw,2.5rem)]">
-            &ldquo;{testimonial.quote}&rdquo;
-          </blockquote>
-          <div className="mt-10">
-            <div className="text-sm font-semibold">{testimonial.name}</div>
-            <div className="mt-1.5 text-sm text-zinc-500">{testimonial.role}</div>
-            <div className="mt-1.5 text-[11px] uppercase tracking-[0.2em] text-zinc-400">
-              {testimonial.since}
-            </div>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
 
 /* -------------------------------- Offers -------------------------------- */
 
@@ -340,31 +277,6 @@ function Closing() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.08} className="mx-auto mt-16 max-w-xl text-center md:mt-20">
-          <p className="text-sm text-zinc-500">
-            Get product news and restaurant technology insights in your inbox.
-          </p>
-          <form
-            className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-[minmax(0,1fr)_auto]"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <label className="sr-only" htmlFor="kds-newsletter-email">
-              Email address
-            </label>
-            <input
-              id="kds-newsletter-email"
-              type="email"
-              placeholder="Your email address"
-              className="w-full min-w-0 rounded-full bg-[#f0f0f2] px-5 py-3.5 text-sm text-black placeholder:text-zinc-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40"
-            />
-            <button
-              type="submit"
-              className="shrink-0 rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-85"
-            >
-              Subscribe
-            </button>
-          </form>
-        </Reveal>
       </div>
     </section>
   );
@@ -400,8 +312,6 @@ export default function KdsPageClient() {
       ))}
 
       <Hardware />
-      <Ecosystem />
-      <Testimonial />
       <Offers />
       <Closing />
     </div>
