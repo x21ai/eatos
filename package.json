@@ -4,7 +4,7 @@
   ],
   "scripts": {
     "dev": "./apps/web/node_modules/.bin/next dev apps/web --port 8080",
-    "build:dev": "./apps/web/node_modules/.bin/next build apps/web && node scripts/lovable-post-build-dist.mjs",
+    "build:dev": "./apps/web/node_modules/.bin/next build apps/web",
     "build": "./apps/web/node_modules/.bin/next build apps/web",
     "start": "./apps/web/node_modules/.bin/next start apps/web --port 8080",
     "typecheck": "./apps/web/node_modules/.bin/tsc --noEmit -p apps/web/tsconfig.json"
