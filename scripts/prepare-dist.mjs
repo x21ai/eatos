@@ -6,6 +6,7 @@ import {
   existsSync,
   mkdirSync,
   readdirSync,
+  readFileSync,
   rmSync,
   statSync,
   writeFileSync,
@@ -58,6 +59,7 @@ const isParent = (route) =>
 
 const routes = [];
 let pages = 0;
+const parentRoutes = [];
 
 for (const { source, route } of found) {
   if (route === "index" || route === "_not-found") {
@@ -77,6 +79,9 @@ for (const { source, route } of found) {
     const indexTarget = path.join("dist", route, "index.html");
     mkdirSync(path.dirname(indexTarget), { recursive: true });
     cpSync(source, indexTarget);
+    // The clean path is a directory on disk (it holds the child pages), so the
+    // extensionless file cannot exist. Links to it are rewritten below.
+    parentRoutes.push(route);
   } else {
     // Lovable hosting serves exact file paths only: it does not map the clean
     // URL "/pricing" onto "pricing.html" or "pricing/index.html". Write the
@@ -95,6 +100,41 @@ if (!existsSync("dist/index.html")) {
   process.exit(1);
 }
 
+// Lovable's static host resolves exact file paths only. Overview routes that
+// also have children (e.g. /products with /products/loyalty) must stay
+// directories, so the only servable path for the overview page itself is
+// "<route>.html". Point every link at that file in the emitted HTML.
+let rewritten = 0;
+function rewriteLinks(dir) {
+  for (const entry of readdirSync(dir)) {
+    const full = path.join(dir, entry);
+    if (statSync(full).isDirectory()) {
+      if (entry === "_next") continue;
+      rewriteLinks(full);
+      continue;
+    }
+    const isPage = entry.endsWith(".html") || !path.extname(entry);
+    if (!isPage) continue;
+
+    const original = readFileSync(full, "utf8");
+    let next = original;
+    for (const route of parentRoutes) {
+      next = next
+        .split(`"/${route}"`)
+        .join(`"/${route}.html"`)
+        .split(`'/${route}'`)
+        .join(`'/${route}.html'`)
+        .split(`\\"/${route}\\"`)
+        .join(`\\"/${route}.html\\"`);
+    }
+    if (next !== original) {
+      writeFileSync(full, next);
+      rewritten += 1;
+    }
+  }
+}
+rewriteLinks("dist");
+
 // Hosts that honour these files get correct clean-URL handling and the right
 // content type for the extensionless page copies above. Hosts that ignore them
 // still resolve because the exact-path files exist.
@@ -110,5 +150,6 @@ writeFileSync(
 );
 
 console.log(
-  `dist/ prepared from apps/web/.next (${pages} pages, ${routes.length} clean URLs)`,
+  `dist/ prepared from apps/web/.next (${pages} pages, ${routes.length} clean URLs, ` +
+    `${parentRoutes.length} overview routes served as .html, ${rewritten} files relinked)`,
 );
