@@ -92,6 +92,7 @@ function Hero() {
             label="Kitchen Display System"
             ratio="aspect-[4/3] sm:aspect-[16/9]"
             className="rounded-none sm:rounded-[32px]"
+            src={hero.image}
           />
         </motion.div>
       </div>
@@ -135,7 +136,7 @@ function Spotlight({ feature, index }) {
         <Reveal delay={0.08} className="mt-12 md:mt-16">
           <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-14 lg:gap-20">
             <div className={flip ? 'md:order-2' : ''}>
-              <Placeholder label={feature.imageLabel} tone="light" />
+              <Placeholder label={feature.imageLabel} tone="light" src={feature.image} />
             </div>
 
             <div className={`min-w-0 ${flip ? 'md:order-1' : ''}`}>
@@ -197,7 +198,7 @@ function Hardware() {
         </Reveal>
 
         <Reveal delay={0.08} className="mt-12 md:mt-16">
-          <Placeholder label={hardware.imageLabel} ratio="aspect-[16/9]" />
+          <Placeholder label={hardware.imageLabel} ratio="aspect-[16/9]" src={hardware.image} />
         </Reveal>
 
         <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8 md:mt-20">
