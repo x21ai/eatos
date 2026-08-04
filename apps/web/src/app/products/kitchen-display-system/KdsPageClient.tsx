@@ -64,7 +64,7 @@ function Hero() {
       <div className="mx-auto w-full max-w-[1120px] px-5 pt-24 sm:px-8 md:pt-32 lg:pt-40">
         <Reveal className="text-center">
           <Eyebrow>{hero.eyebrow}</Eyebrow>
-          <h1 className="mx-auto mt-5 max-w-[18ch] font-semibold leading-[1.06] tracking-[-0.03em] text-[clamp(2.25rem,5.2vw,4.25rem)]">
+          <h1 className="mx-auto mt-5 max-w-[34ch] font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(2.25rem,4.5vw,3.5rem)]">
             {hero.title}
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
