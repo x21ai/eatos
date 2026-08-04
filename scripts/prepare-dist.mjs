@@ -8,6 +8,7 @@ import {
   readdirSync,
   rmSync,
   statSync,
+  writeFileSync,
 } from "node:fs";
 import path from "node:path";
 
@@ -30,6 +31,7 @@ if (existsSync("apps/web/public")) {
 // Copy every prerendered page: .next/server/app/<route>.html -> dist/<route>/index.html
 const appDir = `${next}/server/app`;
 let pages = 0;
+const routes = [];
 
 function walk(dir) {
   if (!existsSync(dir)) return;
@@ -58,6 +60,14 @@ function walk(dir) {
       const flat = `${path.dirname(target)}.html`;
       mkdirSync(path.dirname(flat), { recursive: true });
       cpSync(full, flat);
+
+      // Lovable hosting serves exact file paths only: it does not map the clean
+      // URL "/pricing" onto "pricing.html" or "pricing/index.html". Emit a
+      // third copy at the extensionless path the browser actually requests.
+      const bare = path.join("dist", route);
+      mkdirSync(path.dirname(bare), { recursive: true });
+      cpSync(full, bare);
+      routes.push(`/${route}`);
     }
     pages += 1;
   }
@@ -70,4 +80,20 @@ if (!existsSync("dist/index.html")) {
   process.exit(1);
 }
 
-console.log(`dist/ prepared from apps/web/.next (${pages} pages)`);
+// Hosts that honour these files get correct clean-URL handling and the right
+// content type for the extensionless page copies above. Hosts that ignore them
+// still resolve because the exact-path files exist.
+writeFileSync(
+  "dist/_headers",
+  `${routes
+    .map((r) => `${r}\n  Content-Type: text/html; charset=utf-8`)
+    .join("\n")}\n`,
+);
+writeFileSync(
+  "dist/_redirects",
+  `${routes.map((r) => `${r} ${r}.html 200`).join("\n")}\n`,
+);
+
+console.log(
+  `dist/ prepared from apps/web/.next (${pages} pages, ${routes.length} clean URLs)`,
+);
