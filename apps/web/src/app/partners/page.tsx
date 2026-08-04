@@ -1,6 +1,6 @@
 // @ts-nocheck
 import Link from 'next/link';
-import { ArrowRight, Users, Megaphone, BarChart3, Puzzle } from 'lucide-react';
+import { ArrowRight, Users, Megaphone, BarChart3, Puzzle, CheckCircle2 } from 'lucide-react';
 import { heroImage, programsImage, partnerTracks, integrationPartners } from './content';
 
 export const metadata = {
@@ -171,23 +171,168 @@ export default function PartnersPage() {
             </p>
           </div>
 
-          <div className="mx-auto mt-14 grid max-w-5xl grid-cols-2 gap-px overflow-hidden rounded-3xl border border-zinc-200 bg-zinc-200 sm:grid-cols-3 lg:grid-cols-4">
+          <div className="mx-auto mt-14 grid max-w-6xl grid-cols-2 gap-px overflow-hidden rounded-3xl border border-zinc-200 bg-zinc-200 sm:grid-cols-3 lg:grid-cols-4">
             {integrationPartners.map((partner) => (
               <div
                 key={partner.name}
-                className="flex items-center justify-center bg-white px-6 py-9 transition-colors hover:bg-zinc-50"
+                className="flex items-center justify-center bg-white px-6 py-12 sm:py-14 transition-colors hover:bg-zinc-50"
               >
                 <img
                   src={partner.src}
                   alt={`${partner.name} logo`}
                   loading="lazy"
-                  className="h-8 w-auto max-w-[140px] object-contain opacity-70 transition-opacity hover:opacity-100 md:h-9"
+                  className="h-14 w-auto max-w-[210px] object-contain opacity-80 transition-opacity hover:opacity-100 sm:h-16 md:h-20"
                 />
               </div>
             ))}
           </div>
 
           <p className="mt-8 text-center text-sm font-medium text-zinc-500">+ many more</p>
+        </div>
+      </section>
+
+      {/* Why partner + application form */}
+      <section className="border-t border-zinc-200 bg-zinc-50 py-20 md:py-28">
+        <div className="container mx-auto px-5 md:px-8">
+          <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-16">
+            {/* Left content */}
+            <div>
+              <h2 className="text-[clamp(1.7rem,3vw,2.5rem)] font-bold tracking-tight">
+                Why partner with us?
+              </h2>
+              <div className="mt-10 space-y-8">
+                <div className="flex gap-4">
+                  <div className="mt-1 h-fit rounded-xl bg-black/5 p-2">
+                    <CheckCircle2 size={22} className="text-black" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold tracking-tight">Generous revenue share</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-zinc-600 md:text-base">
+                      Earn ongoing residuals on payments and software subscriptions. We believe in
+                      sharing the success.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="mt-1 h-fit rounded-xl bg-black/5 p-2">
+                    <CheckCircle2 size={22} className="text-black" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold tracking-tight">Dedicated support</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-zinc-600 md:text-base">
+                      Get a dedicated partner manager and priority support for your merchants.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="mt-1 h-fit rounded-xl bg-black/5 p-2">
+                    <CheckCircle2 size={22} className="text-black" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold tracking-tight">Co-marketing</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-zinc-600 md:text-base">
+                      Access marketing resources, leads and co-branded collateral to help you sell
+                      more.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-12 rounded-3xl border border-zinc-200 bg-white p-8">
+                <blockquote className="text-base font-medium leading-relaxed md:text-lg">
+                  &ldquo;Partnering with eatOS has been the best decision for our agency. The
+                  product sells itself and the support is unmatched.&rdquo;
+                </blockquote>
+                <div className="mt-4 text-sm font-bold text-zinc-700">
+                  &mdash; Sarah J., Digital Dining Solutions
+                </div>
+              </div>
+            </div>
+
+            {/* Right form */}
+            <div className="rounded-3xl border border-zinc-200 bg-white p-7 shadow-[0_40px_90px_-60px_rgba(0,0,0,0.4)] md:p-10">
+              <h3 className="text-2xl font-bold tracking-tight">Apply to become a partner</h3>
+              <form className="mt-7 space-y-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div>
+                    <label className="mb-1.5 block text-sm font-medium text-zinc-700">
+                      First name
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/10"
+                      placeholder="Jane"
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-1.5 block text-sm font-medium text-zinc-700">
+                      Last name
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/10"
+                      placeholder="Doe"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="mb-1.5 block text-sm font-medium text-zinc-700">
+                    Work email
+                  </label>
+                  <input
+                    type="email"
+                    className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/10"
+                    placeholder="jane@company.com"
+                  />
+                </div>
+
+                <div>
+                  <label className="mb-1.5 block text-sm font-medium text-zinc-700">
+                    Company name
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/10"
+                    placeholder="Acme Inc."
+                  />
+                </div>
+
+                <div>
+                  <label className="mb-1.5 block text-sm font-medium text-zinc-700">
+                    Partner type
+                  </label>
+                  <select className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/10">
+                    <option>Reseller / VAR</option>
+                    <option>Integration Partner</option>
+                    <option>Referral Partner</option>
+                    <option>Consultant</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="mb-1.5 block text-sm font-medium text-zinc-700">Message</label>
+                  <textarea
+                    className="h-32 w-full resize-none rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/10"
+                    placeholder="Tell us about your business..."
+                  ></textarea>
+                </div>
+
+                <button
+                  type="button"
+                  className="group flex w-full items-center justify-center gap-2 rounded-full bg-black py-4 text-sm font-semibold text-white transition-colors hover:bg-zinc-800"
+                >
+                  Submit application
+                  <ArrowRight
+                    size={16}
+                    className="transition-transform group-hover:translate-x-1"
+                  />
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
     </div>
