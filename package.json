@@ -3,7 +3,7 @@
     "apps/*"
   ],
   "scripts": {
-    "dev": "./apps/web/node_modules/.bin/next dev apps/web",
+    "dev": "node scripts/dev-preview.mjs",
     "build:dev": "./apps/web/node_modules/.bin/next build apps/web && node scripts/prepare-dist.mjs",
     "build": "./apps/web/node_modules/.bin/next build apps/web && node scripts/prepare-dist.mjs",
     "start": "./apps/web/node_modules/.bin/next start apps/web --port 8080",
