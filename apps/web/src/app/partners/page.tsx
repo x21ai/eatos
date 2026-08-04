@@ -1,172 +1,193 @@
 // @ts-nocheck
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import Link from 'next/link';
+import { ArrowRight, Users, Megaphone, BarChart3, Puzzle } from 'lucide-react';
+import { heroImage, programsImage, partnerTracks, integrationPartners } from './content';
+
+export const metadata = {
+  title: 'Partner Program',
+  description:
+    'Join the eatOS partner ecosystem as a referral partner, ambassador, reseller or integration partner and grow alongside restaurants of every size.',
+};
+
+const trackIcons = [Users, Megaphone, BarChart3, Puzzle];
 
 export default function PartnersPage() {
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="bg-white text-black">
       {/* Hero */}
-      <section className="pt-32 pb-20 md:pt-48 md:pb-24 bg-gray-50">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tighter mb-6">
-            Become an eatOS Partner
-          </h1>
-          <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-10">
-            Join our ecosystem of resellers, integrators, and referral partners.
-            Let's grow together.
-          </p>
+      <section className="pt-28 pb-16 md:pt-40 md:pb-24">
+        <div className="container mx-auto px-5 md:px-8">
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full bg-black/[0.04] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-600">
+                <span className="h-1.5 w-1.5 rounded-full bg-black" />
+                eatOS Partner Program
+              </span>
+              <h1 className="mt-6 text-[clamp(2.1rem,4.4vw,3.4rem)] font-bold leading-[1.06] tracking-tight">
+                It&rsquo;s you and eatOS,
+                <br className="hidden sm:block" /> working together
+              </h1>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-zinc-600 md:text-lg">
+                Join forces with us to help merchants run better restaurants. Through our partner
+                program you get the tools to integrate with our ecosystem, and the resources to
+                build, grow and scale your own business with eatOS.
+              </p>
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/contact-sales"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-black px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-zinc-800"
+                >
+                  Become a partner
+                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  href="/book-demo"
+                  className="inline-flex items-center justify-center rounded-full border border-zinc-300 px-7 py-3.5 text-sm font-semibold text-black transition-colors hover:border-black"
+                >
+                  Talk to our team
+                </Link>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="overflow-hidden rounded-[28px] bg-zinc-100 shadow-[0_40px_90px_-50px_rgba(0,0,0,0.45)] md:rounded-[36px]">
+                <img
+                  src={heroImage}
+                  alt="A restaurant operator and an eatOS partner shaking hands over a point-of-sale terminal"
+                  width={1600}
+                  height={1200}
+                  className="aspect-[4/3] w-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Content + Form */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            {/* Left Content */}
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Why partner with us?</h2>
-              <div className="space-y-8">
-                <div className="flex gap-4">
-                  <div className="mt-1 bg-black/5 p-2 rounded-lg h-fit">
-                    <CheckCircle2 size={24} className="text-black" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">
-                      Generous Revenue Share
-                    </h3>
-                    <p className="text-gray-500">
-                      Earn ongoing residuals on payments and software
-                      subscriptions. We believe in sharing the success.
-                    </p>
-                  </div>
-                </div>
+      {/* Partnership opportunities */}
+      <section className="border-y border-zinc-200 bg-zinc-50 py-20 md:py-28">
+        <div className="container mx-auto px-5 md:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-[clamp(1.7rem,3vw,2.5rem)] font-bold tracking-tight">
+              Explore partnership opportunities
+            </h2>
+            <p className="mt-4 text-base text-zinc-600">
+              There are four main ways to partner with eatOS &mdash; how would you like to get
+              started?
+            </p>
+          </div>
 
-                <div className="flex gap-4">
-                  <div className="mt-1 bg-black/5 p-2 rounded-lg h-fit">
-                    <CheckCircle2 size={24} className="text-black" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">
-                      Dedicated Support
-                    </h3>
-                    <p className="text-gray-500">
-                      Get a dedicated partner manager and priority support for
-                      your merchants.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="mt-1 bg-black/5 p-2 rounded-lg h-fit">
-                    <CheckCircle2 size={24} className="text-black" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Co-Marketing</h3>
-                    <p className="text-gray-500">
-                      Access marketing resources, leads, and co-branded
-                      collateral to help you sell more.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-12 p-8 bg-gray-50 rounded-3xl">
-                <blockquote className="text-lg font-medium mb-4">
-                  "Partnering with eatOS has been the best decision for our
-                  agency. The product sells itself and the support is
-                  unmatched."
-                </blockquote>
-                <div className="font-bold">
-                  - Sarah J., Digital Dining Solutions
-                </div>
-              </div>
-            </div>
-
-            {/* Right Form */}
-            <div className="bg-white p-8 md:p-10 rounded-3xl border border-gray-200 shadow-xl shadow-gray-100/50">
-              <h3 className="text-2xl font-bold mb-6">
-                Apply to become a partner
-              </h3>
-              <form className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      First Name
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black/5"
-                      placeholder="Jane"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Last Name
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black/5"
-                      placeholder="Doe"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Work Email
-                  </label>
-                  <input
-                    type="email"
-                    className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black/5"
-                    placeholder="jane@company.com"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Company Name
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black/5"
-                    placeholder="Acme Inc."
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Partner Type
-                  </label>
-                  <select className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black/5">
-                    <option>Reseller / VAR</option>
-                    <option>Integration Partner</option>
-                    <option>Referral Partner</option>
-                    <option>Consultant</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Message
-                  </label>
-                  <textarea
-                    className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black/5 h-32 resize-none"
-                    placeholder="Tell us about your business..."
-                  ></textarea>
-                </div>
-
-                <button
-                  type="button"
-                  className="w-full bg-black text-white py-4 rounded-xl font-bold text-lg hover:bg-gray-800 transition-colors flex items-center justify-center gap-2 group"
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {partnerTracks.map((track, i) => {
+              const Icon = trackIcons[i];
+              return (
+                <div
+                  key={track.title}
+                  className="flex h-full flex-col rounded-3xl border border-zinc-200 bg-white p-7 transition-all hover:-translate-y-1 hover:border-zinc-300 hover:shadow-[0_30px_60px_-40px_rgba(0,0,0,0.35)]"
                 >
-                  Submit Application{" "}
-                  <ArrowRight
-                    size={18}
-                    className="group-hover:translate-x-1 transition-transform"
-                  />
-                </button>
-              </form>
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-black text-white">
+                    <Icon size={20} />
+                  </div>
+                  <h3 className="mt-6 text-lg font-bold tracking-tight">{track.title}</h3>
+                  <p className="mt-3 flex-grow text-sm leading-relaxed text-zinc-600">
+                    {track.body}
+                  </p>
+                  <Link
+                    href="/contact-sales"
+                    className="group mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-black"
+                  >
+                    Get started
+                    <ArrowRight
+                      size={15}
+                      className="transition-transform group-hover:translate-x-1"
+                    />
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Awesome programs */}
+      <section className="bg-black py-20 text-white md:py-28">
+        <div className="container mx-auto px-5 md:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
+              Programs
+            </span>
+            <h2 className="mt-4 text-[clamp(1.7rem,3vw,2.5rem)] font-bold tracking-tight">
+              Built for businesses and individuals
+            </h2>
+          </div>
+
+          <div className="mt-14 grid items-stretch gap-8 lg:grid-cols-2">
+            <div className="overflow-hidden rounded-[28px] bg-zinc-900 md:rounded-[36px]">
+              <img
+                src={programsImage}
+                alt="Restaurant owner standing in their dining room"
+                loading="lazy"
+                width={1408}
+                height={1200}
+                className="h-full min-h-[280px] w-full object-cover"
+              />
+            </div>
+            <div className="flex flex-col justify-center rounded-[28px] bg-zinc-900 p-8 md:rounded-[36px] md:p-12">
+              <h3 className="text-2xl font-bold tracking-tight md:text-3xl">
+                Introduce eatOS in a few simple steps
+              </h3>
+              <p className="mt-5 text-sm leading-relaxed text-zinc-400 md:text-base">
+                Getting approved to introduce eatOS products and services is a breeze. Refer your
+                clients to eatOS, earn commission and stay informed while we take care of setup and
+                training.
+              </p>
+              <p className="mt-4 text-sm leading-relaxed text-zinc-400 md:text-base">
+                Accountants, bookkeepers, consultants and anyone else can earn valuable commissions
+                without any obligation &mdash; simply by connecting restaurants with the right
+                business solutions.
+              </p>
+              <Link
+                href="/contact-sales"
+                className="group mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-zinc-200"
+              >
+                Apply now
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+              </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Integration partners */}
+      <section className="bg-white py-20 md:py-28">
+        <div className="container mx-auto px-5 md:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-[clamp(1.7rem,3vw,2.5rem)] font-bold tracking-tight">
+              Meet our integration partners
+            </h2>
+            <p className="mt-4 text-base text-zinc-600">
+              eatOS works with the hardware, payments and back-office platforms restaurants already
+              rely on.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-14 grid max-w-5xl grid-cols-2 gap-px overflow-hidden rounded-3xl border border-zinc-200 bg-zinc-200 sm:grid-cols-3 lg:grid-cols-4">
+            {integrationPartners.map((partner) => (
+              <div
+                key={partner.name}
+                className="flex items-center justify-center bg-white px-6 py-9 transition-colors hover:bg-zinc-50"
+              >
+                <img
+                  src={partner.src}
+                  alt={`${partner.name} logo`}
+                  loading="lazy"
+                  className="h-8 w-auto max-w-[140px] object-contain opacity-70 transition-opacity hover:opacity-100 md:h-9"
+                />
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-8 text-center text-sm font-medium text-zinc-500">+ many more</p>
         </div>
       </section>
     </div>
