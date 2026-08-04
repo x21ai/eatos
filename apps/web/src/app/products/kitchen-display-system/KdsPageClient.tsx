@@ -215,44 +215,6 @@ function Hardware() {
   );
 }
 
-/* ------------------------------ Ecosystem ------------------------------ */
-
-function Ecosystem() {
-  return (
-    <section className="bg-[#f5f5f7] text-black">
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28 lg:py-32">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <Eyebrow>The Platform</Eyebrow>
-          <h2 className="mt-4 font-semibold leading-[1.08] tracking-[-0.03em] text-[clamp(1.75rem,4vw,3rem)]">
-            One restaurant technology cloud
-          </h2>
-          <p className="mt-5 text-base leading-8 text-zinc-600 sm:text-lg">
-            The kitchen display shares its data layer with everything else you run.
-          </p>
-        </Reveal>
-
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
-          {cloudProducts.map((p, i) => (
-            <Reveal key={p.title} delay={(i % 3) * 0.06}>
-              <a href={p.href} className="group block">
-                <div className="transition-transform duration-300 group-hover:-translate-y-1.5">
-                  <Placeholder label={p.title} tone="light" />
-                </div>
-                <div className="mt-4 flex items-center justify-between gap-3">
-                  <span className="min-w-0 truncate text-sm font-semibold">{p.title}</span>
-                  <ArrowRight
-                    size={16}
-                    className="shrink-0 text-zinc-400 transition-transform group-hover:translate-x-1 group-hover:text-black"
-                  />
-                </div>
-              </a>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* ----------------------------- Testimonial ----------------------------- */
 
