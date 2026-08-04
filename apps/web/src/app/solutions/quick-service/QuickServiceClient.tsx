@@ -5,7 +5,7 @@ import { useRef, useState } from 'react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
-import { bundle, capabilities, ecosystem, hero, marquee, pillars } from './content';
+import { bundle, hero, marquee, pillars } from './content';
 
 const rise = {
   initial: { opacity: 0, y: 28 },
