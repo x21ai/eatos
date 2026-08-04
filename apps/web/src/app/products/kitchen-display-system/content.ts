@@ -19,6 +19,36 @@ export const keyFeatures = [
   'Analytics & Reporting',
 ];
 
+// Quiet numeral row directly under the hero.
+export const marquee = [
+  { value: '10x', label: 'Error-free orders' },
+  { value: '100%', label: 'Real-time tickets' },
+  { value: '5 yrs', label: 'Peak-tested hardware' },
+  { value: '24/7', label: 'Cloud reporting' },
+];
+
+export const hardware = {
+  eyebrow: 'Hardware',
+  title: 'Built for the line, not the desk',
+  description:
+    'Sealed, fanless displays with tempered glass that stay readable through heat, steam and a full dinner service.',
+  imageLabel: 'Kitchen-grade display',
+  specs: [
+    {
+      title: 'Sealed enclosure',
+      body: 'Spill and grease resistant with no fan pulling air through the chassis.',
+    },
+    {
+      title: 'Any mount',
+      body: 'Wall, pole or under-shelf, driven by touch or a bump bar.',
+    },
+    {
+      title: 'Readable at range',
+      body: 'High-brightness tempered glass that stays legible from across the pass.',
+    },
+  ],
+};
+
 export const features = [
   {
     id: 'prep-station-routing',
