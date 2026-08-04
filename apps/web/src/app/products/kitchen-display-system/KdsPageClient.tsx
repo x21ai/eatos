@@ -216,29 +216,6 @@ function Hardware() {
 }
 
 
-/* ----------------------------- Testimonial ----------------------------- */
-
-function Testimonial() {
-  return (
-    <section className="bg-white text-black">
-      <div className="mx-auto w-full max-w-[900px] px-5 py-20 text-center sm:px-8 md:py-28 lg:py-32">
-        <Reveal>
-          <blockquote className="font-semibold leading-[1.25] tracking-[-0.025em] text-[clamp(1.375rem,3.4vw,2.5rem)]">
-            &ldquo;{testimonial.quote}&rdquo;
-          </blockquote>
-          <div className="mt-10">
-            <div className="text-sm font-semibold">{testimonial.name}</div>
-            <div className="mt-1.5 text-sm text-zinc-500">{testimonial.role}</div>
-            <div className="mt-1.5 text-[11px] uppercase tracking-[0.2em] text-zinc-400">
-              {testimonial.since}
-            </div>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
 /* -------------------------------- Offers -------------------------------- */
 
 function Offers() {
