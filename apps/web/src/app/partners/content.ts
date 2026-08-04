@@ -1,5 +1,5 @@
 // @ts-nocheck
-import hero from './assets/partners-hero.jpg.asset.json';
+import hero from './assets/partners-hero.avif.asset.json';
 import programs from './assets/partners-programs.jpg.asset.json';
 import sunmi from './assets/sunmi.png.asset.json';
 import voucherify from './assets/voucherify.png.asset.json';
