@@ -1,10 +1,24 @@
 # eatOS 2.0 — Handoff Log
 
-## Current snapshot (2026-08-03T18:10Z)
+## Current snapshot (2026-08-04T03:10Z)
+- **Lovable preview dist-check FIXED:** branch `lovable` HEAD `d75d757`. Preview was
+  stuck on the old TanStack build because Lovable's post-build gate expects a root
+  `dist/` and Next writes `apps/web/.next`. Now `build:dev` runs `next build` then
+  `scripts/lovable-post-build-dist.mjs` emits a root `dist/` (index.html + copied
+  `.next/static`). Removed leftover `src/routes/__root.tsx` (TanStack remnant).
+  Root scripts switched to `yarn workspace web exec` (bun/yarn-hoist safe).
+- **Verified locally:** `yarn build:dev` exit 0 + `dist/` created; `yarn dev` on
+  **8080** returns 200; browser render = real Next.js site (title "eatOS - The
+  Restaurant Operating System", H1 "Beyond Operating."). `dist/` is gitignored.
+- **Operator action in Lovable:** on project `b675eaf0-...`, ensure branch `lovable`,
+  Sync/Pull latest, Rebuild preview.
+- **LIVE:** https://s.eatos.dev — Cloudflare deploy path unchanged (`yarn cf:deploy`).
+- Soft-404 P0 (`use(params)` on product/career/blog detail) still open on production.
+
+## Prior snapshot (2026-08-03T18:10Z)
 - **Lovable preview:** branch `lovable` on `x21ai/eatos-snap-capture` includes Lovable
   harness fixes (root `dev`/`build` on port **8080**, `date-fns` in `apps/web`).
   Local `main` fast-forwarded to `26250ad` + cleanup commit (no `.wrangler` in git).
-  Plan doc: `.lovable/plan/load-the-imported-eatos-repo-into-the-lovable-preview-2026-08-03.md`.
 - **LIVE:** https://s.eatos.dev — Cloudflare deploy path unchanged (`yarn cf:deploy` from
   `apps/web`). Lovable uses root `yarn dev` / `build` → `apps/web` only.
 - Soft-404 P0 (`use(params)` on product/career/blog detail) still open on production.
@@ -91,6 +105,26 @@
 ---
 
 ## Log
+
+### 2026-08-04T03:10Z — Fix Lovable preview (dist-check + TanStack remnant)
+- **Requested:** Lovable preview at project `b675eaf0-...` still not loading.
+- **Root cause:** Per Lovable `.lovable/plan.md`, `next dev` served 200 but the
+  platform's post-build dist-check needs a root `dist/`; Next output is
+  `apps/web/.next`, so the check failed and preview kept serving the earlier
+  TanStack recreation. A stale `src/routes/__root.tsx` also remained at repo root.
+- **Done:** (1) `git rm src/routes/__root.tsx`. (2) Added
+  `scripts/lovable-post-build-dist.mjs` — after `next build`, writes root `dist/`
+  (`index.html` + copies `apps/web/.next/static` → `dist/_next/static`). (3) Root
+  `package.json` scripts now `yarn workspace web exec next …`; `build:dev` chains
+  the dist shim. (4) `dist/` already gitignored. Verified: `build:dev` exit 0,
+  `dist/` present; `dev` 8080 → 200; browser shows real Next.js home. Committed
+  `d75d757`, pushed `main:lovable` via `PointofSaleAi`.
+- **Issues:** Preview panel is served by the dev server (app is SSR: API/D1/
+  better-auth), so the static `dist/` is only to pass the gate, not to run logic.
+  Production publish path stays OpenNext → s.eatos.dev.
+- **Stand / next:** Operator: in Lovable, sync branch `lovable` + rebuild preview.
+- **Who / where:** Cursor agent, `/Users/aa/Downloads/eatOS-2.0`, `lovable`@`d75d757`.
+- **Timestamp:** 2026-08-04T03:10Z
 
 ### 2026-08-03T18:10Z — Align local repo with Lovable preview fixes
 - **Requested:** Context from Lovable — preview blank until root `dev` on 8080 and
