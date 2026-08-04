@@ -1,6 +1,15 @@
 // @ts-nocheck
 // All copy + metrics for the Kitchen Display System page. Edit here.
 
+import heroAsset from './assets/kds-hero.jpg.asset.json';
+import prepAsset from './assets/prep-station-routing.webp.asset.json';
+import multiLingualAsset from './assets/multi-lingual.png.asset.json';
+import connectivityAsset from './assets/seamless-connectivity.webp.asset.json';
+import hardwareAsset from './assets/kitchen-grade-hardware.webp.asset.json';
+import printingAsset from './assets/save-on-printing.webp.asset.json';
+import analyticsAsset from './assets/analytics.webp.asset.json';
+import hardwareLineAsset from './assets/hardware-line.jpg.asset.json';
+
 export const hero = {
   eyebrow: 'Kitchen Display System',
   title: 'Streamlines Kitchen Communication and Improves Productivity',
@@ -8,6 +17,7 @@ export const hero = {
     'The eatOS Kitchen Display System is the digital command center for your kitchen, enabling everything your team needs to prep, fire and serve without missing a ticket.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'Watch Video', href: '/book-demo' },
+  image: heroAsset.url,
 };
 
 export const keyFeatures = [
@@ -33,6 +43,7 @@ export const hardware = {
   description:
     'Sealed, fanless displays with tempered glass that stay readable through heat, steam and a full dinner service.',
   imageLabel: 'Kitchen-grade display',
+  image: hardwareLineAsset.url,
   specs: [
     {
       title: 'Sealed enclosure',
@@ -62,6 +73,7 @@ export const features = [
     more:
       'Course firing, hold-and-release timing and per-station prep rules keep long-cook items in sync with quick plates, so a table is finished together rather than one dish at a time.',
     imageLabel: 'KDS station routing view',
+    image: prepAsset.url,
   },
   {
     id: 'multi-lingual-support',
@@ -75,6 +87,7 @@ export const features = [
     more:
       'Language is set per display, not per venue, so a single kitchen can run different languages at different stations without changing your menu data.',
     imageLabel: 'Multi-language ticket board',
+    image: multiLingualAsset.url,
   },
   {
     id: 'seamless-connectivity',
@@ -88,6 +101,7 @@ export const features = [
     more:
       'Because the KDS shares the eatOS data layer with POS, online ordering and inventory, an item that runs out disappears from every ordering surface at once.',
     imageLabel: 'Connected devices overview',
+    image: connectivityAsset.url,
   },
   {
     id: 'kitchen-grade-hardware',
@@ -101,6 +115,7 @@ export const features = [
     more:
       'Mount it on the wall, on a pole or under a shelf, and drive it with a bump bar or touch. Fanless construction means no grease pulled through the chassis.',
     imageLabel: 'Kitchen-grade display hardware',
+    image: hardwareAsset.url,
   },
   {
     id: 'save-on-printing',
@@ -114,6 +129,7 @@ export const features = [
     more:
       'Every ticket stays searchable after service, so voids, remakes and delays can be reviewed instead of guessed at.',
     imageLabel: 'Digital ticket queue',
+    image: printingAsset.url,
   },
   {
     id: 'analytics-reporting',
@@ -127,6 +143,7 @@ export const features = [
     more:
       'Reports roll up across locations, so a multi-unit operator can compare kitchens on the same measures from one dashboard.',
     imageLabel: 'Kitchen performance dashboard',
+    image: analyticsAsset.url,
   },
 ];
 
