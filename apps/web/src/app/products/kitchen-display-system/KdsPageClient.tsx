@@ -198,7 +198,7 @@ function Hardware() {
         </Reveal>
 
         <Reveal delay={0.08} className="mt-12 md:mt-16">
-          <Placeholder label={hardware.imageLabel} ratio="aspect-[16/9]" src={hardware.image} />
+          <Placeholder label={hardware.imageLabel} ratio="aspect-[16/9]" src={hardware.image} pad />
         </Reveal>
 
         <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8 md:mt-20">
