@@ -277,31 +277,6 @@ function Closing() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.08} className="mx-auto mt-16 max-w-xl text-center md:mt-20">
-          <p className="text-sm text-zinc-500">
-            Get product news and restaurant technology insights in your inbox.
-          </p>
-          <form
-            className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-[minmax(0,1fr)_auto]"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <label className="sr-only" htmlFor="kds-newsletter-email">
-              Email address
-            </label>
-            <input
-              id="kds-newsletter-email"
-              type="email"
-              placeholder="Your email address"
-              className="w-full min-w-0 rounded-full bg-[#f0f0f2] px-5 py-3.5 text-sm text-black placeholder:text-zinc-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40"
-            />
-            <button
-              type="submit"
-              className="shrink-0 rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-85"
-            >
-              Subscribe
-            </button>
-          </form>
-        </Reveal>
       </div>
     </section>
   );
