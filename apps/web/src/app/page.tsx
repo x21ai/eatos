@@ -15,6 +15,7 @@ import {
   Plug,
 } from 'lucide-react';
 import { motion } from 'motion/react';
+import { NewsletterSection } from '@/components/NewsletterSection';
 
 export default function HomePage() {
   return (
@@ -661,6 +662,8 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
+
+      <NewsletterSection />
     </div>
   );
 }
