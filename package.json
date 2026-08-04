@@ -3,7 +3,7 @@
     "apps/*"
   ],
   "scripts": {
-    "dev": "./apps/web/node_modules/.bin/next dev apps/web --port 8080",
+    "dev": "./apps/web/node_modules/.bin/next dev apps/web",
     "build:dev": "./apps/web/node_modules/.bin/next build apps/web",
     "build": "./apps/web/node_modules/.bin/next build apps/web",
     "start": "./apps/web/node_modules/.bin/next start apps/web --port 8080",
