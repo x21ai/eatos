@@ -1,5 +1,6 @@
-// Next.js builds into apps/web/.next. The platform's dist-check expects a
-// top-level ./dist artifact, so mirror the client assets and add an entry html.
+// Next.js builds into apps/web/.next. Preview validation expects a top-level
+// ./dist artifact, so mirror client assets for that check only. Production must
+// not run this script: publishing uses the OpenNext server output.
 import { cpSync, existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 
 const next = "apps/web/.next";
@@ -26,10 +27,9 @@ writeFileSync(
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>eatOS</title>
-    <meta http-equiv="refresh" content="0; url=/" />
   </head>
   <body>
-    <p>This app is served by the Next.js server. Open <a href="/">/</a>.</p>
+    <p>Preview assets prepared. The application is served by Next.js.</p>
   </body>
 </html>
 `,
