@@ -50,7 +50,7 @@ type SqlFn = {
 const sql = ((first: any, ...rest: any[]): Promise<Row[]> => {
   // Tagged-template invocation: sql`... ${v} ...`
   if (Array.isArray(first) && Object.prototype.hasOwnProperty.call(first, 'raw')) {
-    const strings = first as TemplateStringsArray;
+    const strings = first as unknown as TemplateStringsArray;
     const values = rest;
     let query = '';
     strings.forEach((chunk, i) => {
