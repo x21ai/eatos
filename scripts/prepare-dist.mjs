@@ -51,6 +51,14 @@ function walk(dir) {
 
     mkdirSync(path.dirname(target), { recursive: true });
     cpSync(full, target);
+
+    // Some static hosts resolve extensionless URLs to "<route>.html" instead of
+    // "<route>/index.html". Emit both so every page resolves either way.
+    if (target.endsWith("/index.html") && target !== "dist/index.html") {
+      const flat = `${path.dirname(target)}.html`;
+      mkdirSync(path.dirname(flat), { recursive: true });
+      cpSync(full, flat);
+    }
     pages += 1;
   }
 }
