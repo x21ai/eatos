@@ -17,8 +17,7 @@ import {
 } from 'lucide-react';
 import { useState, useMemo } from 'react';
 
-export default function BlogPostPage({ params }) {
-  const { slug } = params;
+export default function BlogPostClient({ slug }) {
   const [liked, setLiked] = useState(false);
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);

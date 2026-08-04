@@ -137,8 +137,8 @@ const colorMap = {
   },
 };
 
-export default function ProductDetailPage({ params }) {
-  const product = getProductBySlug(params.slug);
+export default function ProductDetailClient({ slug }) {
+  const product = getProductBySlug(slug);
 
   if (!product) {
     return (

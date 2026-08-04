@@ -84,8 +84,12 @@ const ROLES = {
   },
 };
 
-export default function CareerRolePage({ params }) {
-  const roleKey = params?.role;
+export function generateStaticParams() {
+  return Object.keys(ROLES).map((role) => ({ role }));
+}
+
+export default async function CareerRolePage({ params }) {
+  const { role: roleKey } = await params;
   const role = roleKey ? ROLES[roleKey] : null;
 
   if (!role) {
