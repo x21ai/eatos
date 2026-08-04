@@ -312,8 +312,6 @@ export default function KdsPageClient() {
       ))}
 
       <Hardware />
-      <Ecosystem />
-      <Testimonial />
       <Offers />
       <Closing />
     </div>
