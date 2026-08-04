@@ -103,13 +103,15 @@ async function verifyCompatiblePassword({
   });
 }
 
-type AuthInstance = ReturnType<typeof betterAuth>;
+// Inferred from createAuth so the concrete option generics are preserved
+// (ReturnType<typeof betterAuth> widens to BetterAuthOptions and mismatches).
+type AuthInstance = ReturnType<typeof createAuth>;
 
 // Memoize the auth instance per D1 binding (stable within a Worker isolate).
 let cachedAuth: AuthInstance | null = null;
 let cachedDb: unknown = null;
 
-function createAuth(db: any, cfEnv: Record<string, any>): AuthInstance {
+function createAuth(db: any, cfEnv: Record<string, any>) {
   return betterAuth({
     database: { dialect: new D1Dialect({ database: db }), type: 'sqlite' },
     // Session/token signing secret. Must be set in the Worker env
