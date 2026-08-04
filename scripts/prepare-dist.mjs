@@ -1,7 +1,15 @@
-// Next.js builds into apps/web/.next. Preview validation expects a top-level
-// ./dist artifact, so mirror client assets for that check only. Production must
-// not run this script: publishing uses the OpenNext server output.
-import { cpSync, existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
+// Next.js builds into apps/web/.next. Publishing/preview validation expects a
+// top-level ./dist artifact, so mirror the prerendered HTML pages plus client
+// and public assets into dist/ so the deployed site serves the real app.
+import {
+  cpSync,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  rmSync,
+  statSync,
+} from "node:fs";
+import path from "node:path";
 
 const next = "apps/web/.next";
 if (!existsSync(next)) {
@@ -19,20 +27,39 @@ if (existsSync("apps/web/public")) {
   cpSync("apps/web/public", "dist", { recursive: true });
 }
 
-writeFileSync(
-  "dist/index.html",
-  `<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>eatOS</title>
-  </head>
-  <body>
-    <p>Preview assets prepared. The application is served by Next.js.</p>
-  </body>
-</html>
-`,
-);
+// Copy every prerendered page: .next/server/app/<route>.html -> dist/<route>/index.html
+const appDir = `${next}/server/app`;
+let pages = 0;
 
-console.log("dist/ prepared from apps/web/.next");
+function walk(dir) {
+  if (!existsSync(dir)) return;
+  for (const entry of readdirSync(dir)) {
+    const full = path.join(dir, entry);
+    if (statSync(full).isDirectory()) {
+      walk(full);
+      continue;
+    }
+    if (!entry.endsWith(".html")) continue;
+
+    const route = path.relative(appDir, full).replace(/\.html$/, "");
+    const target =
+      route === "index"
+        ? "dist/index.html"
+        : route === "_not-found"
+          ? "dist/404.html"
+          : path.join("dist", route, "index.html");
+
+    mkdirSync(path.dirname(target), { recursive: true });
+    cpSync(full, target);
+    pages += 1;
+  }
+}
+
+walk(appDir);
+
+if (!existsSync("dist/index.html")) {
+  console.error("dist/index.html missing - no prerendered home page found.");
+  process.exit(1);
+}
+
+console.log(`dist/ prepared from apps/web/.next (${pages} pages)`);
