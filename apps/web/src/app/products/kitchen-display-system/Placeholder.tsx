@@ -8,8 +8,28 @@ export function Placeholder({
   ratio = 'aspect-[16/10]',
   tone = 'dark',
   className = '',
+  src,
 }) {
   const dark = tone === 'dark';
+
+  if (src) {
+    return (
+      <div
+        className={`relative ${ratio} w-full overflow-hidden rounded-[24px] md:rounded-[32px] ${
+          dark
+            ? 'bg-zinc-900 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]'
+            : 'bg-zinc-200/70 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.35)]'
+        } ${className}`}
+      >
+        <img
+          src={src}
+          alt={label}
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      </div>
+    );
+  }
 
   return (
     <div
