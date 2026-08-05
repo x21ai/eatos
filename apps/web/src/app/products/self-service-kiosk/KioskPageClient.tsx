@@ -137,6 +137,7 @@ function FeatureBlock({ feature, index }) {
             tone="light"
             ratio={feature.ratio}
             src={feature.image}
+            pad={feature.pad}
           />
         </div>
 
