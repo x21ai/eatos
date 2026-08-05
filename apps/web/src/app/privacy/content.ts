@@ -5,9 +5,43 @@ export type Block =
 
 export type Section = { id: string; title: string; blocks: Block[] };
 
-export const effectiveDate = "December 29, 2025";
+export const effectiveDate = "September 14, 2022";
 
 export const sections: Section[] = [
+  {
+    id: "privacy-notice",
+    title: "Privacy Notice",
+    blocks: [
+      {
+        type: "h3",
+        text: "Restaurant Management Made Simple",
+      },
+      {
+        type: "p",
+        text: "Privacy Notice for Users Who Apply or Sign Up for an eatOS Account or Other Services. To access the Privacy Notice effective through Sept 14, 2022. Posted on: Sept 14, 2022. Effective Date: Sept 14, 2022. This Privacy Notice describes how eatOS POS Inc. and our affiliates (collectively, “eatOS,” “we,” and “us”) collect, use, disclose, transfer, store, retain or otherwise process your information when you (whether you are a person or business) apply or sign up for an eatOS account or other services through eatOS’s website or applications (collectively, “Services”).",
+      },
+      {
+        type: "p",
+        text: "This Privacy Notice applies to your use of our services and software, and covers information collected in connection with your access to and use of our services and software.",
+      },
+      {
+        type: "p",
+        text: "Please read this Privacy Notice carefully. By continuing to interact with our Services, you are consenting to the practices described in this Privacy Notice.",
+      },
+      {
+        type: "p",
+        text: "If you have any questions or concerns regarding our notice, or if you believe our notice or applicable laws relating to the protection of your personal information have not been respected, you may file a complaint with our Privacy Department listed above, and we will respond to let you know who will be handling your matter and when you can expect a further response.",
+      },
+      {
+        type: "p",
+        text: "We may request additional details from you regarding your concerns and may need to engage or consult with other parties in order to investigate and address your issue.",
+      },
+      {
+        type: "p",
+        text: "We may keep records of your request and any resolution.",
+      },
+    ],
+  },
   {
     id: "information-we-collect",
     title: "1. What information we collect about you",
