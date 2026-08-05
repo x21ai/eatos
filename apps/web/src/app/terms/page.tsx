@@ -1,21 +1,7 @@
 // @ts-nocheck
+import { effectiveDate, sections } from "./content";
+
 export default function TermsOfServicePage() {
-  const effectiveDate = "December 29, 2025";
-
-  const sections = [
-    { id: "acceptance", title: "Acceptance" },
-    { id: "services", title: "Services" },
-    { id: "accounts", title: "Accounts" },
-    { id: "acceptable", title: "Acceptable use" },
-    { id: "ip", title: "Intellectual property" },
-    { id: "payments", title: "Fees & payments" },
-    { id: "disclaimers", title: "Disclaimers" },
-    { id: "liability", title: "Limitation of liability" },
-    { id: "termination", title: "Termination" },
-    { id: "changes", title: "Changes" },
-    { id: "contact", title: "Contact" },
-  ];
-
   const cardClass =
     "rounded-3xl border border-gray-200 bg-white p-7 md:p-9 shadow-sm";
 
@@ -48,7 +34,7 @@ export default function TermsOfServicePage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-10">
             {/* TOC */}
-            <aside className="lg:sticky lg:top-28 h-fit">
+            <aside className="hidden lg:block lg:sticky lg:top-28 h-fit lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
               <div className="rounded-3xl border border-gray-200 bg-white p-6">
                 <div className="text-[13px] font-semibold tracking-wide text-[#1d1d1f] mb-4">
                   On this page
@@ -70,125 +56,40 @@ export default function TermsOfServicePage() {
 
             {/* Body */}
             <div className="space-y-6">
-              <div id="acceptance" className={cardClass}>
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-3">
-                  Acceptance
-                </h2>
-                <p className="text-gray-600 leading-relaxed">
-                  By accessing or using the <strong>eatOS</strong> website or
-                  services, you agree to these Terms. If you do not agree, do
-                  not use the services.
-                </p>
-              </div>
+              {sections.map((section) => (
+                <div key={section.id} id={section.id} className={cardClass}>
+                  <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-4">
+                    {section.title}
+                  </h2>
+                  <div className="space-y-4">
+                    {section.blocks.map((block, i) =>
+                      block.type === "h3" ? (
+                        <h3
+                          key={i}
+                          className="text-base md:text-lg font-semibold text-black pt-2"
+                        >
+                          {block.text}
+                        </h3>
+                      ) : block.type === "ul" ? (
+                        <ul
+                          key={i}
+                          className="list-disc pl-5 space-y-2 text-gray-600 leading-relaxed"
+                        >
+                          {block.items.map((item, j) => (
+                            <li key={j}>{item}</li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p key={i} className="text-gray-600 leading-relaxed">
+                          {block.text}
+                        </p>
+                      ),
+                    )}
+                  </div>
+                </div>
+              ))}
 
-              <div id="services" className={cardClass}>
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-3">
-                  Services
-                </h2>
-                <p className="text-gray-600 leading-relaxed">
-                  <strong>eatOS</strong> provides software and related tools for
-                  hospitality businesses. Features may change over time, and
-                  some features may be offered as betas.
-                </p>
-              </div>
-
-              <div id="accounts" className={cardClass}>
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-3">
-                  Accounts
-                </h2>
-                <p className="text-gray-600 leading-relaxed">
-                  Some parts of the service may require an account. You are
-                  responsible for keeping your credentials secure and for all
-                  activity under your account.
-                </p>
-              </div>
-
-              <div id="acceptable" className={cardClass}>
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-3">
-                  Acceptable use
-                </h2>
-                <ul className="list-disc pl-5 space-y-2 text-gray-600 leading-relaxed">
-                  <li>Don’t misuse the service or attempt to break it.</li>
-                  <li>
-                    Don’t access or scrape the site in a way that harms
-                    availability.
-                  </li>
-                  <li>
-                    Don’t upload malware or try to gain unauthorized access to
-                    systems.
-                  </li>
-                  <li>Comply with applicable laws and payment rules.</li>
-                </ul>
-              </div>
-
-              <div id="ip" className={cardClass}>
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-3">
-                  Intellectual property
-                </h2>
-                <p className="text-gray-600 leading-relaxed">
-                  <strong>eatOS</strong> and its logos, software, and design are
-                  owned by <strong>eatOS POS Inc.</strong> You may not copy, modify,
-                  or distribute them except as allowed by law or with our
-                  written permission.
-                </p>
-              </div>
-
-              <div id="payments" className={cardClass}>
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-3">
-                  Fees & payments
-                </h2>
-                <p className="text-gray-600 leading-relaxed">
-                  If you purchase paid services, you agree to pay applicable
-                  fees. Specific pricing, billing terms, and refunds (if any)
-                  will be shown to you at the time of purchase or in your
-                  agreement with <strong>eatOS</strong>.
-                </p>
-              </div>
-
-              <div id="disclaimers" className={cardClass}>
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-3">
-                  Disclaimers
-                </h2>
-                <p className="text-gray-600 leading-relaxed">
-                  The services are provided “as is” and “as available.” We do
-                  not guarantee that the services will be uninterrupted or
-                  error-free.
-                </p>
-              </div>
-
-              <div id="liability" className={cardClass}>
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-3">
-                  Limitation of liability
-                </h2>
-                <p className="text-gray-600 leading-relaxed">
-                  To the maximum extent permitted by law, <strong>eatOS</strong>{" "}
-                  will not be liable for indirect, incidental, special,
-                  consequential, or punitive damages, or any loss of profits or
-                  revenues.
-                </p>
-              </div>
-
-              <div id="termination" className={cardClass}>
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-3">
-                  Termination
-                </h2>
-                <p className="text-gray-600 leading-relaxed">
-                  We may suspend or terminate access to the services if we
-                  believe there is misuse, risk, or a violation of these Terms.
-                </p>
-              </div>
-
-              <div id="changes" className={cardClass}>
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-3">
-                  Changes
-                </h2>
-                <p className="text-gray-600 leading-relaxed">
-                  We may update these Terms from time to time. If changes are
-                  material, we’ll take reasonable steps to notify you.
-                </p>
-              </div>
-
-              <div id="contact" className={cardClass}>
+              <div className={cardClass}>
                 <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-3">
                   Contact
                 </h2>
