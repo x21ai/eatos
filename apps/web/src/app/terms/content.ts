@@ -5,9 +5,30 @@ export type Block =
 
 export type Section = { id: string; title: string; blocks: Block[] };
 
-export const effectiveDate = "December 29, 2025";
+export const effectiveDate = "September 14, 2022 | Ver. 1.3";
 
 export const sections: Section[] = [
+  {
+    id: "general-terms",
+    title: "General Terms of Service",
+    blocks: [
+      {
+        type: "p",
+        text: "These General Terms of Service (\"General Terms\") are a legal agreement between you (\"you,\" \"your\") and eatOS, Services (P) Limited (\"eatOS,\" \"we,\" \"our\" or \"us\") and govern your use of eatOS's services, including mobile applications, websites, software, hardware, and other products and services (collectively, the \"Services\"). If you are using the Services on behalf of a business, that business accepts these terms. By using any of the Services you agree to these General Terms and any policies referenced within (\"Policies\"), including terms that limit our liability (see Section 18) and require individual arbitration for any potential legal dispute (see Section 21). You also agree to any additional terms specific to Services you use (\"Additional Terms\"), such as those listed below, which become part of your agreement with us. You should read all of our terms carefully.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Payment Terms: These terms apply to all payments made through the Services.",
+          "Point of Sale Additional Terms of Service: These terms apply when you use eatOS Point of Sale.",
+          "Mobile Wallet Terms of Service: These terms apply when you use any Third Party Wallets on eatOS Point of Sale.",
+          "Value Added Services (VAS) Terms of Service: These terms apply when you use and Value Added Services (VAS) on eatOS Point of Sale.",
+          "Online Payment Gateway Terms of Service: These terms apply when you use Online payment gateway Service of eatOS.",
+          "Money Transfer Terms of Service: These terms apply when you use Money Transfer service on eatOS Point of Sale.",
+        ],
+      },
+    ],
+  },
   {
     id: "privacy",
     title: "1. Privacy",
