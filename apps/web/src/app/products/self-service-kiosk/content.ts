@@ -4,6 +4,8 @@
 import heroAsset from './assets/kiosk-hero.jpg.asset.json';
 import designedAsset from './assets/kiosk-designed.jpg.asset.json';
 import waitAsset from './assets/kiosk-wait.jpg.asset.json';
+import hardwareAsset from './assets/kiosk-hardware.png.asset.json';
+import lineupAsset from './assets/kiosk-lineup.jpg.asset.json';
 
 export const hero = {
   eyebrow: 'Self-Service Kiosk',
@@ -66,6 +68,7 @@ export const features = [
     more:
       'Sealed enclosures, cable management and integrated payment terminals keep the footprint tidy and the device serviceable.',
     imageLabel: 'Kiosk hardware formats',
+    image: hardwareAsset.url,
     ratio: 'aspect-[3/4]',
     metrics: [
       { value: '100%', label: 'Trusted hardware' },
@@ -98,6 +101,7 @@ export const hardware = {
   description:
     'Three form factors, one platform. Choose the footprint that fits your floor and add more as you grow.',
   imageLabel: 'Kiosk hardware lineup',
+  image: lineupAsset.url,
   specs: [
     {
       title: 'Countertop',
