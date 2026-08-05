@@ -70,6 +70,7 @@ export const features = [
     imageLabel: 'Kiosk hardware formats',
     image: hardwareAsset.url,
     ratio: 'aspect-[3/4]',
+    pad: true,
     metrics: [
       { value: '100%', label: 'Trusted hardware' },
       { value: '100%', label: 'Commercial tablets' },
