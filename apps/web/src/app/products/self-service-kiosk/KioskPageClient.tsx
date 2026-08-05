@@ -188,10 +188,10 @@ function FeatureList() {
   return (
     <section className="bg-white text-black">
       <div className="mx-auto w-full max-w-[1180px] px-5 pb-20 sm:px-8 md:pb-28">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.32fr_1fr] lg:gap-16">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.42fr_1fr] lg:gap-16">
           <div className="lg:sticky lg:top-28 lg:self-start">
             <Eyebrow>Why kiosk</Eyebrow>
-            <h2 className="mt-4 font-semibold leading-[1.08] tracking-[-0.03em] text-[clamp(1.625rem,3.4vw,2.5rem)]">
+            <h2 className="mt-4 max-w-[16ch] font-semibold leading-[1.12] tracking-[-0.03em] text-[clamp(1.625rem,2.8vw,2.25rem)]">
               Seven reasons guests order for themselves
             </h2>
           </div>
