@@ -192,7 +192,7 @@ function FeatureList() {
           <div className="lg:sticky lg:top-28 lg:self-start">
             <Eyebrow>Why kiosk</Eyebrow>
             <h2 className="mt-4 max-w-[16ch] font-semibold leading-[1.12] tracking-[-0.03em] text-[clamp(1.625rem,2.8vw,2.25rem)]">
-              Seven reasons guests order for themselves
+              Three reasons guests order for themselves
             </h2>
           </div>
 

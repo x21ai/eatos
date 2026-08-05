@@ -1,6 +1,10 @@
 // @ts-nocheck
 // All copy for the Self-Service Kiosk product page. Edit here.
 
+import heroAsset from './assets/kiosk-hero.jpg.asset.json';
+import designedAsset from './assets/kiosk-designed.jpg.asset.json';
+import waitAsset from './assets/kiosk-wait.jpg.asset.json';
+
 export const hero = {
   eyebrow: 'Self-Service Kiosk',
   title: 'Make self ordering simple & boost guest satisfaction',
@@ -9,6 +13,7 @@ export const hero = {
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Self-service kiosk',
+  image: heroAsset.url,
   stats: [
     { value: '20%', label: 'Higher check size' },
     { value: '2x', label: 'Faster ordering' },
@@ -18,10 +23,7 @@ export const hero = {
 
 export const keyFeatures = [
   'Designed for Restaurants',
-  'Increase Average Check Size',
   'Reduce Wait Times',
-  'Reduce Costs',
-  'Direct Integration',
   'Durable Hardware',
 ];
 
@@ -34,24 +36,11 @@ export const features = [
     more:
       'Menus, pricing and availability sync from the same catalog as your Point of Sale, so the kiosk is never out of date and staff never maintain a second menu.',
     imageLabel: 'Kiosk menu experience',
+    image: designedAsset.url,
     ratio: 'aspect-[3/4]',
     metrics: [
       { value: '100%', label: 'Menu efficiency' },
       { value: '100%', label: 'Intuitive ordering' },
-    ],
-  },
-  {
-    id: 'check-size',
-    title: 'Increase average check size',
-    body:
-      'Guests take their time when nobody is waiting behind them — and they add more. Smart prompts suggest sides, upgrades and pairings at the right moment.',
-    more:
-      'Upsell rules are set per item, daypart or category, so the recommendation always fits what the guest already chose.',
-    imageLabel: 'Upsell prompts on kiosk',
-    ratio: 'aspect-[3/4]',
-    metrics: [
-      { value: '100%', label: 'Choice assistant' },
-      { value: '100%', label: 'Smart upsell' },
     ],
   },
   {
@@ -62,38 +51,11 @@ export const features = [
     more:
       'Peak-hour throughput rises without adding headcount, and the counter team moves from taking orders to expediting them.',
     imageLabel: 'Queue-free ordering',
+    image: waitAsset.url,
     ratio: 'aspect-[3/4]',
     metrics: [
       { value: '100%', label: 'Workflow profits' },
       { value: '100%', label: 'Queue-less sales' },
-    ],
-  },
-  {
-    id: 'costs',
-    title: 'Reduce costs',
-    body:
-      'Shift order entry to the guest and redeploy labor where it changes the experience — expediting, hospitality and running food.',
-    more:
-      'Fewer mis-keyed orders means fewer remakes, less waste and less time spent resolving tickets at the counter.',
-    imageLabel: 'Guest-driven ordering',
-    ratio: 'aspect-[3/4]',
-    metrics: [
-      { value: '100%', label: 'Customer empowerment' },
-      { value: '100%', label: 'Staff-less ordering' },
-    ],
-  },
-  {
-    id: 'integration',
-    title: 'Direct integration',
-    body:
-      'Kiosk, Point of Sale, Kitchen Display and reporting run on one cloud, so there is nothing to reconcile between systems.',
-    more:
-      'Every kiosk order lands in the same ticket queue, the same sales report and the same inventory count as a counter order.',
-    imageLabel: 'Connected devices',
-    ratio: 'aspect-[16/10]',
-    metrics: [
-      { value: '0%', label: 'Synchronization struggles' },
-      { value: '100%', label: 'Unified kitchen' },
     ],
   },
   {
@@ -108,20 +70,6 @@ export const features = [
     metrics: [
       { value: '100%', label: 'Trusted hardware' },
       { value: '100%', label: 'Commercial tablets' },
-    ],
-  },
-  {
-    id: 'payments',
-    title: 'Dynamic payment processing',
-    body:
-      'Tap, dip, swipe and mobile wallets are accepted at the kiosk, with receipts by print, email or text.',
-    more:
-      'Payments are encrypted end to end and settle through the same processor as the rest of your locations.',
-    imageLabel: 'Contactless payment at kiosk',
-    ratio: 'aspect-[3/4]',
-    metrics: [
-      { value: '100%', label: 'Seamless transactions' },
-      { value: '10x', label: 'Secured' },
     ],
   },
 ];
