@@ -1,0 +1,371 @@
+// @ts-nocheck
+'use client';
+
+import { ArrowRight, Check, Minus } from 'lucide-react';
+import { motion, useReducedMotion } from 'motion/react';
+import { Placeholder } from '@/components/marketing/Placeholder';
+import {
+  competitors,
+  ecosystem,
+  hero,
+  matrix,
+  reasons,
+  trademarkNote,
+  whySwitch,
+} from './content';
+
+const rise = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.2 },
+  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+};
+
+function Reveal({ children, delay = 0, className = '' }) {
+  const reduce = useReducedMotion();
+  if (reduce) return <div className={className}>{children}</div>;
+  return (
+    <motion.div {...rise} transition={{ ...rise.transition, delay }} className={className}>
+      {children}
+    </motion.div>
+  );
+}
+
+function Eyebrow({ children, className = '' }) {
+  return (
+    <p
+      className={`text-[11px] font-semibold uppercase tracking-[0.24em] text-emerald-600 sm:text-xs ${className}`}
+    >
+      {children}
+    </p>
+  );
+}
+
+/* --------------------------------- Hero --------------------------------- */
+
+function Hero() {
+  return (
+    <section className="bg-[#f7f7f8] text-black">
+      <div className="mx-auto w-full max-w-[1180px] px-5 pt-28 pb-16 sm:px-8 md:pt-36 md:pb-24 lg:pt-40">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:gap-16">
+          <Reveal className="min-w-0">
+            <Eyebrow>{hero.eyebrow}</Eyebrow>
+            <h1 className="mt-5 max-w-[20ch] font-semibold leading-[1.05] tracking-[-0.03em] text-[clamp(2.25rem,5vw,4.25rem)]">
+              {hero.title}
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-8 text-zinc-600 sm:text-lg">
+              {hero.description}
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href={hero.primaryCta.href}
+                className="inline-flex w-full items-center justify-center rounded-full bg-black px-7 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-85 sm:w-auto"
+              >
+                {hero.primaryCta.label}
+              </a>
+              <a
+                href={hero.secondaryCta.href}
+                className="inline-flex w-full items-center justify-center gap-1.5 rounded-full px-7 py-3.5 text-sm font-semibold text-emerald-700 transition-colors hover:text-emerald-800 sm:w-auto"
+              >
+                {hero.secondaryCta.label}
+                <ArrowRight size={15} />
+              </a>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1} className="min-w-0">
+            <Placeholder label={hero.media} ratio="aspect-[4/3]" tone="light" />
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------- Why switch ------------------------------ */
+
+function WhySwitch() {
+  return (
+    <section className="bg-[#f7f7f8] text-black">
+      <div className="mx-auto w-full max-w-[1180px] px-5 pb-24 sm:px-8 md:pb-32">
+        <Reveal>
+          <h2 className="mx-auto max-w-[24ch] text-center font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.75rem,3.4vw,2.75rem)]">
+            Why switch to eatOS
+          </h2>
+        </Reveal>
+
+        <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-x-10 lg:grid-cols-4 lg:gap-x-12">
+          {whySwitch.map((item, i) => (
+            <Reveal key={item.title} delay={i * 0.06} className="min-w-0">
+              <h3 className="text-lg font-semibold tracking-[-0.02em]">{item.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-zinc-600">{item.body}</p>
+              <a
+                href={item.link.href}
+                className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700 transition-colors hover:text-emerald-800"
+              >
+                {item.link.label}
+                <ArrowRight size={14} />
+              </a>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* --------------------------------- Matrix -------------------------------- */
+
+function Mark({ on, accent = false }) {
+  if (on) {
+    return (
+      <span
+        className={`inline-flex h-7 w-7 items-center justify-center rounded-full ${
+          accent ? 'bg-emerald-500 text-black' : 'bg-white/12 text-white/60'
+        }`}
+      >
+        <Check size={15} strokeWidth={3} />
+      </span>
+    );
+  }
+  return (
+    <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/[0.04] text-white/20">
+      <Minus size={14} strokeWidth={3} />
+    </span>
+  );
+}
+
+function Matrix() {
+  return (
+    <section className="bg-black text-white">
+      <div className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-8 md:py-32 lg:py-40">
+        <Reveal>
+          <h2 className="mx-auto max-w-[26ch] text-center font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.75rem,3.6vw,3rem)]">
+            Compare eatOS with other Point of Sale software
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-7 text-zinc-400 sm:text-base">
+            See why thousands of restaurant brands pick eatOS over other Point of Sale software.
+          </p>
+        </Reveal>
+
+        {/* Table — tablet and up, horizontal scroll with sticky feature column */}
+        <Reveal delay={0.1} className="mt-14 hidden md:block">
+          <div className="-mx-5 overflow-x-auto px-5 sm:mx-0 sm:px-0">
+            <table className="w-full min-w-[860px] border-separate border-spacing-0 text-left">
+              <thead>
+                <tr>
+                  <th className="sticky left-0 z-10 bg-black pb-6 pr-6 align-bottom text-base font-semibold tracking-[-0.02em] sm:text-lg">
+                    Feature Set
+                  </th>
+                  {competitors.map((name, i) => (
+                    <th
+                      key={name}
+                      className={`pb-6 text-center align-bottom text-sm font-semibold tracking-[-0.01em] ${
+                        i === 0
+                          ? 'rounded-t-[20px] bg-white/[0.07] px-4 pt-7 text-white'
+                          : 'px-3 text-zinc-500'
+                      }`}
+                    >
+                      {name}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {matrix.map((row, r) => (
+                  <tr key={row.feature}>
+                    <td className="sticky left-0 z-10 border-t border-white/8 bg-black py-5 pr-6 text-sm leading-6 text-zinc-300">
+                      {row.feature}
+                    </td>
+                    <td
+                      className={`border-t border-white/8 bg-white/[0.07] px-4 py-5 text-center ${
+                        r === matrix.length - 1 ? 'rounded-b-[20px]' : ''
+                      }`}
+                    >
+                      <Mark on accent />
+                    </td>
+                    {row.support.map((on, c) => (
+                      <td
+                        key={c}
+                        className="border-t border-white/8 px-3 py-5 text-center"
+                      >
+                        <Mark on={on} />
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Reveal>
+
+        {/* Mobile — stacked per-brand cards */}
+        <div className="mt-12 space-y-4 md:hidden">
+          {competitors.map((name, ci) => (
+            <Reveal key={name} delay={ci * 0.04}>
+              <div
+                className={`rounded-[20px] p-5 ${
+                  ci === 0 ? 'bg-white/[0.08]' : 'bg-white/[0.03]'
+                }`}
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <h3 className="min-w-0 truncate text-base font-semibold tracking-[-0.02em]">
+                    {name}
+                  </h3>
+                  {ci === 0 && (
+                    <span className="shrink-0 rounded-full bg-emerald-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-black">
+                      All-in-one
+                    </span>
+                  )}
+                </div>
+                <ul className="mt-4 space-y-3">
+                  {matrix.map((row) => {
+                    const on = ci === 0 ? true : row.support[ci - 1];
+                    return (
+                      <li
+                        key={row.feature}
+                        className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-t border-white/8 pt-3 first:border-0 first:pt-0"
+                      >
+                        <span className="min-w-0 text-[13px] leading-6 text-zinc-300">
+                          {row.feature}
+                        </span>
+                        <Mark on={on} accent={ci === 0} />
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        <p className="mx-auto mt-10 max-w-3xl text-center text-[11px] leading-5 text-zinc-600">
+          {trademarkNote}
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------- Reasons -------------------------------- */
+
+function Reasons() {
+  return (
+    <section className="bg-white text-black">
+      <div className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-8 md:py-32 lg:py-40">
+        <Reveal>
+          <h2 className="mx-auto max-w-[26ch] text-center font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.75rem,3.4vw,2.75rem)]">
+            Why businesses choose eatOS over other Point of Sale software
+          </h2>
+        </Reveal>
+
+        <div className="mt-16 space-y-20 md:space-y-28">
+          {reasons.map((item, i) => (
+            <div
+              key={item.title}
+              className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-16"
+            >
+              <Reveal className={`min-w-0 ${i % 2 === 1 ? 'md:order-2' : ''}`}>
+                <h3 className="font-semibold leading-[1.15] tracking-[-0.03em] text-[clamp(1.5rem,2.6vw,2.125rem)]">
+                  {item.title}
+                </h3>
+                <p className="mt-5 max-w-xl text-sm leading-7 text-zinc-600 sm:text-base sm:leading-8">
+                  {item.body}
+                </p>
+              </Reveal>
+              <Reveal delay={0.1} className="min-w-0">
+                <Placeholder label={item.media} ratio="aspect-[16/11]" tone="light" />
+              </Reveal>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------- Ecosystem ------------------------------- */
+
+function Ecosystem() {
+  return (
+    <section className="bg-[#f7f7f8] text-black">
+      <div className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-8 md:py-32">
+        <Reveal>
+          <h2 className="mx-auto max-w-[24ch] text-center font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.75rem,3.4vw,2.75rem)]">
+            All-in-One Restaurant Technology Cloud
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-7 text-zinc-600 sm:text-base">
+            Every technology you need to grow your restaurant and delight your guests.
+          </p>
+        </Reveal>
+
+        <div className="mt-14 -mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-5">
+          {ecosystem.map((item, i) => (
+            <Reveal
+              key={item.title}
+              delay={i * 0.05}
+              className="min-w-[70%] shrink-0 snap-start sm:min-w-0"
+            >
+              <a href={item.href} className="group block">
+                <Placeholder label={item.title} ratio="aspect-[4/3]" tone="light" />
+                <div className="mt-4 flex items-center justify-between gap-2">
+                  <span className="min-w-0 truncate text-sm font-semibold tracking-[-0.01em]">
+                    {item.title}
+                  </span>
+                  <ArrowRight
+                    size={15}
+                    className="shrink-0 text-zinc-400 transition-transform group-hover:translate-x-0.5"
+                  />
+                </div>
+              </a>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* --------------------------------- CTA ---------------------------------- */
+
+function ClosingCta() {
+  return (
+    <section className="bg-black text-white">
+      <div className="mx-auto w-full max-w-[1180px] px-5 py-24 text-center sm:px-8 md:py-32">
+        <Reveal>
+          <h2 className="mx-auto max-w-[22ch] font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.75rem,3.6vw,3rem)]">
+            Start Using Restaurant Technology Cloud
+          </h2>
+          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a
+              href="/book-demo"
+              className="inline-flex w-full items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:w-auto"
+            >
+              Book a Demo
+            </a>
+            <a
+              href="/pricing"
+              className="inline-flex w-full items-center justify-center gap-1.5 rounded-full px-7 py-3.5 text-sm font-semibold text-emerald-400 transition-colors hover:text-emerald-300 sm:w-auto"
+            >
+              View Pricing
+              <ArrowRight size={15} />
+            </a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+export default function ComparisonClient() {
+  return (
+    <div className="bg-white font-montserrat">
+      <Hero />
+      <WhySwitch />
+      <Matrix />
+      <Reasons />
+      <Ecosystem />
+      <ClosingCta />
+    </div>
+  );
+}
