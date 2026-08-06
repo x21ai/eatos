@@ -124,7 +124,7 @@ function Spotlight({ item, index }) {
             src={item.image}
             tone="light"
             ratio="aspect-[4/3]"
-            pad={Boolean(item.image)}
+            pad={Boolean(item.pad)}
           />
         </div>
       </div>
@@ -334,15 +334,6 @@ function ReportSection() {
                 </li>
               ))}
             </ol>
-            <div className="mt-10">
-              <Placeholder
-                label={report.imageLabel}
-                src={report.image}
-                tone="light"
-                ratio="aspect-[16/10]"
-                pad={Boolean(report.image)}
-              />
-            </div>
           </Reveal>
           <Reveal delay={0.08}>
             <ReportForm />
