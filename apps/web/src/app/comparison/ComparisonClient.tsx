@@ -86,52 +86,51 @@ function Hero() {
 
 function WhySwitch() {
   return (
-    <section className="bg-[#f7f7f8] text-black">
-      <div className="mx-auto w-full max-w-[1180px] px-5 pt-24 pb-24 sm:px-8 md:pt-32 md:pb-32">
-        <Reveal>
-          <Eyebrow className="text-center">Why switch</Eyebrow>
-          <h2 className="mx-auto mt-4 max-w-[22ch] text-center font-semibold leading-[1.08] tracking-[-0.03em] text-[clamp(1.875rem,4vw,3.25rem)]">
-            Why switch to eatOS
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-7 text-zinc-600 sm:text-base sm:leading-8">
-            One platform, built end to end — so every part of your restaurant works together.
-          </p>
-        </Reveal>
+    <section className="bg-white text-black">
+      <div className="mx-auto w-full max-w-[1180px] px-5 py-20 sm:px-8 md:py-28">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+          {/* Sticky intro rail */}
+          <Reveal className="min-w-0 lg:sticky lg:top-28 lg:self-start">
+            <Eyebrow>Why switch</Eyebrow>
+            <h2 className="mt-4 max-w-[16ch] font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.625rem,3vw,2.375rem)]">
+              Why switch to eatOS
+            </h2>
+            <p className="mt-5 max-w-md text-sm leading-7 text-zinc-600">
+              One platform, built end to end — so every part of your restaurant works together.
+            </p>
+            <div className="mt-7 overflow-hidden rounded-[22px] ring-1 ring-black/[0.06]">
+              <Placeholder label="eatOS platform overview" ratio="aspect-[4/3]" tone="light" />
+            </div>
+          </Reveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 md:mt-16 lg:grid-cols-12">
-          {whySwitch.map((item, i) => (
-            <Reveal
-              key={item.title}
-              delay={i * 0.06}
-              className={`min-w-0 ${i < 2 ? 'lg:col-span-6' : 'lg:col-span-4'} ${
-                i === 3 ? 'sm:col-span-2 lg:col-span-4' : ''
-              }`}
-            >
-              <a
-                href={item.link.href}
-                className="group flex h-full flex-col overflow-hidden rounded-[24px] bg-white ring-1 ring-black/[0.06] transition-shadow hover:shadow-[0_24px_60px_-36px_rgba(0,0,0,0.3)] sm:rounded-[28px]"
-              >
-                <Placeholder
-                  label={item.title}
-                  ratio={i < 2 ? 'aspect-[16/9]' : 'aspect-[4/3]'}
-                  tone="light"
-                />
-                <div className="flex flex-1 flex-col p-6 sm:p-7">
-                  <h3 className="text-lg font-semibold tracking-[-0.02em] sm:text-xl">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-zinc-600">{item.body}</p>
-                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700">
-                    {item.link.label}
-                    <ArrowRight
-                      size={14}
-                      className="transition-transform group-hover:translate-x-0.5"
-                    />
+          {/* Numbered editorial list */}
+          <div className="min-w-0">
+            {whySwitch.map((item, i) => (
+              <Reveal key={item.title} delay={i * 0.05} className="min-w-0">
+                <a
+                  href={item.link.href}
+                  className="group grid grid-cols-[auto_minmax(0,1fr)] gap-5 border-t border-black/10 py-8 first:border-t-0 first:pt-0 sm:gap-8 sm:py-10"
+                >
+                  <span className="pt-1 text-xs font-semibold tabular-nums tracking-[0.2em] text-zinc-400">
+                    {String(i + 1).padStart(2, '0')}
                   </span>
-                </div>
-              </a>
-            </Reveal>
-          ))}
+                  <span className="min-w-0 block">
+                    <h3 className="text-lg font-semibold tracking-[-0.02em] sm:text-xl">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 max-w-xl text-sm leading-7 text-zinc-600">{item.body}</p>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700">
+                      {item.link.label}
+                      <ArrowRight
+                        size={14}
+                        className="transition-transform group-hover:translate-x-0.5"
+                      />
+                    </span>
+                  </span>
+                </a>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>
