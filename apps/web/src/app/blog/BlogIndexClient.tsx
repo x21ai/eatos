@@ -85,10 +85,10 @@ function Card({ post, index }) {
       <Placeholder label={post.title} src={post.image} tone="light" ratio="aspect-[16/10]" />
       <div className="mt-6 min-w-0">
         <Meta post={post} />
-        <h3 className="mt-3 text-xl font-bold leading-snug tracking-tight text-black transition-colors group-hover:text-zinc-600 sm:text-[1.375rem]">
+        <h3 className="mt-3 line-clamp-2 text-xl font-bold leading-snug tracking-tight text-black transition-colors group-hover:text-zinc-600 sm:text-[1.375rem]">
           {post.title}
         </h3>
-        <p className="mt-3 text-sm leading-6 text-zinc-600 sm:text-base sm:leading-7">{post.excerpt}</p>
+        <p className="mt-3 line-clamp-3 text-sm leading-6 text-zinc-600 sm:text-base sm:leading-7">{post.excerpt}</p>
       </div>
     </motion.a>
   );
