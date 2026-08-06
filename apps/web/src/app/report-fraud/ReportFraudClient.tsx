@@ -47,7 +47,7 @@ function Hero() {
       <div className="mx-auto w-full max-w-[1120px] px-5 pt-24 sm:px-8 md:pt-32 lg:pt-40">
         <Reveal className="text-center">
           <Eyebrow>{hero.eyebrow}</Eyebrow>
-          <h1 className="mx-auto mt-5 max-w-[24ch] font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(2.25rem,4.5vw,3.5rem)]">
+          <h1 className="mx-auto mt-5 max-w-[24ch] font-bold leading-[1.1] tracking-tighter text-4xl md:text-6xl">
             {hero.title}
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
@@ -88,7 +88,7 @@ function Hero() {
             <Reveal key={rule.title} delay={i * 0.06}>
               <div className="h-full rounded-[24px] border border-white/10 bg-white/[0.03] p-7">
                 <ShieldCheck size={20} className="text-emerald-400" />
-                <h3 className="mt-5 text-lg font-semibold tracking-[-0.01em]">{rule.title}</h3>
+                <h3 className="mt-5 text-lg font-bold tracking-tight">{rule.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-zinc-400">{rule.body}</p>
               </div>
             </Reveal>
@@ -108,7 +108,7 @@ function Spotlight({ item, index }) {
       <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
         <div className={flip ? 'md:order-2' : ''}>
           <Eyebrow>{item.eyebrow}</Eyebrow>
-          <h2 className="mt-4 max-w-[22ch] font-semibold leading-[1.12] tracking-[-0.03em] text-[clamp(1.75rem,3.2vw,2.75rem)] text-zinc-900">
+          <h2 className="mt-4 max-w-[22ch] font-bold leading-[1.12] tracking-tighter text-3xl md:text-5xl text-zinc-900">
             {item.title}
           </h2>
           <p className="mt-5 max-w-xl text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8">
@@ -198,7 +198,7 @@ function ReportForm() {
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-50">
           <CheckCircle2 size={26} className="text-emerald-600" />
         </div>
-        <h3 className="mt-6 text-xl font-semibold tracking-[-0.01em] text-zinc-900">
+        <h3 className="mt-6 text-xl font-bold tracking-tight text-zinc-900">
           Report received
         </h3>
         <p className="mx-auto mt-3 max-w-sm text-sm leading-6 text-zinc-600">
@@ -227,7 +227,7 @@ function ReportForm() {
       noValidate
       className="rounded-[28px] border border-zinc-200 bg-white p-6 sm:p-8"
     >
-      <h3 className="text-lg font-semibold tracking-[-0.01em] text-zinc-900">Share details</h3>
+      <h3 className="text-lg font-bold tracking-tight text-zinc-900">Share details</h3>
       <div className="mt-6 space-y-5">
         <div>
           <label htmlFor="firstName" className="block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500">
@@ -318,7 +318,7 @@ function ReportSection() {
         <div className="grid gap-12 md:grid-cols-2 md:gap-16">
           <Reveal>
             <Eyebrow>{report.eyebrow}</Eyebrow>
-            <h2 className="mt-4 font-semibold leading-[1.12] tracking-[-0.03em] text-[clamp(1.75rem,3.2vw,2.75rem)] text-zinc-900">
+            <h2 className="mt-4 font-bold leading-[1.12] tracking-tighter text-3xl md:text-5xl text-zinc-900">
               {report.title}
             </h2>
             <p className="mt-5 max-w-xl text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8">
@@ -351,7 +351,7 @@ function Help() {
     <section className="bg-white">
       <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-24">
         <Reveal>
-          <h2 className="font-semibold leading-[1.12] tracking-[-0.03em] text-[clamp(1.6rem,2.8vw,2.25rem)] text-zinc-900">
+          <h2 className="font-bold leading-[1.12] tracking-tighter text-3xl md:text-4xl text-zinc-900">
             Need immediate assistance?
           </h2>
         </Reveal>
@@ -359,7 +359,7 @@ function Help() {
           {helpChannels.map((channel, i) => (
             <Reveal key={channel.title} delay={i * 0.06}>
               <div className="h-full rounded-[24px] border border-zinc-200 p-8">
-                <h3 className="text-lg font-semibold tracking-[-0.01em] text-zinc-900">
+                <h3 className="text-lg font-bold tracking-tight text-zinc-900">
                   {channel.title}
                 </h3>
                 <p className="mt-3 text-sm leading-6 text-zinc-600">{channel.body}</p>
@@ -384,7 +384,7 @@ function Closing() {
     <section className="bg-black text-white">
       <div className="mx-auto w-full max-w-[1120px] px-5 py-20 text-center sm:px-8 md:py-28">
         <Reveal>
-          <h2 className="mx-auto max-w-[24ch] font-semibold leading-[1.12] tracking-[-0.03em] text-[clamp(1.75rem,3.4vw,2.75rem)]">
+          <h2 className="mx-auto max-w-[24ch] font-bold leading-[1.12] tracking-tighter text-3xl md:text-5xl">
             {closing.title}
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">

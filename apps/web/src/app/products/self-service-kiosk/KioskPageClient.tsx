@@ -50,7 +50,7 @@ function Hero() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <Reveal className="min-w-0">
             <Eyebrow>{hero.eyebrow}</Eyebrow>
-            <h1 className="mt-5 max-w-[22ch] font-semibold leading-[1.06] tracking-[-0.03em] text-[clamp(2.125rem,4.4vw,3.5rem)]">
+            <h1 className="mt-5 max-w-[22ch] font-bold leading-[1.06] tracking-tighter text-4xl md:text-6xl">
               {hero.title}
             </h1>
             <p className="mt-6 max-w-xl text-base leading-8 text-zinc-600 sm:text-lg">
@@ -75,7 +75,7 @@ function Hero() {
             <dl className="mt-12 grid grid-cols-2 gap-y-8 gap-x-6 border-t border-zinc-200 pt-8 sm:grid-cols-3">
               {hero.stats.map((s) => (
                 <div key={s.label} className="min-w-0">
-                  <dt className="font-semibold leading-none tracking-[-0.03em] text-indigo-600 text-[clamp(1.5rem,3vw,2.25rem)]">
+                  <dt className="font-bold leading-none tracking-tighter text-indigo-600 text-3xl md:text-4xl">
                     {s.value}
                   </dt>
                   <dd className="mt-2.5 text-[11px] uppercase tracking-[0.18em] text-zinc-500">
@@ -146,7 +146,7 @@ function FeatureBlock({ feature, index }) {
             <span className="text-[11px] font-semibold tracking-[0.2em] text-indigo-600">
               {String(index + 1).padStart(2, '0')}
             </span>
-            <h3 className="font-semibold leading-[1.12] tracking-[-0.025em] text-[clamp(1.375rem,2.8vw,2.125rem)]">
+            <h3 className="font-bold leading-[1.12] tracking-tighter text-2xl md:text-4xl">
               {feature.title}
             </h3>
           </div>
@@ -170,7 +170,7 @@ function FeatureBlock({ feature, index }) {
           <dl className="mt-9 grid grid-cols-2 gap-6 border-t border-zinc-200 pt-6">
             {feature.metrics.map((m) => (
               <div key={m.label} className="min-w-0">
-                <dt className="font-semibold leading-none tracking-[-0.03em] text-[clamp(1.375rem,2.6vw,2rem)]">
+                <dt className="font-bold leading-none tracking-tighter text-2xl md:text-4xl">
                   {m.value}
                 </dt>
                 <dd className="mt-2.5 text-[11px] uppercase tracking-[0.18em] text-zinc-500">
@@ -192,7 +192,7 @@ function FeatureList() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.42fr_1fr] lg:gap-16">
           <div className="lg:sticky lg:top-28 lg:self-start">
             <Eyebrow>Why kiosk</Eyebrow>
-            <h2 className="mt-4 max-w-[16ch] font-semibold leading-[1.12] tracking-[-0.03em] text-[clamp(1.625rem,2.8vw,2.25rem)]">
+            <h2 className="mt-4 max-w-[16ch] font-bold leading-[1.12] tracking-tighter text-3xl md:text-4xl">
               Three reasons guests order for themselves
             </h2>
           </div>
@@ -219,7 +219,7 @@ function Offers() {
             <Reveal key={offer.title} delay={i * 0.08} className="min-w-0">
               <div className="group transition-transform duration-500 hover:-translate-y-1">
                 <Placeholder label={offer.imageLabel} tone="light" src={offer.image} />
-                <h3 className="mt-7 font-semibold tracking-[-0.02em] text-[clamp(1.25rem,2.4vw,1.75rem)]">
+                <h3 className="mt-7 font-bold tracking-tight text-2xl md:text-3xl">
                   {offer.title}
                 </h3>
                 <p className="mt-3 text-sm leading-7 text-zinc-600 sm:text-base">
@@ -254,7 +254,7 @@ function Hardware() {
           <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-indigo-400 sm:text-xs">
             {hardware.eyebrow}
           </p>
-          <h2 className="mt-4 font-semibold leading-[1.08] tracking-[-0.03em] text-[clamp(1.75rem,4vw,3rem)]">
+          <h2 className="mt-4 font-bold leading-[1.08] tracking-tighter text-3xl md:text-5xl">
             {hardware.title}
           </h2>
           <p className="mt-5 text-base leading-8 text-zinc-400 sm:text-lg">
@@ -273,7 +273,7 @@ function Hardware() {
         <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8 md:mt-20">
           {hardware.specs.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.06} className="min-w-0">
-              <h3 className="text-base font-semibold tracking-tight text-white sm:text-lg">
+              <h3 className="text-base font-bold tracking-tight text-white sm:text-lg">
                 {s.title}
               </h3>
               <p className="mt-3 text-sm leading-7 text-zinc-400 sm:text-base">{s.body}</p>
@@ -292,7 +292,7 @@ function Closing() {
     <section className="bg-[#111113] text-white">
       <div className="mx-auto w-full max-w-[1180px] px-5 py-20 sm:px-8 md:py-24">
         <Reveal className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
-          <h2 className="max-w-xl font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.625rem,3.6vw,2.75rem)]">
+          <h2 className="max-w-xl font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
             Start using restaurant technology cloud
           </h2>
           <div className="flex w-full flex-col gap-3 sm:flex-row sm:items-center md:w-auto">
