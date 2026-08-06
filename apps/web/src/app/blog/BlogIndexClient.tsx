@@ -17,8 +17,6 @@ function Meta({ post, tone = 'light' }) {
       <span className={tone === 'dark' ? 'text-green-400' : 'text-green-600'}>{post.category}</span>
       <span aria-hidden>·</span>
       <span>{formatDate(post.date)}</span>
-      <span aria-hidden>·</span>
-      <span>{post.readingTime}</span>
     </div>
   );
 }
