@@ -66,7 +66,6 @@ export default function Header() {
         "/accept-payments",
         "/pricing",
         "/contact-sales",
-        "/tap-to-pay",
         "/shop",
         "/partners",
         "/login",
