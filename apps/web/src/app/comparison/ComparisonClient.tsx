@@ -6,7 +6,6 @@ import { motion, useReducedMotion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
 import {
   competitors,
-  ecosystem,
   hero,
   matrix,
   reasons,
