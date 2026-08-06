@@ -2,6 +2,15 @@
 // Static blog content source. Replaces the D1-backed /api/blog reads so the
 // index and every post render in preview and in the static export.
 
+import offlineImg from './assets/blog/blog-placeholder-offline-resilience.jpg.asset.json';
+import workforceImg from './assets/blog/blog-placeholder-workforce-management.jpg.asset.json';
+import analyticsImg from './assets/blog/blog-placeholder-analytics-reporting.jpg.asset.json';
+import tablesideImg from './assets/blog/blog-placeholder-tableside-ordering.jpg.asset.json';
+import inventoryImg from './assets/blog/blog-placeholder-inventory-management.jpg.asset.json';
+import posCostsImg from './assets/blog/blog-placeholder-pos-costs.jpg.asset.json';
+import fastCasualImg from './assets/blog/blog-placeholder-fast-casual-pos.jpg.asset.json';
+import onlineDeliveryImg from './assets/blog/blog-placeholder-online-delivery.jpg.asset.json';
+
 export const blogHero = {
   eyebrow: 'Newsroom',
   title: 'Ideas for the modern restaurant.',
