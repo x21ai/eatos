@@ -184,7 +184,7 @@ export function getRelated(slug, count = 3) {
 export function formatDate(value) {
   try {
     return new Date(value).toLocaleDateString('en-US', {
-      month: 'long',
+      month: 'short',
       day: 'numeric',
       year: 'numeric',
     });
