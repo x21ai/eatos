@@ -53,11 +53,11 @@ function VideoCard({ item }) {
       <div className="relative aspect-[3/5] w-full">
         <video
           ref={ref}
-          src={item.src}
+          src={`${item.src}#t=0.1`}
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           aria-label={`${item.name} — ${item.label}`}
           className="absolute inset-0 h-full w-full object-cover"
         />
