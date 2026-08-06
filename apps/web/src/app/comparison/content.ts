@@ -1,0 +1,76 @@
+// @ts-nocheck
+
+export const hero = {
+  eyebrow: 'eatOS vs Other POS',
+  title: 'eatOS Restaurant Cloud: Complete Comparison',
+  description:
+    'Equipped with essential tools, eatOS empowers you to connect with customers and expand your business, both in-person and online.',
+  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  secondaryCta: { label: 'View Pricing', href: '/pricing' },
+  media: 'eatOS POS terminals',
+};
+
+export const whySwitch = [
+  {
+    title: 'Comprehensive Integration',
+    body: 'eatOS integrates with restaurant operations, offering a user-friendly solution to streamline and simplify management.',
+    link: { label: 'Learn more about eatOS integrations', href: '/platform' },
+  },
+  {
+    title: 'User-Friendly Experience',
+    body: 'Restaurant owners and staff will find a user-friendly experience with a clear interface and powerful capabilities.',
+    link: { label: 'Learn more about eatOS products', href: '/products' },
+  },
+  {
+    title: 'Robust Feature Set',
+    body: 'From every management to customer engagement, eatOS offers a comprehensive suite of tools to run your restaurant.',
+    link: { label: 'Learn more about eatOS Point of Sale', href: '/point-of-sale' },
+  },
+  {
+    title: 'Unparalleled Support',
+    body: 'Receive unparalleled 24/7 customer support to maximize eatOS potential for your business, ensuring assistance whenever needed.',
+    link: { label: 'Learn more about eatOS', href: '/about' },
+  },
+];
+
+export const competitors = ['eatOS', 'Square', 'Toast', 'Lightspeed', 'Clover', 'Revel', 'Micros'];
+
+// order matches `competitors` minus eatOS (which is always true)
+export const matrix = [
+  { feature: 'AI Enabled Integration', support: [false, false, false, false, false, false] },
+  { feature: 'Restaurant POS with Menu Management', support: [true, true, true, true, true, true] },
+  { feature: 'Real-time Cloud Reporting', support: [true, true, true, true, true, true] },
+  { feature: 'Order Online', support: [true, true, true, true, true, true] },
+  { feature: 'Multi-Location', support: [true, true, true, true, true, true] },
+  { feature: 'Pay at Table', support: [true, true, true, true, true, true] },
+  { feature: 'Kitchen Display Screen', support: [true, true, true, true, true, true] },
+  { feature: 'Self-Service Kiosk', support: [true, true, true, true, true, true] },
+  { feature: 'Multi-device/Offline Mode', support: [true, true, true, true, true, true] },
+  { feature: 'Workforce Management & Scheduling App', support: [false, false, false, false, false, true] },
+  { feature: 'Works with Multiple Payment Processors', support: [false, false, false, false, false, false] },
+  { feature: '4G Backup + Hotspot Capability', support: [false, false, false, false, false, false] },
+];
+
+export const trademarkNote =
+  'Disclaimer: All trademarks, logos and brand names are the property of their respective owners. All company, product and service names used on this website are for identification purposes only.';
+
+export const reasons = [
+  {
+    title: 'Ease of Use',
+    body: 'Enjoy an effortlessly intuitive experience with the eatOS user-friendly interface, designed for seamless navigation and interaction. Our platform incorporates cutting-edge AI-generated menu generation, report generation and communication strategy, ensuring a smooth and efficient user journey. Experience the convenience of technology working in harmony with your needs, made every interaction not just easy but also smart and tailored to your preferences.',
+    media: 'eatOS dashboard with AI menu generation',
+  },
+  {
+    title: 'Scalable',
+    body: 'eatOS streamlines operations for businesses of all sizes. Additionally, its scalable Pay-As-You-Go payment model offers financial flexibility, allowing businesses to adapt their usage and costs as needed. This combination of advanced functionalities, ease of use, and a flexible payment structure makes eatOS a top choice for businesses looking to enhance their point of sale experience and streamline their operations.',
+    media: 'eatOS analytics on tablet',
+  },
+];
+
+export const ecosystem = [
+  { title: 'Point of Sale', href: '/point-of-sale' },
+  { title: 'Online Ordering', href: '/products/online-ordering' },
+  { title: 'Workforce Management', href: '/products/workforce-management' },
+  { title: 'Kitchen Display System', href: '/products/kitchen-display-system' },
+  { title: 'Point of Purchase', href: '/products/self-service-kiosk' },
+];
