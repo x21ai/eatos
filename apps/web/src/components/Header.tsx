@@ -71,7 +71,6 @@ export default function Header() {
         "/partners",
         "/login",
         "/get-started",
-        "/blog",
         "/about",
         "/careers",
         "/privacy",
