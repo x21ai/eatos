@@ -113,27 +113,33 @@ function Spotlight({ feature, index }) {
 
   return (
     <section className={light ? 'bg-[#f5f5f7] text-black' : 'bg-white text-black'}>
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28 lg:py-32">
+      <div className="container mx-auto px-4 md:px-6 py-20 md:py-28">
         <Reveal className="mx-auto max-w-2xl text-center">
           <Eyebrow>{`0${index + 1}`}</Eyebrow>
-          <h2 className="mt-4 text-4xl font-bold leading-[1.08] tracking-tighter md:text-6xl">
+          <h2 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tighter md:text-5xl">
             {feature.title}
           </h2>
         </Reveal>
 
-        <Reveal delay={0.08} className="mt-12 md:mt-16">
-          <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-14 lg:gap-20">
+        <Reveal delay={0.08} className="mt-10 md:mt-16">
+          <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12">
             <div className={flip ? 'md:order-2' : ''}>
-              <Placeholder label={feature.imageLabel} tone="light" src={feature.image} pad />
+              <Placeholder
+                label={feature.imageLabel}
+                ratio="aspect-[16/10]"
+                tone="light"
+                src={feature.image}
+                pad
+              />
             </div>
 
             <div className={`min-w-0 ${flip ? 'md:order-1' : ''}`}>
-              <p className="text-[15px] font-light leading-relaxed text-zinc-600 md:text-[19px]">
+              <p className="text-[15px] font-light leading-relaxed text-zinc-600 md:text-lg">
                 {feature.body}
               </p>
 
               {open ? (
-                <p className="mt-5 text-[15px] font-light leading-relaxed text-zinc-500 md:text-[19px]">
+                <p className="mt-4 text-[15px] font-light leading-relaxed text-zinc-500 md:text-lg">
                   {feature.more}
                 </p>
               ) : null}
@@ -151,13 +157,13 @@ function Spotlight({ feature, index }) {
                 />
               </button>
 
-              <dl className="mt-10 grid grid-cols-2 gap-6">
+              <dl className="mt-8 grid grid-cols-2 gap-6">
                 {feature.metrics.map((m) => (
                   <div key={m.label} className="min-w-0">
-                    <dt className="text-3xl font-bold leading-none tracking-tighter md:text-4xl">
+                    <dt className="text-3xl font-bold leading-none tracking-tight md:text-4xl">
                       {m.value}
                     </dt>
-                    <dd className="mt-2.5 text-xs font-semibold uppercase tracking-widest text-zinc-500">
+                    <dd className="mt-2 text-sm text-zinc-500">
                       {m.label}
                     </dd>
                   </div>
@@ -176,28 +182,28 @@ function Spotlight({ feature, index }) {
 function Hardware() {
   return (
     <section className="bg-black text-white">
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28 lg:py-32">
+      <div className="container mx-auto px-4 md:px-6 py-20 md:py-28">
         <Reveal className="mx-auto max-w-2xl text-center">
           <Eyebrow>{hardware.eyebrow}</Eyebrow>
-          <h2 className="mt-4 text-4xl font-bold leading-[1.08] tracking-tighter md:text-6xl">
+          <h2 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tighter md:text-5xl">
             {hardware.title}
           </h2>
-          <p className="mt-5 text-[15px] font-light leading-relaxed text-zinc-400 md:text-[19px]">
+          <p className="mt-5 text-[15px] font-light leading-relaxed text-gray-400 md:text-lg">
             {hardware.description}
           </p>
         </Reveal>
 
-        <Reveal delay={0.08} className="mt-12 md:mt-16">
+        <Reveal delay={0.08} className="mx-auto mt-10 max-w-4xl md:mt-16">
           <Placeholder label={hardware.imageLabel} ratio="aspect-[16/9]" src={hardware.image} pad />
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8 md:mt-20">
+        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3 md:mt-16">
           {hardware.specs.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.06} className="min-w-0">
-              <h3 className="text-lg font-bold tracking-tight text-white md:text-xl">
+              <h3 className="text-base font-bold tracking-tight text-white md:text-lg">
                 {s.title}
               </h3>
-              <p className="mt-3 text-sm font-light leading-relaxed text-zinc-400 md:text-base">
+              <p className="mt-3 text-sm font-light leading-relaxed text-gray-400">
                 {s.body}
               </p>
             </Reveal>
@@ -214,15 +220,15 @@ function Hardware() {
 function Offers() {
   return (
     <section className="bg-[#f5f5f7] text-black">
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-8">
+      <div className="container mx-auto px-4 md:px-6 py-20 md:py-28">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {offers.map((offer, i) => (
             <Reveal key={offer.title} delay={i * 0.08} className="min-w-0">
-              <Placeholder label={offer.imageLabel} tone="light" />
-              <h3 className="mt-7 text-2xl font-bold tracking-tight md:text-3xl">
+              <Placeholder label={offer.imageLabel} ratio="aspect-[16/10]" tone="light" />
+              <h3 className="mt-6 text-xl font-bold tracking-tight md:text-2xl">
                 {offer.title}
               </h3>
-              <p className="mt-3 text-sm font-light leading-relaxed text-zinc-600 md:text-base">
+              <p className="mt-3 text-[15px] font-light leading-relaxed text-zinc-600">
                 {offer.description}
               </p>
               <a
@@ -235,7 +241,7 @@ function Offers() {
             </Reveal>
           ))}
         </div>
-        <p className="mx-auto mt-14 max-w-3xl text-center text-xs font-light leading-relaxed text-zinc-500">
+        <p className="mx-auto mt-12 max-w-3xl text-center text-xs font-light leading-relaxed text-zinc-500">
           {offerNote}
         </p>
       </div>
@@ -248,9 +254,9 @@ function Offers() {
 function Closing() {
   return (
     <section className="bg-white text-black">
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28">
+      <div className="container mx-auto px-4 md:px-6 py-20 md:py-28">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl font-bold leading-[1.1] tracking-tighter md:text-6xl">
+          <h2 className="text-3xl font-bold leading-[1.1] tracking-tighter md:text-5xl">
             Start using restaurant technology cloud
           </h2>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
