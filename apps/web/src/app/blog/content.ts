@@ -37,7 +37,7 @@ export const posts = [
     author: 'eatOS Staff',
     excerpt:
       'An outage should never close the register. Here is how local-first architecture keeps orders, tickets and payments moving until connectivity returns.',
-    image: null,
+    image: offlineImg.url,
     body: [
       { type: 'p', text: 'Connectivity fails at the worst possible moment — a storm, a carrier issue, a router that quietly gives up during the dinner rush. A point of sale that depends entirely on the cloud turns that inconvenience into lost revenue and a dining room full of waiting guests.' },
       { type: 'h2', text: 'Local-first, cloud-synced' },
@@ -58,7 +58,7 @@ export const posts = [
     author: 'eatOS Staff',
     excerpt:
       'Scheduling, clock-ins and labor cost live in the same place as your sales data. That single source of truth changes how managers spend their week.',
-    image: null,
+    image: workforceImg.url,
     body: [
       { type: 'p', text: 'Most labor problems are really visibility problems. Managers build schedules in one tool, approve punches in another, and only learn what a shift actually cost days later.' },
       { type: 'h2', text: 'Schedule against real demand' },
@@ -77,7 +77,7 @@ export const posts = [
     author: 'eatOS Staff',
     excerpt:
       'Reporting is only useful when it changes a decision. Ten practical habits that turn raw restaurant data into weekly action.',
-    image: null,
+    image: analyticsImg.url,
     body: [
       { type: 'p', text: 'Every point of sale produces reports. Very few operators use them to change what happens next week. The difference is rarely the software — it is the routine around it.' },
       { type: 'h2', text: 'Ten habits worth adopting' },
@@ -94,7 +94,7 @@ export const posts = [
     author: 'eatOS Staff',
     excerpt:
       'Ordering and paying at the table shortens every table turn and gives servers more time with guests instead of the terminal.',
-    image: null,
+    image: tablesideImg.url,
     body: [
       { type: 'p', text: 'The walk to a stationary terminal happens dozens of times a shift. Handheld ordering removes it and puts the server back in front of the guest.' },
       { type: 'h2', text: 'Faster tickets, fewer errors' },
@@ -113,7 +113,7 @@ export const posts = [
     author: 'eatOS Staff',
     excerpt:
       'Counts, recipes, par levels and vendor orders — the fundamentals of keeping food cost predictable without drowning in spreadsheets.',
-    image: null,
+    image: inventoryImg.url,
     body: [
       { type: 'p', text: 'Inventory is where margin quietly disappears. Waste, over-portioning and inconsistent counts rarely show up as a single dramatic number; they show up as a food cost that never quite improves.' },
       { type: 'h2', text: 'Start with recipes' },
@@ -132,7 +132,7 @@ export const posts = [
     author: 'eatOS Staff',
     excerpt:
       'Hardware, software, payments and implementation — a clear breakdown of what a restaurant point of sale really costs in year one.',
-    image: null,
+    image: posCostsImg.url,
     body: [
       { type: 'p', text: 'Sticker prices rarely tell the whole story. The useful question is what the system costs across its first twelve months, including the work of getting live.' },
       { type: 'h2', text: 'The four cost buckets' },
@@ -151,7 +151,7 @@ export const posts = [
     author: 'eatOS Staff',
     excerpt:
       'Fast casual lives on throughput. These are the six capabilities that keep the line moving when the lunch rush arrives.',
-    image: null,
+    image: fastCasualImg.url,
     body: [
       { type: 'p', text: 'In fast casual, speed and consistency are the product. The right point of sale removes friction at the counter and in the kitchen at the same time.' },
       { type: 'h2', text: 'Six capabilities that matter' },
@@ -168,7 +168,7 @@ export const posts = [
     author: 'eatOS Staff',
     excerpt:
       'Digital orders are now a core channel. These are the eight operational problems that quietly erode their margin — and how to address them.',
-    image: null,
+    image: onlineDeliveryImg.url,
     body: [
       { type: 'p', text: 'Off-premise ordering added revenue and a whole new set of operating problems. Most of them are solvable with process and integration rather than more headcount.' },
       { type: 'h2', text: 'Eight recurring challenges' },
