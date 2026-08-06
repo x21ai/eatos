@@ -290,11 +290,11 @@ export default function KdsPageClient() {
 
       {/* Capability strip */}
       <section className="bg-white text-black">
-        <div className="mx-auto w-full max-w-[1120px] px-5 py-16 sm:px-8 md:py-24">
+        <div className="container mx-auto px-4 md:px-6 py-16 md:py-20">
           <Reveal className="text-center">
             <Eyebrow>Key Features</Eyebrow>
           </Reveal>
-          <div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
             {keyFeatures.map((f, i) => (
               <Reveal key={f} delay={(i % 3) * 0.05}>
                 <div className="border-t border-zinc-200 pt-4 text-sm font-medium text-zinc-700">
