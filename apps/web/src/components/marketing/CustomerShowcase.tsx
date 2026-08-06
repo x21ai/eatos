@@ -62,18 +62,6 @@ function VideoCard({ item }) {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/45 to-transparent" />
-
-        <div className="absolute inset-x-0 top-0 flex justify-center">
-          <span className="rounded-b-[20px] bg-white px-6 py-2.5 text-center text-[13px] font-semibold tracking-tight text-zinc-900 shadow-sm sm:text-sm">
-            {item.label}
-          </span>
-        </div>
-
-        <div className="absolute inset-x-0 bottom-0 p-4">
-          <p className="truncate text-sm font-semibold text-white drop-shadow">
-            {item.name}
-          </p>
-        </div>
       </div>
     </div>
   );
@@ -103,7 +91,7 @@ export function CustomerShowcase() {
       <div className="group relative mt-12 overflow-hidden md:mt-16">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-[#f2f2f2] to-transparent md:w-28" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[#f2f2f2] to-transparent md:w-28" />
-        <div className="marquee-track flex w-max items-center gap-12 md:gap-20">
+        <div className="marquee-track flex w-max items-center gap-20 md:gap-32">
           {track.map((logo, i) => (
             <img
               key={`${logo.name}-${i}`}
