@@ -12,9 +12,9 @@ import hardwareLineAsset from './assets/hardware-line.jpg.asset.json';
 
 export const hero = {
   eyebrow: 'Kitchen Display System',
-  title: 'Streamlines Kitchen Communication and Improves Productivity',
+  title: 'Chaos, controlled.',
   description:
-    'The eatOS Kitchen Display System is the digital command center for your kitchen, enabling everything your team needs to prep, fire and serve without missing a ticket.',
+    'The digital command center that keeps your kitchen in sync — prep, fire and serve without missing a ticket.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'Watch Video', href: '/book-demo' },
   image: heroAsset.url,
