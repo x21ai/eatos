@@ -1,4 +1,8 @@
 // @ts-nocheck
+import heroImg from './assets/comparison-hero.jpg.asset.json';
+import whyImg from './assets/comparison-why.webp.asset.json';
+import easeImg from './assets/comparison-ease.png.asset.json';
+import scalableImg from './assets/comparison-scalable.png.asset.json';
 
 export const hero = {
   eyebrow: 'eatOS vs Other POS',
@@ -8,6 +12,12 @@ export const hero = {
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   media: 'eatOS POS terminals',
+  mediaSrc: heroImg.url,
+};
+
+export const whySwitchMedia = {
+  label: 'eatOS platform overview',
+  src: whyImg.url,
 };
 
 export const whySwitch = [
@@ -59,11 +69,13 @@ export const reasons = [
     title: 'Ease of Use',
     body: 'Enjoy an effortlessly intuitive experience with the eatOS user-friendly interface, designed for seamless navigation and interaction. Our platform incorporates cutting-edge AI-generated menu generation, report generation and communication strategy, ensuring a smooth and efficient user journey. Experience the convenience of technology working in harmony with your needs, made every interaction not just easy but also smart and tailored to your preferences.',
     media: 'eatOS dashboard with AI menu generation',
+    mediaSrc: easeImg.url,
   },
   {
     title: 'Scalable',
     body: 'eatOS streamlines operations for businesses of all sizes. Additionally, its scalable Pay-As-You-Go payment model offers financial flexibility, allowing businesses to adapt their usage and costs as needed. This combination of advanced functionalities, ease of use, and a flexible payment structure makes eatOS a top choice for businesses looking to enhance their point of sale experience and streamline their operations.',
     media: 'eatOS analytics on tablet',
+    mediaSrc: scalableImg.url,
   },
 ];
 
