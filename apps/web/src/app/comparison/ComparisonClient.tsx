@@ -11,6 +11,7 @@ import {
   reasons,
   trademarkNote,
   whySwitch,
+  whySwitchMedia,
 } from './content';
 
 const rise = {
@@ -74,7 +75,12 @@ function Hero() {
         {/* Stage: single wide media */}
         <Reveal delay={0.12} className="mt-14 md:mt-16">
           <div className="overflow-hidden rounded-[26px] bg-white shadow-[0_30px_80px_-40px_rgba(0,0,0,0.28)] ring-1 ring-black/[0.06] sm:rounded-[34px]">
-            <Placeholder label={hero.media} ratio="aspect-[16/9]" tone="light" />
+            <Placeholder
+              label={hero.media}
+              src={hero.mediaSrc}
+              ratio="aspect-[16/9]"
+              tone="light"
+            />
           </div>
         </Reveal>
       </div>
@@ -99,7 +105,12 @@ function WhySwitch() {
               One platform, built end to end — so every part of your restaurant works together.
             </p>
             <div className="mt-7 overflow-hidden rounded-[22px] ring-1 ring-black/[0.06]">
-              <Placeholder label="eatOS platform overview" ratio="aspect-[4/3]" tone="light" />
+              <Placeholder
+                label={whySwitchMedia.label}
+                src={whySwitchMedia.src}
+                ratio="aspect-[4/3]"
+                tone="light"
+              />
             </div>
           </Reveal>
 
@@ -297,7 +308,13 @@ function Reasons() {
                 </p>
               </Reveal>
               <Reveal delay={0.1} className="min-w-0">
-                <Placeholder label={item.media} ratio="aspect-[16/11]" tone="light" />
+                <Placeholder
+                  label={item.media}
+                  src={item.mediaSrc}
+                  ratio="aspect-[16/11]"
+                  tone="light"
+                  pad
+                />
               </Reveal>
             </div>
           ))}
