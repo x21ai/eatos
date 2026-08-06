@@ -2,12 +2,12 @@
 // All copy + metrics for the Kitchen Display System page. Edit here.
 
 import heroAsset from './assets/kds-hero.jpg.asset.json';
-import prepAsset from './assets/prep-station-routing.webp.asset.json';
-import multiLingualAsset from './assets/multi-lingual.png.asset.json';
-import connectivityAsset from './assets/seamless-connectivity.webp.asset.json';
-import hardwareAsset from './assets/kitchen-grade-hardware.webp.asset.json';
-import printingAsset from './assets/save-on-printing.webp.asset.json';
-import analyticsAsset from './assets/analytics.webp.asset.json';
+import prepAsset from './assets/prep-station-routing.jpg.asset.json';
+import multiLingualAsset from './assets/multi-lingual.jpg.asset.json';
+import connectivityAsset from './assets/seamless-connectivity.jpg.asset.json';
+import hardwareAsset from './assets/kitchen-grade-hardware.jpg.asset.json';
+import printingAsset from './assets/save-on-printing.jpg.asset.json';
+import analyticsAsset from './assets/analytics.jpg.asset.json';
 import hardwareLineAsset from './assets/hardware-line.jpg.asset.json';
 
 export const hero = {
