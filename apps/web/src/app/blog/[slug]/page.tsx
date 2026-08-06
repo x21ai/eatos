@@ -1,22 +1,23 @@
 // @ts-nocheck
 import BlogPostClient from './BlogPostClient';
+import { posts, getPost } from '../content';
 
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  try {
-    const base = process.env['SITE_ORIGIN'] || 'https://s.eatos.dev';
-    const res = await fetch(`${base}/api/blog?limit=100`);
-    if (!res.ok) return [];
-    const data = await res.json();
-    const posts = Array.isArray(data) ? data : (data.posts ?? data.data ?? []);
-    return posts
-      .map((p) => p?.slug)
-      .filter(Boolean)
-      .map((slug) => ({ slug }));
-  } catch {
-    return [];
-  }
+  return posts.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const post = getPost(slug);
+  if (!post) return { title: 'Article not found | eatOS Blog' };
+  return {
+    title: `${post.title} | eatOS Blog`,
+    description: post.excerpt,
+    openGraph: { title: post.title, description: post.excerpt, type: 'article' },
+    twitter: { card: 'summary_large_image' },
+  };
 }
 
 export default async function BlogPostPage({ params }) {
