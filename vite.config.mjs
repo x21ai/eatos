@@ -8,6 +8,12 @@ export default defineConfig({
     // resulting dropped sockets make Next full-reload the page every ~2s.
     hmr: false,
     proxy: {
+      // Lovable CDN-hosted assets are not served by the Next.js dev server;
+      // proxy them from the published site so they render in the dev preview.
+      "/__l5e/assets-v1/": {
+        target: "https://eatos.lovable.app",
+        changeOrigin: true,
+      },
       // Next.js dev hot-reload socket — must be matched before the catch-all.
       "/_next/webpack-hmr": {
         target: "ws://127.0.0.1:3001",
