@@ -113,7 +113,7 @@ function Cover({ title, index, large = false }) {
           </span>
         </div>
         <span
-          className={`max-w-[16ch] font-semibold leading-[1.08] tracking-tight text-white ${
+          className={`max-w-[16ch] font-bold leading-[1.08] tracking-tight text-white ${
             large ? 'text-3xl md:text-4xl' : 'text-xl sm:text-2xl'
           }`}
         >
