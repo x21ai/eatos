@@ -86,10 +86,10 @@ function Hero() {
         <div className="grid grid-cols-2 gap-y-10 gap-x-6 text-center lg:grid-cols-4">
           {marquee.map((m, i) => (
             <Reveal key={m.label} delay={i * 0.06} className="min-w-0">
-              <div className="font-semibold leading-none tracking-tighter text-4xl md:text-6xl">
+              <div className="text-4xl font-bold leading-none tracking-tighter md:text-5xl">
                 {m.value}
               </div>
-              <div className="mt-3 text-[11px] uppercase tracking-[0.2em] text-zinc-500 sm:text-xs">
+              <div className="mt-3 text-xs font-semibold uppercase tracking-widest text-zinc-500 sm:text-sm">
                 {m.label}
               </div>
             </Reveal>
