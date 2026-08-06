@@ -49,7 +49,7 @@ function Hero() {
       <div className="mx-auto w-full max-w-[1180px] px-5 pt-28 pb-16 text-center sm:px-8 md:pt-36 md:pb-20 lg:pt-44">
         <Reveal className="min-w-0">
           <Eyebrow className="text-center">{hero.eyebrow}</Eyebrow>
-          <h1 className="mx-auto mt-4 max-w-[20ch] font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.75rem,3.4vw,2.75rem)]">
+          <h1 className="mx-auto mt-4 max-w-[20ch] font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
             {hero.title}
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-zinc-600 sm:text-base sm:leading-8">
@@ -98,7 +98,7 @@ function WhySwitch() {
           {/* Sticky intro rail */}
           <Reveal className="min-w-0 lg:sticky lg:top-28 lg:self-start">
             <Eyebrow>Why switch</Eyebrow>
-            <h2 className="mt-4 max-w-[16ch] font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.625rem,3vw,2.375rem)]">
+            <h2 className="mt-4 max-w-[16ch] font-bold leading-[1.1] tracking-tighter text-3xl md:text-4xl">
               Why switch to eatOS
             </h2>
             <p className="mt-5 max-w-md text-sm leading-7 text-zinc-600">
@@ -126,7 +126,7 @@ function WhySwitch() {
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <span className="min-w-0 block">
-                    <h3 className="text-lg font-semibold tracking-[-0.02em] sm:text-xl">
+                    <h3 className="text-lg font-bold tracking-tight sm:text-xl">
                       {item.title}
                     </h3>
                     <p className="mt-3 max-w-xl text-sm leading-7 text-zinc-600">{item.body}</p>
@@ -174,7 +174,7 @@ function Matrix() {
     <section className="bg-black text-white">
       <div className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-8 md:py-32 lg:py-40">
         <Reveal>
-          <h2 className="mx-auto max-w-[26ch] text-center font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.75rem,3.6vw,3rem)]">
+          <h2 className="mx-auto max-w-[26ch] text-center font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
             Compare eatOS with other Point of Sale software
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-7 text-zinc-400 sm:text-base">
@@ -188,13 +188,13 @@ function Matrix() {
             <table className="w-full min-w-[860px] border-separate border-spacing-0 text-left">
               <thead>
                 <tr>
-                  <th className="sticky left-0 z-10 bg-black pb-6 pr-6 align-bottom text-base font-semibold tracking-[-0.02em] sm:text-lg">
+                  <th className="sticky left-0 z-10 bg-black pb-6 pr-6 align-bottom text-base font-semibold tracking-tight sm:text-lg">
                     Feature Set
                   </th>
                   {competitors.map((name, i) => (
                     <th
                       key={name}
-                      className={`pb-6 text-center align-bottom text-sm font-semibold tracking-[-0.01em] ${
+                      className={`pb-6 text-center align-bottom text-sm font-semibold tracking-tight ${
                         i === 0
                           ? 'rounded-t-[20px] bg-white/[0.07] px-4 pt-7 text-white'
                           : 'px-3 text-zinc-500'
@@ -243,7 +243,7 @@ function Matrix() {
                 }`}
               >
                 <div className="flex items-center justify-between gap-3">
-                  <h3 className="min-w-0 truncate text-base font-semibold tracking-[-0.02em]">
+                  <h3 className="min-w-0 truncate text-base font-bold tracking-tight">
                     {name}
                   </h3>
                   {ci === 0 && (
@@ -288,7 +288,7 @@ function Reasons() {
     <section className="bg-white text-black">
       <div className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-8 md:py-32 lg:py-40">
         <Reveal>
-          <h2 className="mx-auto max-w-[26ch] text-center font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.75rem,3.4vw,2.75rem)]">
+          <h2 className="mx-auto max-w-[26ch] text-center font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
             Why businesses choose eatOS over other Point of Sale software
           </h2>
         </Reveal>
@@ -300,7 +300,7 @@ function Reasons() {
               className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-16"
             >
               <Reveal className={`min-w-0 ${i % 2 === 1 ? 'md:order-2' : ''}`}>
-                <h3 className="font-semibold leading-[1.15] tracking-[-0.03em] text-[clamp(1.5rem,2.6vw,2.125rem)]">
+                <h3 className="font-bold leading-[1.15] tracking-tighter text-2xl md:text-4xl">
                   {item.title}
                 </h3>
                 <p className="mt-5 max-w-xl text-sm leading-7 text-zinc-600 sm:text-base sm:leading-8">
@@ -331,7 +331,7 @@ function ClosingCta() {
     <section className="bg-black text-white">
       <div className="mx-auto w-full max-w-[1180px] px-5 py-24 text-center sm:px-8 md:py-32">
         <Reveal>
-          <h2 className="mx-auto max-w-[22ch] font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.75rem,3.6vw,3rem)]">
+          <h2 className="mx-auto max-w-[22ch] font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
             Start Using Restaurant Technology Cloud
           </h2>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">

@@ -52,7 +52,7 @@ function FlipbookModal({ item, onClose }) {
             <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-emerald-500">
               Brochure
             </p>
-            <h2 className="truncate text-sm font-semibold text-white sm:text-base">{item.title}</h2>
+            <h2 className="truncate text-sm font-bold text-white sm:text-base">{item.title}</h2>
           </div>
           <div className="flex shrink-0 items-center gap-2">
             <a
@@ -113,8 +113,8 @@ function Cover({ title, index, large = false }) {
           </span>
         </div>
         <span
-          className={`max-w-[16ch] font-semibold leading-[1.08] tracking-[-0.02em] text-white ${
-            large ? 'text-[clamp(1.6rem,3vw,2.5rem)]' : 'text-xl sm:text-2xl'
+          className={`max-w-[16ch] font-bold leading-[1.08] tracking-tight text-white ${
+            large ? 'text-3xl md:text-4xl' : 'text-xl sm:text-2xl'
           }`}
         >
           {title}
@@ -138,7 +138,7 @@ export default function BrochuresClient() {
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-emerald-500 sm:text-xs">
               {hero.eyebrow}
             </p>
-            <h1 className="mx-auto mt-5 max-w-[20ch] font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(2.25rem,4.5vw,3.5rem)]">
+            <h1 className="mx-auto mt-5 max-w-[20ch] font-bold leading-[1.1] tracking-tighter text-4xl md:text-6xl">
               {hero.title}
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
@@ -156,7 +156,7 @@ export default function BrochuresClient() {
                 <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-emerald-500">
                   Start here
                 </p>
-                <h2 className="mt-4 font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.75rem,3.2vw,2.5rem)]">
+                <h2 className="mt-4 font-bold leading-[1.1] tracking-tighter text-3xl md:text-4xl">
                   {featured.title}
                 </h2>
                 <p className="mt-5 max-w-xl text-base leading-7 text-zinc-400">
@@ -189,7 +189,7 @@ export default function BrochuresClient() {
       {/* Grid */}
       <section className="mx-auto w-full max-w-[1220px] px-5 py-20 sm:px-8 md:py-28">
         <Reveal className="mb-12 md:mb-16">
-          <h2 className="font-semibold leading-[1.1] tracking-[-0.03em] text-zinc-900 text-[clamp(1.6rem,3vw,2.25rem)]">
+          <h2 className="font-bold leading-[1.1] tracking-tighter text-zinc-900 text-3xl md:text-4xl">
             The full library.
           </h2>
           <p className="mt-3 max-w-xl text-base leading-7 text-zinc-500">
@@ -204,7 +204,7 @@ export default function BrochuresClient() {
                 <div className="transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
                   <Cover title={item.title} index={i + 1} />
                 </div>
-                <h3 className="mt-6 text-[19px] font-semibold tracking-[-0.015em] text-zinc-900">
+                <h3 className="mt-6 text-[19px] font-bold tracking-tight text-zinc-900">
                   {item.title}
                 </h3>
                 <p className="mt-2.5 flex-1 text-[15px] leading-7 text-zinc-500">
@@ -239,7 +239,7 @@ export default function BrochuresClient() {
       <section className="bg-black text-white">
         <div className="mx-auto w-full max-w-[1120px] px-5 py-20 text-center sm:px-8 md:py-28">
           <Reveal>
-            <h2 className="mx-auto max-w-[22ch] font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.85rem,3.6vw,2.75rem)]">
+            <h2 className="mx-auto max-w-[22ch] font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
               See the platform in action
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-zinc-400">

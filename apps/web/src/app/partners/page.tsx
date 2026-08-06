@@ -23,7 +23,7 @@ export default function PartnersPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-black" />
                 eatOS Partner Program
               </span>
-              <h1 className="mt-6 text-[clamp(2.1rem,4.4vw,3.4rem)] font-bold leading-[1.06] tracking-tight">
+              <h1 className="mt-6 text-4xl md:text-6xl font-bold leading-[1.06] tracking-tight">
                 It&rsquo;s you and eatOS,
                 <br className="hidden sm:block" /> working together
               </h1>
@@ -70,7 +70,7 @@ export default function PartnersPage() {
       <section className="border-y border-zinc-200 bg-zinc-50 py-20 md:py-28">
         <div className="container mx-auto px-5 md:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-[clamp(1.7rem,3vw,2.5rem)] font-bold tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               Explore partnership opportunities
             </h2>
             <p className="mt-4 text-base text-zinc-600">
@@ -118,7 +118,7 @@ export default function PartnersPage() {
             <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
               Programs
             </span>
-            <h2 className="mt-4 text-[clamp(1.7rem,3vw,2.5rem)] font-bold tracking-tight">
+            <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight">
               Built for businesses and individuals
             </h2>
           </div>
@@ -164,7 +164,7 @@ export default function PartnersPage() {
       <section className="bg-white py-20 md:py-28">
         <div className="container mx-auto px-5 md:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-[clamp(1.7rem,3vw,2.5rem)] font-bold tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               Meet our integration partners
             </h2>
             <p className="mt-4 text-base text-zinc-600">
@@ -199,7 +199,7 @@ export default function PartnersPage() {
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-16">
             {/* Left content */}
             <div>
-              <h2 className="text-[clamp(1.7rem,3vw,2.5rem)] font-bold tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
                 Why partner with us?
               </h2>
               <div className="mt-10 space-y-8">

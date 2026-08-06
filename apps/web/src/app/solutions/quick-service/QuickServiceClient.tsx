@@ -47,7 +47,7 @@ function Hero() {
       <div className="mx-auto w-full max-w-[1120px] px-5 pt-24 sm:px-8 md:pt-32 lg:pt-40">
         <Reveal className="text-center">
           <Eyebrow>{hero.eyebrow}</Eyebrow>
-          <h1 className="mx-auto mt-5 max-w-[28ch] font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(2.25rem,4.5vw,3.5rem)]">
+          <h1 className="mx-auto mt-5 max-w-[28ch] font-bold leading-[1.1] tracking-tighter text-4xl md:text-6xl">
             {hero.title}
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
@@ -86,10 +86,10 @@ function Hero() {
         <div className="grid grid-cols-2 gap-y-10 gap-x-6 text-center lg:grid-cols-4">
           {marquee.map((m, i) => (
             <Reveal key={m.label} delay={i * 0.06} className="min-w-0">
-              <div className="font-semibold leading-none tracking-[-0.03em] text-[clamp(2rem,4.5vw,3.5rem)]">
+              <div className="text-4xl font-bold leading-none tracking-tighter md:text-5xl">
                 {m.value}
               </div>
-              <div className="mt-3 text-[11px] uppercase tracking-[0.2em] text-zinc-500 sm:text-xs">
+              <div className="mt-3 text-xs font-semibold uppercase tracking-widest text-zinc-500 sm:text-sm">
                 {m.label}
               </div>
             </Reveal>
@@ -112,7 +112,7 @@ function Spotlight({ pillar, index }) {
       <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28 lg:py-32">
         <Reveal className="mx-auto max-w-2xl text-center">
           <Eyebrow>{`0${index + 1}`}</Eyebrow>
-          <h2 className="mt-4 font-semibold leading-[1.08] tracking-[-0.03em] text-[clamp(1.75rem,4vw,3rem)]">
+          <h2 className="mt-4 font-bold leading-[1.08] tracking-tighter text-3xl md:text-5xl">
             {pillar.title}
           </h2>
         </Reveal>
@@ -143,7 +143,7 @@ function Spotlight({ pillar, index }) {
               <dl className="mt-10 grid grid-cols-2 gap-6">
                 {pillar.metrics.map((m) => (
                   <div key={m.label} className="min-w-0">
-                    <dt className="font-semibold leading-none tracking-[-0.03em] text-[clamp(1.5rem,3vw,2.25rem)]">
+                    <dt className="font-bold leading-none tracking-tighter text-3xl md:text-4xl">
                       {m.value}
                     </dt>
                     <dd className="mt-2.5 text-[11px] uppercase tracking-[0.18em] text-zinc-500">
@@ -168,7 +168,7 @@ function Bundle() {
       <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28 lg:py-32">
         <Reveal className="mx-auto max-w-2xl text-center">
           <Eyebrow>{bundle.eyebrow}</Eyebrow>
-          <h2 className="mt-4 font-semibold leading-[1.08] tracking-[-0.03em] text-[clamp(1.75rem,4vw,3rem)]">
+          <h2 className="mt-4 font-bold leading-[1.08] tracking-tighter text-3xl md:text-5xl">
             {bundle.title}
           </h2>
           <p className="mt-5 text-base leading-8 text-zinc-400 sm:text-lg">{bundle.description}</p>
@@ -196,7 +196,7 @@ function Bundle() {
         <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8 md:mt-20">
           {bundle.specs.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.06} className="min-w-0">
-              <h3 className="text-base font-semibold tracking-tight text-white sm:text-lg">
+              <h3 className="text-base font-bold tracking-tight text-white sm:text-lg">
                 {s.title}
               </h3>
               <p className="mt-3 text-sm leading-7 text-zinc-400 sm:text-base">{s.body}</p>
@@ -220,7 +220,7 @@ function Closing() {
     <section className="bg-white text-black">
       <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <h2 className="font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.75rem,4vw,3rem)]">
+          <h2 className="font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
             Start using restaurant technology cloud
           </h2>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

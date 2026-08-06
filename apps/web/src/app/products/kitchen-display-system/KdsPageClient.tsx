@@ -39,7 +39,7 @@ function Reveal({ children, delay = 0, className = '' }) {
 function Eyebrow({ children, className = '' }) {
   return (
     <p
-      className={`text-[11px] font-semibold uppercase tracking-[0.24em] text-emerald-500 sm:text-xs ${className}`}
+      className={`text-xs font-semibold uppercase tracking-widest text-emerald-500 sm:text-sm ${className}`}
     >
       {children}
     </p>
@@ -62,10 +62,10 @@ function Hero() {
       <div className="mx-auto w-full max-w-[1120px] px-5 pt-24 sm:px-8 md:pt-32 lg:pt-40">
         <Reveal className="text-center">
           <Eyebrow>{hero.eyebrow}</Eyebrow>
-          <h1 className="mx-auto mt-5 max-w-[34ch] font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(2.25rem,4.5vw,3.5rem)]">
+          <h1 className="mx-auto mt-5 max-w-[34ch] text-4xl font-bold leading-[1.05] tracking-tighter md:text-6xl">
             {hero.title}
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
+          <p className="mx-auto mt-6 max-w-2xl text-[15px] font-light leading-relaxed text-zinc-400 md:text-[22px]">
             {hero.description}
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -102,10 +102,10 @@ function Hero() {
         <div className="grid grid-cols-2 gap-y-10 gap-x-6 text-center lg:grid-cols-4">
           {marquee.map((m, i) => (
             <Reveal key={m.label} delay={i * 0.06} className="min-w-0">
-              <div className="font-semibold leading-none tracking-[-0.03em] text-[clamp(2rem,4.5vw,3.5rem)]">
+              <div className="text-4xl font-bold leading-none tracking-tighter md:text-5xl">
                 {m.value}
               </div>
-              <div className="mt-3 text-[11px] uppercase tracking-[0.2em] text-zinc-500 sm:text-xs">
+              <div className="mt-3 text-xs font-semibold uppercase tracking-widest text-zinc-500 sm:text-sm">
                 {m.label}
               </div>
             </Reveal>
@@ -128,7 +128,7 @@ function Spotlight({ feature, index }) {
       <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28 lg:py-32">
         <Reveal className="mx-auto max-w-2xl text-center">
           <Eyebrow>{`0${index + 1}`}</Eyebrow>
-          <h2 className="mt-4 font-semibold leading-[1.08] tracking-[-0.03em] text-[clamp(1.75rem,4vw,3rem)]">
+          <h2 className="mt-4 text-4xl font-bold leading-[1.08] tracking-tighter md:text-6xl">
             {feature.title}
           </h2>
         </Reveal>
@@ -140,10 +140,12 @@ function Spotlight({ feature, index }) {
             </div>
 
             <div className={`min-w-0 ${flip ? 'md:order-1' : ''}`}>
-              <p className="text-base leading-8 text-zinc-600 sm:text-lg">{feature.body}</p>
+              <p className="text-[15px] font-light leading-relaxed text-zinc-600 md:text-[19px]">
+                {feature.body}
+              </p>
 
               {open ? (
-                <p className="mt-5 text-base leading-8 text-zinc-500 sm:text-lg">
+                <p className="mt-5 text-[15px] font-light leading-relaxed text-zinc-500 md:text-[19px]">
                   {feature.more}
                 </p>
               ) : null}
@@ -164,10 +166,10 @@ function Spotlight({ feature, index }) {
               <dl className="mt-10 grid grid-cols-2 gap-6">
                 {feature.metrics.map((m) => (
                   <div key={m.label} className="min-w-0">
-                    <dt className="font-semibold leading-none tracking-[-0.03em] text-[clamp(1.5rem,3vw,2.25rem)]">
+                    <dt className="text-3xl font-bold leading-none tracking-tighter md:text-4xl">
                       {m.value}
                     </dt>
-                    <dd className="mt-2.5 text-[11px] uppercase tracking-[0.18em] text-zinc-500">
+                    <dd className="mt-2.5 text-xs font-semibold uppercase tracking-widest text-zinc-500">
                       {m.label}
                     </dd>
                   </div>
@@ -189,10 +191,10 @@ function Hardware() {
       <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28 lg:py-32">
         <Reveal className="mx-auto max-w-2xl text-center">
           <Eyebrow>{hardware.eyebrow}</Eyebrow>
-          <h2 className="mt-4 font-semibold leading-[1.08] tracking-[-0.03em] text-[clamp(1.75rem,4vw,3rem)]">
+          <h2 className="mt-4 text-4xl font-bold leading-[1.08] tracking-tighter md:text-6xl">
             {hardware.title}
           </h2>
-          <p className="mt-5 text-base leading-8 text-zinc-400 sm:text-lg">
+          <p className="mt-5 text-[15px] font-light leading-relaxed text-zinc-400 md:text-[19px]">
             {hardware.description}
           </p>
         </Reveal>
@@ -204,10 +206,12 @@ function Hardware() {
         <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8 md:mt-20">
           {hardware.specs.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.06} className="min-w-0">
-              <h3 className="text-base font-semibold tracking-tight text-white sm:text-lg">
+              <h3 className="text-lg font-bold tracking-tight text-white md:text-xl">
                 {s.title}
               </h3>
-              <p className="mt-3 text-sm leading-7 text-zinc-400 sm:text-base">{s.body}</p>
+              <p className="mt-3 text-sm font-light leading-relaxed text-zinc-400 md:text-base">
+                {s.body}
+              </p>
             </Reveal>
           ))}
         </div>
@@ -227,10 +231,10 @@ function Offers() {
           {offers.map((offer, i) => (
             <Reveal key={offer.title} delay={i * 0.08} className="min-w-0">
               <Placeholder label={offer.imageLabel} tone="light" />
-              <h3 className="mt-7 font-semibold tracking-[-0.02em] text-[clamp(1.25rem,2.4vw,1.75rem)]">
+              <h3 className="mt-7 text-2xl font-bold tracking-tight md:text-3xl">
                 {offer.title}
               </h3>
-              <p className="mt-3 text-sm leading-7 text-zinc-600 sm:text-base">
+              <p className="mt-3 text-sm font-light leading-relaxed text-zinc-600 md:text-base">
                 {offer.description}
               </p>
               <a
@@ -243,7 +247,7 @@ function Offers() {
             </Reveal>
           ))}
         </div>
-        <p className="mx-auto mt-14 max-w-3xl text-center text-[11px] leading-relaxed text-zinc-500">
+        <p className="mx-auto mt-14 max-w-3xl text-center text-xs font-light leading-relaxed text-zinc-500">
           {offerNote}
         </p>
       </div>
@@ -258,7 +262,7 @@ function Closing() {
     <section className="bg-white text-black">
       <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <h2 className="font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.75rem,4vw,3rem)]">
+          <h2 className="text-4xl font-bold leading-[1.1] tracking-tighter md:text-6xl">
             Start using restaurant technology cloud
           </h2>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
