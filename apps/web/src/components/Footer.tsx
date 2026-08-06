@@ -407,6 +407,7 @@ export default function Footer({ variant = 'light' }) {
                 { label: 'Contact Sales', href: '/contact-sales' },
                 { label: 'Report Fraud', href: '/report-fraud' },
                 { label: 'Newsroom', href: '/blog' },
+                { label: 'Comparison', href: '/comparison' },
               ].map(({ label, href }) => (
                 <li key={href}>
                   <a href={href} className={linkClass}>
