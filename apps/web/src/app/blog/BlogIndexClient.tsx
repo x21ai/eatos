@@ -55,10 +55,10 @@ function Featured({ post }) {
           <Placeholder label={post.title} src={post.image} tone="light" ratio="aspect-[16/10]" />
           <div className="min-w-0">
             <Meta post={post} />
-            <h2 className="mt-5 font-bold leading-[1.1] tracking-tight text-black text-[clamp(1.75rem,3.4vw,2.75rem)]">
+            <h2 className="mt-5 line-clamp-2 max-w-2xl font-bold leading-[1.1] tracking-tight text-black text-[clamp(1.75rem,3.4vw,2.75rem)]">
               {post.title}
             </h2>
-            <p className="mt-5 max-w-xl text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8">
+            <p className="mt-5 line-clamp-3 max-w-xl text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8">
               {post.excerpt}
             </p>
             <span className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-black">
