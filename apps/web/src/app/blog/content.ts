@@ -25,7 +25,6 @@ export const posts = [
     title: 'Never Miss a Beat: How Offline Resilience Keeps Your Sales Rolling',
     category: 'Point of Sale',
     date: '2025-11-19',
-    readingTime: '5 min read',
     author: 'eatOS Staff',
     excerpt:
       'An outage should never close the register. Here is how local-first architecture keeps orders, tickets and payments moving until connectivity returns.',
@@ -47,7 +46,6 @@ export const posts = [
     title: 'Empower Your Restaurant Team with Simplified Workforce Management',
     category: 'Workforce Management',
     date: '2025-11-14',
-    readingTime: '6 min read',
     author: 'eatOS Staff',
     excerpt:
       'Scheduling, clock-ins and labor cost live in the same place as your sales data. That single source of truth changes how managers spend their week.',
@@ -67,7 +65,6 @@ export const posts = [
     title: '10 Tips to Enhance Your Restaurant Analytics and Reporting System',
     category: 'Point of Sale',
     date: '2026-02-16',
-    readingTime: '7 min read',
     author: 'eatOS Staff',
     excerpt:
       'Reporting is only useful when it changes a decision. Ten practical habits that turn raw restaurant data into weekly action.',
@@ -85,7 +82,6 @@ export const posts = [
     title: 'How Tableside Ordering and Payment Enhances Restaurant Experience',
     category: 'Tableside Ordering',
     date: '2025-11-05',
-    readingTime: '5 min read',
     author: 'eatOS Staff',
     excerpt:
       'Ordering and paying at the table shortens every table turn and gives servers more time with guests instead of the terminal.',
@@ -105,7 +101,6 @@ export const posts = [
     title: 'The Complete Guide to Restaurant Inventory Management',
     category: 'Inventory Management',
     date: '2026-01-14',
-    readingTime: '8 min read',
     author: 'eatOS Staff',
     excerpt:
       'Counts, recipes, par levels and vendor orders — the fundamentals of keeping food cost predictable without drowning in spreadsheets.',
@@ -125,7 +120,6 @@ export const posts = [
     title: 'How Much Does It Cost to Implement a Point of Sale System?',
     category: 'Point of Sale',
     date: '2026-02-11',
-    readingTime: '6 min read',
     author: 'eatOS Staff',
     excerpt:
       'Hardware, software, payments and implementation — a clear breakdown of what a restaurant point of sale really costs in year one.',
@@ -145,7 +139,6 @@ export const posts = [
     title: '6 Must-Have Features in the Best Fast Casual Point of Sale Systems',
     category: 'Self Service Kiosk',
     date: '2026-02-12',
-    readingTime: '5 min read',
     author: 'eatOS Staff',
     excerpt:
       'Fast casual lives on throughput. These are the six capabilities that keep the line moving when the lunch rush arrives.',
@@ -163,7 +156,6 @@ export const posts = [
     title: '8 Online Ordering and Delivery Challenges Restaurants Face',
     category: 'Online Ordering',
     date: '2026-02-11',
-    readingTime: '6 min read',
     author: 'eatOS Staff',
     excerpt:
       'Digital orders are now a core channel. These are the eight operational problems that quietly erode their margin — and how to address them.',
