@@ -5,8 +5,10 @@
 @import "tailwindcss";
 
 @theme inline {
-    --font-montserrat: "Montserrat";
+    /* Single source of truth: font-sans and font-montserrat are identical. */
+    --font-montserrat: "Montserrat", ui-sans-serif, system-ui, sans-serif;
     --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+    --font-serif: "Montserrat", ui-sans-serif, system-ui, sans-serif;
 }
 
 /*
