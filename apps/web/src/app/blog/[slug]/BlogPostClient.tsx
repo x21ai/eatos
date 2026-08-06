@@ -1,74 +1,27 @@
 // @ts-nocheck
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
-import { format } from 'date-fns';
 import { motion } from 'motion/react';
 import { toast } from 'sonner';
-import {
-  Loader2,
-  ArrowLeft,
-  Calendar,
-  User,
-  Heart,
-  Share2,
-  Link as LinkIcon,
-  Check,
-} from 'lucide-react';
-import { useState, useMemo } from 'react';
+import { ArrowLeft, ArrowRight, Share2 } from 'lucide-react';
+import { Placeholder } from '@/components/marketing/Placeholder';
+import { NewsletterSection } from '@/components/NewsletterSection';
+import { getPost, getRelated, formatDate } from '../content';
 
 export default function BlogPostClient({ slug }) {
-  const [liked, setLiked] = useState(false);
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
-  const {
-    data: post,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ['blog-post', slug],
-    queryFn: async () => {
-      const res = await fetch(`/api/blog/${slug}`);
-      if (!res.ok) {
-        if (res.status === 404) throw new Error('Post not found');
-        throw new Error('Failed to fetch post');
-      }
-      return res.json();
-    },
-  });
-
-  const formattedDate = useMemo(() => {
-    if (!post?.published_at) return '';
-    try {
-      return format(new Date(post.published_at), 'MMMM d, yyyy');
-    } catch {
-      return '';
-    }
-  }, [post?.published_at]);
-
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    if (!email) return;
-    setSubscribed(true);
-    toast.success('Thanks for subscribing!');
-    setEmail('');
-  };
+  const post = getPost(slug);
+  const related = getRelated(slug, 3);
 
   const handleShare = () => {
-    navigator.clipboard.writeText(window.location.href);
-    toast.success('Link copied to clipboard');
+    try {
+      navigator.clipboard.writeText(window.location.href);
+      toast.success('Link copied to clipboard');
+    } catch {
+      toast.error('Could not copy the link');
+    }
   };
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-white text-black flex justify-center items-center">
-        <Loader2 className="animate-spin text-gray-400" size={32} />
-      </div>
-    );
-  }
-
-  if (error) {
+  if (!post) {
     return (
       <div className="min-h-screen bg-white text-black flex flex-col justify-center items-center gap-6">
         <div className="text-black text-2xl font-bold">Article not found</div>
@@ -86,113 +39,122 @@ export default function BlogPostClient({ slug }) {
   }
 
   return (
-    <article className="min-h-screen bg-white text-[#1d1d1f] font-sans selection:bg-blue-100 selection:text-blue-900 pb-32">
-      {/* Navigation / Breadcrumb - Apple Style (Top Bar) */}
-      <nav className="border-b border-gray-200/60 sticky top-0 z-40 bg-white/80 backdrop-blur-md">
-        <div className="container mx-auto px-4 md:px-6 h-14 flex items-center justify-between">
-          <a
-            href="/blog"
-            className="text-sm font-semibold text-gray-800 hover:text-black flex items-center gap-1"
-          >
-            <ArrowLeft size={16} className="text-gray-400" /> Newsroom
-          </a>
-
-          <div className="flex gap-4">
-            <button
-              onClick={handleShare}
-              className="text-gray-500 hover:text-black transition-colors"
-              aria-label="Share"
-            >
-              <Share2 size={18} />
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      <div className="container mx-auto px-4 md:px-6 pt-12 md:pt-20">
-        {/* Header Content */}
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <div className="inline-flex items-center gap-2 mb-6">
-            <span className="text-xs font-bold tracking-widest uppercase bg-gray-100 px-3 py-1 rounded-full text-gray-900">
-              Story
-            </span>
-            <span className="text-xs font-medium text-gray-500">{formattedDate}</span>
-          </div>
-
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-[#1d1d1f] mb-8 leading-[1.1]">
-            {post.title}
-          </h1>
-
-          <div className="flex items-center justify-center gap-3">
-            {/* Optional: Author Avatar if available, otherwise just text */}
-            <div className="text-sm font-medium text-[#1d1d1f]">By {post.author_name}</div>
-          </div>
-        </div>
-
-        {/* Hero Image */}
-        <div className="max-w-[1100px] mx-auto mb-16 md:mb-24">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-            className="aspect-[16/9] md:aspect-[21/9] rounded-[32px] overflow-hidden shadow-sm bg-gray-100"
-          >
-            <img src={post.cover_image} alt={post.title} className="w-full h-full object-cover" />
-          </motion.div>
-        </div>
-
-        {/* Content Body */}
-        <div className="max-w-[692px] mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-          >
-            <div
-              className="prose prose-lg md:prose-xl max-w-none
-                prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-[#1d1d1f]
-                prose-p:text-[#1d1d1f] prose-p:leading-relaxed prose-p:font-normal
-                prose-a:text-[#0066CC] prose-a:font-medium hover:prose-a:underline
-                prose-strong:text-[#1d1d1f] prose-strong:font-semibold
-                prose-img:rounded-2xl prose-img:shadow-sm prose-img:my-12 prose-img:w-full
-                prose-blockquote:border-l-4 prose-blockquote:border-[#1d1d1f] prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-2xl prose-blockquote:font-medium prose-blockquote:text-[#1d1d1f] prose-blockquote:bg-transparent
-                prose-ul:list-disc prose-ul:pl-6 prose-ul:marker:text-[#1d1d1f]
-                prose-li:text-[#1d1d1f] prose-li:my-2
-                "
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
-          </motion.div>
-
-          {/* Tags / Keywords (Optional - Apple puts them at bottom often) */}
-          {post.keywords && (
-            <div className="mt-16 pt-8 border-t border-gray-100 flex flex-wrap gap-2">
-              {post.keywords.split(',').map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs font-medium text-gray-500 bg-gray-50 px-3 py-1.5 rounded-lg"
-                >
-                  {tag.trim()}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Footer / More Stories (Simplified) */}
-      <div className="bg-[#F5F5F7] mt-32 py-24">
-        <div className="container mx-auto px-4 md:px-6 max-w-[1100px]">
-          <h3 className="text-3xl font-bold mb-12 text-center">More to explore</h3>
-          <div className="flex justify-center">
+    <article className="bg-white text-[#1d1d1f]">
+      <header className="bg-black pt-32 pb-16 md:pt-40 md:pb-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
             <a
               href="/blog"
-              className="inline-flex items-center gap-2 text-blue-600 font-medium hover:underline text-lg"
+              className="inline-flex min-w-0 items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400 transition-colors hover:text-white"
             >
-              View all stories <ArrowLeft className="rotate-180" size={20} />
+              <ArrowLeft size={14} className="shrink-0" />
+              <span className="truncate">Back to blog</span>
             </a>
+            <button
+              type="button"
+              onClick={handleShare}
+              aria-label="Copy link to this article"
+              className="shrink-0 rounded-full border border-white/15 p-2.5 text-zinc-300 transition-colors hover:border-white/40 hover:text-white"
+            >
+              <Share2 size={16} />
+            </button>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
+            className="mt-10 max-w-3xl"
+          >
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-400">
+              <span className="text-green-400">{post.category}</span>
+              <span aria-hidden>·</span>
+              <span>{formatDate(post.date)}</span>
+              <span aria-hidden>·</span>
+              <span>{post.readingTime}</span>
+            </div>
+            <h1 className="mt-6 font-bold leading-[1.08] tracking-tighter text-white text-[clamp(2rem,4.6vw,3.5rem)]">
+              {post.title}
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
+              {post.excerpt}
+            </p>
+            <p className="mt-6 text-sm font-medium text-zinc-500">By {post.author}</p>
+          </motion.div>
+        </div>
+      </header>
+
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="-mt-10 md:-mt-14">
+          <Placeholder label={post.title} src={post.image} tone="light" ratio="aspect-[16/9]" />
+        </div>
+
+        <div className="mx-auto max-w-[700px] py-16 md:py-24">
+          {post.body.map((block, i) => {
+            if (block.type === 'h2') {
+              return (
+                <h2
+                  key={i}
+                  className="mt-14 text-2xl font-bold tracking-tight text-black first:mt-0 sm:text-3xl"
+                >
+                  {block.text}
+                </h2>
+              );
+            }
+            if (block.type === 'ul') {
+              return (
+                <ul key={i} className="mt-6 space-y-3">
+                  {block.items.map((item) => (
+                    <li key={item} className="flex gap-3 text-base leading-8 text-zinc-700 sm:text-lg">
+                      <span aria-hidden className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-green-500" />
+                      <span className="min-w-0">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              );
+            }
+            return (
+              <p key={i} className="mt-6 text-base leading-8 text-zinc-700 sm:text-lg sm:leading-9">
+                {block.text}
+              </p>
+            );
+          })}
         </div>
       </div>
+
+      {related.length > 0 && (
+        <section className="border-t border-zinc-200 bg-zinc-50 py-16 md:py-24">
+          <div className="container mx-auto px-4 md:px-6">
+            <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-500">
+              Keep reading
+            </h2>
+            <div className="mt-10 grid gap-10 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-3 lg:gap-x-10">
+              {related.map((item) => (
+                <a key={item.slug} href={`/blog/${item.slug}`} className="group flex min-w-0 flex-col">
+                  <Placeholder label={item.title} src={item.image} tone="light" ratio="aspect-[16/10]" />
+                  <div className="mt-5 min-w-0">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-green-600">
+                      {item.category}
+                    </p>
+                    <h3 className="mt-2 text-lg font-bold leading-snug tracking-tight text-black transition-colors group-hover:text-zinc-600">
+                      {item.title}
+                    </h3>
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-black">
+                      Read
+                      <ArrowRight
+                        size={14}
+                        className="transition-transform duration-300 group-hover:translate-x-1"
+                      />
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <NewsletterSection />
     </article>
   );
 }
