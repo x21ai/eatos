@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { NewsletterSection } from '@/components/NewsletterSection';
+import { CustomerShowcase } from '@/components/marketing/CustomerShowcase';
 
 export default function HomePage() {
   return (
@@ -162,6 +163,9 @@ export default function HomePage() {
           {/* Testimonial block removed */}
         </div>
       </section>
+
+      {/* Customer Showcase */}
+      <CustomerShowcase />
 
       {/* Bento Grid Navigation - The Hub */}
       <section className="py-32 bg-black relative">

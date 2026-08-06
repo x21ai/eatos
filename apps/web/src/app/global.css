@@ -166,3 +166,22 @@
         @apply bg-background text-foreground;
     }
 }
+
+@keyframes marquee-rtl {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+    animation: marquee-rtl 45s linear infinite;
+}
+
+.group:hover > .marquee-track {
+    animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+        animation: none;
+    }
+}
