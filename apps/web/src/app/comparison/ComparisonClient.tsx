@@ -6,7 +6,6 @@ import { motion, useReducedMotion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
 import {
   competitors,
-  ecosystem,
   hero,
   matrix,
   reasons,
@@ -45,38 +44,47 @@ function Eyebrow({ children, className = '' }) {
 
 function Hero() {
   return (
-    <section className="bg-[#f7f7f8] text-black">
-      <div className="mx-auto w-full max-w-[1180px] px-5 pt-28 pb-16 sm:px-8 md:pt-36 md:pb-24 lg:pt-40">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:gap-16">
-          <Reveal className="min-w-0">
-            <Eyebrow>{hero.eyebrow}</Eyebrow>
-            <h1 className="mt-5 max-w-[20ch] font-semibold leading-[1.05] tracking-[-0.03em] text-[clamp(2.25rem,5vw,4.25rem)]">
-              {hero.title}
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-8 text-zinc-600 sm:text-lg">
-              {hero.description}
-            </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a
-                href={hero.primaryCta.href}
-                className="inline-flex w-full items-center justify-center rounded-full bg-black px-7 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-85 sm:w-auto"
-              >
-                {hero.primaryCta.label}
-              </a>
-              <a
-                href={hero.secondaryCta.href}
-                className="inline-flex w-full items-center justify-center gap-1.5 rounded-full px-7 py-3.5 text-sm font-semibold text-emerald-700 transition-colors hover:text-emerald-800 sm:w-auto"
-              >
-                {hero.secondaryCta.label}
-                <ArrowRight size={15} />
-              </a>
-            </div>
-          </Reveal>
+    <section className="overflow-hidden bg-[#f7f7f8] text-black">
+      <div className="mx-auto w-full max-w-[1180px] px-5 pt-28 pb-16 text-center sm:px-8 md:pt-36 md:pb-20 lg:pt-44">
+        <Reveal className="min-w-0">
+          <Eyebrow className="text-center">{hero.eyebrow}</Eyebrow>
+          <h1 className="mx-auto mt-5 max-w-[16ch] font-semibold leading-[1.03] tracking-[-0.035em] text-[clamp(2.375rem,6vw,5rem)]">
+            {hero.title}
+          </h1>
+          <p className="mx-auto mt-7 max-w-2xl text-base leading-8 text-zinc-600 sm:text-lg sm:leading-9">
+            {hero.description}
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <a
+              href={hero.primaryCta.href}
+              className="inline-flex w-full items-center justify-center rounded-full bg-black px-8 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-85 sm:w-auto"
+            >
+              {hero.primaryCta.label}
+            </a>
+            <a
+              href={hero.secondaryCta.href}
+              className="inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-black/10 bg-white px-8 py-3.5 text-sm font-semibold text-black transition-colors hover:bg-black/[0.04] sm:w-auto"
+            >
+              {hero.secondaryCta.label}
+              <ArrowRight size={15} />
+            </a>
+          </div>
+        </Reveal>
 
-          <Reveal delay={0.1} className="min-w-0">
-            <Placeholder label={hero.media} ratio="aspect-[4/3]" tone="light" />
-          </Reveal>
-        </div>
+        {/* Stage: wide primary media with two flanking detail tiles */}
+        <Reveal delay={0.12} className="mt-16 md:mt-20">
+          <div className="overflow-hidden rounded-[26px] bg-white shadow-[0_30px_80px_-40px_rgba(0,0,0,0.28)] ring-1 ring-black/[0.06] sm:rounded-[34px]">
+            <Placeholder label={hero.media} ratio="aspect-[16/9]" tone="light" />
+          </div>
+          <div className="mt-5 grid grid-cols-2 gap-4 sm:mt-6 sm:gap-6">
+            <div className="overflow-hidden rounded-[20px] bg-white ring-1 ring-black/[0.06] sm:rounded-[26px]">
+              <Placeholder label="Cloud reporting" ratio="aspect-[16/10]" tone="light" />
+            </div>
+            <div className="overflow-hidden rounded-[20px] bg-white ring-1 ring-black/[0.06] sm:rounded-[26px]">
+              <Placeholder label="Guest experience" ratio="aspect-[16/10]" tone="light" />
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -87,24 +95,48 @@ function Hero() {
 function WhySwitch() {
   return (
     <section className="bg-[#f7f7f8] text-black">
-      <div className="mx-auto w-full max-w-[1180px] px-5 pb-24 sm:px-8 md:pb-32">
+      <div className="mx-auto w-full max-w-[1180px] px-5 pt-24 pb-24 sm:px-8 md:pt-32 md:pb-32">
         <Reveal>
-          <h2 className="mx-auto max-w-[24ch] text-center font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.75rem,3.4vw,2.75rem)]">
+          <Eyebrow className="text-center">Why switch</Eyebrow>
+          <h2 className="mx-auto mt-4 max-w-[22ch] text-center font-semibold leading-[1.08] tracking-[-0.03em] text-[clamp(1.875rem,4vw,3.25rem)]">
             Why switch to eatOS
           </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-7 text-zinc-600 sm:text-base sm:leading-8">
+            One platform, built end to end — so every part of your restaurant works together.
+          </p>
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-x-10 lg:grid-cols-4 lg:gap-x-12">
+        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 md:mt-16 lg:grid-cols-12">
           {whySwitch.map((item, i) => (
-            <Reveal key={item.title} delay={i * 0.06} className="min-w-0">
-              <h3 className="text-lg font-semibold tracking-[-0.02em]">{item.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-zinc-600">{item.body}</p>
+            <Reveal
+              key={item.title}
+              delay={i * 0.06}
+              className={`min-w-0 ${i < 2 ? 'lg:col-span-6' : 'lg:col-span-4'} ${
+                i === 3 ? 'sm:col-span-2 lg:col-span-4' : ''
+              }`}
+            >
               <a
                 href={item.link.href}
-                className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700 transition-colors hover:text-emerald-800"
+                className="group flex h-full flex-col overflow-hidden rounded-[24px] bg-white ring-1 ring-black/[0.06] transition-shadow hover:shadow-[0_24px_60px_-36px_rgba(0,0,0,0.3)] sm:rounded-[28px]"
               >
-                {item.link.label}
-                <ArrowRight size={14} />
+                <Placeholder
+                  label={item.title}
+                  ratio={i < 2 ? 'aspect-[16/9]' : 'aspect-[4/3]'}
+                  tone="light"
+                />
+                <div className="flex flex-1 flex-col p-6 sm:p-7">
+                  <h3 className="text-lg font-semibold tracking-[-0.02em] sm:text-xl">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-zinc-600">{item.body}</p>
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700">
+                    {item.link.label}
+                    <ArrowRight
+                      size={14}
+                      className="transition-transform group-hover:translate-x-0.5"
+                    />
+                  </span>
+                </div>
               </a>
             </Reveal>
           ))}
@@ -284,48 +316,6 @@ function Reasons() {
   );
 }
 
-/* ------------------------------- Ecosystem ------------------------------- */
-
-function Ecosystem() {
-  return (
-    <section className="bg-[#f7f7f8] text-black">
-      <div className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-8 md:py-32">
-        <Reveal>
-          <h2 className="mx-auto max-w-[24ch] text-center font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.75rem,3.4vw,2.75rem)]">
-            All-in-One Restaurant Technology Cloud
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-7 text-zinc-600 sm:text-base">
-            Every technology you need to grow your restaurant and delight your guests.
-          </p>
-        </Reveal>
-
-        <div className="mt-14 -mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-4 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-5">
-          {ecosystem.map((item, i) => (
-            <Reveal
-              key={item.title}
-              delay={i * 0.05}
-              className="min-w-[70%] shrink-0 snap-start sm:min-w-0"
-            >
-              <a href={item.href} className="group block">
-                <Placeholder label={item.title} ratio="aspect-[4/3]" tone="light" />
-                <div className="mt-4 flex items-center justify-between gap-2">
-                  <span className="min-w-0 truncate text-sm font-semibold tracking-[-0.01em]">
-                    {item.title}
-                  </span>
-                  <ArrowRight
-                    size={15}
-                    className="shrink-0 text-zinc-400 transition-transform group-hover:translate-x-0.5"
-                  />
-                </div>
-              </a>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* --------------------------------- CTA ---------------------------------- */
 
 function ClosingCta() {
@@ -364,7 +354,6 @@ export default function ComparisonClient() {
       <WhySwitch />
       <Matrix />
       <Reasons />
-      <Ecosystem />
       <ClosingCta />
     </div>
   );
