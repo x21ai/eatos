@@ -70,8 +70,6 @@ export default function BlogPostClient({ slug }) {
               <span className="text-green-400">{post.category}</span>
               <span aria-hidden>·</span>
               <span>{formatDate(post.date)}</span>
-              <span aria-hidden>·</span>
-              <span>{post.readingTime}</span>
             </div>
             <h1 className="mt-6 font-bold leading-[1.08] tracking-tighter text-white text-[clamp(2rem,4.6vw,3.5rem)]">
               {post.title}
