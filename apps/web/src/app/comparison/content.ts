@@ -69,8 +69,8 @@ export const reasons = [
 
 export const ecosystem = [
   { title: 'Point of Sale', href: '/point-of-sale' },
-  { title: 'Online Ordering', href: '/products/online-ordering' },
+  { title: 'Online Ordering', href: '/products/apponlineorderingdelivery' },
   { title: 'Workforce Management', href: '/products/workforce-management' },
   { title: 'Kitchen Display System', href: '/products/kitchen-display-system' },
-  { title: 'Point of Purchase', href: '/products/self-service-kiosk' },
+  { title: 'Point of Purchase', href: '/products/point-of-purchase' },
 ];
