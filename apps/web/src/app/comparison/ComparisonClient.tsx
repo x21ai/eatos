@@ -48,13 +48,13 @@ function Hero() {
       <div className="mx-auto w-full max-w-[1180px] px-5 pt-28 pb-16 text-center sm:px-8 md:pt-36 md:pb-20 lg:pt-44">
         <Reveal className="min-w-0">
           <Eyebrow className="text-center">{hero.eyebrow}</Eyebrow>
-          <h1 className="mx-auto mt-5 max-w-[16ch] font-semibold leading-[1.03] tracking-[-0.035em] text-[clamp(2.375rem,6vw,5rem)]">
+          <h1 className="mx-auto mt-4 max-w-[20ch] font-semibold leading-[1.1] tracking-[-0.03em] text-[clamp(1.75rem,3.4vw,2.75rem)]">
             {hero.title}
           </h1>
-          <p className="mx-auto mt-7 max-w-2xl text-base leading-8 text-zinc-600 sm:text-lg sm:leading-9">
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-zinc-600 sm:text-base sm:leading-8">
             {hero.description}
           </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href={hero.primaryCta.href}
               className="inline-flex w-full items-center justify-center rounded-full bg-black px-8 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-85 sm:w-auto"
@@ -71,18 +71,10 @@ function Hero() {
           </div>
         </Reveal>
 
-        {/* Stage: wide primary media with two flanking detail tiles */}
-        <Reveal delay={0.12} className="mt-16 md:mt-20">
+        {/* Stage: single wide media */}
+        <Reveal delay={0.12} className="mt-14 md:mt-16">
           <div className="overflow-hidden rounded-[26px] bg-white shadow-[0_30px_80px_-40px_rgba(0,0,0,0.28)] ring-1 ring-black/[0.06] sm:rounded-[34px]">
             <Placeholder label={hero.media} ratio="aspect-[16/9]" tone="light" />
-          </div>
-          <div className="mt-5 grid grid-cols-2 gap-4 sm:mt-6 sm:gap-6">
-            <div className="overflow-hidden rounded-[20px] bg-white ring-1 ring-black/[0.06] sm:rounded-[26px]">
-              <Placeholder label="Cloud reporting" ratio="aspect-[16/10]" tone="light" />
-            </div>
-            <div className="overflow-hidden rounded-[20px] bg-white ring-1 ring-black/[0.06] sm:rounded-[26px]">
-              <Placeholder label="Guest experience" ratio="aspect-[16/10]" tone="light" />
-            </div>
           </div>
         </Reveal>
       </div>
