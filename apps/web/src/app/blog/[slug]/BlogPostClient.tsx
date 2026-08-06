@@ -70,8 +70,6 @@ export default function BlogPostClient({ slug }) {
               <span className="text-green-400">{post.category}</span>
               <span aria-hidden>·</span>
               <span>{formatDate(post.date)}</span>
-              <span aria-hidden>·</span>
-              <span>{post.readingTime}</span>
             </div>
             <h1 className="mt-6 font-bold leading-[1.08] tracking-tighter text-white text-[clamp(2rem,4.6vw,3.5rem)]">
               {post.title}
@@ -136,7 +134,7 @@ export default function BlogPostClient({ slug }) {
                     <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-green-600">
                       {item.category}
                     </p>
-                    <h3 className="mt-2 text-lg font-bold leading-snug tracking-tight text-black transition-colors group-hover:text-zinc-600">
+                    <h3 className="mt-2 line-clamp-2 text-lg font-bold leading-snug tracking-tight text-black transition-colors group-hover:text-zinc-600">
                       {item.title}
                     </h3>
                     <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-black">
