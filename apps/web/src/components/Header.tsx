@@ -357,18 +357,20 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? isDarkPage
-            ? "bg-black/50 backdrop-blur-xl border-b border-white/5 py-3"
-            : "bg-white/80 backdrop-blur-xl border-b border-black/5 py-3"
-          : "bg-transparent py-5"
+        mobileMenuOpen
+          ? "bg-white border-b border-gray-100 py-3"
+          : isScrolled
+            ? isDarkPage
+              ? "bg-black/50 backdrop-blur-xl border-b border-white/5 py-3"
+              : "bg-white/80 backdrop-blur-xl border-b border-black/5 py-3"
+            : "bg-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-4 xl:px-6 flex items-center justify-between gap-4">
         {/* Logo */}
         <a
           href="/"
-          className={`flex-shrink-0 flex items-center gap-2 ${isDarkPage ? "text-white" : "text-black"} relative z-10`}
+          className={`flex-shrink-0 flex items-center gap-2 ${mobileMenuOpen ? "text-black" : isDarkPage ? "text-white" : "text-black"} relative z-10`}
         >
           <img
             src={
@@ -577,7 +579,7 @@ export default function Header() {
 
         {/* Hamburger (visible below xl, under 1280px) */}
         <button
-          className={`xl:hidden flex-shrink-0 ${isDarkPage ? "text-white" : "text-black"} relative z-10 p-1`}
+          className={`xl:hidden flex-shrink-0 ${mobileMenuOpen ? "text-black" : isDarkPage ? "text-white" : "text-black"} relative z-10 p-1`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
         >
