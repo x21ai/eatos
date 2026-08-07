@@ -620,7 +620,7 @@ export default function Header() {
               className="flex min-h-11 items-center justify-between rounded-xl px-3 text-[14px] font-semibold hover:bg-gray-50"
               onClick={() => setMobileMenuOpen(false)}
             >
-              All products <span aria-hidden="true">→</span>
+              All restaurant types <span aria-hidden="true">→</span>
             </a>
 
             <div className="space-y-1">
