@@ -3,12 +3,14 @@ import ProductDetailClient from './ProductDetailClient';
 import { getAllProductSlugs } from '../products';
 
 export function generateStaticParams() {
-  // The KDS page has its own dedicated static route, so exclude it here to
-  // avoid two builders emitting the same path.
+  // Pages with dedicated static routes are excluded here to avoid duplicate
+  // builders emitting the same path.
+  const dedicated = ['kitchen-display-system', 'workforce-management'];
   return getAllProductSlugs()
-    .filter((slug) => slug !== 'kitchen-display-system')
+    .filter((slug) => !dedicated.includes(slug))
     .map((slug) => ({ slug }));
 }
+
 
 export default async function ProductDetailPage({ params }) {
   const { slug } = await params;
