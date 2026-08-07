@@ -1,6 +1,16 @@
 'use client';
 // @ts-nocheck
-import { ArrowRight, Play, Check, Smartphone, ShieldCheck, Wifi } from 'lucide-react';
+import {
+  ArrowRight,
+  Play,
+  Check,
+  CreditCard,
+  ShieldCheck,
+  Percent,
+  WifiOff,
+  Receipt,
+  Layers,
+} from 'lucide-react';
 import { RevealProvider, Reveal } from '@/components/AIIntelligence/Reveal';
 import {
   images,
@@ -10,6 +20,8 @@ import {
   places,
   requirements,
 } from './content';
+
+const featureIcons = { CreditCard, ShieldCheck, Percent, WifiOff, Receipt, Layers };
 
 export default function TapToPayClient() {
   return (
@@ -30,9 +42,8 @@ export default function TapToPayClient() {
                   Right at the table.
                 </span>
               </h1>
-              <p className="mx-auto mb-12 max-w-2xl text-[15px] font-light leading-relaxed text-gray-400 md:text-[22px]">
-                Take the payment in the same breath as the order. Your phone becomes the
-                terminal, no dongles, no hardware, no walk back to the station.
+              <p className="mx-auto mb-12 max-w-[34ch] text-[15px] font-light leading-relaxed text-gray-400 md:max-w-[46ch] md:text-[22px]">
+                Take the payment in the same breath as the order. Your phone is the terminal.
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <a
