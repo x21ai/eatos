@@ -357,11 +357,13 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? isDarkPage
-            ? "bg-black/50 backdrop-blur-xl border-b border-white/5 py-3"
-            : "bg-white/80 backdrop-blur-xl border-b border-black/5 py-3"
-          : "bg-transparent py-5"
+        mobileMenuOpen
+          ? "bg-white border-b border-gray-100 py-3"
+          : isScrolled
+            ? isDarkPage
+              ? "bg-black/50 backdrop-blur-xl border-b border-white/5 py-3"
+              : "bg-white/80 backdrop-blur-xl border-b border-black/5 py-3"
+            : "bg-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-4 xl:px-6 flex items-center justify-between gap-4">
