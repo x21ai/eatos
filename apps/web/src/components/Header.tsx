@@ -1,6 +1,9 @@
 // @ts-nocheck
 "use client";
 
+import mobileLogoWhite from "./marketing/assets/brand/logo-mobile-white.png.asset.json";
+import mobileLogoBlack from "./marketing/assets/brand/logo-mobile-black.png.asset.json";
+
 import {
   Menu,
   X,
