@@ -8,7 +8,6 @@ import hardwareAsset from './assets/kiosk-hardware.png.asset.json';
 import lineupAsset from './assets/kiosk-lineup.jpg.asset.json';
 
 export const hero = {
-  eyebrow: 'Self-Service Kiosk',
   title: 'Make self ordering simple & boost guest satisfaction',
   description:
     'Let guests browse, customize and pay on their own terms. eatOS kiosks shorten the line, lift check size and send every order straight to the kitchen.',
