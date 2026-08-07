@@ -565,7 +565,7 @@ export default function Header() {
 
       {/* Mobile and Tablet Menu: slides down below xl */}
       {mobileMenuOpen && (
-        <div className="xl:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-xl flex flex-col h-[calc(100vh-70px)] overflow-y-auto text-black">
+        <div className="xl:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-xl flex flex-col h-[calc(100vh-70px)] overflow-y-auto scrollbar-hidden text-black">
           <div className="p-4 flex flex-col gap-4">
             {/* Products */}
             <div className="flex items-center justify-between">
