@@ -7,8 +7,8 @@ import hardwareAsset from './assets/kiosk-hardware.png.asset.json';
 import lineupAsset from './assets/kiosk-lineup.jpg.asset.json';
 
 export const hero = {
-  title: 'Order. Pay.',
-  titleAccent: 'Skip. Done.',
+  title: 'Tap. Order.',
+  titleAccent: 'Pay. Go.',
   description:
     'Let guests order, customize and pay on their own. Your team stays focused on the food, not the line.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
