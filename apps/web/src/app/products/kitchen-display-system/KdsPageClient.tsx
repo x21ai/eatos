@@ -129,7 +129,6 @@ function Spotlight({ feature, index }) {
                 ratio="aspect-[16/10]"
                 tone="light"
                 src={feature.image}
-                pad
               />
             </div>
 
@@ -194,7 +193,7 @@ function Hardware() {
         </Reveal>
 
         <Reveal delay={0.08} className="mx-auto mt-10 max-w-4xl md:mt-16">
-          <Placeholder label={hardware.imageLabel} ratio="aspect-[16/9]" src={hardware.image} pad />
+          <Placeholder label={hardware.imageLabel} ratio="aspect-[16/9]" src={hardware.image} />
         </Reveal>
 
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3 md:mt-16">
