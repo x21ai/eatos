@@ -43,6 +43,8 @@ function Eyebrow({ children, className = '' }) {
 
 /* -------------------------------- Hero -------------------------------- */
 
+/* -------------------------------- Hero -------------------------------- */
+
 function Hero() {
   return (
     <section className="relative h-[100dvh] min-h-screen flex items-center justify-center overflow-hidden bg-black text-white">
@@ -63,12 +65,12 @@ function Hero() {
       </motion.div>
 
       {/* Centered copy */}
-      <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col items-center justify-center text-center pb-32">
+      <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col items-center justify-center text-center">
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tighter mb-8 leading-[1.05]"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 leading-[1.05]"
         >
           {hero.title} <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40">
@@ -106,22 +108,27 @@ function Hero() {
           </a>
         </motion.div>
       </div>
+    </section>
+  );
+}
 
-      {/* Bottom stats bar */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/10 bg-black/30 backdrop-blur-md">
-        <div className="mx-auto w-full max-w-[1180px] px-5 py-8 sm:px-8">
-          <div className="flex flex-col sm:flex-row items-center justify-center divide-y sm:divide-y-0 sm:divide-x divide-white/10">
-            {hero.stats.map((s) => (
-              <div key={s.label} className="flex-1 flex flex-col items-center py-4 sm:py-0 px-6">
-                <div className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-1">
-                  {s.value}
-                </div>
-                <div className="text-[11px] uppercase tracking-[0.18em] text-gray-400">
-                  {s.label}
-                </div>
+/* --------------------------- Stats strip --------------------------- */
+
+function StatsStrip() {
+  return (
+    <section className="bg-black text-white border-t border-white/10">
+      <div className="mx-auto w-full max-w-[1180px] px-5 py-12 sm:px-8 md:py-16">
+        <div className="grid grid-cols-3 divide-x divide-white/10">
+          {hero.stats.map((s) => (
+            <div key={s.label} className="flex flex-col items-center px-4 text-center">
+              <div className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-2">
+                {s.value}
               </div>
-            ))}
-          </div>
+              <div className="text-[10px] sm:text-xs uppercase tracking-[0.18em] text-gray-400">
+                {s.label}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
