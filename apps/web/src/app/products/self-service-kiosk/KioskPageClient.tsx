@@ -45,54 +45,83 @@ function Eyebrow({ children, className = '' }) {
 
 function Hero() {
   return (
-    <section className="bg-[#f7f7f8] text-black">
-      <div className="mx-auto w-full max-w-[1180px] px-5 pt-28 pb-16 sm:px-8 md:pt-36 md:pb-24 lg:pt-40">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-          <Reveal className="min-w-0">
-            <h1 className="max-w-[24ch] font-bold leading-[1.05] tracking-tighter text-3xl md:text-5xl">
-              {hero.title}
-            </h1>
-            <p className="mt-8 max-w-xl text-[15px] font-light leading-relaxed text-zinc-600 md:text-[22px]">
-              {hero.description}
-            </p>
-            <div className="mt-12 flex flex-col gap-6 sm:flex-row sm:items-center">
-              <a
-                href={hero.primaryCta.href}
-                className="inline-flex w-full items-center justify-center rounded-full bg-black px-7 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-85 sm:w-auto"
-              >
-                {hero.primaryCta.label}
-              </a>
-              <a
-                href={hero.secondaryCta.href}
-                className="inline-flex w-full items-center justify-center gap-1.5 rounded-full px-7 py-3.5 text-sm font-semibold text-indigo-600 transition-colors hover:text-indigo-700 sm:w-auto"
-              >
-                {hero.secondaryCta.label}
-                <ArrowRight size={15} />
-              </a>
-            </div>
+    <section className="relative h-[100dvh] min-h-screen flex items-center justify-center overflow-hidden bg-black text-white">
+      {/* Background image with cinematic zoom */}
+      <motion.div
+        initial={{ scale: 1.1, opacity: 0 }}
+        animate={{ scale: 1, opacity: 0.6 }}
+        transition={{ duration: 2, ease: 'easeOut' }}
+        className="absolute inset-0 z-0"
+      >
+        <img
+          src={hero.image}
+          alt={hero.imageLabel}
+          className="w-full h-full object-cover"
+          fetchPriority="high"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
+      </motion.div>
 
-            <dl className="mt-12 grid grid-cols-2 gap-y-8 gap-x-6 border-t border-zinc-200 pt-8 sm:grid-cols-3">
-              {hero.stats.map((s) => (
-                <div key={s.label} className="min-w-0">
-                  <dt className="font-bold leading-none tracking-tighter text-indigo-600 text-3xl md:text-4xl">
-                    {s.value}
-                  </dt>
-                  <dd className="mt-2.5 text-[11px] uppercase tracking-[0.18em] text-zinc-500">
-                    {s.label}
-                  </dd>
+      {/* Centered copy */}
+      <div className="container mx-auto px-4 md:px-6 relative z-10 flex flex-col items-center justify-center text-center pb-32">
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tighter mb-8 leading-[1.05]"
+        >
+          {hero.title} <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40">
+            {hero.titleAccent}
+          </span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.7 }}
+          className="text-[15px] md:text-[22px] text-gray-400 mb-12 max-w-3xl leading-relaxed font-light"
+        >
+          {hero.description}
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.9 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-6"
+        >
+          <a
+            href={hero.primaryCta.href}
+            className="group relative px-8 py-4 bg-white text-black rounded-full text-lg font-semibold hover:scale-105 transition-all duration-300 overflow-hidden w-full sm:w-auto"
+          >
+            <span className="relative z-10">{hero.primaryCta.label}</span>
+          </a>
+          <a
+            href={hero.secondaryCta.href}
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-lg font-medium text-white border border-white/20 hover:bg-white/10 hover:border-white/40 transition-all backdrop-blur-sm w-full sm:w-auto"
+          >
+            {hero.secondaryCta.label}
+            <ArrowRight size={18} />
+          </a>
+        </motion.div>
+      </div>
+
+      {/* Bottom stats bar */}
+      <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/10 bg-black/30 backdrop-blur-md">
+        <div className="mx-auto w-full max-w-[1180px] px-5 py-8 sm:px-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+            {hero.stats.map((s) => (
+              <div key={s.label} className="flex-1 flex flex-col items-center py-4 sm:py-0 px-6">
+                <div className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-1">
+                  {s.value}
                 </div>
-              ))}
-            </dl>
-          </Reveal>
-
-          <Reveal delay={0.1} className="min-w-0">
-            <Placeholder
-              label={hero.imageLabel}
-              tone="light"
-              ratio="aspect-[4/5] sm:aspect-[4/5] lg:aspect-[3/4]"
-              src={hero.image}
-            />
-          </Reveal>
+                <div className="text-[11px] uppercase tracking-[0.18em] text-gray-400">
+                  {s.label}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
