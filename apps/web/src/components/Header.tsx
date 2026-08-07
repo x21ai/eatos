@@ -398,7 +398,7 @@ export default function Header() {
           className={`hidden xl:flex items-center gap-8 2xl:gap-10 flex-1 justify-center ${isDarkPage ? "text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]" : "text-black"}`}
           aria-label="Primary"
         >
-          {/* Products Dropdown */}
+          {/* Restaurant Type Dropdown */}
           <div
             className="relative"
             onMouseEnter={() => setProductsOpen(true)}
@@ -407,7 +407,7 @@ export default function Header() {
             <button
               className={`flex items-center gap-1 py-2 hover:opacity-70 transition-opacity ${navTextClass}`}
             >
-              Products
+              Restaurant Type
               <ChevronDown
                 size={13}
                 className={`transition-transform duration-200 ${productsOpen ? "rotate-180" : ""}`}
@@ -605,7 +605,7 @@ export default function Header() {
                       : "text-gray-500"
                   }`}
                 >
-                  {t}
+                  {t === "products" ? "Restaurant Type" : "Solutions"}
                 </button>
               ))}
             </div>
@@ -620,7 +620,7 @@ export default function Header() {
               className="flex min-h-11 items-center justify-between rounded-xl px-3 text-[14px] font-semibold hover:bg-gray-50"
               onClick={() => setMobileMenuOpen(false)}
             >
-              All products <span aria-hidden="true">→</span>
+              All restaurant types <span aria-hidden="true">→</span>
             </a>
 
             <div className="space-y-1">
