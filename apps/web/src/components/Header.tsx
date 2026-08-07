@@ -574,26 +574,57 @@ export default function Header() {
 
       {/* Mobile and Tablet Menu: slides down below xl */}
       {mobileMenuOpen && (
-        <div className="xl:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-xl flex flex-col h-[calc(100vh-70px)] overflow-y-auto scrollbar-hidden text-black">
-          <div className="p-4 flex flex-col gap-4">
-            {/* Products */}
-            <div className="flex items-center justify-between">
-              <div className="font-semibold text-gray-400 text-xs uppercase tracking-wider">
-                Products
-              </div>
-              <a
-                href="/products"
-                className="text-sm font-semibold text-black hover:opacity-70"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                View all →
-              </a>
+        <div className="xl:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-xl flex flex-col h-[calc(100vh-70px)] text-black">
+          {/* Tab switcher */}
+          <div className="shrink-0 px-3 pt-3 pb-3 border-b border-gray-100">
+            <div className="grid grid-cols-2 gap-1 rounded-full bg-gray-100 p-1">
+              {["products", "solutions"].map((t) => (
+                <button
+                  key={t}
+                  type="button"
+                  aria-pressed={mobileTab === t}
+                  onClick={() => setMobileTab(t)}
+                  className={`min-h-11 rounded-full text-[14px] font-semibold capitalize transition-colors ${
+                    mobileTab === t
+                      ? "bg-white text-black shadow-sm"
+                      : "text-gray-500"
+                  }`}
+                >
+                  {t}
+                </button>
+              ))}
             </div>
+          </div>
+
+          <div className="flex-1 overflow-y-auto scrollbar-hidden">
+          <div className="p-3 flex flex-col gap-1.5">
+            {mobileTab === "products" && (
+            <>
+            <a
+              href="/products"
+              className="flex min-h-11 items-center justify-between rounded-xl px-3 text-[14px] font-semibold hover:bg-gray-50"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              All products <span aria-hidden="true">→</span>
+            </a>
 
             <div className="space-y-1">
-              <div className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider px-2">
+              <button
+                type="button"
+                aria-expanded={openGroup === "Operations"}
+                onClick={() =>
+                  setOpenGroup(openGroup === "Operations" ? null : "Operations")
+                }
+                className="flex w-full min-h-11 items-center justify-between rounded-xl px-3 text-[12px] font-semibold uppercase tracking-wider text-gray-500 hover:bg-gray-50"
+              >
                 Operations
-              </div>
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform ${openGroup === "Operations" ? "rotate-180" : ""}`}
+                />
+              </button>
+              {openGroup === "Operations" && (
+              <div className="space-y-0.5 pb-1">
               {[
                 {
                   href: "/point-of-sale",
@@ -623,18 +654,35 @@ export default function Header() {
                 <a
                   key={href}
                   href={href}
-                  className="text-base font-medium p-2 hover:bg-gray-50 rounded-lg flex items-center gap-3"
+                  className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] font-medium hover:bg-gray-50"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Icon size={18} className={color} /> {label}
                 </a>
               ))}
+              </div>
+              )}
             </div>
 
             <div className="space-y-1">
-              <div className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider px-2">
+              <button
+                type="button"
+                aria-expanded={openGroup === "Guest Experience"}
+                onClick={() =>
+                  setOpenGroup(
+                    openGroup === "Guest Experience" ? null : "Guest Experience",
+                  )
+                }
+                className="flex w-full min-h-11 items-center justify-between rounded-xl px-3 text-[12px] font-semibold uppercase tracking-wider text-gray-500 hover:bg-gray-50"
+              >
                 Guest Experience
-              </div>
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform ${openGroup === "Guest Experience" ? "rotate-180" : ""}`}
+                />
+              </button>
+              {openGroup === "Guest Experience" && (
+              <div className="space-y-0.5 pb-1">
               {[
                 {
                   href: "/products/self-service-kiosk",
