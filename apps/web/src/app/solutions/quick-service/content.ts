@@ -30,7 +30,7 @@ export const pillars = [
     id: 'versatile',
     title: 'Be versatile and prepared with eatOS',
     body:
-      'However your guests order — at the counter or on the go — eatOS gets you payment-ready. A cloud-based ecosystem built for the pace of quick-service restaurants.',
+      'However your guests order, at the counter or on the go, eatOS gets you payment-ready. A cloud-based ecosystem built for the pace of quick-service restaurants.',
     more:
       'Counter, kiosk, handheld, web and delivery orders land in one queue, so a single team runs every channel without switching systems.',
     imageLabel: 'Counter ordering flow',
@@ -58,7 +58,7 @@ export const pillars = [
     id: 'repeat',
     title: 'Keep them coming back for more',
     body:
-      'Menu management, streamlined kitchen communication and loyalty keep orders accurate and fast — correct the first time, every time.',
+      'Menu management, streamlined kitchen communication and loyalty keep orders accurate and fast, correct the first time, every time.',
     more:
       'Update an item once and it changes across every register, kiosk and online menu instantly, so pricing and availability never drift.',
     imageLabel: 'Loyalty and menu management',

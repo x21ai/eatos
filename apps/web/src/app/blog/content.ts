@@ -39,7 +39,7 @@ export const posts = [
       'An outage should never close the register. Here is how local-first architecture keeps orders, tickets and payments moving until connectivity returns.',
     image: offlineImg.url,
     body: [
-      { type: 'p', text: 'Connectivity fails at the worst possible moment — a storm, a carrier issue, a router that quietly gives up during the dinner rush. A point of sale that depends entirely on the cloud turns that inconvenience into lost revenue and a dining room full of waiting guests.' },
+      { type: 'p', text: 'Connectivity fails at the worst possible moment, a storm, a carrier issue, a router that quietly gives up during the dinner rush. A point of sale that depends entirely on the cloud turns that inconvenience into lost revenue and a dining room full of waiting guests.' },
       { type: 'h2', text: 'Local-first, cloud-synced' },
       { type: 'p', text: 'eatOS keeps a working copy of your menu, pricing, tax rules and open checks on the terminal itself. When the network drops, service continues on local data instead of stalling on a request that will never come back.' },
       { type: 'h2', text: 'What still works offline' },
@@ -62,7 +62,7 @@ export const posts = [
     body: [
       { type: 'p', text: 'Most labor problems are really visibility problems. Managers build schedules in one tool, approve punches in another, and only learn what a shift actually cost days later.' },
       { type: 'h2', text: 'Schedule against real demand' },
-      { type: 'p', text: 'When sales history sits next to the schedule, you can staff to the curve instead of to habit — tighter coverage at the peak, leaner shoulders around it.' },
+      { type: 'p', text: 'When sales history sits next to the schedule, you can staff to the curve instead of to habit, tighter coverage at the peak, leaner shoulders around it.' },
       { type: 'h2', text: 'Fewer surprises on payroll day' },
       { type: 'ul', items: ['Clock-in enforcement tied to the schedule', 'Overtime warnings before the hours are worked', 'Break tracking that supports local compliance', 'Tip and role-based pay handled per shift'] },
       { type: 'h2', text: 'Give the team self-service' },
@@ -79,7 +79,7 @@ export const posts = [
       'Reporting is only useful when it changes a decision. Ten practical habits that turn raw restaurant data into weekly action.',
     image: analyticsImg.url,
     body: [
-      { type: 'p', text: 'Every point of sale produces reports. Very few operators use them to change what happens next week. The difference is rarely the software — it is the routine around it.' },
+      { type: 'p', text: 'Every point of sale produces reports. Very few operators use them to change what happens next week. The difference is rarely the software, it is the routine around it.' },
       { type: 'h2', text: 'Ten habits worth adopting' },
       { type: 'ul', items: ['Pick five numbers you will review every week and ignore the rest', 'Compare against the same weekday, not the previous day', 'Track sales per labor hour, not just total labor cost', 'Review menu items by both margin and volume', 'Watch void and comp reasons for training gaps', 'Reconcile theoretical and actual inventory usage', 'Segment by daypart before drawing conclusions', 'Give each manager one metric they own', 'Automate the report so nobody has to build it', 'Write down the decision the numbers led to'] },
       { type: 'h2', text: 'Make the review a ritual' },
@@ -102,7 +102,7 @@ export const posts = [
       { type: 'h2', text: 'Paying without waiting' },
       { type: 'ul', items: ['Present, split and settle the check at the table', 'Tap, chip and mobile wallet on the same device', 'Digital receipts and prompted tipping', 'Loyalty applied before the payment, not after'] },
       { type: 'h2', text: 'What it means for turns' },
-      { type: 'p', text: 'Cutting several minutes off the payment window at every table adds up to real capacity on a busy night — without adding a single seat.' },
+      { type: 'p', text: 'Cutting several minutes off the payment window at every table adds up to real capacity on a busy night, without adding a single seat.' },
     ],
   },
   {
@@ -112,7 +112,7 @@ export const posts = [
     date: '2026-01-14',
     author: 'eatOS Staff',
     excerpt:
-      'Counts, recipes, par levels and vendor orders — the fundamentals of keeping food cost predictable without drowning in spreadsheets.',
+      'Counts, recipes, par levels and vendor orders, the fundamentals of keeping food cost predictable without drowning in spreadsheets.',
     image: inventoryImg.url,
     body: [
       { type: 'p', text: 'Inventory is where margin quietly disappears. Waste, over-portioning and inconsistent counts rarely show up as a single dramatic number; they show up as a food cost that never quite improves.' },
@@ -121,7 +121,7 @@ export const posts = [
       { type: 'h2', text: 'Count what matters, often' },
       { type: 'ul', items: ['Daily counts on your highest-cost and highest-theft items', 'Weekly full counts on a fixed day and time', 'Par levels that trigger orders automatically', 'Vendor invoices matched to what was actually received'] },
       { type: 'h2', text: 'Close the loop' },
-      { type: 'p', text: 'Compare theoretical usage from sales against actual usage from counts. The variance is your shortlist of problems to fix — portioning, prep waste, or process.' },
+      { type: 'p', text: 'Compare theoretical usage from sales against actual usage from counts. The variance is your shortlist of problems to fix, portioning, prep waste, or process.' },
     ],
   },
   {
@@ -131,7 +131,7 @@ export const posts = [
     date: '2026-02-11',
     author: 'eatOS Staff',
     excerpt:
-      'Hardware, software, payments and implementation — a clear breakdown of what a restaurant point of sale really costs in year one.',
+      'Hardware, software, payments and implementation, a clear breakdown of what a restaurant point of sale really costs in year one.',
     image: posCostsImg.url,
     body: [
       { type: 'p', text: 'Sticker prices rarely tell the whole story. The useful question is what the system costs across its first twelve months, including the work of getting live.' },
@@ -167,7 +167,7 @@ export const posts = [
     date: '2026-02-11',
     author: 'eatOS Staff',
     excerpt:
-      'Digital orders are now a core channel. These are the eight operational problems that quietly erode their margin — and how to address them.',
+      'Digital orders are now a core channel. These are the eight operational problems that quietly erode their margin, and how to address them.',
     image: onlineDeliveryImg.url,
     body: [
       { type: 'p', text: 'Off-premise ordering added revenue and a whole new set of operating problems. Most of them are solvable with process and integration rather than more headcount.' },

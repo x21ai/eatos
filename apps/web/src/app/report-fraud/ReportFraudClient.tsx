@@ -292,7 +292,7 @@ function ReportForm() {
             maxLength={2000}
             value={values.message}
             onChange={handleChange}
-            placeholder="Tell us what happened — dates, amounts, transaction IDs, merchant names and any suspicious addresses."
+            placeholder="Tell us what happened, dates, amounts, transaction IDs, merchant names and any suspicious addresses."
             className={`mt-2 resize-none ${fieldClass('message')}`}
           />
           {errors.message ? <p className="mt-2 text-xs text-red-600">{errors.message}</p> : null}

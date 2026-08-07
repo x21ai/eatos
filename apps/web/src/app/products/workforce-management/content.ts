@@ -47,7 +47,7 @@ export const features = [
     id: 'time-clock',
     title: 'GPS time clock',
     body:
-      'Clock in from any device with location verification. Managers see who is on shift, on break, or late — without chasing anyone down.',
+      'Clock in from any device with location verification. Managers see who is on shift, on break, or late, without chasing anyone down.',
     more:
       'Geofencing confirms staff are on-site, and photo clock-in prevents buddy punching. Every punch feeds directly into timesheets and payroll.',
     imageLabel: 'Mobile time clock',
@@ -84,7 +84,7 @@ export const benefits = [
   },
   {
     title: 'Mobile-first',
-    body: 'Managers and staff do everything from their phones — schedules, time off, availability, and messaging.',
+    body: 'Managers and staff do everything from their phones, schedules, time off, availability, and messaging.',
   },
 ];
 
