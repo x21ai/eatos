@@ -88,8 +88,8 @@ export default function Header() {
         "/terms",
         "/customers",
         "/book-demo",
-        "/products/self-service-kiosk",
         "/comparison",
+
       ];
       const isLight = lightPages.some(
         (p) => path === p || path.startsWith(p + "/"),

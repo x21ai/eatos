@@ -1,20 +1,20 @@
 // @ts-nocheck
 // All copy for the Self-Service Kiosk product page. Edit here.
 
-import heroAsset from './assets/kiosk-hero.jpg.asset.json';
 import designedAsset from './assets/kiosk-designed.jpg.asset.json';
 import waitAsset from './assets/kiosk-wait.jpg.asset.json';
 import hardwareAsset from './assets/kiosk-hardware.png.asset.json';
 import lineupAsset from './assets/kiosk-lineup.jpg.asset.json';
 
 export const hero = {
-  title: 'Make self ordering simple & boost guest satisfaction',
+  title: 'Order. Pay.',
+  titleAccent: 'Skip. Done.',
   description:
-    'Let guests browse, customize and pay on their own terms. eatOS kiosks shorten the line, lift check size and send every order straight to the kitchen.',
+    'Let guests order, customize and pay on their own. Your team stays focused on the food, not the line.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Self-service kiosk',
-  image: heroAsset.url,
+  image: '/images/kiosk-hero-dark.jpg',
   stats: [
     { value: '20%', label: 'Higher check size' },
     { value: '2x', label: 'Faster ordering' },
