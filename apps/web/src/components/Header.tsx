@@ -901,31 +901,29 @@ export default function Header() {
                   href={href}
                   target={external ? "_blank" : undefined}
                   rel={external ? "noopener noreferrer" : undefined}
-                  className="flex flex-col items-center justify-center p-3 rounded-lg hover:bg-gray-50 gap-1.5 text-center"
+                  className="flex min-h-11 flex-col items-center justify-center gap-1 rounded-xl p-2 text-center hover:bg-gray-50"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <Icon size={22} className={colorClass || "text-gray-600"} />
-                  <span className="text-xs font-medium">{label}</span>
+                  <Icon size={20} className={colorClass || "text-gray-600"} />
+                  <span className="text-[11px] font-medium">{label}</span>
                 </a>
               ))}
             </div>
 
-            <div className="h-px bg-gray-100" />
-
             {/* CTA */}
-            <div className="flex flex-col gap-3 pb-4">
+            <div className="mt-2 grid grid-cols-2 gap-2">
               <a
                 href="https://shop.eatos.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gray-100 text-black text-center py-3 rounded-full font-semibold text-base hover:bg-gray-200 transition-colors"
+                className="bg-gray-100 text-black text-center py-3 rounded-full font-semibold text-[15px] hover:bg-gray-200 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Shop
               </a>
               <a
                 href="/get-started"
-                className="bg-black text-white text-center py-3 rounded-full font-semibold text-base"
+                className="bg-black text-white text-center py-3 rounded-full font-semibold text-[15px]"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Get Started
