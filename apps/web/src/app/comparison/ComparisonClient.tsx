@@ -102,7 +102,7 @@ function WhySwitch() {
               Why switch to eatOS
             </h2>
             <p className="mt-5 max-w-md text-sm leading-7 text-zinc-600">
-              One platform, built end to end — so every part of your restaurant works together.
+              One platform, built end to end, so every part of your restaurant works together.
             </p>
             <div className="mt-7 overflow-hidden rounded-[22px] ring-1 ring-black/[0.06]">
               <Placeholder
@@ -182,7 +182,7 @@ function Matrix() {
           </p>
         </Reveal>
 
-        {/* Table — tablet and up, horizontal scroll with sticky feature column */}
+        {/* Table, tablet and up, horizontal scroll with sticky feature column */}
         <Reveal delay={0.1} className="mt-14 hidden md:block">
           <div className="-mx-5 overflow-x-auto px-5 sm:mx-0 sm:px-0">
             <table className="w-full min-w-[860px] border-separate border-spacing-0 text-left">
@@ -233,7 +233,7 @@ function Matrix() {
           </div>
         </Reveal>
 
-        {/* Mobile — stacked per-brand cards */}
+        {/* Mobile, stacked per-brand cards */}
         <div className="mt-12 space-y-4 md:hidden">
           {competitors.map((name, ci) => (
             <Reveal key={name} delay={ci * 0.04}>

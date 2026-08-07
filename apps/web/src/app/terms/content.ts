@@ -103,7 +103,7 @@ export const sections: Section[] = [
     blocks: [
       {
         type: "p",
-        text: "We do not warrant that the Services will be compatible with your mobile device or carrier. Your use of the Services may be subject to the terms of your agreements with your mobile device manufacturer or your carrier. You may not use a modified device to use the Services if the modification is contrary to the manufacturer’s software or hardware guidelines, including disabling hardware or software controls — sometimes referred to as “jail broken.”",
+        text: "We do not warrant that the Services will be compatible with your mobile device or carrier. Your use of the Services may be subject to the terms of your agreements with your mobile device manufacturer or your carrier. You may not use a modified device to use the Services if the modification is contrary to the manufacturer’s software or hardware guidelines, including disabling hardware or software controls, sometimes referred to as “jail broken.”",
       },
     ],
   },
@@ -221,7 +221,7 @@ export const sections: Section[] = [
       },
       {
         type: "p",
-        text: "Hardware including credit card readers, bluetooth printers, bar code readers, cash drawers, tablets, phones and any and all hardware sold by eatOS is non-refundable — all sales are final at the time of ordering.",
+        text: "Hardware including credit card readers, bluetooth printers, bar code readers, cash drawers, tablets, phones and any and all hardware sold by eatOS is non-refundable, all sales are final at the time of ordering.",
       },
     ],
   },
@@ -231,7 +231,7 @@ export const sections: Section[] = [
     blocks: [
       {
         type: "p",
-        text: "In the event of non-usage of the POS machine — i.e., no transaction is done on the POS machine by the merchant for a period of three (3) months or more — eatOS may terminate this Agreement or deactivate the services for the usage of both the eatOS application and hardware device with immediate effect, at any time. The merchant will not be entitled to any refund in any such case.",
+        text: "In the event of non-usage of the POS machine, i.e., no transaction is done on the POS machine by the merchant for a period of three (3) months or more, eatOS may terminate this Agreement or deactivate the services for the usage of both the eatOS application and hardware device with immediate effect, at any time. The merchant will not be entitled to any refund in any such case.",
       },
     ],
   },

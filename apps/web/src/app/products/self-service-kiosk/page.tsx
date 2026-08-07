@@ -4,7 +4,7 @@ import KioskPageClient from './KioskPageClient';
 export const metadata = {
   title: 'Self-Service Kiosk | eatOS Restaurant Technology Cloud',
   description:
-    'eatOS self-service kiosks make ordering simple — shorter lines, larger checks, smart upsells and orders that route straight to the kitchen.',
+    'eatOS self-service kiosks make ordering simple, shorter lines, larger checks, smart upsells and orders that route straight to the kitchen.',
   openGraph: {
     type: 'website',
     title: 'Self-Service Kiosk | eatOS',

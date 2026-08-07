@@ -32,7 +32,7 @@ export default function TapToPayClient() {
               </h1>
               <p className="mx-auto mb-12 max-w-2xl text-[15px] font-light leading-relaxed text-gray-400 md:text-[22px]">
                 Take the payment in the same breath as the order. Your phone becomes the
-                terminal — no dongles, no hardware, no walk back to the station.
+                terminal, no dongles, no hardware, no walk back to the station.
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <a
@@ -82,7 +82,7 @@ export default function TapToPayClient() {
                   </h2>
                 </div>
 
-                {/* Video placeholder — drop a <video src> in here later */}
+                {/* Video placeholder, drop a <video src> in here later */}
                 <div className="group relative aspect-video w-full overflow-hidden rounded-[24px] border border-white/10 bg-zinc-900 md:rounded-[32px]">
                   <img
                     src={images.poster}

@@ -32,7 +32,7 @@ export const steps = [
   {
     step: '03',
     title: 'They tap. You are done.',
-    body: 'Card, phone or watch — one tap approves it. The receipt goes out by text or email and the ticket closes itself.',
+    body: 'Card, phone or watch, one tap approves it. The receipt goes out by text or email and the ticket closes itself.',
   },
 ];
 
@@ -70,7 +70,7 @@ export const places = [
   },
   {
     title: 'At the counter',
-    body: 'Open a second line in seconds during a rush — any phone becomes a register.',
+    body: 'Open a second line in seconds during a rush, any phone becomes a register.',
   },
   {
     title: 'Curbside and events',

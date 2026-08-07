@@ -85,7 +85,7 @@ export const brochures = [
     id: 'workforce-management',
     title: 'Workforce Management',
     description:
-      'Harness the power of technology to effectively manage your most valuable asset — your workforce.',
+      'Harness the power of technology to effectively manage your most valuable asset, your workforce.',
     flipbook: 'https://go.fliplink.me/view/0D4CB87D-B227-4AF0-B056-EA0D2F13B1D2',
     download:
       'https://6789180.fs1.hubspotusercontent-na1.net/hubfs/6789180/eatOS%20-%20Brochures%20(March%2024)/eO%20WFM%20ver%202.5(p)%2018%20May%2023%20ph.pdf',

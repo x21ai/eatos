@@ -69,7 +69,7 @@ export function NewsletterSection() {
                 }`}
               >
                 {status === 'success'
-                  ? "Thanks — you're on the list."
+                  ? "Thanks, you're on the list."
                   : status === 'error'
                     ? 'Please enter a valid email address.'
                     : 'No spam. Unsubscribe anytime.'}

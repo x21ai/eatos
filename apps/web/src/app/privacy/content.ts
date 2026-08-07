@@ -74,7 +74,7 @@ export const sections: Section[] = [
       },
       {
         type: "p",
-        text: "We use your Identification Information and your Financial Information to go through our identity or account verification process and to enable you to authenticate into your account once it is created. We may share your Identification Information with identity verification vendors to verify information that we collect. This is a legal obligation — for example, “Know Your Customer” and AML compliance requirements are governed by, among other laws, the Bank Secrecy Act (1970) (USA) and the USA Patriot Act (2001) (USA).",
+        text: "We use your Identification Information and your Financial Information to go through our identity or account verification process and to enable you to authenticate into your account once it is created. We may share your Identification Information with identity verification vendors to verify information that we collect. This is a legal obligation, for example, “Know Your Customer” and AML compliance requirements are governed by, among other laws, the Bank Secrecy Act (1970) (USA) and the USA Patriot Act (2001) (USA).",
       },
       { type: "h3", text: "Tax information" },
       { type: "p", text: "Withholding allowances and tax filing status." },
@@ -99,12 +99,12 @@ export const sections: Section[] = [
       {
         type: "ul",
         items: [
-          "Precise geolocation information — the location of your device. We use your geolocation data to determine whether we can provide you with Services and to customise our Services to your location. This enables us to determine whether we can provide Services to you, and in what language, to comply with applicable payment processor and other regulatory requirements, and to combat fraud. This is legally justified as contract performance (for Services in territories where we are authorised to conduct our business) and as legal obligation (to comply with territorial restrictions).",
-          "Device information — information about your device, including your hardware model, operating system and version, device name, unique device identifier, mobile network information, and information about the device’s interaction with our Services.",
-          "Use information — information about how you use our Services, including your access time, log-in and log-out information, browser type and language, country and language setting on your device, IP address, the domain name of your internet service provider, other attributes about your browser, mobile device and operating system, any specific page you visit on our platform, content you view, features you use, the date and time of your visit to or use of the Services, your search terms, the website you visited before you used the Services, data about how you interact with our Services, and other clickstream data.",
-          "Business information — information about products and services you sell (including inventory, pricing and other data) and other information you provide about you or your business (including appointment, staffing availability, employee, payroll and contact data), as well as information about your payment transactions.",
-          "Employee information — information provided to a seller using our Services, for example information about employees whose employers use eatOS (including hours worked and other timecard data).",
-          "Customer information — information you collect from your customers, including email address, phone number, payment information, or other information.",
+          "Precise geolocation information: the location of your device. We use your geolocation data to determine whether we can provide you with Services and to customise our Services to your location. This enables us to determine whether we can provide Services to you, and in what language, to comply with applicable payment processor and other regulatory requirements, and to combat fraud. This is legally justified as contract performance (for Services in territories where we are authorised to conduct our business) and as legal obligation (to comply with territorial restrictions).",
+          "Device information: information about your device, including your hardware model, operating system and version, device name, unique device identifier, mobile network information, and information about the device’s interaction with our Services.",
+          "Use information: information about how you use our Services, including your access time, log-in and log-out information, browser type and language, country and language setting on your device, IP address, the domain name of your internet service provider, other attributes about your browser, mobile device and operating system, any specific page you visit on our platform, content you view, features you use, the date and time of your visit to or use of the Services, your search terms, the website you visited before you used the Services, data about how you interact with our Services, and other clickstream data.",
+          "Business information: information about products and services you sell (including inventory, pricing and other data) and other information you provide about you or your business (including appointment, staffing availability, employee, payroll and contact data), as well as information about your payment transactions.",
+          "Employee information: information provided to a seller using our Services, for example information about employees whose employers use eatOS (including hours worked and other timecard data).",
+          "Customer information: information you collect from your customers, including email address, phone number, payment information, or other information.",
         ],
       },
       {
@@ -119,9 +119,9 @@ export const sections: Section[] = [
       {
         type: "ul",
         items: [
-          "Identity verification — information from third-party verification services, credit bureaus, financial institutions, mailing list providers, and publicly available sources. In some circumstances, where lawful, this information may include your government-issued identification number.",
-          "Background information — to the extent permitted by applicable laws, we may obtain background check reports from public records of criminal convictions and arrest records. We may use your information, including your full name, government-issued identification number, and date of birth, to obtain such reports. This also includes information about any person or corporation with whom you have had, currently have, or may have a financial relationship.",
-          "Credit, compliance and fraud — information about you from third parties in connection with any credit investigation, credit eligibility, identity or account verification process, fraud detection process, or collection procedure, or as may otherwise be required by applicable law. This includes the receipt and exchange of account or credit-related information with any credit reporting agency or credit bureau, where lawful, and any person or corporation with whom you have had, currently have, or may have a financial relationship, including past, present, and future places of employment, financial institutions, and personal reporting agencies.",
+          "Identity verification: information from third-party verification services, credit bureaus, financial institutions, mailing list providers, and publicly available sources. In some circumstances, where lawful, this information may include your government-issued identification number.",
+          "Background information: to the extent permitted by applicable laws, we may obtain background check reports from public records of criminal convictions and arrest records. We may use your information, including your full name, government-issued identification number, and date of birth, to obtain such reports. This also includes information about any person or corporation with whom you have had, currently have, or may have a financial relationship.",
+          "Credit, compliance and fraud: information about you from third parties in connection with any credit investigation, credit eligibility, identity or account verification process, fraud detection process, or collection procedure, or as may otherwise be required by applicable law. This includes the receipt and exchange of account or credit-related information with any credit reporting agency or credit bureau, where lawful, and any person or corporation with whom you have had, currently have, or may have a financial relationship, including past, present, and future places of employment, financial institutions, and personal reporting agencies.",
         ],
       },
       { type: "h3", text: "Children’s information" },
@@ -291,7 +291,7 @@ export const sections: Section[] = [
       },
       {
         type: "p",
-        text: "Please note that by blocking or deleting cookies used in the Services, you may not be able to take full advantage of the Services. We also may collect information using web beacons — electronic images that may be used in our Services or emails. We use web beacons to deliver cookies, track the number of visits to our website and apps, understand usage and campaign effectiveness, and determine whether an email has been opened and acted upon.",
+        text: "Please note that by blocking or deleting cookies used in the Services, you may not be able to take full advantage of the Services. We also may collect information using web beacons, electronic images that may be used in our Services or emails. We use web beacons to deliver cookies, track the number of visits to our website and apps, understand usage and campaign effectiveness, and determine whether an email has been opened and acted upon.",
       },
     ],
   },
@@ -375,7 +375,7 @@ export const sections: Section[] = [
       { type: "h3", text: "California" },
       {
         type: "p",
-        text: "Privacy laws that apply in certain places, like California, treat “businesses” and “service providers” differently. Under those laws, a business is the company that decides why and how to process personal information, while a service provider processes personal information on behalf of a business in order to provide services. When eatOS processes your customers’ data, we generally act as your service provider. In select cases, however, we may act as a business — for example, when we use your customers’ data to send your customers digital receipts directly from eatOS, or when we allow you to use Customer Directory or eatOS Marketing to contact your buyer using a masked email address that gets routed to them via eatOS.",
+        text: "Privacy laws that apply in certain places, like California, treat “businesses” and “service providers” differently. Under those laws, a business is the company that decides why and how to process personal information, while a service provider processes personal information on behalf of a business in order to provide services. When eatOS processes your customers’ data, we generally act as your service provider. In select cases, however, we may act as a business, for example, when we use your customers’ data to send your customers digital receipts directly from eatOS, or when we allow you to use Customer Directory or eatOS Marketing to contact your buyer using a masked email address that gets routed to them via eatOS.",
       },
       {
         type: "p",
@@ -392,7 +392,7 @@ export const sections: Section[] = [
       },
       {
         type: "p",
-        text: "You can always restrict the placement of cookies on your computer or remove them from your browser by going to your browser settings — cookie settings can be managed in Chrome (including Chrome for Android and iOS), Firefox, Internet Explorer, Microsoft Edge, and Safari (including Safari for iOS). You can also opt out of receiving interest-based ads from third party advertisers who are members of the Network Advertising Initiative (NAI) or who follow the Digital Advertising Alliance’s (DAA) Self-Regulatory Principles for Online Behavioral Advertising by visiting the opt-out pages on the NAI and DAA websites.",
+        text: "You can always restrict the placement of cookies on your computer or remove them from your browser by going to your browser settings, cookie settings can be managed in Chrome (including Chrome for Android and iOS), Firefox, Internet Explorer, Microsoft Edge, and Safari (including Safari for iOS). You can also opt out of receiving interest-based ads from third party advertisers who are members of the Network Advertising Initiative (NAI) or who follow the Digital Advertising Alliance’s (DAA) Self-Regulatory Principles for Online Behavioral Advertising by visiting the opt-out pages on the NAI and DAA websites.",
       },
       {
         type: "p",
@@ -420,7 +420,7 @@ export const sections: Section[] = [
       },
       {
         type: "p",
-        text: "eatOS POS Inc., 10th Floor, 1111 Brickell Avenue, Miami, FL 33131, United States — email: privacy@eatOS.com",
+        text: "eatOS POS Inc., 10th Floor, 1111 Brickell Avenue, Miami, FL 33131, United States, email: privacy@eatOS.com",
       },
     ],
   },

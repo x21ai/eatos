@@ -12,7 +12,7 @@ import {
   HelpCircle,
 } from 'lucide-react';
 
-// Brand icons removed from lucide-react v1.x — replaced with inline SVGs
+// Brand icons removed from lucide-react v1.x, replaced with inline SVGs
 function TwitterIcon({ size = 24, ...props }) {
   return (
     <svg
