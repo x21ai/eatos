@@ -174,8 +174,8 @@ export default function TapToPayClient() {
             </div>
 
             <Reveal id="ttp-steps-img">
-              <div className="mt-10 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2 md:gap-8">
-                <div className="relative aspect-[16/11] w-full overflow-hidden rounded-[24px] border border-white/10 bg-zinc-900 md:rounded-[32px]">
+              <div className="mx-auto mt-10 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2 md:mt-14 md:gap-6">
+                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900 md:rounded-3xl">
                   <img
                     src={images.counter}
                     alt="Guest tapping a smartwatch on a phone at a coffee counter"
@@ -185,7 +185,7 @@ export default function TapToPayClient() {
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                 </div>
-                <div className="relative aspect-[16/11] w-full overflow-hidden rounded-[24px] border border-white/10 bg-zinc-900 md:rounded-[32px]">
+                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900 md:rounded-3xl">
                   <img
                     src={images.detail}
                     alt="Phone showing a tipping and receipt screen"
@@ -217,15 +217,16 @@ export default function TapToPayClient() {
               {features.map((f, i) => (
                 <Reveal key={f.title} id={`ttp-feat-${i}`}>
                   <div className="h-full rounded-3xl border border-white/10 bg-zinc-950 p-8 transition-colors hover:border-white/20">
-                    <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/5 text-white">
-                      {i === 1 ? (
-                        <ShieldCheck size={20} />
-                      ) : i === 3 ? (
-                        <Wifi size={20} />
-                      ) : (
-                        <Smartphone size={20} />
-                      )}
-                    </div>
+                    {(() => {
+                      const Icon = featureIcons[f.icon] ?? CreditCard;
+                      return (
+                        <div
+                          className={`mb-6 flex h-12 w-12 items-center justify-center rounded-2xl border ${f.iconBg} ${f.iconBorder} ${f.iconColor}`}
+                        >
+                          <Icon size={22} />
+                        </div>
+                      );
+                    })()}
                     <h3 className="mb-3 text-xl font-bold tracking-tight md:text-2xl">
                       {f.title}
                     </h3>
