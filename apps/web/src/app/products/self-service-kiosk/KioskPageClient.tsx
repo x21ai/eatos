@@ -357,6 +357,7 @@ export default function KioskPageClient() {
   return (
     <div className="bg-white font-montserrat antialiased">
       <Hero />
+      <StatsStrip />
       <Capabilities />
       <FeatureList />
       <Offers />
