@@ -49,14 +49,13 @@ function Hero() {
       <div className="mx-auto w-full max-w-[1180px] px-5 pt-28 pb-16 sm:px-8 md:pt-36 md:pb-24 lg:pt-40">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <Reveal className="min-w-0">
-            <Eyebrow>{hero.eyebrow}</Eyebrow>
-            <h1 className="mt-5 max-w-[22ch] font-bold leading-[1.06] tracking-tighter text-4xl md:text-6xl">
+            <h1 className="max-w-[24ch] font-bold leading-[1.05] tracking-tighter text-3xl md:text-5xl">
               {hero.title}
             </h1>
-            <p className="mt-6 max-w-xl text-base leading-8 text-zinc-600 sm:text-lg">
+            <p className="mt-8 max-w-xl text-[15px] font-light leading-relaxed text-zinc-600 md:text-[22px]">
               {hero.description}
             </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="mt-12 flex flex-col gap-6 sm:flex-row sm:items-center">
               <a
                 href={hero.primaryCta.href}
                 className="inline-flex w-full items-center justify-center rounded-full bg-black px-7 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-85 sm:w-auto"
