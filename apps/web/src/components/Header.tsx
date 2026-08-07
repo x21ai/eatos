@@ -377,7 +377,7 @@ export default function Header() {
                 : "https://ucarecdn.com/4352d127-4bf5-42cf-a022-3110926687de/-/format/auto/"
             }
             alt="eatOS"
-            className="hidden xl:block h-[44px] w-auto transition-all duration-300"
+            className={`hidden xl:block h-[44px] w-auto transition-all duration-300 ${isDarkPage ? "drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]" : ""}`}
           />
           {/* Mobile / tablet mark */}
           <img
@@ -387,13 +387,13 @@ export default function Header() {
                 : mobileLogoBlack.url
             }
             alt="eatOS"
-            className="xl:hidden h-[34px] w-auto transition-all duration-300"
+            className={`xl:hidden h-[34px] w-auto transition-all duration-300 ${isDarkPage && !mobileMenuOpen ? "drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]" : ""}`}
           />
         </a>
 
         {/* Desktop Nav (visible at xl / 1280px and wider) */}
         <nav
-          className={`hidden xl:flex items-center gap-8 2xl:gap-10 flex-1 justify-center ${isDarkPage ? "text-white" : "text-black"}`}
+          className={`hidden xl:flex items-center gap-8 2xl:gap-10 flex-1 justify-center ${isDarkPage ? "text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]" : "text-black"}`}
           aria-label="Primary"
         >
           {/* Products Dropdown */}
