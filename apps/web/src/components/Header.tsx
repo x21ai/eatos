@@ -605,7 +605,7 @@ export default function Header() {
                       : "text-gray-500"
                   }`}
                 >
-                  {t}
+                  {t === "products" ? "Restaurant Type" : "Solutions"}
                 </button>
               ))}
             </div>
