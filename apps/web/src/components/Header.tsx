@@ -1,6 +1,9 @@
 // @ts-nocheck
 "use client";
 
+import mobileLogoWhite from "./marketing/assets/brand/logo-mobile-white.png.asset.json";
+import mobileLogoBlack from "./marketing/assets/brand/logo-mobile-black.png.asset.json";
+
 import {
   Menu,
   X,
@@ -374,7 +377,17 @@ export default function Header() {
                 : "https://ucarecdn.com/4352d127-4bf5-42cf-a022-3110926687de/-/format/auto/"
             }
             alt="eatOS"
-            className="h-[44px] w-auto transition-all duration-300"
+            className="hidden xl:block h-[44px] w-auto transition-all duration-300"
+          />
+          {/* Mobile / tablet mark */}
+          <img
+            src={
+              isDarkPage && !mobileMenuOpen
+                ? mobileLogoWhite.url
+                : mobileLogoBlack.url
+            }
+            alt="eatOS"
+            className="xl:hidden h-[34px] w-auto transition-all duration-300"
           />
         </a>
 
