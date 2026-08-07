@@ -117,7 +117,7 @@ function Hero() {
 function StatsStrip() {
   return (
     <section className="bg-black text-white border-t border-white/10">
-      <div className="mx-auto w-full max-w-[1180px] px-5 py-12 sm:px-8 md:py-16">
+      <div className="mx-auto w-full max-w-[1180px] px-5 pt-24 pb-12 sm:px-8 md:pt-32 md:pb-16">
         <div className="grid grid-cols-3 divide-x divide-white/10">
           {hero.stats.map((s) => (
             <div key={s.label} className="flex flex-col items-center px-4 text-center">
