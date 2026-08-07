@@ -36,6 +36,15 @@ export default function Header() {
   const [isDarkPage, setIsDarkPage] = useState(true);
   const [isHidden, setIsHidden] = useState(false);
   const [statusColor, setStatusColor] = useState("text-green-500");
+  const [mobileTab, setMobileTab] = useState("products");
+  const [openGroup, setOpenGroup] = useState("Operations");
+
+  useEffect(() => {
+    if (!mobileMenuOpen) {
+      setMobileTab("products");
+      setOpenGroup("Operations");
+    }
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const checkStatus = async () => {
