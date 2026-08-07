@@ -706,18 +706,37 @@ export default function Header() {
                 <a
                   key={href}
                   href={href}
-                  className="text-base font-medium p-2 hover:bg-gray-50 rounded-lg flex items-center gap-3"
+                  className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] font-medium hover:bg-gray-50"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Icon size={18} className={color} /> {label}
                 </a>
               ))}
+              </div>
+              )}
             </div>
 
             <div className="space-y-1">
-              <div className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider px-2">
-                Growth & Payments
-              </div>
+              <button
+                type="button"
+                aria-expanded={openGroup === "Growth & Payments"}
+                onClick={() =>
+                  setOpenGroup(
+                    openGroup === "Growth & Payments"
+                      ? null
+                      : "Growth & Payments",
+                  )
+                }
+                className="flex w-full min-h-11 items-center justify-between rounded-xl px-3 text-[12px] font-semibold uppercase tracking-wider text-gray-500 hover:bg-gray-50"
+              >
+                Growth &amp; Payments
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform ${openGroup === "Growth & Payments" ? "rotate-180" : ""}`}
+                />
+              </button>
+              {openGroup === "Growth & Payments" && (
+              <div className="space-y-0.5 pb-1">
               {[
                 {
                   href: "/accept-payments",
@@ -741,18 +760,37 @@ export default function Header() {
                 <a
                   key={href}
                   href={href}
-                  className="text-base font-medium p-2 hover:bg-gray-50 rounded-lg flex items-center gap-3"
+                  className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] font-medium hover:bg-gray-50"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Icon size={18} className={color} /> {label}
                 </a>
               ))}
+              </div>
+              )}
             </div>
 
             <div className="space-y-1">
-              <div className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider px-2">
-                Intelligence & Hardware
-              </div>
+              <button
+                type="button"
+                aria-expanded={openGroup === "Intelligence & Hardware"}
+                onClick={() =>
+                  setOpenGroup(
+                    openGroup === "Intelligence & Hardware"
+                      ? null
+                      : "Intelligence & Hardware",
+                  )
+                }
+                className="flex w-full min-h-11 items-center justify-between rounded-xl px-3 text-[12px] font-semibold uppercase tracking-wider text-gray-500 hover:bg-gray-50"
+              >
+                Intelligence &amp; Hardware
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform ${openGroup === "Intelligence & Hardware" ? "rotate-180" : ""}`}
+                />
+              </button>
+              {openGroup === "Intelligence & Hardware" && (
+              <div className="space-y-0.5 pb-1">
               {[
                 {
                   href: "/ai",
@@ -770,70 +808,73 @@ export default function Header() {
                 <a
                   key={href}
                   href={href}
-                  className="text-base font-medium p-2 hover:bg-gray-50 rounded-lg flex items-center gap-3"
+                  className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] font-medium hover:bg-gray-50"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Icon size={18} className={color} /> {label}
                 </a>
               ))}
-            </div>
-
-            <div className="h-px bg-gray-100" />
-
-            {/* Solutions */}
-            <div className="flex items-center justify-between">
-              <div className="font-semibold text-gray-400 text-xs uppercase tracking-wider">
-                Solutions
               </div>
-              <a
-                href="/solutions"
-                className="text-sm font-semibold text-black hover:opacity-70"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                View all →
-              </a>
+              )}
             </div>
+            </>
+            )}
 
-            <div className="grid grid-cols-2 gap-1">
+            {mobileTab === "solutions" && (
+            <>
+            <a
+              href="/solutions"
+              className="flex min-h-11 items-center justify-between rounded-xl px-3 text-[14px] font-semibold hover:bg-gray-50"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              All solutions <span aria-hidden="true">→</span>
+            </a>
+
+            <div className="flex flex-col gap-0.5">
               {solutionLinks.map((s) => {
                 const iconColor = s.iconWrap.split(" ")[1];
                 return (
                   <a
                     key={s.href}
                     href={s.href}
-                    className="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg"
+                    className="flex min-h-11 items-center gap-3 rounded-xl px-3 hover:bg-gray-50"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    <s.Icon size={16} className={iconColor} />
-                    <span className="text-sm font-medium">{s.title}</span>
+                    <s.Icon size={18} className={iconColor} />
+                    <span className="text-[15px] font-medium">{s.title}</span>
                   </a>
                 );
               })}
             </div>
+            </>
+            )}
 
-            <div className="h-px bg-gray-100" />
+            <div className="h-px bg-gray-100 my-1" />
 
-            {/* Main nav links */}
-            {[
-              { href: "/platform", label: "Platform" },
-              { href: "/pricing", label: "Pricing" },
-              { href: "/enterprise", label: "Enterprise" },
-              { href: "/customers", label: "Customers" },
-            ].map(({ href, label }) => (
-              <a
-                key={href}
-                href={href}
-                className="text-base font-medium py-2 px-2 hover:bg-gray-50 rounded-lg"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {label}
-              </a>
-            ))}
+            {/* Secondary links */}
+            <div className="grid grid-cols-2 gap-1">
+              {[
+                { href: "/platform", label: "Platform" },
+                { href: "/pricing", label: "Pricing" },
+                { href: "/enterprise", label: "Enterprise" },
+                { href: "/customers", label: "Customers" },
+              ].map(({ href, label }) => (
+                <a
+                  key={href}
+                  href={href}
+                  className="flex min-h-11 items-center rounded-xl px-3 text-[15px] font-medium hover:bg-gray-50"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {label}
+                </a>
+              ))}
+            </div>
+          </div>
+          </div>
 
-            <div className="h-px bg-gray-100" />
-
-            {/* Quick-access icons */}
-            <div className="grid grid-cols-4 gap-2">
+          {/* Sticky action footer */}
+          <div className="shrink-0 border-t border-gray-100 bg-white px-3 pt-2 pb-4">
+            <div className="grid grid-cols-3 gap-1">
               {[
                 {
                   href: "https://dashboard.eatos.com/#/account/login",
