@@ -262,7 +262,7 @@ export default function CustomersPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-black text-white">
+      <section className="py-20 md:py-28 bg-black text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
             Ready to join them?

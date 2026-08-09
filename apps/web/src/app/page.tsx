@@ -99,7 +99,7 @@ export default function HomePage() {
       </section>
 
       {/* Social Proof / Trust Section */}
-      <section className="py-20 bg-black border-t border-white/5 relative overflow-hidden">
+      <section className="py-20 md:py-28 bg-black border-t border-white/5 relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
           {/* Capability strip: honest, aspirational, Apple-style */}
           <motion.div
