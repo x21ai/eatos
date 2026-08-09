@@ -45,7 +45,7 @@ function Eyebrow({ children, className = '' }) {
 
 function Hero() {
   return (
-    <section className="overflow-hidden bg-[#f7f7f8] text-black">
+    <section className="overflow-hidden bg-zinc-50 text-black">
       <div className="mx-auto w-full max-w-[1180px] px-5 pt-28 pb-16 text-center sm:px-8 md:pt-36 md:pb-20 lg:pt-44">
         <Reveal className="min-w-0">
           <Eyebrow className="text-center">{hero.eyebrow}</Eyebrow>
@@ -126,7 +126,7 @@ function WhySwitch() {
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <span className="min-w-0 block">
-                    <h3 className="text-lg font-bold tracking-tight sm:text-xl">
+                    <h3 className="text-lg font-bold tracking-tighter sm:text-xl">
                       {item.title}
                     </h3>
                     <p className="mt-3 max-w-xl text-sm leading-7 text-zinc-600">{item.body}</p>
@@ -172,7 +172,7 @@ function Mark({ on, accent = false }) {
 function Matrix() {
   return (
     <section className="bg-black text-white">
-      <div className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-8 md:py-32 lg:py-40">
+      <div className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-8 md:py-20 md:py-28 lg:py-40">
         <Reveal>
           <h2 className="mx-auto max-w-[26ch] text-center font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
             Compare eatOS with other Point of Sale software
@@ -243,7 +243,7 @@ function Matrix() {
                 }`}
               >
                 <div className="flex items-center justify-between gap-3">
-                  <h3 className="min-w-0 truncate text-base font-bold tracking-tight">
+                  <h3 className="min-w-0 truncate text-base font-bold tracking-tighter">
                     {name}
                   </h3>
                   {ci === 0 && (
@@ -286,7 +286,7 @@ function Matrix() {
 function Reasons() {
   return (
     <section className="bg-white text-black">
-      <div className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-8 md:py-32 lg:py-40">
+      <div className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-8 md:py-20 md:py-28 lg:py-40">
         <Reveal>
           <h2 className="mx-auto max-w-[26ch] text-center font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
             Why businesses choose eatOS over other Point of Sale software
@@ -329,7 +329,7 @@ function Reasons() {
 function ClosingCta() {
   return (
     <section className="bg-black text-white">
-      <div className="mx-auto w-full max-w-[1180px] px-5 py-24 text-center sm:px-8 md:py-32">
+      <div className="mx-auto w-full max-w-[1180px] px-5 py-20 text-center sm:px-8 md:py-28">
         <Reveal>
           <h2 className="mx-auto max-w-[22ch] font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
             Start Using Restaurant Technology Cloud

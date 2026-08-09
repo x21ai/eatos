@@ -81,7 +81,7 @@ export default function BookDemoPage() {
             <Calendar size={16} />
             <span>Schedule Your Demo</span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-black mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-black mb-6">
             See <strong>eatOS</strong> in action
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">

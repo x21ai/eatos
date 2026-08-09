@@ -99,7 +99,7 @@ export default function HomePage() {
       </section>
 
       {/* Social Proof / Trust Section */}
-      <section className="py-20 bg-black border-t border-white/5 relative overflow-hidden">
+      <section className="py-20 md:py-28 bg-black border-t border-white/5 relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
           {/* Capability strip: honest, aspirational, Apple-style */}
           <motion.div
@@ -122,7 +122,7 @@ export default function HomePage() {
                   key={stat.value}
                   className="flex-1 flex flex-col items-center py-6 sm:py-0 px-6"
                 >
-                  <div className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-2">
+                  <div className="text-4xl md:text-5xl font-bold tracking-tighter text-white mb-2">
                     {stat.value}
                   </div>
                   <div className="text-sm text-gray-500">{stat.label}</div>
@@ -149,7 +149,7 @@ export default function HomePage() {
               ].map((name) => (
                 <div
                   key={name}
-                  className="shrink-0 whitespace-nowrap text-[10px] sm:text-xs md:text-sm lg:text-base font-bold tracking-tight text-white"
+                  className="shrink-0 whitespace-nowrap text-[10px] sm:text-xs md:text-sm lg:text-base font-bold tracking-tighter text-white"
                 >
                   {name}
                 </div>
@@ -168,7 +168,7 @@ export default function HomePage() {
       <CustomerShowcase />
 
       {/* Bento Grid Navigation - The Hub */}
-      <section className="py-32 bg-black relative">
+      <section className="py-20 md:py-20 md:py-28 bg-black relative">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -284,7 +284,7 @@ export default function HomePage() {
       </section>
 
       {/* Service Modes Section */}
-      <section className="py-32 bg-zinc-950 relative overflow-hidden">
+      <section className="py-20 md:py-20 md:py-28 bg-zinc-950 relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-20">
             <motion.h2
@@ -386,7 +386,7 @@ export default function HomePage() {
       </section>
 
       {/* Hardware Section */}
-      <section className="py-32 bg-black relative">
+      <section className="py-20 md:py-20 md:py-28 bg-black relative">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
             <motion.div
@@ -472,7 +472,7 @@ export default function HomePage() {
       </section>
 
       {/* Reports & Analytics Section */}
-      <section className="py-32 bg-zinc-950 relative overflow-hidden">
+      <section className="py-20 md:py-20 md:py-28 bg-zinc-950 relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
             <motion.div
@@ -572,7 +572,7 @@ export default function HomePage() {
       </section>
 
       {/* Integrations Section */}
-      <section className="py-32 bg-black relative overflow-hidden">
+      <section className="py-20 md:py-20 md:py-28 bg-black relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -637,7 +637,7 @@ export default function HomePage() {
       </section>
 
       {/* Kitchen Display */}
-      <section className="py-32 bg-black border-t border-white/5">
+      <section className="py-20 md:py-20 md:py-28 bg-black border-t border-white/5">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

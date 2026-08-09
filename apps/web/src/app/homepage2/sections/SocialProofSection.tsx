@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 
 export function SocialProofSection() {
   return (
-    <section className="py-20 bg-[#fafafa] border-b border-gray-100">
+    <section className="py-20 md:py-28 bg-zinc-50 border-b border-gray-100">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -26,7 +26,7 @@ export function SocialProofSection() {
             ].map((name) => (
               <span
                 key={name}
-                className="text-xl md:text-2xl font-bold tracking-tight text-black"
+                className="text-xl md:text-2xl font-bold tracking-tighter text-black"
               >
                 {name}
               </span>
@@ -42,7 +42,7 @@ export function SocialProofSection() {
           className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-14"
         >
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold tracking-tight text-black">
+            <div className="text-3xl md:text-4xl font-bold tracking-tighter text-black">
               All service types
             </div>
             <div className="text-sm text-gray-500 mt-1">
@@ -50,13 +50,13 @@ export function SocialProofSection() {
             </div>
           </div>
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold tracking-tight text-black">
+            <div className="text-4xl md:text-5xl font-bold tracking-tighter text-black">
               99.9%
             </div>
             <div className="text-sm text-gray-500 mt-1">Uptime target</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold tracking-tight text-black">
+            <div className="text-3xl md:text-4xl font-bold tracking-tighter text-black">
               One platform
             </div>
             <div className="text-sm text-gray-500 mt-1">
@@ -64,7 +64,7 @@ export function SocialProofSection() {
             </div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold tracking-tight text-black">
+            <div className="text-3xl md:text-4xl font-bold tracking-tighter text-black">
               Nationwide
             </div>
             <div className="text-sm text-gray-500 mt-1">

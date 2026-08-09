@@ -249,7 +249,7 @@ export default function ContactSalesPage() {
 
         {/* FAQ Section */}
         <div className="max-w-3xl mx-auto py-20 mt-10 border-t border-gray-100">
-          <h2 className="text-3xl font-bold tracking-tight mb-10 text-center">
+          <h2 className="text-3xl font-bold tracking-tighter mb-10 text-center">
             Frequently Asked Questions
           </h2>
           <div className="space-y-4">

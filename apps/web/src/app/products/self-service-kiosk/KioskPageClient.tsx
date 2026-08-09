@@ -121,7 +121,7 @@ function StatsStrip() {
         <div className="grid grid-cols-3 divide-x divide-white/10">
           {hero.stats.map((s) => (
             <div key={s.label} className="flex flex-col items-center px-4 text-center">
-              <div className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-2">
+              <div className="text-3xl md:text-5xl font-bold tracking-tighter text-white mb-2">
                 {s.value}
               </div>
               <div className="text-[10px] sm:text-xs uppercase tracking-[0.18em] text-gray-400">
@@ -247,14 +247,14 @@ function FeatureList() {
 
 function Offers() {
   return (
-    <section className="bg-[#f7f7f8] text-black">
+    <section className="bg-zinc-50 text-black">
       <div className="mx-auto w-full max-w-[1180px] px-5 py-20 sm:px-8 md:py-28">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-8">
           {offers.map((offer, i) => (
             <Reveal key={offer.title} delay={i * 0.08} className="min-w-0">
               <div className="group transition-transform duration-500 hover:-translate-y-1">
                 <Placeholder label={offer.imageLabel} tone="light" src={offer.image} />
-                <h3 className="mt-7 font-bold tracking-tight text-2xl md:text-3xl">
+                <h3 className="mt-7 font-bold tracking-tighter text-2xl md:text-3xl">
                   {offer.title}
                 </h3>
                 <p className="mt-3 text-sm leading-7 text-zinc-600 sm:text-base">
@@ -308,7 +308,7 @@ function Hardware() {
         <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8 md:mt-20">
           {hardware.specs.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.06} className="min-w-0">
-              <h3 className="text-base font-bold tracking-tight text-white sm:text-lg">
+              <h3 className="text-base font-bold tracking-tighter text-white sm:text-lg">
                 {s.title}
               </h3>
               <p className="mt-3 text-sm leading-7 text-zinc-400 sm:text-base">{s.body}</p>
@@ -324,7 +324,7 @@ function Hardware() {
 
 function Closing() {
   return (
-    <section className="bg-[#111113] text-white">
+    <section className="bg-zinc-950 text-white">
       <div className="mx-auto w-full max-w-[1180px] px-5 py-20 sm:px-8 md:py-24">
         <Reveal className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
           <h2 className="max-w-xl font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">

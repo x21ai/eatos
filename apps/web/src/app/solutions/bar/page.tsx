@@ -12,7 +12,7 @@ export default function BarPage() {
               <Beer size={16} />
               <span>Bar & Nightclub</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-black mb-6">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-black mb-6">
               Keep the night moving
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -24,7 +24,7 @@ export default function BarPage() {
       </section>
 
       {/* Features */}
-      <section className="py-20">
+      <section className="py-20 md:py-28">
         <div className="container mx-auto px-4 md:px-6 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -60,7 +60,7 @@ export default function BarPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-black text-white">
+      <section className="py-20 md:py-28 bg-black text-white">
         <div className="container mx-auto px-4 md:px-6 max-w-4xl text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Run your bar smarter

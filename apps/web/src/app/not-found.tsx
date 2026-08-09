@@ -107,7 +107,7 @@ export default function NotFound() {
       </div>
 
       <div className="flex flex-grow flex-col items-center justify-center pt-[100px] text-center gap-[20px]">
-        <h1 className="text-4xl font-medium text-gray-900 px-2">
+        <h1 className="text-4xl font-bold tracking-tighter text-gray-900 px-2">
           Uh-oh! This page doesn&apos;t exist (yet).
         </h1>
 

@@ -323,7 +323,7 @@ export default function ProductDetailClient({ slug }) {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-32 border-t border-white/5">
+      <section className="py-20 md:py-28 border-t border-white/5">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -395,7 +395,7 @@ export default function ProductDetailClient({ slug }) {
       </section>
 
       {/* Related Products */}
-      <section className="py-32 border-t border-white/5">
+      <section className="py-20 md:py-28 border-t border-white/5">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

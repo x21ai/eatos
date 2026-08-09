@@ -23,7 +23,7 @@ export default function PartnersPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-black" />
                 eatOS Partner Program
               </span>
-              <h1 className="mt-6 text-4xl md:text-6xl font-bold leading-[1.06] tracking-tight">
+              <h1 className="mt-6 text-4xl md:text-6xl font-bold leading-[1.06] tracking-tighter">
                 It&rsquo;s you and eatOS,
                 <br className="hidden sm:block" /> working together
               </h1>
@@ -70,7 +70,7 @@ export default function PartnersPage() {
       <section className="border-y border-zinc-200 bg-zinc-50 py-20 md:py-28">
         <div className="container mx-auto px-5 md:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">
               Explore partnership opportunities
             </h2>
             <p className="mt-4 text-base text-zinc-600">
@@ -90,7 +90,7 @@ export default function PartnersPage() {
                   <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-black text-white">
                     <Icon size={20} />
                   </div>
-                  <h3 className="mt-6 text-lg font-bold tracking-tight">{track.title}</h3>
+                  <h3 className="mt-6 text-lg font-bold tracking-tighter">{track.title}</h3>
                   <p className="mt-3 flex-grow text-sm leading-relaxed text-zinc-600">
                     {track.body}
                   </p>
@@ -118,7 +118,7 @@ export default function PartnersPage() {
             <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
               Programs
             </span>
-            <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight">
+            <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tighter">
               Built for businesses and individuals
             </h2>
           </div>
@@ -135,7 +135,7 @@ export default function PartnersPage() {
               />
             </div>
             <div className="flex flex-col justify-center rounded-[28px] bg-zinc-900 p-8 md:rounded-[36px] md:p-12">
-              <h3 className="text-2xl font-bold tracking-tight md:text-3xl">
+              <h3 className="text-2xl font-bold tracking-tighter md:text-3xl">
                 Introduce eatOS in a few simple steps
               </h3>
               <p className="mt-5 text-sm leading-relaxed text-zinc-400 md:text-base">
@@ -164,7 +164,7 @@ export default function PartnersPage() {
       <section className="bg-white py-20 md:py-28">
         <div className="container mx-auto px-5 md:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">
               Meet our integration partners
             </h2>
             <p className="mt-4 text-base text-zinc-600">
@@ -199,7 +199,7 @@ export default function PartnersPage() {
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-16">
             {/* Left content */}
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">
                 Why partner with us?
               </h2>
               <div className="mt-10 space-y-8">
@@ -208,7 +208,7 @@ export default function PartnersPage() {
                     <CheckCircle2 size={22} className="text-black" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold tracking-tight">Generous revenue share</h3>
+                    <h3 className="text-lg font-bold tracking-tighter">Generous revenue share</h3>
                     <p className="mt-2 text-sm leading-relaxed text-zinc-600 md:text-base">
                       Earn ongoing residuals on payments and software subscriptions. We believe in
                       sharing the success.
@@ -221,7 +221,7 @@ export default function PartnersPage() {
                     <CheckCircle2 size={22} className="text-black" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold tracking-tight">Dedicated support</h3>
+                    <h3 className="text-lg font-bold tracking-tighter">Dedicated support</h3>
                     <p className="mt-2 text-sm leading-relaxed text-zinc-600 md:text-base">
                       Get a dedicated partner manager and priority support for your merchants.
                     </p>
@@ -233,7 +233,7 @@ export default function PartnersPage() {
                     <CheckCircle2 size={22} className="text-black" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold tracking-tight">Co-marketing</h3>
+                    <h3 className="text-lg font-bold tracking-tighter">Co-marketing</h3>
                     <p className="mt-2 text-sm leading-relaxed text-zinc-600 md:text-base">
                       Access marketing resources, leads and co-branded collateral to help you sell
                       more.
@@ -255,7 +255,7 @@ export default function PartnersPage() {
 
             {/* Right form */}
             <div className="rounded-3xl border border-zinc-200 bg-white p-7 shadow-[0_40px_90px_-60px_rgba(0,0,0,0.4)] md:p-10">
-              <h3 className="text-2xl font-bold tracking-tight">Apply to become a partner</h3>
+              <h3 className="text-2xl font-bold tracking-tighter">Apply to become a partner</h3>
               <form className="mt-7 space-y-4">
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>

@@ -148,7 +148,7 @@ export default function CustomersPage() {
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
             <div className="bg-gray-50 rounded-2xl p-6">
-              <div className="text-3xl font-bold tracking-tight mb-1">
+              <div className="text-3xl font-bold tracking-tighter mb-1">
                 Any format
               </div>
               <div className="text-sm text-gray-500">
@@ -156,13 +156,13 @@ export default function CustomersPage() {
               </div>
             </div>
             <div className="bg-gray-50 rounded-2xl p-6">
-              <div className="text-3xl font-bold tracking-tight mb-1">
+              <div className="text-3xl font-bold tracking-tighter mb-1">
                 One platform
               </div>
               <div className="text-sm text-gray-500">POS, payments & AI</div>
             </div>
             <div className="bg-gray-50 rounded-2xl p-6">
-              <div className="text-3xl font-bold tracking-tight mb-1">
+              <div className="text-3xl font-bold tracking-tighter mb-1">
                 Nationwide
               </div>
               <div className="text-sm text-gray-500">
@@ -170,7 +170,7 @@ export default function CustomersPage() {
               </div>
             </div>
             <div className="bg-gray-50 rounded-2xl p-6">
-              <div className="text-3xl font-bold tracking-tight mb-1">
+              <div className="text-3xl font-bold tracking-tighter mb-1">
                 99.9%
               </div>
               <div className="text-sm text-gray-500">Uptime target</div>
@@ -223,7 +223,7 @@ export default function CustomersPage() {
                           key={si}
                           className="bg-white rounded-xl p-3 text-center"
                         >
-                          <div className="text-lg font-bold tracking-tight">
+                          <div className="text-lg font-bold tracking-tighter">
                             {stat.value}
                           </div>
                           <div className="text-[11px] text-gray-500">
@@ -262,7 +262,7 @@ export default function CustomersPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-black text-white">
+      <section className="py-20 md:py-28 bg-black text-white">
         <div className="container mx-auto px-4 md:px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
             Ready to join them?

@@ -129,7 +129,7 @@ export default function TapToPayClient() {
             <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12">
               {stats.map((s) => (
                 <div key={s.label}>
-                  <div className="mb-2 text-4xl font-bold tracking-tight text-white md:text-5xl">
+                  <div className="mb-2 text-4xl font-bold tracking-tighter text-white md:text-5xl">
                     {s.value}
                   </div>
                   <div className="text-sm text-gray-500">{s.label}</div>
@@ -140,7 +140,7 @@ export default function TapToPayClient() {
         </section>
 
         {/* Steps */}
-        <section className="border-t border-white/5 bg-zinc-950 py-24 md:py-32">
+        <section className="border-t border-white/5 bg-zinc-950 py-20 md:py-28">
           <div className="container mx-auto px-4 md:px-6">
             <Reveal id="ttp-steps-head">
               <div className="mb-14 max-w-3xl md:mb-20">
@@ -162,7 +162,7 @@ export default function TapToPayClient() {
                     <div className="mb-6 text-sm font-semibold tracking-widest text-blue-400">
                       {s.step}
                     </div>
-                    <h3 className="mb-4 text-2xl font-bold tracking-tight md:text-3xl">
+                    <h3 className="mb-4 text-2xl font-bold tracking-tighter md:text-3xl">
                       {s.title}
                     </h3>
                     <p className="text-base font-light leading-relaxed text-gray-400">
@@ -201,7 +201,7 @@ export default function TapToPayClient() {
         </section>
 
         {/* Features */}
-        <section className="border-t border-white/5 bg-black py-24 md:py-32">
+        <section className="border-t border-white/5 bg-black py-20 md:py-28">
           <div className="container mx-auto px-4 md:px-6">
             <Reveal id="ttp-feat-head">
               <div className="mb-14 text-center md:mb-20">
@@ -227,7 +227,7 @@ export default function TapToPayClient() {
                         </div>
                       );
                     })()}
-                    <h3 className="mb-3 text-xl font-bold tracking-tight md:text-2xl">
+                    <h3 className="mb-3 text-xl font-bold tracking-tighter md:text-2xl">
                       {f.title}
                     </h3>
                     <p className="text-[15px] font-light leading-relaxed text-gray-400">
@@ -241,7 +241,7 @@ export default function TapToPayClient() {
         </section>
 
         {/* Where it works */}
-        <section className="border-t border-white/5 bg-zinc-950 py-24 md:py-32">
+        <section className="border-t border-white/5 bg-zinc-950 py-20 md:py-28">
           <div className="container mx-auto px-4 md:px-6">
             <Reveal id="ttp-places">
               <div className="mb-14 max-w-3xl md:mb-20">
@@ -254,7 +254,7 @@ export default function TapToPayClient() {
               <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12">
                 {places.map((p) => (
                   <div key={p.title} className="border-t border-white/10 pt-8">
-                    <h3 className="mb-3 text-2xl font-bold tracking-tight md:text-3xl">
+                    <h3 className="mb-3 text-2xl font-bold tracking-tighter md:text-3xl">
                       {p.title}
                     </h3>
                     <p className="text-base font-light leading-relaxed text-gray-400">
@@ -271,7 +271,7 @@ export default function TapToPayClient() {
         <section className="border-t border-white/5 bg-black py-16 md:py-20">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-              <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+              <h2 className="text-2xl font-bold tracking-tighter md:text-3xl">
                 What you need to start
               </h2>
               <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:flex md:flex-wrap md:justify-end md:gap-8">
@@ -286,7 +286,7 @@ export default function TapToPayClient() {
         </section>
 
         {/* Closing CTA */}
-        <section className="border-t border-white/5 bg-black py-24 md:py-32">
+        <section className="border-t border-white/5 bg-black py-20 md:py-28">
           <div className="container mx-auto px-4 text-center md:px-6">
             <Reveal id="ttp-cta">
               <h2 className="mb-6 text-4xl font-bold tracking-tighter md:text-7xl">

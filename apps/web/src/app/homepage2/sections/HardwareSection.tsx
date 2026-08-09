@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 export function HardwareSection() {
   return (
-    <section className="py-28 bg-black text-white relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-black text-white relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -12,7 +12,7 @@ export function HardwareSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
             Faster service.{" "}
             <span className="text-gray-500">Smoother operations.</span>
           </h2>

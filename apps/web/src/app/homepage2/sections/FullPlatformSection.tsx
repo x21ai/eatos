@@ -5,7 +5,7 @@ import { platformProducts } from "../data/platformProducts";
 
 export function FullPlatformSection() {
   return (
-    <section className="py-28 bg-white">
+    <section className="py-20 md:py-28 bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -13,7 +13,7 @@ export function FullPlatformSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
             Everything you need.{" "}
             <span className="text-indigo-500">Fully integrated.</span>
           </h2>

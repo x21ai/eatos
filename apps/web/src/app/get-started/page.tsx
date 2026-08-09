@@ -104,7 +104,7 @@ export default function GetStartedPage() {
           {step === 1 && (
             <div className="w-full max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div className="text-center mb-10">
-                <h1 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">
+                <h1 className="text-3xl md:text-4xl font-bold mb-4 tracking-tighter">
                   What industry is your business in?
                 </h1>
                 <p className="text-gray-500 text-lg">
@@ -188,7 +188,7 @@ export default function GetStartedPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
                 {/* Left: Trust & Benefits */}
                 <div className="hidden md:flex flex-col justify-center">
-                  <h2 className="text-3xl font-bold tracking-tight mb-4">
+                  <h2 className="text-3xl font-bold tracking-tighter mb-4">
                     You're in good company.
                   </h2>
                   <p className="text-gray-500 mb-8 leading-relaxed">
@@ -255,7 +255,7 @@ export default function GetStartedPage() {
                 {/* Right: Form */}
                 <div>
                   <div className="mb-8">
-                    <h1 className="text-3xl font-bold mb-3 tracking-tight">Create your account</h1>
+                    <h1 className="text-3xl font-bold mb-3 tracking-tighter">Create your account</h1>
                     <p className="text-gray-500">
                       Setting up {selectedIndustry === 'food' ? 'your restaurant' : 'your business'}{' '}
                       for success.

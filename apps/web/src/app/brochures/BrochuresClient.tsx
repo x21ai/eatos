@@ -113,7 +113,7 @@ function Cover({ title, index, large = false }) {
           </span>
         </div>
         <span
-          className={`max-w-[16ch] font-bold leading-[1.08] tracking-tight text-white ${
+          className={`max-w-[16ch] font-bold leading-[1.08] tracking-tighter text-white ${
             large ? 'text-3xl md:text-4xl' : 'text-xl sm:text-2xl'
           }`}
         >
@@ -204,7 +204,7 @@ export default function BrochuresClient() {
                 <div className="transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
                   <Cover title={item.title} index={i + 1} />
                 </div>
-                <h3 className="mt-6 text-[19px] font-bold tracking-tight text-zinc-900">
+                <h3 className="mt-6 text-[19px] font-bold tracking-tighter text-zinc-900">
                   {item.title}
                 </h3>
                 <p className="mt-2.5 flex-1 text-[15px] leading-7 text-zinc-500">

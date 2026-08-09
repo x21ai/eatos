@@ -39,7 +39,7 @@ export default function BlogPostClient({ slug }) {
   }
 
   return (
-    <article className="bg-white text-[#1d1d1f]">
+    <article className="bg-white text-zinc-900">
       <header className="bg-black pt-32 pb-16 md:pt-40 md:pb-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
@@ -71,7 +71,7 @@ export default function BlogPostClient({ slug }) {
               <span aria-hidden>·</span>
               <span>{formatDate(post.date)}</span>
             </div>
-            <h1 className="mt-6 font-bold leading-[1.08] tracking-tighter text-white text-[clamp(2rem,4.6vw,3.5rem)]">
+            <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tighter text-white sm:text-5xl">
               {post.title}
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
@@ -93,7 +93,7 @@ export default function BlogPostClient({ slug }) {
               return (
                 <h2
                   key={i}
-                  className="mt-14 text-2xl font-bold tracking-tight text-black first:mt-0 sm:text-3xl"
+                  className="mt-14 text-2xl font-bold tracking-tighter text-black first:mt-0 sm:text-3xl"
                 >
                   {block.text}
                 </h2>
@@ -134,7 +134,7 @@ export default function BlogPostClient({ slug }) {
                     <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-green-600">
                       {item.category}
                     </p>
-                    <h3 className="mt-2 line-clamp-2 text-lg font-bold leading-snug tracking-tight text-black transition-colors group-hover:text-zinc-600">
+                    <h3 className="mt-2 line-clamp-2 text-lg font-bold leading-snug tracking-tighter text-black transition-colors group-hover:text-zinc-600">
                       {item.title}
                     </h3>
                     <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-black">

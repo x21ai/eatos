@@ -88,7 +88,7 @@ function Hero() {
             <Reveal key={rule.title} delay={i * 0.06}>
               <div className="h-full rounded-[24px] border border-white/10 bg-white/[0.03] p-7">
                 <ShieldCheck size={20} className="text-emerald-400" />
-                <h3 className="mt-5 text-lg font-bold tracking-tight">{rule.title}</h3>
+                <h3 className="mt-5 text-lg font-bold tracking-tighter">{rule.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-zinc-400">{rule.body}</p>
               </div>
             </Reveal>
@@ -198,7 +198,7 @@ function ReportForm() {
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-50">
           <CheckCircle2 size={26} className="text-emerald-600" />
         </div>
-        <h3 className="mt-6 text-xl font-bold tracking-tight text-zinc-900">
+        <h3 className="mt-6 text-xl font-bold tracking-tighter text-zinc-900">
           Report received
         </h3>
         <p className="mx-auto mt-3 max-w-sm text-sm leading-6 text-zinc-600">
@@ -227,7 +227,7 @@ function ReportForm() {
       noValidate
       className="rounded-[28px] border border-zinc-200 bg-white p-6 sm:p-8"
     >
-      <h3 className="text-lg font-bold tracking-tight text-zinc-900">Share details</h3>
+      <h3 className="text-lg font-bold tracking-tighter text-zinc-900">Share details</h3>
       <div className="mt-6 space-y-5">
         <div>
           <label htmlFor="firstName" className="block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500">
@@ -359,7 +359,7 @@ function Help() {
           {helpChannels.map((channel, i) => (
             <Reveal key={channel.title} delay={i * 0.06}>
               <div className="h-full rounded-[24px] border border-zinc-200 p-8">
-                <h3 className="text-lg font-bold tracking-tight text-zinc-900">
+                <h3 className="text-lg font-bold tracking-tighter text-zinc-900">
                   {channel.title}
                 </h3>
                 <p className="mt-3 text-sm leading-6 text-zinc-600">{channel.body}</p>

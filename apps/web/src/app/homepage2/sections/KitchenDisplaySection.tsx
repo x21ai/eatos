@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 export function KitchenDisplaySection() {
   return (
-    <section className="py-28 bg-black text-white">
+    <section className="py-20 md:py-28 bg-black text-white">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -16,7 +16,7 @@ export function KitchenDisplaySection() {
             <div className="bg-green-500/10 text-green-400 p-4 rounded-2xl w-fit mx-auto mb-6">
               <ChefHat size={28} />
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">
               Chaos, controlled.
             </h2>
             <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">

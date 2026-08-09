@@ -38,7 +38,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="text-5xl md:text-8xl lg:text-[6.5rem] font-bold tracking-[-0.04em] leading-[1.05] mb-8"
+          className="text-5xl md:text-8xl lg:text-[6.5rem] font-bold tracking-tighter leading-[1.05] mb-8"
         >
           The operating system
           <br />

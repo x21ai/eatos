@@ -108,8 +108,8 @@ function Spotlight({ pillar, index }) {
   const light = index % 2 === 0;
 
   return (
-    <section className={light ? 'bg-[#f5f5f7] text-black' : 'bg-white text-black'}>
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28 lg:py-32">
+    <section className={light ? 'bg-zinc-50 text-black' : 'bg-white text-black'}>
+      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28">
         <Reveal className="mx-auto max-w-2xl text-center">
           <Eyebrow>{`0${index + 1}`}</Eyebrow>
           <h2 className="mt-4 font-bold leading-[1.08] tracking-tighter text-3xl md:text-5xl">
@@ -165,7 +165,7 @@ function Spotlight({ pillar, index }) {
 function Bundle() {
   return (
     <section className="bg-black text-white">
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28 lg:py-32">
+      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28">
         <Reveal className="mx-auto max-w-2xl text-center">
           <Eyebrow>{bundle.eyebrow}</Eyebrow>
           <h2 className="mt-4 font-bold leading-[1.08] tracking-tighter text-3xl md:text-5xl">
@@ -196,7 +196,7 @@ function Bundle() {
         <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8 md:mt-20">
           {bundle.specs.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.06} className="min-w-0">
-              <h3 className="text-base font-bold tracking-tight text-white sm:text-lg">
+              <h3 className="text-base font-bold tracking-tighter text-white sm:text-lg">
                 {s.title}
               </h3>
               <p className="mt-3 text-sm leading-7 text-zinc-400 sm:text-base">{s.body}</p>

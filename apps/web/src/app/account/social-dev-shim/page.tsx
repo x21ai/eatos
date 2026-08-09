@@ -97,7 +97,7 @@ function SocialDevShim() {
 		<main className="flex min-h-screen w-full items-center justify-center bg-gray-50 p-[16px]">
 			<div className="flex w-full max-w-[400px] flex-col gap-[16px] rounded-[12px] bg-white p-[24px] shadow">
 				<div className="rounded-[8px] border border-amber-400 bg-amber-50 p-[10px] text-[13px] text-amber-800">
-					<strong>Development mode</strong> — this is a simulated {label}{" "}
+					<strong>Development mode</strong>: this is a simulated {label}{" "}
 					sign-in. In production, users will see the real {label} login screen.
 				</div>
 

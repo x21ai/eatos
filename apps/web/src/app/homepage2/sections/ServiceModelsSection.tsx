@@ -5,7 +5,7 @@ import { serviceModels } from "../data/serviceModels";
 
 export function ServiceModelsSection() {
   return (
-    <section className="py-28 bg-[#fafafa]">
+    <section className="py-20 md:py-28 bg-zinc-50">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -13,7 +13,7 @@ export function ServiceModelsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
             Built for every service model.
           </h2>
           <p className="text-lg text-gray-500 max-w-xl mx-auto">

@@ -109,7 +109,7 @@ export const hardware = {
     },
     {
       title: 'Freestanding',
-      body: 'Floor-mounted 22"–27" kiosk with integrated payments and receipt printer.',
+      body: 'Floor-mounted 22 to 27 inch kiosk with integrated payments and receipt printer.',
     },
     {
       title: 'Wall-mount',

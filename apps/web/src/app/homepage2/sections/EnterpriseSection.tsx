@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 export function EnterpriseSection() {
   return (
-    <section className="py-28 bg-white">
+    <section className="py-20 md:py-28 bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -17,7 +17,7 @@ export function EnterpriseSection() {
               <span>Enterprise & Multi-location</span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
               Centralized control
               <br />
               across all locations.

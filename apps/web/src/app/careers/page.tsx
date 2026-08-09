@@ -231,7 +231,7 @@ export default function CareersPage() {
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
-                    <div className="text-xl font-bold tracking-tight">
+                    <div className="text-xl font-bold tracking-tighter">
                       {r.title}
                     </div>
                     <div className="text-gray-600 mt-1">{r.blurb}</div>
@@ -341,7 +341,7 @@ function MiniStat({ icon: Icon, label, value }) {
       <div className="flex items-center gap-2 text-gray-500 text-sm font-semibold">
         <Icon size={16} /> {label}
       </div>
-      <div className="text-xl font-bold mt-2 tracking-tight">{value}</div>
+      <div className="text-xl font-bold mt-2 tracking-tighter">{value}</div>
     </div>
   );
 }

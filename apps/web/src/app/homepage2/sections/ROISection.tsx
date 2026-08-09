@@ -5,7 +5,7 @@ import { stats } from "../data/stats";
 
 export function ROISection() {
   return (
-    <section className="py-28 bg-black text-white">
+    <section className="py-20 md:py-28 bg-black text-white">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -16,7 +16,7 @@ export function ROISection() {
           <p className="text-sm font-semibold tracking-widest text-indigo-400 uppercase mb-4">
             The impact
           </p>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
             How <strong>eatOS</strong> helps your
             <br />
             <span className="text-gray-500">restaurant grow.</span>
@@ -36,7 +36,7 @@ export function ROISection() {
                 className="bg-zinc-900 rounded-3xl p-8 border border-white/5"
               >
                 <Icon size={24} className="text-indigo-400 mb-6" />
-                <div className="text-5xl md:text-6xl font-bold tracking-tight mb-2">
+                <div className="text-5xl md:text-6xl font-bold tracking-tighter mb-2">
                   {stat.value}
                   <span className="text-indigo-400">{stat.unit}</span>
                 </div>
