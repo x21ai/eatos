@@ -109,7 +109,7 @@ function Spotlight({ pillar, index }) {
 
   return (
     <section className={light ? 'bg-zinc-50 text-black' : 'bg-white text-black'}>
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28 lg:py-32">
+      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28">
         <Reveal className="mx-auto max-w-2xl text-center">
           <Eyebrow>{`0${index + 1}`}</Eyebrow>
           <h2 className="mt-4 font-bold leading-[1.08] tracking-tighter text-3xl md:text-5xl">
@@ -165,7 +165,7 @@ function Spotlight({ pillar, index }) {
 function Bundle() {
   return (
     <section className="bg-black text-white">
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28 lg:py-32">
+      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28">
         <Reveal className="mx-auto max-w-2xl text-center">
           <Eyebrow>{bundle.eyebrow}</Eyebrow>
           <h2 className="mt-4 font-bold leading-[1.08] tracking-tighter text-3xl md:text-5xl">

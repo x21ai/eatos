@@ -100,7 +100,7 @@ export default function AcceptPaymentsPage() {
       </section>
 
       {/* Bento Features */}
-      <section className="py-32 bg-white">
+      <section className="py-20 md:py-20 md:py-28 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-slate-50 rounded-[3rem] p-12 flex flex-col justify-center min-h-[400px]">

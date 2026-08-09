@@ -48,7 +48,7 @@ export default function HardwarePage() {
       </section>
 
       {/* Product Showcase - Zavo Pro */}
-      <section className="py-32 bg-black border-t border-white/5">
+      <section className="py-20 md:py-20 md:py-28 bg-black border-t border-white/5">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row items-center gap-20">
             <div className="flex-1">
@@ -94,7 +94,7 @@ export default function HardwarePage() {
       </section>
 
       {/* Product Showcase - Zavo Mini */}
-      <section className="py-32 bg-black">
+      <section className="py-20 md:py-20 md:py-28 bg-black">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row-reverse items-center gap-20">
             <div className="flex-1">
@@ -140,7 +140,7 @@ export default function HardwarePage() {
       </section>
 
       {/* Tap to Pay */}
-      <section className="py-32 bg-white text-black relative overflow-hidden">
+      <section className="py-20 md:py-20 md:py-28 bg-white text-black relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-sm font-medium mb-8">
             <Smartphone size={16} />

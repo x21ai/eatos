@@ -140,7 +140,7 @@ export default function TapToPayClient() {
         </section>
 
         {/* Steps */}
-        <section className="border-t border-white/5 bg-zinc-950 py-24 md:py-32">
+        <section className="border-t border-white/5 bg-zinc-950 py-20 md:py-28">
           <div className="container mx-auto px-4 md:px-6">
             <Reveal id="ttp-steps-head">
               <div className="mb-14 max-w-3xl md:mb-20">
@@ -201,7 +201,7 @@ export default function TapToPayClient() {
         </section>
 
         {/* Features */}
-        <section className="border-t border-white/5 bg-black py-24 md:py-32">
+        <section className="border-t border-white/5 bg-black py-20 md:py-28">
           <div className="container mx-auto px-4 md:px-6">
             <Reveal id="ttp-feat-head">
               <div className="mb-14 text-center md:mb-20">
@@ -241,7 +241,7 @@ export default function TapToPayClient() {
         </section>
 
         {/* Where it works */}
-        <section className="border-t border-white/5 bg-zinc-950 py-24 md:py-32">
+        <section className="border-t border-white/5 bg-zinc-950 py-20 md:py-28">
           <div className="container mx-auto px-4 md:px-6">
             <Reveal id="ttp-places">
               <div className="mb-14 max-w-3xl md:mb-20">
@@ -286,7 +286,7 @@ export default function TapToPayClient() {
         </section>
 
         {/* Closing CTA */}
-        <section className="border-t border-white/5 bg-black py-24 md:py-32">
+        <section className="border-t border-white/5 bg-black py-20 md:py-28">
           <div className="container mx-auto px-4 text-center md:px-6">
             <Reveal id="ttp-cta">
               <h2 className="mb-6 text-4xl font-bold tracking-tighter md:text-7xl">

@@ -5,7 +5,7 @@ import { serviceModels } from "../data/serviceModels";
 
 export function ServiceModelsSection() {
   return (
-    <section className="py-28 bg-zinc-50">
+    <section className="py-20 md:py-28 bg-zinc-50">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

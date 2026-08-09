@@ -172,7 +172,7 @@ function Mark({ on, accent = false }) {
 function Matrix() {
   return (
     <section className="bg-black text-white">
-      <div className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-8 md:py-32 lg:py-40">
+      <div className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-8 md:py-20 md:py-28 lg:py-40">
         <Reveal>
           <h2 className="mx-auto max-w-[26ch] text-center font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
             Compare eatOS with other Point of Sale software
@@ -286,7 +286,7 @@ function Matrix() {
 function Reasons() {
   return (
     <section className="bg-white text-black">
-      <div className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-8 md:py-32 lg:py-40">
+      <div className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-8 md:py-20 md:py-28 lg:py-40">
         <Reveal>
           <h2 className="mx-auto max-w-[26ch] text-center font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
             Why businesses choose eatOS over other Point of Sale software
@@ -329,7 +329,7 @@ function Reasons() {
 function ClosingCta() {
   return (
     <section className="bg-black text-white">
-      <div className="mx-auto w-full max-w-[1180px] px-5 py-24 text-center sm:px-8 md:py-32">
+      <div className="mx-auto w-full max-w-[1180px] px-5 py-20 text-center sm:px-8 md:py-28">
         <Reveal>
           <h2 className="mx-auto max-w-[22ch] font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
             Start Using Restaurant Technology Cloud
