@@ -224,7 +224,7 @@ function Benefits() {
           {benefits.map((benefit, i) => (
             <Reveal key={benefit.title} delay={i * 0.05}>
               <div className="flex h-full flex-col rounded-[2rem] border border-white/10 bg-white/[0.02] p-7 transition-colors hover:border-white/20 hover:bg-white/[0.04]">
-                <h3 className="font-bold tracking-tight text-xl md:text-2xl">{benefit.title}</h3>
+                <h3 className="font-bold tracking-tighter text-xl md:text-2xl">{benefit.title}</h3>
                 <p className="mt-3 flex-1 text-sm leading-7 text-zinc-400 sm:text-base">
                   {benefit.body}
                 </p>

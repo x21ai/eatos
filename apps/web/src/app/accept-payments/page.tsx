@@ -104,7 +104,7 @@ export default function AcceptPaymentsPage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-slate-50 rounded-[3rem] p-12 flex flex-col justify-center min-h-[400px]">
-              <h3 className="text-4xl font-bold mb-6 tracking-tight">Tap to Pay on iPhone</h3>
+              <h3 className="text-4xl font-bold mb-6 tracking-tighter">Tap to Pay on iPhone</h3>
               <p className="text-xl text-slate-500 mb-8">
                 No terminal? No problem. Use the device you already have to accept contactless
                 payments anywhere.
@@ -118,7 +118,7 @@ export default function AcceptPaymentsPage() {
             </div>
             <div className="bg-black text-white rounded-[3rem] p-12 flex flex-col justify-center min-h-[400px] relative overflow-hidden">
               <div className="relative z-10">
-                <h3 className="text-4xl font-bold mb-6 tracking-tight">Instant Payouts</h3>
+                <h3 className="text-4xl font-bold mb-6 tracking-tighter">Instant Payouts</h3>
                 <p className="text-xl text-gray-400 mb-8">
                   Cash out your sales immediately. Money hits your bank account in minutes,
                   24/7/365.

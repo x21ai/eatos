@@ -15,7 +15,7 @@ export function OnePlatformSection() {
           <p className="text-sm font-semibold tracking-widest text-indigo-500 uppercase mb-4">
             One platform. Every tool.
           </p>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
             Everything you need in
             <br />
             <span className="text-gray-400">one place.</span>

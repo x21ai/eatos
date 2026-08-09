@@ -121,7 +121,7 @@ function StatsStrip() {
         <div className="grid grid-cols-3 divide-x divide-white/10">
           {hero.stats.map((s) => (
             <div key={s.label} className="flex flex-col items-center px-4 text-center">
-              <div className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-2">
+              <div className="text-3xl md:text-5xl font-bold tracking-tighter text-white mb-2">
                 {s.value}
               </div>
               <div className="text-[10px] sm:text-xs uppercase tracking-[0.18em] text-gray-400">
@@ -254,7 +254,7 @@ function Offers() {
             <Reveal key={offer.title} delay={i * 0.08} className="min-w-0">
               <div className="group transition-transform duration-500 hover:-translate-y-1">
                 <Placeholder label={offer.imageLabel} tone="light" src={offer.image} />
-                <h3 className="mt-7 font-bold tracking-tight text-2xl md:text-3xl">
+                <h3 className="mt-7 font-bold tracking-tighter text-2xl md:text-3xl">
                   {offer.title}
                 </h3>
                 <p className="mt-3 text-sm leading-7 text-zinc-600 sm:text-base">
@@ -308,7 +308,7 @@ function Hardware() {
         <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8 md:mt-20">
           {hardware.specs.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.06} className="min-w-0">
-              <h3 className="text-base font-bold tracking-tight text-white sm:text-lg">
+              <h3 className="text-base font-bold tracking-tighter text-white sm:text-lg">
                 {s.title}
               </h3>
               <p className="mt-3 text-sm leading-7 text-zinc-400 sm:text-base">{s.body}</p>

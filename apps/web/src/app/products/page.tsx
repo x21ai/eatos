@@ -155,7 +155,7 @@ export default function ProductsPage() {
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-2xl font-bold tracking-tight mb-2">{product.title}</h3>
+                  <h3 className="text-2xl font-bold tracking-tighter mb-2">{product.title}</h3>
                   <p className="text-gray-400 leading-relaxed mb-6">{product.tagline}</p>
 
                   {/* Features */}

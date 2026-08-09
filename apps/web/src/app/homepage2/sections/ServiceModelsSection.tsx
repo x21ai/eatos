@@ -13,7 +13,7 @@ export function ServiceModelsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
             Built for every service model.
           </h2>
           <p className="text-lg text-gray-500 max-w-xl mx-auto">

@@ -126,7 +126,7 @@ function WhySwitch() {
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <span className="min-w-0 block">
-                    <h3 className="text-lg font-bold tracking-tight sm:text-xl">
+                    <h3 className="text-lg font-bold tracking-tighter sm:text-xl">
                       {item.title}
                     </h3>
                     <p className="mt-3 max-w-xl text-sm leading-7 text-zinc-600">{item.body}</p>
@@ -243,7 +243,7 @@ function Matrix() {
                 }`}
               >
                 <div className="flex items-center justify-between gap-3">
-                  <h3 className="min-w-0 truncate text-base font-bold tracking-tight">
+                  <h3 className="min-w-0 truncate text-base font-bold tracking-tighter">
                     {name}
                   </h3>
                   {ci === 0 && (

@@ -17,7 +17,7 @@ export function EnterpriseSection() {
               <span>Enterprise & Multi-location</span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
               Centralized control
               <br />
               across all locations.

@@ -172,7 +172,7 @@ export default async function CareerRolePage({ params }) {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
             <div className="rounded-3xl border border-gray-200 bg-white p-8">
-              <h2 className="text-2xl font-bold tracking-tight">
+              <h2 className="text-2xl font-bold tracking-tighter">
                 What you’ll do
               </h2>
               <ul className="mt-6 space-y-3 text-gray-700">
@@ -186,7 +186,7 @@ export default async function CareerRolePage({ params }) {
             </div>
 
             <div className="rounded-3xl border border-gray-200 bg-white p-8">
-              <h2 className="text-2xl font-bold tracking-tight">
+              <h2 className="text-2xl font-bold tracking-tighter">
                 What we’re looking for
               </h2>
               <ul className="mt-6 space-y-3 text-gray-700">

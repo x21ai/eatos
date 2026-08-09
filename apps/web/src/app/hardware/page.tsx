@@ -64,7 +64,7 @@ export default function HardwarePage() {
               </div>
             </div>
             <div className="flex-1 space-y-8">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter">
                 <strong>eatOS</strong> Pro
               </h2>
               <p className="text-xl text-gray-400 leading-relaxed">
@@ -110,7 +110,7 @@ export default function HardwarePage() {
               </div>
             </div>
             <div className="flex-1 space-y-8">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter">
                 <strong>eatOS</strong> Mini
               </h2>
               <p className="text-xl text-gray-400 leading-relaxed">

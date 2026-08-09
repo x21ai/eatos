@@ -19,7 +19,7 @@ export function AIIntelligenceSection() {
               </span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
               Automate the busy work
               <br />
               <span className="text-indigo-500">with AI.</span>

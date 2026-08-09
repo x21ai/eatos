@@ -55,7 +55,7 @@ function Featured({ post }) {
           <Placeholder label={post.title} src={post.image} tone="light" ratio="aspect-[16/10]" />
           <div className="min-w-0">
             <Meta post={post} />
-            <h2 className="mt-5 line-clamp-2 max-w-2xl font-bold leading-[1.1] tracking-tight text-black text-[clamp(1.75rem,3.4vw,2.75rem)]">
+            <h2 className="mt-5 line-clamp-2 max-w-2xl text-2xl font-bold leading-[1.1] tracking-tighter text-black sm:text-3xl md:text-4xl">
               {post.title}
             </h2>
             <p className="mt-5 line-clamp-3 max-w-xl text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8">
@@ -85,7 +85,7 @@ function Card({ post, index }) {
       <Placeholder label={post.title} src={post.image} tone="light" ratio="aspect-[16/10]" />
       <div className="mt-6 min-w-0">
         <Meta post={post} />
-        <h3 className="mt-3 line-clamp-2 text-xl font-bold leading-snug tracking-tight text-black transition-colors group-hover:text-zinc-600 sm:text-[1.375rem]">
+        <h3 className="mt-3 line-clamp-2 text-xl font-bold leading-snug tracking-tighter text-black transition-colors group-hover:text-zinc-600 sm:text-[1.375rem]">
           {post.title}
         </h3>
         <p className="mt-3 line-clamp-3 text-sm leading-6 text-zinc-600 sm:text-base sm:leading-7">{post.excerpt}</p>

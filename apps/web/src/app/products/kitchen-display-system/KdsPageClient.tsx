@@ -90,7 +90,7 @@ function Hero() {
         <div className="grid grid-cols-2 gap-y-8 gap-x-6 text-center lg:grid-cols-4">
           {marquee.map((m, i) => (
             <Reveal key={m.label} delay={i * 0.06} className="min-w-0">
-              <div className="text-4xl font-bold leading-none tracking-tight md:text-5xl">
+              <div className="text-4xl font-bold leading-none tracking-tighter md:text-5xl">
                 {m.value}
               </div>
               <div className="mt-2 text-sm text-gray-500">
@@ -159,7 +159,7 @@ function Spotlight({ feature, index }) {
               <dl className="mt-8 grid grid-cols-2 gap-6">
                 {feature.metrics.map((m) => (
                   <div key={m.label} className="min-w-0">
-                    <dt className="text-3xl font-bold leading-none tracking-tight md:text-4xl">
+                    <dt className="text-3xl font-bold leading-none tracking-tighter md:text-4xl">
                       {m.value}
                     </dt>
                     <dd className="mt-2 text-sm text-zinc-500">
@@ -199,7 +199,7 @@ function Hardware() {
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3 md:mt-16">
           {hardware.specs.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.06} className="min-w-0">
-              <h3 className="text-base font-bold tracking-tight text-white md:text-lg">
+              <h3 className="text-base font-bold tracking-tighter text-white md:text-lg">
                 {s.title}
               </h3>
               <p className="mt-3 text-sm font-light leading-relaxed text-gray-400">
@@ -224,7 +224,7 @@ function Offers() {
           {offers.map((offer, i) => (
             <Reveal key={offer.title} delay={i * 0.08} className="min-w-0">
               <Placeholder label={offer.imageLabel} ratio="aspect-[16/10]" tone="light" />
-              <h3 className="mt-6 text-xl font-bold tracking-tight md:text-2xl">
+              <h3 className="mt-6 text-xl font-bold tracking-tighter md:text-2xl">
                 {offer.title}
               </h3>
               <p className="mt-3 text-[15px] font-light leading-relaxed text-zinc-600">

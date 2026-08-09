@@ -79,7 +79,7 @@ export default function BlogDashboard() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Blog Posts</h1>
+            <h1 className="text-3xl font-bold tracking-tighter">Blog Posts</h1>
             <p className="text-gray-400 mt-1">
               Manage your articles, schedule releases, and track performance.
             </p>

@@ -15,7 +15,7 @@ export function FinalCTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-7xl font-bold tracking-tight mb-6">
+          <h2 className="text-4xl md:text-7xl font-bold tracking-tighter mb-6">
             New to <strong>eatOS</strong>?
             <br />
             Get started today.

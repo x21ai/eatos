@@ -13,7 +13,7 @@ export function FullPlatformSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
             Everything you need.{" "}
             <span className="text-indigo-500">Fully integrated.</span>
           </h2>
