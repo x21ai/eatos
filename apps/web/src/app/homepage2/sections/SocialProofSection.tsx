@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 
 export function SocialProofSection() {
   return (
-    <section className="py-20 bg-[#fafafa] border-b border-gray-100">
+    <section className="py-20 bg-zinc-50 border-b border-gray-100">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

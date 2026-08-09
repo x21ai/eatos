@@ -39,7 +39,7 @@ export default function BlogPostClient({ slug }) {
   }
 
   return (
-    <article className="bg-white text-[#1d1d1f]">
+    <article className="bg-white text-zinc-900">
       <header className="bg-black pt-32 pb-16 md:pt-40 md:pb-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">

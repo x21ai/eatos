@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 export function AIIntelligenceSection() {
   return (
-    <section className="py-28 bg-gradient-to-b from-[#f5f3ff] to-white relative overflow-hidden">
+    <section className="py-28 bg-gradient-to-b from-zinc-50 to-white relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div

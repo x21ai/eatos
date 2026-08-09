@@ -112,7 +112,7 @@ function Spotlight({ feature, index }) {
   const light = index % 2 === 0;
 
   return (
-    <section className={light ? 'bg-[#f5f5f7] text-black' : 'bg-white text-black'}>
+    <section className={light ? 'bg-zinc-50 text-black' : 'bg-white text-black'}>
       <div className="container mx-auto px-4 md:px-6 py-20 md:py-28">
         <Reveal className="mx-auto max-w-2xl text-center">
           <Eyebrow>{`0${index + 1}`}</Eyebrow>
@@ -218,7 +218,7 @@ function Hardware() {
 
 function Offers() {
   return (
-    <section className="bg-[#f5f5f7] text-black">
+    <section className="bg-zinc-50 text-black">
       <div className="container mx-auto px-4 md:px-6 py-20 md:py-28">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {offers.map((offer, i) => (

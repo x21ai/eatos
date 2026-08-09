@@ -45,7 +45,7 @@ function Eyebrow({ children, className = '' }) {
 
 function Hero() {
   return (
-    <section className="overflow-hidden bg-[#f7f7f8] text-black">
+    <section className="overflow-hidden bg-zinc-50 text-black">
       <div className="mx-auto w-full max-w-[1180px] px-5 pt-28 pb-16 text-center sm:px-8 md:pt-36 md:pb-20 lg:pt-44">
         <Reveal className="min-w-0">
           <Eyebrow className="text-center">{hero.eyebrow}</Eyebrow>

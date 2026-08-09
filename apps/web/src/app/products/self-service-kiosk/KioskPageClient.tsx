@@ -247,7 +247,7 @@ function FeatureList() {
 
 function Offers() {
   return (
-    <section className="bg-[#f7f7f8] text-black">
+    <section className="bg-zinc-50 text-black">
       <div className="mx-auto w-full max-w-[1180px] px-5 py-20 sm:px-8 md:py-28">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-8">
           {offers.map((offer, i) => (
@@ -324,7 +324,7 @@ function Hardware() {
 
 function Closing() {
   return (
-    <section className="bg-[#111113] text-white">
+    <section className="bg-zinc-950 text-white">
       <div className="mx-auto w-full max-w-[1180px] px-5 py-20 sm:px-8 md:py-24">
         <Reveal className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
           <h2 className="max-w-xl font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">

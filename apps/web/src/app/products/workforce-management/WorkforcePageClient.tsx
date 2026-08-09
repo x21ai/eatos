@@ -45,7 +45,7 @@ function Eyebrow({ children, className = '' }) {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-[#0a0a0f] text-white">
+    <section className="relative overflow-hidden bg-zinc-950 text-white">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(99,102,241,0.18),transparent_50%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]" />
@@ -211,7 +211,7 @@ function Features() {
 
 function Benefits() {
   return (
-    <section className="bg-[#0a0a0f] text-white">
+    <section className="bg-zinc-950 text-white">
       <div className="mx-auto w-full max-w-[1200px] px-5 py-14 sm:px-8 md:py-20">
         <Reveal className="text-center">
           <Eyebrow>More capabilities</Eyebrow>

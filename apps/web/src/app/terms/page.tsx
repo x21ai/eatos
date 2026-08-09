@@ -36,7 +36,7 @@ export default function TermsOfServicePage() {
             {/* TOC */}
             <aside className="hidden lg:block lg:sticky lg:top-28 h-fit lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
               <div className="rounded-3xl border border-gray-200 bg-white p-6">
-                <div className="text-[13px] font-semibold tracking-wide text-[#1d1d1f] mb-4">
+                <div className="text-[13px] font-semibold tracking-wide text-zinc-900 mb-4">
                   On this page
                 </div>
                 <ul className="space-y-2">

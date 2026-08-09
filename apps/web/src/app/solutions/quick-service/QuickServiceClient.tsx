@@ -108,7 +108,7 @@ function Spotlight({ pillar, index }) {
   const light = index % 2 === 0;
 
   return (
-    <section className={light ? 'bg-[#f5f5f7] text-black' : 'bg-white text-black'}>
+    <section className={light ? 'bg-zinc-50 text-black' : 'bg-white text-black'}>
       <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28 lg:py-32">
         <Reveal className="mx-auto max-w-2xl text-center">
           <Eyebrow>{`0${index + 1}`}</Eyebrow>
