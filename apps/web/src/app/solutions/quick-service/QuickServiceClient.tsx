@@ -196,7 +196,7 @@ function Bundle() {
         <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8 md:mt-20">
           {bundle.specs.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.06} className="min-w-0">
-              <h3 className="text-base font-bold tracking-tight text-white sm:text-lg">
+              <h3 className="text-base font-bold tracking-tighter text-white sm:text-lg">
                 {s.title}
               </h3>
               <p className="mt-3 text-sm leading-7 text-zinc-400 sm:text-base">{s.body}</p>

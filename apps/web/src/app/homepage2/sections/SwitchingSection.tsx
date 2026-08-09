@@ -13,7 +13,7 @@ export function SwitchingSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
             Switching made effortless.
           </h2>
           <p className="text-lg text-gray-500 max-w-xl mx-auto">
@@ -34,7 +34,7 @@ export function SwitchingSection() {
                 transition={{ delay: i * 0.1 }}
                 className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm relative"
               >
-                <div className="text-6xl font-black text-gray-100 absolute top-6 right-6">
+                <div className="text-6xl font-bold text-gray-100 absolute top-6 right-6">
                   {step.step}
                 </div>
                 <div className="relative z-10">

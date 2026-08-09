@@ -12,7 +12,7 @@ export default function GhostKitchenPage() {
               <Package size={16} />
               <span>Ghost Kitchen</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-black mb-6">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-black mb-6">
               Delivery-first operations
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">

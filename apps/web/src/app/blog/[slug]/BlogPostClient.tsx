@@ -71,7 +71,7 @@ export default function BlogPostClient({ slug }) {
               <span aria-hidden>·</span>
               <span>{formatDate(post.date)}</span>
             </div>
-            <h1 className="mt-6 font-bold leading-[1.08] tracking-tighter text-white text-[clamp(2rem,4.6vw,3.5rem)]">
+            <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tighter text-white sm:text-5xl">
               {post.title}
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">

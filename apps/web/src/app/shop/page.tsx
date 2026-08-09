@@ -63,7 +63,7 @@ export default function ShopPage() {
       {/* Hero */}
       <section className="bg-white pt-20 pb-16 border-b border-gray-100">
         <div className="container mx-auto px-4 md:px-6">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Shop Hardware</h1>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">Shop Hardware</h1>
           <p className="text-xl text-gray-500 max-w-2xl">
             Premium hardware designed for speed, durability, and style.
           </p>

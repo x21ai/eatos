@@ -122,7 +122,7 @@ export default function HomePage() {
                   key={stat.value}
                   className="flex-1 flex flex-col items-center py-6 sm:py-0 px-6"
                 >
-                  <div className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-2">
+                  <div className="text-4xl md:text-5xl font-bold tracking-tighter text-white mb-2">
                     {stat.value}
                   </div>
                   <div className="text-sm text-gray-500">{stat.label}</div>
@@ -149,7 +149,7 @@ export default function HomePage() {
               ].map((name) => (
                 <div
                   key={name}
-                  className="shrink-0 whitespace-nowrap text-[10px] sm:text-xs md:text-sm lg:text-base font-bold tracking-tight text-white"
+                  className="shrink-0 whitespace-nowrap text-[10px] sm:text-xs md:text-sm lg:text-base font-bold tracking-tighter text-white"
                 >
                   {name}
                 </div>
