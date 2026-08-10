@@ -216,25 +216,30 @@ export default function QuickServiceClient() {
                 Icon: Zap,
                 title: 'Built for speed',
                 body: 'Order entry in seconds, with modifiers and upsells one tap away so the queue never stalls.',
+                iconClass: 'bg-amber-500/15 text-amber-400',
               },
               {
                 Icon: Shield,
                 title: 'Reliable at scale',
                 body: 'From one counter to hundreds of locations, online and offline, service keeps running.',
+                iconClass: 'bg-sky-500/15 text-sky-400',
               },
               {
                 Icon: Clock,
                 title: '24/7 support',
                 body: 'Real people, real help, any time. We are here when you need us, especially during the rush.',
+                iconClass: 'bg-emerald-500/15 text-emerald-400',
               },
-            ].map(({ Icon, title, body }, index) => (
+            ].map(({ Icon, title, body, iconClass }, index) => (
               <motion.div
                 key={title}
                 {...rise}
                 transition={{ delay: index * 0.1 }}
                 className="rounded-[2rem] border border-white/10 bg-white/5 p-8 md:p-10"
               >
-                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 text-white">
+                <div
+                  className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${iconClass}`}
+                >
                   <Icon size={28} />
                 </div>
                 <h3 className="text-2xl font-bold tracking-tighter mb-3">{title}</h3>
@@ -270,13 +275,7 @@ export default function QuickServiceClient() {
             </div>
           </motion.div>
 
-          <motion.div {...rise} className="mt-12 md:mt-16">
-            <div className="rounded-[2rem] border border-white/10 bg-white/5 p-3 md:p-4">
-              <Placeholder label={bundle.imageLabel} src={bundle.image} ratio="aspect-[16/9]" />
-            </div>
-          </motion.div>
-
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {bundle.specs.map((spec, index) => (
               <motion.div
                 key={spec.title}
