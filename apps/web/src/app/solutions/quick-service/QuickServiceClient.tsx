@@ -1,7 +1,20 @@
 // @ts-nocheck
 'use client';
 
-import { Check, ChevronRight, Clock, Shield, Utensils, Zap } from 'lucide-react';
+import {
+  Check,
+  ChefHat,
+  ChevronRight,
+  Clock,
+  HeartHandshake,
+  Layers,
+  Monitor,
+  Shield,
+  Users,
+  Utensils,
+  WifiOff,
+  Zap,
+} from 'lucide-react';
 import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
 import { bundle, capabilities, hero, marquee, pillars } from './content';
@@ -17,18 +30,30 @@ const related = [
     href: '/products/self-service-kiosk',
     title: 'Self-Service Kiosk',
     tagline: 'Guest-driven ordering with smart upsells.',
+    Icon: Monitor,
+    iconClass: 'bg-violet-500/15 text-violet-400',
   },
   {
     href: '/products/kitchen-display-system',
     title: 'Kitchen Display System',
     tagline: 'Tickets routed to the right station, in order.',
+    Icon: ChefHat,
+    iconClass: 'bg-orange-500/15 text-orange-400',
   },
   {
     href: '/products/workforce-management',
     title: 'Workforce Management',
     tagline: 'Scheduling, clock-ins and labor in one place.',
+    Icon: Users,
+    iconClass: 'bg-teal-500/15 text-teal-400',
   },
 ];
+
+const pillarIcons = {
+  versatile: { Icon: Layers, iconClass: 'bg-sky-500/15 text-sky-400' },
+  offline: { Icon: WifiOff, iconClass: 'bg-amber-500/15 text-amber-400' },
+  repeat: { Icon: HeartHandshake, iconClass: 'bg-rose-500/15 text-rose-400' },
+};
 
 export default function QuickServiceClient() {
   return (
@@ -156,7 +181,10 @@ export default function QuickServiceClient() {
       {/* Feature rows */}
       <section className="py-20 md:py-28 border-t border-white/5">
         <div className="container mx-auto px-4 md:px-6 space-y-16 md:space-y-24">
-          {pillars.map((pillar, index) => (
+          {pillars.map((pillar, index) => {
+            const { Icon, iconClass } =
+              pillarIcons[pillar.id] ?? { Icon: Utensils, iconClass: 'bg-white/10 text-white' };
+            return (
             <motion.div
               key={pillar.id}
               id={pillar.id}
@@ -164,6 +192,11 @@ export default function QuickServiceClient() {
               className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
             >
               <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                <div
+                  className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${iconClass}`}
+                >
+                  <Icon size={28} />
+                </div>
                 <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-5">
                   {pillar.title}
                 </h2>
@@ -194,7 +227,8 @@ export default function QuickServiceClient() {
                 </div>
               </div>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -312,16 +346,21 @@ export default function QuickServiceClient() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {related.map((item, index) => (
+            {related.map(({ href, title, tagline, Icon, iconClass }, index) => (
               <motion.a
-                key={item.href}
-                href={item.href}
+                key={href}
+                href={href}
                 {...rise}
                 transition={{ delay: index * 0.1 }}
                 className="group rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-8 transition-all hover:border-white/20"
               >
-                <h3 className="text-xl font-bold tracking-tighter mb-2">{item.title}</h3>
-                <p className="text-gray-500 mb-6">{item.tagline}</p>
+                <div
+                  className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${iconClass}`}
+                >
+                  <Icon size={28} />
+                </div>
+                <h3 className="text-xl font-bold tracking-tighter mb-2">{title}</h3>
+                <p className="text-gray-500 mb-6">{tagline}</p>
                 <div className="flex items-center gap-1 text-sm font-semibold text-white group-hover:gap-2 transition-all">
                   Learn more
                   <ChevronRight
