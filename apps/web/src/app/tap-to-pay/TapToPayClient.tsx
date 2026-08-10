@@ -29,7 +29,7 @@ import {
   Clock,
 } from 'lucide-react';
 import { motion } from 'motion/react';
-import { stats, steps, features, requirements } from './content';
+import { stats, steps, features, requirements, heroVideo } from './content';
 import { products } from '../products/products';
 
 const featureIcons = { CreditCard, ShieldCheck, Percent, WifiOff, Receipt, Layers };
@@ -161,13 +161,32 @@ export default function TapToPayClient() {
               </motion.div>
             </div>
 
-            {/* Key Features card */}
+            {/* Hero video + Key Features */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className={`rounded-[2.5rem] border ${colors.border} bg-white/5 backdrop-blur-xl p-8 md:p-10`}
+              className="space-y-6"
             >
+              <div
+                className={`relative overflow-hidden rounded-[2rem] md:rounded-[2.5rem] border ${colors.border} bg-white/5`}
+              >
+                <video
+                  src={heroVideo}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Server taking a contactless payment at the table"
+                  className="h-full w-full object-cover aspect-video"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              </div>
+
+              <div
+                className={`rounded-[2rem] md:rounded-[2.5rem] border ${colors.border} bg-white/5 backdrop-blur-xl p-6 sm:p-8 md:p-10`}
+              >
               <h3 className="text-xl font-bold mb-8">Key Features</h3>
               <div className="space-y-6">
                 {features.map((feature, index) => (
@@ -186,6 +205,7 @@ export default function TapToPayClient() {
                     <div className="text-lg font-medium">{feature.title}</div>
                   </motion.div>
                 ))}
+              </div>
               </div>
             </motion.div>
           </div>
