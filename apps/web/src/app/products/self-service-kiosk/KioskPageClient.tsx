@@ -11,6 +11,12 @@ import {
   Monitor,
   ChefHat,
   Users,
+  LayoutGrid,
+  Timer,
+  Cpu,
+  Tablet,
+  Store,
+  PanelTop,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
@@ -21,6 +27,18 @@ const relatedIcons = [
   { Icon: Monitor, tint: 'bg-sky-500/10 text-sky-400' },
   { Icon: ChefHat, tint: 'bg-amber-500/10 text-amber-400' },
   { Icon: Users, tint: 'bg-violet-500/10 text-violet-400' },
+];
+
+const featureIcons = [
+  { Icon: LayoutGrid, tint: 'bg-indigo-500/10 text-indigo-400' },
+  { Icon: Timer, tint: 'bg-emerald-500/10 text-emerald-400' },
+  { Icon: Cpu, tint: 'bg-rose-500/10 text-rose-400' },
+];
+
+const hardwareIcons = [
+  { Icon: Tablet, tint: 'bg-sky-500/10 text-sky-400' },
+  { Icon: Store, tint: 'bg-amber-500/10 text-amber-400' },
+  { Icon: PanelTop, tint: 'bg-violet-500/10 text-violet-400' },
 ];
 
 const related = products.filter((p) => p.slug !== 'self-service-kiosk').slice(0, 3);
@@ -165,6 +183,16 @@ export default function KioskPageClient() {
               className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
             >
               <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                {(() => {
+                  const { Icon, tint } = featureIcons[index % featureIcons.length];
+                  return (
+                    <div
+                      className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${tint}`}
+                    >
+                      <Icon size={28} />
+                    </div>
+                  );
+                })()}
                 <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-5">
                   {feature.title}
                 </h2>
@@ -272,6 +300,16 @@ export default function KioskPageClient() {
                 transition={{ delay: index * 0.08 }}
                 className="rounded-[2rem] border border-white/10 bg-white/5 p-8"
               >
+                {(() => {
+                  const { Icon, tint } = hardwareIcons[index % hardwareIcons.length];
+                  return (
+                    <div
+                      className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-5 ${tint}`}
+                    >
+                      <Icon size={24} />
+                    </div>
+                  );
+                })()}
                 <h3 className="text-xl font-bold tracking-tighter">{spec.title}</h3>
                 <p className="mt-3 text-gray-400 leading-relaxed">{spec.body}</p>
               </motion.div>
