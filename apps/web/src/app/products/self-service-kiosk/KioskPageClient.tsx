@@ -183,6 +183,16 @@ export default function KioskPageClient() {
               className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
             >
               <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                {(() => {
+                  const { Icon, tint } = featureIcons[index % featureIcons.length];
+                  return (
+                    <div
+                      className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${tint}`}
+                    >
+                      <Icon size={28} />
+                    </div>
+                  );
+                })()}
                 <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-5">
                   {feature.title}
                 </h2>
@@ -290,6 +300,16 @@ export default function KioskPageClient() {
                 transition={{ delay: index * 0.08 }}
                 className="rounded-[2rem] border border-white/10 bg-white/5 p-8"
               >
+                {(() => {
+                  const { Icon, tint } = hardwareIcons[index % hardwareIcons.length];
+                  return (
+                    <div
+                      className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-5 ${tint}`}
+                    >
+                      <Icon size={24} />
+                    </div>
+                  );
+                })()}
                 <h3 className="text-xl font-bold tracking-tighter">{spec.title}</h3>
                 <p className="mt-3 text-gray-400 leading-relaxed">{spec.body}</p>
               </motion.div>
