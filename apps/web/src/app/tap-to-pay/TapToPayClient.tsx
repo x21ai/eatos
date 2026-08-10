@@ -184,29 +184,6 @@ export default function TapToPayClient() {
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>
 
-              <div
-                className={`rounded-[2rem] md:rounded-[2.5rem] border ${colors.border} bg-white/5 backdrop-blur-xl p-6 sm:p-8 md:p-10`}
-              >
-              <h3 className="text-xl font-bold mb-8">Key Features</h3>
-              <div className="space-y-6">
-                {features.map((feature, index) => (
-                  <motion.div
-                    key={feature.title}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 + index * 0.1 }}
-                    className="flex items-start gap-4"
-                  >
-                    <div
-                      className={`w-8 h-8 rounded-full ${colors.bg} ${colors.accent} flex items-center justify-center flex-shrink-0 mt-0.5`}
-                    >
-                      <Check size={16} />
-                    </div>
-                    <div className="text-lg font-medium">{feature.title}</div>
-                  </motion.div>
-                ))}
-              </div>
-              </div>
             </motion.div>
           </div>
         </div>
