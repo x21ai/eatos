@@ -1,10 +1,10 @@
 // @ts-nocheck
 // All copy for the Quick Service solution page. Edit here.
 
-import heroImg from './assets/qs-hero.png.asset.json';
-import versatileImg from './assets/qs-versatile.jpg.asset.json';
-import offlineImg from './assets/qs-offline.jpg.asset.json';
-import repeatImg from './assets/qs-repeat.jpg.asset.json';
+import heroImg from './assets/qs-hero-new.jpg.asset.json';
+import versatileImg from './assets/qs-versatile-new.jpg.asset.json';
+import offlineImg from './assets/qs-offline-new.jpg.asset.json';
+import repeatImg from './assets/qs-repeat-new.jpg.asset.json';
 import bundleImg from './assets/qs-bundle.jpg.asset.json';
 
 export const hero = {
