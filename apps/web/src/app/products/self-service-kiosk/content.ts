@@ -5,6 +5,7 @@ import designedAsset from './assets/kiosk-designed.jpg.asset.json';
 import waitAsset from './assets/kiosk-wait.jpg.asset.json';
 import hardwareAsset from './assets/kiosk-hardware.png.asset.json';
 import lineupAsset from './assets/kiosk-lineup.jpg.asset.json';
+import heroAsset from './assets/kiosk-hero.jpg.asset.json';
 
 export const hero = {
   title: 'Tap. Order.',
@@ -14,7 +15,7 @@ export const hero = {
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Self-service kiosk',
-  image: '/images/kiosk-hero-dark.jpg',
+  image: heroAsset.url,
   stats: [
     { value: '20%', label: 'Higher check size' },
     { value: '2x', label: 'Faster ordering' },
