@@ -3,6 +3,7 @@ import heroAsset from './assets/hero.jpg.asset.json';
 import posterAsset from './assets/poster.jpg.asset.json';
 import counterAsset from './assets/counter.jpg.asset.json';
 import detailAsset from './assets/detail.jpg.asset.json';
+import heroVideoAsset from './assets/hero-video.mp4.asset.json';
 
 export const images = {
   hero: heroAsset.url,
@@ -10,6 +11,8 @@ export const images = {
   counter: counterAsset.url,
   detail: detailAsset.url,
 };
+
+export const heroVideo = heroVideoAsset.url;
 
 export const stats = [
   { value: '2 sec', label: 'From total to approved' },
