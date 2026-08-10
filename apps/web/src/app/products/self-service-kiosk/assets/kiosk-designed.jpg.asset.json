@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "asset_id": "9a492b27-2303-4fee-bd09-b10a81d77797",
+  "asset_id": "7bb950e0-fd12-47d8-aa48-f84f0a601d2f",
   "project_id": "b675eaf0-f678-4036-aa59-3142eda6c8f6",
-  "url": "/__l5e/assets-v1/9a492b27-2303-4fee-bd09-b10a81d77797/kiosk-designed.jpg",
-  "r2_key": "a/v1/b675eaf0-f678-4036-aa59-3142eda6c8f6/9a492b27-2303-4fee-bd09-b10a81d77797/kiosk-designed.jpg",
-  "original_filename": "kiosk-designed.jpg",
-  "size": 126880,
+  "url": "/__l5e/assets-v1/7bb950e0-fd12-47d8-aa48-f84f0a601d2f/kiosk-designed-v2.jpg",
+  "r2_key": "a/v1/b675eaf0-f678-4036-aa59-3142eda6c8f6/7bb950e0-fd12-47d8-aa48-f84f0a601d2f/kiosk-designed-v2.jpg",
+  "original_filename": "kiosk-designed-v2.jpg",
+  "size": 100283,
   "content_type": "image/jpeg",
-  "created_at": "2026-08-05T16:05:22Z"
+  "created_at": "2026-08-10T11:57:48Z"
 }
