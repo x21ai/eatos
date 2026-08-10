@@ -17,7 +17,6 @@ import {
   stats,
   steps,
   features,
-  places,
   requirements,
 } from './content';
 
@@ -32,9 +31,6 @@ export default function TapToPayClient() {
           <div className="pointer-events-none absolute left-1/2 top-0 -z-0 h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-[120px]" />
           <div className="container relative z-10 mx-auto px-4 md:px-6">
             <div className="mx-auto max-w-4xl text-center">
-              <p className="mb-6 text-sm font-semibold uppercase tracking-widest text-gray-500">
-                Payments
-              </p>
               <h1 className="mb-8 text-5xl font-bold leading-[1.05] tracking-tighter md:text-8xl">
                 Tap to Pay.
                 <br />
@@ -60,20 +56,6 @@ export default function TapToPayClient() {
                 </a>
               </div>
             </div>
-
-            <Reveal id="ttp-hero-img">
-              <div className="mx-auto mt-16 max-w-5xl md:mt-24">
-                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[24px] border border-white/10 bg-zinc-900 shadow-[0_40px_120px_-50px_rgba(0,0,0,0.95)] md:rounded-[32px]">
-                  <img
-                    src={images.hero}
-                    alt="A guest tapping a contactless card on a server's phone"
-                    width={1600}
-                    height={1008}
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                </div>
-              </div>
-            </Reveal>
           </div>
         </section>
 
@@ -172,31 +154,6 @@ export default function TapToPayClient() {
                 </Reveal>
               ))}
             </div>
-
-            <Reveal id="ttp-steps-img">
-              <div className="mx-auto mt-10 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2 md:mt-14 md:gap-6">
-                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900 md:rounded-3xl">
-                  <img
-                    src={images.counter}
-                    alt="Guest tapping a smartwatch on a phone at a coffee counter"
-                    loading="lazy"
-                    width={1600}
-                    height={1008}
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                </div>
-                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900 md:rounded-3xl">
-                  <img
-                    src={images.detail}
-                    alt="Phone showing a tipping and receipt screen"
-                    loading="lazy"
-                    width={1600}
-                    height={1008}
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                </div>
-              </div>
-            </Reveal>
           </div>
         </section>
 
@@ -237,33 +194,6 @@ export default function TapToPayClient() {
                 </Reveal>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* Where it works */}
-        <section className="border-t border-white/5 bg-zinc-950 py-20 md:py-28">
-          <div className="container mx-auto px-4 md:px-6">
-            <Reveal id="ttp-places">
-              <div className="mb-14 max-w-3xl md:mb-20">
-                <h2 className="text-4xl font-bold tracking-tighter md:text-6xl">
-                  Wherever service
-                  <br />
-                  <span className="text-gray-500">actually happens.</span>
-                </h2>
-              </div>
-              <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12">
-                {places.map((p) => (
-                  <div key={p.title} className="border-t border-white/10 pt-8">
-                    <h3 className="mb-3 text-2xl font-bold tracking-tighter md:text-3xl">
-                      {p.title}
-                    </h3>
-                    <p className="text-base font-light leading-relaxed text-gray-400">
-                      {p.body}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
           </div>
         </section>
 
