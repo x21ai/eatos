@@ -8,11 +8,14 @@ import {
   Zap,
   Shield,
   Clock,
+  Monitor,
+  Users,
+  ShoppingBag,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Placeholder } from './Placeholder';
 import {
-  features,
+  features as allFeatures,
   hero,
   keyFeatures,
   marquee,
@@ -20,6 +23,15 @@ import {
   testimonial,
 } from './content';
 import { products } from '../products';
+
+const hiddenFeatures = ['kitchen-grade-hardware', 'analytics-reporting'];
+const features = allFeatures.filter((f) => !hiddenFeatures.includes(f.id));
+
+const relatedIcons = [
+  { Icon: Monitor, tint: 'bg-sky-500/10 text-sky-400' },
+  { Icon: ShoppingBag, tint: 'bg-amber-500/10 text-amber-400' },
+  { Icon: Users, tint: 'bg-violet-500/10 text-violet-400' },
+];
 
 const related = products
   .filter((p) => p.slug !== 'kitchen-display-system')
@@ -217,27 +229,30 @@ export default function KdsPageClient() {
             {[
               {
                 Icon: Zap,
+                tint: 'bg-amber-500/10 text-amber-400',
                 title: 'Built for speed',
                 body: 'Tickets land the moment they are sent, so the line never waits on paper or a runner.',
               },
               {
                 Icon: Shield,
+                tint: 'bg-sky-500/10 text-sky-400',
                 title: 'Reliable at scale',
                 body: 'From one kitchen to hundreds of stations, the board keeps its order through the busiest service.',
               },
               {
                 Icon: Clock,
+                tint: 'bg-emerald-500/10 text-emerald-400',
                 title: '24/7 support',
                 body: 'Real people, real help, any time. We are here when you need us, especially during the dinner rush.',
               },
-            ].map(({ Icon, title, body }, index) => (
+            ].map(({ Icon, tint, title, body }, index) => (
               <motion.div
                 key={title}
                 {...rise}
                 transition={{ delay: index * 0.1 }}
                 className="rounded-[2rem] border border-white/10 bg-white/5 p-8 md:p-10"
               >
-                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 text-white">
+                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${tint}`}>
                   <Icon size={28} />
                 </div>
                 <h3 className="text-2xl font-bold tracking-tighter mb-3">{title}</h3>
@@ -265,7 +280,9 @@ export default function KdsPageClient() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {related.map((item, index) => (
+            {related.map((item, index) => {
+              const { Icon, tint } = relatedIcons[index % relatedIcons.length];
+              return (
               <motion.a
                 key={item.slug}
                 href={item.href}
@@ -273,6 +290,9 @@ export default function KdsPageClient() {
                 transition={{ delay: index * 0.1 }}
                 className="group rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-8 transition-all hover:border-white/20"
               >
+                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-5 ${tint}`}>
+                  <Icon size={24} />
+                </div>
                 <h3 className="text-xl font-bold tracking-tighter mb-2">{item.title}</h3>
                 <p className="text-gray-500 mb-6">{item.tagline}</p>
                 <div className="flex items-center gap-1 text-sm font-semibold text-white group-hover:gap-2 transition-all">
@@ -283,7 +303,8 @@ export default function KdsPageClient() {
                   />
                 </div>
               </motion.a>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

@@ -24,9 +24,7 @@ export const keyFeatures = [
   'Prep Station Routing',
   'Multi-Lingual Support',
   'Seamless Connectivity',
-  'Kitchen-Grade Hardware',
   'Save on Printing',
-  'Analytics & Reporting',
 ];
 
 // Quiet numeral row directly under the hero.
