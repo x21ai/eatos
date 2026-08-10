@@ -1,317 +1,339 @@
 // @ts-nocheck
 'use client';
 
-import { useState } from 'react';
-import { ArrowRight, ChevronDown } from 'lucide-react';
-import { motion, useReducedMotion } from 'motion/react';
+import {
+  ChevronRight,
+  Check,
+  ChefHat,
+  Zap,
+  Shield,
+  Clock,
+} from 'lucide-react';
+import { motion } from 'motion/react';
 import { Placeholder } from './Placeholder';
 import {
   features,
-  hardware,
   hero,
   keyFeatures,
   marquee,
   offerNote,
-  offers,
+  testimonial,
 } from './content';
+import { products } from '../products';
+
+const related = products
+  .filter((p) => p.slug !== 'kitchen-display-system')
+  .slice(0, 3);
 
 const rise = {
-  initial: { opacity: 0, y: 28 },
+  initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
 };
-
-function Reveal({ children, delay = 0, className = '' }) {
-  const reduce = useReducedMotion();
-  if (reduce) return <div className={className}>{children}</div>;
-  return (
-    <motion.div
-      {...rise}
-      transition={{ ...rise.transition, delay }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-function Eyebrow({ children, className = '' }) {
-  return (
-    <p
-      className={`text-xs font-semibold uppercase tracking-widest text-emerald-500 sm:text-sm ${className}`}
-    >
-      {children}
-    </p>
-  );
-}
-
-/* ------------------------------- Hero ------------------------------- */
-
-function Hero() {
-  return (
-    <section className="bg-black text-white">
-      <div className="container mx-auto px-4 md:px-6 pt-28 md:pt-32">
-        <Reveal className="text-center">
-          <h1 className="mx-auto max-w-[24ch] text-4xl font-bold leading-[1.05] tracking-tighter md:text-7xl">
-            {hero.title}
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-[15px] font-light leading-relaxed text-gray-400 md:text-[22px]">
-            {hero.description}
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
-              href={hero.primaryCta.href}
-              className="inline-flex w-full items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:w-auto"
-            >
-              {hero.primaryCta.label}
-            </a>
-            <a
-              href={hero.secondaryCta.href}
-              className="inline-flex w-full items-center justify-center gap-1.5 rounded-full px-7 py-3.5 text-sm font-semibold text-emerald-400 transition-colors hover:text-emerald-300 sm:w-auto"
-            >
-              {hero.secondaryCta.label}
-              <ArrowRight size={15} />
-            </a>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.08} className="mx-auto mt-12 w-full max-w-4xl md:mt-16">
-          <Placeholder
-            label="Kitchen Display System"
-            ratio="aspect-[16/9]"
-            src={hero.image}
-          />
-        </Reveal>
-      </div>
-
-      {/* Metric marquee */}
-      <div className="container mx-auto px-4 md:px-6 py-20 md:py-24">
-        <div className="grid grid-cols-2 gap-y-8 gap-x-6 text-center lg:grid-cols-4">
-          {marquee.map((m, i) => (
-            <Reveal key={m.label} delay={i * 0.06} className="min-w-0">
-              <div className="text-4xl font-bold leading-none tracking-tighter md:text-5xl">
-                {m.value}
-              </div>
-              <div className="mt-2 text-sm text-gray-500">
-                {m.label}
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* --------------------------- Feature bands --------------------------- */
-
-function Spotlight({ feature, index }) {
-  const [open, setOpen] = useState(false);
-  const flip = index % 2 === 1;
-  const light = index % 2 === 0;
-
-  return (
-    <section className={light ? 'bg-zinc-50 text-black' : 'bg-white text-black'}>
-      <div className="container mx-auto px-4 md:px-6 py-20 md:py-28">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <Eyebrow>{`0${index + 1}`}</Eyebrow>
-          <h2 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tighter md:text-5xl">
-            {feature.title}
-          </h2>
-        </Reveal>
-
-        <Reveal delay={0.08} className="mt-10 md:mt-16">
-          <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12">
-            <div className={flip ? 'md:order-2' : ''}>
-              <Placeholder
-                label={feature.imageLabel}
-                ratio="aspect-[16/10]"
-                tone="light"
-                src={feature.image}
-              />
-            </div>
-
-            <div className={`min-w-0 ${flip ? 'md:order-1' : ''}`}>
-              <p className="text-[15px] font-light leading-relaxed text-zinc-600 md:text-lg">
-                {feature.body}
-              </p>
-
-              {open ? (
-                <p className="mt-4 text-[15px] font-light leading-relaxed text-zinc-500 md:text-lg">
-                  {feature.more}
-                </p>
-              ) : null}
-
-              <button
-                type="button"
-                onClick={() => setOpen((v) => !v)}
-                aria-expanded={open}
-                className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600 transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40 focus-visible:ring-offset-2"
-              >
-                {open ? 'Read less' : 'Read more'}
-                <ChevronDown
-                  size={15}
-                  className={`transition-transform ${open ? 'rotate-180' : ''}`}
-                />
-              </button>
-
-              <dl className="mt-8 grid grid-cols-2 gap-6">
-                {feature.metrics.map((m) => (
-                  <div key={m.label} className="min-w-0">
-                    <dt className="text-3xl font-bold leading-none tracking-tighter md:text-4xl">
-                      {m.value}
-                    </dt>
-                    <dd className="mt-2 text-sm text-zinc-500">
-                      {m.label}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------ Hardware ------------------------------ */
-
-function Hardware() {
-  return (
-    <section className="bg-black text-white">
-      <div className="container mx-auto px-4 md:px-6 py-20 md:py-28">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <Eyebrow>{hardware.eyebrow}</Eyebrow>
-          <h2 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tighter md:text-5xl">
-            {hardware.title}
-          </h2>
-          <p className="mt-5 text-[15px] font-light leading-relaxed text-gray-400 md:text-lg">
-            {hardware.description}
-          </p>
-        </Reveal>
-
-        <Reveal delay={0.08} className="mx-auto mt-10 max-w-4xl md:mt-16">
-          <Placeholder label={hardware.imageLabel} ratio="aspect-[16/9]" src={hardware.image} />
-        </Reveal>
-
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3 md:mt-16">
-          {hardware.specs.map((s, i) => (
-            <Reveal key={s.title} delay={i * 0.06} className="min-w-0">
-              <h3 className="text-base font-bold tracking-tighter text-white md:text-lg">
-                {s.title}
-              </h3>
-              <p className="mt-3 text-sm font-light leading-relaxed text-gray-400">
-                {s.body}
-              </p>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-
-/* -------------------------------- Offers -------------------------------- */
-
-function Offers() {
-  return (
-    <section className="bg-zinc-50 text-black">
-      <div className="container mx-auto px-4 md:px-6 py-20 md:py-28">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          {offers.map((offer, i) => (
-            <Reveal key={offer.title} delay={i * 0.08} className="min-w-0">
-              <Placeholder label={offer.imageLabel} ratio="aspect-[16/10]" tone="light" />
-              <h3 className="mt-6 text-xl font-bold tracking-tighter md:text-2xl">
-                {offer.title}
-              </h3>
-              <p className="mt-3 text-[15px] font-light leading-relaxed text-zinc-600">
-                {offer.description}
-              </p>
-              <a
-                href={offer.cta.href}
-                className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600 transition-colors hover:text-emerald-700"
-              >
-                {offer.cta.label}
-                <ArrowRight size={15} />
-              </a>
-            </Reveal>
-          ))}
-        </div>
-        <p className="mx-auto mt-12 max-w-3xl text-center text-xs font-light leading-relaxed text-zinc-500">
-          {offerNote}
-        </p>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------ Closing CTA ------------------------------ */
-
-function Closing() {
-  return (
-    <section className="bg-white text-black">
-      <div className="container mx-auto px-4 md:px-6 py-20 md:py-28">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold leading-[1.1] tracking-tighter md:text-5xl">
-            Start using restaurant technology cloud
-          </h2>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
-              href="/book-demo"
-              className="inline-flex w-full items-center justify-center rounded-full bg-black px-7 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-85 sm:w-auto"
-            >
-              Book a Demo
-            </a>
-            <a
-              href="/pricing"
-              className="inline-flex w-full items-center justify-center gap-1.5 rounded-full px-7 py-3.5 text-sm font-semibold text-emerald-600 transition-colors hover:text-emerald-700 sm:w-auto"
-            >
-              View Pricing
-              <ArrowRight size={15} />
-            </a>
-          </div>
-        </Reveal>
-
-      </div>
-    </section>
-  );
-}
-
-/* --------------------------------- Page --------------------------------- */
 
 export default function KdsPageClient() {
   return (
-    <div className="bg-white font-montserrat antialiased">
-      <Hero />
+    <div className="min-h-screen bg-black text-white font-montserrat selection:bg-emerald-500/30">
+      {/* Hero */}
+      <section className="relative pt-32 md:pt-44 pb-16 md:pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/20 via-emerald-600/10 to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-emerald-500/10 rounded-full blur-[150px] pointer-events-none opacity-50" />
 
-      {/* Capability strip */}
-      <section className="bg-white text-black">
-        <div className="container mx-auto px-4 md:px-6 py-16 md:py-20">
-          <Reveal className="text-center">
-            <Eyebrow>Key Features</Eyebrow>
-          </Reveal>
-          <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
-            {keyFeatures.map((f, i) => (
-              <Reveal key={f} delay={(i % 3) * 0.05}>
-                <div className="border-t border-zinc-200 pt-4 text-sm font-medium text-zinc-700">
-                  {f}
-                </div>
-              </Reveal>
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex items-center gap-2 text-sm text-gray-500 mb-8"
+          >
+            <a href="/products" className="hover:text-white transition-colors">
+              Products
+            </a>
+            <ChevronRight size={14} className="shrink-0" />
+            <span className="text-white">Kitchen Display System</span>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="min-w-0">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-8 text-emerald-400"
+              >
+                <ChefHat size={36} />
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter mb-4"
+              >
+                {hero.title}
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-xl sm:text-2xl md:text-3xl font-medium mb-6 text-emerald-400"
+              >
+                {hero.eyebrow}
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-lg md:text-xl text-gray-400 leading-relaxed mb-10 max-w-xl"
+              >
+                {hero.description}
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <a
+                  href={hero.primaryCta.href}
+                  className="px-8 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform text-center"
+                >
+                  {hero.primaryCta.label}
+                </a>
+                <a
+                  href="/get-started"
+                  className="px-8 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors text-center"
+                >
+                  Get Started
+                </a>
+              </motion.div>
+            </div>
+
+            {/* Key features card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="rounded-[2rem] md:rounded-[2.5rem] border border-emerald-500/20 bg-white/5 backdrop-blur-xl p-8 md:p-10"
+            >
+              <h2 className="text-xl font-bold tracking-tighter mb-8">Key features</h2>
+              <div className="space-y-5 md:space-y-6">
+                {keyFeatures.map((feature, index) => (
+                  <motion.div
+                    key={feature}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.4 + index * 0.08 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="w-8 h-8 shrink-0 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center mt-0.5">
+                      <Check size={16} />
+                    </div>
+                    <div className="min-w-0 text-base md:text-lg font-medium">{feature}</div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Numbers strip */}
+      <section className="border-t border-white/5 py-12 md:py-16">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {marquee.map((stat) => (
+              <motion.div key={stat.label} {...rise} className="min-w-0">
+                <div className="text-3xl md:text-4xl font-bold tracking-tighter">{stat.value}</div>
+                <div className="mt-2 text-sm text-gray-500">{stat.label}</div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {features.map((feature, i) => (
-        <Spotlight key={feature.id} feature={feature} index={i} />
-      ))}
+      {/* Feature rows */}
+      <section className="py-20 md:py-28 border-t border-white/5">
+        <div className="container mx-auto px-4 md:px-6 space-y-16 md:space-y-24">
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.id}
+              id={feature.id}
+              {...rise}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+            >
+              <div
+                className={`min-w-0 ${index % 2 === 1 ? 'lg:order-2' : ''}`}
+              >
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-5">
+                  {feature.title}
+                </h2>
+                <p className="text-lg text-gray-400 leading-relaxed mb-5">{feature.body}</p>
+                <p className="text-base text-gray-500 leading-relaxed mb-8">{feature.more}</p>
+                <div className="flex flex-wrap gap-4">
+                  {feature.metrics.map((metric) => (
+                    <div
+                      key={metric.label}
+                      className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 min-w-0"
+                    >
+                      <div className="text-2xl font-bold tracking-tighter text-emerald-400">
+                        {metric.value}
+                      </div>
+                      <div className="mt-1 text-xs text-gray-500">{metric.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-      <Hardware />
-      <Offers />
-      <Closing />
+              <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                <div className="rounded-[2rem] border border-white/10 bg-white/5 p-3 md:p-4">
+                  <Placeholder
+                    label={feature.imageLabel}
+                    src={feature.image}
+                    ratio="aspect-[16/10]"
+                  />
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Why KDS */}
+      <section className="py-20 md:py-28 border-t border-white/5">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div {...rise} className="text-center mb-14 md:mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
+              Why Kitchen Display System?
+            </h2>
+            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+              Built for real kitchen operations. Designed to disappear into the line.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {[
+              {
+                Icon: Zap,
+                title: 'Built for speed',
+                body: 'Tickets land the moment they are sent, so the line never waits on paper or a runner.',
+              },
+              {
+                Icon: Shield,
+                title: 'Reliable at scale',
+                body: 'From one kitchen to hundreds of stations, the board keeps its order through the busiest service.',
+              },
+              {
+                Icon: Clock,
+                title: '24/7 support',
+                body: 'Real people, real help, any time. We are here when you need us, especially during the dinner rush.',
+              },
+            ].map(({ Icon, title, body }, index) => (
+              <motion.div
+                key={title}
+                {...rise}
+                transition={{ delay: index * 0.1 }}
+                className="rounded-[2rem] border border-white/10 bg-white/5 p-8 md:p-10"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 text-white">
+                  <Icon size={28} />
+                </div>
+                <h3 className="text-2xl font-bold tracking-tighter mb-3">{title}</h3>
+                <p className="text-gray-400 leading-relaxed">{body}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Works great with */}
+      <section className="py-20 md:py-28 border-t border-white/5">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div
+            {...rise}
+            className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">Works great with</h2>
+            <a
+              href="/products"
+              className="text-white border-b border-white/30 pb-1 hover:border-white transition-colors flex items-center gap-1"
+            >
+              View all products <ChevronRight size={16} className="shrink-0" />
+            </a>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {related.map((item, index) => (
+              <motion.a
+                key={item.slug}
+                href={item.href}
+                {...rise}
+                transition={{ delay: index * 0.1 }}
+                className="group rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-8 transition-all hover:border-white/20"
+              >
+                <h3 className="text-xl font-bold tracking-tighter mb-2">{item.title}</h3>
+                <p className="text-gray-500 mb-6">{item.tagline}</p>
+                <div className="flex items-center gap-1 text-sm font-semibold text-white group-hover:gap-2 transition-all">
+                  Learn more
+                  <ChevronRight
+                    size={16}
+                    className="shrink-0 transition-transform group-hover:translate-x-0.5"
+                  />
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="pb-20 md:pb-28">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div {...rise} className="relative rounded-[2.5rem] md:rounded-[3rem] overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-emerald-600/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+
+            <div className="relative z-10 p-10 md:p-20 text-center">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
+                Ready to get started?
+              </h2>
+              <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+                See the Kitchen Display System in action. Book a demo and we will show you how it
+                fits your line.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="/book-demo"
+                  className="px-10 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform"
+                >
+                  Book a Demo
+                </a>
+                <a
+                  href="/contact-sales"
+                  className="px-10 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors"
+                >
+                  Contact Sales
+                </a>
+              </div>
+
+              <figure className="mt-14 md:mt-16 max-w-3xl mx-auto">
+                <blockquote className="text-lg md:text-2xl font-medium leading-relaxed text-white">
+                  {testimonial.quote}
+                </blockquote>
+                <figcaption className="mt-5 text-sm text-gray-400">
+                  {testimonial.name}, {testimonial.role} &middot; {testimonial.since}
+                </figcaption>
+              </figure>
+            </div>
+          </motion.div>
+
+          <p className="mt-8 text-center text-xs leading-relaxed text-gray-600 max-w-3xl mx-auto">
+            {offerNote}
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
