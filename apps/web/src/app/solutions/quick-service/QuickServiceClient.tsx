@@ -1,262 +1,377 @@
 // @ts-nocheck
 'use client';
 
-import { useRef, useState } from 'react';
-import { ArrowRight, ChevronDown } from 'lucide-react';
-import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
+import { Check, ChevronRight, Clock, Shield, Utensils, Zap } from 'lucide-react';
+import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
-import { bundle, hero, marquee, pillars } from './content';
+import { bundle, capabilities, hero, marquee, pillars } from './content';
 
 const rise = {
-  initial: { opacity: 0, y: 28 },
+  initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
 };
 
-function Reveal({ children, delay = 0, className = '' }) {
-  const reduce = useReducedMotion();
-  if (reduce) return <div className={className}>{children}</div>;
-  return (
-    <motion.div {...rise} transition={{ ...rise.transition, delay }} className={className}>
-      {children}
-    </motion.div>
-  );
-}
-
-function Eyebrow({ children, className = '' }) {
-  return (
-    <p
-      className={`text-[11px] font-semibold uppercase tracking-[0.24em] text-emerald-500 sm:text-xs ${className}`}
-    >
-      {children}
-    </p>
-  );
-}
-
-/* -------------------------------- Hero -------------------------------- */
-
-function Hero() {
-  const reduce = useReducedMotion();
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const scale = useTransform(scrollYProgress, [0, 0.5], [0.94, 1]);
-
-  return (
-    <section className="bg-black text-white">
-      <div className="mx-auto w-full max-w-[1120px] px-5 pt-24 sm:px-8 md:pt-32 lg:pt-40">
-        <Reveal className="text-center">
-          <Eyebrow>{hero.eyebrow}</Eyebrow>
-          <h1 className="mx-auto mt-5 max-w-[28ch] font-bold leading-[1.1] tracking-tighter text-4xl md:text-6xl">
-            {hero.title}
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
-            {hero.description}
-          </p>
-          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
-              href={hero.primaryCta.href}
-              className="inline-flex w-full items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:w-auto"
-            >
-              {hero.primaryCta.label}
-            </a>
-            <a
-              href={hero.secondaryCta.href}
-              className="inline-flex w-full items-center justify-center gap-1.5 rounded-full px-7 py-3.5 text-sm font-semibold text-emerald-400 transition-colors hover:text-emerald-300 sm:w-auto"
-            >
-              {hero.secondaryCta.label}
-              <ArrowRight size={15} />
-            </a>
-          </div>
-        </Reveal>
-      </div>
-
-      <div ref={ref} className="mx-auto mt-14 w-full max-w-[1320px] px-0 sm:px-8 md:mt-20">
-        <motion.div style={reduce ? undefined : { scale }}>
-          <Placeholder
-            label={hero.imageLabel}
-            src={hero.image}
-            ratio="aspect-[4/3] sm:aspect-[16/9]"
-            className="rounded-none sm:rounded-[32px]"
-          />
-        </motion.div>
-      </div>
-
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-16 sm:px-8 md:py-24">
-        <div className="grid grid-cols-2 gap-y-10 gap-x-6 text-center lg:grid-cols-4">
-          {marquee.map((m, i) => (
-            <Reveal key={m.label} delay={i * 0.06} className="min-w-0">
-              <div className="text-4xl font-bold leading-none tracking-tighter md:text-5xl">
-                {m.value}
-              </div>
-              <div className="mt-3 text-xs font-semibold uppercase tracking-widest text-zinc-500 sm:text-sm">
-                {m.label}
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------ Spotlight ------------------------------ */
-
-function Spotlight({ pillar, index }) {
-  const [open, setOpen] = useState(false);
-  const flip = index % 2 === 1;
-  const light = index % 2 === 0;
-
-  return (
-    <section className={light ? 'bg-zinc-50 text-black' : 'bg-white text-black'}>
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <Eyebrow>{`0${index + 1}`}</Eyebrow>
-          <h2 className="mt-4 font-bold leading-[1.08] tracking-tighter text-3xl md:text-5xl">
-            {pillar.title}
-          </h2>
-        </Reveal>
-
-        <Reveal delay={0.08} className="mt-12 md:mt-16">
-          <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-14 lg:gap-20">
-            <div className={flip ? 'md:order-2' : ''}>
-              <Placeholder label={pillar.imageLabel} src={pillar.image} tone="light" />
-            </div>
-
-            <div className={`min-w-0 ${flip ? 'md:order-1' : ''}`}>
-              <p className="text-base leading-8 text-zinc-600 sm:text-lg">{pillar.body}</p>
-
-              {open ? (
-                <p className="mt-5 text-base leading-8 text-zinc-500 sm:text-lg">{pillar.more}</p>
-              ) : null}
-
-              <button
-                type="button"
-                onClick={() => setOpen((v) => !v)}
-                aria-expanded={open}
-                className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600 transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40 focus-visible:ring-offset-2"
-              >
-                {open ? 'Read less' : 'Read more'}
-                <ChevronDown size={15} className={`transition-transform ${open ? 'rotate-180' : ''}`} />
-              </button>
-
-              <dl className="mt-10 grid grid-cols-2 gap-6">
-                {pillar.metrics.map((m) => (
-                  <div key={m.label} className="min-w-0">
-                    <dt className="font-bold leading-none tracking-tighter text-3xl md:text-4xl">
-                      {m.value}
-                    </dt>
-                    <dd className="mt-2.5 text-[11px] uppercase tracking-[0.18em] text-zinc-500">
-                      {m.label}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------- Bundle ------------------------------- */
-
-function Bundle() {
-  return (
-    <section className="bg-black text-white">
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <Eyebrow>{bundle.eyebrow}</Eyebrow>
-          <h2 className="mt-4 font-bold leading-[1.08] tracking-tighter text-3xl md:text-5xl">
-            {bundle.title}
-          </h2>
-          <p className="mt-5 text-base leading-8 text-zinc-400 sm:text-lg">{bundle.description}</p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
-              href={bundle.primaryCta.href}
-              className="inline-flex w-full items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:w-auto"
-            >
-              {bundle.primaryCta.label}
-            </a>
-            <a
-              href={bundle.secondaryCta.href}
-              className="inline-flex w-full items-center justify-center gap-1.5 rounded-full px-7 py-3.5 text-sm font-semibold text-emerald-400 transition-colors hover:text-emerald-300 sm:w-auto"
-            >
-              {bundle.secondaryCta.label}
-              <ArrowRight size={15} />
-            </a>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.08} className="mt-12 md:mt-16">
-          <Placeholder label={bundle.imageLabel} src={bundle.image} ratio="aspect-[16/9]" />
-        </Reveal>
-
-        <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8 md:mt-20">
-          {bundle.specs.map((s, i) => (
-            <Reveal key={s.title} delay={i * 0.06} className="min-w-0">
-              <h3 className="text-base font-bold tracking-tighter text-white sm:text-lg">
-                {s.title}
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-zinc-400 sm:text-base">{s.body}</p>
-            </Reveal>
-          ))}
-        </div>
-
-        <p className="mx-auto mt-14 max-w-3xl text-center text-[11px] leading-relaxed text-zinc-500">
-          {bundle.note}
-        </p>
-      </div>
-    </section>
-  );
-}
-
-
-/* -------------------------------- Closing -------------------------------- */
-
-function Closing() {
-  return (
-    <section className="bg-white text-black">
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <h2 className="font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
-            Start using restaurant technology cloud
-          </h2>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
-              href="/book-demo"
-              className="inline-flex w-full items-center justify-center rounded-full bg-black px-7 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-85 sm:w-auto"
-            >
-              Book a Demo
-            </a>
-            <a
-              href="/pricing"
-              className="inline-flex w-full items-center justify-center gap-1.5 rounded-full px-7 py-3.5 text-sm font-semibold text-emerald-600 transition-colors hover:text-emerald-700 sm:w-auto"
-            >
-              View Pricing
-              <ArrowRight size={15} />
-            </a>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* --------------------------------- Page --------------------------------- */
+const related = [
+  {
+    href: '/products/self-service-kiosk',
+    title: 'Self-Service Kiosk',
+    tagline: 'Guest-driven ordering with smart upsells.',
+  },
+  {
+    href: '/products/kitchen-display-system',
+    title: 'Kitchen Display System',
+    tagline: 'Tickets routed to the right station, in order.',
+  },
+  {
+    href: '/products/workforce-management',
+    title: 'Workforce Management',
+    tagline: 'Scheduling, clock-ins and labor in one place.',
+  },
+];
 
 export default function QuickServiceClient() {
   return (
-    <div className="bg-white font-montserrat antialiased">
-      <Hero />
+    <div className="min-h-screen bg-black text-white font-montserrat selection:bg-emerald-500/30">
+      {/* Hero */}
+      <section className="relative pt-32 md:pt-44 pb-16 md:pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/20 via-emerald-600/10 to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-emerald-500/10 rounded-full blur-[150px] pointer-events-none opacity-50" />
 
-      {pillars.map((pillar, i) => (
-        <Spotlight key={pillar.id} pillar={pillar} index={i} />
-      ))}
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex items-center gap-2 text-sm text-gray-500 mb-8"
+          >
+            <a href="/solutions" className="hover:text-white transition-colors">
+              Solutions
+            </a>
+            <ChevronRight size={14} className="shrink-0" />
+            <span className="text-white">Quick Service</span>
+          </motion.div>
 
-      <Bundle />
-      <Closing />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="min-w-0">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-8 text-emerald-400"
+              >
+                <Utensils size={36} />
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter mb-4"
+              >
+                {hero.title}
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-xl sm:text-2xl md:text-3xl font-medium mb-6 text-emerald-400"
+              >
+                {hero.eyebrow}
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-lg md:text-xl text-gray-400 leading-relaxed mb-10 max-w-xl"
+              >
+                {hero.description}
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <a
+                  href={hero.primaryCta.href}
+                  className="px-8 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform text-center"
+                >
+                  {hero.primaryCta.label}
+                </a>
+                <a
+                  href={hero.secondaryCta.href}
+                  className="px-8 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors text-center"
+                >
+                  {hero.secondaryCta.label}
+                </a>
+              </motion.div>
+            </div>
+
+            {/* Key features card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="rounded-[2rem] md:rounded-[2.5rem] border border-emerald-500/20 bg-white/5 backdrop-blur-xl p-8 md:p-10"
+            >
+              <h2 className="text-xl font-bold tracking-tighter mb-8">Key features</h2>
+              <div className="space-y-5 md:space-y-6">
+                {capabilities.map((feature, index) => (
+                  <motion.div
+                    key={feature}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.4 + index * 0.08 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="w-8 h-8 shrink-0 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center mt-0.5">
+                      <Check size={16} />
+                    </div>
+                    <div className="min-w-0 text-base md:text-lg font-medium">{feature}</div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Numbers strip */}
+      <section className="border-t border-white/5 py-12 md:py-16">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {marquee.map((stat) => (
+              <motion.div key={stat.label} {...rise} className="min-w-0">
+                <div className="text-3xl md:text-4xl font-bold tracking-tighter">{stat.value}</div>
+                <div className="mt-2 text-sm text-gray-500">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Feature rows */}
+      <section className="py-20 md:py-28 border-t border-white/5">
+        <div className="container mx-auto px-4 md:px-6 space-y-16 md:space-y-24">
+          {pillars.map((pillar, index) => (
+            <motion.div
+              key={pillar.id}
+              id={pillar.id}
+              {...rise}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+            >
+              <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-5">
+                  {pillar.title}
+                </h2>
+                <p className="text-lg text-gray-400 leading-relaxed mb-5">{pillar.body}</p>
+                <p className="text-base text-gray-500 leading-relaxed mb-8">{pillar.more}</p>
+                <div className="flex flex-wrap gap-4">
+                  {pillar.metrics.map((metric) => (
+                    <div
+                      key={metric.label}
+                      className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 min-w-0"
+                    >
+                      <div className="text-2xl font-bold tracking-tighter text-emerald-400">
+                        {metric.value}
+                      </div>
+                      <div className="mt-1 text-xs text-gray-500">{metric.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                <div className="rounded-[2rem] border border-white/10 bg-white/5 p-3 md:p-4">
+                  <Placeholder
+                    label={pillar.imageLabel}
+                    src={pillar.image}
+                    ratio="aspect-[16/10]"
+                  />
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Why quick service */}
+      <section className="py-20 md:py-28 border-t border-white/5">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div {...rise} className="text-center mb-14 md:mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
+              Why eatOS for quick service?
+            </h2>
+            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+              Built for the pace of the counter. Designed to keep the line moving.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {[
+              {
+                Icon: Zap,
+                title: 'Built for speed',
+                body: 'Order entry in seconds, with modifiers and upsells one tap away so the queue never stalls.',
+              },
+              {
+                Icon: Shield,
+                title: 'Reliable at scale',
+                body: 'From one counter to hundreds of locations, online and offline, service keeps running.',
+              },
+              {
+                Icon: Clock,
+                title: '24/7 support',
+                body: 'Real people, real help, any time. We are here when you need us, especially during the rush.',
+              },
+            ].map(({ Icon, title, body }, index) => (
+              <motion.div
+                key={title}
+                {...rise}
+                transition={{ delay: index * 0.1 }}
+                className="rounded-[2rem] border border-white/10 bg-white/5 p-8 md:p-10"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 text-white">
+                  <Icon size={28} />
+                </div>
+                <h3 className="text-2xl font-bold tracking-tighter mb-3">{title}</h3>
+                <p className="text-gray-400 leading-relaxed">{body}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Bundle */}
+      <section className="py-20 md:py-28 border-t border-white/5">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div {...rise} className="text-center max-w-2xl mx-auto">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-emerald-400">
+              {bundle.eyebrow}
+            </p>
+            <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tighter">{bundle.title}</h2>
+            <p className="mt-5 text-lg text-gray-400 leading-relaxed">{bundle.description}</p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href={bundle.primaryCta.href}
+                className="px-8 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform text-center"
+              >
+                {bundle.primaryCta.label}
+              </a>
+              <a
+                href={bundle.secondaryCta.href}
+                className="px-8 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors text-center"
+              >
+                {bundle.secondaryCta.label}
+              </a>
+            </div>
+          </motion.div>
+
+          <motion.div {...rise} className="mt-12 md:mt-16">
+            <div className="rounded-[2rem] border border-white/10 bg-white/5 p-3 md:p-4">
+              <Placeholder label={bundle.imageLabel} src={bundle.image} ratio="aspect-[16/9]" />
+            </div>
+          </motion.div>
+
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {bundle.specs.map((spec, index) => (
+              <motion.div
+                key={spec.title}
+                {...rise}
+                transition={{ delay: index * 0.1 }}
+                className="rounded-[2rem] border border-white/10 bg-white/5 p-8"
+              >
+                <h3 className="text-xl font-bold tracking-tighter mb-3">{spec.title}</h3>
+                <p className="text-gray-400 leading-relaxed">{spec.body}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <p className="mt-10 text-center text-xs leading-relaxed text-gray-600 max-w-3xl mx-auto">
+            {bundle.note}
+          </p>
+        </div>
+      </section>
+
+      {/* Works great with */}
+      <section className="py-20 md:py-28 border-t border-white/5">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div
+            {...rise}
+            className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">Works great with</h2>
+            <a
+              href="/products"
+              className="text-white border-b border-white/30 pb-1 hover:border-white transition-colors flex items-center gap-1"
+            >
+              View all products <ChevronRight size={16} className="shrink-0" />
+            </a>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {related.map((item, index) => (
+              <motion.a
+                key={item.href}
+                href={item.href}
+                {...rise}
+                transition={{ delay: index * 0.1 }}
+                className="group rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-8 transition-all hover:border-white/20"
+              >
+                <h3 className="text-xl font-bold tracking-tighter mb-2">{item.title}</h3>
+                <p className="text-gray-500 mb-6">{item.tagline}</p>
+                <div className="flex items-center gap-1 text-sm font-semibold text-white group-hover:gap-2 transition-all">
+                  Learn more
+                  <ChevronRight
+                    size={16}
+                    className="shrink-0 transition-transform group-hover:translate-x-0.5"
+                  />
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="pb-20 md:pb-28">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div
+            {...rise}
+            className="relative rounded-[2.5rem] md:rounded-[3rem] overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-emerald-600/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+
+            <div className="relative z-10 p-10 md:p-20 text-center">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
+                Start using restaurant technology cloud
+              </h2>
+              <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+                See the quick service setup in action. Book a demo and we will show you how it fits
+                your counter.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="/book-demo"
+                  className="px-10 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform"
+                >
+                  Book a Demo
+                </a>
+                <a
+                  href="/pricing"
+                  className="px-10 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors"
+                >
+                  View Pricing
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }
