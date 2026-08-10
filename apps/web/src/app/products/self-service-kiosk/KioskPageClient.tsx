@@ -11,6 +11,12 @@ import {
   Monitor,
   ChefHat,
   Users,
+  LayoutGrid,
+  Timer,
+  Cpu,
+  Tablet,
+  Store,
+  PanelTop,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
@@ -21,6 +27,18 @@ const relatedIcons = [
   { Icon: Monitor, tint: 'bg-sky-500/10 text-sky-400' },
   { Icon: ChefHat, tint: 'bg-amber-500/10 text-amber-400' },
   { Icon: Users, tint: 'bg-violet-500/10 text-violet-400' },
+];
+
+const featureIcons = [
+  { Icon: LayoutGrid, tint: 'bg-indigo-500/10 text-indigo-400' },
+  { Icon: Timer, tint: 'bg-emerald-500/10 text-emerald-400' },
+  { Icon: Cpu, tint: 'bg-rose-500/10 text-rose-400' },
+];
+
+const hardwareIcons = [
+  { Icon: Tablet, tint: 'bg-sky-500/10 text-sky-400' },
+  { Icon: Store, tint: 'bg-amber-500/10 text-amber-400' },
+  { Icon: PanelTop, tint: 'bg-violet-500/10 text-violet-400' },
 ];
 
 const related = products.filter((p) => p.slug !== 'self-service-kiosk').slice(0, 3);
