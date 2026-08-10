@@ -11,6 +11,8 @@ import {
   Receipt,
   Layers,
 } from 'lucide-react';
+import { ChevronRight, Star } from 'lucide-react';
+import { motion } from 'motion/react';
 import { RevealProvider, Reveal } from '@/components/AIIntelligence/Reveal';
 import {
   images,
@@ -26,36 +28,78 @@ export default function TapToPayClient() {
   return (
     <RevealProvider>
       <div className="bg-black text-white selection:bg-white/20">
-        {/* Hero */}
-        <section className="relative overflow-hidden pt-32 pb-20 md:pt-44 md:pb-28">
-          <div className="pointer-events-none absolute left-1/2 top-0 -z-0 h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-blue-500/10 blur-[120px]" />
-          <div className="container relative z-10 mx-auto px-4 md:px-6">
-            <div className="mx-auto max-w-4xl text-center">
-              <h1 className="mb-8 text-5xl font-bold leading-[1.05] tracking-tighter md:text-8xl">
-                Tap to Pay.
-                <br />
-                <span className="bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
-                  Right at the table.
+        {/* Cinematic Hero */}
+        <section className="relative flex h-[100dvh] min-h-screen items-center justify-center overflow-hidden">
+          <motion.div
+            initial={{ scale: 1.1, opacity: 0 }}
+            animate={{ scale: 1, opacity: 0.6 }}
+            transition={{ duration: 2, ease: 'easeOut' }}
+            className="absolute inset-0 z-0"
+          >
+            <img
+              src={images.hero}
+              alt="Server taking a contactless payment at a restaurant table"
+              className="h-full w-full object-cover"
+              fetchPriority="high"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+          </motion.div>
+
+          <div className="container relative z-10 mx-auto px-4 pt-20 text-center md:px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-indigo-300 backdrop-blur-md"
+            >
+              <Star size={14} fill="currentColor" />
+              <span>
+                <strong>eatOS</strong> Tap to Pay
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.7 }}
+              className="mb-8 text-6xl font-bold leading-[1.05] tracking-tighter md:text-9xl"
+            >
+              Tap. <br />
+              <span className="bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
+                Paid.
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1 }}
+              className="mx-auto mb-12 max-w-3xl text-[15px] font-light leading-relaxed text-gray-400 md:text-[22px]"
+            >
+              Take the payment in the same breath as the order. Your phone is the terminal.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 1.2 }}
+              className="flex flex-col items-center justify-center gap-6 sm:flex-row"
+            >
+              <a
+                href="/book-demo"
+                className="group w-full rounded-full bg-white px-8 py-4 text-lg font-semibold text-black transition-all duration-300 hover:scale-105 sm:w-auto"
+              >
+                <span className="flex items-center justify-center gap-2">
+                  Book a Demo <ChevronRight size={18} />
                 </span>
-              </h1>
-              <p className="mx-auto mb-12 max-w-[34ch] text-[15px] font-light leading-relaxed text-gray-400 md:max-w-[46ch] md:text-[22px]">
-                Take the payment in the same breath as the order. Your phone is the terminal.
-              </p>
-              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <a
-                  href="/book-demo"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-base font-semibold text-black transition-transform hover:scale-[1.03] sm:w-auto"
-                >
-                  Book a Demo <ArrowRight size={18} />
-                </a>
-                <a
-                  href="/pricing"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/20 px-8 py-4 text-base font-medium text-white/90 transition-colors hover:border-white/40 hover:bg-white/5 sm:w-auto"
-                >
-                  See Pricing
-                </a>
-              </div>
-            </div>
+              </a>
+              <a
+                href="/pricing"
+                className="w-full rounded-full border border-white/20 px-8 py-4 text-lg font-medium text-white/90 transition-colors hover:border-white/40 hover:bg-white/5 sm:w-auto"
+              >
+                See Pricing
+              </a>
+            </motion.div>
           </div>
         </section>
 
