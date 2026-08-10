@@ -19,8 +19,6 @@ import {
   hero,
   keyFeatures,
   marquee,
-  offerNote,
-  testimonial,
 } from './content';
 import { products } from '../products';
 
@@ -338,21 +336,8 @@ export default function KdsPageClient() {
                   Contact Sales
                 </a>
               </div>
-
-              <figure className="mt-14 md:mt-16 max-w-3xl mx-auto">
-                <blockquote className="text-lg md:text-2xl font-medium leading-relaxed text-white">
-                  {testimonial.quote}
-                </blockquote>
-                <figcaption className="mt-5 text-sm text-gray-400">
-                  {testimonial.name}, {testimonial.role} &middot; {testimonial.since}
-                </figcaption>
-              </figure>
             </div>
           </motion.div>
-
-          <p className="mt-8 text-center text-xs leading-relaxed text-gray-600 max-w-3xl mx-auto">
-            {offerNote}
-          </p>
         </div>
       </section>
     </div>
