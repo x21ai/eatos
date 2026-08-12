@@ -1,9 +1,9 @@
 // @ts-nocheck
 'use client';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
-import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
 import { closing, helpChannels, hero, report, safetyRules, spotlights } from './content';
 
