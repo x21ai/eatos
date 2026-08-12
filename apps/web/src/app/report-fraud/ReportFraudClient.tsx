@@ -37,53 +37,54 @@ function Eyebrow({ children, className = '' }) {
 /* -------------------------------- Hero -------------------------------- */
 
 function Hero() {
-  const reduce = useReducedMotion();
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const scale = useTransform(scrollYProgress, [0, 0.5], [0.94, 1]);
-
   return (
-    <section className="bg-black text-white">
-      <div className="mx-auto w-full max-w-[1120px] px-5 pt-24 sm:px-8 md:pt-32 lg:pt-40">
-        <Reveal className="text-center">
-          <Eyebrow>{hero.eyebrow}</Eyebrow>
-          <h1 className="mx-auto mt-5 max-w-[24ch] font-bold leading-[1.1] tracking-tighter text-4xl md:text-6xl">
-            {hero.title}
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
-            {hero.description}
-          </p>
-          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
-              href={hero.primaryCta.href}
-              className="inline-flex w-full items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:w-auto"
-            >
-              {hero.primaryCta.label}
-            </a>
-            <a
-              href={hero.secondaryCta.href}
-              className="inline-flex w-full items-center justify-center gap-1.5 rounded-full px-7 py-3.5 text-sm font-semibold text-emerald-400 transition-colors hover:text-emerald-300 sm:w-auto"
-            >
-              {hero.secondaryCta.label}
-              <ArrowRight size={15} />
-            </a>
-          </div>
-        </Reveal>
+    <section className="relative overflow-hidden bg-black text-white">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-emerald-500/15 blur-[140px]"
+      />
+      <div className="relative mx-auto w-full max-w-[1120px] px-5 pt-28 pb-4 sm:px-8 md:pt-36 md:pb-8">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
+          <Reveal>
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5">
+              <ShieldCheck size={14} className="text-emerald-400" />
+              <Eyebrow className="!text-emerald-400">{hero.eyebrow}</Eyebrow>
+            </div>
+            <h1 className="mt-6 max-w-[20ch] font-bold leading-[1.06] tracking-tighter text-4xl sm:text-5xl md:text-6xl">
+              {hero.title}
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
+              {hero.description}
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href={hero.primaryCta.href}
+                className="inline-flex w-full items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:w-auto"
+              >
+                {hero.primaryCta.label}
+              </a>
+              <a
+                href={hero.secondaryCta.href}
+                className="inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-white/20 px-7 py-3.5 text-sm font-semibold text-white/90 transition-colors hover:border-white/40 hover:text-white sm:w-auto"
+              >
+                {hero.secondaryCta.label}
+                <ArrowRight size={15} />
+              </a>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <Placeholder
+              label={hero.imageLabel}
+              src={hero.image}
+              ratio="aspect-[4/3] sm:aspect-[5/4] lg:aspect-[4/5]"
+            />
+          </Reveal>
+        </div>
       </div>
 
-      <div ref={ref} className="mx-auto mt-14 w-full max-w-[1320px] px-0 sm:px-8 md:mt-20">
-        <motion.div style={reduce ? undefined : { scale }}>
-          <Placeholder
-            label={hero.imageLabel}
-            src={hero.image}
-            ratio="aspect-[4/3] sm:aspect-[16/9]"
-            className="rounded-none sm:rounded-[32px]"
-          />
-        </motion.div>
-      </div>
-
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-16 sm:px-8 md:py-24">
-        <div className="grid gap-6 md:grid-cols-3">
+      <div className="relative mx-auto w-full max-w-[1120px] px-5 py-16 sm:px-8 md:py-24">
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
           {safetyRules.map((rule, i) => (
             <Reveal key={rule.title} delay={i * 0.06}>
               <div className="h-full rounded-[24px] border border-white/10 bg-white/[0.03] p-7">
