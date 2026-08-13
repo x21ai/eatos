@@ -15,6 +15,13 @@ export const hero = {
   mediaSrc: heroImg.url,
 };
 
+export const highlights = [
+  'AI-enabled integration built for restaurants',
+  'All-in-one POS, kitchen, kiosk, and workforce platform',
+  'Offline mode plus 4G backup and hotspot capability',
+  'Works with multiple payment processors',
+];
+
 export const whySwitchMedia = {
   label: 'eatOS platform overview',
   src: whyImg.url,
