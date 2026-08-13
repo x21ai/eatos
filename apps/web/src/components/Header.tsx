@@ -88,7 +88,7 @@ export default function Header() {
         "/terms",
         "/customers",
         "/book-demo",
-        "/comparison",
+
 
       ];
       const isLight = lightPages.some(
