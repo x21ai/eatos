@@ -163,8 +163,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Customer Showcase */}
-      <CustomerShowcase />
 
       {/* Bento Grid Navigation - The Hub */}
       <section className="py-20 md:py-20 md:py-28 bg-black relative">
