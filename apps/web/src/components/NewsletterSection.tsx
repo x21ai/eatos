@@ -29,7 +29,7 @@ export function NewsletterSection() {
               Connect to the Future
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-gray-400 sm:text-lg">
-              Get valuable tips on the future of restaurant technology and industry trends.
+              Get valuable tips on the future of restaurant technology, industry trends, and strategies to help your business grow.
             </p>
 
             <form onSubmit={onSubmit} className="mx-auto mt-9 w-full max-w-xl">
