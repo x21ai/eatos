@@ -16,7 +16,6 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { NewsletterSection } from '@/components/NewsletterSection';
-import { CustomerShowcase } from '@/components/marketing/CustomerShowcase';
 
 export default function HomePage() {
   return (
