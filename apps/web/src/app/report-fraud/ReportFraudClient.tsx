@@ -43,7 +43,7 @@ function Hero() {
         aria-hidden
         className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-emerald-500/15 blur-[140px]"
       />
-      <div className="relative mx-auto w-full max-w-[1120px] px-5 pt-28 pb-4 sm:px-8 md:pt-36 md:pb-8">
+      <div className="container relative mx-auto px-4 pt-28 pb-4 md:px-6 md:pt-36 md:pb-8">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           <Reveal>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5">
@@ -83,7 +83,7 @@ function Hero() {
         </div>
       </div>
 
-      <div className="relative mx-auto w-full max-w-[1120px] px-5 py-16 sm:px-8 md:py-24">
+      <div className="container relative mx-auto px-4 py-16 md:px-6 md:py-24">
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
           {safetyRules.map((rule, i) => (
             <Reveal key={rule.title} delay={i * 0.06}>
@@ -109,10 +109,10 @@ function Spotlight({ item, index }) {
       <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
         <div className={flip ? 'md:order-2' : ''}>
           <Eyebrow>{item.eyebrow}</Eyebrow>
-          <h2 className="mt-4 max-w-[22ch] font-bold leading-[1.12] tracking-tighter text-3xl md:text-5xl text-zinc-900">
+          <h2 className="mt-4 max-w-[22ch] font-bold leading-[1.12] tracking-tighter text-3xl md:text-5xl text-white">
             {item.title}
           </h2>
-          <p className="mt-5 max-w-xl text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8">
+          <p className="mt-5 max-w-xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
             {item.body}
           </p>
           {item.note ? (
@@ -123,7 +123,6 @@ function Spotlight({ item, index }) {
           <Placeholder
             label={item.imageLabel}
             src={item.image}
-            tone="light"
             ratio="aspect-[4/3]"
             pad={Boolean(item.pad)}
           />
@@ -135,8 +134,8 @@ function Spotlight({ item, index }) {
 
 function Guidance() {
   return (
-    <section className="bg-white">
-      <div className="mx-auto w-full max-w-[1120px] space-y-24 px-5 py-20 sm:px-8 md:space-y-32 md:py-28">
+    <section className="bg-black">
+      <div className="container mx-auto space-y-24 px-4 py-20 md:space-y-32 md:px-6 md:py-28">
         {spotlights.map((item, i) => (
           <Spotlight key={item.id} item={item} index={i} />
         ))}
