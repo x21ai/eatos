@@ -202,7 +202,7 @@ export default function KdsPageClient() {
                   <Placeholder
                     label={feature.imageLabel}
                     src={feature.image}
-                    ratio="aspect-[16/10]"
+                    ratio="aspect-[16/9]"
                   />
                 </div>
               </div>
