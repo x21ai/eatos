@@ -194,21 +194,21 @@ function ReportForm() {
 
   if (status === 'done') {
     return (
-      <div className="rounded-[28px] border border-zinc-200 bg-white p-8 text-center sm:p-10">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-50">
-          <CheckCircle2 size={26} className="text-emerald-600" />
+      <div className="rounded-[28px] border border-white/10 bg-white/[0.03] p-8 text-center sm:p-10">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/10">
+          <CheckCircle2 size={26} className="text-emerald-400" />
         </div>
-        <h3 className="mt-6 text-xl font-bold tracking-tighter text-zinc-900">
+        <h3 className="mt-6 text-xl font-bold tracking-tighter text-white">
           Report received
         </h3>
-        <p className="mx-auto mt-3 max-w-sm text-sm leading-6 text-zinc-600">
+        <p className="mx-auto mt-3 max-w-sm text-sm leading-6 text-zinc-400">
           Thank you for reporting this incident. Our fraud prevention team will review your
           submission and reach out if we need more information.
         </p>
         <button
           type="button"
           onClick={() => setStatus('idle')}
-          className="mt-7 inline-flex items-center justify-center rounded-full border border-zinc-300 px-6 py-3 text-sm font-semibold text-zinc-900 transition-colors hover:bg-zinc-50"
+          className="mt-7 inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
         >
           Submit another report
         </button>
@@ -217,20 +217,20 @@ function ReportForm() {
   }
 
   const fieldClass = (name) =>
-    `w-full rounded-2xl border bg-white px-4 py-3 text-sm text-zinc-900 outline-none transition-colors placeholder:text-zinc-400 focus:border-zinc-900 ${
-      errors[name] ? 'border-red-400' : 'border-zinc-200'
+    `w-full rounded-2xl border bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-500 focus:border-emerald-500/60 ${
+      errors[name] ? 'border-red-500/60' : 'border-white/10'
     }`;
 
   return (
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="rounded-[28px] border border-zinc-200 bg-white p-6 sm:p-8"
+      className="rounded-[28px] border border-white/10 bg-white/[0.03] p-6 sm:p-8"
     >
-      <h3 className="text-lg font-bold tracking-tighter text-zinc-900">Share details</h3>
+      <h3 className="text-lg font-bold tracking-tighter text-white">Share details</h3>
       <div className="mt-6 space-y-5">
         <div>
-          <label htmlFor="firstName" className="block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500">
+          <label htmlFor="firstName" className="block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-400">
             First name
           </label>
           <input
@@ -243,12 +243,12 @@ function ReportForm() {
             placeholder="Jordan"
             className={`mt-2 ${fieldClass('firstName')}`}
           />
-          {errors.firstName ? <p className="mt-2 text-xs text-red-600">{errors.firstName}</p> : null}
+          {errors.firstName ? <p className="mt-2 text-xs text-red-400">{errors.firstName}</p> : null}
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
-            <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500">
+            <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-400">
               Email
             </label>
             <input
@@ -261,10 +261,10 @@ function ReportForm() {
               placeholder="you@restaurant.com"
               className={`mt-2 ${fieldClass('email')}`}
             />
-            {errors.email ? <p className="mt-2 text-xs text-red-600">{errors.email}</p> : null}
+            {errors.email ? <p className="mt-2 text-xs text-red-400">{errors.email}</p> : null}
           </div>
           <div>
-            <label htmlFor="phone" className="block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500">
+            <label htmlFor="phone" className="block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-400">
               Phone
             </label>
             <input
@@ -277,12 +277,12 @@ function ReportForm() {
               placeholder="+1 555 123 4567"
               className={`mt-2 ${fieldClass('phone')}`}
             />
-            {errors.phone ? <p className="mt-2 text-xs text-red-600">{errors.phone}</p> : null}
+            {errors.phone ? <p className="mt-2 text-xs text-red-400">{errors.phone}</p> : null}
           </div>
         </div>
 
         <div>
-          <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500">
+          <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-400">
             Message
           </label>
           <textarea
@@ -295,14 +295,14 @@ function ReportForm() {
             placeholder="Tell us what happened, dates, amounts, transaction IDs, merchant names and any suspicious addresses."
             className={`mt-2 resize-none ${fieldClass('message')}`}
           />
-          {errors.message ? <p className="mt-2 text-xs text-red-600">{errors.message}</p> : null}
+          {errors.message ? <p className="mt-2 text-xs text-red-400">{errors.message}</p> : null}
         </div>
       </div>
 
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-black px-7 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-85 disabled:opacity-50"
+        className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-85 disabled:opacity-50"
       >
         {status === 'loading' ? 'Submitting…' : 'Submit report'}
       </button>
