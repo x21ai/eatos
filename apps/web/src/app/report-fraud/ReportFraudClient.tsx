@@ -313,24 +313,24 @@ function ReportForm() {
 
 function ReportSection() {
   return (
-    <section id="report" className="scroll-mt-24 bg-zinc-50">
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28">
+    <section id="report" className="scroll-mt-24 bg-zinc-950">
+      <div className="container mx-auto px-4 py-20 md:px-6 md:py-28">
         <div className="grid gap-12 md:grid-cols-2 md:gap-16">
           <Reveal>
             <Eyebrow>{report.eyebrow}</Eyebrow>
-            <h2 className="mt-4 font-bold leading-[1.12] tracking-tighter text-3xl md:text-5xl text-zinc-900">
+            <h2 className="mt-4 font-bold leading-[1.12] tracking-tighter text-3xl md:text-5xl text-white">
               {report.title}
             </h2>
-            <p className="mt-5 max-w-xl text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8">
+            <p className="mt-5 max-w-xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
               {report.description}
             </p>
             <ol className="mt-8 space-y-4">
               {report.steps.map((step, i) => (
                 <li key={step} className="flex gap-4">
-                  <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-zinc-900 text-[11px] font-semibold text-white">
+                  <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-emerald-500/15 text-[11px] font-semibold text-emerald-400">
                     {i + 1}
                   </span>
-                  <span className="text-sm leading-6 text-zinc-600">{step}</span>
+                  <span className="text-sm leading-6 text-zinc-400">{step}</span>
                 </li>
               ))}
             </ol>
@@ -348,24 +348,24 @@ function ReportSection() {
 
 function Help() {
   return (
-    <section className="bg-white">
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-24">
+    <section className="bg-black">
+      <div className="container mx-auto px-4 py-20 md:px-6 md:py-24">
         <Reveal>
-          <h2 className="font-bold leading-[1.12] tracking-tighter text-3xl md:text-4xl text-zinc-900">
+          <h2 className="font-bold leading-[1.12] tracking-tighter text-3xl md:text-4xl text-white">
             Need immediate assistance?
           </h2>
         </Reveal>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {helpChannels.map((channel, i) => (
             <Reveal key={channel.title} delay={i * 0.06}>
-              <div className="h-full rounded-[24px] border border-zinc-200 p-8">
-                <h3 className="text-lg font-bold tracking-tighter text-zinc-900">
+              <div className="h-full rounded-[24px] border border-white/10 bg-white/[0.03] p-8">
+                <h3 className="text-lg font-bold tracking-tighter text-white">
                   {channel.title}
                 </h3>
-                <p className="mt-3 text-sm leading-6 text-zinc-600">{channel.body}</p>
+                <p className="mt-3 text-sm leading-6 text-zinc-400">{channel.body}</p>
                 <a
                   href={channel.href}
-                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-900 hover:underline"
+                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-400 hover:underline"
                 >
                   {channel.linkLabel}
                   <ArrowRight size={15} />
@@ -382,7 +382,7 @@ function Help() {
 function Closing() {
   return (
     <section className="bg-black text-white">
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 text-center sm:px-8 md:py-28">
+      <div className="container mx-auto px-4 py-20 text-center md:px-6 md:py-28">
         <Reveal>
           <h2 className="mx-auto max-w-[24ch] font-bold leading-[1.12] tracking-tighter text-3xl md:text-5xl">
             {closing.title}
@@ -413,7 +413,7 @@ function Closing() {
 
 export default function ReportFraudClient() {
   return (
-    <main className="bg-white">
+    <main className="bg-black">
       <Hero />
       <Guidance />
       <ReportSection />
