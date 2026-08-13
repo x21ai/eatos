@@ -43,7 +43,7 @@ function Hero() {
         aria-hidden
         className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-emerald-500/15 blur-[140px]"
       />
-      <div className="relative mx-auto w-full max-w-[1120px] px-5 pt-28 pb-4 sm:px-8 md:pt-36 md:pb-8">
+      <div className="container relative mx-auto px-4 pt-28 pb-4 md:px-6 md:pt-36 md:pb-8">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           <Reveal>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5">
@@ -83,7 +83,7 @@ function Hero() {
         </div>
       </div>
 
-      <div className="relative mx-auto w-full max-w-[1120px] px-5 py-16 sm:px-8 md:py-24">
+      <div className="container relative mx-auto px-4 py-16 md:px-6 md:py-24">
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
           {safetyRules.map((rule, i) => (
             <Reveal key={rule.title} delay={i * 0.06}>
@@ -109,10 +109,10 @@ function Spotlight({ item, index }) {
       <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
         <div className={flip ? 'md:order-2' : ''}>
           <Eyebrow>{item.eyebrow}</Eyebrow>
-          <h2 className="mt-4 max-w-[22ch] font-bold leading-[1.12] tracking-tighter text-3xl md:text-5xl text-zinc-900">
+          <h2 className="mt-4 max-w-[22ch] font-bold leading-[1.12] tracking-tighter text-3xl md:text-5xl text-white">
             {item.title}
           </h2>
-          <p className="mt-5 max-w-xl text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8">
+          <p className="mt-5 max-w-xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
             {item.body}
           </p>
           {item.note ? (
@@ -123,7 +123,6 @@ function Spotlight({ item, index }) {
           <Placeholder
             label={item.imageLabel}
             src={item.image}
-            tone="light"
             ratio="aspect-[4/3]"
             pad={Boolean(item.pad)}
           />
@@ -135,8 +134,8 @@ function Spotlight({ item, index }) {
 
 function Guidance() {
   return (
-    <section className="bg-white">
-      <div className="mx-auto w-full max-w-[1120px] space-y-24 px-5 py-20 sm:px-8 md:space-y-32 md:py-28">
+    <section className="bg-black">
+      <div className="container mx-auto space-y-24 px-4 py-20 md:space-y-32 md:px-6 md:py-28">
         {spotlights.map((item, i) => (
           <Spotlight key={item.id} item={item} index={i} />
         ))}
@@ -195,21 +194,21 @@ function ReportForm() {
 
   if (status === 'done') {
     return (
-      <div className="rounded-[28px] border border-zinc-200 bg-white p-8 text-center sm:p-10">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-50">
-          <CheckCircle2 size={26} className="text-emerald-600" />
+      <div className="rounded-[28px] border border-white/10 bg-white/[0.03] p-8 text-center sm:p-10">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/10">
+          <CheckCircle2 size={26} className="text-emerald-400" />
         </div>
-        <h3 className="mt-6 text-xl font-bold tracking-tighter text-zinc-900">
+        <h3 className="mt-6 text-xl font-bold tracking-tighter text-white">
           Report received
         </h3>
-        <p className="mx-auto mt-3 max-w-sm text-sm leading-6 text-zinc-600">
+        <p className="mx-auto mt-3 max-w-sm text-sm leading-6 text-zinc-400">
           Thank you for reporting this incident. Our fraud prevention team will review your
           submission and reach out if we need more information.
         </p>
         <button
           type="button"
           onClick={() => setStatus('idle')}
-          className="mt-7 inline-flex items-center justify-center rounded-full border border-zinc-300 px-6 py-3 text-sm font-semibold text-zinc-900 transition-colors hover:bg-zinc-50"
+          className="mt-7 inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
         >
           Submit another report
         </button>
@@ -218,20 +217,20 @@ function ReportForm() {
   }
 
   const fieldClass = (name) =>
-    `w-full rounded-2xl border bg-white px-4 py-3 text-sm text-zinc-900 outline-none transition-colors placeholder:text-zinc-400 focus:border-zinc-900 ${
-      errors[name] ? 'border-red-400' : 'border-zinc-200'
+    `w-full rounded-2xl border bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-500 focus:border-emerald-500/60 ${
+      errors[name] ? 'border-red-500/60' : 'border-white/10'
     }`;
 
   return (
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="rounded-[28px] border border-zinc-200 bg-white p-6 sm:p-8"
+      className="rounded-[28px] border border-white/10 bg-white/[0.03] p-6 sm:p-8"
     >
-      <h3 className="text-lg font-bold tracking-tighter text-zinc-900">Share details</h3>
+      <h3 className="text-lg font-bold tracking-tighter text-white">Share details</h3>
       <div className="mt-6 space-y-5">
         <div>
-          <label htmlFor="firstName" className="block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500">
+          <label htmlFor="firstName" className="block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-400">
             First name
           </label>
           <input
@@ -244,12 +243,12 @@ function ReportForm() {
             placeholder="Jordan"
             className={`mt-2 ${fieldClass('firstName')}`}
           />
-          {errors.firstName ? <p className="mt-2 text-xs text-red-600">{errors.firstName}</p> : null}
+          {errors.firstName ? <p className="mt-2 text-xs text-red-400">{errors.firstName}</p> : null}
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2">
           <div>
-            <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500">
+            <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-400">
               Email
             </label>
             <input
@@ -262,10 +261,10 @@ function ReportForm() {
               placeholder="you@restaurant.com"
               className={`mt-2 ${fieldClass('email')}`}
             />
-            {errors.email ? <p className="mt-2 text-xs text-red-600">{errors.email}</p> : null}
+            {errors.email ? <p className="mt-2 text-xs text-red-400">{errors.email}</p> : null}
           </div>
           <div>
-            <label htmlFor="phone" className="block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500">
+            <label htmlFor="phone" className="block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-400">
               Phone
             </label>
             <input
@@ -278,12 +277,12 @@ function ReportForm() {
               placeholder="+1 555 123 4567"
               className={`mt-2 ${fieldClass('phone')}`}
             />
-            {errors.phone ? <p className="mt-2 text-xs text-red-600">{errors.phone}</p> : null}
+            {errors.phone ? <p className="mt-2 text-xs text-red-400">{errors.phone}</p> : null}
           </div>
         </div>
 
         <div>
-          <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500">
+          <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-400">
             Message
           </label>
           <textarea
@@ -296,14 +295,14 @@ function ReportForm() {
             placeholder="Tell us what happened, dates, amounts, transaction IDs, merchant names and any suspicious addresses."
             className={`mt-2 resize-none ${fieldClass('message')}`}
           />
-          {errors.message ? <p className="mt-2 text-xs text-red-600">{errors.message}</p> : null}
+          {errors.message ? <p className="mt-2 text-xs text-red-400">{errors.message}</p> : null}
         </div>
       </div>
 
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-black px-7 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-85 disabled:opacity-50"
+        className="mt-7 inline-flex w-full items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-85 disabled:opacity-50"
       >
         {status === 'loading' ? 'Submitting…' : 'Submit report'}
       </button>
@@ -314,24 +313,24 @@ function ReportForm() {
 
 function ReportSection() {
   return (
-    <section id="report" className="scroll-mt-24 bg-zinc-50">
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-28">
+    <section id="report" className="scroll-mt-24 bg-zinc-950">
+      <div className="container mx-auto px-4 py-20 md:px-6 md:py-28">
         <div className="grid gap-12 md:grid-cols-2 md:gap-16">
           <Reveal>
             <Eyebrow>{report.eyebrow}</Eyebrow>
-            <h2 className="mt-4 font-bold leading-[1.12] tracking-tighter text-3xl md:text-5xl text-zinc-900">
+            <h2 className="mt-4 font-bold leading-[1.12] tracking-tighter text-3xl md:text-5xl text-white">
               {report.title}
             </h2>
-            <p className="mt-5 max-w-xl text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8">
+            <p className="mt-5 max-w-xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
               {report.description}
             </p>
             <ol className="mt-8 space-y-4">
               {report.steps.map((step, i) => (
                 <li key={step} className="flex gap-4">
-                  <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-zinc-900 text-[11px] font-semibold text-white">
+                  <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-emerald-500/15 text-[11px] font-semibold text-emerald-400">
                     {i + 1}
                   </span>
-                  <span className="text-sm leading-6 text-zinc-600">{step}</span>
+                  <span className="text-sm leading-6 text-zinc-400">{step}</span>
                 </li>
               ))}
             </ol>
@@ -349,24 +348,24 @@ function ReportSection() {
 
 function Help() {
   return (
-    <section className="bg-white">
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 sm:px-8 md:py-24">
+    <section className="bg-black">
+      <div className="container mx-auto px-4 py-20 md:px-6 md:py-24">
         <Reveal>
-          <h2 className="font-bold leading-[1.12] tracking-tighter text-3xl md:text-4xl text-zinc-900">
+          <h2 className="font-bold leading-[1.12] tracking-tighter text-3xl md:text-4xl text-white">
             Need immediate assistance?
           </h2>
         </Reveal>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {helpChannels.map((channel, i) => (
             <Reveal key={channel.title} delay={i * 0.06}>
-              <div className="h-full rounded-[24px] border border-zinc-200 p-8">
-                <h3 className="text-lg font-bold tracking-tighter text-zinc-900">
+              <div className="h-full rounded-[24px] border border-white/10 bg-white/[0.03] p-8">
+                <h3 className="text-lg font-bold tracking-tighter text-white">
                   {channel.title}
                 </h3>
-                <p className="mt-3 text-sm leading-6 text-zinc-600">{channel.body}</p>
+                <p className="mt-3 text-sm leading-6 text-zinc-400">{channel.body}</p>
                 <a
                   href={channel.href}
-                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-900 hover:underline"
+                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-400 hover:underline"
                 >
                   {channel.linkLabel}
                   <ArrowRight size={15} />
@@ -383,7 +382,7 @@ function Help() {
 function Closing() {
   return (
     <section className="bg-black text-white">
-      <div className="mx-auto w-full max-w-[1120px] px-5 py-20 text-center sm:px-8 md:py-28">
+      <div className="container mx-auto px-4 py-20 text-center md:px-6 md:py-28">
         <Reveal>
           <h2 className="mx-auto max-w-[24ch] font-bold leading-[1.12] tracking-tighter text-3xl md:text-5xl">
             {closing.title}
@@ -414,7 +413,7 @@ function Closing() {
 
 export default function ReportFraudClient() {
   return (
-    <main className="bg-white">
+    <main className="bg-black">
       <Hero />
       <Guidance />
       <ReportSection />
