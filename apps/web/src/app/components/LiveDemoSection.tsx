@@ -74,7 +74,7 @@ export function LiveDemoSection() {
                     Open
                   </a>
                 </div>
-                <div className="relative aspect-[16/9] lg:h-[640px]">
+                <div className="relative aspect-[16/9] lg:h-[460px]">
                   <iframe
                     key={demo.id}
                     src={demo.url}
