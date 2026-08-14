@@ -2,7 +2,7 @@
 import { ImageIcon } from 'lucide-react';
 
 // `tone` adapts the surface to the light or dark band it sits in.
-// `pad` adds safe padding around a real image and switches to object-contain so it never gets cropped or touches the edges.
+// `pad` preserves the complete image with object-contain and no artificial inset.
 export function Placeholder({
   label,
   ratio = 'aspect-[16/10]',
@@ -16,7 +16,7 @@ export function Placeholder({
   if (src) {
     return (
       <div
-        className={`relative ${ratio} w-full overflow-hidden rounded-[24px] md:rounded-[32px] ${
+        className={`relative ${ratio} w-full overflow-hidden rounded-lg ${
           dark
             ? 'bg-zinc-900 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]'
             : 'bg-zinc-200/70 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.35)]'
@@ -28,7 +28,7 @@ export function Placeholder({
           loading="lazy"
           className={
             pad
-              ? 'absolute inset-0 h-full w-full p-4 object-contain sm:p-6 md:p-8'
+              ? 'absolute inset-0 h-full w-full object-contain'
               : 'absolute inset-0 h-full w-full object-cover'
           }
         />
@@ -38,7 +38,7 @@ export function Placeholder({
 
   return (
     <div
-      className={`relative ${ratio} w-full overflow-hidden rounded-[24px] md:rounded-[32px] ${
+      className={`relative ${ratio} w-full overflow-hidden rounded-lg ${
         dark
           ? 'bg-zinc-900 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]'
           : 'bg-zinc-200/70 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.35)]'
