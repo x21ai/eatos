@@ -441,12 +441,13 @@ export default function HomePage() {
             </motion.a>
 
             {/* Terminal Mini */}
-            <motion.div
+            <motion.a
+              href="/products/point-of-purchase"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-zinc-900 rounded-[2.5rem] flex flex-col text-center border border-white/5 relative overflow-hidden"
+              className="bg-zinc-900 rounded-[2.5rem] flex flex-col text-center border border-white/5 relative overflow-hidden group"
             >
               <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-orange-500/10 to-transparent z-10" />
               <div className="relative z-10 pt-12 px-12">
@@ -465,7 +466,7 @@ export default function HomePage() {
                 loading="lazy"
                 className="w-full object-cover mt-auto rounded-b-[2.5rem]"
               />
-            </motion.div>
+            </motion.a>
           </div>
         </div>
       </section>
