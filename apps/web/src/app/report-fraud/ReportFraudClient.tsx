@@ -73,12 +73,14 @@ function Hero() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <Placeholder
-              label={hero.imageLabel}
-              src={hero.image}
-              ratio="aspect-[4/3] sm:aspect-[5/4] lg:aspect-[4/5]"
-            />
+          <Reveal delay={0.1} className="flex justify-center lg:justify-end">
+            <div className="w-full max-w-xl lg:max-w-none">
+              <Placeholder
+                label={hero.imageLabel}
+                src={hero.image}
+                ratio="aspect-video"
+              />
+            </div>
           </Reveal>
         </div>
       </div>
