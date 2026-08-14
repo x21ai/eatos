@@ -395,7 +395,7 @@ export default function HomePage() {
             </motion.h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
             {serviceStyles.map((style, i) => {
               const Icon = style.icon;
               return (
@@ -406,7 +406,7 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: (i % 4) * 0.05 }}
-                  className="group h-full rounded-3xl overflow-hidden border border-white/10 bg-zinc-900 flex flex-col hover:border-white/25 transition-colors"
+                  className="group h-full rounded-2xl overflow-hidden border border-white/10 bg-zinc-900 flex flex-col hover:border-white/25 transition-colors"
                 >
                   <div className="relative w-full aspect-[4/3] overflow-hidden bg-zinc-950">
                     <img
@@ -418,18 +418,18 @@ export default function HomePage() {
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <div className="p-6 flex flex-col gap-4 flex-1">
-                    <div className={`${style.iconClass} p-2.5 rounded-xl w-fit`}>
-                      <Icon size={20} />
+                  <div className="p-4 flex flex-col gap-3 flex-1">
+                    <div className={`${style.iconClass} p-2 rounded-lg w-fit`}>
+                      <Icon size={18} />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold tracking-tighter mb-2">{style.name}</h3>
-                      <p className="text-gray-400 text-sm leading-relaxed">{style.description}</p>
+                      <h3 className="text-lg font-bold tracking-tighter mb-1">{style.name}</h3>
+                      <p className="text-gray-400 text-xs leading-relaxed">{style.description}</p>
                     </div>
-                    <ul className="space-y-2 text-xs text-gray-300 mt-auto">
+                    <ul className="space-y-1.5 text-[11px] text-gray-300 mt-auto">
                       {style.bullets.map((bullet) => (
                         <li key={bullet} className="flex items-start gap-2">
-                          <Check size={14} className={`${style.checkClass} shrink-0 mt-0.5`} />
+                          <Check size={12} className={`${style.checkClass} shrink-0 mt-0.5`} />
                           <span>{bullet}</span>
                         </li>
                       ))}
