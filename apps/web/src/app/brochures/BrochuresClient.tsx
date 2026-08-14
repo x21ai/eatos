@@ -94,13 +94,22 @@ function FlipbookModal({ item, onClose }) {
   );
 }
 
-function Cover({ title, index, large = false }) {
+function Cover({ title, index, large = false, src }) {
   return (
     <div
       className={`relative w-full overflow-hidden bg-zinc-950 ${
         large ? 'aspect-[16/10] rounded-[24px] md:rounded-[32px]' : 'aspect-[4/3] rounded-[20px]'
       }`}
     >
+      {src ? (
+        <img
+          src={src}
+          alt={`${title} brochure cover`}
+          loading={large ? 'eager' : 'lazy'}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      ) : (
+        <>
       <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-emerald-500/15 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-20 -left-16 h-56 w-56 rounded-full bg-white/[0.06] blur-3xl" />
       <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-8">
@@ -120,6 +129,8 @@ function Cover({ title, index, large = false }) {
           {title}
         </span>
       </div>
+        </>
+      )}
     </div>
   );
 }
@@ -151,7 +162,7 @@ export default function BrochuresClient() {
         <div className="mx-auto w-full max-w-[1220px] px-5 pb-20 sm:px-8 md:pb-28">
           <Reveal>
             <div className="grid items-center gap-8 md:grid-cols-2 md:gap-14">
-              <Cover title={featured.title} index={0} large />
+              <Cover title={featured.title} index={0} large src={featured.cover} />
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-emerald-500">
                   Start here
@@ -202,7 +213,7 @@ export default function BrochuresClient() {
             <Reveal key={item.id} delay={(i % 3) * 0.06}>
               <article className="group flex h-full flex-col">
                 <div className="transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
-                  <Cover title={item.title} index={i + 1} />
+                  <Cover title={item.title} index={i + 1} src={item.cover} />
                 </div>
                 <h3 className="mt-6 text-[19px] font-bold tracking-tighter text-zinc-900">
                   {item.title}
