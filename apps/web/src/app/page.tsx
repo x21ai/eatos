@@ -597,14 +597,14 @@ export default function HomePage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {[
-              { name: 'QuickBooks', category: 'Accounting' },
-              { name: 'DoorDash', category: 'Delivery' },
-              { name: 'Uber Eats', category: 'Delivery' },
-              { name: 'Grubhub', category: 'Delivery' },
-              { name: '7shifts', category: 'Scheduling' },
-              { name: 'Mailchimp', category: 'Marketing' },
+              { name: 'Adyen', category: 'Payments' },
+              { name: 'MarketMan', category: 'Inventory' },
               { name: 'Xero', category: 'Accounting' },
-              { name: 'OpenTable', category: 'Reservations' },
+              { name: 'Voucherify', category: 'Loyalty' },
+              { name: 'Otter', category: 'Integrations' },
+              { name: 'QuickBooks', category: 'Accounting' },
+              { name: '7shifts', category: 'Scheduling' },
+              { name: 'Poynt', category: 'Payments' },
             ].map((integration, i) => (
               <motion.div
                 key={integration.name}
