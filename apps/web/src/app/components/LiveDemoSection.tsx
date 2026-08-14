@@ -20,7 +20,7 @@ export function LiveDemoSection() {
 
   return (
     <section className="py-20 md:py-28 bg-black relative overflow-hidden">
-      <div className="w-full px-4 md:px-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ export function LiveDemoSection() {
               value={demo.id}
               className="mt-0 focus-visible:outline-none focus-visible:ring-0"
             >
-              <div className="relative mx-auto w-full max-w-7xl rounded-2xl border border-white/10 overflow-hidden bg-zinc-900 shadow-2xl">
+              <div className="relative w-full rounded-2xl border border-white/10 overflow-hidden bg-zinc-900 shadow-2xl">
                 <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-zinc-900/50">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-red-500/80" />
