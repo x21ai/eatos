@@ -6,16 +6,17 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { ExternalLink } from 'lucide-react';
 
 const demos = [
-  { id: 'pos', label: 'Point of Sale', url: 'https://mobileposapp.lovable.app/' },
-  { id: 'kds', label: 'Kitchen Display', url: 'https://kds6.lovable.app/kds/v3' },
+  { id: 'pos', label: 'POS', url: 'https://mobileposapp.lovable.app/' },
+  { id: 'kds', label: 'KDS', url: 'https://kds6.lovable.app/kds/v3' },
   { id: 'kiosk', label: 'Kiosk', url: 'https://kiosk6.lovable.app/' },
-  { id: 'cfd', label: 'Customer Facing Display', url: 'https://cfd6.lovable.app/' },
+  { id: 'cfd', label: 'CFD', url: 'https://cfd6.lovable.app/' },
   { id: 'dashboard', label: 'Dashboard', url: 'https://dashboard6c.lovable.app/' },
   { id: 'inventoryos', label: 'InventoryOS', url: 'https://inventoryos6.lovable.app/' },
 ];
 
 export function LiveDemoSection() {
   const [activeTab, setActiveTab] = useState('pos');
+  const activeDemo = demos.find((d) => d.id === activeTab);
 
   return (
     <section className="py-20 md:py-28 bg-black relative overflow-hidden">
@@ -33,51 +34,47 @@ export function LiveDemoSection() {
             Try the full eatOS experience in your browser. Switch between products to see them in action.
           </p>
         </motion.div>
-      </div>
 
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <div className="container mx-auto px-4 md:px-6">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <div className="flex justify-center mb-8">
-            <TabsList className="bg-zinc-900/80 border border-white/10 p-2 rounded-2xl flex flex-nowrap overflow-x-auto max-w-full scrollbar-hidden gap-1">
+            <TabsList className="bg-zinc-900/80 border border-white/10 p-1.5 rounded-xl flex flex-nowrap overflow-x-auto max-w-full scrollbar-hidden">
               {demos.map((demo) => (
                 <TabsTrigger
                   key={demo.id}
                   value={demo.id}
-                  className="px-5 py-3 text-base md:text-lg font-semibold rounded-xl whitespace-nowrap data-[state=active]:bg-white data-[state=active]:text-black data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:text-white transition-colors"
+                  className="px-4 py-2.5 text-sm font-medium rounded-lg whitespace-nowrap data-[state=active]:bg-white data-[state=active]:text-black data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:text-white transition-colors"
                 >
                   {demo.label}
                 </TabsTrigger>
               ))}
             </TabsList>
           </div>
-        </div>
 
-        <div className="w-full">
           {demos.map((demo) => (
             <TabsContent
               key={demo.id}
               value={demo.id}
               className="mt-0 focus-visible:outline-none focus-visible:ring-0"
             >
-              <div className="relative overflow-hidden bg-zinc-900 shadow-2xl">
-                <div className="flex items-center justify-between px-4 md:px-6 lg:px-8 py-4 border-b border-white/10 bg-zinc-900/50">
+              <div className="relative rounded-2xl border border-white/10 overflow-hidden bg-zinc-900 shadow-2xl">
+                <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-zinc-900/50">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-red-500/80" />
                     <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
                     <div className="w-3 h-3 rounded-full bg-green-500/80" />
                   </div>
-                  <div className="text-sm md:text-base text-gray-400 font-medium">{demo.label}</div>
+                  <div className="text-sm text-gray-400 font-medium">{demo.label}</div>
                   <a
                     href={demo.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-sm md:text-base text-gray-400 hover:text-white transition-colors"
+                    className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-white transition-colors"
                   >
-                    <ExternalLink size={16} />
+                    <ExternalLink size={14} />
                     Open
                   </a>
                 </div>
-                <div className="relative w-full aspect-[16/9] lg:h-[720px]">
+                <div className="relative aspect-[16/9] lg:h-[640px]">
                   <iframe
                     key={demo.id}
                     src={demo.url}
@@ -91,8 +88,8 @@ export function LiveDemoSection() {
               </div>
             </TabsContent>
           ))}
-        </div>
-      </Tabs>
+        </Tabs>
+      </div>
     </section>
   );
 }
