@@ -660,10 +660,14 @@ export default function HomePage() {
               { name: 'MarketMan', category: 'Inventory' },
               { name: 'Xero', category: 'Accounting' },
               { name: 'CardConnect', category: 'Payments' },
+              { name: 'Stripe', category: 'Payments' },
+              { name: 'eCard Systems', category: 'Payments' },
               { name: 'Otter', category: 'Delivery' },
               { name: 'QuickBooks', category: 'Accounting' },
               { name: '7shifts', category: 'Scheduling' },
               { name: 'Poynt', category: 'Payments' },
+              { name: 'inventoryOS', category: 'Inventory' },
+              { name: 'loyaltyOS', category: 'Loyalty' },
             ].map((integration, i) => (
               <motion.div
                 key={integration.name}
