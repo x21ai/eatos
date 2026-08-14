@@ -50,22 +50,31 @@ export const whySwitch = [
   },
 ];
 
-export const competitors = ['eatOS', 'Square', 'Toast', 'Lightspeed', 'Clover', 'Revel', 'Micros'];
+export const competitors = [
+  'eatOS',
+  'Square',
+  'Toast',
+  'Lightspeed',
+  'SpotOn',
+  'TouchBistro',
+  'Revel',
+  'Micros',
+];
 
 // order matches `competitors` minus eatOS (which is always true)
 export const matrix = [
-  { feature: 'AI Enabled Integration', support: [false, false, false, false, false, false] },
-  { feature: 'Restaurant POS with Menu Management', support: [true, true, true, true, true, true] },
-  { feature: 'Real-time Cloud Reporting', support: [true, true, true, true, true, true] },
-  { feature: 'Order Online', support: [true, true, true, true, true, true] },
-  { feature: 'Multi-Location', support: [true, true, true, true, true, true] },
-  { feature: 'Pay at Table', support: [true, true, true, true, true, true] },
-  { feature: 'Kitchen Display Screen', support: [true, true, true, true, true, true] },
-  { feature: 'Self-Service Kiosk', support: [true, true, true, true, true, true] },
-  { feature: 'Multi-device/Offline Mode', support: [true, true, true, true, true, true] },
-  { feature: 'Workforce Management & Scheduling App', support: [false, false, false, false, false, true] },
-  { feature: 'Works with Multiple Payment Processors', support: [false, false, false, false, false, false] },
-  { feature: '4G Backup + Hotspot Capability', support: [false, false, false, false, false, false] },
+  { feature: 'AI Enabled Integration', support: [false, false, false, false, false, false, false] },
+  { feature: 'Restaurant POS with Menu Management', support: [true, true, true, true, true, true, true] },
+  { feature: 'Real-time Cloud Reporting', support: [true, true, true, true, true, true, true] },
+  { feature: 'Order Online', support: [true, true, true, true, true, true, false] },
+  { feature: 'Multi-Location', support: [false, true, true, true, false, true, true] },
+  { feature: 'Pay at Table', support: [true, true, true, true, true, false, false] },
+  { feature: 'Kitchen Display Screen', support: [true, true, true, true, false, false, false] },
+  { feature: 'Self-Service Kiosk', support: [false, true, true, true, false, false, true] },
+  { feature: 'Multi-device/Offline Mode', support: [true, true, true, true, false, true, false] },
+  { feature: 'Workforce Management & Scheduling App', support: [false, false, false, false, false, false, true] },
+  { feature: 'Works with Multiple Payment Processors', support: [false, false, false, false, true, false, false] },
+  { feature: '4G Backup + Hotspot Capability', support: [false, false, false, false, false, false, false] },
 ];
 
 export const trademarkNote =
