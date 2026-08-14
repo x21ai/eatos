@@ -179,7 +179,7 @@ export default function HomePage() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-6 h-auto md:h-[800px]">
+          <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-6 h-auto">
             {/* Card 1: Point of Sale (Large) */}
             <motion.a
               href="/point-of-sale"
