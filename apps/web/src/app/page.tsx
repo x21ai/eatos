@@ -194,6 +194,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Live Demo Section */}
+      <LiveDemoSection />
+
       {/* Social Proof / Trust Section */}
       <section className="py-20 md:py-28 bg-black border-t border-white/5 relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
