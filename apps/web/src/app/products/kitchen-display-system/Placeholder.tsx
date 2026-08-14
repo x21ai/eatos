@@ -16,7 +16,7 @@ export function Placeholder({
   if (src) {
     return (
       <div
-        className={`relative ${ratio} w-full overflow-hidden rounded-lg ${
+        className={`relative w-full overflow-hidden rounded-lg ${
           dark
             ? 'bg-zinc-900 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]'
             : 'bg-zinc-200/70 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.35)]'
@@ -26,11 +26,7 @@ export function Placeholder({
           src={src}
           alt={label}
           loading="lazy"
-          className={
-            pad
-              ? 'absolute inset-0 h-full w-full object-contain'
-              : 'absolute inset-0 h-full w-full object-cover'
-          }
+          className="block h-auto w-full"
         />
       </div>
     );
