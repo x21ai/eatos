@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { NewsletterSection } from '@/components/NewsletterSection';
+import { LiveDemoSection } from './components/LiveDemoSection';
 import svcQuickService from '../assets/svc-quick-service.jpg.asset.json';
 import svcFullService from '../assets/svc-full-service.jpg.asset.json';
 import svcFineDining from '../assets/svc-fine-dining.jpg.asset.json';
