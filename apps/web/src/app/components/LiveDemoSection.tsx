@@ -6,7 +6,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { ExternalLink } from 'lucide-react';
 
 const demos = [
-  { id: 'pos', label: 'POS', url: 'https://mobileposapp.lovable.app/' },
+  { id: 'pos', label: 'Point of Sale', url: 'https://mobileposapp.lovable.app/' },
   { id: 'kds', label: 'KDS', url: 'https://kds6.lovable.app/kds/v3' },
   { id: 'kiosk', label: 'Kiosk', url: 'https://kiosk6.lovable.app/' },
   { id: 'cfd', label: 'CFD', url: 'https://cfd6.lovable.app/' },
@@ -28,10 +28,10 @@ export function LiveDemoSection() {
           className="text-center mb-8"
         >
           <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 text-white">
-            Live Demo
+            How it Works
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Try the full eatOS experience in your browser. Switch between products to see them in action.
+            Experience the full eatOS platform in your browser. Switch between products to see every feature in action and explore the complete workflow.
           </p>
         </motion.div>
 
