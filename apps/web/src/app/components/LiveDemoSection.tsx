@@ -19,13 +19,13 @@ export function LiveDemoSection() {
   const activeDemo = demos.find((d) => d.id === activeTab);
 
   return (
-    <section className="py-12 md:py-16 bg-black relative overflow-hidden">
-      <div className="max-w-4xl mx-auto">
+    <section className="py-12 md:py-16 bg-black relative overflow-hidden w-full lg:w-[818px] mx-auto px-4 md:px-6 lg:px-0">
+      <div className="w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-8 px-4 md:px-6"
+          className="text-center mb-8"
         >
           <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 text-white">
             Live Demo
@@ -74,7 +74,7 @@ export function LiveDemoSection() {
                     Open
                   </a>
                 </div>
-                <div className="relative aspect-[16/9] lg:h-[460px]">
+                <div className="relative w-full aspect-[16/9] lg:aspect-auto lg:h-[460px]">
                   <iframe
                     key={demo.id}
                     src={demo.url}
