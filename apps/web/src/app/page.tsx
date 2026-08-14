@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { NewsletterSection } from '@/components/NewsletterSection';
+import posImage from '../assets/pos.jpg.asset.json';
 
 export default function HomePage() {
   return (
