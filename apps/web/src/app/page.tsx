@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { NewsletterSection } from '@/components/NewsletterSection';
+import { LiveDemoSection } from './components/LiveDemoSection';
 import svcQuickService from '../assets/svc-quick-service.jpg.asset.json';
 import svcFullService from '../assets/svc-full-service.jpg.asset.json';
 import svcFineDining from '../assets/svc-fine-dining.jpg.asset.json';
@@ -192,6 +193,9 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Live Demo Section */}
+      <LiveDemoSection />
 
       {/* Social Proof / Trust Section */}
       <section className="py-20 md:py-28 bg-black border-t border-white/5 relative overflow-hidden">
