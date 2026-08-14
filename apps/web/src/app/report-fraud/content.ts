@@ -40,7 +40,7 @@ export const spotlights = [
     note: 'Never share your eatOS account username and password. We will never ask for these details, and they are only meant for you to use. If you believe they have leaked, reset your password right away.',
     image: accountDetailsAsset.url,
     imageLabel: 'Account profile open on a mobile phone',
-    pad: true,
+    pad: false,
   },
   {
     id: 'phishing-scams',

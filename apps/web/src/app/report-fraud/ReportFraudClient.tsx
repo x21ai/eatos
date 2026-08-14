@@ -118,7 +118,7 @@ function Spotlight({ item, index }) {
             {item.body}
           </p>
           {item.note ? (
-            <p className="mt-4 max-w-xl text-sm leading-6 text-zinc-500">{item.note}</p>
+            <p className="mt-4 max-w-xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">{item.note}</p>
           ) : null}
         </div>
         <div className={flip ? 'md:order-1' : ''}>
