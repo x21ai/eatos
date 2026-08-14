@@ -303,12 +303,12 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="group rounded-[2.5rem] overflow-hidden border border-white/10 bg-zinc-900 flex flex-col"
             >
-              <div className="relative h-72 overflow-hidden">
+              <div className="relative w-full overflow-hidden bg-zinc-950">
                 <img
                   src="https://ucarecdn.com/570caf20-51b9-47b0-98a7-778538be2392/-/format/auto/"
                   alt="Quick Service"
                   loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
               <div className="p-10 flex flex-col gap-6">
