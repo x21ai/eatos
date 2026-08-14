@@ -306,7 +306,7 @@ export default function HomePage() {
             >
               <div className="relative w-full overflow-hidden bg-zinc-950">
                 <img
-                  src="https://ucarecdn.com/570caf20-51b9-47b0-98a7-778538be2392/-/format/auto/"
+                  src={posImage.url}
                   alt="Quick Service"
                   loading="lazy"
                   className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
