@@ -13,10 +13,106 @@ import {
   Zap,
   BarChart2,
   Plug,
+  Wine,
+  Coffee,
+  Truck,
+  Package,
+  Building2,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { NewsletterSection } from '@/components/NewsletterSection';
 import posImage from '../assets/pos.jpg.asset.json';
+import svcQuickService from '../assets/svc-quick-service.jpg.asset.json';
+import svcFullService from '../assets/svc-full-service.jpg.asset.json';
+import svcFineDining from '../assets/svc-fine-dining.jpg.asset.json';
+import svcCafe from '../assets/svc-cafe.jpg.asset.json';
+import svcBar from '../assets/svc-bar.jpg.asset.json';
+import svcFoodTruck from '../assets/svc-food-truck.jpg.asset.json';
+import svcGhostKitchen from '../assets/svc-ghost-kitchen.jpg.asset.json';
+import svcFranchise from '../assets/svc-franchise.jpg.asset.json';
+
+const serviceStyles = [
+  {
+    name: 'Quick Service',
+    href: '/solutions/quick-service',
+    image: svcQuickService.url,
+    icon: Zap,
+    iconClass: 'bg-orange-500/20 text-orange-400',
+    checkClass: 'text-orange-500',
+    description: 'Speed is everything. Take orders and move queues without friction.',
+    bullets: ['Lightning-fast order entry', 'Self-service kiosk mode', 'Next-day deposits'],
+  },
+  {
+    name: 'Full Service',
+    href: '/solutions/full-service',
+    image: svcFullService.url,
+    icon: Utensils,
+    iconClass: 'bg-indigo-500/20 text-indigo-400',
+    checkClass: 'text-indigo-500',
+    description: 'Seamless table-to-kitchen flow across every seat on your floor.',
+    bullets: ['Visual floor plan management', 'Course pacing and firing', 'Flexible split checks'],
+  },
+  {
+    name: 'Fine Dining',
+    href: '/solutions/fine-dining',
+    image: svcFineDining.url,
+    icon: Star,
+    iconClass: 'bg-amber-500/20 text-amber-400',
+    checkClass: 'text-amber-500',
+    description: 'Precise service for tasting menus, wine pairings and guest notes.',
+    bullets: ['Coursing and seat-level orders', 'Guest preference profiles', 'Reserve and wine list tools'],
+  },
+  {
+    name: 'Cafe',
+    href: '/solutions/cafe',
+    image: svcCafe.url,
+    icon: Coffee,
+    iconClass: 'bg-rose-500/20 text-rose-400',
+    checkClass: 'text-rose-500',
+    description: 'Fast counters, easy modifiers and loyalty that keeps regulars close.',
+    bullets: ['One-tap drink modifiers', 'Mobile order ahead', 'Built-in loyalty and rewards'],
+  },
+  {
+    name: 'Bar',
+    href: '/solutions/bar',
+    image: svcBar.url,
+    icon: Wine,
+    iconClass: 'bg-purple-500/20 text-purple-400',
+    checkClass: 'text-purple-500',
+    description: 'Open tabs, fast rounds and pour control through the late rush.',
+    bullets: ['Tab and pre-auth handling', 'Quick round reorders', 'Happy hour pricing rules'],
+  },
+  {
+    name: 'Food Truck',
+    href: '/solutions/food-truck',
+    image: svcFoodTruck.url,
+    icon: Truck,
+    iconClass: 'bg-emerald-500/20 text-emerald-400',
+    checkClass: 'text-emerald-500',
+    description: 'A full register in your hand, wherever you park for the day.',
+    bullets: ['Offline mode with sync', 'Handheld tap to pay', 'Location-based reporting'],
+  },
+  {
+    name: 'Ghost Kitchen',
+    href: '/solutions/ghost-kitchen',
+    image: svcGhostKitchen.url,
+    icon: Package,
+    iconClass: 'bg-sky-500/20 text-sky-400',
+    checkClass: 'text-sky-500',
+    description: 'Every delivery channel and virtual brand on a single screen.',
+    bullets: ['Delivery app aggregation', 'Multi-brand menu control', 'Prep time automation'],
+  },
+  {
+    name: 'Franchise',
+    href: '/solutions/franchise',
+    image: svcFranchise.url,
+    icon: Building2,
+    iconClass: 'bg-cyan-500/20 text-cyan-400',
+    checkClass: 'text-cyan-500',
+    description: 'Standardize menus, pricing and reporting across every location.',
+    bullets: ['Central menu publishing', 'Location benchmarking', 'Role-based team access'],
+  },
+];
 
 export default function HomePage() {
   return (
