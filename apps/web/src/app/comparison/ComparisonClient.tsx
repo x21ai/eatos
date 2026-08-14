@@ -4,6 +4,7 @@
 import { ArrowRight, Check, ChevronRight, LayoutGrid, Minus } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
+import { slugForCompetitor } from './competitors';
 import {
   competitors,
   hero,
@@ -257,7 +258,19 @@ function Matrix() {
                           : 'px-3 text-zinc-500'
                       }`}
                     >
-                      {name}
+                      {i === 0 ? (
+                        name
+                      ) : (
+                        <a
+                          href={`/comparison/${slugForCompetitor(name)}`}
+                          className="inline-flex flex-col items-center gap-1 transition-colors hover:text-white"
+                        >
+                          {name}
+                          <span className="text-[10px] font-medium text-emerald-400/80">
+                            Compare
+                          </span>
+                        </a>
+                      )}
                     </th>
                   ))}
                 </tr>
@@ -309,6 +322,15 @@ function Matrix() {
                     </span>
                   )}
                 </div>
+                {ci !== 0 && (
+                  <a
+                    href={`/comparison/${slugForCompetitor(name)}`}
+                    className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400"
+                  >
+                    See full comparison
+                    <ArrowRight size={13} />
+                  </a>
+                )}
                 <ul className="mt-4 space-y-3">
                   {matrix.map((row) => {
                     const on = ci === 0 ? true : row.support[ci - 1];
