@@ -13,10 +13,105 @@ import {
   Zap,
   BarChart2,
   Plug,
+  Wine,
+  Coffee,
+  Truck,
+  Package,
+  Building2,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { NewsletterSection } from '@/components/NewsletterSection';
-import posImage from '../assets/pos.jpg.asset.json';
+import svcQuickService from '../assets/svc-quick-service.jpg.asset.json';
+import svcFullService from '../assets/svc-full-service.jpg.asset.json';
+import svcFineDining from '../assets/svc-fine-dining.jpg.asset.json';
+import svcCafe from '../assets/svc-cafe.jpg.asset.json';
+import svcBar from '../assets/svc-bar.jpg.asset.json';
+import svcFoodTruck from '../assets/svc-food-truck.jpg.asset.json';
+import svcGhostKitchen from '../assets/svc-ghost-kitchen.jpg.asset.json';
+import svcFranchise from '../assets/svc-franchise.jpg.asset.json';
+
+const serviceStyles = [
+  {
+    name: 'Quick Service',
+    href: '/solutions/quick-service',
+    image: svcQuickService.url,
+    icon: Zap,
+    iconClass: 'bg-orange-500/20 text-orange-400',
+    checkClass: 'text-orange-500',
+    description: 'Speed is everything. Take orders and move queues without friction.',
+    bullets: ['Lightning-fast order entry', 'Self-service kiosk mode', 'Next-day deposits'],
+  },
+  {
+    name: 'Full Service',
+    href: '/solutions/full-service',
+    image: svcFullService.url,
+    icon: Utensils,
+    iconClass: 'bg-indigo-500/20 text-indigo-400',
+    checkClass: 'text-indigo-500',
+    description: 'Seamless table-to-kitchen flow across every seat on your floor.',
+    bullets: ['Visual floor plan management', 'Course pacing and firing', 'Flexible split checks'],
+  },
+  {
+    name: 'Fine Dining',
+    href: '/solutions/fine-dining',
+    image: svcFineDining.url,
+    icon: Star,
+    iconClass: 'bg-amber-500/20 text-amber-400',
+    checkClass: 'text-amber-500',
+    description: 'Precise service for tasting menus, wine pairings and guest notes.',
+    bullets: ['Coursing and seat-level orders', 'Guest preference profiles', 'Reserve and wine list tools'],
+  },
+  {
+    name: 'Cafe',
+    href: '/solutions/cafe',
+    image: svcCafe.url,
+    icon: Coffee,
+    iconClass: 'bg-rose-500/20 text-rose-400',
+    checkClass: 'text-rose-500',
+    description: 'Fast counters, easy modifiers and loyalty that keeps regulars close.',
+    bullets: ['One-tap drink modifiers', 'Mobile order ahead', 'Built-in loyalty and rewards'],
+  },
+  {
+    name: 'Bar',
+    href: '/solutions/bar',
+    image: svcBar.url,
+    icon: Wine,
+    iconClass: 'bg-purple-500/20 text-purple-400',
+    checkClass: 'text-purple-500',
+    description: 'Open tabs, fast rounds and pour control through the late rush.',
+    bullets: ['Tab and pre-auth handling', 'Quick round reorders', 'Happy hour pricing rules'],
+  },
+  {
+    name: 'Food Truck',
+    href: '/solutions/food-truck',
+    image: svcFoodTruck.url,
+    icon: Truck,
+    iconClass: 'bg-emerald-500/20 text-emerald-400',
+    checkClass: 'text-emerald-500',
+    description: 'A full register in your hand, wherever you park for the day.',
+    bullets: ['Offline mode with sync', 'Handheld tap to pay', 'Location-based reporting'],
+  },
+  {
+    name: 'Ghost Kitchen',
+    href: '/solutions/ghost-kitchen',
+    image: svcGhostKitchen.url,
+    icon: Package,
+    iconClass: 'bg-sky-500/20 text-sky-400',
+    checkClass: 'text-sky-500',
+    description: 'Every delivery channel and virtual brand on a single screen.',
+    bullets: ['Delivery app aggregation', 'Multi-brand menu control', 'Prep time automation'],
+  },
+  {
+    name: 'Franchise',
+    href: '/solutions/franchise',
+    image: svcFranchise.url,
+    icon: Building2,
+    iconClass: 'bg-cyan-500/20 text-cyan-400',
+    checkClass: 'text-cyan-500',
+    description: 'Standardize menus, pricing and reporting across every location.',
+    bullets: ['Central menu publishing', 'Location benchmarking', 'Role-based team access'],
+  },
+];
 
 export default function HomePage() {
   return (
@@ -282,9 +377,9 @@ export default function HomePage() {
       </section>
 
       {/* Service Modes Section */}
-      <section className="py-20 md:py-20 md:py-28 bg-zinc-950 relative overflow-hidden">
+      <section className="py-20 md:py-28 bg-zinc-950 relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-20">
+          <div className="text-center mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -296,89 +391,49 @@ export default function HomePage() {
             </motion.h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Quick Service */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="group rounded-[2.5rem] overflow-hidden border border-white/10 bg-zinc-900 flex flex-col"
-            >
-              <div className="relative w-full overflow-hidden bg-zinc-950">
-                <img
-                  src={posImage.url}
-                  alt="Quick Service"
-                  loading="lazy"
-                  className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-              <div className="p-10 flex flex-col gap-6">
-                <div className="bg-orange-500/20 text-orange-400 p-3 rounded-2xl w-fit">
-                  <Zap size={24} />
-                </div>
-                <div>
-                  <h3 className="text-4xl font-bold mb-3">Quick Service</h3>
-                  <p className="text-gray-400 text-lg leading-relaxed">
-                    Speed is everything. Take orders, process payments, and move queues without
-                    friction.
-                  </p>
-                </div>
-                <ul className="space-y-3 text-base text-gray-300">
-                  <li className="flex items-center gap-3">
-                    <Check size={18} className="text-orange-500 shrink-0" /> Lightning-fast order
-                    entry
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Check size={18} className="text-orange-500 shrink-0" /> Self-service kiosk mode
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Check size={18} className="text-orange-500 shrink-0" /> Next-day deposits
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-
-            {/* Full Service */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="group rounded-[2.5rem] overflow-hidden border border-white/10 bg-zinc-900 flex flex-col"
-            >
-              <div className="relative w-full overflow-hidden bg-zinc-950">
-                <img
-                  src="https://ucarecdn.com/95432288-86ee-4542-a032-acde33a12956/-/format/auto/"
-                  alt="Full Service"
-                  loading="lazy"
-                  className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-              <div className="p-10 flex flex-col gap-6">
-                <div className="bg-indigo-500/20 text-indigo-400 p-3 rounded-2xl w-fit">
-                  <Utensils size={24} />
-                </div>
-                <div>
-                  <h3 className="text-4xl font-bold mb-3">Full Service</h3>
-                  <p className="text-gray-400 text-lg leading-relaxed">
-                    Seamless table-to-kitchen flow. Manage your floor, pace courses, and close
-                    checks with ease.
-                  </p>
-                </div>
-                <ul className="space-y-3 text-base text-gray-300">
-                  <li className="flex items-center gap-3">
-                    <Check size={18} className="text-indigo-500 shrink-0" /> Visual floor plan
-                    management
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Check size={18} className="text-indigo-500 shrink-0" /> Course pacing and
-                    firing
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <Check size={18} className="text-indigo-500 shrink-0" /> Flexible split checks
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {serviceStyles.map((style, i) => {
+              const Icon = style.icon;
+              return (
+                <motion.a
+                  key={style.name}
+                  href={style.href}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (i % 4) * 0.05 }}
+                  className="group h-full rounded-3xl overflow-hidden border border-white/10 bg-zinc-900 flex flex-col hover:border-white/25 transition-colors"
+                >
+                  <div className="relative w-full aspect-[4/3] overflow-hidden bg-zinc-950">
+                    <img
+                      src={style.image}
+                      alt={style.name}
+                      loading="lazy"
+                      width={1024}
+                      height={768}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 flex flex-col gap-4 flex-1">
+                    <div className={`${style.iconClass} p-2.5 rounded-xl w-fit`}>
+                      <Icon size={20} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold tracking-tighter mb-2">{style.name}</h3>
+                      <p className="text-gray-400 text-sm leading-relaxed">{style.description}</p>
+                    </div>
+                    <ul className="space-y-2 text-xs text-gray-300 mt-auto">
+                      {style.bullets.map((bullet) => (
+                        <li key={bullet} className="flex items-start gap-2">
+                          <Check size={14} className={`${style.checkClass} shrink-0 mt-0.5`} />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.a>
+              );
+            })}
           </div>
         </div>
       </section>
