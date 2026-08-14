@@ -203,7 +203,7 @@ export default function KdsPageClient() {
                     label={feature.imageLabel}
                     src={feature.image}
                     ratio="aspect-[16/9]"
-                    pad
+                    pad={feature.id !== 'prep-station-routing'}
                   />
                 </div>
               </div>
