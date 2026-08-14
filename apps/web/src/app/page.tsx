@@ -423,7 +423,7 @@ export default function HomePage() {
               <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-indigo-500/10 to-transparent z-10" />
               <div className="relative z-10 pt-12 px-12">
                 <h3 className="text-3xl font-bold mb-2">
-                  <strong>eatOS</strong> Pro
+                  <strong>eatOS</strong> Point of Sale
                 </h3>
                 <p className="text-gray-400 mb-6">The ultimate restaurant terminal.</p>
                 {/* TODO: Price should be fetched from pricing API - do not hardcode */}
@@ -450,7 +450,7 @@ export default function HomePage() {
               <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-orange-500/10 to-transparent z-10" />
               <div className="relative z-10 pt-12 px-12">
                 <h3 className="text-3xl font-bold mb-2">
-                  <strong>eatOS</strong> Mini
+                  <strong>eatOS</strong> Point of Purchase
                 </h3>
                 <p className="text-gray-400 mb-6">Power in your pocket.</p>
                 {/* TODO: Price should be fetched from pricing API - do not hardcode */}
