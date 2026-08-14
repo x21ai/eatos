@@ -179,7 +179,7 @@ export default function HomePage() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-6 h-auto md:h-[800px]">
+          <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-6 h-auto">
             {/* Card 1: Point of Sale (Large) */}
             <motion.a
               href="/point-of-sale"
@@ -190,7 +190,7 @@ export default function HomePage() {
               className="md:col-span-2 md:row-span-2 bg-zinc-900 rounded-[2.5rem] p-10 relative overflow-hidden group border border-white/5"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              <div className="relative z-10 h-full flex flex-col justify-between">
+              <div className="relative z-10 flex flex-col gap-6">
                 <div>
                   <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center mb-6 text-white backdrop-blur-md">
                     <Command size={24} />
@@ -203,7 +203,7 @@ export default function HomePage() {
                   src="https://ucarecdn.com/c0c7e8e9-324d-4d51-8fa6-8a867032ad32/-/format/auto/"
                   alt="Interactive POS Preview"
                   loading="lazy"
-                  className="w-full rounded-xl shadow-2xl mt-8 transform group-hover:-translate-y-2 transition-transform duration-500"
+                  className="w-full rounded-xl shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-500"
                 />
               </div>
             </motion.a>
@@ -218,19 +218,19 @@ export default function HomePage() {
               whileHover={{ scale: 1.02 }}
               className="md:col-span-1 md:row-span-1 bg-white text-black rounded-[2.5rem] p-8 relative overflow-hidden group border border-white/5"
             >
-              <div className="h-full flex flex-col justify-between">
-                <div className="flex justify-between items-start">
-                  <h3 className="text-2xl font-bold">Payments</h3>
-                  <div className="p-2 bg-black/5 rounded-full">
-                    <CreditCard size={20} />
-                  </div>
-                </div>
-                <div>
-                  {/* TODO: Pricing rate should be fetched from pricing API - do not hardcode */}
-                  <div className="text-5xl font-bold tracking-tighter mb-1">1.8%</div>
-                  <div className="text-gray-500 text-sm">Flat rate processing</div>
+            <div className="flex flex-col gap-6">
+              <div className="flex justify-between items-start">
+                <h3 className="text-2xl font-bold">Payments</h3>
+                <div className="p-2 bg-black/5 rounded-full">
+                  <CreditCard size={20} />
                 </div>
               </div>
+              <div>
+                {/* TODO: Pricing rate should be fetched from pricing API - do not hardcode */}
+                <div className="text-5xl font-bold tracking-tighter mb-1">1.8%</div>
+                <div className="text-gray-500 text-sm">Flat rate processing</div>
+              </div>
+            </div>
             </motion.a>
 
             {/* Card 3: AI (Darker) */}
@@ -246,7 +246,7 @@ export default function HomePage() {
               <div className="absolute top-0 right-0 p-8 opacity-30">
                 <Star size={80} />
               </div>
-              <div className="h-full flex flex-col justify-between relative z-10">
+              <div className="flex flex-col gap-6 relative z-10">
                 <div className="flex justify-between items-start">
                   <h3 className="text-2xl font-bold">Intelligence</h3>
                 </div>
