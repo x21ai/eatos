@@ -112,7 +112,7 @@ export default function CompetitorClient({ slug }) {
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-[11px] font-semibold uppercase tracking-[0.24em] text-emerald-400 sm:text-xs mb-5"
+                className="text-[11px] font-semibold tracking-[0.24em] text-emerald-400 sm:text-xs mb-5"
               >
                 eatOS vs {name}
               </motion.p>
