@@ -3,7 +3,7 @@ import ComparisonClient from './ComparisonClient';
 
 const title = 'eatOS vs Other POS Software: Complete Comparison';
 const description =
-  'Compare eatOS with Square, Toast, Lightspeed, Clover, Revel and Micros across AI integration, kitchen display, kiosk, workforce management, offline mode and 4G backup.';
+  'Compare eatOS with Square, Toast, Lightspeed, SpotOn, TouchBistro, Revel and Micros across AI integration, kitchen display, kiosk, workforce management, offline mode and 4G backup.';
 
 export const metadata = {
   title: 'Comparison',
