@@ -20,7 +20,7 @@ export function LiveDemoSection() {
 
   return (
     <section className="py-20 md:py-28 bg-black relative overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="w-full px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -37,7 +37,7 @@ export function LiveDemoSection() {
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <div className="flex justify-center mb-8">
-            <TabsList className="bg-zinc-900/80 border border-white/10 p-1.5 rounded-xl flex flex-nowrap overflow-x-auto max-w-full scrollbar-hidden">
+            <TabsList className="bg-zinc-900/80 border border-white/10 p-2 rounded-xl flex flex-nowrap overflow-x-auto max-w-full scrollbar-hidden">
               {demos.map((demo) => (
                 <TabsTrigger
                   key={demo.id}
