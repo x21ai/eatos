@@ -20,12 +20,12 @@ export function LiveDemoSection() {
 
   return (
     <section className="py-12 md:py-16 bg-black relative overflow-hidden">
-      <div className="max-w-4xl mx-auto px-4 md:px-6">
+      <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-8"
+          className="text-center mb-8 px-4 md:px-6"
         >
           <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 text-white">
             Live Demo
