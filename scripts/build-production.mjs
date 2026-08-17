@@ -33,10 +33,6 @@ if (nextBuild.status !== 0) {
   process.exit(nextBuild.status ?? 1);
 }
 
-if (!withDist) {
-  process.exit(0);
-}
-
 const prepareDist = spawnSync(process.execPath, ["scripts/prepare-dist.mjs"], {
   stdio: "inherit",
 });
