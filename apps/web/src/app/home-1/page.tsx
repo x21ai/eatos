@@ -215,7 +215,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 md:px-6">
           {/* Capability strip: honest, aspirational, Apple-style */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
@@ -245,7 +245,7 @@ export default function HomePage() {
 
           {/* Logo Bar */}
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2 }}
@@ -281,7 +281,7 @@ export default function HomePage() {
       <section className="py-20 md:py-20 md:py-28 bg-black relative">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 1 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
@@ -296,7 +296,7 @@ export default function HomePage() {
             {/* Card 1: Point of Sale (Large) */}
             <motion.a
               href="/point-of-sale"
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 1 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
@@ -324,7 +324,7 @@ export default function HomePage() {
             {/* Card 2: Payments */}
             <motion.a
               href="/accept-payments"
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 1 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
@@ -349,7 +349,7 @@ export default function HomePage() {
             {/* Card 3: AI (Darker) */}
             <motion.a
               href="/ai"
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 1 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
@@ -372,7 +372,7 @@ export default function HomePage() {
             {/* Card 4: Hardware (Wide) */}
             <motion.a
               href="/hardware/pro"
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 1 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
@@ -398,7 +398,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="text-4xl md:text-6xl font-bold tracking-tighter mb-6"
@@ -415,7 +415,7 @@ export default function HomePage() {
                 <motion.a
                   key={style.name}
                   href={style.href}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 1 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: (i % 4) * 0.05 }}
@@ -462,7 +462,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="text-4xl md:text-6xl font-bold tracking-tighter mb-6"
@@ -471,7 +471,7 @@ export default function HomePage() {
               <span className="text-indigo-400">with others.</span>
             </motion.h2>
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
@@ -500,7 +500,7 @@ export default function HomePage() {
             ].map((partner) => (
               <motion.div
                 key={partner.name}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 1 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 className="group rounded-2xl bg-zinc-900 border border-white/10 p-4 hover:border-white/25 transition-colors"
@@ -525,7 +525,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
+              initial={{ opacity: 1 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
@@ -559,7 +559,7 @@ export default function HomePage() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
+              initial={{ opacity: 1 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -597,7 +597,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 1 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
@@ -607,7 +607,7 @@ export default function HomePage() {
               <span className="text-indigo-400">your restaurant smarter?</span>
             </motion.h2>
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
@@ -616,7 +616,7 @@ export default function HomePage() {
               Join thousands of restaurants using eatOS to simplify operations, delight guests and grow revenue.
             </motion.p>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
