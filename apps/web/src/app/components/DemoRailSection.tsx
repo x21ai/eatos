@@ -32,7 +32,7 @@ export function DemoRailSection() {
             How it Works
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Pick a product from the rail and the live demo loads beside it, so you can move through the whole platform quickly.
+            Pick a product from the rail and the live demo loads right beside it. Move through the full platform quickly and compare each screen.
           </p>
         </div>
 

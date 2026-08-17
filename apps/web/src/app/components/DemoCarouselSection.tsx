@@ -36,7 +36,7 @@ export function DemoCarouselSection() {
           How it Works
         </h2>
         <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-          Slide through the eatOS platform one product at a time and see exactly how each screen behaves in a real service.
+          Slide through the eatOS platform one product at a time. See exactly how each screen behaves during a real service, from order to payment.
         </p>
       </div>
 
