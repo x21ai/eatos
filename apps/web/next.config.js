@@ -3,6 +3,15 @@ const path = require('node:path');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   devIndicators: false,
+  // Keep file tracing scoped to apps/web. Without this Next infers the
+  // monorepo root and traces apps/mobile (react-native/expo), which makes
+  // "Collecting build traces" run long enough to time out publishing.
+  outputFileTracingRoot: __dirname,
+  // Cap build workers: the publish container has far less memory than a dev
+  // machine, and 60+ page-data workers can stall the build.
+  experimental: {
+    cpus: 4,
+  },
   typescript: {
     ignoreBuildErrors: true,
   },
