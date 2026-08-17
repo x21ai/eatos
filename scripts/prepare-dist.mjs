@@ -149,7 +149,10 @@ function validatePages(dir) {
 }
 validatePages("dist");
 
-const conflicting = cleanRoutes.filter((route) => existsSync(path.join("dist", route)));
+const conflicting = cleanRoutes.filter((route) => {
+  const target = path.join("dist", route);
+  return existsSync(target) && !statSync(target).isDirectory();
+});
 if (conflicting.length || unresolved.length) {
   console.error("Unsafe clean page paths remain in the publish artifact.");
   for (const route of conflicting) console.error(`conflicting artifact: dist/${route}`);
