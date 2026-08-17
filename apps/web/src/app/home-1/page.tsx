@@ -395,7 +395,7 @@ export default function HomePage() {
             </motion.h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
             {serviceStyles.map((style, i) => {
               const Icon = style.icon;
               return (
@@ -406,7 +406,7 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: (i % 4) * 0.05 }}
-                  className="group h-full rounded-3xl overflow-hidden border border-white/10 bg-zinc-900 flex flex-col hover:border-white/25 transition-colors"
+                  className="group h-full rounded-2xl overflow-hidden border border-white/10 bg-zinc-900 flex flex-col hover:border-white/25 transition-colors"
                 >
                   <div className="relative w-full aspect-[4/3] overflow-hidden bg-zinc-950">
                     <img
@@ -418,18 +418,20 @@ export default function HomePage() {
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <div className="p-6 flex flex-col gap-4 flex-1">
-                    <div className={`${style.iconClass} p-2.5 rounded-xl w-fit`}>
-                      <Icon size={20} />
+                  <div className="p-4 flex flex-col flex-1">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center ${style.iconClass}`}>
+                        <Icon size={16} />
+                      </div>
+                      <h3 className="text-lg font-bold tracking-tight">{style.name}</h3>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-bold tracking-tighter mb-2">{style.name}</h3>
-                      <p className="text-gray-400 text-sm leading-relaxed">{style.description}</p>
-                    </div>
-                    <ul className="space-y-2 text-xs text-gray-300 mt-auto">
+                    <p className="text-gray-400 text-sm leading-relaxed mb-3 flex-1">
+                      {style.description}
+                    </p>
+                    <ul className="space-y-1.5">
                       {style.bullets.map((bullet) => (
-                        <li key={bullet} className="flex items-start gap-2">
-                          <Check size={14} className={`${style.checkClass} shrink-0 mt-0.5`} />
+                        <li key={bullet} className="flex items-start gap-2 text-[11px] text-gray-300">
+                          <Check size={12} className={`mt-0.5 shrink-0 ${style.checkClass}`} />
                           <span>{bullet}</span>
                         </li>
                       ))}
@@ -442,291 +444,187 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Hardware Section */}
-      <section className="py-20 md:py-20 md:py-28 bg-black relative">
+      {/* Integrations Section */}
+      <section className="py-20 md:py-28 bg-black relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
-            <motion.div
+          <div className="text-center mb-16">
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              className="text-4xl md:text-6xl font-bold tracking-tighter mb-6"
             >
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
-                Hardware that <br />
-                turns heads.
-              </h2>
-              <p className="text-gray-400 text-xl max-w-xl">
-                Milled aluminum, tempered glass, and all-day battery. Designed to survive the
-                kitchen and look good on the counter.
-              </p>
-            </motion.div>
-            <motion.a
-              href="/hardware"
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-white border-b border-white pb-1 hover:opacity-70 transition-opacity"
-            >
-              Shop all hardware
-            </motion.a>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Terminal Pro */}
-            <motion.a
-              href="/point-of-sale"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-zinc-900 rounded-[2.5rem] flex flex-col text-center border border-white/5 relative overflow-hidden group"
-            >
-              <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-indigo-500/10 to-transparent z-10" />
-              <div className="relative z-10 pt-12 px-12">
-                <h3 className="text-3xl font-bold mb-2">
-                  <strong>eatOS</strong> Point of Sale
-                </h3>
-                <p className="text-gray-400 mb-6">The ultimate restaurant terminal.</p>
-                {/* TODO: Price should be fetched from pricing API - do not hardcode */}
-                <div className="flex items-center justify-center gap-2 text-sm font-medium bg-white/10 px-4 py-2 rounded-full w-fit mx-auto mb-8">
-                  <span>From $99</span>
-                </div>
-              </div>
-              <img
-                src="https://ucarecdn.com/894a0c84-afe1-429a-9cb7-9b9c3bd6929e/-/format/auto/"
-                alt="eatOS Pro"
-                loading="lazy"
-                className="w-full object-cover mt-auto rounded-b-[2.5rem]"
-              />
-            </motion.a>
-
-            {/* Terminal Mini */}
-            <motion.a
-              href="/products/point-of-purchase"
+              Plays well <br />
+              <span className="text-indigo-400">with others.</span>
+            </motion.h2>
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-zinc-900 rounded-[2.5rem] flex flex-col text-center border border-white/5 relative overflow-hidden group"
+              className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
             >
-              <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-orange-500/10 to-transparent z-10" />
-              <div className="relative z-10 pt-12 px-12">
-                <h3 className="text-3xl font-bold mb-2">
-                  <strong>eatOS</strong> Point of Purchase
-                </h3>
-                <p className="text-gray-400 mb-6">Power in your pocket.</p>
-                {/* TODO: Price should be fetched from pricing API - do not hardcode */}
-                <div className="flex items-center justify-center gap-2 text-sm font-medium bg-white/10 px-4 py-2 rounded-full w-fit mx-auto mb-8">
-                  <span>From $49</span>
-                </div>
-              </div>
-              <img
-                src="https://ucarecdn.com/5a63729f-c40f-4f55-b93c-04430c68d784/-/format/auto/"
-                alt="eatOS Mini"
-                loading="lazy"
-                className="w-full object-cover mt-auto rounded-b-[2.5rem]"
-              />
-            </motion.a>
+              eatOS connects with the tools your restaurant already uses.
+              <br className="hidden md:block" />
+              No double entry, no workarounds.
+            </motion.p>
           </div>
-        </div>
-      </section>
 
-      {/* Reports & Analytics Section */}
-      <section className="py-20 md:py-20 md:py-28 bg-zinc-950 relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-sm font-medium mb-6">
-                <BarChart2 size={12} />
-                <span>Real-time Reporting</span>
-              </div>
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6">
-                Know your numbers.
-                <br />
-                <span className="text-gray-500">Every shift.</span>
-              </h2>
-              <p className="text-gray-400 text-xl mb-8 leading-relaxed">
-                Live sales dashboards, labor cost tracking, and menu performance reports give you
-                the full picture before service ends.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-                {[
-                  { label: 'Sales by hour, day, or location', color: 'text-emerald-400' },
-                  { label: 'Labor cost vs. revenue', color: 'text-emerald-400' },
-                  { label: 'Top-selling items ranked', color: 'text-emerald-400' },
-                  { label: 'Void and discount tracking', color: 'text-emerald-400' },
-                  { label: 'End-of-day summary reports', color: 'text-emerald-400' },
-                  { label: 'Export to CSV or your accountant', color: 'text-emerald-400' },
-                ].map((item) => (
-                  <div key={item.label} className="flex items-center gap-3 text-gray-300 text-sm">
-                    <Check size={16} className={`${item.color} shrink-0`} />
-                    {item.label}
-                  </div>
-                ))}
-              </div>
-              <a
-                href="/platform"
-                className="inline-flex items-center gap-2 text-white border-b border-white/30 pb-1 hover:border-white transition-all"
-              >
-                Explore the platform <ChevronRight size={14} />
-              </a>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 to-transparent rounded-[2.5rem] blur-3xl" />
-              <div className="relative z-10 bg-zinc-900 rounded-[2.5rem] border border-white/10 p-8 shadow-2xl">
-                {/* Simulated dashboard UI */}
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-sm text-gray-400 font-medium">Today so far</span>
-                  <span className="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full">
-                    Live
-                  </span>
-                </div>
-                <div className="text-5xl font-bold tracking-tighter mb-1">$14,280</div>
-                <div className="text-gray-500 text-sm mb-8">Total revenue across all terminals</div>
-                <div className="space-y-3">
-                  {[
-                    { label: 'Food Sales', value: '$10,140', pct: 72, color: 'bg-emerald-500' },
-                    { label: 'Beverage Sales', value: '$2,850', pct: 20, color: 'bg-indigo-500' },
-                    { label: 'Modifiers', value: '$1,290', pct: 8, color: 'bg-orange-500' },
-                  ].map((row) => (
-                    <div key={row.label}>
-                      <div className="flex justify-between text-sm mb-1">
-                        <span className="text-gray-400">{row.label}</span>
-                        <span className="text-white font-medium">{row.value}</span>
-                      </div>
-                      <div className="h-2 bg-white/5 rounded-full overflow-hidden">
-                        <div
-                          className={`h-full ${row.color} rounded-full`}
-                          style={{ width: `${row.pct}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-8 grid grid-cols-3 gap-4">
-                  {[
-                    { label: 'Transactions', value: '341' },
-                    { label: 'Avg. Check', value: '$41.87' },
-                    { label: 'Labor Cost', value: '28%' },
-                  ].map((stat) => (
-                    <div key={stat.label} className="bg-white/5 rounded-2xl p-4 text-center">
-                      <div className="text-xl font-bold mb-1">{stat.value}</div>
-                      <div className="text-xs text-gray-500">{stat.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Integrations Section */}
-      <section className="py-20 md:py-20 md:py-28 bg-black relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-300 text-sm font-medium mb-6">
-              <Plug size={12} />
-              <span>Integrations</span>
-            </div>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6">
-              Plays well with
-              <br />
-              <span className="text-gray-500">your whole stack.</span>
-            </h2>
-            <p className="text-gray-400 text-xl max-w-2xl mx-auto">
-              eatOS connects with the tools your restaurant already uses. No double entry, no
-              workarounds.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 max-w-4xl mx-auto">
             {[
+              { name: 'Poynt', category: 'Payments' },
               { name: 'Adyen', category: 'Payments' },
               { name: 'MarketMan', category: 'Inventory' },
               { name: 'Xero', category: 'Accounting' },
               { name: 'CardConnect', category: 'Payments' },
-              { name: 'Otter', category: 'Delivery' },
               { name: 'QuickBooks', category: 'Accounting' },
-              { name: '7shifts', category: 'Scheduling' },
-              { name: 'Poynt', category: 'Payments' },
-            ].map((integration, i) => (
+              { name: '7shifts', category: 'Workforce' },
+              { name: 'Otter', category: 'Delivery' },
+              { name: 'Stripe', category: 'Payments' },
+              { name: 'eCard Systems', category: 'Payments' },
+              { name: 'inventoryOS', category: 'Inventory' },
+              { name: 'loyaltyOS', category: 'Loyalty' },
+            ].map((partner) => (
               <motion.div
-                key={integration.name}
+                key={partner.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="bg-zinc-900 border border-white/5 rounded-2xl p-6 text-center hover:border-white/20 transition-all"
+                className="group rounded-2xl bg-zinc-900 border border-white/10 p-4 hover:border-white/25 transition-colors"
               >
-                <div className="text-base font-semibold text-white mb-1">{integration.name}</div>
-                <div className="text-xs text-gray-500">{integration.category}</div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/60 group-hover:text-white transition-colors">
+                    <Plug size={20} />
+                  </div>
+                  <span className="text-[10px] uppercase tracking-wider text-gray-500 font-medium">
+                    {partner.category}
+                  </span>
+                </div>
+                <h3 className="text-base font-bold tracking-tight">{partner.name}</h3>
               </motion.div>
             ))}
           </div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mt-12"
-          >
-            <a
-              href="/platform"
-              className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
-            >
-              View all integrations <ChevronRight size={14} />
-            </a>
-          </motion.div>
         </div>
       </section>
 
-      {/* Kitchen Display */}
-      <section className="py-20 md:py-20 md:py-28 bg-black border-t border-white/5">
+      {/* ROI / Business Impact Section */}
+      <section className="py-20 md:py-28 bg-zinc-950 relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-zinc-900 rounded-[3rem] p-8 md:p-20 text-center relative overflow-hidden border border-white/5"
-          >
-            <div className="relative z-10 max-w-3xl mx-auto">
-              <div className="bg-green-500/10 text-green-400 p-4 rounded-2xl w-fit mx-auto mb-8">
-                <ChefHat size={32} />
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
               <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6">
-                Chaos, controlled.
+                Built for <br />
+                <span className="text-indigo-400">real returns.</span>
               </h2>
-              <p className="text-gray-400 text-xl mb-12">
-                The Kitchen Display System that keeps front and back of house in perfect sync.
-                Real-time updates, color-coded alerts, and performance tracking.
+              <p className="text-gray-400 text-lg md:text-xl leading-relaxed mb-10">
+                Restaurants on eatOS reduce labor overhead, cut order errors and recover revenue with smarter operations.
               </p>
-              <img
-                src="https://ucarecdn.com/3532d108-2981-4a5d-bd16-9f6adf89c04d/-/format/auto/"
-                alt="Kitchen Display System"
-                loading="lazy"
-                className="rounded-xl border border-white/10 shadow-2xl mx-auto"
-              />
-            </div>
-          </motion.div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {[
+                  { value: '30%', label: 'Faster table turns' },
+                  { value: '50%', label: 'Fewer order errors' },
+                  { value: '2x', label: 'Faster training' },
+                  { value: '15%', label: 'Higher average ticket' },
+                ].map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="p-5 rounded-2xl bg-black border border-white/10"
+                  >
+                    <div className="text-3xl md:text-4xl font-bold tracking-tighter text-white mb-2">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm text-gray-400">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative"
+            >
+              <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-black">
+                <img
+                  src="https://ucarecdn.com/c0c7e8e9-324d-4d51-8fa6-8a867032ad32/-/format/auto/"
+                  alt=" eatOS Dashboard"
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-8">
+                  <div className="flex items-center gap-3 mb-2">
+                    <BarChart2 className="text-indigo-400" size={20} />
+                    <span className="text-sm font-semibold text-white">Performance Dashboard</span>
+                  </div>
+                  <p className="text-sm text-gray-400">
+                    Real-time sales, labor costs and menu insights in one place.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
+      {/* Newsletter Section */}
       <NewsletterSection />
+
+      {/* Final CTA Section */}
+      <section className="py-20 md:py-32 bg-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-indigo-950/20 to-black pointer-events-none" />
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-4xl md:text-7xl font-bold tracking-tighter mb-8"
+            >
+              Ready to run <br />
+              <span className="text-indigo-400">your restaurant smarter?</span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+            >
+              Join thousands of restaurants using eatOS to simplify operations, delight guests and grow revenue.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            >
+              <a
+                href="/get-started"
+                className="px-8 py-4 bg-white text-black rounded-full text-lg font-semibold hover:scale-105 transition-transform w-full sm:w-auto"
+              >
+                Get Started Free
+              </a>
+              <a
+                href="/contact"
+                className="px-8 py-4 rounded-full text-lg font-medium text-white border border-white/20 hover:bg-white/10 transition-all w-full sm:w-auto"
+              >
+                Talk to Sales
+              </a>
+            </motion.div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
