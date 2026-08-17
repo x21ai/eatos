@@ -254,7 +254,7 @@ export default function BrochuresClient() {
               See the platform in action
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-zinc-400">
-              Book a walkthrough with a specialist and get a plan tailored to your restaurant.
+              Book a walkthrough with a specialist and get a tailored plan for your restaurant, menu, and team.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
