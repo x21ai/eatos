@@ -22,7 +22,7 @@ export function DemoJourneySection() {
             How it Works
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Follow the order from the floor to the guest display, kitchen, back office, and inventory.
+            Experience the full eatOS platform in your browser. Switch between products to see every feature in action and explore the complete workflow.
           </p>
         </div>
 
