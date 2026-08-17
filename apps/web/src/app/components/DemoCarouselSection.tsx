@@ -10,6 +10,19 @@ export function DemoCarouselSection() {
   const demo = demoSources[index];
   const total = demoSources.length;
 
+  const displayLabel = (id: string) => {
+    switch (id) {
+      case 'kds':
+        return 'Kitchen Display System';
+      case 'cfd':
+        return 'Customer Facing Display';
+      case 'kiosk':
+        return 'Self Service Kiosk';
+      default:
+        return demo.label;
+    }
+  };
+
   const go = (dir: number) => setIndex((i) => (i + dir + total) % total);
 
   return (
