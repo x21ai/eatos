@@ -1,4 +1,8 @@
 import { spawnSync } from "node:child_process";
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
+const nextBin = require.resolve("next/dist/bin/next");
 
 // Production publishing uses the Next.js server output. The static `dist`
 // mirror is only for the preview artifact check, so it is created only when
@@ -11,8 +15,8 @@ const bundlerFlag = process.argv.includes("--turbopack") || requestedBundler ===
   : "--webpack";
 
 const nextBuild = spawnSync(
-  "../../node_modules/.bin/next",
-  ["build", bundlerFlag],
+  process.execPath,
+  [nextBin, "build", bundlerFlag],
   { stdio: "inherit", cwd: "apps/web" },
 );
 

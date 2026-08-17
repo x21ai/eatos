@@ -6,9 +6,9 @@
     "dev": "node scripts/dev-preview.mjs",
     "build:dev": "node scripts/build-production.mjs --dist",
     "build": "node scripts/build-production.mjs",
-    "start": "cd apps/web && ../../node_modules/.bin/next start --port 8080",
+    "start": "yarn workspace web exec next start --port 8080",
     "validate:clean-routes": "node scripts/validate-clean-routes.mjs",
-    "typecheck": "cd apps/web && ./node_modules/.bin/tsc --noEmit -p tsconfig.json"
+    "typecheck": "yarn workspace web exec tsc --noEmit --incremental false -p tsconfig.json"
   },
   "resolutions": {
     "react": "19.1.0",
