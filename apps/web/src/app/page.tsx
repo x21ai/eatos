@@ -649,8 +649,9 @@ export default function HomePage() {
               <span className="text-gray-500">your whole stack.</span>
             </h2>
             <p className="text-gray-400 text-xl max-w-2xl mx-auto">
-              eatOS connects with the tools your restaurant already uses. No double entry, no
-              workarounds.
+              eatOS connects with the tools your restaurant already uses.
+              <br />
+              No double entry, no workarounds.
             </p>
           </motion.div>
 
