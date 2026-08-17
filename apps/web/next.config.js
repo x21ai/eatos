@@ -1,5 +1,7 @@
 const path = require('node:path');
 
+const repositoryRoot = path.resolve(__dirname, '../..');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   devIndicators: false,
@@ -37,7 +39,9 @@ const nextConfig = {
   },
   // Resolve leftover `@auth/create` imports to local shims (see src/__create/@auth/create).
   turbopack: {
-    root: __dirname,
+    // Dependencies are hoisted to the repository-level node_modules by the
+    // workspace installer, so Turbopack must be allowed to resolve from there.
+    root: repositoryRoot,
     resolveAlias: {
       '@auth/create/react': path.join(
         __dirname,

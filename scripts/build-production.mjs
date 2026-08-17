@@ -11,9 +11,9 @@ const bundlerFlag = process.argv.includes("--turbopack") || requestedBundler ===
   : "--webpack";
 
 const nextBuild = spawnSync(
-  "./apps/web/node_modules/.bin/next",
-  ["build", "apps/web", bundlerFlag],
-  { stdio: "inherit" },
+  "../../node_modules/.bin/next",
+  ["build", bundlerFlag],
+  { stdio: "inherit", cwd: "apps/web" },
 );
 
 if (nextBuild.error) {

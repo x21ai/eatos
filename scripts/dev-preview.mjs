@@ -35,12 +35,11 @@ function stop(signal = "SIGTERM", exitCode = 0) {
 process.once("SIGINT", () => stop("SIGINT"));
 process.once("SIGTERM", () => stop("SIGTERM"));
 
-start("./apps/web/node_modules/.bin/next", [
+start("../../node_modules/.bin/next", [
   "dev",
-  "apps/web",
   "--port",
   nextPort,
-]);
+], { cwd: "apps/web" });
 start("./node_modules/.bin/vite", [
   "--host",
   "0.0.0.0",
