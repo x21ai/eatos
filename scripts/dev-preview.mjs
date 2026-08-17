@@ -5,8 +5,10 @@ const require = createRequire(import.meta.url);
 const nextBin = require.resolve("next/dist/bin/next");
 
 const args = process.argv.slice(2);
-const portFlag = args.findIndex((arg) => arg === "--port");
-const previewPort = portFlag >= 0 ? args[portFlag + 1] : "8080";
+const portFlag = args.findIndex((arg) => arg === "--port" || arg === "-p");
+const inlinePort = args.find((arg) => arg.startsWith("--port="))?.split("=")[1];
+const requestedPort = inlinePort ?? (portFlag >= 0 ? args[portFlag + 1] : undefined);
+const previewPort = requestedPort && /^\d+$/.test(requestedPort) ? requestedPort : "8080";
 
 // Next.js is the application server. Running it directly on Lovable's supplied
 // port avoids a second Vite process being mistaken for the production app.
@@ -27,10 +29,18 @@ child.once("error", (error) => {
 });
 
 child.once("exit", (code, signal) => {
-  if (signal) process.kill(process.pid, signal);
+  if (signal) {
+    console.error(`Next.js preview stopped by ${signal}.`);
+    process.exit(1);
+  }
   process.exit(code ?? 1);
 });
 
+let stopping = false;
 for (const signal of ["SIGINT", "SIGTERM"]) {
-  process.once(signal, () => child.kill(signal));
+  process.once(signal, () => {
+    if (stopping) return;
+    stopping = true;
+    child.kill(signal);
+  });
 }
