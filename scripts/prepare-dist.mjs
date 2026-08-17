@@ -51,15 +51,9 @@ function walk(dir) {
 
 walk(appDir);
 
-// A route is a "parent" when another route lives beneath it (e.g. /products and
-// /products/loyalty). Its clean path must stay a directory on disk, so it only
-// gets "<route>/index.html" + "<route>.html".
-const isParent = (route) =>
-  found.some((f) => f.route.startsWith(`${route}/`));
-
 const routes = [];
 let pages = 0;
-const parentRoutes = [];
+const cleanRoutes = [];
 
 for (const { source, route } of found) {
   if (route === "index" || route === "_not-found") {
@@ -74,22 +68,16 @@ for (const { source, route } of found) {
   mkdirSync(path.dirname(flat), { recursive: true });
   cpSync(source, flat);
 
-  if (isParent(route)) {
-    // Directory index copy - the clean URL relies on host rewriting here.
-    const indexTarget = path.join("dist", route, "index.html");
-    mkdirSync(path.dirname(indexTarget), { recursive: true });
-    cpSync(source, indexTarget);
-    // The clean path is a directory on disk (it holds the child pages), so the
-    // extensionless file cannot exist. Links to it are rewritten below.
-    parentRoutes.push(route);
-  } else {
-    // Lovable hosting serves exact file paths only: it does not map the clean
-    // URL "/pricing" onto "pricing.html" or "pricing/index.html". Write the
-    // page at the extensionless path the browser actually requests.
-    const bare = path.join("dist", route);
-    mkdirSync(path.dirname(bare), { recursive: true });
-    cpSync(source, bare);
-  }
+  // Directory index copy for hosts that resolve "<route>/" to an index file.
+  const indexTarget = path.join("dist", route, "index.html");
+  mkdirSync(path.dirname(indexTarget), { recursive: true });
+  cpSync(source, indexTarget);
+
+  // Never emit an extensionless copy: the static host sends those as
+  // "application/octet-stream" with "nosniff", so the browser downloads the
+  // file instead of rendering it. Every in-site link is rewritten to the
+  // ".html" path below, which is always served as text/html.
+  cleanRoutes.push(route);
 
   routes.push(`/${route}`);
   pages += 1;
@@ -100,11 +88,12 @@ if (!existsSync("dist/index.html")) {
   process.exit(1);
 }
 
-// Lovable's static host resolves exact file paths only. Overview routes that
-// also have children (e.g. /products with /products/loyalty) must stay
-// directories, so the only servable path for the overview page itself is
-// "<route>.html". Point every link at that file in the emitted HTML.
+// Lovable's static host resolves exact file paths only, and extensionless
+// files come back as octet-stream downloads. Point every in-site link at the
+// "<route>.html" file, which is always served as real HTML.
 let rewritten = 0;
+// Longest first so "/comparison/toast" is rewritten before "/comparison".
+const rewriteTargets = [...cleanRoutes].sort((a, b) => b.length - a.length);
 function rewriteLinks(dir) {
   for (const entry of readdirSync(dir)) {
     const full = path.join(dir, entry);
@@ -118,7 +107,7 @@ function rewriteLinks(dir) {
 
     const original = readFileSync(full, "utf8");
     let next = original;
-    for (const route of parentRoutes) {
+    for (const route of rewriteTargets) {
       next = next
         .split(`"/${route}"`)
         .join(`"/${route}.html"`)
@@ -151,5 +140,5 @@ writeFileSync(
 
 console.log(
   `dist/ prepared from apps/web/.next (${pages} pages, ${routes.length} clean URLs, ` +
-    `${parentRoutes.length} overview routes served as .html, ${rewritten} files relinked)`,
+    `${cleanRoutes.length} routes served as .html, ${rewritten} files relinked)`,
 );
