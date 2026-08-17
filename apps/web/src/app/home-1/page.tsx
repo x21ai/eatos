@@ -21,12 +21,11 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { NewsletterSection } from '@/components/NewsletterSection';
-import { LiveDemoSection } from '../components/LiveDemoSection';
+import { DemoTabsSection } from '../components/DemoTabsSection';
 import { DemoCarouselSection } from '../components/DemoCarouselSection';
 import { DemoRailSection } from '../components/DemoRailSection';
 import { DemoJourneySection } from '../components/DemoJourneySection';
 import { DemoAccordionSection } from '../components/DemoAccordionSection';
-import { DemoSpotlightSection } from '../components/DemoSpotlightSection';
 import svcQuickService from '../../assets/svc-quick-service.jpg.asset.json';
 import svcFullService from '../../assets/svc-full-service.jpg.asset.json';
 import svcFineDining from '../../assets/svc-fine-dining.jpg.asset.json';
@@ -205,12 +204,11 @@ export default function HomePage() {
           Option A, Tabs
         </div>
       </div>
-      <LiveDemoSection />
+      <DemoTabsSection />
       <DemoCarouselSection />
       <DemoRailSection />
       <DemoJourneySection />
       <DemoAccordionSection />
-      <DemoSpotlightSection />
 
       {/* Social Proof / Trust Section */}
       <section className="py-20 md:py-28 bg-black border-t border-white/5 relative overflow-hidden">

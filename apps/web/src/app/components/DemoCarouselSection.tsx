@@ -26,7 +26,8 @@ export function DemoCarouselSection() {
   const go = (dir: number) => setIndex((i) => (i + dir + total) % total);
 
   return (
-    <section className="py-12 md:py-16 bg-black border-t border-white/5 w-full lg:w-[818px] mx-auto px-4 md:px-6 lg:px-0">
+    <section className="py-12 md:py-16 bg-black border-t border-white/5">
+      <div className="container mx-auto px-4 md:px-6">
       <div className="text-center mb-8">
         <div className="text-xs font-bold tracking-[0.2em] uppercase text-emerald-400 mb-3">
           Option B, Carousel
@@ -39,12 +40,13 @@ export function DemoCarouselSection() {
         </p>
       </div>
 
+      <div className="mx-auto max-w-5xl">
       <div className="relative w-full rounded-2xl border border-white/10 overflow-hidden bg-zinc-900 shadow-2xl">
         <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-zinc-900/50">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-red-500/80" />
-            <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-            <div className="w-3 h-3 rounded-full bg-green-500/80" />
+            <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+            <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
           </div>
           <div className="text-sm text-gray-400 font-medium">{displayLabel(demo.id)}</div>
           <a
@@ -58,7 +60,7 @@ export function DemoCarouselSection() {
           </a>
         </div>
 
-        <div className="relative w-full aspect-[16/9] lg:aspect-auto lg:h-[460px] bg-black">
+        <div className="relative w-full aspect-[16/10] lg:aspect-auto lg:h-[480px] bg-black">
           <AnimatePresence mode="wait">
             <motion.iframe
               key={demo.id}
@@ -116,6 +118,8 @@ export function DemoCarouselSection() {
             }`}
           />
         ))}
+      </div>
+      </div>
       </div>
     </section>
   );
