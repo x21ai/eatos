@@ -22,7 +22,7 @@ export function DemoJourneySection() {
             How it Works
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Follow the order from the floor to the guest display, kitchen, back office, and inventory.
+            Follow the order from the floor to the guest display, kitchen, back office, and inventory. Each step shows the exact screen in action.
           </p>
         </div>
 
