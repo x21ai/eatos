@@ -24,7 +24,7 @@ export const brochures = [
     id: 'restaurants-made-simple',
     title: 'eatOS Restaurant Made Simple',
     description:
-      'All-in-one AI-enabled restaurant technology cloud built exclusively for restaurants.',
+      'All-in-one AI-enabled restaurant technology cloud built exclusively for restaurants, from front-of-house to back-of-house.',
     flipbook: 'https://go.fliplink.me/view/9A286749-C86D-43F0-B703-D83C00CA4825',
     cover: coverBifold.url,
     download:
