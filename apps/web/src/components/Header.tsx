@@ -1,9 +1,6 @@
 // @ts-nocheck
 "use client";
 
-import mobileLogoWhite from "./marketing/assets/brand/logo-mobile-white.png.asset.json";
-import mobileLogoBlack from "./marketing/assets/brand/logo-mobile-black.png.asset.json";
-
 import {
   Menu,
   X,
@@ -385,8 +382,8 @@ export default function Header() {
           <img
             src={
               isDarkPage && !mobileMenuOpen
-                ? mobileLogoWhite.url
-                : mobileLogoBlack.url
+                ? "https://ucarecdn.com/03d261bb-af6b-4183-a35c-afdbb7e1a2b7/-/format/auto/"
+                : "https://ucarecdn.com/4352d127-4bf5-42cf-a022-3110926687de/-/format/auto/"
             }
             alt="eatOS"
             className={`xl:hidden h-[34px] w-auto transition-all duration-300 ${isDarkPage && !mobileMenuOpen ? "drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]" : ""}`}

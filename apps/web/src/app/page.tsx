@@ -121,7 +121,7 @@ export default function HomePage() {
       <section className="relative h-[100dvh] min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Video/Image with Zoom Effect */}
         <motion.div
-          initial={{ scale: 1.1, opacity: 0 }}
+          initial={{ scale: 1, opacity: 0.6 }}
           animate={{ scale: 1, opacity: 0.6 }}
           transition={{ duration: 2, ease: 'easeOut' }}
           className="absolute inset-0 z-0"
@@ -137,7 +137,7 @@ export default function HomePage() {
 
         <div className="container mx-auto px-4 md:px-6 relative z-10 pt-20 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-sm font-medium mb-8 text-indigo-300"
@@ -149,7 +149,7 @@ export default function HomePage() {
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.7 }}
             className="text-6xl md:text-9xl font-bold tracking-tighter mb-8 leading-[1.05]"
@@ -161,7 +161,7 @@ export default function HomePage() {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
             className="text-[15px] md:text-[22px] text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed font-light"
@@ -171,7 +171,7 @@ export default function HomePage() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.2 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-6"
