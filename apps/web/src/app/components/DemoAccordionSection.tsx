@@ -19,7 +19,7 @@ export function DemoAccordionSection() {
             How it Works
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Open any product in the stack and its live demo expands in place, so you can explore the platform at your own pace.
+            Experience the full eatOS platform in your browser. Switch between products to see every feature in action and explore the complete workflow.
           </p>
         </div>
 
