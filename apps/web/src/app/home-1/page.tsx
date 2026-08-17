@@ -204,12 +204,11 @@ export default function HomePage() {
           Option A, Tabs
         </div>
       </div>
-      <LiveDemoSection />
+      <DemoTabsSection />
       <DemoCarouselSection />
       <DemoRailSection />
       <DemoJourneySection />
       <DemoAccordionSection />
-      <DemoSpotlightSection />
 
       {/* Social Proof / Trust Section */}
       <section className="py-20 md:py-28 bg-black border-t border-white/5 relative overflow-hidden">
