@@ -28,11 +28,6 @@ export default defineConfig({
       "/": {
         target: "http://127.0.0.1:3001",
         changeOrigin: false,
-        // Published static pages use explicit .html URLs because the live host
-        // cannot render extensionless page files. Next dev uses clean routes,
-        // so normalize only preview requests before proxying them.
-        rewrite: (requestPath) =>
-          requestPath.replace(/\.html(?=\?|#|$)/, ""),
       },
     },
   },
