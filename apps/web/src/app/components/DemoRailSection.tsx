@@ -55,7 +55,7 @@ export function DemoRailSection() {
                   {active && (
                     <span className="absolute left-0 top-3 bottom-3 w-1 rounded-full bg-emerald-500 hidden lg:block" />
                   )}
-                  <span className="block text-sm font-bold tracking-tighter">{d.label}</span>
+                  <span className="block text-sm font-bold tracking-tighter">{displayLabel(d.id)}</span>
                   <span
                     className={`mt-1 block text-xs leading-snug ${
                       active ? 'text-black/60' : 'text-gray-500'
@@ -70,7 +70,7 @@ export function DemoRailSection() {
 
           <div className="relative w-full rounded-2xl border border-white/10 overflow-hidden bg-zinc-900 shadow-2xl">
             <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-zinc-900/50">
-              <div className="text-sm text-gray-400 font-medium">{demo.label}</div>
+              <div className="text-sm text-gray-400 font-medium">{displayLabel(demo.id)}</div>
               <a
                 href={demo.url}
                 target="_blank"
@@ -85,7 +85,7 @@ export function DemoRailSection() {
               <iframe
                 key={demo.id}
                 src={demo.url}
-                title={demo.label}
+                title={displayLabel(demo.id)}
                 className="absolute inset-0 w-full h-full border-0"
                 sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
                 allow="fullscreen"
