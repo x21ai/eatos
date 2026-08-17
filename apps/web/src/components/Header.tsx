@@ -73,7 +73,7 @@ export default function Header() {
 
   useEffect(() => {
     const checkTheme = () => {
-      const path = window.location.pathname;
+      const path = window.location.pathname.replace(/\.html$/, "");
       const lightPages = [
         "/accept-payments",
         "/pricing",

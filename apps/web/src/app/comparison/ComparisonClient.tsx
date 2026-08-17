@@ -47,7 +47,7 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           className="flex items-center gap-2 text-sm text-gray-500 mb-8"
         >
-          <a href="/products" className="hover:text-white transition-colors">
+          <a href="/products.html" className="hover:text-white transition-colors">
             Restaurant Type
           </a>
           <ChevronRight size={14} className="shrink-0" />
@@ -262,7 +262,7 @@ function Matrix() {
                         name
                       ) : (
                         <a
-                          href={`/comparison/${slugForCompetitor(name)}`}
+                          href={`/comparison/${slugForCompetitor(name)}.html`}
                           className="inline-flex flex-col items-center gap-1 transition-colors hover:text-white"
                         >
                           {name}
@@ -324,7 +324,7 @@ function Matrix() {
                 </div>
                 {ci !== 0 && (
                   <a
-                    href={`/comparison/${slugForCompetitor(name)}`}
+                    href={`/comparison/${slugForCompetitor(name)}.html`}
                     className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400"
                   >
                     See full comparison
@@ -416,13 +416,13 @@ function ClosingCta() {
           </h2>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href="/book-demo"
+              href="/book-demo.html"
               className="inline-flex w-full items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:w-auto"
             >
               Book a Demo
             </a>
             <a
-              href="/pricing"
+              href="/pricing.html"
               className="inline-flex w-full items-center justify-center gap-1.5 rounded-full px-7 py-3.5 text-sm font-semibold text-emerald-400 transition-colors hover:text-emerald-300 sm:w-auto"
             >
               View Pricing
