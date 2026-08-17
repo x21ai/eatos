@@ -8,6 +8,19 @@ export function DemoRailSection() {
   const [activeId, setActiveId] = useState(demoSources[0].id);
   const demo = demoSources.find((d) => d.id === activeId) ?? demoSources[0];
 
+  const displayLabel = (id: string) => {
+    switch (id) {
+      case 'kds':
+        return 'Kitchen Display System';
+      case 'cfd':
+        return 'Customer Facing Display';
+      case 'kiosk':
+        return 'Self Service Kiosk';
+      default:
+        return demo.label;
+    }
+  };
+
   return (
     <section className="py-12 md:py-16 bg-black border-t border-white/5">
       <div className="container mx-auto px-4 md:px-6">
