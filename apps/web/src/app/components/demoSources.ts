@@ -50,3 +50,35 @@ export const demoSources: DemoSource[] = [
     device: 'laptop',
   },
 ];
+
+export type WorkflowPair = {
+  id: string;
+  label: string;
+  description: string;
+  left: DemoSource;
+  right: DemoSource;
+};
+
+export const workflowPairs: WorkflowPair[] = [
+  {
+    id: 'pos-kds',
+    label: 'POS to KDS',
+    description: 'An order fires from the floor and appears instantly on the kitchen display.',
+    left: demoSources.find((d) => d.id === 'pos')!,
+    right: demoSources.find((d) => d.id === 'kds')!,
+  },
+  {
+    id: 'pos-dashboard',
+    label: 'POS to Dashboard',
+    description: 'Every sale feeds live reporting across locations, menus and labor.',
+    left: demoSources.find((d) => d.id === 'pos')!,
+    right: demoSources.find((d) => d.id === 'dashboard')!,
+  },
+  {
+    id: 'kiosk-cfd',
+    label: 'Kiosk to CFD',
+    description: 'A guest orders from the kiosk and the customer display shows the status.',
+    left: demoSources.find((d) => d.id === 'kiosk')!,
+    right: demoSources.find((d) => d.id === 'cfd')!,
+  },
+];
