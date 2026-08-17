@@ -34,7 +34,7 @@ export const brochures = [
     id: 'point-of-sale',
     title: 'Point of Sale',
     description:
-      "Designed to optimize efficiency and profitability for today's innovative restaurants, ensuring a seamless dining experience for guests and employees.",
+      'Streamline service, boost check sizes and deliver a better experience for every guest.',
     flipbook: 'https://go.fliplink.me/view/3A6479B8-6C69-4697-BAE7-EBF78A3616E7',
     cover: coverPos.url,
     download:
@@ -44,7 +44,7 @@ export const brochures = [
     id: 'point-of-purchase',
     title: 'Point of Purchase',
     description:
-      'A compact, palm-sized solution that encapsulates the full capabilities of a conventional Point of Sale system.',
+      'Compact, palm-sized solution that delivers the full power of a conventional Point of Sale.',
     flipbook: 'https://go.fliplink.me/view/6445CDEE-BE16-4D8C-800D-642F12FEFF43',
     cover: coverPop.url,
     download:
@@ -64,7 +64,7 @@ export const brochures = [
     id: 'self-service-kiosk',
     title: 'Self Service Kiosk',
     description:
-      'Diminish labor expenses, expedite customer service and bolster profitability with self-ordering.',
+      'Reduce labor costs, speed up service and increase check sizes with self-ordering kiosks.',
     flipbook: 'https://go.fliplink.me/view/C32444C1-7669-428B-9FB7-4E4C18182B90',
     cover: coverKiosk.url,
     download:
@@ -74,7 +74,7 @@ export const brochures = [
     id: 'online-ordering-and-delivery',
     title: 'Online Ordering and Delivery',
     description:
-      'White-labeled, commission-free application and website for each restaurant, with third-party or in-house delivery.',
+      'Commission-free, white-labeled ordering app and website with in-house or third-party delivery.',
     flipbook: 'https://go.fliplink.me/view/E437A490-B457-4799-B3CB-03FB5208D1EC',
     cover: coverOrderOs.url,
     download:
@@ -84,7 +84,7 @@ export const brochures = [
     id: 'customer-facing-display',
     title: 'Customer Facing Display',
     description:
-      'Revolutionize the customer experience and create optimal convenience and engagement at checkout.',
+      'Upgrade the checkout experience with clear order details, tips and pickup information.',
     flipbook: 'https://go.fliplink.me/view/F0AFD115-4737-4372-8741-E9207034E29F',
     cover: coverCfd.url,
     download:
@@ -94,7 +94,7 @@ export const brochures = [
     id: 'kitchen-display-system',
     title: 'Kitchen Display System',
     description:
-      'Obtain invaluable insights into preparation times, cancellations, wastage and more through real-time analytics.',
+      'Real-time ticket routing, prep timers and analytics that keep the kitchen on pace.',
     flipbook: 'https://go.fliplink.me/view/F8BE159F-5BEB-474A-96CB-7C3A0AF05A47',
     cover: coverKds.url,
     download:
@@ -104,7 +104,7 @@ export const brochures = [
     id: 'workforce-management',
     title: 'Workforce Management',
     description:
-      'Harness the power of technology to effectively manage your most valuable asset, your workforce.',
+      'Schedule shifts, track clock-ins and manage labor costs from one cloud platform.',
     flipbook: 'https://go.fliplink.me/view/0D4CB87D-B227-4AF0-B056-EA0D2F13B1D2',
     cover: coverWfm.url,
     download:
@@ -114,7 +114,7 @@ export const brochures = [
     id: 'reporting-and-analytics',
     title: 'Reporting and Analytics',
     description:
-      'Gain instantaneous insights into sales data, refunds, voids, labor costs and more, on mobile and web.',
+      'Instant insights into sales, refunds, voids and labor costs on mobile and web.',
     flipbook: 'https://go.fliplink.me/view/E5E1855E-A845-40E5-8466-32FC09E00561',
     cover: coverRna.url,
     download:
