@@ -1,5 +1,5 @@
 import { spawnSync } from "node:child_process";
-import { existsSync, readFileSync, rmSync } from "node:fs";
+import { existsSync, rmSync } from "node:fs";
 import { createRequire } from "node:module";
 
 const require = createRequire(import.meta.url);
@@ -37,14 +37,6 @@ if (nextBuild.status !== 0) {
 if (existsSync("dist/index.html")) {
   console.error("Refusing to publish: dist/index.html would shadow the Next.js app.");
   process.exit(1);
-}
-
-const placeholder = "Preview assets prepared. The application is served by Next.js.";
-for (const file of ["scripts/build-production.mjs", "package.json"]) {
-  if (readFileSync(file, "utf8").includes(placeholder)) {
-    console.error(`Refusing to publish: obsolete placeholder found in ${file}.`);
-    process.exit(1);
-  }
 }
 
 console.log("Next.js production output prepared without a static root artifact.");
