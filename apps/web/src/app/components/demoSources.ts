@@ -51,34 +51,49 @@ export const demoSources: DemoSource[] = [
   },
 ];
 
-export type WorkflowPair = {
-  id: string;
-  label: string;
-  description: string;
-  left: DemoSource;
-  right: DemoSource;
+export const displayName = (id: string) => {
+  switch (id) {
+    case 'kds':
+      return 'Kitchen Display System';
+    case 'cfd':
+      return 'Customer Facing Display';
+    case 'kiosk':
+      return 'Self Service Kiosk';
+    default:
+      return demoSources.find((d) => d.id === id)?.label ?? id;
+  }
 };
 
-export const workflowPairs: WorkflowPair[] = [
+export type JourneyStep = {
+  step: number;
+  title: string;
+  caption: string;
+  demoId: string;
+};
+
+export const journeySteps: JourneyStep[] = [
   {
-    id: 'pos-kds',
-    label: 'POS to KDS',
-    description: 'An order fires from the floor and appears instantly on the kitchen display.',
-    left: demoSources.find((d) => d.id === 'pos')!,
-    right: demoSources.find((d) => d.id === 'kds')!,
+    step: 1,
+    title: 'Order',
+    caption: 'A server rings the check in on the handheld, sends modifiers, and takes payment at the table.',
+    demoId: 'pos',
   },
   {
-    id: 'pos-dashboard',
-    label: 'POS to Dashboard',
-    description: 'Every sale feeds live reporting across locations, menus and labor.',
-    left: demoSources.find((d) => d.id === 'pos')!,
-    right: demoSources.find((d) => d.id === 'dashboard')!,
+    step: 2,
+    title: 'Kitchen',
+    caption: 'The ticket lands on the right station instantly, with timers that keep every course on pace.',
+    demoId: 'kds',
   },
   {
-    id: 'kiosk-cfd',
-    label: 'Kiosk to CFD',
-    description: 'A guest orders from the kiosk and the customer display shows the status.',
-    left: demoSources.find((d) => d.id === 'kiosk')!,
-    right: demoSources.find((d) => d.id === 'cfd')!,
+    step: 3,
+    title: 'Guest',
+    caption: 'Guests order for themselves at the kiosk and follow their status on the customer display.',
+    demoId: 'kiosk',
+  },
+  {
+    step: 4,
+    title: 'Reporting',
+    caption: 'Every sale rolls into live reporting for menu mix, labor and location performance.',
+    demoId: 'dashboard',
   },
 ];
