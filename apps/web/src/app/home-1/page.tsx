@@ -22,6 +22,9 @@ import {
 import { motion } from 'motion/react';
 import { NewsletterSection } from '@/components/NewsletterSection';
 import { LiveDemoSection } from '../components/LiveDemoSection';
+import { DemoCarouselSection } from '../components/DemoCarouselSection';
+import { DemoRailSection } from '../components/DemoRailSection';
+import { DemoDeviceSection } from '../components/DemoDeviceSection';
 import svcQuickService from '../../assets/svc-quick-service.jpg.asset.json';
 import svcFullService from '../../assets/svc-full-service.jpg.asset.json';
 import svcFineDining from '../../assets/svc-fine-dining.jpg.asset.json';
@@ -194,8 +197,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Live Demo Section */}
+      {/* Demo view options, for comparison */}
+      <div className="bg-black pt-10 text-center">
+        <div className="text-xs font-bold tracking-[0.2em] uppercase text-emerald-400">
+          Option A, Tabs
+        </div>
+      </div>
       <LiveDemoSection />
+      <DemoCarouselSection />
+      <DemoRailSection />
+      <DemoDeviceSection />
 
       {/* Social Proof / Trust Section */}
       <section className="py-20 md:py-28 bg-black border-t border-white/5 relative overflow-hidden">
