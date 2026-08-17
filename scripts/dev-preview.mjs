@@ -1,46 +1,49 @@
 import { spawn } from "node:child_process";
-import { createRequire } from "node:module";
-
-const require = createRequire(import.meta.url);
-const nextBin = require.resolve("next/dist/bin/next");
 
 const args = process.argv.slice(2);
-const portFlag = args.findIndex((arg) => arg === "--port" || arg === "-p");
-const inlinePort = args.find((arg) => arg.startsWith("--port="))?.split("=")[1];
-const requestedPort = inlinePort ?? (portFlag >= 0 ? args[portFlag + 1] : undefined);
-const previewPort = requestedPort && /^\d+$/.test(requestedPort) ? requestedPort : "8080";
+const portFlag = args.findIndex((arg) => arg === "--port");
+const previewPort = portFlag >= 0 ? args[portFlag + 1] : "8080";
+const nextPort = "3001";
 
-// Next.js is the application server. Running it directly on Lovable's supplied
-// port avoids a second Vite process being mistaken for the production app.
-const child = spawn(process.execPath, [
-  nextBin,
-  "dev",
-  "--port",
-  previewPort,
-], {
-  cwd: "apps/web",
-  stdio: "inherit",
-  env: process.env,
-});
+const children = [];
 
-child.once("error", (error) => {
-  console.error("Failed to start the Next.js preview:", error);
-  process.exit(1);
-});
-
-child.once("exit", (code, signal) => {
-  if (signal) {
-    console.error(`Next.js preview stopped by ${signal}.`);
-    process.exit(1);
-  }
-  process.exit(code ?? 1);
-});
+function start(command, commandArgs) {
+  const child = spawn(command, commandArgs, {
+    stdio: "inherit",
+    env: process.env,
+  });
+  children.push(child);
+  child.once("exit", (code, signal) => {
+    if (!stopping) {
+      stop(signal ?? "SIGTERM", code ?? 1);
+    }
+  });
+  return child;
+}
 
 let stopping = false;
-for (const signal of ["SIGINT", "SIGTERM"]) {
-  process.once(signal, () => {
-    if (stopping) return;
-    stopping = true;
-    child.kill(signal);
-  });
+function stop(signal = "SIGTERM", exitCode = 0) {
+  if (stopping) return;
+  stopping = true;
+  for (const child of children) {
+    if (!child.killed) child.kill(signal);
+  }
+  setTimeout(() => process.exit(exitCode), 100).unref();
 }
+
+process.once("SIGINT", () => stop("SIGINT"));
+process.once("SIGTERM", () => stop("SIGTERM"));
+
+start("./apps/web/node_modules/.bin/next", [
+  "dev",
+  "apps/web",
+  "--port",
+  nextPort,
+]);
+start("./node_modules/.bin/vite", [
+  "--host",
+  "0.0.0.0",
+  "--port",
+  previewPort,
+  "--strictPort",
+]);

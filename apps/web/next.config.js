@@ -1,23 +1,8 @@
 const path = require('node:path');
 
-const repositoryRoot = path.resolve(__dirname, '../..');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   devIndicators: false,
-  // The installer hoists workspace dependencies to the repository root, so
-  // tracing and Turbopack must share that root for Next to resolve itself.
-  outputFileTracingRoot: repositoryRoot,
-  // Exclude the unused native application from server output tracing.
-  outputFileTracingExcludes: {
-    '/**': ['./apps/mobile/**'],
-    '**/*': ['./apps/mobile/**'],
-  },
-  // Cap build workers: the publish container has far less memory than a dev
-  // machine, and 60+ page-data workers can stall the build.
-  experimental: {
-    cpus: 4,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -43,9 +28,6 @@ const nextConfig = {
   },
   // Resolve leftover `@auth/create` imports to local shims (see src/__create/@auth/create).
   turbopack: {
-    // Dependencies are hoisted to the repository-level node_modules by the
-    // workspace installer, so Turbopack must be allowed to resolve from there.
-    root: repositoryRoot,
     resolveAlias: {
       '@auth/create/react': path.join(
         __dirname,

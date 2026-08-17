@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * ⚠ ANYTHING PLATFORM — DO NOT REWRITE THIS FILE ⚠
  *

@@ -1,9 +1,8 @@
 // @ts-nocheck
+import sql from '@/app/api/utils/sql';
 import { products } from '@/app/products/products';
 
-// Build-time only: never touch the database or the network here. A hanging
-// query during `next build` stalls the whole production build.
-export default function sitemap() {
+export default async function sitemap() {
   const baseUrl = process.env.APP_URL || 'https://eatos.com';
 
   // Static routes
@@ -58,5 +57,20 @@ export default function sitemap() {
       priority: 0.7,
     }));
 
-  return [...routes, ...productRoutes];
+  // Blog posts
+  let posts = [];
+  try {
+    posts = await sql`SELECT slug, published_at FROM blog_posts WHERE status = 'published'`;
+  } catch (e) {
+    console.error('Failed to fetch blog posts for sitemap', e);
+  }
+
+  const blogRoutes = posts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: post.published_at || new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }));
+
+  return [...routes, ...productRoutes, ...blogRoutes];
 }

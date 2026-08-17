@@ -21,7 +21,7 @@ export function DemoTabsSection() {
     <section className="py-12 md:py-16 bg-black relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
-          initial={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-8"

@@ -121,7 +121,7 @@ export default function HomePage() {
       <section className="relative h-[100dvh] min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Video/Image with Zoom Effect */}
         <motion.div
-          initial={{ scale: 1, opacity: 0.6 }}
+          initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.6 }}
           transition={{ duration: 2, ease: 'easeOut' }}
           className="absolute inset-0 z-0"
@@ -137,7 +137,7 @@ export default function HomePage() {
 
         <div className="container mx-auto px-4 md:px-6 relative z-10 pt-20 text-center">
           <motion.div
-            initial={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-sm font-medium mb-8 text-indigo-300"
@@ -149,7 +149,7 @@ export default function HomePage() {
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.7 }}
             className="text-6xl md:text-9xl font-bold tracking-tighter mb-8 leading-[1.05]"
@@ -161,7 +161,7 @@ export default function HomePage() {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
             className="text-[15px] md:text-[22px] text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed font-light"
@@ -171,7 +171,7 @@ export default function HomePage() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.2 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-6"
@@ -202,7 +202,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 md:px-6">
           {/* Capability strip: honest, aspirational, Apple-style */}
           <motion.div
-            initial={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
@@ -232,7 +232,7 @@ export default function HomePage() {
 
           {/* Logo Bar */}
           <motion.div
-            initial={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2 }}
@@ -268,7 +268,7 @@ export default function HomePage() {
       <section className="py-20 md:py-20 md:py-28 bg-black relative">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
-            initial={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
@@ -283,7 +283,7 @@ export default function HomePage() {
             {/* Card 1: Point of Sale (Large) */}
             <motion.a
               href="/point-of-sale"
-              initial={{ opacity: 1 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
@@ -311,7 +311,7 @@ export default function HomePage() {
             {/* Card 2: Payments */}
             <motion.a
               href="/accept-payments"
-              initial={{ opacity: 1 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
@@ -336,7 +336,7 @@ export default function HomePage() {
             {/* Card 3: AI (Darker) */}
             <motion.a
               href="/ai"
-              initial={{ opacity: 1 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
@@ -359,7 +359,7 @@ export default function HomePage() {
             {/* Card 4: Hardware (Wide) */}
             <motion.a
               href="/hardware/pro"
-              initial={{ opacity: 1 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
@@ -385,7 +385,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-16">
             <motion.h2
-              initial={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="text-4xl md:text-6xl font-bold tracking-tighter mb-6"
@@ -402,7 +402,7 @@ export default function HomePage() {
                 <motion.a
                   key={style.name}
                   href={style.href}
-                  initial={{ opacity: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: (i % 4) * 0.05 }}
@@ -447,7 +447,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
             <motion.div
-              initial={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
@@ -462,7 +462,7 @@ export default function HomePage() {
             </motion.div>
             <motion.a
               href="/hardware"
-              initial={{ opacity: 1 }}
+              initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               className="text-white border-b border-white pb-1 hover:opacity-70 transition-opacity"
@@ -475,7 +475,7 @@ export default function HomePage() {
             {/* Terminal Pro */}
             <motion.a
               href="/point-of-sale"
-              initial={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="bg-zinc-900 rounded-[2.5rem] flex flex-col text-center border border-white/5 relative overflow-hidden group"
@@ -502,7 +502,7 @@ export default function HomePage() {
             {/* Terminal Mini */}
             <motion.a
               href="/products/point-of-purchase"
-              initial={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
@@ -535,7 +535,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
             <motion.div
-              initial={{ opacity: 1 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
@@ -576,7 +576,7 @@ export default function HomePage() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 1 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               className="relative"
@@ -634,7 +634,7 @@ export default function HomePage() {
       <section className="py-20 md:py-20 md:py-28 bg-black relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
-            initial={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-16"
@@ -672,7 +672,7 @@ export default function HomePage() {
             ].map((integration, i) => (
               <motion.div
                 key={integration.name}
-                initial={{ opacity: 1 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
@@ -685,7 +685,7 @@ export default function HomePage() {
           </div>
 
           <motion.div
-            initial={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="text-center mt-12"
@@ -704,7 +704,7 @@ export default function HomePage() {
       <section className="py-20 md:py-20 md:py-28 bg-black border-t border-white/5">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
-            initial={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="bg-zinc-900 rounded-[3rem] p-8 md:p-20 text-center relative overflow-hidden border border-white/5"

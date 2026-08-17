@@ -22,7 +22,7 @@ export function LiveDemoSection() {
     <section className="py-12 md:py-16 bg-black relative overflow-hidden w-full lg:w-[818px] mx-auto px-4 md:px-6 lg:px-0">
       <div className="w-full">
         <motion.div
-          initial={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-8"
