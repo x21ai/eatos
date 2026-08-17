@@ -4,10 +4,9 @@ import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const nextBin = require.resolve("next/dist/bin/next");
 
-// Production publishing uses the Next.js server output. The static `dist`
-// mirror is only for the preview artifact check, so it is created only when
-// this script is invoked for the dev/preview build.
-const withDist = process.argv.includes("--dist");
+// Production publishing uses the Next.js server output, but the platform's
+// artifact check requires a top-level `dist/` folder in both cases. We always
+// mirror client assets there (never an index.html, which would shadow the app).
 
 const requestedBundler = process.env.ANYTHING_PUBLISH_BUNDLER;
 const bundlerFlag = process.argv.includes("--turbopack") || requestedBundler === "turbopack"
@@ -32,10 +31,6 @@ if (nextBuild.signal) {
 
 if (nextBuild.status !== 0) {
   process.exit(nextBuild.status ?? 1);
-}
-
-if (!withDist) {
-  process.exit(0);
 }
 
 const prepareDist = spawnSync(process.execPath, ["scripts/prepare-dist.mjs"], {
