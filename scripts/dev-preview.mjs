@@ -7,10 +7,11 @@ const nextPort = "3001";
 
 const children = [];
 
-function start(command, commandArgs) {
+function start(command, commandArgs, options = {}) {
   const child = spawn(command, commandArgs, {
     stdio: "inherit",
     env: process.env,
+    ...options,
   });
   children.push(child);
   child.once("exit", (code, signal) => {

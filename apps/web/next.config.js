@@ -37,6 +37,7 @@ const nextConfig = {
   },
   // Resolve leftover `@auth/create` imports to local shims (see src/__create/@auth/create).
   turbopack: {
+    root: __dirname,
     resolveAlias: {
       '@auth/create/react': path.join(
         __dirname,
