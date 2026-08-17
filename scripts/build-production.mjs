@@ -1,5 +1,5 @@
 import { spawnSync } from "node:child_process";
-import { cpSync, existsSync, mkdirSync, rmSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { join } from "node:path";
 
@@ -35,6 +35,21 @@ if (nextBuild.status !== 0) {
   process.exit(nextBuild.status ?? 1);
 }
 
+const requiredBuildFiles = [
+  "BUILD_ID",
+  "build-manifest.json",
+  "prerender-manifest.json",
+  "routes-manifest.json",
+];
+
+for (const file of requiredBuildFiles) {
+  const path = join("apps", "web", ".next", file);
+  if (!existsSync(path)) {
+    console.error(`Next.js build is incomplete: missing ${path}.`);
+    process.exit(1);
+  }
+}
+
 // Lovable's artifact validator requires a non-empty top-level dist directory.
 // Keep it asset-only: Next/OpenNext serves every page, while these files satisfy
 // the artifact contract without a root HTML document that could shadow the app.
@@ -45,11 +60,21 @@ cpSync(join("apps", "web", ".next", "static"), join("dist", "_next", "static"), 
 
 const publicDirectory = join("apps", "web", "public");
 if (existsSync(publicDirectory)) {
-  cpSync(publicDirectory, "dist", { recursive: true });
+  cpSync(publicDirectory, "dist", {
+    recursive: true,
+    filter: (source) => !source.toLowerCase().endsWith(".html"),
+  });
 }
+
+writeFileSync(join("dist", ".server-rendered-next-app"), readFileSync(join("apps", "web", ".next", "BUILD_ID")));
 
 if (existsSync("dist/index.html")) {
   console.error("Refusing to publish: dist/index.html would shadow the Next.js app.");
+  process.exit(1);
+}
+
+if (!existsSync(join("dist", "_next", "static"))) {
+  console.error("Production artifact is incomplete: missing dist/_next/static.");
   process.exit(1);
 }
 

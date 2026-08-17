@@ -4,6 +4,7 @@ const routes = [
   "/",
   "/home-1",
   "/comparison",
+  "/platform",
   "/comparison/square",
   "/comparison/toast",
   "/comparison/lightspeed",
