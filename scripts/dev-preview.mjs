@@ -7,10 +7,11 @@ const nextPort = "3001";
 
 const children = [];
 
-function start(command, commandArgs) {
+function start(command, commandArgs, options = {}) {
   const child = spawn(command, commandArgs, {
     stdio: "inherit",
     env: process.env,
+    ...options,
   });
   children.push(child);
   child.once("exit", (code, signal) => {
@@ -34,12 +35,11 @@ function stop(signal = "SIGTERM", exitCode = 0) {
 process.once("SIGINT", () => stop("SIGINT"));
 process.once("SIGTERM", () => stop("SIGTERM"));
 
-start("./apps/web/node_modules/.bin/next", [
-  "dev",
-  "apps/web",
-  "--port",
-  nextPort,
-]);
+start(
+  "./node_modules/.bin/next",
+  ["dev", "--port", nextPort],
+  { cwd: new URL("../apps/web/", import.meta.url).pathname },
+);
 start("./node_modules/.bin/vite", [
   "--host",
   "0.0.0.0",
