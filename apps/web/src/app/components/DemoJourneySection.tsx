@@ -22,7 +22,7 @@ export function DemoJourneySection() {
             How it Works
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Follow one order through the whole restaurant, from the floor to the kitchen, the guest, and the back office.
+            Follow the order from the floor to the guest display, kitchen, back office, and inventory.
           </p>
         </div>
 
@@ -34,7 +34,7 @@ export function DemoJourneySection() {
               className="absolute left-0 top-5 h-px bg-emerald-400 hidden md:block transition-all duration-500"
               style={{ width: `${progress}%` }}
             />
-            <div className="relative flex gap-3 md:gap-0 overflow-x-auto md:overflow-visible scrollbar-hidden md:grid md:grid-cols-4">
+            <div className="relative flex gap-3 md:gap-0 overflow-x-auto md:overflow-visible scrollbar-hidden md:grid md:grid-cols-5">
               {journeySteps.map((s) => {
                 const isActive = s.step === active;
                 const isDone = s.step < active;
