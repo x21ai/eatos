@@ -74,26 +74,32 @@ export type JourneyStep = {
 export const journeySteps: JourneyStep[] = [
   {
     step: 1,
-    title: 'Order',
+    title: 'Point of Sale',
     caption: 'A server rings the check in on the handheld, sends modifiers, and takes payment at the table.',
     demoId: 'pos',
   },
   {
     step: 2,
-    title: 'Kitchen',
+    title: 'Customer Facing Display',
+    caption: 'Guests see their order, tip, and pickup details on a clear display at the counter or window.',
+    demoId: 'cfd',
+  },
+  {
+    step: 3,
+    title: 'Kitchen Display System',
     caption: 'The ticket lands on the right station instantly, with timers that keep every course on pace.',
     demoId: 'kds',
   },
   {
-    step: 3,
-    title: 'Guest',
-    caption: 'Guests order for themselves at the kiosk and follow their status on the customer display.',
-    demoId: 'kiosk',
-  },
-  {
     step: 4,
-    title: 'Reporting',
+    title: 'Dashboard',
     caption: 'Every sale rolls into live reporting for menu mix, labor and location performance.',
     demoId: 'dashboard',
+  },
+  {
+    step: 5,
+    title: 'InventoryOS',
+    caption: 'Counts, vendors and recipe costing stay synced to every store, so stock never runs silent.',
+    demoId: 'inventoryos',
   },
 ];
