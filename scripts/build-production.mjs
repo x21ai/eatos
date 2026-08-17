@@ -1,5 +1,10 @@
 import { spawnSync } from "node:child_process";
 
+// Production publishing uses the Next.js server output. The static `dist`
+// mirror is only for the preview artifact check, so it is created only when
+// this script is invoked for the dev/preview build.
+const withDist = process.argv.includes("--dist");
+
 const requestedBundler = process.env.ANYTHING_PUBLISH_BUNDLER;
 const bundlerFlag = process.argv.includes("--turbopack") || requestedBundler === "turbopack"
   ? "--turbopack"
@@ -23,6 +28,10 @@ if (nextBuild.signal) {
 
 if (nextBuild.status !== 0) {
   process.exit(nextBuild.status ?? 1);
+}
+
+if (!withDist) {
+  process.exit(0);
 }
 
 const prepareDist = spawnSync(process.execPath, ["scripts/prepare-dist.mjs"], {
