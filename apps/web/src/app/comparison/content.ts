@@ -9,8 +9,8 @@ export const hero = {
   title: 'eatOS Restaurant Cloud: Complete Comparison',
   description:
     'Equipped with essential tools, eatOS empowers you to connect with customers and expand your business, both in-person and online.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
-  secondaryCta: { label: 'View Pricing', href: '/pricing' },
+  primaryCta: { label: 'Book a Demo', href: '/book-demo.html' },
+  secondaryCta: { label: 'View Pricing', href: '/pricing.html' },
   media: 'eatOS POS terminals',
   mediaSrc: heroImg.url,
 };
@@ -31,22 +31,22 @@ export const whySwitch = [
   {
     title: 'Comprehensive Integration',
     body: 'eatOS integrates with restaurant operations, offering a user-friendly solution to streamline and simplify management.',
-    link: { label: 'Learn more about eatOS integrations', href: '/platform' },
+    link: { label: 'Learn more about eatOS integrations', href: '/platform.html' },
   },
   {
     title: 'User-Friendly Experience',
     body: 'Restaurant owners and staff will find a user-friendly experience with a clear interface and powerful capabilities.',
-    link: { label: 'Learn more about eatOS products', href: '/products' },
+    link: { label: 'Learn more about eatOS products', href: '/products.html' },
   },
   {
     title: 'Robust Feature Set',
     body: 'From every management to customer engagement, eatOS offers a comprehensive suite of tools to run your restaurant.',
-    link: { label: 'Learn more about eatOS Point of Sale', href: '/point-of-sale' },
+    link: { label: 'Learn more about eatOS Point of Sale', href: '/point-of-sale.html' },
   },
   {
     title: 'Unparalleled Support',
     body: 'Receive unparalleled 24/7 customer support to maximize eatOS potential for your business, ensuring assistance whenever needed.',
-    link: { label: 'Learn more about eatOS', href: '/about' },
+    link: { label: 'Learn more about eatOS', href: '/about.html' },
   },
 ];
 

@@ -29,7 +29,9 @@ if (existsSync("apps/web/public")) {
   cpSync("apps/web/public", "dist", { recursive: true });
 }
 
-// Copy every prerendered page: .next/server/app/<route>.html -> dist/<route>/index.html
+// Copy every prerendered page to an explicit .html URL. Lovable's static host
+// serves extensionless files as application/octet-stream, so they are never
+// valid page artifacts.
 const appDir = `${next}/server/app`;
 const found = [];
 
@@ -68,12 +70,8 @@ for (const { source, route } of found) {
   mkdirSync(path.dirname(flat), { recursive: true });
   cpSync(source, flat);
 
-  // Directory index copy for hosts that resolve "<route>/" to an index file.
-  const indexTarget = path.join("dist", route, "index.html");
-  mkdirSync(path.dirname(indexTarget), { recursive: true });
-  cpSync(source, indexTarget);
-
-  // Never emit an extensionless copy: the static host sends those as
+  // Never emit an extensionless or directory-index copy: the static host sends
+  // extensionless files as
   // "application/octet-stream" with "nosniff", so the browser downloads the
   // file instead of rendering it. Every in-site link is rewritten to the
   // ".html" path below, which is always served as text/html.
@@ -124,21 +122,42 @@ function rewriteLinks(dir) {
 }
 rewriteLinks("dist");
 
-// Hosts that honour these files get correct clean-URL handling and the right
-// content type for the extensionless page copies above. Hosts that ignore them
-// still resolve because the exact-path files exist.
-writeFileSync(
-  "dist/_headers",
-  `${routes
-    .map((r) => `${r}\n  Content-Type: text/html; charset=utf-8`)
-    .join("\n")}\n`,
-);
-writeFileSync(
-  "dist/_redirects",
-  `${routes.map((r) => `${r} ${r}.html 200`).join("\n")}\n`,
-);
+// Fail the build rather than publishing another artifact containing links that
+// the live host will download or stale exact-path page files it can prioritize.
+const unresolved = [];
+function validatePages(dir) {
+  for (const entry of readdirSync(dir)) {
+    const full = path.join(dir, entry);
+    if (statSync(full).isDirectory()) {
+      if (entry === "_next") continue;
+      validatePages(full);
+      continue;
+    }
+    if (!entry.endsWith(".html")) continue;
+
+    const html = readFileSync(full, "utf8");
+    for (const route of rewriteTargets) {
+      if (
+        html.includes(`href="/${route}"`) ||
+        html.includes(`href='/${route}'`) ||
+        html.includes(`\\"/${route}\\"`)
+      ) {
+        unresolved.push(`${full} -> /${route}`);
+      }
+    }
+  }
+}
+validatePages("dist");
+
+const conflicting = cleanRoutes.filter((route) => existsSync(path.join("dist", route)));
+if (conflicting.length || unresolved.length) {
+  console.error("Unsafe clean page paths remain in the publish artifact.");
+  for (const route of conflicting) console.error(`conflicting artifact: dist/${route}`);
+  for (const issue of unresolved.slice(0, 30)) console.error(`unresolved link: ${issue}`);
+  process.exit(1);
+}
 
 console.log(
   `dist/ prepared from apps/web/.next (${pages} pages, ${routes.length} clean URLs, ` +
-    `${cleanRoutes.length} routes served as .html, ${rewritten} files relinked)`,
+    `${cleanRoutes.length} routes served only as .html, ${rewritten} files relinked)`,
 );
