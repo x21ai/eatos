@@ -15,8 +15,6 @@ const child = spawn(process.execPath, [
   "dev",
   "--port",
   previewPort,
-  "--host",
-  "0.0.0.0",
 ], {
   cwd: "apps/web",
   stdio: "inherit",
