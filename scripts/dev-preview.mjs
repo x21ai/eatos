@@ -1,9 +1,10 @@
 import { spawn } from "node:child_process";
 import { createRequire } from "node:module";
+import { dirname, join } from "node:path";
 
 const require = createRequire(import.meta.url);
 const nextBin = require.resolve("next/dist/bin/next");
-const viteBin = require.resolve("vite/bin/vite.js");
+const viteBin = join(dirname(require.resolve("vite/package.json")), "bin/vite.js");
 
 const args = process.argv.slice(2);
 const portFlag = args.findIndex((arg) => arg === "--port");
