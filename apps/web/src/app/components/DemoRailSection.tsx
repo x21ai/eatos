@@ -17,7 +17,7 @@ export function DemoRailSection() {
       case 'kiosk':
         return 'Self Service Kiosk';
       default:
-        return demo.label;
+        return demoSources.find((d) => d.id === id)?.label ?? id;
     }
   };
 
