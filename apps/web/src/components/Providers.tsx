@@ -4,7 +4,6 @@
 import { useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'sonner';
-import PublishedLinkNormalizer from './PublishedLinkNormalizer';
 
 export default function Providers({ children }) {
   const [queryClient] = useState(
@@ -23,7 +22,6 @@ export default function Providers({ children }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <PublishedLinkNormalizer />
       {children}
       <Toaster />
     </QueryClientProvider>

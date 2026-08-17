@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "node scripts/dev-preview.mjs",
     "build:dev": "./apps/web/node_modules/.bin/next build apps/web && node scripts/prepare-dist.mjs",
-    "build": "./apps/web/node_modules/.bin/next build apps/web && node scripts/prepare-dist.mjs",
+    "build": "./apps/web/node_modules/.bin/next build apps/web",
     "start": "./apps/web/node_modules/.bin/next start apps/web --port 8080",
+    "validate:clean-routes": "node scripts/validate-clean-routes.mjs",
     "typecheck": "cd apps/web && ./node_modules/.bin/tsc --noEmit -p tsconfig.json"
   },
   "resolutions": {

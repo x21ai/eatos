@@ -100,7 +100,7 @@ export default function CompetitorClient({ slug }) {
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-2 text-sm text-gray-500 mb-8"
           >
-            <a href="/comparison.html" className="hover:text-white transition-colors">
+            <a href="/comparison" className="hover:text-white transition-colors">
               Comparison
             </a>
             <ChevronRight size={14} className="shrink-0" />
@@ -143,13 +143,13 @@ export default function CompetitorClient({ slug }) {
                 className="flex flex-col sm:flex-row gap-4"
               >
                 <a
-                  href="/book-demo.html"
+                  href="/book-demo"
                   className="px-8 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform text-center inline-flex items-center justify-center gap-2"
                 >
                   Book a Demo <ArrowRight size={18} />
                 </a>
                 <a
-                  href="/pricing.html"
+                  href="/pricing"
                   className="px-8 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors text-center"
                 >
                   View Pricing
@@ -314,13 +314,13 @@ export default function CompetitorClient({ slug }) {
             </h2>
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
-                href="/book-demo.html"
+                href="/book-demo"
                 className="inline-flex w-full items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:w-auto"
               >
                 Book a Demo
               </a>
               <a
-                href="/comparison.html"
+                href="/comparison"
                 className="inline-flex w-full items-center justify-center gap-1.5 rounded-full px-7 py-3.5 text-sm font-semibold text-emerald-400 transition-colors hover:text-emerald-300 sm:w-auto"
               >
                 See all comparisons
