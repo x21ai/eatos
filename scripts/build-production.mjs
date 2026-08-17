@@ -1,7 +1,9 @@
 import { spawnSync } from "node:child_process";
 
 const requestedBundler = process.env.ANYTHING_PUBLISH_BUNDLER;
-const bundlerFlag = requestedBundler === "turbopack" ? "--turbopack" : "--webpack";
+const bundlerFlag = process.argv.includes("--turbopack") || requestedBundler === "turbopack"
+  ? "--turbopack"
+  : "--webpack";
 
 const nextBuild = spawnSync(
   "./apps/web/node_modules/.bin/next",
