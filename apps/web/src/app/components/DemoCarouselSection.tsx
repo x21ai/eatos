@@ -10,6 +10,19 @@ export function DemoCarouselSection() {
   const demo = demoSources[index];
   const total = demoSources.length;
 
+  const displayLabel = (id: string) => {
+    switch (id) {
+      case 'kds':
+        return 'Kitchen Display System';
+      case 'cfd':
+        return 'Customer Facing Display';
+      case 'kiosk':
+        return 'Self Service Kiosk';
+      default:
+        return demo.label;
+    }
+  };
+
   const go = (dir: number) => setIndex((i) => (i + dir + total) % total);
 
   return (
@@ -33,7 +46,7 @@ export function DemoCarouselSection() {
             <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
             <div className="w-3 h-3 rounded-full bg-green-500/80" />
           </div>
-          <div className="text-sm text-gray-400 font-medium">{demo.label}</div>
+          <div className="text-sm text-gray-400 font-medium">{displayLabel(demo.id)}</div>
           <a
             href={demo.url}
             target="_blank"
@@ -50,7 +63,7 @@ export function DemoCarouselSection() {
             <motion.iframe
               key={demo.id}
               src={demo.url}
-              title={demo.label}
+              title={displayLabel(demo.id)}
               initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -24 }}
@@ -76,7 +89,7 @@ export function DemoCarouselSection() {
 
         <div className="min-w-0 flex-1 text-center">
           <div className="text-base md:text-lg font-bold tracking-tighter text-white truncate">
-            {demo.label}
+            {displayLabel(demo.id)}
           </div>
           <p className="text-sm text-gray-400 truncate">{demo.blurb}</p>
         </div>
@@ -96,7 +109,7 @@ export function DemoCarouselSection() {
           <button
             key={d.id}
             type="button"
-            aria-label={d.label}
+            aria-label={displayLabel(d.id)}
             onClick={() => setIndex(i)}
             className={`h-2 rounded-full transition-all ${
               i === index ? 'w-8 bg-white' : 'w-2 bg-white/25 hover:bg-white/50'
