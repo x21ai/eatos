@@ -137,7 +137,7 @@ export default function BarClient() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-2 rounded-[2rem] md:rounded-[2.5rem] border border-rose-500/20 bg-white/5 overflow-hidden max-w-md lg:max-w-none mx-auto lg:mx-0"
+              className="lg:col-span-2 w-full max-w-md lg:max-w-none mx-auto lg:mx-0 rounded-[2rem] md:rounded-[2.5rem] border border-rose-500/20 bg-white/5 overflow-hidden"
             >
               <Placeholder
                 label={hero.imageLabel}
