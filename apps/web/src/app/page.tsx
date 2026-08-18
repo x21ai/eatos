@@ -420,18 +420,20 @@ export default function HomePage() {
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <div className="p-4 flex flex-col gap-3 flex-1">
+                  <div className="p-5 flex flex-col gap-3 flex-1">
                     <div className={`${style.iconClass} p-2 rounded-lg w-fit`}>
                       <Icon size={18} />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold tracking-tighter mb-1">{style.name}</h3>
-                      <p className="text-gray-400 text-xs leading-relaxed">{style.description}</p>
+                      <h3 className="text-xl md:text-lg font-bold tracking-tighter mb-1.5">
+                        {style.name}
+                      </h3>
+                      <p className="text-gray-400 text-sm leading-relaxed">{style.description}</p>
                     </div>
-                    <ul className="space-y-1.5 text-[11px] text-gray-300 mt-auto">
+                    <ul className="space-y-2 text-[13px] leading-relaxed text-gray-300 mt-auto">
                       {style.bullets.map((bullet) => (
                         <li key={bullet} className="flex items-start gap-2">
-                          <Check size={12} className={`${style.checkClass} shrink-0 mt-0.5`} />
+                          <Check size={14} className={`${style.checkClass} shrink-0 mt-0.5`} />
                           <span>{bullet}</span>
                         </li>
                       ))}
