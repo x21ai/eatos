@@ -20,19 +20,19 @@ export const hero = {
 export const marquee = [
   {
     value: 'One platform',
-    label: 'Front of house, kitchen and back office run on a single system.',
+    label: 'Front of house, kitchen and back office run on a single system, all day.',
   },
   {
     value: 'Always on',
-    label: 'Service keeps moving online or offline, with no lost checks.',
+    label: 'Service keeps moving online or offline, with no lost checks or orders.',
   },
   {
     value: 'Support 24/7',
-    label: 'Real people on call through every dinner rush, every night.',
+    label: 'Real people on call through every dinner rush, every night of the year.',
   },
   {
     value: 'No upfront cost',
-    label: 'Hardware included with Pay As You Go, so you start fast.',
+    label: 'Hardware included with Pay As You Go, so you start fast and scale easily.',
   },
 ];
 
