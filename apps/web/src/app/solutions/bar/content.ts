@@ -8,7 +8,7 @@ import handheldImg from './assets/bar-handheld.jpg.asset.json';
 
 export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
-  title: 'Bar & Nightclub POS',
+  title: 'Bar & Nightclub Point of Sale',
   description:
     'Built for the pace behind the bar, where every second at the rail counts. Open and close tabs in a tap, keep card on file for the whole night, pour with live inventory behind you, and give your team one system that keeps up from the first round to last call.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
