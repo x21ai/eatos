@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
-import { bundle, capabilities, hero, marquee, pillars } from './content';
+import { bundle, hero, marquee, pillars } from './content';
 
 const rise = {
   initial: { opacity: 0, y: 30 },
@@ -151,33 +151,6 @@ export default function CafeClient() {
         </div>
       </section>
 
-      {/* Key features */}
-      <section className="border-t border-white/5 py-16 md:py-24">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...rise} className="max-w-2xl mb-10 md:mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">Key features</h2>
-            <p className="mt-4 text-lg text-gray-400 leading-relaxed">
-              Everything a cafe needs to take orders, keep stock in check and bring guests back.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {capabilities.map((feature, index) => (
-              <motion.div
-                key={feature}
-                {...rise}
-                transition={{ delay: index * 0.06 }}
-                className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6 min-w-0"
-              >
-                <div className="w-10 h-10 shrink-0 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center">
-                  <Check size={18} />
-                </div>
-                <div className="min-w-0 text-base md:text-lg font-medium">{feature}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Highlights */}
       <section className="border-t border-white/5 py-14 md:py-20">
@@ -296,50 +269,6 @@ export default function CafeClient() {
         </div>
       </section>
 
-      {/* Bundle */}
-      <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div {...rise} className="text-center max-w-2xl mx-auto">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-amber-400">
-              {bundle.eyebrow}
-            </p>
-            <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tighter">{bundle.title}</h2>
-            <p className="mt-5 text-lg text-gray-400 leading-relaxed">{bundle.description}</p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href={bundle.primaryCta.href}
-                className="px-8 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform text-center"
-              >
-                {bundle.primaryCta.label}
-              </a>
-              <a
-                href={bundle.secondaryCta.href}
-                className="px-8 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors text-center"
-              >
-                {bundle.secondaryCta.label}
-              </a>
-            </div>
-          </motion.div>
-
-          <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {bundle.specs.map((spec, index) => (
-              <motion.div
-                key={spec.title}
-                {...rise}
-                transition={{ delay: index * 0.1 }}
-                className="rounded-[2rem] border border-white/10 bg-white/5 p-8"
-              >
-                <h3 className="text-xl font-bold tracking-tighter mb-3">{spec.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{spec.body}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <p className="mt-10 text-center text-xs leading-relaxed text-gray-600 max-w-3xl mx-auto">
-            {bundle.note}
-          </p>
-        </div>
-      </section>
 
       {/* Works great with */}
       <section className="py-20 md:py-28 border-t border-white/5">
