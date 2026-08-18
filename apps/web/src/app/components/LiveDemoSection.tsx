@@ -36,8 +36,8 @@ export function LiveDemoSection() {
         </motion.div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <div className="-mx-5 mb-6 overflow-x-auto px-5 scrollbar-hidden sm:mx-0 sm:flex sm:justify-center sm:px-0">
-            <TabsList className="bg-zinc-900/80 border border-white/10 p-1.5 md:p-2 rounded-xl flex w-max flex-nowrap max-w-full sm:w-auto">
+          <div className="mb-6 flex justify-center">
+            <TabsList className="bg-zinc-900/80 border border-white/10 p-1.5 md:p-2 rounded-xl flex h-auto flex-wrap justify-center gap-1 sm:flex-nowrap">
               {demos.map((demo) => (
                 <TabsTrigger
                   key={demo.id}
