@@ -223,7 +223,6 @@ export default function FullServiceClient() {
                       label={pillar.imageLabel}
                       src={pillar.image}
                       ratio="aspect-[16/10]"
-                      fit="cover"
                       className="rounded-none"
                     />
                   </div>
