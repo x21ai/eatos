@@ -531,9 +531,9 @@ export default function HomePage() {
       </section>
 
       {/* Reports & Analytics Section */}
-      <section className="py-20 md:py-20 md:py-28 bg-zinc-950 relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+      <section className="py-16 md:py-28 bg-zinc-950 relative overflow-hidden">
+        <div className="container mx-auto px-5 md:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -543,16 +543,16 @@ export default function HomePage() {
                 <BarChart2 size={12} />
                 <span>Real-time Reporting</span>
               </div>
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-6">
                 Know your numbers.
                 <br />
                 <span className="text-gray-500">Every shift.</span>
               </h2>
-              <p className="text-gray-400 text-xl mb-8 leading-relaxed">
+              <p className="text-gray-400 text-base sm:text-lg md:text-xl mb-8 leading-relaxed">
                 Live sales dashboards, labor cost tracking, and menu performance reports give you
                 the full picture before service ends.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-8 md:mb-10">
                 {[
                   { label: 'Sales by hour, day, or location', color: 'text-emerald-400' },
                   { label: 'Labor cost vs. revenue', color: 'text-emerald-400' },
@@ -582,7 +582,7 @@ export default function HomePage() {
               className="relative"
             >
               <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 to-transparent rounded-[2.5rem] blur-3xl" />
-              <div className="relative z-10 bg-zinc-900 rounded-[2.5rem] border border-white/10 p-8 shadow-2xl">
+              <div className="relative z-10 bg-zinc-900 rounded-3xl md:rounded-[2.5rem] border border-white/10 p-5 sm:p-8 shadow-2xl">
                 {/* Simulated dashboard UI */}
                 <div className="flex items-center justify-between mb-6">
                   <span className="text-sm text-gray-400 font-medium">Today so far</span>
@@ -590,8 +590,10 @@ export default function HomePage() {
                     Live
                   </span>
                 </div>
-                <div className="text-5xl font-bold tracking-tighter mb-1">$14,280</div>
-                <div className="text-gray-500 text-sm mb-8">Total revenue across all terminals</div>
+                <div className="text-4xl sm:text-5xl font-bold tracking-tighter mb-1">$14,280</div>
+                <div className="text-gray-500 text-xs sm:text-sm mb-6 sm:mb-8">
+                  Total revenue across all terminals
+                </div>
                 <div className="space-y-3">
                   {[
                     { label: 'Food Sales', value: '$10,140', pct: 72, color: 'bg-emerald-500' },
@@ -612,15 +614,17 @@ export default function HomePage() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-8 grid grid-cols-3 gap-4">
+                <div className="mt-6 sm:mt-8 grid grid-cols-3 gap-2 sm:gap-4">
                   {[
                     { label: 'Transactions', value: '341' },
                     { label: 'Avg. Check', value: '$41.87' },
                     { label: 'Labor Cost', value: '28%' },
                   ].map((stat) => (
-                    <div key={stat.label} className="bg-white/5 rounded-2xl p-4 text-center">
-                      <div className="text-xl font-bold mb-1">{stat.value}</div>
-                      <div className="text-xs text-gray-500">{stat.label}</div>
+                    <div key={stat.label} className="bg-white/5 rounded-xl sm:rounded-2xl p-3 sm:p-4 text-center">
+                      <div className="text-base sm:text-xl font-bold tracking-tighter mb-1">
+                        {stat.value}
+                      </div>
+                      <div className="text-[10px] sm:text-xs text-gray-500">{stat.label}</div>
                     </div>
                   ))}
                 </div>
@@ -631,31 +635,31 @@ export default function HomePage() {
       </section>
 
       {/* Integrations Section */}
-      <section className="py-20 md:py-20 md:py-28 bg-black relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="py-16 md:py-28 bg-black relative overflow-hidden">
+        <div className="container mx-auto px-5 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-300 text-sm font-medium mb-6">
               <Plug size={12} />
               <span>Integrations</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-6">
               Plays well with
               <br />
               <span className="text-gray-500">your whole stack.</span>
             </h2>
-            <p className="text-gray-400 text-xl max-w-2xl mx-auto">
+            <p className="text-gray-400 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
               eatOS connects with the tools your restaurant already uses.
               <br />
               No double entry, no workarounds.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl mx-auto">
             {[
               { name: 'Adyen', category: 'Payments' },
               { name: 'MarketMan', category: 'Inventory' },
@@ -676,9 +680,11 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="bg-zinc-900 border border-white/5 rounded-2xl p-6 text-center hover:border-white/20 transition-all"
+                className="bg-zinc-900 border border-white/5 rounded-2xl p-4 md:p-6 text-center hover:border-white/20 transition-all"
               >
-                <div className="text-base font-semibold text-white mb-1">{integration.name}</div>
+                <div className="text-sm md:text-base font-semibold text-white mb-1">
+                  {integration.name}
+                </div>
                 <div className="text-xs text-gray-500">{integration.category}</div>
               </motion.div>
             ))}
@@ -701,22 +707,22 @@ export default function HomePage() {
       </section>
 
       {/* Kitchen Display */}
-      <section className="py-20 md:py-20 md:py-28 bg-black border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="py-16 md:py-28 bg-black border-t border-white/5">
+        <div className="container mx-auto px-5 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-zinc-900 rounded-[3rem] p-8 md:p-20 text-center relative overflow-hidden border border-white/5"
+            className="bg-zinc-900 rounded-3xl md:rounded-[3rem] p-6 sm:p-8 md:p-20 text-center relative overflow-hidden border border-white/5"
           >
             <div className="relative z-10 max-w-3xl mx-auto">
-              <div className="bg-green-500/10 text-green-400 p-4 rounded-2xl w-fit mx-auto mb-8">
-                <ChefHat size={32} />
+              <div className="bg-green-500/10 text-green-400 p-3.5 md:p-4 rounded-2xl w-fit mx-auto mb-6 md:mb-8">
+                <ChefHat className="w-7 h-7 md:w-8 md:h-8" />
               </div>
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-5 md:mb-6">
                 Chaos, controlled.
               </h2>
-              <p className="text-gray-400 text-xl mb-12">
+              <p className="text-gray-400 text-base sm:text-lg md:text-xl mb-8 md:mb-12">
                 The Kitchen Display System that keeps front and back of house in perfect sync.
                 Real-time updates, color-coded alerts, and performance tracking.
               </p>
@@ -724,7 +730,7 @@ export default function HomePage() {
                 src="https://ucarecdn.com/3532d108-2981-4a5d-bd16-9f6adf89c04d/-/format/auto/"
                 alt="Kitchen Display System"
                 loading="lazy"
-                className="rounded-xl border border-white/10 shadow-2xl mx-auto"
+                className="w-full rounded-xl border border-white/10 shadow-2xl mx-auto"
               />
             </div>
           </motion.div>
