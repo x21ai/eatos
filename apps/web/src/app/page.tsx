@@ -381,14 +381,14 @@ export default function HomePage() {
       </section>
 
       {/* Service Modes Section */}
-      <section className="py-20 md:py-28 bg-zinc-950 relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-16">
+      <section className="py-16 md:py-28 bg-zinc-950 relative overflow-hidden">
+        <div className="container mx-auto px-5 md:px-6">
+          <div className="text-center mb-10 md:mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-bold tracking-tighter mb-6"
+              className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-6"
             >
               Built for every <br />
               <span className="text-indigo-400">service style.</span>
@@ -443,19 +443,19 @@ export default function HomePage() {
       </section>
 
       {/* Hardware Section */}
-      <section className="py-20 md:py-20 md:py-28 bg-black relative">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
+      <section className="py-16 md:py-28 bg-black relative">
+        <div className="container mx-auto px-5 md:px-6">
+          <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 md:mb-20 gap-6 md:gap-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-4">
                 Hardware that <br />
                 turns heads.
               </h2>
-              <p className="text-gray-400 text-xl max-w-xl">
+              <p className="text-gray-400 text-base sm:text-lg md:text-xl max-w-xl">
                 Milled aluminum, tempered glass, and all-day battery. Designed to survive the
                 kitchen and look good on the counter.
               </p>
@@ -471,23 +471,23 @@ export default function HomePage() {
             </motion.a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {/* Terminal Pro */}
             <motion.a
               href="/point-of-sale"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-zinc-900 rounded-[2.5rem] flex flex-col text-center border border-white/5 relative overflow-hidden group"
+              className="bg-zinc-900 rounded-3xl md:rounded-[2.5rem] flex flex-col text-center border border-white/5 relative overflow-hidden group"
             >
               <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-indigo-500/10 to-transparent z-10" />
-              <div className="relative z-10 pt-12 px-12">
-                <h3 className="text-3xl font-bold mb-2">
+              <div className="relative z-10 pt-8 px-6 sm:pt-12 sm:px-12">
+                <h3 className="text-2xl sm:text-3xl font-bold tracking-tighter mb-2">
                   <strong>eatOS</strong> Point of Sale
                 </h3>
-                <p className="text-gray-400 mb-6">The ultimate restaurant terminal.</p>
+                <p className="text-gray-400 text-sm sm:text-base mb-5 sm:mb-6">The ultimate restaurant terminal.</p>
                 {/* TODO: Price should be fetched from pricing API - do not hardcode */}
-                <div className="flex items-center justify-center gap-2 text-sm font-medium bg-white/10 px-4 py-2 rounded-full w-fit mx-auto mb-8">
+                <div className="flex items-center justify-center gap-2 text-sm font-medium bg-white/10 px-4 py-2 rounded-full w-fit mx-auto mb-6 sm:mb-8">
                   <span>From $99</span>
                 </div>
               </div>
@@ -495,7 +495,7 @@ export default function HomePage() {
                 src="https://ucarecdn.com/894a0c84-afe1-429a-9cb7-9b9c3bd6929e/-/format/auto/"
                 alt="eatOS Pro"
                 loading="lazy"
-                className="w-full object-cover mt-auto rounded-b-[2.5rem]"
+                className="w-full object-cover mt-auto rounded-b-3xl md:rounded-b-[2.5rem]"
               />
             </motion.a>
 
@@ -506,16 +506,16 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-zinc-900 rounded-[2.5rem] flex flex-col text-center border border-white/5 relative overflow-hidden group"
+              className="bg-zinc-900 rounded-3xl md:rounded-[2.5rem] flex flex-col text-center border border-white/5 relative overflow-hidden group"
             >
               <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-orange-500/10 to-transparent z-10" />
-              <div className="relative z-10 pt-12 px-12">
-                <h3 className="text-3xl font-bold mb-2">
+              <div className="relative z-10 pt-8 px-6 sm:pt-12 sm:px-12">
+                <h3 className="text-2xl sm:text-3xl font-bold tracking-tighter mb-2">
                   <strong>eatOS</strong> Point of Purchase
                 </h3>
-                <p className="text-gray-400 mb-6">Power in your pocket.</p>
+                <p className="text-gray-400 text-sm sm:text-base mb-5 sm:mb-6">Power in your pocket.</p>
                 {/* TODO: Price should be fetched from pricing API - do not hardcode */}
-                <div className="flex items-center justify-center gap-2 text-sm font-medium bg-white/10 px-4 py-2 rounded-full w-fit mx-auto mb-8">
+                <div className="flex items-center justify-center gap-2 text-sm font-medium bg-white/10 px-4 py-2 rounded-full w-fit mx-auto mb-6 sm:mb-8">
                   <span>From $49</span>
                 </div>
               </div>
@@ -523,7 +523,7 @@ export default function HomePage() {
                 src="https://ucarecdn.com/5a63729f-c40f-4f55-b93c-04430c68d784/-/format/auto/"
                 alt="eatOS Mini"
                 loading="lazy"
-                className="w-full object-cover mt-auto rounded-b-[2.5rem]"
+                className="w-full object-cover mt-auto rounded-b-3xl md:rounded-b-[2.5rem]"
               />
             </motion.a>
           </div>
