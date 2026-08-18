@@ -219,12 +219,12 @@ export default function HomePage() {
               ].map((stat) => (
                 <div
                   key={stat.value}
-                  className="flex-1 flex flex-col items-center py-5 sm:py-0 px-4 sm:px-6"
+                  className="flex-1 flex flex-col items-center py-3.5 sm:py-0 px-4 sm:px-6"
                 >
-                  <div className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter text-white mb-2">
+                  <div className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tighter text-white mb-1 sm:mb-2">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-gray-500">{stat.label}</div>
+                  <div className="text-xs sm:text-sm text-gray-500">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -238,23 +238,25 @@ export default function HomePage() {
             transition={{ duration: 1, delay: 0.2 }}
             className="flex flex-col items-center mb-12 md:mb-16 opacity-40"
           >
-            <div className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-x-3 gap-y-2 sm:gap-4 md:gap-6 w-full max-w-5xl px-2">
+            <div className="flex flex-wrap md:flex-nowrap items-center justify-center gap-x-2 gap-y-2 sm:gap-x-3 md:gap-4 lg:gap-6 w-full max-w-5xl px-2">
               {[
                 'Selfie Fusion Kitchen',
                 'Local Pho',
                 'Bollywood Bites',
                 'Figaro Bistro',
                 "Becky's Taqueria",
-              ].map((name) => (
-                <div
-                  key={name}
-                  className="shrink-0 whitespace-nowrap text-[10px] sm:text-xs md:text-sm lg:text-base font-bold tracking-tighter text-white"
-                >
-                  {name}
+              ].map((name, i) => (
+                <div key={name} className="flex items-center gap-2 md:gap-4 lg:gap-6">
+                  {i > 0 && (
+                    <span className="h-1 w-1 rounded-full bg-white/40 md:hidden" aria-hidden="true" />
+                  )}
+                  <span className="whitespace-nowrap text-[13px] sm:text-sm md:text-sm lg:text-base font-bold tracking-tighter text-white">
+                    {name}
+                  </span>
                 </div>
               ))}
             </div>
-            <p className="mt-3 text-[10px] sm:text-xs md:text-sm text-gray-400 tracking-wide">
+            <p className="mt-3 text-xs sm:text-sm text-gray-400 tracking-wide">
               + thousands more
             </p>
           </motion.div>
@@ -418,18 +420,20 @@ export default function HomePage() {
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <div className="p-4 flex flex-col gap-3 flex-1">
+                  <div className="p-5 flex flex-col gap-3 flex-1">
                     <div className={`${style.iconClass} p-2 rounded-lg w-fit`}>
                       <Icon size={18} />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold tracking-tighter mb-1">{style.name}</h3>
-                      <p className="text-gray-400 text-xs leading-relaxed">{style.description}</p>
+                      <h3 className="text-xl md:text-lg font-bold tracking-tighter mb-1.5">
+                        {style.name}
+                      </h3>
+                      <p className="text-gray-400 text-sm leading-relaxed">{style.description}</p>
                     </div>
-                    <ul className="space-y-1.5 text-[11px] text-gray-300 mt-auto">
+                    <ul className="space-y-2 text-[13px] leading-relaxed text-gray-300 mt-auto">
                       {style.bullets.map((bullet) => (
                         <li key={bullet} className="flex items-start gap-2">
-                          <Check size={12} className={`${style.checkClass} shrink-0 mt-0.5`} />
+                          <Check size={14} className={`${style.checkClass} shrink-0 mt-0.5`} />
                           <span>{bullet}</span>
                         </li>
                       ))}
