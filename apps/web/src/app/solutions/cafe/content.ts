@@ -10,7 +10,7 @@ export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
   title: 'Point of Sale System for Cafes',
   description:
-    'Easy to learn and easy to use, ideal for bustling cafes. Menu and inventory control enable staff to take complicated orders quickly and efficiently.',
+    'Easy to learn and easy to use, ideal for bustling cafes. Menu and inventory control enable staff to take complicated orders quickly and efficiently, while built-in reporting and loyalty tools help owners understand what guests love and keep them coming back every morning.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Cafe counter with eatOS terminal',
@@ -41,9 +41,9 @@ export const pillars = [
     id: 'connectivity',
     title: 'Seamless connectivity for your cafe',
     body:
-      'Make sure all your employees stay in sync with each other and with your devices, with flawless connectivity that keeps everyone in the loop.',
+      'Make sure all your employees stay in sync with each other and with your devices, with flawless connectivity that keeps everyone in the loop from the counter to the kitchen and back office.',
     more:
-      'Whether you are a two-person espresso bar or a full staff cafe, eatOS technology adapts to the way your team already works.',
+      'Whether you are a two-person espresso bar or a full staff cafe, eatOS technology adapts to the way your team already works, so orders flow smoothly even when the line stretches to the door.',
     imageLabel: 'Cafe counter with a connected terminal',
     image: connectImg.url,
   },
@@ -51,9 +51,9 @@ export const pillars = [
     id: 'team',
     title: 'Employee management made easy',
     body:
-      'Schedule shifts, issue payroll, and control time and attendance all with eatOS, so your team can focus on what really matters.',
+      'Schedule shifts, issue payroll, and control time and attendance all with eatOS, so your team can focus on what really matters: greeting guests, crafting drinks, and keeping the cafe humming through every rush.',
     more:
-      'With eatOS employee management you regulate and stay in sync with every aspect of their work, from the first opening shift to the last close.',
+      'With eatOS employee management you regulate and stay in sync with every aspect of their work, from the first opening shift to the last close, without jumping between spreadsheets or apps.',
     imageLabel: 'Manager reviewing the schedule on a tablet',
     image: teamImg.url,
   },
@@ -61,9 +61,9 @@ export const pillars = [
     id: 'kiosk',
     title: 'Speed things up with our Kiosk',
     body:
-      'Set yourself apart from other cafes by adding our Kiosk to the customer experience and taking orders directly from guests to baristas.',
+      'Set yourself apart from other cafes by adding our Kiosk to the customer experience and taking orders directly from guests to baristas. Guests tap through modifiers, pay, and pick up receipts without slowing the line.',
     more:
-      'Guests build their own drinks exactly the way they like them, the line keeps moving, and your team spends more time on the bar.',
+      'Guests build their own drinks exactly the way they like them, the line keeps moving, and your team spends more time on the bar crafting orders instead of retyping them at the counter.',
     imageLabel: 'Guest ordering at a self-service kiosk',
     image: kioskImg.url,
   },
