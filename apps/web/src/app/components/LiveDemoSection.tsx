@@ -37,7 +37,7 @@ export function LiveDemoSection() {
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <div className="mb-6 flex justify-center">
-            <TabsList className="bg-zinc-900/80 border border-white/10 p-1.5 md:p-2 rounded-xl grid h-auto w-full grid-cols-2 gap-1.5 sm:grid-cols-3 md:flex md:w-fit md:flex-nowrap md:gap-1">
+            <TabsList className="bg-zinc-900/80 border border-white/10 p-1.5 md:p-2 rounded-xl grid w-full grid-cols-2 gap-1.5 sm:grid-cols-3 md:flex md:w-fit md:flex-nowrap md:gap-1 group-data-[orientation=horizontal]/tabs:h-auto md:group-data-[orientation=horizontal]/tabs:h-auto">
               {demos.map((demo) => (
                 <TabsTrigger
                   key={demo.id}
