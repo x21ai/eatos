@@ -106,10 +106,6 @@ export function VoiceOSSection() {
                 >
                   Try the demo <ArrowRight size={18} />
                 </a>
-                <div className="text-sm text-[#9CA3AF]">
-                  <div>🇺🇸 +1 (270) 482 5808</div>
-                  <div>🇬🇧 +44 (7428) 327607</div>
-                </div>
               </div>
             </div>
           </Reveal>
