@@ -64,7 +64,7 @@ export const competitors = [
 // order matches `competitors` minus eatOS (which is always true)
 export const matrix = [
   { feature: 'AI Enabled Integration', support: [false, false, false, false, false, false, false] },
-  { feature: 'Restaurant POS with Menu Management', support: [true, true, true, true, true, true, true] },
+  { feature: 'Point of Sale with Menu Management', support: [true, true, true, true, true, true, true] },
   { feature: 'Real-time Cloud Reporting', support: [true, true, true, true, true, true, true] },
   { feature: 'Order Online', support: [true, true, true, true, true, true, false] },
   { feature: 'Multi-Location', support: [false, true, true, true, false, true, true] },

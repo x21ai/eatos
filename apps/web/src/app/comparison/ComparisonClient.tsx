@@ -236,7 +236,7 @@ function Matrix() {
             Compare eatOS with other Point of Sale software
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-7 text-zinc-400 sm:text-base">
-            See why thousands of restaurant brands pick eatOS over other Point of Sale software.
+            See why thousands of restaurant brands choose eatOS over other Point of Sale software for smarter, faster, and more efficient operations.
           </p>
         </Reveal>
 
