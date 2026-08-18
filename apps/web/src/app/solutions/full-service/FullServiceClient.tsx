@@ -164,14 +164,22 @@ export default function FullServiceClient() {
         </div>
       </section>
 
-      {/* Numbers strip */}
-      <section className="border-t border-white/5 py-12 md:py-16">
+      {/* Highlights */}
+      <section className="border-t border-white/5 py-14 md:py-20">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {marquee.map((stat) => (
-              <motion.div key={stat.label} {...rise} className="min-w-0">
-                <div className="text-3xl md:text-4xl font-bold tracking-tighter">{stat.value}</div>
-                <div className="mt-2 text-sm text-gray-500">{stat.label}</div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {marquee.map((item, index) => (
+              <motion.div
+                key={item.value}
+                {...rise}
+                transition={{ delay: index * 0.08 }}
+                className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-7 min-w-0"
+              >
+                <div className="w-10 h-10 rounded-xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center mb-5">
+                  <Check size={18} />
+                </div>
+                <div className="text-lg md:text-xl font-bold tracking-tighter">{item.value}</div>
+                <p className="mt-2 text-sm text-gray-400 leading-relaxed">{item.label}</p>
               </motion.div>
             ))}
           </div>
@@ -202,19 +210,6 @@ export default function FullServiceClient() {
                   </h2>
                   <p className="text-lg text-gray-400 leading-relaxed mb-5">{pillar.body}</p>
                   <p className="text-base text-gray-500 leading-relaxed mb-8">{pillar.more}</p>
-                  <div className="flex flex-wrap gap-4">
-                    {pillar.metrics.map((metric) => (
-                      <div
-                        key={metric.label}
-                        className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 min-w-0"
-                      >
-                        <div className="text-2xl font-bold tracking-tighter text-indigo-400">
-                          {metric.value}
-                        </div>
-                        <div className="mt-1 text-xs text-gray-500">{metric.label}</div>
-                      </div>
-                    ))}
-                  </div>
                 </div>
 
                 <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
