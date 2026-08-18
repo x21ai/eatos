@@ -240,8 +240,8 @@ export default function FullServiceClient() {
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
               Why eatOS for full service?
             </h2>
-            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-              Built for the pace of the dining room, from the first greeting to the final check.
+            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto whitespace-pre-line">
+              Built for the pace of the dining room, from{"\n"}the first greeting to the final check.
             </p>
           </motion.div>
 
@@ -389,8 +389,8 @@ export default function FullServiceClient() {
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
                 Elevate your dining experience
               </h2>
-              <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-                See the full-service setup in action. Book a demo and we will show you how it fits
+              <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 whitespace-pre-line">
+                See the full-service setup in action. Book a demo and{"\n"}we will show you how it fits
                 your floor plan.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

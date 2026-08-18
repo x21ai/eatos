@@ -8,7 +8,7 @@ import coursingImg from './assets/fs-coursing.jpg.asset.json';
 
 export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
-  title: 'Full-Service Restaurant Point of Sale',
+  title: 'Full-Service Restaurant\u00a0',
   description:
     'Designed for full-service restaurants, with additional modules including reservations, table management, and functionality to support order coursing.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
