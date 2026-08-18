@@ -4,11 +4,11 @@
 import heroImg from '../../../assets/svc-bar.jpg.asset.json';
 import tabsImg from './assets/bar-tabs.jpg.asset.json';
 import inventoryImg from './assets/bar-inventory.jpg.asset.json';
-import idImg from './assets/bar-id.jpg.asset.json';
+import handheldImg from './assets/bar-handheld.jpg.asset.json';
 
 export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
-  title: 'Point of Sale System for Bars and Nightclubs',
+  title: 'Bar & Nightclub POS',
   description:
     'Built for the pace behind the bar, where every second at the rail counts. Open and close tabs in a tap, keep card on file for the whole night, pour with live inventory behind you, and give your team one system that keeps up from the first round to last call.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
