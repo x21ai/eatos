@@ -8,6 +8,7 @@ import {
   Clock,
   CreditCard,
   Package,
+  ShieldCheck,
   Smartphone,
   Users,
   Zap,
