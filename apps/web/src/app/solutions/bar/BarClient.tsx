@@ -2,15 +2,14 @@
 'use client';
 
 import {
+  Beer,
   Check,
   ChevronRight,
   Clock,
-  Coffee,
   CreditCard,
-  Monitor,
   Package,
+  ShieldCheck,
   Users,
-  Wifi,
   Zap,
 } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -25,17 +24,17 @@ const rise = {
 
 const related = [
   {
-    href: '/products/self-service-kiosk',
-    title: 'Self-Service Kiosk',
-    tagline: 'Guests order and pay without waiting in line.',
-    Icon: Monitor,
+    href: '/tap-to-pay',
+    title: 'Table Side Order and Pay',
+    tagline: 'Take the order and the payment at the rail.',
+    Icon: CreditCard,
     iconClass: 'bg-violet-500/15 text-violet-400',
   },
   {
     href: '/point-of-sale',
     title: 'Point of Sale',
-    tagline: 'Fast order entry built for the morning rush.',
-    Icon: CreditCard,
+    tagline: 'Fast order entry built for high volume nights.',
+    Icon: Zap,
     iconClass: 'bg-sky-500/15 text-sky-400',
   },
   {
@@ -48,18 +47,18 @@ const related = [
 ];
 
 const pillarIcons = {
-  connectivity: { Icon: Wifi, iconClass: 'bg-amber-500/15 text-amber-400' },
-  team: { Icon: Users, iconClass: 'bg-sky-500/15 text-sky-400' },
-  kiosk: { Icon: Monitor, iconClass: 'bg-rose-500/15 text-rose-400' },
+  tabs: { Icon: CreditCard, iconClass: 'bg-rose-500/15 text-rose-400' },
+  inventory: { Icon: Package, iconClass: 'bg-emerald-500/15 text-emerald-400' },
+  compliance: { Icon: ShieldCheck, iconClass: 'bg-violet-500/15 text-violet-400' },
 };
 
-export default function CafeClient() {
+export default function BarClient() {
   return (
-    <div className="min-h-screen bg-black text-white font-montserrat selection:bg-amber-500/30">
+    <div className="min-h-screen bg-black text-white font-montserrat selection:bg-rose-500/30">
       {/* Hero */}
       <section className="relative pt-32 md:pt-44 pb-16 md:pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-amber-500/20 via-amber-600/10 to-transparent pointer-events-none" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-amber-500/10 rounded-full blur-[150px] pointer-events-none opacity-50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-rose-500/20 via-rose-600/10 to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-rose-500/10 rounded-full blur-[150px] pointer-events-none opacity-50" />
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div
@@ -71,7 +70,7 @@ export default function CafeClient() {
               Solutions
             </a>
             <ChevronRight size={14} className="shrink-0" />
-            <span className="text-white">Cafe</span>
+            <span className="text-white">Bar &amp; Nightclub</span>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
@@ -80,9 +79,9 @@ export default function CafeClient() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-8 text-amber-400"
+                className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center mb-8 text-rose-400"
               >
-                <Coffee size={36} />
+                <Beer size={36} />
               </motion.div>
 
               <motion.h1
@@ -98,7 +97,7 @@ export default function CafeClient() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-xl sm:text-2xl md:text-3xl font-medium mb-6 text-amber-400"
+                className="text-xl sm:text-2xl md:text-3xl font-medium mb-6 text-rose-400"
               >
                 {hero.eyebrow}
               </motion.p>
@@ -138,7 +137,7 @@ export default function CafeClient() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-2 w-full max-w-md lg:max-w-none mx-auto lg:mx-0 rounded-[2rem] md:rounded-[2.5rem] border border-amber-500/20 bg-white/5 overflow-hidden"
+              className="lg:col-span-2 w-full max-w-md lg:max-w-none mx-auto lg:mx-0 rounded-[2rem] md:rounded-[2.5rem] border border-rose-500/20 bg-white/5 overflow-hidden"
             >
               <Placeholder
                 label={hero.imageLabel}
@@ -151,7 +150,6 @@ export default function CafeClient() {
         </div>
       </section>
 
-
       {/* Highlights */}
       <section className="border-t border-white/5 py-14 md:py-20">
         <div className="container mx-auto px-4 md:px-6">
@@ -163,7 +161,7 @@ export default function CafeClient() {
                 transition={{ delay: index * 0.08 }}
                 className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-7 min-w-0"
               >
-                <div className="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center mb-5">
+                <div className="w-10 h-10 rounded-xl bg-rose-500/15 text-rose-400 flex items-center justify-center mb-5">
                   <Check size={18} />
                 </div>
                 <div className="text-lg md:text-xl font-bold tracking-tighter">{item.value}</div>
@@ -179,7 +177,7 @@ export default function CafeClient() {
         <div className="container mx-auto px-4 md:px-6 space-y-16 md:space-y-24">
           {pillars.map((pillar, index) => {
             const { Icon, iconClass } =
-              pillarIcons[pillar.id] ?? { Icon: Coffee, iconClass: 'bg-white/10 text-white' };
+              pillarIcons[pillar.id] ?? { Icon: Beer, iconClass: 'bg-white/10 text-white' };
             return (
               <motion.div
                 key={pillar.id}
@@ -216,16 +214,15 @@ export default function CafeClient() {
         </div>
       </section>
 
-      {/* Why cafes */}
+      {/* Why bars */}
       <section className="py-20 md:py-28 border-t border-white/5">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...rise} className="text-center mb-14 md:mb-20">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
-              Why eatOS for cafes?
+              Why eatOS for bars and nightclubs?
             </h2>
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto whitespace-pre-line">
-              Built for the pace of the counter, from the first{"\n"}espresso of the day to the final
-              close.
+              Built for the pace of the rail, from the first{"\n"}round poured to last call.
             </p>
           </motion.div>
 
@@ -233,21 +230,21 @@ export default function CafeClient() {
             {[
               {
                 Icon: Zap,
-                title: 'Learn it in a shift',
-                body: 'A layout new baristas pick up on their first shift, so complicated orders still go in quickly.',
-                iconClass: 'bg-amber-500/15 text-amber-400',
+                title: 'Speed at the rail',
+                body: 'Favorites, quick keys and repeat rounds keep bartenders pouring instead of tapping through menus.',
+                iconClass: 'bg-rose-500/15 text-rose-400',
               },
               {
-                Icon: Package,
-                title: 'Inventory under control',
-                body: 'Track beans, milk, syrups and pastries as they sell, and see what needs reordering before you run out.',
-                iconClass: 'bg-emerald-500/15 text-emerald-400',
+                Icon: ShieldCheck,
+                title: 'Reliable through last call',
+                body: 'Online or offline, across every station and handheld, tabs stay open and payments keep clearing.',
+                iconClass: 'bg-violet-500/15 text-violet-400',
               },
               {
                 Icon: Clock,
                 title: '24/7 support',
-                body: 'Real people, real help, any time. We are here when you need us, especially at open.',
-                iconClass: 'bg-sky-500/15 text-sky-400',
+                body: 'Real people, real help, any time. We are here when you need us, especially after midnight.',
+                iconClass: 'bg-emerald-500/15 text-emerald-400',
               },
             ].map(({ Icon, title, body, iconClass }, index) => (
               <motion.div
@@ -268,7 +265,6 @@ export default function CafeClient() {
           </div>
         </div>
       </section>
-
 
       {/* Works great with */}
       <section className="py-20 md:py-28 border-t border-white/5">
@@ -322,16 +318,15 @@ export default function CafeClient() {
             {...rise}
             className="relative rounded-[2.5rem] md:rounded-[3rem] overflow-hidden"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 via-amber-600/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-br from-rose-500/20 via-rose-600/10 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
 
             <div className="relative z-10 p-10 md:p-20 text-center">
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
-                Serve your cafe crowd faster
+                Keep the night moving
               </h2>
               <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 whitespace-pre-line">
-                See the cafe setup in action. Book a demo and we{"\n"}will show you how it fits your
-                counter.
+                See the bar setup in action. Book a demo and we{"\n"}will show you how it fits your rail.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
