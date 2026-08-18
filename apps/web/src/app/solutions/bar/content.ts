@@ -58,13 +58,13 @@ export const pillars = [
     image: inventoryImg.url,
   },
   {
-    id: 'compliance',
-    title: 'Age verification and compliance at the door',
+    id: 'handheld',
+    title: 'Handheld ordering and payment at the rail',
     body:
-      'Scan an ID at the door or at the bar and get an instant, unmistakable read on age and validity, without slowing the line or putting your team on the spot. Every check is logged, so you have a clear record of who was served and when if a question ever comes up.',
+      'Take orders, open tabs and accept payments without leaving the rail. A handheld terminal keeps bartenders face-to-face with guests instead of walking back to a fixed station, so service stays personal and the line never stalls.',
     more:
-      'Set drink limits, cut-off times and manager approvals to match local rules, then let the system enforce them consistently across every station. Your staff spend less time judging calls in the dark and more time serving the room with confidence.',
-    imageLabel: 'Door host scanning a guest ID',
-    image: idImg.url,
+      'Tap, insert, swipe or contactless payments settle on the spot, tips are prompted automatically, and every transaction posts straight to the tab. When the night gets busy, the best bartenders stay on the floor with a device that is as mobile as they are.',
+    imageLabel: 'Bartender tapping a card on a handheld at the rail',
+    image: handheldImg.url,
   },
 ];
