@@ -242,11 +242,11 @@ function Matrix() {
 
         {/* Table, tablet and up, horizontal scroll with sticky feature column */}
         <Reveal delay={0.1} className="mt-14 hidden md:block">
-          <div className="-mx-4 overflow-x-auto px-4 md:mx-0 md:px-8 lg:px-20">
-            <table className="w-full min-w-[720px] border-separate border-spacing-0 text-left">
+          <div className="-mx-4 overflow-x-auto px-4 md:mx-0 md:px-10 lg:px-24">
+            <table className="mx-auto min-w-[680px] border-separate border-spacing-0 text-left">
               <thead>
                 <tr>
-                  <th className="sticky left-0 z-10 bg-black pb-6 pr-1 align-bottom text-base font-semibold tracking-tight sm:text-lg">
+                  <th className="sticky left-0 z-10 w-[240px] bg-black pb-6 pr-0 align-bottom text-base font-semibold tracking-tight sm:text-lg">
                     Feature Set
                   </th>
                   {competitors.map((name, i) => (
@@ -254,7 +254,7 @@ function Matrix() {
                       key={name}
                       className={`pb-6 text-center align-bottom text-sm font-semibold tracking-tight ${
                         i === 0
-                          ? 'rounded-t-[20px] bg-white/[0.07] pl-1 pr-3 pt-7 text-white'
+                          ? 'w-[100px] rounded-t-[20px] bg-white/[0.07] pl-0 pr-3 pt-7 text-white'
                           : 'px-3 text-zinc-500'
                       }`}
                     >
@@ -278,11 +278,11 @@ function Matrix() {
               <tbody>
                 {matrix.map((row, r) => (
                   <tr key={row.feature}>
-                    <td className="sticky left-0 z-10 border-t border-white/8 bg-black py-5 pr-1 text-sm leading-6 text-zinc-300">
+                    <td className="sticky left-0 z-10 w-[240px] border-t border-white/8 bg-black py-5 pr-0 text-sm leading-6 text-zinc-300">
                       {row.feature}
                     </td>
                     <td
-                      className={`border-t border-white/8 bg-white/[0.07] pl-1 pr-3 py-5 text-center ${
+                      className={`w-[100px] border-t border-white/8 bg-white/[0.07] pl-0 pr-3 py-5 text-center ${
                         r === matrix.length - 1 ? 'rounded-b-[20px]' : ''
                       }`}
                     >
