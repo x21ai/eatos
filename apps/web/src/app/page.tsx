@@ -118,7 +118,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-black text-white selection:bg-indigo-500/30 font-sans">
       {/* Cinematic Hero Section */}
-      <section className="relative h-[100dvh] min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative flex items-center justify-center overflow-hidden py-28 md:h-[100dvh] md:min-h-screen md:py-0">
         {/* Background Video/Image with Zoom Effect */}
         <motion.div
           initial={{ scale: 1.1, opacity: 0 }}
@@ -135,12 +135,12 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
         </motion.div>
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10 pt-20 text-center">
+        <div className="container mx-auto px-5 md:px-6 relative z-10 pt-10 md:pt-20 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-sm font-medium mb-8 text-indigo-300"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 md:px-4 md:py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs md:text-sm font-medium mb-6 md:mb-8 text-indigo-300"
           >
             <Star size={14} fill="currentColor" />
             <span>
@@ -152,7 +152,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.7 }}
-            className="text-6xl md:text-9xl font-bold tracking-tighter mb-8 leading-[1.05]"
+            className="text-5xl sm:text-6xl md:text-9xl font-bold tracking-tighter mb-5 md:mb-8 leading-[1.05]"
           >
             Beyond <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40">
@@ -164,7 +164,7 @@ export default function HomePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
-            className="text-[15px] md:text-[22px] text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed font-light"
+            className="text-[15px] md:text-[22px] text-gray-400 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed font-light"
           >
             The restaurant operating system that sees, thinks, acts quietly and reliably at scale.
             Beautiful hardware. Invisible software.
@@ -174,11 +174,11 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.2 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6"
           >
             <a
               href="/get-started"
-              className="group relative px-8 py-4 bg-white text-black rounded-full text-lg font-semibold hover:scale-105 transition-all duration-300 overflow-hidden w-full sm:w-auto"
+              className="group relative px-8 py-3.5 md:py-4 bg-white text-black rounded-full text-base md:text-lg font-semibold hover:scale-105 transition-all duration-300 overflow-hidden w-full sm:w-auto"
             >
               <span className="relative z-10 flex items-center justify-center gap-2">
                 Get Started <ChevronRight size={18} />
@@ -186,7 +186,7 @@ export default function HomePage() {
             </a>
             <a
               href="/hardware"
-              className="px-8 py-4 rounded-full text-lg font-medium text-white border border-white/20 hover:bg-white/10 hover:border-white/40 transition-all backdrop-blur-sm w-full sm:w-auto flex items-center justify-center gap-2"
+              className="px-8 py-3.5 md:py-4 rounded-full text-base md:text-lg font-medium text-white border border-white/20 hover:bg-white/10 hover:border-white/40 transition-all backdrop-blur-sm w-full sm:w-auto flex items-center justify-center gap-2"
             >
               <Box size={18} /> Explore Hardware
             </a>
