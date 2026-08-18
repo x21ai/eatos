@@ -19,7 +19,7 @@ export function LiveDemoSection() {
   const activeDemo = demos.find((d) => d.id === activeTab);
 
   return (
-    <section className="py-12 md:py-16 bg-black relative overflow-hidden w-full lg:w-[818px] mx-auto px-4 md:px-6 lg:px-0">
+    <section className="py-12 md:py-16 bg-black relative overflow-hidden w-full lg:w-[818px] mx-auto px-5 md:px-6 lg:px-0">
       <div className="w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -27,22 +27,22 @@ export function LiveDemoSection() {
           viewport={{ once: true }}
           className="text-center mb-8"
         >
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-4 text-white">
             How it Works
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
             Experience the full eatOS platform in your browser. Switch between products to see every feature in action and explore the complete workflow.
           </p>
         </motion.div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <div className="flex justify-center mb-6">
-            <TabsList className="bg-zinc-900/80 border border-white/10 p-2 rounded-xl flex flex-nowrap overflow-x-auto max-w-full scrollbar-hidden">
+          <div className="mb-6 flex justify-center">
+            <TabsList className="bg-zinc-900/80 border border-white/10 p-1.5 md:p-2 rounded-xl flex h-auto flex-wrap justify-center gap-1 sm:flex-nowrap">
               {demos.map((demo) => (
                 <TabsTrigger
                   key={demo.id}
                   value={demo.id}
-                  className="px-4 py-2.5 text-sm font-medium rounded-lg whitespace-nowrap data-[state=active]:bg-white data-[state=active]:text-black data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:text-white transition-colors"
+                  className="px-3.5 py-2 md:px-4 md:py-2.5 text-xs md:text-sm font-medium rounded-lg whitespace-nowrap data-[state=active]:bg-white data-[state=active]:text-black data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:text-white transition-colors"
                 >
                   {demo.label}
                 </TabsTrigger>
@@ -56,25 +56,27 @@ export function LiveDemoSection() {
               value={demo.id}
               className="mt-0 focus-visible:outline-none focus-visible:ring-0"
             >
-              <div className="relative w-full rounded-2xl border border-white/10 overflow-hidden bg-zinc-900 shadow-2xl">
-                <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-zinc-900/50">
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                    <div className="w-3 h-3 rounded-full bg-green-500/80" />
+              <div className="relative w-full rounded-xl md:rounded-2xl border border-white/10 overflow-hidden bg-zinc-900 shadow-2xl">
+                <div className="flex items-center justify-between gap-3 px-3 py-2.5 md:px-4 md:py-3 border-b border-white/10 bg-zinc-900/50">
+                  <div className="flex shrink-0 items-center gap-1.5 md:gap-2">
+                    <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-red-500/80" />
+                    <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-yellow-500/80" />
+                    <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-green-500/80" />
                   </div>
-                  <div className="text-sm text-gray-400 font-medium">{demo.label}</div>
+                  <div className="min-w-0 truncate text-xs md:text-sm text-gray-400 font-medium">
+                    {demo.label}
+                  </div>
                   <a
                     href={demo.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-white transition-colors"
+                    className="flex shrink-0 items-center gap-1.5 text-xs md:text-sm text-gray-400 hover:text-white transition-colors"
                   >
                     <ExternalLink size={14} />
                     Open
                   </a>
                 </div>
-                <div className="relative w-full aspect-[16/9] lg:aspect-auto lg:h-[460px]">
+                <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-[460px]">
                   <iframe
                     key={demo.id}
                     src={demo.url}
