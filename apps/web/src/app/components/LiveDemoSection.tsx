@@ -37,12 +37,12 @@ export function LiveDemoSection() {
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <div className="mb-6 flex justify-center">
-            <TabsList className="bg-zinc-900/80 border border-white/10 p-1.5 md:p-2 rounded-xl flex h-auto flex-wrap justify-center gap-1 sm:flex-nowrap">
+            <TabsList className="bg-zinc-900/80 border border-white/10 p-1.5 md:p-2 rounded-xl grid h-auto w-full grid-cols-2 gap-1.5 sm:grid-cols-3 md:flex md:w-fit md:flex-nowrap md:gap-1">
               {demos.map((demo) => (
                 <TabsTrigger
                   key={demo.id}
                   value={demo.id}
-                  className="px-3.5 py-2 md:px-4 md:py-2.5 text-xs md:text-sm font-medium rounded-lg whitespace-nowrap data-[state=active]:bg-white data-[state=active]:text-black data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:text-white transition-colors"
+                  className="w-full min-h-11 px-3 py-2 md:min-h-0 md:w-auto md:px-4 md:py-2.5 text-[13px] md:text-sm font-medium rounded-lg whitespace-nowrap justify-center border border-white/10 md:border-transparent data-[state=active]:bg-white data-[state=active]:text-black data-[state=inactive]:text-gray-400 data-[state=inactive]:hover:text-white transition-colors"
                 >
                   {demo.label}
                 </TabsTrigger>
