@@ -74,8 +74,8 @@ export default function CafeClient() {
             <span className="text-white">Cafe</span>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="min-w-0">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+            <div className="min-w-0 lg:col-span-3">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -107,7 +107,7 @@ export default function CafeClient() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-lg md:text-xl text-gray-400 leading-relaxed mb-10 max-w-xl"
+                className="text-lg md:text-xl text-gray-400 leading-relaxed mb-10 max-w-2xl"
               >
                 {hero.description}
               </motion.p>
@@ -138,7 +138,7 @@ export default function CafeClient() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="rounded-[2rem] md:rounded-[2.5rem] border border-amber-500/20 bg-white/5 overflow-hidden"
+              className="lg:col-span-2 rounded-[2rem] md:rounded-[2.5rem] border border-amber-500/20 bg-white/5 overflow-hidden max-w-md lg:max-w-none mx-auto lg:mx-0"
             >
               <Placeholder
                 label={hero.imageLabel}
