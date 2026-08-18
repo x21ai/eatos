@@ -8,7 +8,7 @@ import {
   Clock,
   CreditCard,
   Package,
-  ShieldCheck,
+  Smartphone,
   Users,
   Zap,
 } from 'lucide-react';
