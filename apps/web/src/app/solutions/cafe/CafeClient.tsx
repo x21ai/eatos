@@ -133,40 +133,48 @@ export default function CafeClient() {
               </motion.div>
             </div>
 
-            {/* Key features card */}
+            {/* Hero image */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="rounded-[2rem] md:rounded-[2.5rem] border border-amber-500/20 bg-white/5 backdrop-blur-xl p-8 md:p-10"
+              className="rounded-[2rem] md:rounded-[2.5rem] border border-amber-500/20 bg-white/5 overflow-hidden"
             >
-              <h2 className="text-xl font-bold tracking-tighter mb-8">Key features</h2>
-              <div className="space-y-5 md:space-y-6">
-                {capabilities.map((feature, index) => (
-                  <motion.div
-                    key={feature}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 + index * 0.08 }}
-                    className="flex items-start gap-4"
-                  >
-                    <div className="w-8 h-8 shrink-0 rounded-full bg-amber-500/10 text-amber-400 flex items-center justify-center mt-0.5">
-                      <Check size={16} />
-                    </div>
-                    <div className="min-w-0 text-base md:text-lg font-medium">{feature}</div>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="mt-8 md:mt-10 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
-                <Placeholder
-                  label={hero.imageLabel}
-                  src={hero.image}
-                  ratio="aspect-[16/10]"
-                  className="rounded-none"
-                />
-              </div>
+              <Placeholder
+                label={hero.imageLabel}
+                src={hero.image}
+                ratio="aspect-[4/3]"
+                className="rounded-none"
+              />
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Key features */}
+      <section className="border-t border-white/5 py-16 md:py-24">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div {...rise} className="max-w-2xl mb-10 md:mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">Key features</h2>
+            <p className="mt-4 text-lg text-gray-400 leading-relaxed">
+              Everything a cafe needs to take orders, keep stock in check and bring guests back.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {capabilities.map((feature, index) => (
+              <motion.div
+                key={feature}
+                {...rise}
+                transition={{ delay: index * 0.06 }}
+                className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 md:p-6 min-w-0"
+              >
+                <div className="w-10 h-10 shrink-0 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center">
+                  <Check size={18} />
+                </div>
+                <div className="min-w-0 text-base md:text-lg font-medium">{feature}</div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
