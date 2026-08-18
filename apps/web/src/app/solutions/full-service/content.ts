@@ -2,9 +2,9 @@
 // All copy for the Full Service solution page. Edit here.
 
 import heroImg from '../../../assets/svc-full-service.jpg.asset.json';
-import tablesImg from './assets/fs-tables.jpg.asset.json';
-import paymentsImg from './assets/fs-payments.jpg.asset.json';
-import coursingImg from './assets/fs-coursing.jpg.asset.json';
+import tablesImg from './assets/fs-v3-1.jpg.asset.json';
+import paymentsImg from './assets/fs-v3-2.jpg.asset.json';
+import coursingImg from './assets/fs-v3-3.jpg.asset.json';
 
 export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
@@ -18,26 +18,34 @@ export const hero = {
 };
 
 export const marquee = [
-  { value: '1', label: 'Platform, front to back' },
-  { value: '100%', label: 'Offline capable' },
-  { value: '24/7', label: 'Support included' },
-  { value: '$0', label: 'Hardware upfront' },
+  {
+    value: 'One platform',
+    label: 'Front of house, kitchen and back office run on a single system.',
+  },
+  {
+    value: 'Always on',
+    label: 'Service keeps moving online or offline, with no lost checks.',
+  },
+  {
+    value: 'Support 24/7',
+    label: 'Real people on call through every dinner rush, every night.',
+  },
+  {
+    value: 'No upfront cost',
+    label: 'Hardware included with Pay As You Go, so you start fast.',
+  },
 ];
 
 export const pillars = [
   {
     id: 'platform',
-    title: 'We change the way you think about Point of Sale',
+    title: 'A new way to think about Point of Sale',
     body:
       'Our all-in-one food-service and restaurant management suite is designed to make it easier to manage guests, staff, marketing, finances, and the menu.',
     more:
       'Everything runs on one cloud platform, so operators thrive no matter their size, from a single dining room to a growing group of restaurants.',
     imageLabel: 'Table management on a tablet',
     image: tablesImg.url,
-    metrics: [
-      { value: '1', label: 'Suite for the venue' },
-      { value: '5', label: 'Areas managed' },
-    ],
   },
   {
     id: 'offline',
@@ -48,10 +56,6 @@ export const pillars = [
       'The multi-user and multi-device environment makes seamless teamwork a breeze, with tickets and totals syncing the moment you are back online.',
     imageLabel: 'Tableside contactless payment',
     image: paymentsImg.url,
-    metrics: [
-      { value: '0', label: 'Lost checks offline' },
-      { value: '100%', label: 'Auto reconciled' },
-    ],
   },
   {
     id: 'guests',
@@ -62,10 +66,6 @@ export const pillars = [
       'We streamline communication across the restaurant so altering orders and accounting for dietary restrictions is easy, and plates come out right the first time.',
     imageLabel: 'Kitchen pass with coursing display',
     image: coursingImg.url,
-    metrics: [
-      { value: '1x', label: 'Edit menu once' },
-      { value: '10x', label: 'Fewer order errors' },
-    ],
   },
 ];
 
