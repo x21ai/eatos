@@ -49,7 +49,7 @@ const related = [
 const pillarIcons = {
   tabs: { Icon: CreditCard, iconClass: 'bg-rose-500/15 text-rose-400' },
   inventory: { Icon: Package, iconClass: 'bg-emerald-500/15 text-emerald-400' },
-  compliance: { Icon: ShieldCheck, iconClass: 'bg-violet-500/15 text-violet-400' },
+  handheld: { Icon: Smartphone, iconClass: 'bg-violet-500/15 text-violet-400' },
 };
 
 export default function BarClient() {
