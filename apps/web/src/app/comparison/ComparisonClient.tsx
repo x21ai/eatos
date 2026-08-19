@@ -243,16 +243,16 @@ function Matrix() {
         {/* Table, tablet and up, horizontal scroll with sticky feature column */}
         <Reveal delay={0.1} className="mt-14 hidden md:block">
           <div className="-mx-4 overflow-x-auto px-4 md:mx-0 md:px-6 lg:px-10">
-            <table className="w-full min-w-[760px] border-separate border-spacing-0 text-left">
+            <table className="w-full min-w-[760px] table-fixed border-separate border-spacing-0 text-left">
               <thead>
                 <tr>
-                  <th className="sticky left-0 z-10 bg-black pb-6 pr-1 align-bottom text-base font-semibold tracking-tight sm:text-lg">
+                  <th className="w-5/12 sticky left-0 z-10 bg-black pb-6 pr-1 align-bottom text-base font-semibold tracking-tight sm:text-lg">
                     Feature Set
                   </th>
                   {competitors.map((name, i) => (
                     <th
                       key={name}
-                      className={`pb-6 text-center align-bottom text-sm font-semibold tracking-tight ${
+                      className={`w-1/12 pb-6 text-center align-bottom text-sm font-semibold tracking-tight ${
                         i === 0
                           ? 'rounded-t-[20px] bg-white/[0.07] pl-1 pr-2 pt-7 text-white'
                           : 'px-3 text-zinc-500'
