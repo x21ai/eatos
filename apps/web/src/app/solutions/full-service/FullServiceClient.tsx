@@ -91,7 +91,7 @@ export default function FullServiceClient() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter mb-4"
+                className="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tighter mb-4"
               >
                 {hero.title}
               </motion.h1>
@@ -100,7 +100,7 @@ export default function FullServiceClient() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-xl sm:text-2xl md:text-3xl font-medium mb-6 text-indigo-400"
+                className="text-lg sm:text-2xl md:text-3xl font-medium mb-6 text-indigo-400"
               >
                 {hero.eyebrow}
               </motion.p>
@@ -109,7 +109,7 @@ export default function FullServiceClient() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-lg md:text-xl text-gray-400 leading-relaxed mb-10 max-w-xl"
+                className="text-base md:text-xl text-gray-400 leading-relaxed mb-10 max-w-xl"
               >
                 {hero.description}
               </motion.p>
@@ -173,9 +173,9 @@ export default function FullServiceClient() {
                 key={item.value}
                 {...rise}
                 transition={{ delay: index * 0.08 }}
-                className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-7 min-w-0"
+                className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-7 min-w-0 text-center sm:text-left"
               >
-                <div className="w-10 h-10 rounded-xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center mb-5">
+                <div className="w-10 h-10 shrink-0 mx-auto sm:mx-0 rounded-xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center mb-5">
                   <Check size={18} />
                 </div>
                 <div className="text-lg md:text-xl font-bold tracking-tighter">{item.value}</div>
@@ -205,11 +205,15 @@ export default function FullServiceClient() {
                   >
                     <Icon size={28} />
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-5">
+                  <h2 className="text-base sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter mb-5">
                     {pillar.title}
                   </h2>
-                  <p className="text-lg text-gray-400 leading-relaxed mb-5">{pillar.body}</p>
-                  <p className="text-base text-gray-500 leading-relaxed mb-8">{pillar.more}</p>
+                  <p className="text-base md:text-lg text-gray-400 leading-relaxed mb-5">
+                    {pillar.body}
+                  </p>
+                  <p className="text-sm md:text-base text-gray-500 leading-relaxed mb-8">
+                    {pillar.more}
+                  </p>
                 </div>
 
                 <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
@@ -232,10 +236,11 @@ export default function FullServiceClient() {
       <section className="py-20 md:py-28 border-t border-white/5">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...rise} className="text-center mb-14 md:mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
-              Why eatOS for full service?
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mb-4">
+              Why eatOS for <br className="md:hidden" />
+              full service?
             </h2>
-            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto whitespace-pre-line">
+            <p className="text-base md:text-xl text-gray-400 max-w-2xl mx-auto whitespace-pre-line">
               Built for the pace of the dining room, from{"\n"}the first greeting to the final check.
             </p>
           </motion.div>
@@ -287,8 +292,12 @@ export default function FullServiceClient() {
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-indigo-400">
               {bundle.eyebrow}
             </p>
-            <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tighter">{bundle.title}</h2>
-            <p className="mt-5 text-lg text-gray-400 leading-relaxed">{bundle.description}</p>
+            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter">
+              {bundle.title}
+            </h2>
+            <p className="mt-5 text-base sm:text-lg text-gray-400 leading-relaxed">
+              {bundle.description}
+            </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href={bundle.primaryCta.href}
@@ -381,10 +390,10 @@ export default function FullServiceClient() {
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
 
             <div className="relative z-10 p-10 md:p-20 text-center">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter mb-6">
                 Elevate your dining experience
               </h2>
-              <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 whitespace-pre-line">
+              <p className="text-sm md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 whitespace-pre-line">
                 See the full-service setup in action. Book a demo and{"\n"}we will show you how it fits
                 your floor plan.
               </p>
