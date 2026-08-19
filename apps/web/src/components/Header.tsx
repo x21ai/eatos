@@ -366,7 +366,7 @@ export default function Header() {
             : "bg-transparent py-5"
       }`}
     >
-      <div className="container mx-auto px-4 xl:px-6 flex items-center justify-between gap-4">
+      <div className="mx-auto w-full max-w-6xl px-5 md:px-8 lg:px-10 flex items-center justify-between gap-4">
         {/* Logo */}
         <a
           href="/"

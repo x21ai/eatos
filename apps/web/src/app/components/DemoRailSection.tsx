@@ -23,7 +23,7 @@ export function DemoRailSection() {
 
   return (
     <section className="py-12 md:py-16 bg-black border-t border-white/5">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="mx-auto w-full max-w-6xl px-5 md:px-8 lg:px-10">
         <div className="text-center mb-8">
           <div className="text-xs font-bold tracking-[0.2em] uppercase text-emerald-400 mb-3">
             Option C, Side rail
