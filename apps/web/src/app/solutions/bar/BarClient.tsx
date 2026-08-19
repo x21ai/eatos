@@ -74,8 +74,8 @@ export default function BarClient() {
             <span className="text-white">Bar &amp; Nightclub</span>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
-            <div className="min-w-0 lg:col-span-3">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
+            <div className="min-w-0 lg:col-span-5">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -107,7 +107,7 @@ export default function BarClient() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-lg md:text-xl text-gray-400 leading-relaxed mb-10 max-w-2xl"
+                className="text-base sm:text-lg text-gray-400 leading-relaxed mb-10 max-w-xl"
               >
                 {hero.description}
               </motion.p>
@@ -138,7 +138,7 @@ export default function BarClient() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-2 w-full max-w-md lg:max-w-none mx-auto lg:mx-0 rounded-[2rem] md:rounded-[2.5rem] border border-rose-500/20 bg-white/5 overflow-hidden"
+              className="lg:col-span-7 w-full max-w-md sm:max-w-lg lg:max-w-none mx-auto lg:mx-0 rounded-[2rem] md:rounded-[2.5rem] border border-rose-500/20 bg-white/5 overflow-hidden"
             >
               <Placeholder
                 label={hero.imageLabel}
