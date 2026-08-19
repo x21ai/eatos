@@ -20,19 +20,23 @@ export const hero = {
 export const marquee = [
   {
     value: 'One platform',
-    label: 'Front of house, kitchen and back office run on a single system, all day.',
+    label:
+      'Front of house, kitchen and back office run on a single system, all day. Every order, table, and payment flows through one connected platform.',
   },
   {
     value: 'Always on',
-    label: 'Service keeps moving online or offline, with no lost checks or orders.',
+    label:
+      'Service keeps moving online or offline, with no lost checks or orders. Tickets and totals sync automatically the moment connectivity returns.',
   },
   {
     value: 'Support 24/7',
-    label: 'Real people on call through every dinner rush, every night of the year.',
+    label:
+      'Real people on call through every dinner rush, every night of the year. Our support team knows restaurants and answers fast, so service never stalls.',
   },
   {
     value: 'No upfront cost',
-    label: 'Hardware included with Pay As You Go, so you start fast and scale easily.',
+    label:
+      'Hardware included with Pay As You Go, so you start fast and scale easily. Add terminals, handhelds, and kitchen displays as your dining room grows.',
   },
 ];
 
@@ -59,7 +63,7 @@ export const pillars = [
   },
   {
     id: 'guests',
-    title: 'Make one-time customers a thing of the past',
+    title: 'Turn first-timers into regulars',
     body:
       'With menu and table management, seating and serving your guests is more efficient than ever before, from the first greeting to the final check.',
     more:
