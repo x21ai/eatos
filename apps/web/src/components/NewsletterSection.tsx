@@ -25,7 +25,7 @@ export function NewsletterSection() {
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-green-400">
               Newsletter
             </p>
-            <h2 className="mt-5 font-bold leading-[1.05] tracking-tighter text-white text-[clamp(2rem,5vw,3.5rem)]">
+            <h2 className="mt-5 font-bold leading-[1.05] tracking-tighter text-white text-[clamp(1.5rem,5vw,3.5rem)]">
               Connect to the Future
             </h2>
             <p className="mx-auto mt-5 max-w-lg text-sm leading-6 text-gray-400 sm:text-base sm:leading-7">
@@ -48,11 +48,11 @@ export function NewsletterSection() {
                     setStatus('idle');
                   }}
                   placeholder="Add your email"
-                  className="h-12 w-full min-w-0 flex-1 rounded-full border border-white/10 bg-black/60 px-5 text-base text-white placeholder:text-gray-500 focus:border-green-500/50 focus:outline-none sm:h-11 sm:text-sm sm:border-transparent sm:bg-transparent"
+                  className="h-[3rem] w-full min-w-0 flex-1 rounded-full border border-white/10 bg-black/60 px-5 text-base text-white placeholder:text-gray-500 focus:border-green-500/50 focus:outline-none sm:h-11 sm:text-sm sm:border-transparent sm:bg-transparent"
                 />
                 <button
                   type="submit"
-                  className="h-12 w-full shrink-0 rounded-full bg-white px-7 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:h-11 sm:w-auto"
+                  className="h-[3rem] w-full shrink-0 rounded-full bg-white px-7 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:h-11 sm:w-auto"
                 >
                   Subscribe
                 </button>
