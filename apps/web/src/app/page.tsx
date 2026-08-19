@@ -548,7 +548,7 @@ export default function HomePage() {
                 <BarChart2 size={12} />
                 <span>Real-time Reporting</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter mb-6">
                 Know your numbers.
                 <br />
                 <span className="text-gray-500">Every shift.</span>
