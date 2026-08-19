@@ -48,11 +48,11 @@ export function NewsletterSection() {
                     setStatus('idle');
                   }}
                   placeholder="Add your email"
-                  className="h-[3rem] w-full min-w-0 flex-1 rounded-full border border-white/10 bg-black/60 px-5 text-base text-white placeholder:text-gray-500 focus:border-green-500/50 focus:outline-none sm:h-11 sm:text-sm sm:border-transparent sm:bg-transparent"
+                  className="h-[3.5rem] w-full min-w-0 flex-1 rounded-full border border-white/10 bg-black/60 px-5 text-base text-white placeholder:text-gray-500 focus:border-green-500/50 focus:outline-none sm:h-11 sm:text-sm sm:border-transparent sm:bg-transparent"
                 />
                 <button
                   type="submit"
-                  className="h-[3rem] w-full shrink-0 rounded-full bg-white px-7 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:h-11 sm:w-auto"
+                  className="h-[3.5rem] w-full shrink-0 rounded-full bg-white px-7 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:h-11 sm:w-auto"
                 >
                   Subscribe
                 </button>
