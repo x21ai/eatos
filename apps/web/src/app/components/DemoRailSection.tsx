@@ -1,10 +1,21 @@
 'use client';
 
 import { useState } from 'react';
+import { motion } from 'motion/react';
 import { ExternalLink } from 'lucide-react';
 import { demoSources } from './demoSources';
 
-export function DemoRailSection() {
+interface DemoRailSectionProps {
+  title?: string;
+  description?: string;
+  showLabel?: boolean;
+}
+
+export function DemoRailSection({
+  title = 'How it Works',
+  description = 'Pick a product from the rail and the live demo loads beside it, so you can move through the whole platform quickly.',
+  showLabel = true,
+}: DemoRailSectionProps) {
   const [activeId, setActiveId] = useState(demoSources[0].id);
   const demo = demoSources.find((d) => d.id === activeId) ?? demoSources[0];
 
@@ -25,15 +36,27 @@ export function DemoRailSection() {
     <section className="py-12 md:py-16 bg-black border-t border-white/5">
       <div className="mx-auto w-full max-w-6xl px-5 md:px-8 lg:px-10">
         <div className="text-center mb-8">
-          <div className="text-xs font-bold tracking-[0.2em] uppercase text-emerald-400 mb-3">
-            Option C, Side rail
-          </div>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 text-white">
-            How it Works
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Pick a product from the rail and the live demo loads beside it, so you can move through the whole platform quickly.
-          </p>
+          {showLabel && (
+            <div className="text-xs font-bold tracking-[0.2em] uppercase text-emerald-400 mb-3">
+              Option C, Side rail
+            </div>
+          )}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 text-white"
+          >
+            {title}
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-gray-400 text-lg max-w-2xl mx-auto"
+          >
+            {description}
+          </motion.p>
         </div>
 
         <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6">

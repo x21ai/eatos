@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { NewsletterSection } from '@/components/NewsletterSection';
-import { LiveDemoSection } from './components/LiveDemoSection';
+import { DemoRailSection } from './components/DemoRailSection';
 import svcQuickService from '../assets/svc-quick-service.jpg.asset.json';
 import svcFullService from '../assets/svc-full-service.jpg.asset.json';
 import svcFineDining from '../assets/svc-fine-dining.jpg.asset.json';
@@ -195,7 +195,11 @@ export default function HomePage() {
       </section>
 
       {/* Live Demo Section */}
-      <LiveDemoSection />
+      <DemoRailSection
+        title="How it Works"
+        description="Experience the full eatOS platform in your browser. Switch between products to see every feature in action and explore the complete workflow."
+        showLabel={false}
+      />
 
       {/* Social Proof / Trust Section */}
       <section className="py-16 md:py-20 bg-black border-t border-white/5 relative overflow-hidden">
