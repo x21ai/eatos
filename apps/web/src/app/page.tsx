@@ -198,7 +198,7 @@ export default function HomePage() {
       <LiveDemoSection />
 
       {/* Social Proof / Trust Section */}
-      <section className="py-16 md:py-28 bg-black border-t border-white/5 relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-black border-t border-white/5 relative overflow-hidden">
         <div className="container mx-auto px-5 md:px-6">
           {/* Capability strip: honest, aspirational, Apple-style */}
           <motion.div
@@ -267,7 +267,7 @@ export default function HomePage() {
 
 
       {/* Bento Grid Navigation - The Hub */}
-      <section className="py-16 md:py-28 bg-black relative">
+      <section className="py-16 md:pt-16 md:pb-28 bg-black relative">
         <div className="container mx-auto px-5 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
