@@ -454,9 +454,10 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              className="min-w-0 md:max-w-[30rem] lg:max-w-none"
             >
-              <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-4">
-                Hardware that <br />
+              <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter mb-4">
+                Hardware that <br className="md:hidden lg:block" />
                 turns heads.
               </h2>
               <p className="text-gray-400 text-base sm:text-lg md:text-xl max-w-xl">
@@ -469,7 +470,7 @@ export default function HomePage() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="text-white border-b border-white pb-1 hover:opacity-70 transition-opacity"
+              className="text-white border-b border-white pb-1 hover:opacity-70 transition-opacity whitespace-nowrap shrink-0"
             >
               Shop all hardware
             </motion.a>
@@ -547,7 +548,7 @@ export default function HomePage() {
                 <BarChart2 size={12} />
                 <span>Real-time Reporting</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter mb-6">
                 Know your numbers.
                 <br />
                 <span className="text-gray-500">Every shift.</span>
