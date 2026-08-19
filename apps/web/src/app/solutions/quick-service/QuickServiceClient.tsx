@@ -389,9 +389,9 @@ export default function QuickServiceClient() {
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
                 Start using restaurant technology cloud
               </h2>
-              <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-                See the quick service setup in action. Book a demo and we will show you how it fits
-                your counter.
+              <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 whitespace-pre-line">
+                See the quick service setup in action. Book a demo and{"\n"}
+                we will show you how it fits your counter.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
