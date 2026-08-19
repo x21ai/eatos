@@ -131,7 +131,7 @@ export default function CustomersPage() {
     <div className="bg-white min-h-screen">
       {/* Hero */}
       <section className="pt-36 pb-20">
-        <div className="container mx-auto px-4 md:px-6 text-center">
+        <div className="site-container text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 bg-gray-50 text-sm font-medium mb-8 text-gray-600">
             <Users size={14} />
             <span>Customer Stories</span>
@@ -181,7 +181,7 @@ export default function CustomersPage() {
 
       {/* Case Studies */}
       <section className="pb-20">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="space-y-12">
             {caseStudies.map((study, idx) => {
               const isReversed = idx % 2 === 1;
@@ -263,7 +263,7 @@ export default function CustomersPage() {
 
       {/* CTA */}
       <section className="py-20 md:py-28 bg-black text-white">
-        <div className="container mx-auto px-4 md:px-6 text-center">
+        <div className="site-container text-center">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
             Ready to join them?
           </h2>

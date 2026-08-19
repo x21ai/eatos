@@ -20,7 +20,7 @@ export function ROISection() {
 
   return (
     <section className="py-28">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="site-container">
         <Reveal id="roi">
           <div className="text-center max-w-4xl mx-auto">
             <SectionLabel>ROI</SectionLabel>

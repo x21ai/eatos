@@ -35,7 +35,7 @@ export function PaymentsIntelligenceSection() {
 
   return (
     <section className="py-28">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="site-container">
         <Reveal id="payments-head">
           <div className="max-w-4xl">
             <SectionLabel>PAYMENTS INTELLIGENCE</SectionLabel>

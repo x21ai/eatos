@@ -47,7 +47,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-white text-black font-sans">
       {/* Hero */}
       <section className="pt-32 md:pt-44 pb-16 md:pb-20 bg-gray-50 border-b border-gray-100">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-black/10 bg-white text-xs font-bold uppercase tracking-widest text-gray-700 mb-6">
               <span className="text-purple-600">✦</span> About
@@ -82,7 +82,7 @@ export default function AboutPage() {
 
       {/* Mission / Story */}
       <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4">Our mission</h2>
@@ -137,7 +137,7 @@ export default function AboutPage() {
 
       {/* Principles */}
       <section className="py-16 md:py-24 bg-white border-t border-gray-100">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="max-w-2xl">
             <div className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-3">
               How we work
@@ -169,7 +169,7 @@ export default function AboutPage() {
 
       {/* CTA */}
       <section className="py-16 md:py-24 bg-gray-50 border-t border-gray-100">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="rounded-[2.5rem] bg-black text-white p-10 md:p-14 overflow-hidden relative">
             <div className="absolute -top-24 -right-24 w-72 h-72 bg-purple-500/20 blur-3xl rounded-full" />
             <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">

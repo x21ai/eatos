@@ -72,7 +72,7 @@ export function CustomerShowcase() {
 
   return (
     <section className="bg-[#f2f2f2] py-20 md:py-28">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="site-container">
         <h2 className="mx-auto max-w-4xl text-center text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl md:text-5xl">
           Next Generation Restaurant Brands We Power
         </h2>

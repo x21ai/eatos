@@ -139,7 +139,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
         </motion.div>
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10 pt-20 text-center">
+        <div className="site-container relative z-10 pt-20 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -212,7 +212,7 @@ export default function HomePage() {
 
       {/* Social Proof / Trust Section */}
       <section className="py-20 md:py-28 bg-black border-t border-white/5 relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           {/* Capability strip: honest, aspirational, Apple-style */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -279,7 +279,7 @@ export default function HomePage() {
 
       {/* Bento Grid Navigation - The Hub */}
       <section className="py-20 md:py-20 md:py-28 bg-black relative">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -395,7 +395,7 @@ export default function HomePage() {
 
       {/* Service Modes Section */}
       <section className="py-20 md:py-28 bg-zinc-950 relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="text-center mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -459,7 +459,7 @@ export default function HomePage() {
 
       {/* Integrations Section */}
       <section className="py-20 md:py-28 bg-black relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="text-center mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -522,7 +522,7 @@ export default function HomePage() {
 
       {/* ROI / Business Impact Section */}
       <section className="py-20 md:py-28 bg-zinc-950 relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: -40 }}
@@ -594,7 +594,7 @@ export default function HomePage() {
       {/* Final CTA Section */}
       <section className="py-20 md:py-32 bg-black relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-indigo-950/20 to-black pointer-events-none" />
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="site-container relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}

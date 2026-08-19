@@ -203,7 +203,7 @@ export default function ProductDetailClient({ slug }) {
           className={`absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] ${colors.bg} rounded-full blur-[150px] pointer-events-none opacity-50`}
         />
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="site-container relative z-10">
           {/* Breadcrumb */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -324,7 +324,7 @@ export default function ProductDetailClient({ slug }) {
 
       {/* Benefits Section */}
       <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -396,7 +396,7 @@ export default function ProductDetailClient({ slug }) {
 
       {/* Related Products */}
       <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -451,7 +451,7 @@ export default function ProductDetailClient({ slug }) {
 
       {/* CTA Section */}
       <section className="pb-32">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

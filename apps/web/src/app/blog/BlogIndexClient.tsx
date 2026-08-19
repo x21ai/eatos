@@ -24,7 +24,7 @@ function Meta({ post, tone = 'light' }) {
 function Hero() {
   return (
     <section className="bg-black pt-32 pb-20 md:pt-40 md:pb-28">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="site-container">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -50,7 +50,7 @@ function Featured({ post }) {
   if (!post) return null;
   return (
     <section className="border-b border-zinc-200 bg-white py-14 md:py-20">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="site-container">
         <a href={`/blog/${post.slug}`} className="group grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-14">
           <Placeholder label={post.title} src={post.image} tone="light" ratio="aspect-[16/10]" />
           <div className="min-w-0">
@@ -122,7 +122,7 @@ export default function BlogIndexClient() {
       <Featured post={featured} />
 
       <section className="bg-white py-14 md:py-20">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="grid grid-cols-[minmax(0,1fr)] gap-6 border-b border-zinc-200 pb-6 sm:flex sm:flex-wrap sm:items-center sm:justify-between">
             <h2 className="min-w-0 text-sm font-semibold uppercase tracking-[0.2em] text-zinc-500">
               Latest posts

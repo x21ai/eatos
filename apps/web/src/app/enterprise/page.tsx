@@ -18,7 +18,7 @@ export default function EnterprisePage() {
     <div className="bg-black min-h-screen text-white font-sans selection:bg-indigo-500/50">
       {/* Hero Section */}
       <section className="pt-48 pb-32 relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
+        <div className="site-container relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -53,7 +53,7 @@ export default function EnterprisePage() {
         </div>
 
         {/* Dashboard Visualization */}
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div
             initial={{ opacity: 0, y: 100, rotateX: 10 }}
             animate={{ opacity: 1, y: 0, rotateX: 0 }}
@@ -164,7 +164,7 @@ export default function EnterprisePage() {
 
       {/* Feature Grid */}
       <section className="py-24 bg-zinc-950 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <Feature
               icon={Globe}

@@ -29,7 +29,7 @@ export default function AcceptPaymentsPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/50 to-white" />
         </div>
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10 pt-20">
+        <div className="site-container relative z-10 pt-20">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -101,7 +101,7 @@ export default function AcceptPaymentsPage() {
 
       {/* Bento Features */}
       <section className="py-20 md:py-20 md:py-28 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-slate-50 rounded-[3rem] p-12 flex flex-col justify-center min-h-[400px]">
               <h3 className="text-4xl font-bold mb-6 tracking-tighter">Tap to Pay on iPhone</h3>

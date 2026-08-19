@@ -41,7 +41,7 @@ export default function BlogPostClient({ slug }) {
   return (
     <article className="bg-white text-zinc-900">
       <header className="bg-black pt-32 pb-16 md:pt-40 md:pb-20">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
             <a
               href="/blog"
@@ -82,7 +82,7 @@ export default function BlogPostClient({ slug }) {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="site-container">
         <div className="-mt-10 md:-mt-14">
           <Placeholder label={post.title} src={post.image} tone="light" ratio="aspect-[16/9]" />
         </div>
@@ -122,7 +122,7 @@ export default function BlogPostClient({ slug }) {
 
       {related.length > 0 && (
         <section className="border-t border-zinc-200 bg-zinc-50 py-16 md:py-24">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="site-container">
             <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-500">
               Keep reading
             </h2>

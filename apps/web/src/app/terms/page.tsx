@@ -9,7 +9,7 @@ export default function TermsOfServicePage() {
     <div className="min-h-screen bg-white text-black">
       {/* Hero */}
       <section className="pt-32 md:pt-44 pb-12 md:pb-16 bg-gray-50 border-b border-gray-100">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-black/10 bg-white text-xs font-bold uppercase tracking-widest text-gray-700 mb-6">
               <span className="text-purple-600">✦</span> Legal
@@ -31,7 +31,7 @@ export default function TermsOfServicePage() {
 
       {/* Content */}
       <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-10">
             {/* TOC */}
             <aside className="hidden lg:block lg:sticky lg:top-28 h-fit lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">

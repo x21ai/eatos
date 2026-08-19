@@ -95,7 +95,7 @@ export default async function CareerRolePage({ params }) {
   if (!role) {
     return (
       <div className="min-h-screen bg-white text-black font-sans">
-        <div className="container mx-auto px-4 md:px-6 pt-32 md:pt-44 pb-24">
+        <div className="site-container pt-32 md:pt-44 pb-24">
           <a
             href="/careers"
             className="inline-flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-black"
@@ -125,7 +125,7 @@ export default async function CareerRolePage({ params }) {
   return (
     <div className="min-h-screen bg-white text-black font-sans">
       <section className="pt-32 md:pt-44 pb-16 bg-gray-50 border-b border-gray-100">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <a
             href="/careers"
             className="inline-flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-black"
@@ -169,7 +169,7 @@ export default async function CareerRolePage({ params }) {
       </section>
 
       <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
             <div className="rounded-3xl border border-gray-200 bg-white p-8">
               <h2 className="text-2xl font-bold tracking-tighter">

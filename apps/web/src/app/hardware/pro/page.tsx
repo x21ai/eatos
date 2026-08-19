@@ -13,7 +13,7 @@ export default function ProPage() {
     <div className="bg-black min-h-screen text-white font-sans selection:bg-white/20">
       {/* Sticky Sub-nav */}
       <div className="fixed top-0 left-0 right-0 h-16 bg-black/80 backdrop-blur-md z-40 flex items-center border-b border-white/10 mt-[60px] md:mt-[80px]">
-        <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
+        <div className="site-container flex justify-between items-center">
           <div className="font-bold text-lg">
             <strong>eatOS</strong> Pro
           </div>
@@ -39,7 +39,7 @@ export default function ProPage() {
 
       {/* Hero */}
       <section className="pt-48 pb-32 relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
+        <div className="site-container text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 text-xs font-medium mb-8 text-gray-400">
             New Generation
           </div>
@@ -68,7 +68,7 @@ export default function ProPage() {
 
       {/* Features - Dark Bento */}
       <section className="py-20 md:py-20 md:py-28 bg-zinc-950">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Performance */}
             <div className="col-span-1 lg:col-span-2 bg-zinc-900 rounded-3xl p-10 relative overflow-hidden group">
@@ -122,7 +122,7 @@ export default function ProPage() {
 
       {/* Specs Section */}
       <section id="specs" className="py-20 md:py-28 border-t border-white/10">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <h2 className="text-4xl font-bold mb-16">Specifications</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12 text-lg">
             <div className="border-b border-white/10 pb-8">

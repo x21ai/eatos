@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 export function EnterpriseSection() {
   return (
     <section className="py-20 md:py-28 bg-white">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}

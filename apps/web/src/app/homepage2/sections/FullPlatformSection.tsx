@@ -6,7 +6,7 @@ import { platformProducts } from "../data/platformProducts";
 export function FullPlatformSection() {
   return (
     <section className="py-20 md:py-28 bg-white">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="site-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

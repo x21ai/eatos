@@ -9,7 +9,7 @@ export function FinalCTASection() {
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-white rounded-full blur-3xl" />
       </div>
-      <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
+      <div className="site-container relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

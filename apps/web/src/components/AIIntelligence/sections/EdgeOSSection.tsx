@@ -30,7 +30,7 @@ export function EdgeOSSection() {
 
   return (
     <section className="py-28">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <Reveal id="edge-left">
             <Card className="p-6 md:p-8">

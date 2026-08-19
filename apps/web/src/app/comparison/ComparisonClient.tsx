@@ -41,7 +41,7 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/20 via-emerald-600/10 to-transparent pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-emerald-500/10 rounded-full blur-[150px] pointer-events-none opacity-50" />
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10 pt-32 md:pt-44 pb-16 md:pb-20">
+      <div className="site-container relative z-10 pt-32 md:pt-44 pb-16 md:pb-20">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -149,7 +149,7 @@ function Hero() {
 function WhySwitch() {
   return (
     <section className="bg-black text-white border-t border-white/5">
-      <div className="container mx-auto px-4 md:px-6 py-20 md:py-28 lg:max-w-[1200px]">
+      <div className="mx-auto w-full px-5 md:px-8 lg:px-10 py-20 md:py-28 lg:max-w-[1200px]">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14">
           {/* Sticky intro rail */}
           <Reveal className="min-w-0 lg:sticky lg:top-28 lg:self-start">
@@ -232,7 +232,7 @@ function Mark({ on, accent = false }) {
 function Matrix() {
   return (
     <section className="bg-black text-white">
-      <div className="container mx-auto px-4 md:px-6 py-24 md:py-28 lg:py-40">
+      <div className="site-container py-24 md:py-28 lg:py-40">
         <Reveal>
           <h2 className="mx-auto max-w-[26ch] text-center font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl whitespace-pre-line">
             Compare eatOS with other{"\n"}Point of Sale software
@@ -369,7 +369,7 @@ function Matrix() {
 function Reasons() {
   return (
     <section className="bg-black text-white border-t border-white/5">
-      <div className="container mx-auto px-4 md:px-6 py-24 md:py-28 lg:py-40">
+      <div className="site-container py-24 md:py-28 lg:py-40">
         <Reveal>
           <h2 className="mx-auto max-w-[26ch] text-center font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
             Why businesses choose eatOS over other Point of Sale software
@@ -413,7 +413,7 @@ function ClosingCta() {
   return (
     <section className="relative bg-black text-white overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/10 via-emerald-600/5 to-transparent pointer-events-none" />
-      <div className="container mx-auto px-4 md:px-6 relative z-10 py-20 md:py-28 text-center">
+      <div className="site-container relative z-10 py-20 md:py-28 text-center">
         <Reveal>
           <h2 className="mx-auto max-w-[22ch] font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
             Start Using Restaurant Technology Cloud

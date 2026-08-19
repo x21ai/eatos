@@ -51,7 +51,7 @@ export function AgentsSection() {
 
   return (
     <section className="py-28">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="site-container">
         <Reveal id="agents-head">
           <div className="max-w-4xl">
             <SectionLabel>AUTONOMOUS AGENTS</SectionLabel>

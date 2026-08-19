@@ -33,7 +33,7 @@ export default function PointOfSalePage() {
       <div className="relative z-10">
         {/* Hero Section */}
         <section className="pt-32 pb-12 md:pt-48 md:pb-20">
-          <div className="container mx-auto px-4 md:px-6 text-center">
+          <div className="site-container text-center">
             <motion.h1
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -204,7 +204,7 @@ export default function PointOfSalePage() {
 
         {/* Details Section */}
         <section className="py-24 bg-black">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="site-container">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
               <div>
                 <h3 className="text-2xl font-bold mb-4">Dark Mode Native</h3>

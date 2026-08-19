@@ -57,7 +57,7 @@ export default function KioskPageClient() {
         <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/20 via-indigo-600/10 to-transparent pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-indigo-500/10 rounded-full blur-[150px] pointer-events-none opacity-50" />
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="site-container relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -160,7 +160,7 @@ export default function KioskPageClient() {
 
       {/* Numbers strip */}
       <section className="border-t border-white/5 py-12 md:py-16">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="grid grid-cols-3 gap-8">
             {hero.stats.map((stat) => (
               <motion.div key={stat.label} {...rise} className="min-w-0">
@@ -174,7 +174,7 @@ export default function KioskPageClient() {
 
       {/* Feature rows */}
       <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6 space-y-16 md:space-y-24">
+        <div className="site-container space-y-16 md:space-y-24">
           {features.map((feature, index) => (
             <motion.div
               key={feature.id}
@@ -229,7 +229,7 @@ export default function KioskPageClient() {
 
       {/* Why kiosk */}
       <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div {...rise} className="text-center mb-14 md:mb-20">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
               Why Self-Service Kiosk?
@@ -281,7 +281,7 @@ export default function KioskPageClient() {
 
       {/* Hardware */}
       <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div {...rise} className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-indigo-400">
               {hardware.eyebrow}
@@ -320,7 +320,7 @@ export default function KioskPageClient() {
 
       {/* Offers */}
       <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {offers.map((offer, index) => (
               <motion.div
@@ -346,7 +346,7 @@ export default function KioskPageClient() {
 
       {/* Related */}
       <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div
             {...rise}
             className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6"
@@ -394,7 +394,7 @@ export default function KioskPageClient() {
 
       {/* CTA */}
       <section className="pb-20 md:pb-28">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div
             {...rise}
             className="relative rounded-[2.5rem] md:rounded-[3rem] overflow-hidden"

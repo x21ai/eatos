@@ -10,7 +10,7 @@ export default function HardwarePage() {
       <section className="pt-32 pb-20 md:pt-48 md:pb-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-zinc-800/20 via-zinc-950 to-zinc-950 z-0"></div>
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
+        <div className="site-container relative z-10 text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-6xl md:text-9xl font-bold tracking-tighter mb-8 leading-tight animate-in fade-in zoom-in-50 duration-1000">
               Industrial <br />
@@ -49,7 +49,7 @@ export default function HardwarePage() {
 
       {/* Product Showcase - Zavo Pro */}
       <section className="py-20 md:py-20 md:py-28 bg-black border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="flex flex-col md:flex-row items-center gap-20">
             <div className="flex-1">
               <div className="w-full aspect-square bg-gradient-to-br from-zinc-800 to-black rounded-3xl p-12 flex items-center justify-center relative overflow-hidden group">
@@ -95,7 +95,7 @@ export default function HardwarePage() {
 
       {/* Product Showcase - Zavo Mini */}
       <section className="py-20 md:py-20 md:py-28 bg-black">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="flex flex-col md:flex-row-reverse items-center gap-20">
             <div className="flex-1">
               <div className="w-full aspect-square bg-gradient-to-bl from-zinc-800 to-black rounded-3xl p-12 flex items-center justify-center relative overflow-hidden group">
@@ -141,7 +141,7 @@ export default function HardwarePage() {
 
       {/* Tap to Pay */}
       <section className="py-20 md:py-20 md:py-28 bg-white text-black relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
+        <div className="site-container relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-sm font-medium mb-8">
             <Smartphone size={16} />
             <span>Tap to Pay on iPhone</span>

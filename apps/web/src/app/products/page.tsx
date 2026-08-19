@@ -85,7 +85,7 @@ export default function ProductsPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-indigo-950/30 via-black to-black pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
+        <div className="site-container relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -122,7 +122,7 @@ export default function ProductsPage() {
 
       {/* Products Grid */}
       <section className="pb-32">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product, index) => {
               const IconComponent = iconMap[product.icon] || Package;
@@ -188,7 +188,7 @@ export default function ProductsPage() {
 
       {/* CTA Section */}
       <section className="pb-32">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

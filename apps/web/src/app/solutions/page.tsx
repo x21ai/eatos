@@ -137,7 +137,7 @@ export default function SolutionsPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/40 to-black pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-to-b from-indigo-500/10 to-transparent rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
+        <div className="site-container relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -192,7 +192,7 @@ export default function SolutionsPage() {
 
       {/* Solutions Grid */}
       <section className="py-20 md:py-28">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {solutions.map((solution, i) => {
               const colors = colorMap[solution.color];
@@ -243,7 +243,7 @@ export default function SolutionsPage() {
 
       {/* CTA */}
       <section className="py-24 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6 text-center">
+        <div className="site-container text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
