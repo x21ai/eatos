@@ -50,7 +50,7 @@ function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(99,102,241,0.18),transparent_50%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]" />
 
-      <div className="relative mx-auto w-full max-w-[1200px] px-5 pt-24 sm:px-8 md:pt-32 lg:pt-36">
+      <div className="relative site-container pt-24 md:pt-32 lg:pt-36">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <Reveal className="text-center lg:text-left">
             <Eyebrow>{hero.eyebrow}</Eyebrow>
@@ -90,7 +90,7 @@ function Hero() {
       </div>
 
       {/* Stats strip */}
-      <div className="relative mx-auto w-full max-w-[1200px] px-5 py-12 sm:px-8 md:py-16">
+      <div className="relative site-container py-12 md:py-16">
         <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 lg:grid-cols-4">
           {hero.stats.map((s) => (
             <div
@@ -116,7 +116,7 @@ function Hero() {
 function KeyFeatures() {
   return (
     <section className="bg-black text-white">
-      <div className="mx-auto w-full max-w-[1200px] px-5 py-14 sm:px-8 md:py-20">
+      <div className="site-container py-14 md:py-20">
         <Reveal className="text-center">
           <Eyebrow>Key Features</Eyebrow>
           <h2 className="mx-auto mt-3 max-w-[20ch] font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
@@ -198,7 +198,7 @@ function FeatureBlock({ feature, index }) {
 function Features() {
   return (
     <section className="bg-black text-white">
-      <div className="mx-auto w-full max-w-[1200px] px-5 pb-16 sm:px-8 md:pb-24">
+      <div className="site-container pb-16 md:pb-24">
         {features.map((feature, i) => (
           <FeatureBlock key={feature.id} feature={feature} index={i} />
         ))}
@@ -212,7 +212,7 @@ function Features() {
 function Benefits() {
   return (
     <section className="bg-zinc-950 text-white">
-      <div className="mx-auto w-full max-w-[1200px] px-5 py-14 sm:px-8 md:py-20">
+      <div className="site-container py-14 md:py-20">
         <Reveal className="text-center">
           <Eyebrow>More capabilities</Eyebrow>
           <h2 className="mx-auto mt-3 max-w-[20ch] font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
@@ -243,7 +243,7 @@ function Closing() {
   return (
     <section className="relative overflow-hidden bg-black text-white">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(99,102,241,0.15),transparent_50%)]" />
-      <div className="relative mx-auto w-full max-w-[1200px] px-5 py-14 sm:px-8 md:py-20">
+      <div className="relative site-container py-14 md:py-20">
         <Reveal className="flex flex-col items-start gap-6 rounded-[2.5rem] border border-white/10 bg-white/[0.02] p-8 md:flex-row md:items-center md:justify-between md:p-10">
           <div className="max-w-2xl">
             <Eyebrow>{integration.eyebrow}</Eyebrow>

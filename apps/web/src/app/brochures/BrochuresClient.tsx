@@ -144,7 +144,7 @@ export default function BrochuresClient() {
     <main className="bg-white">
       {/* Hero */}
       <section className="bg-black text-white">
-        <div className="mx-auto w-full max-w-[1120px] px-5 pb-16 pt-28 text-center sm:px-8 md:pb-20 md:pt-36">
+        <div className="site-container pb-16 pt-28 text-center md:pb-20 md:pt-36">
           <Reveal>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-emerald-500 sm:text-xs">
               {hero.eyebrow}
@@ -159,7 +159,7 @@ export default function BrochuresClient() {
         </div>
 
         {/* Featured brochure */}
-        <div className="mx-auto w-full max-w-[1220px] px-5 pb-20 sm:px-8 md:pb-28">
+        <div className="site-container pb-20 md:pb-28">
           <Reveal>
             <div className="grid items-center gap-8 md:grid-cols-2 md:gap-14">
               <Cover title={featured.title} index={0} large src={featured.cover} />
@@ -198,7 +198,7 @@ export default function BrochuresClient() {
       </section>
 
       {/* Grid */}
-      <section className="mx-auto w-full max-w-[1220px] px-5 py-20 sm:px-8 md:py-28">
+      <section className="site-container py-20 md:py-28">
         <Reveal className="mb-12 md:mb-16">
           <h2 className="font-bold leading-[1.1] tracking-tighter text-zinc-900 text-3xl md:text-4xl">
             The full library.
@@ -248,7 +248,7 @@ export default function BrochuresClient() {
 
       {/* CTA */}
       <section className="bg-black text-white">
-        <div className="mx-auto w-full max-w-[1120px] px-5 py-20 text-center sm:px-8 md:py-28">
+        <div className="site-container py-20 text-center md:py-28">
           <Reveal>
             <h2 className="mx-auto max-w-[22ch] font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
               See the platform in action
