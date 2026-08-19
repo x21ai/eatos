@@ -61,7 +61,7 @@ export function DemoRailSection({
 
         <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6">
           {/* Rail: vertical on desktop, horizontal scroll on smaller screens */}
-          <div className="lg:flex-col lg:h-full flex gap-2 lg:gap-3 overflow-x-auto lg:overflow-visible scrollbar-hidden">
+          <div className="lg:flex-col lg:h-full flex gap-2 lg:gap-4 overflow-x-auto lg:overflow-visible scrollbar-hidden">
             {demoSources.map((d) => {
               const active = d.id === activeId;
               return (
@@ -69,7 +69,7 @@ export function DemoRailSection({
                   key={d.id}
                   type="button"
                   onClick={() => setActiveId(d.id)}
-                  className={`relative shrink-0 lg:shrink lg:flex-1 lg:flex lg:flex-col lg:justify-center text-left rounded-xl border px-4 py-3 transition-colors min-w-[190px] lg:min-w-0 lg:w-full ${
+                  className={`relative shrink-0 lg:shrink lg:flex-1 text-left rounded-xl border px-4 py-3 transition-colors min-w-[190px] lg:min-w-0 lg:w-full ${
                     active
                       ? 'bg-white text-black border-white'
                       : 'bg-zinc-900/60 border-white/10 text-gray-400 hover:text-white hover:border-white/30'
