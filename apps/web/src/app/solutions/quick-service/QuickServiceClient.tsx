@@ -197,7 +197,7 @@ export default function QuickServiceClient() {
                 >
                   <Icon size={28} />
                 </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter mb-5">
+                <h2 className="text-base sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter mb-5">
                   {pillar.title}
                 </h2>
                 <p className="text-lg text-gray-400 leading-relaxed mb-5">{pillar.body}</p>
