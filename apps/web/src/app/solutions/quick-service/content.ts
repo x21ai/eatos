@@ -11,7 +11,7 @@ export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
   title: 'Solution for Quick Service',
   description:
-    'A versatile Point of Sale system for your restaurant. Ideal for Quick-Service and Fast-Casual concepts, built to keep the line moving.',
+    'A versatile Point of Sale system for your restaurant. Ideal for Quick-Service and Fast-Casual concepts, built to keep the line moving, serve more guests, and turn every order into a faster sale.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Quick service counter setup',

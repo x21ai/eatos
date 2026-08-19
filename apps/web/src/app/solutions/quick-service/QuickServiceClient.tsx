@@ -169,7 +169,7 @@ export default function QuickServiceClient() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {marquee.map((stat) => (
-              <motion.div key={stat.label} {...rise} className="min-w-0">
+            <motion.div key={stat.label} {...rise} className="min-w-0 text-center">
                 <div className="text-3xl md:text-4xl font-bold tracking-tighter">{stat.value}</div>
                 <div className="mt-2 text-sm text-gray-500">{stat.label}</div>
               </motion.div>
@@ -197,7 +197,7 @@ export default function QuickServiceClient() {
                 >
                   <Icon size={28} />
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-5">
+                <h2 className="text-base sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter mb-5">
                   {pillar.title}
                 </h2>
                 <p className="text-lg text-gray-400 leading-relaxed mb-5">{pillar.body}</p>
