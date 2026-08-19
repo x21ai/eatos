@@ -1,81 +1,19 @@
 // @ts-nocheck
-import { Package, TrendingUp, Smartphone, Check } from "lucide-react";
+import GhostKitchenClient from "./GhostKitchenClient";
+
+export const metadata = {
+  title: "Point of Sale System for Ghost Kitchens | eatOS",
+  description:
+    "Ghost kitchen Point of Sale built for delivery: commission free online ordering, kitchen display routing and multi brand reporting in one platform.",
+  openGraph: {
+    title: "Point of Sale System for Ghost Kitchens | eatOS",
+    description:
+      "Run every virtual brand from one kitchen with commission free ordering, kitchen display routing and delivery analytics from eatOS.",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image" },
+};
 
 export default function GhostKitchenPage() {
-  return (
-    <div className="min-h-screen bg-white">
-      {/* Hero */}
-      <section className="pt-32 pb-20 bg-gradient-to-b from-slate-50 to-white">
-        <div className="site-container ">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-sm font-medium mb-6">
-              <Package size={16} />
-              <span>Ghost Kitchen</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-black mb-6">
-              Delivery-first operations
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Optimize for delivery and takeout. Manage multiple brands,
-              integrate with all platforms, and maximize efficiency.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Features */}
-      <section className="py-20 md:py-28">
-        <div className="site-container ">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Smartphone,
-                title: "Multi-Platform Integration",
-                desc: "Sync orders from DoorDash, Uber Eats, and more in one place.",
-              },
-              {
-                icon: Package,
-                title: "Multi-Brand Management",
-                desc: "Run multiple virtual brands from a single kitchen.",
-              },
-              {
-                icon: TrendingUp,
-                title: "Delivery Analytics",
-                desc: "Track performance by platform, brand, and time of day.",
-              },
-            ].map((feature, i) => (
-              <div
-                key={i}
-                className="p-8 border border-gray-200 rounded-2xl hover:shadow-lg transition-shadow"
-              >
-                <feature.icon size={32} className="text-slate-600 mb-4" />
-                <h3 className="text-xl font-bold text-black mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600">{feature.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 md:py-28 bg-black text-white">
-        <div className="mx-auto w-full px-5 md:px-8 lg:px-10 max-w-4xl text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Scale your ghost kitchen
-          </h2>
-          <p className="text-xl text-gray-400 mb-8">
-            Learn how eatOS helps ghost kitchens maximize delivery revenue.
-          </p>
-          <a
-            href="/book-demo"
-            className="inline-block px-8 py-4 bg-white text-black rounded-full font-semibold hover:bg-gray-100 transition-colors"
-          >
-            Book a Demo
-          </a>
-        </div>
-      </section>
-    </div>
-  );
+  return <GhostKitchenClient />;
 }
