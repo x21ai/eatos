@@ -89,7 +89,7 @@ export default function TapToPayClient() {
           className={`absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] ${colors.bg} rounded-full blur-[150px] pointer-events-none opacity-50`}
         />
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="site-container relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -191,7 +191,7 @@ export default function TapToPayClient() {
 
       {/* Numbers strip */}
       <section className="py-16 md:py-20 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12">
             {stats.map((s) => (
               <div key={s.label}>
@@ -207,7 +207,7 @@ export default function TapToPayClient() {
 
       {/* During the order */}
       <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -245,7 +245,7 @@ export default function TapToPayClient() {
 
       {/* Why Tap to Pay */}
       <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -288,7 +288,7 @@ export default function TapToPayClient() {
 
       {/* Requirements */}
       <section className="py-16 md:py-20 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <h2 className="text-2xl md:text-3xl font-bold tracking-tighter">
               What you need to start
@@ -306,7 +306,7 @@ export default function TapToPayClient() {
 
       {/* Works great with */}
       <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -361,7 +361,7 @@ export default function TapToPayClient() {
 
       {/* CTA */}
       <section className="pb-32">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

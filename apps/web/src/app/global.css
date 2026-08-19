@@ -196,6 +196,20 @@
     }
 }
 
+/* Canonical site-wide content container: identical side spacing on every page. */
+@utility site-container {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 72rem; /* max-w-6xl */
+    padding-inline: 1.25rem; /* px-5 */
+    @media (width >= 48rem) {
+        padding-inline: 2rem; /* md:px-8 */
+    }
+    @media (width >= 64rem) {
+        padding-inline: 2.5rem; /* lg:px-10 */
+    }
+}
+
 @media (max-width: 1279px) {
     html,
     body {

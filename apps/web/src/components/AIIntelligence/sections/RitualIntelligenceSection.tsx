@@ -6,7 +6,7 @@ import { Reveal } from "../Reveal";
 export function RitualIntelligenceSection() {
   return (
     <section className="py-28">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="site-container">
         <Reveal id="ritual">
           <div className="max-w-4xl">
             <SectionLabel>COMING SOON</SectionLabel>

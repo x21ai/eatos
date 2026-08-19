@@ -61,7 +61,7 @@ export default function BarClient() {
         <div className="absolute inset-0 bg-gradient-to-b from-rose-500/20 via-rose-600/10 to-transparent pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-rose-500/10 rounded-full blur-[150px] pointer-events-none opacity-50" />
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="site-container relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -153,7 +153,7 @@ export default function BarClient() {
 
       {/* Highlights */}
       <section className="border-t border-white/5 py-14 md:py-20">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {marquee.map((item, index) => (
               <motion.div
@@ -175,7 +175,7 @@ export default function BarClient() {
 
       {/* Feature rows */}
       <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6 space-y-16 md:space-y-24">
+        <div className="site-container space-y-16 md:space-y-24">
           {pillars.map((pillar, index) => {
             const { Icon, iconClass } =
               pillarIcons[pillar.id] ?? { Icon: Beer, iconClass: 'bg-white/10 text-white' };
@@ -217,7 +217,7 @@ export default function BarClient() {
 
       {/* Why bars */}
       <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div {...rise} className="text-center mb-14 md:mb-20">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
               Why eatOS for bars and nightclubs?
@@ -269,7 +269,7 @@ export default function BarClient() {
 
       {/* Works great with */}
       <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div
             {...rise}
             className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6"
@@ -314,7 +314,7 @@ export default function BarClient() {
 
       {/* CTA */}
       <section className="pb-20 md:pb-28">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div
             {...rise}
             className="relative rounded-[2.5rem] md:rounded-[3rem] overflow-hidden"

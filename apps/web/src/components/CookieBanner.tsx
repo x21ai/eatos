@@ -44,7 +44,7 @@ export default function CookieBanner() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-2xl">
-      <div className="container mx-auto px-4 md:px-6 py-6">
+      <div className="site-container py-6">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           {/* Text content */}
           <div className="flex-1 text-[15px] leading-6 text-gray-700">

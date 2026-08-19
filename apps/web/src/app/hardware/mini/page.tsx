@@ -12,7 +12,7 @@ export default function MiniPage() {
     <div className="bg-black min-h-screen text-white font-sans selection:bg-purple-500/30">
       {/* Sticky Sub-nav */}
       <div className="fixed top-0 left-0 right-0 h-16 bg-black/80 backdrop-blur-md z-40 flex items-center border-b border-white/10 mt-[60px] md:mt-[80px]">
-        <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
+        <div className="site-container flex justify-between items-center">
           <div className="font-bold text-lg">
             <strong>eatOS</strong> Mini
           </div>
@@ -26,7 +26,7 @@ export default function MiniPage() {
       </div>
 
       <section className="pt-48 pb-32 relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+        <div className="site-container grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
           <div>
             <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-8">
               Power in <br /> your{" "}
@@ -74,7 +74,7 @@ export default function MiniPage() {
 
       {/* Grid */}
       <section className="py-24 bg-zinc-950">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-zinc-900/50 p-8 rounded-3xl border border-white/5 hover:bg-zinc-900 transition-colors">
               <Scan size={32} className="text-purple-400 mb-6" />

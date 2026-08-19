@@ -36,7 +36,7 @@ export default function AIPage() {
         {/* Dark Gradient Background */}
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-zinc-900 via-black to-black" />
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10 pt-20">
+        <div className="site-container relative z-10 pt-20">
           <div className="max-w-5xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl text-sm font-medium mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
               <Sparkles size={16} className="text-blue-400" />
@@ -82,7 +82,7 @@ export default function AIPage() {
 
       {/* Glass Cards Section */}
       <section className="py-20 md:py-20 md:py-28 bg-black relative">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="mb-20">
             <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6">
               It doesn't just analyze. <br />
@@ -143,7 +143,7 @@ export default function AIPage() {
       <section className="py-20 md:py-20 md:py-28 bg-black relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="flex flex-col lg:flex-row items-center gap-20">
             <div className="flex-1 space-y-8">
               <div className="inline-flex items-center gap-2 text-purple-400 font-medium tracking-wide uppercase text-sm">

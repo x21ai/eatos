@@ -94,7 +94,7 @@ export default function CompetitorClient({ slug }) {
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/20 via-emerald-600/10 to-transparent pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-emerald-500/10 rounded-full blur-[150px] pointer-events-none opacity-50" />
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10 pt-32 md:pt-44 pb-16 md:pb-20">
+        <div className="site-container relative z-10 pt-32 md:pt-44 pb-16 md:pb-20">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -187,7 +187,7 @@ export default function CompetitorClient({ slug }) {
 
       {/* Head to head */}
       <section className="bg-black text-white border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6 py-20 md:py-28 lg:py-32">
+        <div className="site-container py-20 md:py-28 lg:py-32">
           <Reveal>
             <h2 className="mx-auto max-w-[26ch] text-center font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
               How eatOS compares to {name}
@@ -266,7 +266,7 @@ export default function CompetitorClient({ slug }) {
 
       {/* Why switch */}
       <section className="bg-black text-white border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6 py-20 md:py-28">
+        <div className="site-container py-20 md:py-28">
           <Reveal>
             <h2 className="mx-auto max-w-[26ch] text-center font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
               Why switch to eatOS
@@ -307,7 +307,7 @@ export default function CompetitorClient({ slug }) {
       {/* Closing CTA */}
       <section className="relative bg-black text-white overflow-hidden border-t border-white/5">
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/10 via-emerald-600/5 to-transparent pointer-events-none" />
-        <div className="container mx-auto px-4 md:px-6 relative z-10 py-20 md:py-28 text-center">
+        <div className="site-container relative z-10 py-20 md:py-28 text-center">
           <Reveal>
             <h2 className="mx-auto max-w-[22ch] font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
               Start Using Restaurant Technology Cloud

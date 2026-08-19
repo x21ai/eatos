@@ -10,7 +10,7 @@ export function DemoAccordionSection() {
 
   return (
     <section className="py-12 md:py-16 bg-black border-t border-white/5">
-      <div className="mx-auto w-full max-w-6xl px-5 md:px-8 lg:px-10">
+      <div className="site-container">
         <div className="text-center mb-8">
           <div className="text-xs font-bold tracking-[0.2em] uppercase text-emerald-400 mb-3">
             Option E, Accordion stack

@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 export function SocialProofSection() {
   return (
     <section className="py-20 md:py-28 bg-zinc-50 border-b border-gray-100">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="site-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

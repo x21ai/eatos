@@ -8,7 +8,7 @@ export function HeroSection() {
     <>
       <div className="pt-24" />
       <section className="py-20">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <Reveal id="top">
             <div className="max-w-4xl">
               <SectionLabel>eatOS AI: Deep Dive</SectionLabel>

@@ -7,7 +7,7 @@ export function FinalCTASection() {
   return (
     <>
       <section className="py-28">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <Reveal id="final">
             <Card className="p-10 md:p-14 text-center overflow-hidden relative">
               <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[520px] h-[520px] bg-[#A855F7]/15 blur-[100px] rounded-full" />

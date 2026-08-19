@@ -183,9 +183,9 @@ function CategorySection({ category, index }) {
         className={`absolute ${isEven ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 w-[600px] h-[600px] ${colors.glow} rounded-full blur-[150px] opacity-30 pointer-events-none`}
       />
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="site-container relative z-10">
         <div
-          className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-16 items-start`}
+          className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-16 items-start min-w-0`}
         >
           {/* Category Info */}
           <motion.div
@@ -193,7 +193,7 @@ function CategorySection({ category, index }) {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:w-[400px] lg:sticky lg:top-32 flex-shrink-0"
+            className="w-full min-w-0 lg:w-[400px] lg:sticky lg:top-32 lg:flex-shrink-0"
           >
             <div
               className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full ${colors.badge} text-sm font-medium mb-6`}
@@ -238,7 +238,7 @@ export default function PlatformPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/50 via-black to-black pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-indigo-500/10 via-purple-500/5 to-transparent rounded-full blur-[100px] pointer-events-none" />
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="site-container relative z-10">
           <div className="max-w-4xl mx-auto text-center mb-20">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -300,7 +300,7 @@ export default function PlatformPage() {
 
       {/* Quick Links - Payments & Hardware */}
       <section className="py-16 border-y border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Payments */}
             <motion.a
@@ -371,7 +371,7 @@ export default function PlatformPage() {
 
       {/* Coming Soon - Autonomous Delivery */}
       <section className="py-24 border-t border-white/5">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -408,7 +408,7 @@ export default function PlatformPage() {
 
       {/* CTA Section */}
       <section className="py-20 md:py-28">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="site-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

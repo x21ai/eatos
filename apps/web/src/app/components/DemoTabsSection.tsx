@@ -19,7 +19,7 @@ export function DemoTabsSection() {
 
   return (
     <section className="py-12 md:py-16 bg-black relative overflow-hidden">
-      <div className="mx-auto w-full max-w-6xl px-5 md:px-8 lg:px-10">
+      <div className="site-container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

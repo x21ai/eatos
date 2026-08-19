@@ -16,7 +16,7 @@ export default function PartnersPage() {
     <div className="bg-white text-black">
       {/* Hero */}
       <section className="pt-28 pb-16 md:pt-40 md:pb-24">
-        <div className="container mx-auto px-5 md:px-8">
+        <div className="site-container">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full bg-black/[0.04] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-600">
@@ -68,7 +68,7 @@ export default function PartnersPage() {
 
       {/* Partnership opportunities */}
       <section className="border-y border-zinc-200 bg-zinc-50 py-20 md:py-28">
-        <div className="container mx-auto px-5 md:px-8">
+        <div className="site-container">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">
               Explore partnership opportunities
@@ -113,7 +113,7 @@ export default function PartnersPage() {
 
       {/* Awesome programs */}
       <section className="bg-black py-20 text-white md:py-28">
-        <div className="container mx-auto px-5 md:px-8">
+        <div className="site-container">
           <div className="mx-auto max-w-2xl text-center">
             <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
               Programs
@@ -162,7 +162,7 @@ export default function PartnersPage() {
 
       {/* Integration partners */}
       <section className="bg-white py-20 md:py-28">
-        <div className="container mx-auto px-5 md:px-8">
+        <div className="site-container">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">
               Meet our integration partners
@@ -195,7 +195,7 @@ export default function PartnersPage() {
 
       {/* Why partner + application form */}
       <section className="border-t border-zinc-200 bg-zinc-50 py-20 md:py-28">
-        <div className="container mx-auto px-5 md:px-8">
+        <div className="site-container">
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-16">
             {/* Left content */}
             <div>

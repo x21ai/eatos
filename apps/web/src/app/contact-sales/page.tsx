@@ -39,7 +39,7 @@ export default function ContactSalesPage() {
 
   return (
     <div className="bg-white min-h-screen pt-32 pb-0">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="site-container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
           {/* Left Column: Info */}
           <div>

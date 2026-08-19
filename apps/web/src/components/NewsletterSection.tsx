@@ -17,7 +17,7 @@ export function NewsletterSection() {
 
   return (
     <section className="border-t border-white/5 bg-black py-20 md:py-28">
-      <div className="mx-auto w-full max-w-6xl px-5 md:px-8 lg:px-10">
+      <div className="site-container">
         <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-900 p-8 sm:p-12 md:rounded-[3rem] md:p-16">
           <div className="pointer-events-none absolute -top-32 left-1/2 h-[280px] w-[280px] max-w-full -translate-x-1/2 rounded-full bg-green-500/10 blur-[110px] sm:h-[420px] sm:w-[420px]" />
 
