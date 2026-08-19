@@ -1,6 +1,9 @@
 // @ts-nocheck
 // All copy for the Fast-Casual solution page. Edit here.
 
+import turnaroundImg from './assets/fc-turnaround.jpg';
+import fulfillmentImg from './assets/fc-fulfillment.jpg';
+
 export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
   title: 'Solution for Fast-Casual Restaurants',
