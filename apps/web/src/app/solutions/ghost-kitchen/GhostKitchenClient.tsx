@@ -49,9 +49,9 @@ const related = [
 ];
 
 const pillarIcons = {
-  speed: { Icon: Zap, iconClass: 'bg-fuchsia-500/15 text-fuchsia-400' },
-  costs: { Icon: Package, iconClass: 'bg-emerald-500/15 text-emerald-400' },
-  loyalty: { Icon: Smartphone, iconClass: 'bg-violet-500/15 text-violet-400' },
+  online: { Icon: Smartphone, iconClass: 'bg-fuchsia-500/15 text-fuchsia-400' },
+  kds: { Icon: ChefHat, iconClass: 'bg-emerald-500/15 text-emerald-400' },
+  brands: { Icon: Package, iconClass: 'bg-violet-500/15 text-violet-400' },
 };
 
 export default function GhostKitchenClient() {
