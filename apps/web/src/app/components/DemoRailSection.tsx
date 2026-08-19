@@ -61,7 +61,7 @@ export function DemoRailSection({
 
         <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6">
           {/* Rail: vertical on desktop, horizontal scroll on smaller screens */}
-          <div className="lg:flex-col flex gap-2 overflow-x-auto lg:overflow-visible scrollbar-hidden">
+          <div className="lg:flex-col lg:h-full flex gap-2 lg:gap-0 overflow-x-auto lg:overflow-visible scrollbar-hidden justify-start lg:justify-between">
             {demoSources.map((d) => {
               const active = d.id === activeId;
               return (
