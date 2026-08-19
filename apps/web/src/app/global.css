@@ -201,12 +201,12 @@
     margin-inline: auto;
     width: 100%;
     max-width: 72rem; /* max-w-6xl */
-    padding-inline: 1.25rem; /* px-5 */
+    padding-inline: 1.0625rem; /* px-5 reduced 15% */
     @media (width >= 48rem) {
-        padding-inline: 2rem; /* md:px-8 */
+        padding-inline: 1.7rem; /* md:px-8 reduced 15% */
     }
     @media (width >= 64rem) {
-        padding-inline: 2.5rem; /* lg:px-10 */
+        padding-inline: 2.125rem; /* lg:px-10 reduced 15% */
     }
 }
 
