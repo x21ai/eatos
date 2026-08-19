@@ -10,7 +10,7 @@ export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
   title: 'Point of Sale System for Cafes',
   description:
-    'Easy to learn and easy to use, ideal for bustling cafes. Menu and inventory control enable staff to take complicated orders quickly and efficiently, while built-in reporting and loyalty tools help owners understand what guests love and keep them coming back every morning.',
+    'Easy to learn and built for bustling cafes. Menu and inventory control keep complex orders fast, while reporting and loyalty bring guests back every morning.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Cafe counter with eatOS terminal',
@@ -41,9 +41,9 @@ export const pillars = [
     id: 'connectivity',
     title: 'Seamless connectivity for your cafe',
     body:
-      'Make sure all your employees stay in sync with each other and with your devices, with flawless connectivity that keeps everyone in the loop from the counter to the kitchen and back office. Orders, payments, and updates travel instantly across every terminal, tablet, and handheld so nothing is missed during the rush.',
+      'Keep every employee and device in sync, from the counter to the kitchen and back office, with orders and payments that travel instantly across the floor.',
     more:
-      'Whether you are a two-person espresso bar or a full staff cafe, eatOS technology adapts to the way your team already works, so orders flow smoothly even when the line stretches to the door. Setup is simple, training is fast, and daily operations feel lighter from the first cup served.',
+      'From a two-person espresso bar to a full staff cafe, setup is simple and training is fast, so orders keep flowing even when the line reaches the door.',
     imageLabel: 'Cafe counter with a connected terminal',
     image: connectImg.url,
   },
@@ -51,9 +51,9 @@ export const pillars = [
     id: 'team',
     title: 'Employee management made easy',
     body:
-      'Schedule shifts, issue payroll, and control time and attendance all with eatOS, so your team can focus on what really matters: greeting guests, crafting drinks, and keeping the cafe humming through every rush. One dashboard gives managers the full picture of labor costs and coverage without switching apps.',
+      'Schedule shifts, run payroll and track time and attendance in one place, so your team can focus on greeting guests and crafting drinks.',
     more:
-      'With eatOS employee management you regulate and stay in sync with every aspect of their work, from the first opening shift to the last close, without jumping between spreadsheets or apps. Staff can clock in, swap shifts, and view schedules right from their phones, so you spend less time on admin and more time on the floor.',
+      'Staff clock in, swap shifts and view schedules from their phones, giving managers labor costs and coverage at a glance with no spreadsheets.',
     imageLabel: 'Manager reviewing the schedule on a tablet',
     image: teamImg.url,
   },
@@ -61,9 +61,9 @@ export const pillars = [
     id: 'kiosk',
     title: 'Speed things up with our Kiosk',
     body:
-      'Set yourself apart from other cafes by adding our Kiosk to the customer experience and taking orders directly from guests to baristas. Guests tap through modifiers, pay, and pick up receipts without slowing the line, so the same team can serve more people during the morning peak.',
+      'Add a Kiosk beside the counter and send orders straight from guests to baristas. Guests tap through modifiers and pay without slowing the line.',
     more:
-      'Guests build their own drinks exactly the way they like them, the line keeps moving, and your team spends more time on the bar crafting orders instead of retyping them at the counter. The kiosk also syncs orders straight to the kitchen display and reporting, so sales and inventory stay accurate all day.',
+      'Orders sync to the kitchen display and reporting instantly, so your team stays on the bar and sales and inventory stay accurate all day.',
     imageLabel: 'Guest ordering at a self-service kiosk',
     image: kioskImg.url,
   },
