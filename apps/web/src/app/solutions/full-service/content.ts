@@ -2,9 +2,9 @@
 // All copy for the Full Service solution page. Edit here.
 
 import heroImg from '../../../assets/svc-full-service.jpg.asset.json';
-import tablesImg from './assets/fs-v3-1.jpg.asset.json';
-import paymentsImg from './assets/fs-v3-2.jpg.asset.json';
-import coursingImg from './assets/fs-v3-3.jpg.asset.json';
+import tablesImg from './assets/fs-v4-1.jpg.asset.json';
+import paymentsImg from './assets/fs-v4-2.png.asset.json';
+import coursingImg from './assets/fs-v4-3.jpg.asset.json';
 
 export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
