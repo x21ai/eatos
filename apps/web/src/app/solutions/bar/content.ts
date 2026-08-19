@@ -10,7 +10,7 @@ export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
   title: 'Bar & Nightclub Point of Sale',
   description:
-    'Built for the pace behind the bar, where every second at the rail counts. Open and close tabs in a tap, keep card on file for the whole night, pour with live inventory behind you, and give your team one system that keeps up from the first round to last call.',
+    'A powerful Point of Sale system for bars and nightclubs. Built to keep tabs moving, drinks pouring, and payments clearing from the first round to last call.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Bartender working an eatOS terminal at the rail',
@@ -41,9 +41,9 @@ export const pillars = [
     id: 'tabs',
     title: 'Tab management built for the rail',
     body:
-      'Open a tab with a tap, keep the card securely on file, and let any bartender add to it from any station without hunting for a slip of paper. Pre-authorize on the first round, split a round across friends, transfer a tab from the bar to a table, and close everything out in seconds when the lights come up.',
+      'Open a tab with a tap, keep the card securely on file, and let any bartender add to it from any station. Pre-authorize, split rounds, transfer to tables, and close out in seconds.',
     more:
-      'Because every tab lives on one platform, your team always sees who owes what and nothing walks out unpaid. Tips, splits and reprints are handled right at the terminal or on a handheld, so bartenders keep their hands on drinks instead of paperwork.',
+      'Every tab lives on one platform, so your team always sees who owes what. Tips, splits and reprints are handled at the terminal or on a handheld, so bartenders stay focused on drinks.',
     imageLabel: 'Bartender closing out a tab on a terminal',
     image: tabsImg.url,
   },
@@ -51,9 +51,9 @@ export const pillars = [
     id: 'inventory',
     title: 'Real-time inventory behind the bar',
     body:
-      'Track kegs, bottles, spirits and mixers as they pour, so you always know what is running low before a guest orders it. Recipes tie each cocktail back to its pours, which means variance shows up as it happens rather than at the end of the month when the numbers no longer add up.',
+      'Track kegs, bottles and mixers as they pour, so you know what is running low before a guest orders it. Recipes tie every cocktail back to its pours, and variance shows up as it happens.',
     more:
-      'Set par levels, get low stock alerts and build purchase orders from live counts instead of guesswork. Managers can compare pours to sales by shift and by bartender, spot over-pouring early, and protect margin on the drinks that carry the room.',
+      'Set par levels, get low-stock alerts and build purchase orders from live counts. Compare pours to sales by shift and spot over-pouring early to protect your margins.',
     imageLabel: 'Back bar shelves and inventory on a tablet',
     image: inventoryImg.url,
   },
@@ -61,9 +61,9 @@ export const pillars = [
     id: 'handheld',
     title: 'Handheld ordering and payment at the rail',
     body:
-      'Take orders, open tabs and accept payments without leaving the rail. A handheld terminal keeps bartenders face-to-face with guests instead of walking back to a fixed station, so service stays personal and the line never stalls.',
+      'Take orders, open tabs and accept payments without leaving the rail. A handheld terminal keeps bartenders face-to-face with guests, so service stays personal and the line never stalls.',
     more:
-      'Tap, insert, swipe or contactless payments settle on the spot, tips are prompted automatically, and every transaction posts straight to the tab. When the night gets busy, the best bartenders stay on the floor with a device that is as mobile as they are.',
+      'Tap, insert, swipe or contactless payments settle on the spot, tips are prompted automatically, and every transaction posts straight to the tab. The best bartenders stay on the floor with a mobile device.',
     imageLabel: 'Bartender tapping a card on a handheld at the rail',
     image: handheldImg.url,
   },
