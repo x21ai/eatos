@@ -48,7 +48,7 @@ export function NewsletterSection() {
                     setStatus('idle');
                   }}
                   placeholder="Add your email"
-                  className="h-[4rem] w-full min-w-0 flex-1 rounded-full border border-white/10 bg-black/60 px-5 text-base text-white placeholder:text-gray-500 focus:border-green-500/50 focus:outline-none sm:h-11 sm:text-sm sm:border-transparent sm:bg-transparent"
+                  className="min-h-[64px] w-full min-w-0 flex-1 rounded-full border border-white/10 bg-black/60 px-5 text-base text-white placeholder:text-gray-500 focus:border-green-500/50 focus:outline-none sm:h-11 sm:min-h-0 sm:text-sm sm:border-transparent sm:bg-transparent"
                 />
                 <button
                   type="submit"
