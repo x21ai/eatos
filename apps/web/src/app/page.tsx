@@ -281,7 +281,7 @@ export default function HomePage() {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 md:gap-6 h-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-4 md:gap-5 lg:gap-6 h-auto">
             {/* Card 1: Point of Sale (Large) */}
             <motion.a
               href="/point-of-sale"
@@ -289,7 +289,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
-              className="md:col-span-2 md:row-span-2 bg-zinc-900 rounded-3xl md:rounded-[2.5rem] p-6 sm:p-8 md:p-10 relative overflow-hidden group border border-white/5"
+              className="md:col-span-2 lg:col-span-2 lg:row-span-2 bg-zinc-900 rounded-3xl md:rounded-[2rem] lg:rounded-[2.5rem] p-6 sm:p-8 md:p-8 lg:p-10 relative overflow-hidden group border border-white/5"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="relative z-10 flex flex-col gap-5 md:gap-6">
@@ -297,8 +297,8 @@ export default function HomePage() {
                   <div className="w-11 h-11 md:w-12 md:h-12 bg-white/10 rounded-2xl flex items-center justify-center mb-4 md:mb-6 text-white backdrop-blur-md">
                     <Command size={24} />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter mb-2">Point of Sale</h3>
-                  <p className="text-gray-400 text-base md:text-lg">The canvas for your service.</p>
+                  <h3 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold tracking-tighter mb-2">Point of Sale</h3>
+                  <p className="text-gray-400 text-base md:text-base lg:text-lg">The canvas for your service.</p>
                 </div>
                 {/* Abstract UI representation */}
                 <img
@@ -318,18 +318,18 @@ export default function HomePage() {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
               whileHover={{ scale: 1.02 }}
-              className="md:col-span-1 md:row-span-1 bg-white text-black rounded-3xl md:rounded-[2.5rem] p-6 md:p-8 relative overflow-hidden group border border-white/5 flex flex-col"
+              className="md:col-span-1 lg:col-span-1 bg-white text-black rounded-3xl md:rounded-[2rem] lg:rounded-[2.5rem] p-6 md:p-5 lg:p-8 relative overflow-hidden group border border-white/5 flex flex-col"
             >
               <div className="flex flex-col h-full">
                 <div className="flex justify-between items-start gap-3">
-                  <h3 className="text-xl md:text-2xl font-bold tracking-tighter min-w-0">Payments</h3>
+                  <h3 className="text-xl md:text-lg lg:text-2xl font-bold tracking-tighter min-w-0 truncate">Payments</h3>
                   <div className="p-2 bg-black/5 rounded-full shrink-0">
                     <CreditCard size={20} />
                   </div>
                 </div>
                 <div className="mt-6 md:mt-auto">
                   {/* TODO: Pricing rate should be fetched from pricing API - do not hardcode */}
-                  <div className="text-4xl md:text-5xl font-bold tracking-tighter mb-1">1.8%</div>
+                  <div className="text-4xl md:text-4xl lg:text-5xl font-bold tracking-tighter mb-1">1.8%</div>
                   <div className="text-gray-500 text-sm">Flat rate processing</div>
                 </div>
               </div>
@@ -343,16 +343,16 @@ export default function HomePage() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
               whileHover={{ scale: 1.02 }}
-              className="md:col-span-1 md:row-span-1 bg-gradient-to-b from-indigo-900 to-black rounded-3xl md:rounded-[2.5rem] p-6 md:p-8 relative overflow-hidden group border border-white/10 flex flex-col"
+              className="md:col-span-1 lg:col-span-1 bg-gradient-to-b from-indigo-900 to-black rounded-3xl md:rounded-[2rem] lg:rounded-[2.5rem] p-6 md:p-5 lg:p-8 relative overflow-hidden group border border-white/10 flex flex-col"
             >
-              <div className="absolute top-0 right-0 p-6 md:p-8 opacity-30">
-                <Star size={80} />
+              <div className="absolute top-0 right-0 p-4 md:p-5 lg:p-8 opacity-30">
+                <Star className="w-12 h-12 md:w-14 md:h-14 lg:w-20 lg:h-20" />
               </div>
               <div className="flex flex-col h-full relative z-10">
                 <div className="flex justify-between items-start">
-                  <h3 className="text-xl md:text-2xl font-bold tracking-tighter">Intelligence</h3>
+                  <h3 className="text-xl md:text-lg lg:text-2xl font-bold tracking-tighter">Intelligence</h3>
                 </div>
-                <p className="text-indigo-200 text-sm leading-relaxed mt-6 md:mt-auto">
+                <p className="text-indigo-200 text-xs md:text-sm lg:text-sm leading-relaxed mt-6 md:mt-auto pr-8 md:pr-10 lg:pr-16">
                   Staffing predictions and inventory automation powered by eatOS AI.
                 </p>
               </div>
@@ -366,15 +366,15 @@ export default function HomePage() {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
               whileHover={{ scale: 1.02 }}
-              className="md:col-span-2 md:row-span-1 bg-zinc-800 rounded-3xl md:rounded-[2.5rem] p-6 md:p-8 relative overflow-hidden group border border-white/5"
+              className="md:col-span-2 lg:col-span-2 bg-zinc-800 rounded-3xl md:rounded-[2rem] lg:rounded-[2.5rem] p-6 md:p-5 lg:p-8 relative overflow-hidden group border border-white/5"
             >
               <div className="flex flex-row items-center justify-between gap-4 h-full">
                 <div className="min-w-0 sm:max-w-[50%]">
-                  <h3 className="text-2xl md:text-3xl font-bold tracking-tighter mb-2">Hardware</h3>
-                  <p className="text-gray-400 text-sm md:text-base">Milled aluminum. Built to last.</p>
+                  <h3 className="text-2xl md:text-2xl lg:text-3xl font-bold tracking-tighter mb-2">Hardware</h3>
+                  <p className="text-gray-400 text-sm md:text-sm lg:text-base">Milled aluminum. Built to last.</p>
                 </div>
-                <div className="w-20 h-20 md:w-32 md:h-32 shrink-0 bg-black rounded-full flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform duration-500">
-                  <Box className="text-white w-7 h-7 md:w-10 md:h-10" />
+                <div className="w-20 h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 shrink-0 bg-black rounded-full flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform duration-500">
+                  <Box className="text-white w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10" />
                 </div>
               </div>
             </motion.a>
