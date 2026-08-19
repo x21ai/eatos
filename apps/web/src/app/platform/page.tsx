@@ -185,7 +185,7 @@ function CategorySection({ category, index }) {
 
       <div className="site-container relative z-10">
         <div
-          className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-16 items-start`}
+          className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-16 items-start min-w-0`}
         >
           {/* Category Info */}
           <motion.div
@@ -193,7 +193,7 @@ function CategorySection({ category, index }) {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:w-[400px] lg:sticky lg:top-32 flex-shrink-0"
+            className="w-full min-w-0 lg:w-[400px] lg:sticky lg:top-32 lg:flex-shrink-0"
           >
             <div
               className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full ${colors.badge} text-sm font-medium mb-6`}
