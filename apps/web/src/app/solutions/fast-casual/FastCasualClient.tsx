@@ -228,73 +228,36 @@ export default function FastCasualClient() {
         </div>
       </section>
 
-      {/* Ecosystem */}
+      {/* Why fast casual */}
       <section className="py-20 md:py-28 border-t border-white/5">
         <div className="site-container">
           <motion.div {...rise} className="text-center mb-14 md:mb-20">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
-              One ecosystem to{" "}<br className="sm:hidden" />run your enterprise
+              Why eatOS for{" "}<br className="sm:hidden" />fast casual?
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-              The ideal Point of Sale, eatOS runs on any of our state-of-the-art devices designed to
-              fit your needs.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {ecosystem.map((item, index) => {
-              const Icon = ecosystemIcons[index % ecosystemIcons.length];
-              return (
-                <motion.div
-                  key={item.title}
-                  {...rise}
-                  transition={{ delay: (index % 3) * 0.1 }}
-                  className="rounded-[2rem] border border-white/10 bg-white/5 p-8"
-                >
-                  <div className="w-14 h-14 rounded-2xl bg-orange-500/15 text-orange-400 flex items-center justify-center mb-6">
-                    <Icon size={28} />
-                  </div>
-                  <h3 className="text-xl md:text-2xl font-bold tracking-tighter mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-400 leading-relaxed">{item.body}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Why enterprise */}
-      <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="site-container">
-          <motion.div {...rise} className="text-center mb-14 md:mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
-              Why eatOS for{" "}<br className="sm:hidden" />enterprise?
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-              Built for scale, with corporate control and location-level speed.
+              Built for the pace of the counter, from the first order to the last table turn.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {[
               {
-                Icon: Building2,
-                title: 'Central control',
-                body: 'Menus, pricing and promotions roll out from one place across every brand and property.',
+                Icon: Zap,
+                title: 'Speed at the counter',
+                body: 'Order entry, payment and kitchen routing happen in seconds, so peak hours stay under control.',
                 iconClass: 'bg-sky-500/15 text-sky-400',
               },
               {
                 Icon: Shield,
-                title: 'Reliable at scale',
+                title: 'Reliable through the rush',
                 body: 'Online or offline, across every station and handheld, service and payments keep clearing.',
                 iconClass: 'bg-orange-500/15 text-orange-400',
               },
               {
                 Icon: Clock,
                 title: '24/7 support',
-                body: 'Real people, real help, any time. Enterprise teams get answers fast, day or night.',
+                body: 'Real people, real help, any time. We are here whenever your dining room is open.',
                 iconClass: 'bg-emerald-500/15 text-emerald-400',
               },
             ].map(({ Icon, title, body, iconClass }, index) => (
@@ -325,7 +288,7 @@ export default function FastCasualClient() {
               {bundle.eyebrow}
             </p>
             <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tighter">
-              Get the{" "}<br className="sm:hidden" />Enterprise Bundle
+              Get the{" "}<br className="sm:hidden" />Fast-Casual Bundle
             </h2>
             <p className="mt-5 text-base sm:text-lg text-gray-400 leading-relaxed">
               $0 hardware upfront cost with{" "}<br className="sm:hidden" />Pay As You Go.
@@ -423,11 +386,11 @@ export default function FastCasualClient() {
 
             <div className="relative z-10 p-10 md:p-20 text-center">
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
-                Run your enterprise on eatOS
+                Run your fast-casual restaurant on eatOS
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-                Book a demo and we will show you how eatOS scales across your brands, properties and
-                teams.
+                Book a demo and we will show you how eatOS speeds up ordering, fulfillment and table
+                turns.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
