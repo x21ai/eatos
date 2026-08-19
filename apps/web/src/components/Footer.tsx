@@ -378,7 +378,7 @@ export default function Footer({ variant = 'light' }) {
               {[
                 { label: 'Quick Service', href: '/solutions/quick-service' },
                 { label: 'Full Service', href: '/solutions/full-service' },
-                { label: 'Fine Dining', href: '/solutions/fine-dining' },
+                { label: 'Fast Casual', href: '/solutions/fast-casual' },
                 { label: 'Café', href: '/solutions/cafe' },
                 { label: 'Bar & Nightclub', href: '/solutions/bar' },
                 { label: 'Food Truck', href: '/solutions/food-truck' },

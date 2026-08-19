@@ -38,16 +38,16 @@ const solutions = [
     image: 'https://ucarecdn.com/95432288-86ee-4542-a032-acde33a12956/-/format/auto/',
   },
   {
-    href: '/solutions/fine-dining',
-    title: 'Fine Dining',
+    href: '/solutions/fast-casual',
+    title: 'Fast Casual',
     description:
-      'Elegance meets efficiency. Deliver a flawless guest experience without slowing down your team.',
+      'Speed with accuracy. Move more guests through the counter without slowing your team down.',
     Icon: Star,
     color: 'purple',
     features: [
-      'Tasting menu course control',
-      'Tableside order and pay',
-      'Guest preference tracking',
+      'Counter and kiosk ordering',
+      'Accurate order fulfillment',
+      'Kitchen display routing',
     ],
     image: null,
   },

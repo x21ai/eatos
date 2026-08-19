@@ -232,7 +232,7 @@ export default function BookDemoPage() {
                       <option value="quick-service">Quick Service</option>
                       <option value="fast-casual">Fast Casual</option>
                       <option value="full-service">Full Service</option>
-                      <option value="fine-dining">Fine Dining</option>
+                      <option value="fast-casual">Fast Casual</option>
                       <option value="cafe">Café / Coffee Shop</option>
                       <option value="bar">Bar / Nightclub</option>
                       <option value="food-truck">Food Truck</option>

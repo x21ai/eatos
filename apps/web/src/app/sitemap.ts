@@ -34,7 +34,7 @@ export default async function sitemap() {
     '/solutions',
     '/solutions/quick-service',
     '/solutions/full-service',
-    '/solutions/fine-dining',
+    '/solutions/fast-casual',
     '/solutions/cafe',
     '/solutions/bar',
     '/solutions/food-truck',
