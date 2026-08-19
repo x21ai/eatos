@@ -242,20 +242,20 @@ function Matrix() {
 
         {/* Table, tablet and up, horizontal scroll with sticky feature column */}
         <Reveal delay={0.1} className="mt-14 hidden md:block">
-          <div className="-mx-4 overflow-x-auto px-4 md:mx-0 md:px-6 lg:px-16">
-            <table className="w-full min-w-[1100px] table-fixed border-separate border-spacing-0 text-left">
+          <div className="-mx-4 overflow-x-auto px-4 md:mx-auto md:max-w-[1200px] md:px-6">
+            <table className="mx-auto w-full min-w-[1000px] table-fixed border-separate border-spacing-0 text-left">
               <thead>
                 <tr>
-                  <th className="w-5/12 sticky left-0 z-10 bg-black pb-6 pr-1 align-bottom text-base font-semibold tracking-tight sm:text-lg">
+                  <th className="w-[24%] sticky left-0 z-10 bg-black pb-6 pl-2 pr-4 align-bottom text-base font-semibold tracking-tight sm:text-lg">
                     Feature Set
                   </th>
                   {competitors.map((name, i) => (
                     <th
                       key={name}
-                      className={`w-1/12 pb-6 text-center align-bottom text-sm font-semibold tracking-tight ${
+                      className={`pb-6 text-center align-bottom text-sm font-semibold tracking-tight ${
                         i === 0
-                          ? 'rounded-t-[20px] bg-white/[0.07] pl-1 pr-2 pt-7 text-white'
-                          : 'px-3 text-zinc-500'
+                          ? 'w-[13%] rounded-t-[20px] bg-white/[0.07] px-2 pt-7 text-white'
+                          : 'w-[9%] px-2 text-zinc-500'
                       }`}
                     >
                       {i === 0 ? (
@@ -278,11 +278,11 @@ function Matrix() {
               <tbody>
                 {matrix.map((row, r) => (
                   <tr key={row.feature}>
-                    <td className="sticky left-0 z-10 border-t border-white/8 bg-black py-5 pr-1 text-sm leading-6 text-zinc-300">
+                    <td className="sticky left-0 z-10 border-t border-white/8 bg-black py-6 pl-2 pr-4 text-sm leading-6 text-zinc-300">
                       {row.feature}
                     </td>
                     <td
-                      className={`border-t border-white/8 bg-white/[0.07] pl-1 pr-2 py-5 text-center ${
+                      className={`border-t border-white/8 bg-white/[0.07] px-2 py-6 text-center ${
                         r === matrix.length - 1 ? 'rounded-b-[20px]' : ''
                       }`}
                     >
@@ -291,7 +291,7 @@ function Matrix() {
                     {row.support.map((on, c) => (
                       <td
                         key={c}
-                        className="border-t border-white/8 px-3 py-5 text-center"
+                        className="border-t border-white/8 px-2 py-6 text-center"
                       >
                         <Mark on={on} />
                       </td>
