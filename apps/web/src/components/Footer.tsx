@@ -216,7 +216,7 @@ export default function Footer({ variant = 'light' }) {
 
   return (
     <footer className={`${bgClass} border-t pt-16 pb-8`}>
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="mx-auto w-full max-w-6xl px-5 md:px-8 lg:px-10">
         {/* ── Top: brand / offices  +  contact channels ── */}
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 pb-12 border-b ${divider} mb-12`}>
           {/* Left: logo · description · social · offices */}

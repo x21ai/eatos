@@ -135,7 +135,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
         </motion.div>
 
-        <div className="container mx-auto px-5 md:px-6 relative z-10 pt-10 md:pt-20 text-center">
+        <div className="mx-auto w-full max-w-6xl px-5 md:px-8 lg:px-10 relative z-10 pt-10 md:pt-20 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -199,7 +199,7 @@ export default function HomePage() {
 
       {/* Social Proof / Trust Section */}
       <section className="py-16 md:py-20 bg-black border-t border-white/5 relative overflow-hidden">
-        <div className="container mx-auto px-5 md:px-6">
+        <div className="mx-auto w-full max-w-6xl px-5 md:px-8 lg:px-10">
           {/* Capability strip: honest, aspirational, Apple-style */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -268,7 +268,7 @@ export default function HomePage() {
 
       {/* Bento Grid Navigation - The Hub */}
       <section className="py-16 md:pt-16 md:pb-28 bg-black relative">
-        <div className="container mx-auto px-5 md:px-6">
+        <div className="mx-auto w-full max-w-6xl px-5 md:px-8 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -384,7 +384,7 @@ export default function HomePage() {
 
       {/* Service Modes Section */}
       <section className="py-16 md:py-28 bg-zinc-950 relative overflow-hidden">
-        <div className="container mx-auto px-5 md:px-6">
+        <div className="mx-auto w-full max-w-6xl px-5 md:px-8 lg:px-10">
           <div className="text-center mb-10 md:mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -397,7 +397,7 @@ export default function HomePage() {
             </motion.h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {serviceStyles.map((style, i) => {
               const Icon = style.icon;
               return (
@@ -448,7 +448,7 @@ export default function HomePage() {
 
       {/* Hardware Section */}
       <section className="py-16 md:py-28 bg-black relative">
-        <div className="container mx-auto px-5 md:px-6">
+        <div className="mx-auto w-full max-w-6xl px-5 md:px-8 lg:px-10">
           <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 md:mb-20 gap-6 md:gap-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -537,7 +537,7 @@ export default function HomePage() {
 
       {/* Reports & Analytics Section */}
       <section className="py-16 md:py-28 bg-zinc-950 relative overflow-hidden">
-        <div className="container mx-auto px-5 md:px-6">
+        <div className="mx-auto w-full max-w-6xl px-5 md:px-8 lg:px-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -641,7 +641,7 @@ export default function HomePage() {
 
       {/* Integrations Section */}
       <section className="py-16 md:py-28 bg-black relative overflow-hidden">
-        <div className="container mx-auto px-5 md:px-6">
+        <div className="mx-auto w-full max-w-6xl px-5 md:px-8 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -664,7 +664,7 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {[
               { name: 'Adyen', category: 'Payments' },
               { name: 'MarketMan', category: 'Inventory' },
@@ -713,7 +713,7 @@ export default function HomePage() {
 
       {/* Kitchen Display */}
       <section className="py-16 md:py-28 bg-black border-t border-white/5">
-        <div className="container mx-auto px-5 md:px-6">
+        <div className="mx-auto w-full max-w-6xl px-5 md:px-8 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
