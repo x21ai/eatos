@@ -21,12 +21,12 @@ export const marquee = [
   {
     value: 'One platform',
     label:
-      'Front of house, kitchen and back office run on a single system. Every order, table, and payment flows through one connected platform.',
+      'Front of house, kitchen and back office run on a single system. Every order and payment flows through one connected platform.',
   },
   {
     value: 'Always on',
     label:
-      'Service keeps moving online or offline, with no lost checks. Tickets and totals sync automatically the moment connectivity returns.',
+      'Service keeps moving online or offline, with no lost. Tickets and totals sync automatically the moment connectivity returns.',
   },
   {
     value: 'Support 24/7',
