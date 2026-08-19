@@ -2,19 +2,17 @@
 'use client';
 
 import {
-  BarChart3,
-  Building2,
   Check,
   ChevronRight,
+  ChefHat,
   Clock,
-  Code2,
   CreditCard,
-  LayoutGrid,
-  Route,
+  MonitorSmartphone,
   Shield,
   Monitor,
-  Users,
-  WifiOff,
+  Timer,
+  Utensils,
+  Zap,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
@@ -28,35 +26,33 @@ const rise = {
 
 const related = [
   {
-    href: '/products/point-of-sale',
-    title: 'Enterprise Point of Sale',
-    tagline: 'One Point of Sale across every property, with central menus, pricing and reporting.',
-    Icon: Monitor,
+    href: '/products/self-service-kiosk',
+    title: 'Self-Service Kiosk',
+    tagline: 'Let guests order and pay on their own, with upsells built into every screen.',
+    Icon: MonitorSmartphone,
     iconClass: 'bg-orange-500/15 text-orange-400',
   },
   {
-    href: '/products/workforce-management',
-    title: 'Workforce Management',
-    tagline: 'Scheduling, clock-ins and labor costs in one place, across every location.',
-    Icon: Users,
-    iconClass: 'bg-teal-500/15 text-teal-400',
+    href: '/products/kitchen-display-system',
+    title: 'Kitchen Display System',
+    tagline: 'Orders routed to the right station, so tickets clear faster during the rush.',
+    Icon: ChefHat,
+    iconClass: 'bg-amber-500/15 text-amber-400',
   },
   {
-    href: '/platform',
-    title: 'Open API and Marketplace',
-    tagline: 'Connect the systems your enterprise already runs on, with over 600 integrations.',
-    Icon: Code2,
+    href: '/tap-to-pay',
+    title: 'Tap to Pay',
+    tagline: 'Take contactless payment anywhere in the dining room, with no extra hardware.',
+    Icon: CreditCard,
     iconClass: 'bg-sky-500/15 text-sky-400',
   },
 ];
 
 const pillarIcons = {
-  platform: { Icon: LayoutGrid, iconClass: 'bg-orange-500/15 text-orange-400' },
-  workforce: { Icon: Users, iconClass: 'bg-teal-500/15 text-teal-400' },
-  'always-on': { Icon: WifiOff, iconClass: 'bg-amber-500/15 text-amber-400' },
+  turnaround: { Icon: Timer, iconClass: 'bg-orange-500/15 text-orange-400' },
+  fulfillment: { Icon: Utensils, iconClass: 'bg-teal-500/15 text-teal-400' },
+  management: { Icon: ChefHat, iconClass: 'bg-amber-500/15 text-amber-400' },
 };
-
-const ecosystemIcons = [LayoutGrid, Route, CreditCard, BarChart3, Code2, Monitor];
 
 export default function FastCasualClient() {
   return (
