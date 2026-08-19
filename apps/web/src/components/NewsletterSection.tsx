@@ -52,7 +52,7 @@ export function NewsletterSection() {
                 />
                 <button
                   type="submit"
-                  className="h-10 w-full shrink-0 rounded-full bg-white px-7 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:h-11 sm:w-auto"
+                  className="h-12 w-full shrink-0 rounded-full bg-white px-7 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:h-11 sm:w-auto"
                 >
                   Subscribe
                 </button>
