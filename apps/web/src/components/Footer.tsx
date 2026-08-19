@@ -384,7 +384,7 @@ export default function Footer({ variant = 'light' }) {
                 { label: 'Food Truck', href: '/solutions/food-truck' },
                 { label: 'Ghost Kitchen', href: '/solutions/ghost-kitchen' },
                 { label: 'Multi-Location', href: '/solutions/multi-location' },
-                { label: 'Franchise', href: '/solutions/franchise' },
+                { label: 'Enterprise', href: '/solutions/enterprise' },
               ].map(({ label, href }) => (
                 <li key={href}>
                   <a href={href} className={linkClass}>

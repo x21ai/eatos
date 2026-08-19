@@ -106,13 +106,13 @@ const solutions = [
     image: null,
   },
   {
-    href: '/solutions/franchise',
-    title: 'Franchise',
+    href: '/solutions/enterprise',
+    title: 'Enterprise',
     description:
-      'Built for franchise success. Give franchisees the tools they need while maintaining brand standards.',
+      'Built for enterprise scale. Central control of menus, staff and reporting across every property.',
     Icon: Network,
     color: 'violet',
-    features: ['Brand standard enforcement', 'Franchisee dashboards', 'Royalty reporting'],
+    features: ['Central menu control', 'Workforce and attendance', 'Open API and Marketplace'],
     image: null,
   },
 ];

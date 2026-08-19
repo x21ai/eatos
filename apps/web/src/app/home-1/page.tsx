@@ -107,8 +107,8 @@ const serviceStyles = [
     bullets: ['Delivery app aggregation', 'Multi-brand menu control', 'Prep time automation'],
   },
   {
-    name: 'Franchise',
-    href: '/solutions/franchise',
+    name: 'Enterprise',
+    href: '/solutions/enterprise',
     image: svcFranchise.url,
     icon: Building2,
     iconClass: 'bg-cyan-500/20 text-cyan-400',

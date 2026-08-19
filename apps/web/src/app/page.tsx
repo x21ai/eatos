@@ -103,13 +103,13 @@ const serviceStyles = [
     bullets: ['Delivery app aggregation', 'Multi-brand menu control', 'Prep time automation'],
   },
   {
-    name: 'Franchise',
-    href: '/solutions/franchise',
+    name: 'Enterprise',
+    href: '/solutions/enterprise',
     image: svcFranchise.url,
     icon: Building2,
     iconClass: 'bg-cyan-500/20 text-cyan-400',
     checkClass: 'text-cyan-500',
-    description: 'Standardize menus, pricing and reporting across every location.',
+    description: 'Run every brand and property on one enterprise platform.',
     bullets: ['Central menu publishing', 'Location benchmarking', 'Role-based team access'],
   },
 ];
