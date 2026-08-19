@@ -138,18 +138,29 @@ export default function EnterpriseClient() {
               </motion.div>
             </div>
 
+            {/* Key features card */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="min-w-0 lg:col-span-7"
+              className="min-w-0 lg:col-span-7 rounded-[2rem] md:rounded-[2.5rem] border border-fuchsia-500/20 bg-white/5 backdrop-blur-xl p-8 md:p-10"
             >
-              <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
-                <Placeholder
-                  label={hero.imageLabel}
-                  ratio="aspect-[16/10]"
-                  className="rounded-none"
-                />
+              <h2 className="text-xl font-bold tracking-tighter mb-8">Key features</h2>
+              <div className="space-y-5 md:space-y-6">
+                {capabilities.map((feature, index) => (
+                  <motion.div
+                    key={feature}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.4 + index * 0.08 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="w-8 h-8 shrink-0 rounded-full bg-fuchsia-500/10 text-fuchsia-400 flex items-center justify-center mt-0.5">
+                      <Check size={16} />
+                    </div>
+                    <div className="min-w-0 text-base md:text-lg font-medium">{feature}</div>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
           </div>
@@ -175,28 +186,6 @@ export default function EnterpriseClient() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Key features */}
-      <section className="py-16 md:py-20 border-t border-white/5">
-        <div className="site-container">
-          <motion.div
-            {...rise}
-            className="rounded-[2rem] md:rounded-[2.5rem] border border-fuchsia-500/20 bg-white/5 backdrop-blur-xl p-8 md:p-10"
-          >
-            <h2 className="text-xl font-bold tracking-tighter mb-8">Key features</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-              {capabilities.map((feature) => (
-                <div key={feature} className="flex items-start gap-4">
-                  <div className="w-8 h-8 shrink-0 rounded-full bg-fuchsia-500/10 text-fuchsia-400 flex items-center justify-center mt-0.5">
-                    <Check size={16} />
-                  </div>
-                  <div className="min-w-0 text-base md:text-lg font-medium">{feature}</div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </section>
 
