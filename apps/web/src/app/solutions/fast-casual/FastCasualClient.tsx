@@ -83,7 +83,7 @@ export default function FastCasualClient() {
                 transition={{ duration: 0.5 }}
                 className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center mb-8 text-orange-400"
               >
-                <Building2 size={36} />
+                <Zap size={36} />
               </motion.div>
 
               <motion.h1
@@ -190,7 +190,7 @@ export default function FastCasualClient() {
         <div className="site-container space-y-16 md:space-y-24">
           {pillars.map((pillar, index) => {
             const { Icon, iconClass } =
-              pillarIcons[pillar.id] ?? { Icon: Building2, iconClass: 'bg-white/10 text-white' };
+              pillarIcons[pillar.id] ?? { Icon: Utensils, iconClass: "bg-white/10 text-white" };
             return (
               <motion.div
                 key={pillar.id}
