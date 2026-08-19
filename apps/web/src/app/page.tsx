@@ -470,7 +470,7 @@ export default function HomePage() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="text-white border-b border-white pb-1 hover:opacity-70 transition-opacity"
+              className="text-white border-b border-white pb-1 hover:opacity-70 transition-opacity whitespace-nowrap shrink-0"
             >
               Shop all hardware
             </motion.a>
