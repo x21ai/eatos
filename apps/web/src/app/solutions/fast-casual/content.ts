@@ -1,6 +1,9 @@
 // @ts-nocheck
 // All copy for the Fast-Casual solution page. Edit here.
 
+import turnaroundImg from './assets/fc-turnaround.jpg';
+import fulfillmentImg from './assets/fc-fulfillment.jpg';
+
 export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
   title: 'Solution for Fast-Casual Restaurants',
@@ -43,6 +46,7 @@ export const pillars = [
     more:
       'eatOS Point of Sale keeps a high volume of guests moving at peak hours without adding pressure to your team.',
     imageLabel: 'Fast-casual counter service',
+    image: turnaroundImg,
   },
   {
     id: 'fulfillment',
@@ -52,6 +56,7 @@ export const pillars = [
     more:
       'Accuracy at the counter and the kiosk boosts satisfaction with your fast-casual dining experience.',
     imageLabel: 'Self-service kiosk ordering',
+    image: fulfillmentImg,
   },
   {
     id: 'management',
