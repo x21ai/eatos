@@ -232,8 +232,8 @@ function Matrix() {
     <section className="bg-black text-white">
       <div className="container mx-auto px-4 md:px-6 py-24 md:py-28 lg:py-40">
         <Reveal>
-          <h2 className="mx-auto max-w-[26ch] text-center font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
-            Compare eatOS with other Point of Sale software
+          <h2 className="mx-auto max-w-[26ch] text-center font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl whitespace-pre-line">
+            Compare eatOS with other{"\n"}Point of Sale software
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-7 text-zinc-400 sm:text-base">
             See why thousands of restaurant brands choose eatOS over other Point of Sale software for smarter, faster, and more efficient operations.
