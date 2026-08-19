@@ -45,9 +45,9 @@ const solutions = [
     Icon: Star,
     color: 'purple',
     features: [
-      'Tasting menu course control',
-      'Tableside order and pay',
-      'Guest preference tracking',
+      'Counter and kiosk ordering',
+      'Accurate order fulfillment',
+      'Kitchen display routing',
     ],
     image: null,
   },
