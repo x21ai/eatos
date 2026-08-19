@@ -242,7 +242,7 @@ function Matrix() {
 
         {/* Table, tablet and up, horizontal scroll with sticky feature column */}
         <Reveal delay={0.1} className="mt-14 hidden md:block">
-          <div className="-mx-4 overflow-x-auto px-4 md:mx-0 md:px-6 lg:px-10">
+          <div className="-mx-4 overflow-x-auto px-4 md:mx-0 md:px-6 lg:px-16">
             <table className="w-full min-w-[1100px] table-fixed border-separate border-spacing-0 text-left">
               <thead>
                 <tr>
