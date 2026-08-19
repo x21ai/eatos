@@ -75,7 +75,7 @@ export default function BarClient() {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
-            <div className="min-w-0 lg:col-span-5">
+            <div className="min-w-0 lg:col-span-6">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -138,7 +138,7 @@ export default function BarClient() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-7 w-full max-w-md sm:max-w-lg lg:max-w-none mx-auto lg:mx-0 rounded-[2rem] md:rounded-[2.5rem] border border-rose-500/20 bg-white/5 overflow-hidden"
+              className="lg:col-span-6 w-full max-w-md sm:max-w-lg lg:max-w-none mx-auto lg:mx-0 rounded-[2rem] md:rounded-[2.5rem] border border-rose-500/20 bg-white/5 overflow-hidden"
             >
               <Placeholder
                 label={hero.imageLabel}

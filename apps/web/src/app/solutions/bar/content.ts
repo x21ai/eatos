@@ -2,9 +2,9 @@
 // All copy for the Bar & Nightclub solution page. Edit here.
 
 import heroImg from '../../../assets/svc-bar.jpg.asset.json';
-import tabsImg from './assets/bar-tabs.jpg.asset.json';
-import inventoryImg from './assets/bar-inventory.jpg.asset.json';
-import handheldImg from './assets/bar-handheld.jpg.asset.json';
+import tabsImg from './assets/bar-tabs-new.png.asset.json';
+import inventoryImg from './assets/bar-inventory-new.jpg.asset.json';
+import handheldImg from './assets/bar-handheld-new.png.asset.json';
 
 export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
