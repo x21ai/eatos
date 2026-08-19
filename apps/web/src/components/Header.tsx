@@ -284,8 +284,8 @@ export default function Header() {
       iconWrap: "bg-indigo-100 text-indigo-600",
     },
     {
-      href: "/solutions/fine-dining",
-      title: "Fine Dining",
+      href: "/solutions/fast-casual",
+      title: "Fast Casual",
       description: "Elegance meets efficiency",
       Icon: Star,
       iconWrap: "bg-purple-100 text-purple-600",

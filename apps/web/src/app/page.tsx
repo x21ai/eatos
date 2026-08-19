@@ -53,8 +53,8 @@ const serviceStyles = [
     bullets: ['Visual floor plan management', 'Course pacing and firing', 'Flexible split checks'],
   },
   {
-    name: 'Fine Dining',
-    href: '/solutions/fine-dining',
+    name: 'Fast Casual',
+    href: '/solutions/fast-casual',
     image: svcFineDining.url,
     icon: Star,
     iconClass: 'bg-amber-500/20 text-amber-400',
