@@ -19,7 +19,7 @@ export function LiveDemoSection() {
   const activeDemo = demos.find((d) => d.id === activeTab);
 
   return (
-    <section className="py-12 md:py-16 bg-black relative overflow-hidden w-full mx-auto max-w-6xl px-5 md:px-8 lg:px-10">
+    <section className="py-12 md:py-16 bg-black relative overflow-hidden w-full site-container">
       <div className="w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
