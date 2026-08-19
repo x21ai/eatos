@@ -233,7 +233,7 @@ export default function FullServiceClient() {
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...rise} className="text-center mb-14 md:mb-20">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
-              Why eatOS for full service?
+              Why eatOS for{" "}<br className="sm:hidden" />full service?
             </h2>
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto whitespace-pre-line">
               Built for the pace of the dining room, from{"\n"}the first greeting to the final check.
@@ -287,8 +287,12 @@ export default function FullServiceClient() {
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-indigo-400">
               {bundle.eyebrow}
             </p>
-            <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tighter">{bundle.title}</h2>
-            <p className="mt-5 text-lg text-gray-400 leading-relaxed">{bundle.description}</p>
+            <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tighter">
+              Get the Full{" "}<br className="sm:hidden" />Service Bundle
+            </h2>
+            <p className="mt-5 text-lg text-gray-400 leading-relaxed">
+              $0 hardware upfront cost with{" "}<br className="sm:hidden" />Pay As You Go.
+            </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href={bundle.primaryCta.href}
@@ -384,9 +388,14 @@ export default function FullServiceClient() {
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
                 Elevate your dining experience
               </h2>
-              <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 whitespace-pre-line">
-                See the full-service setup in action. Book a demo and{"\n"}we will show you how it fits
-                your floor plan.
+              <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 whitespace-pre-line">
+                <span className="hidden sm:block">
+                  See the full-service setup in action. Book a demo and{"\n"}we will show you how it fits
+                  your floor plan.
+                </span>
+                <span className="sm:hidden">
+                  See the full-service setup in action. Book a demo and we will show you how it fits your floor plan.
+                </span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
