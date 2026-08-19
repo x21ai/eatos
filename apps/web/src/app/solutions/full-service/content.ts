@@ -10,7 +10,7 @@ export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
   title: 'Full-Service Restaurant\u00a0',
   description:
-    'Designed for full-service restaurants, with additional modules including reservations, table management, and functionality to support order coursing.',
+    'Designed for full-service restaurants, with additional modules including reservations, table management, and functionality to support order coursing, course timing, and split-check payments at the table.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Full service dining room setup',
