@@ -217,6 +217,7 @@ export default function FastCasualClient() {
                   <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
                     <Placeholder
                       label={pillar.imageLabel}
+                      src={pillar.image}
                       ratio="aspect-[16/10]"
                       className="rounded-none"
                     />
