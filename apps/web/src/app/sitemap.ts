@@ -40,7 +40,7 @@ export default async function sitemap() {
     '/solutions/food-truck',
     '/solutions/ghost-kitchen',
     '/solutions/multi-location',
-    '/solutions/franchise',
+    '/solutions/enterprise',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),

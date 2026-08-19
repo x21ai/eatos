@@ -326,9 +326,9 @@ export default function Header() {
       iconWrap: "bg-blue-100 text-blue-600",
     },
     {
-      href: "/solutions/franchise",
-      title: "Franchise",
-      description: "Built for franchise success",
+      href: "/solutions/enterprise",
+      title: "Enterprise",
+      description: "Point of Sale built for enterprise scale",
       Icon: Network,
       iconWrap: "bg-violet-100 text-violet-600",
     },
