@@ -454,6 +454,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              className="min-w-0 md:max-w-[30rem] lg:max-w-none"
             >
               <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-4">
                 Hardware that <br />
