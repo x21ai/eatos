@@ -293,7 +293,8 @@ export default function FullServiceClient() {
               {bundle.eyebrow}
             </p>
             <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter">
-              {bundle.title}
+              Get the Full <br className="md:hidden" />
+              Service Bundle
             </h2>
             <p className="mt-5 text-base sm:text-lg text-gray-400 leading-relaxed">
               {bundle.description}
