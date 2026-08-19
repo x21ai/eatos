@@ -59,8 +59,8 @@ const serviceStyles = [
     icon: Star,
     iconClass: 'bg-amber-500/20 text-amber-400',
     checkClass: 'text-amber-500',
-    description: 'Precise service for tasting menus, wine pairings and guest notes.',
-    bullets: ['Coursing and seat-level orders', 'Guest preference profiles', 'Reserve and wine list tools'],
+    description: 'Fast ordering and quicker table turns for high-volume service.',
+    bullets: ['Counter and kiosk ordering', 'Accurate order fulfillment', 'Kitchen display routing'],
   },
   {
     name: 'Cafe',

@@ -286,7 +286,7 @@ export default function Header() {
     {
       href: "/solutions/fast-casual",
       title: "Fast Casual",
-      description: "Elegance meets efficiency",
+      description: "Speed and accuracy at the counter",
       Icon: Star,
       iconWrap: "bg-purple-100 text-purple-600",
     },

@@ -41,7 +41,7 @@ const solutions = [
     href: '/solutions/fast-casual',
     title: 'Fast Casual',
     description:
-      'Elegance meets efficiency. Deliver a flawless guest experience without slowing down your team.',
+      'Speed with accuracy. Move more guests through the counter without slowing your team down.',
     Icon: Star,
     color: 'purple',
     features: [
