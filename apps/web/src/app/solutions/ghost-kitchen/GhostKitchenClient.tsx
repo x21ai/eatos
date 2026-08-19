@@ -7,7 +7,8 @@ import {
   Clock,
   CreditCard,
   Package,
-  Truck,
+  ChefHat,
+  Bike,
   ShieldCheck,
   Smartphone,
   Users,
@@ -25,16 +26,16 @@ const rise = {
 
 const related = [
   {
-    href: '/tap-to-pay',
-    title: 'Table Side Order and Pay',
-    tagline: 'Take the order and the payment at the window.',
+    href: '/products/online-ordering',
+    title: 'Online Ordering and Delivery',
+    tagline: 'Commission free ordering on your own app and website.',
     Icon: CreditCard,
     iconClass: 'bg-violet-500/15 text-violet-400',
   },
   {
-    href: '/point-of-sale',
-    title: 'Point of Sale',
-    tagline: 'Fast order entry built for a busy service window.',
+    href: '/products/kitchen-display-system',
+    title: 'Kitchen Display System',
+    tagline: 'Route tickets to the right station, every time.',
     Icon: Zap,
     iconClass: 'bg-sky-500/15 text-sky-400',
   },
@@ -48,18 +49,18 @@ const related = [
 ];
 
 const pillarIcons = {
-  speed: { Icon: Zap, iconClass: 'bg-amber-500/15 text-amber-400' },
+  speed: { Icon: Zap, iconClass: 'bg-fuchsia-500/15 text-fuchsia-400' },
   costs: { Icon: Package, iconClass: 'bg-emerald-500/15 text-emerald-400' },
   loyalty: { Icon: Smartphone, iconClass: 'bg-violet-500/15 text-violet-400' },
 };
 
 export default function GhostKitchenClient() {
   return (
-    <div className="min-h-screen bg-black text-white font-montserrat selection:bg-amber-500/30">
+    <div className="min-h-screen bg-black text-white font-montserrat selection:bg-fuchsia-500/30">
       {/* Hero */}
       <section className="relative pt-32 md:pt-44 pb-16 md:pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-amber-500/20 via-amber-600/10 to-transparent pointer-events-none" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-amber-500/10 rounded-full blur-[150px] pointer-events-none opacity-50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-fuchsia-500/20 via-fuchsia-600/10 to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-fuchsia-500/10 rounded-full blur-[150px] pointer-events-none opacity-50" />
 
         <div className="site-container relative z-10">
           <motion.div
@@ -71,7 +72,7 @@ export default function GhostKitchenClient() {
               Solutions
             </a>
             <ChevronRight size={14} className="shrink-0" />
-            <span className="text-white">Food Truck</span>
+            <span className="text-white">Ghost Kitchen</span>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
@@ -80,9 +81,9 @@ export default function GhostKitchenClient() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-8 text-amber-400"
+                className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-fuchsia-500/10 border border-fuchsia-500/20 flex items-center justify-center mb-8 text-fuchsia-400"
               >
-                <Truck size={36} />
+                <Bike size={36} />
               </motion.div>
 
               <motion.h1
@@ -98,7 +99,7 @@ export default function GhostKitchenClient() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-xl sm:text-2xl md:text-3xl font-medium mb-6 text-amber-400"
+                className="text-xl sm:text-2xl md:text-3xl font-medium mb-6 text-fuchsia-400"
               >
                 {hero.eyebrow}
               </motion.p>
@@ -138,7 +139,7 @@ export default function GhostKitchenClient() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-7 w-full max-w-md sm:max-w-lg lg:max-w-none mx-auto lg:mx-0 rounded-[2rem] md:rounded-[2.5rem] border border-amber-500/20 bg-white/5 overflow-hidden"
+              className="lg:col-span-7 w-full max-w-md sm:max-w-lg lg:max-w-none mx-auto lg:mx-0 rounded-[2rem] md:rounded-[2.5rem] border border-fuchsia-500/20 bg-white/5 overflow-hidden"
             >
               <Placeholder
                 label={hero.imageLabel}
@@ -162,7 +163,7 @@ export default function GhostKitchenClient() {
                 transition={{ delay: index * 0.08 }}
                 className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-7 min-w-0"
               >
-                <div className="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center mb-5">
+                <div className="w-10 h-10 rounded-xl bg-fuchsia-500/15 text-fuchsia-400 flex items-center justify-center mb-5">
                   <Check size={18} />
                 </div>
                 <div className="text-lg md:text-xl font-bold tracking-tighter">{item.value}</div>
@@ -178,7 +179,7 @@ export default function GhostKitchenClient() {
         <div className="site-container space-y-16 md:space-y-24">
           {pillars.map((pillar, index) => {
             const { Icon, iconClass } =
-              pillarIcons[pillar.id] ?? { Icon: Truck, iconClass: 'bg-white/10 text-white' };
+              pillarIcons[pillar.id] ?? { Icon: Bike, iconClass: 'bg-white/10 text-white' };
             return (
               <motion.div
                 key={pillar.id}
@@ -220,10 +221,10 @@ export default function GhostKitchenClient() {
         <div className="site-container">
           <motion.div {...rise} className="text-center mb-14 md:mb-20">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
-              Why eatOS for food trucks?
+              Why eatOS for ghost kitchens?
             </h2>
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto whitespace-pre-line">
-              Built for the pace of mobile service, from the{"\n"}first order to the last plate.
+              Built for delivery-first kitchens, from the{"\n"}first online order to the last handoff.
             </p>
           </motion.div>
 
@@ -231,20 +232,20 @@ export default function GhostKitchenClient() {
             {[
               {
                 Icon: Zap,
-                title: 'Speed at the window',
-                body: 'Quick keys, favorites and saved modifiers keep your crew serving instead of tapping through menus.',
-                iconClass: 'bg-amber-500/15 text-amber-400',
+                title: 'Every order in one queue',
+                body: 'Your own app, website and marketplace orders arrive together, so one team runs every brand without switching systems.',
+                iconClass: 'bg-fuchsia-500/15 text-fuchsia-400',
               },
               {
                 Icon: ShieldCheck,
-                title: 'Reliable on the move',
-                body: 'Online or offline, on any corner or lot, orders keep flowing and payments keep clearing.',
+                title: 'Reliable through the rush',
+                body: 'Online or offline, tickets keep printing and payments keep clearing through the busiest delivery windows.',
                 iconClass: 'bg-violet-500/15 text-violet-400',
               },
               {
                 Icon: Clock,
                 title: '24/7 support',
-                body: 'Real people, real help, any time. We are here wherever you park, on any shift.',
+                body: 'Real people, real help, any time. We are here on every shift your kitchen runs.',
                 iconClass: 'bg-emerald-500/15 text-emerald-400',
               },
             ].map(({ Icon, title, body, iconClass }, index) => (
@@ -319,15 +320,15 @@ export default function GhostKitchenClient() {
             {...rise}
             className="relative rounded-[2.5rem] md:rounded-[3rem] overflow-hidden"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 via-amber-600/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/20 via-fuchsia-600/10 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
 
             <div className="relative z-10 p-10 md:p-20 text-center">
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
-                Take your truck further
+                Scale your ghost kitchen
               </h2>
               <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 whitespace-pre-line">
-                See the food truck setup in action. Book a demo{"\n"}and we will show you how it fits your service.
+                See the ghost kitchen setup in action. Book a demo{"\n"}and we will show you how it fits your brands.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
