@@ -109,7 +109,7 @@ export default function QuickServiceClient() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-lg md:text-xl text-gray-400 leading-relaxed mb-10 max-w-xl"
+                className="text-base md:text-xl text-gray-400 leading-relaxed mb-10 max-w-xl"
               >
                 {hero.description}
               </motion.p>
@@ -238,7 +238,8 @@ export default function QuickServiceClient() {
         <div className="container mx-auto px-4 md:px-6">
           <motion.div {...rise} className="text-center mb-14 md:mb-20">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
-              Why eatOS for quick service?
+              Why eatOS for <br className="md:hidden" />
+              quick service?
             </h2>
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
               Built for the pace of the counter. Designed to keep the line moving.
@@ -292,8 +293,13 @@ export default function QuickServiceClient() {
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-emerald-400">
               {bundle.eyebrow}
             </p>
-            <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tighter">{bundle.title}</h2>
-            <p className="mt-5 text-lg text-gray-400 leading-relaxed">{bundle.description}</p>
+            <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tighter">
+              Get the Quick <br className="md:hidden" />
+              Service Bundle
+            </h2>
+            <p className="mt-5 text-base sm:text-lg text-gray-400 leading-relaxed">
+              {bundle.description}
+            </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href={bundle.primaryCta.href}
@@ -389,7 +395,7 @@ export default function QuickServiceClient() {
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
                 Start using restaurant technology cloud
               </h2>
-              <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 whitespace-pre-line">
+              <p className="text-sm md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 whitespace-pre-line">
                 See the quick service setup in action. Book a demo and{"\n"}
                 we will show you how it fits your counter.
               </p>
