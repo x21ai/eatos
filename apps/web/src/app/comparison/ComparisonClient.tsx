@@ -254,7 +254,7 @@ function Matrix() {
                       key={name}
                       className={`pb-6 text-center align-bottom text-sm font-semibold tracking-tight ${
                         i === 0
-                          ? 'rounded-t-[20px] bg-white/[0.07] px-2 pt-7 text-white'
+                          ? 'rounded-t-[20px] bg-white/[0.07] pl-1 pr-2 pt-7 text-white'
                           : 'px-3 text-zinc-500'
                       }`}
                     >
