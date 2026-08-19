@@ -149,17 +149,17 @@ function Hero() {
 function WhySwitch() {
   return (
     <section className="bg-black text-white border-t border-white/5">
-      <div className="container mx-auto px-4 md:px-6 py-20 md:py-28">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+      <div className="container mx-auto px-4 md:px-6 py-20 md:py-28 lg:max-w-[1200px]">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-14">
           {/* Sticky intro rail */}
           <Reveal className="min-w-0 lg:sticky lg:top-28 lg:self-start">
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-emerald-400 sm:text-xs">
               Why switch
             </p>
-            <h2 className="mt-4 max-w-[16ch] font-bold leading-[1.1] tracking-tighter text-3xl md:text-4xl">
+            <h2 className="mt-4 max-w-[16ch] font-bold leading-[1.1] tracking-tighter text-3xl md:text-4xl lg:max-w-none lg:text-5xl">
               Why switch to eatOS
             </h2>
-            <p className="mt-5 max-w-md text-sm leading-7 text-zinc-400">
+            <p className="mt-5 max-w-md text-sm leading-7 text-zinc-400 lg:max-w-lg lg:text-lg lg:leading-8">
               One platform, built end to end, so every part of your restaurant works together.
             </p>
             <div className="mt-7 overflow-hidden rounded-[22px] ring-1 ring-white/10">
@@ -173,21 +173,23 @@ function WhySwitch() {
           </Reveal>
 
           {/* Numbered editorial list */}
-          <div className="min-w-0">
+          <div className="min-w-0 lg:pl-6">
             {whySwitch.map((item, i) => (
               <Reveal key={item.title} delay={i * 0.05} className="min-w-0">
                 <a
                   href={item.link.href}
-                  className="group grid grid-cols-[auto_minmax(0,1fr)] gap-5 border-t border-white/10 py-8 first:border-t-0 first:pt-0 sm:gap-8 sm:py-10"
+                  className="group grid grid-cols-[auto_minmax(0,1fr)] gap-5 border-t border-white/10 py-8 first:border-t-0 first:pt-0 sm:gap-8 sm:py-10 lg:py-11"
                 >
                   <span className="pt-1 text-xs font-semibold tabular-nums tracking-[0.2em] text-zinc-500">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <span className="min-w-0 block">
-                    <h3 className="text-lg font-bold tracking-tighter sm:text-xl">
+                    <h3 className="text-lg font-bold tracking-tighter sm:text-xl lg:text-2xl">
                       {item.title}
                     </h3>
-                    <p className="mt-3 max-w-xl text-sm leading-7 text-zinc-400">{item.body}</p>
+                    <p className="mt-3 max-w-xl text-sm leading-7 text-zinc-400 lg:text-base lg:leading-8">
+                      {item.body}
+                    </p>
                     <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-400">
                       {item.link.label}
                       <ArrowRight
