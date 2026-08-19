@@ -456,8 +456,8 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="min-w-0 md:max-w-[30rem] lg:max-w-none"
             >
-              <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-4">
-                Hardware that <br />
+              <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter mb-4">
+                Hardware that <br className="md:hidden lg:block" />
                 turns heads.
               </h2>
               <p className="text-gray-400 text-base sm:text-lg md:text-xl max-w-xl">
