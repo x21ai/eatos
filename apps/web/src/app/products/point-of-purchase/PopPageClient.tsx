@@ -103,7 +103,7 @@ export default function PopPageClient() {
                 transition={{ duration: 0.6 }}
                 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-6"
               >
-                {hero.title}{' '}
+                {hero.title}<br />
                 <span className="text-purple-400">{hero.titleAccent}</span>
               </motion.h1>
 
