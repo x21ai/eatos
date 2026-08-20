@@ -22,7 +22,7 @@ export const products = [
   {
     slug: "kitchen-display-system",
     title: "Kitchen Display System",
-    tagline: "Chaos, controlled.",
+    tagline: "Chaos, controlled. Reduce wait times. Increase checks.",
     description:
       "Kitchen-grade hardware that connects front and back of house in real time. Never miss a ticket.",
     icon: "ChefHat",

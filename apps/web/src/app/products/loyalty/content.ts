@@ -14,7 +14,7 @@ export const hero = {
   imageLabel: 'Loyalty program dashboard',
   image: null,
   stats: [
-    { value: '10x', label: 'More repeat visits' },
+    { value: '10x', label: 'More repeat visits. Increase checks.' },
     { value: '100%', label: 'Personalized rewards' },
     { value: '24/7', label: 'Always on support' },
   ],
