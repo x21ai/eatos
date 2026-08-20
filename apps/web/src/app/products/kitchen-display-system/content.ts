@@ -69,7 +69,7 @@ export const features = [
     body:
       'Route every item to the station that cooks it. Tickets appear the moment they are sent, so cold, hot and expo lines work from the same source of truth instead of a stack of paper.',
     more:
-      'Course firing, hold-and-release timing and per-station prep rules keep long-cook items in sync with quick plates, so a table is finished together rather than one dish at a time.',
+      'Course firing, hold-and-release timing and station prep rules keep long-cook items in sync with quick plates, so a table is finished together rather than one dish at a time.',
     imageLabel: 'KDS station routing view',
     image: prepAsset.url,
   },
