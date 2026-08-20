@@ -319,31 +319,6 @@ export default function KioskPageClient() {
         </div>
       </section>
 
-      {/* Offers */}
-      <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="site-container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {offers.map((offer, index) => (
-              <motion.div
-                key={offer.title}
-                {...rise}
-                transition={{ delay: index * 0.08 }}
-                className="rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-8 md:p-10"
-              >
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tighter">{offer.title}</h3>
-                <p className="mt-3 text-gray-400 leading-relaxed">{offer.description}</p>
-                <a
-                  href={offer.cta.href}
-                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
-                >
-                  {offer.cta.label}
-                  <ChevronRight size={16} className="shrink-0" />
-                </a>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Related */}
       <section className="py-20 md:py-28 border-t border-white/5">
