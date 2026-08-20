@@ -5,11 +5,12 @@ import { getAllProductSlugs } from '../products';
 export function generateStaticParams() {
   // Pages with dedicated static routes are excluded here to avoid duplicate
   // builders emitting the same path.
-  const dedicated = ['kitchen-display-system', 'workforce-management', 'reporting-analytics', 'apponlineorderingdelivery', 'automated-marketing', 'loyalty', 'customer-facing-display'];
+  const dedicated = ['kitchen-display-system', 'workforce-management', 'reporting-analytics', 'apponlineorderingdelivery', 'automated-marketing', 'loyalty', 'customer-facing-display', 'simplified-inventory-management'];
   return getAllProductSlugs()
     .filter((slug) => !dedicated.includes(slug))
     .map((slug) => ({ slug }));
 }
+
 
 
 export default async function ProductDetailPage({ params }) {
