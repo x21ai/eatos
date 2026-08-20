@@ -5,7 +5,7 @@ import { getAllProductSlugs } from '../products';
 export function generateStaticParams() {
   // Pages with dedicated static routes are excluded here to avoid duplicate
   // builders emitting the same path.
-  const dedicated = ['kitchen-display-system', 'workforce-management', 'reporting-analytics'];
+  const dedicated = ['kitchen-display-system', 'workforce-management', 'reporting-analytics', 'apponlineorderingdelivery'];
   return getAllProductSlugs()
     .filter((slug) => !dedicated.includes(slug))
     .map((slug) => ({ slug }));
