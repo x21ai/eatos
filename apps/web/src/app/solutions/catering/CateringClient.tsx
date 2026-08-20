@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
-import { hero, marquee, pillars } from './content';
+import { capabilities, hero, marquee, pillars } from './content';
 
 const rise = {
   initial: { opacity: 0, y: 30 },
@@ -138,14 +138,25 @@ export default function CateringClient() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-6 w-full max-w-md sm:max-w-lg lg:max-w-none mx-auto lg:mx-0 rounded-[2rem] md:rounded-[2.5rem] border border-rose-500/20 bg-white/5 overflow-hidden"
+              className="lg:col-span-6 rounded-[2rem] md:rounded-[2.5rem] border border-rose-500/20 bg-white/5 backdrop-blur-xl p-8 md:p-10"
             >
-              <Placeholder
-                label={hero.imageLabel}
-                src={hero.image}
-                ratio="aspect-[4/3]"
-                className="rounded-none"
-              />
+              <h2 className="text-xl font-bold tracking-tighter mb-8">Key features</h2>
+              <div className="space-y-5 md:space-y-6">
+                {capabilities.map((feature, index) => (
+                  <motion.div
+                    key={feature}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.4 + index * 0.08 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="w-8 h-8 shrink-0 rounded-full bg-rose-500/10 text-rose-400 flex items-center justify-center mt-0.5">
+                      <Check size={16} />
+                    </div>
+                    <div className="min-w-0 text-base md:text-lg font-medium">{feature}</div>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>
