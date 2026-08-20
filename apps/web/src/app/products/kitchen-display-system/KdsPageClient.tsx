@@ -293,7 +293,7 @@ export default function KdsPageClient() {
                   <Icon size={24} />
                 </div>
                 <h3 className="text-xl font-bold tracking-tighter mb-2">{item.title}</h3>
-                <p className="text-gray-500 mb-6">{item.tagline}</p>
+                <p className="text-gray-500 mb-6">Reduce wait times. Increase checks.</p>
                 <div className="flex items-center gap-1 text-sm font-semibold text-white group-hover:gap-2 transition-all">
                   Learn more
                   <ChevronRight
@@ -320,8 +320,8 @@ export default function KdsPageClient() {
                 Ready to get started?
               </h2>
               <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-                See the Kitchen Display System in action. Book a demo and we will show you how it
-                fits your line.
+                See the Kitchen Display System in action. Book a demo and{"\n"}
+                we will show you how it fits your line.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a

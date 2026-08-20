@@ -97,7 +97,7 @@ export const features = [
     body:
       'Dine-in, counter, kiosk, handheld, web and delivery orders land on the same board. One queue, one prioritization, no channel left unwatched.',
     more:
-      'Because the KDS shares the eatOS data layer with POS, online ordering and inventory, an item that runs out disappears from every ordering surface at once.',
+      'Because the KDS shares the eatOS data layer with Point of Sale, online ordering and inventory, an item that runs out disappears from every ordering surface at once.',
     imageLabel: 'Connected devices overview',
     image: connectivityAsset.url,
   },
