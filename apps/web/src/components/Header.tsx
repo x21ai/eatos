@@ -320,8 +320,8 @@ export default function Header() {
     },
     {
       href: "/solutions/catering",
-      title: "Multi-Location",
-      description: "One platform, every location",
+      title: "Catering",
+      description: "Large events and off site orders",
       Icon: Building2,
       iconWrap: "bg-blue-100 text-blue-600",
     },
