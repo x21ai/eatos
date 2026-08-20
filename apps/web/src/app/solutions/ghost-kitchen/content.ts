@@ -2,9 +2,9 @@
 // All copy for the Ghost Kitchen solution page. Edit here.
 
 import heroImg from '../../../assets/svc-ghost-kitchen.jpg.asset.json';
-import onlineImg from './assets/gk-online.jpg.asset.json';
-import kdsImg from './assets/gk-kds.jpg.asset.json';
-import brandsImg from './assets/gk-brands.jpg.asset.json';
+import onlineImg from './assets/gk-online-v2.jpg.asset.json';
+import kdsImg from './assets/gk-kds-v2.png.asset.json';
+import brandsImg from './assets/gk-brands-v2.jpg.asset.json';
 
 export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
