@@ -248,7 +248,7 @@ export default function PopPageClient() {
               Why Point of Purchase?
             </h2>
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-              Built for real restaurant operations. Designed to disappear into your workflow.
+              Built for real restaurant operations. Designed to disappear into workflow.
             </p>
           </motion.div>
 
@@ -340,6 +340,7 @@ export default function PopPageClient() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {related.map((item, index) => {
               const { Icon, tint } = relatedIcons[index % relatedIcons.length];
+              const tagline = item.slug === 'kitchen-display-system' ? 'Reduce wait times. Increase checks.' : item.tagline;
               return (
                 <motion.a
                   key={item.slug}
@@ -354,7 +355,7 @@ export default function PopPageClient() {
                     <Icon size={24} />
                   </div>
                   <h3 className="text-xl font-bold tracking-tighter mb-2">{item.title}</h3>
-                  <p className="text-gray-500 mb-6">{item.tagline}</p>
+                  <p className="text-gray-500 mb-6">{tagline}</p>
                   <div className="flex items-center gap-1 text-sm font-semibold text-white group-hover:gap-2 transition-all">
                     Learn more
                     <ChevronRight
@@ -381,8 +382,7 @@ export default function PopPageClient() {
                 Ready to get started?
               </h2>
               <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-                See Point of Purchase in action. Book a demo and we will show you how it fits your
-                service.
+                See Point of Purchase in action. Book a quick{"\u00A0"}demo and we will show you{"\u00A0"}exactly how it{"\u00A0"}seamlessly fits your service.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
