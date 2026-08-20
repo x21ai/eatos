@@ -101,7 +101,7 @@ export default function PopPageClient() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter mb-6"
+                className="text-[2.5rem] leading-tight sm:text-5xl md:text-6xl font-bold tracking-tighter mb-6"
               >
                 {hero.title}<br />
                 <span className="text-purple-400">{hero.titleAccent}</span>
