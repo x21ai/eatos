@@ -235,7 +235,7 @@ export default function AnalyticsPageClient() {
               Why Analytics &amp; Reporting?
             </h2>
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-              Built for real restaurant operations. Designed to disappear into your workflow.
+              Built for real restaurant operations. Designed to disappear into workflow.
             </p>
           </motion.div>
 
