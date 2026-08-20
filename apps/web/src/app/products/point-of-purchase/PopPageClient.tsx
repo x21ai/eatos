@@ -22,8 +22,11 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
-import { features, hardware, hero, keyFeatures, offerNote, offers } from './content';
+import { features as allFeatures, hardware, hero, keyFeatures } from './content';
 import { products } from '../products';
+
+const hiddenFeatures = ['compatibility', 'tables', 'fire-to-kitchen'];
+const features = allFeatures.filter((f) => !hiddenFeatures.includes(f.id));
 
 const relatedIcons = [
   { Icon: Monitor, tint: 'bg-sky-500/10 text-sky-400' },
@@ -138,33 +141,27 @@ export default function PopPageClient() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="min-w-0"
+              className="min-w-0 rounded-[2rem] md:rounded-[2.5rem] border border-purple-500/20 bg-white/5 backdrop-blur-xl p-8 md:p-10"
             >
-              <Placeholder
-                label={hero.imageLabel}
-                src={hero.image}
-                ratio="aspect-[16/10]"
-              />
+              <h2 className="text-xl font-bold tracking-tighter mb-8">Key features</h2>
+              <div className="space-y-5 md:space-y-6">
+                {keyFeatures.map((feature, index) => (
+                  <motion.div
+                    key={feature}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.4 + index * 0.08 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="w-8 h-8 shrink-0 rounded-full bg-purple-500/10 text-purple-400 flex items-center justify-center mt-0.5">
+                      <Check size={16} />
+                    </div>
+                    <div className="min-w-0 text-base md:text-lg font-medium">{feature}</div>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
           </div>
-
-          {/* Key features chips */}
-          <motion.div
-            {...rise}
-            className="mt-14 md:mt-20 rounded-[2rem] md:rounded-[2.5rem] border border-purple-500/20 bg-white/5 backdrop-blur-xl p-8 md:p-10"
-          >
-            <h2 className="text-xl font-bold tracking-tighter mb-8">Key features</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-              {keyFeatures.map((feature) => (
-                <div key={feature} className="flex items-start gap-4">
-                  <div className="w-8 h-8 shrink-0 rounded-full bg-purple-500/10 text-purple-400 flex items-center justify-center mt-0.5">
-                    <Check size={16} />
-                  </div>
-                  <div className="min-w-0 text-base md:text-lg font-medium">{feature}</div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </section>
 
@@ -173,7 +170,7 @@ export default function PopPageClient() {
         <div className="site-container">
           <div className="grid grid-cols-3 gap-6 md:gap-8">
             {hero.stats.map((stat) => (
-              <motion.div key={stat.label} {...rise} className="min-w-0">
+              <motion.div key={stat.label} {...rise} className="min-w-0 text-center">
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter">
                   {stat.value}
                 </div>
@@ -298,29 +295,7 @@ export default function PopPageClient() {
       {/* Hardware */}
       <section className="py-20 md:py-28 border-t border-white/5">
         <div className="site-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <motion.div {...rise} className="min-w-0">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-purple-400">
-                {hardware.eyebrow}
-              </p>
-              <h2 className="mt-4 text-3xl md:text-5xl font-bold tracking-tighter">
-                {hardware.title}
-              </h2>
-              <p className="mt-5 text-lg text-gray-400 leading-relaxed">{hardware.description}</p>
-            </motion.div>
-            <motion.div {...rise} className="min-w-0">
-              <div className="rounded-[2rem] border border-white/10 bg-white/5 p-3 md:p-4">
-                <Placeholder
-                  label={hardware.imageLabel}
-                  src={hardware.image}
-                  ratio="aspect-[16/10]"
-                  pad
-                />
-              </div>
-            </motion.div>
-          </div>
-
-          <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {hardware.specs.map((spec, index) => (
               <motion.div
                 key={spec.title}
@@ -340,32 +315,6 @@ export default function PopPageClient() {
                 })()}
                 <h3 className="text-xl font-bold tracking-tighter">{spec.title}</h3>
                 <p className="mt-3 text-gray-400 leading-relaxed">{spec.body}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Offers */}
-      <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="site-container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {offers.map((offer, index) => (
-              <motion.div
-                key={offer.title}
-                {...rise}
-                transition={{ delay: index * 0.08 }}
-                className="rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-8 md:p-10"
-              >
-                <h3 className="text-2xl md:text-3xl font-bold tracking-tighter">{offer.title}</h3>
-                <p className="mt-3 text-gray-400 leading-relaxed">{offer.description}</p>
-                <a
-                  href={offer.cta.href}
-                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-purple-400 hover:text-purple-300 transition-colors"
-                >
-                  {offer.cta.label}
-                  <ChevronRight size={16} className="shrink-0" />
-                </a>
               </motion.div>
             ))}
           </div>
