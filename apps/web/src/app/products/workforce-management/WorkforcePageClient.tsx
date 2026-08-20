@@ -11,7 +11,6 @@ import {
   hero,
   integration,
   keyFeatures,
-  offerNote,
 } from './content';
 
 const rise = {
@@ -270,9 +269,6 @@ function Closing() {
             </a>
           </div>
         </Reveal>
-        <p className="mx-auto mt-10 max-w-3xl text-center text-[11px] leading-relaxed text-zinc-500">
-          {offerNote}
-        </p>
       </div>
     </section>
   );
