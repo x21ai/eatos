@@ -1,0 +1,263 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<style>
+@font-face{font-family:'Mont';src:url('montserrat.ttf');font-weight:100 900;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:1600px;height:1000px;overflow:hidden;background:#000;}
+body{font-family:'Mont',sans-serif;color:#fff;-webkit-font-smoothing:antialiased;}
+#stage{position:relative;width:1600px;height:1000px;background:#08090c;overflow:hidden;}
+
+/* top bar */
+#topbar{position:absolute;left:0;top:0;width:1600px;height:46px;background:#0b0c10;display:flex;align-items:center;padding:0 16px;gap:12px;}
+.tbchip{display:flex;align-items:center;gap:8px;background:#15171d;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:600;}
+.avatar{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#f97316,#ec4899);}
+.tbicons{margin-left:auto;display:flex;align-items:center;gap:16px;font-size:13px;color:#9aa1ad;font-weight:600;}
+.dot{width:14px;height:14px;border-radius:4px;background:#22252c;}
+
+/* rail */
+#rail{position:absolute;left:0;top:46px;width:70px;height:954px;background:#0b0c10;display:flex;flex-direction:column;align-items:center;padding-top:18px;gap:26px;}
+.rico{width:26px;height:26px;border-radius:7px;background:#1b1e25;}
+.rlogo{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#7c2d12,#f59e0b);}
+.ractive{outline:2px solid #fff;outline-offset:6px;border-radius:6px;}
+
+/* main */
+#main{position:absolute;left:80px;top:56px;width:1130px;height:934px;background:#0d1017;border-radius:18px;overflow:hidden;}
+#menuview{position:absolute;inset:0;padding:14px 16px;}
+#toprow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.pill{border-radius:999px;padding:7px 18px;font-size:13px;font-weight:700;border:1.5px solid;background:transparent;}
+.hamb{width:40px;height:40px;border-radius:999px;background:#f4f4f5;}
+.search{margin-left:auto;width:40px;height:40px;border-radius:999px;background:#f4f4f5;}
+#cats{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+.cat{border:1px solid #2a2f3a;border-radius:8px;padding:7px 16px;font-size:12px;font-weight:700;color:#dbe0e8;}
+.cat.on{color:#ec4899;border-color:#ec4899;}
+#grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px;}
+.item{position:relative;height:60px;background:#121a28;border-radius:8px;display:flex;align-items:center;padding:0 54px 0 14px;font-size:12.5px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:#eef2f7;}
+.item .price{position:absolute;right:56px;font-size:12.5px;font-weight:700;color:#c9d2de;}
+.item .plus{position:absolute;right:0;top:0;height:60px;width:44px;border-radius:0 8px 8px 0;background:#1b2536;display:flex;align-items:center;justify-content:center;font-size:20px;color:#e5e7eb;}
+.item.hot .plus{background:#f97316;color:#fff;}
+
+/* tickets view */
+#ticketsview{position:absolute;inset:0;padding:20px 22px;background:#0d1017;opacity:0;}
+#ticketsview h2{font-size:26px;font-weight:800;margin-bottom:14px;}
+.tfilters{display:flex;gap:10px;margin-bottom:14px;}
+.tf{border-radius:999px;padding:7px 18px;font-size:12.5px;font-weight:700;background:#161b25;color:#cbd3de;}
+.tf.on{background:#f4f4f5;color:#0b0c10;}
+.trow{display:flex;align-items:center;height:78px;background:#111722;border-radius:10px;margin-bottom:8px;padding:0 16px;gap:16px;}
+.trow.on{outline:2px solid #fff;}
+.tnum{width:62px;font-size:22px;font-weight:800;}
+.tname{font-size:14px;font-weight:800;}
+.tsub{font-size:11.5px;color:#8b95a3;margin-top:3px;font-weight:600;}
+.tpay{margin-left:auto;text-align:right;}
+.tstat{font-size:11px;font-weight:800;letter-spacing:.08em;}
+.tamt{font-size:16px;font-weight:800;}
+
+/* check panel */
+#check{position:absolute;left:1222px;top:56px;width:362px;height:934px;background:#0b0e14;border-radius:18px;padding:14px;display:flex;flex-direction:column;}
+#checkhead{display:flex;align-items:center;justify-content:space-between;font-size:11px;font-weight:800;letter-spacing:.12em;color:#7b8494;}
+#checkacts{display:flex;gap:6px;margin-top:10px;}
+.act{background:#161b25;border-radius:999px;padding:6px 10px;font-size:10.5px;font-weight:700;color:#cbd3de;}
+#typerow{display:flex;align-items:center;gap:10px;margin-top:12px;background:#121722;border-radius:10px;padding:8px 12px;font-size:12px;font-weight:800;color:#cbd3de;}
+#ordnum{background:#f4f4f5;color:#0b0c10;border-radius:6px;padding:2px 10px;font-size:13px;font-weight:800;}
+#notes{margin-top:10px;background:#141a24;border-radius:10px;padding:12px 14px;font-size:13px;color:#8b95a3;font-weight:600;}
+#lines{margin-top:10px;flex:1;overflow:hidden;}
+.line{background:#141a24;border-radius:10px;padding:10px 12px;margin-bottom:8px;opacity:0;}
+.lhead{display:flex;align-items:center;gap:10px;}
+.qty{background:#232a36;border-radius:5px;padding:1px 7px;font-size:11px;font-weight:800;}
+.lname{font-size:13.5px;font-weight:700;}
+.lprice{margin-left:auto;font-size:13.5px;font-weight:800;}
+.mods{margin-top:6px;padding-left:22px;font-size:11px;color:#8b95a3;line-height:1.7;font-weight:600;}
+#empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#4b5563;font-size:15px;font-weight:700;}
+#empty .ic{width:64px;height:56px;border-radius:10px;border:3px solid #2a3140;}
+#totals{border-top:1px solid #1b2130;padding-top:10px;font-size:12px;color:#8b95a3;font-weight:700;display:flex;justify-content:space-between;}
+#payrow{display:flex;align-items:center;gap:8px;margin-top:10px;}
+.circ{width:34px;height:34px;border-radius:50%;background:#7f1d1d;}
+.circ.g{background:#1f2937;}
+#fire{flex:1;height:38px;border-radius:999px;background:#161b25;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800;color:#e5e7eb;}
+#charge{height:38px;border-radius:999px;background:#f4f4f5;color:#0b0c10;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:800;padding:0 16px;}
+
+/* overlays */
+#scrim{position:absolute;inset:0;background:rgba(0,0,0,.62);opacity:0;}
+#sheet{position:absolute;left:50%;top:120px;width:600px;margin-left:-300px;background:#191b1f;border-radius:18px;padding:20px 22px 0;opacity:0;}
+.shead{display:flex;align-items:center;gap:14px;}
+.sthumb{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,#7c2d12,#b45309);}
+.stitle{font-size:20px;font-weight:800;}
+.sprice{margin-left:auto;background:#22252b;border-radius:8px;padding:8px 14px;font-size:15px;font-weight:800;}
+.chips{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;}
+.chip{border-radius:999px;padding:7px 16px;font-size:12.5px;font-weight:700;background:#2a2d34;color:#cfd4dd;}
+.chip.sel{background:#f4f4f5;color:#111;}
+.tabs{display:flex;margin-top:16px;gap:8px;}
+.tab{flex:1;text-align:center;padding:11px 0;border-radius:8px;font-size:13.5px;font-weight:800;color:#9aa1ad;}
+.tab.on{background:#3a3e46;color:#fff;}
+.slabel{margin-top:16px;font-size:13px;font-weight:800;}
+#sfoot{display:flex;align-items:center;gap:14px;border-top:1px solid #26292f;margin-top:20px;padding:16px 0;}
+#scancel{flex:1;text-align:center;padding:13px 0;border:1.5px solid #4b5563;border-radius:999px;font-size:14px;font-weight:800;color:#e5e7eb;}
+#sadd{flex:2;text-align:center;padding:14px 0;border-radius:999px;background:#f4f4f5;color:#111;font-size:14px;font-weight:800;}
+
+#paymodal{position:absolute;left:340px;top:210px;width:900px;background:#111318;border-radius:16px;opacity:0;display:flex;overflow:hidden;}
+#payleft{width:560px;padding:18px 20px 20px;}
+#paytitle{text-align:center;font-size:19px;font-weight:800;margin-bottom:18px;}
+#tenders{display:flex;justify-content:space-between;gap:6px;}
+.tender{width:82px;text-align:center;font-size:11px;font-weight:700;color:#c3cad4;}
+.tender .tc{width:52px;height:52px;border-radius:50%;background:#22252b;margin:0 auto 8px;}
+.tender.sel .tc{background:#f4f4f5;}
+#amount{margin-top:18px;background:#1b1e24;border-radius:10px;height:74px;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;color:#22c55e;}
+#quickamts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px;}
+.qa{height:44px;border-radius:8px;background:#1b1e24;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;}
+#paycharge{margin-top:14px;height:52px;border-radius:8px;background:#1b1e24;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;letter-spacing:.04em;}
+#payright{width:340px;background:#181b21;padding:16px;}
+.prhead{display:flex;justify-content:space-between;font-size:12px;font-weight:800;color:#c3cad4;}
+.prtags{display:flex;gap:8px;margin-top:10px;}
+.prtag{background:#22252b;border-radius:6px;padding:5px 10px;font-size:11px;font-weight:800;}
+.prcheck{display:flex;justify-content:space-between;background:#0f1116;border-radius:8px;padding:12px 12px;margin-top:12px;font-size:15px;font-weight:800;}
+.prline{display:flex;justify-content:space-between;background:#0f1116;border-radius:8px;padding:9px 12px;margin-top:8px;font-size:12.5px;font-weight:700;}
+.prtot{display:flex;justify-content:space-between;font-size:12.5px;font-weight:700;color:#9aa1ad;margin-top:8px;}
+.prtot.big{font-size:16px;font-weight:800;color:#fff;margin-top:12px;}
+#paid{position:absolute;font-family:'Mont';font-size:26px;font-weight:900;color:#16a34a;transform:rotate(-12deg);opacity:0;}
+
+#success{position:absolute;left:340px;top:230px;width:900px;background:#111318;border-radius:16px;opacity:0;display:flex;overflow:hidden;}
+#sucleft{width:560px;padding:26px 30px;text-align:center;}
+#tick{font-size:52px;line-height:1;color:#f97316;}
+#sucmsg{margin-top:14px;font-size:15px;font-weight:700;color:#d7dce3;}
+#change{margin-top:18px;border:1.5px solid #16a34a;background:rgba(22,163,74,.12);border-radius:10px;padding:16px;}
+#change .lab{font-size:14px;font-weight:800;color:#22c55e;}
+#change .val{font-size:30px;font-weight:900;color:#22c55e;margin-top:4px;}
+#recopts{display:flex;gap:12px;margin-top:20px;justify-content:center;}
+.rec{width:110px;height:76px;border-radius:8px;background:#1b1e24;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font-size:12px;font-weight:700;}
+.rec .ri{width:22px;height:22px;border-radius:5px;background:#3b4250;}
+#norec{margin-top:16px;height:50px;border-radius:8px;background:#1b1e24;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;letter-spacing:.04em;}
+
+#cursor{position:absolute;width:22px;height:22px;pointer-events:none;z-index:60;}
+#cursor svg{filter:drop-shadow(0 2px 4px rgba(0,0,0,.6));}
+#ripple{position:absolute;width:90px;height:90px;margin:-45px 0 0 -45px;border-radius:50%;border:3px solid rgba(255,255,255,.85);background:rgba(255,255,255,.14);opacity:0;z-index:59;}
+#fader{position:absolute;inset:0;background:#08090c;opacity:0;z-index:70;}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="topbar">
+    <div class="dot" style="width:18px;height:14px;background:#2b303a"></div>
+    <div class="tbchip"><div class="avatar"></div>Mia Jones<span style="color:#6b7280">|</span>STAFF</div>
+    <div class="tbchip">Dinner Service (9:00 PM)</div>
+    <div class="tbicons"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><span>17:01</span></div>
+  </div>
+  <div id="rail">
+    <div class="rico"></div><div class="rlogo"></div><div class="rico"></div>
+    <div class="rico ractive"></div><div class="rico"></div><div class="rico"></div>
+    <div class="rico"></div><div class="rico" style="margin-top:auto;margin-bottom:34px"></div>
+  </div>
+
+  <div id="main">
+    <div id="menuview">
+      <div id="toprow">
+        <div class="hamb"></div>
+        <div class="pill" style="border-color:#ec4899;background:#ec4899;color:#111">Food</div>
+        <div class="pill" style="border-color:#f59e0b;color:#f59e0b">Desserts</div>
+        <div class="pill" style="border-color:#22c55e;color:#22c55e">Drinks</div>
+        <div class="pill" style="border-color:#f97316;color:#f97316">Beer</div>
+        <div class="pill" style="border-color:#a855f7;color:#a855f7">Wine</div>
+        <div class="pill" style="border-color:#38bdf8;color:#38bdf8">Cocktails</div>
+        <div class="pill" style="border-color:#fb923c;color:#fb923c">Spirits</div>
+        <div class="pill" style="border-color:#84cc16;color:#84cc16">Mocktails</div>
+        <div class="search"></div>
+      </div>
+      <div id="cats">
+        <div class="cat on">Appetizers</div><div class="cat">Mains</div><div class="cat">Sides</div>
+        <div class="cat">Salads</div><div class="cat">Soups</div><div class="cat">Sandwiches</div>
+        <div class="cat">Burgers</div><div class="cat">Wraps</div><div class="cat">Tacos</div>
+        <div class="cat">Platters</div><div class="cat">Kids Menu</div><div class="cat">Specials</div>
+      </div>
+      <div id="grid"></div>
+    </div>
+
+    <div id="ticketsview">
+      <h2>Tickets</h2>
+      <div class="tfilters"><div class="tf on">All 100</div><div class="tf">Open 9</div><div class="tf">Paid 91</div><div class="tf">Unpaid 9</div></div>
+      <div id="tlist"></div>
+    </div>
+  </div>
+
+  <div id="check">
+    <div id="checkhead"><span>GUEST NAME</span><span>(XXX) XXX-XXXX</span></div>
+    <div id="checkacts"><div class="act">+ Custom Item</div><div class="act">Discount</div><div class="act">No Tax</div><div class="act">No Sale</div></div>
+    <div id="typerow"><span>DINE IN</span><span id="ordnum">115</span><span style="margin-left:auto;color:#8b95a3">Server</span></div>
+    <div id="notes">Order notes</div>
+    <div id="empty"><div class="ic"></div><span>Let's create an order</span></div>
+    <div id="lines"></div>
+    <div id="totals"><span>Sub Total: <b id="tsub" style="color:#e5e7eb">$0.00</b></span><span>Tax: <b id="ttax" style="color:#e5e7eb">$0.00</b></span></div>
+    <div id="payrow"><div class="circ"></div><div class="circ g"></div><div id="fire">FIRE</div><div id="charge">CHARGE $0.00</div></div>
+  </div>
+
+  <div id="scrim"></div>
+
+  <div id="sheet">
+    <div class="shead"><div class="sthumb"></div><div class="stitle">Spinach Artichoke Dip</div><div class="sprice" id="sheetprice">$10.99</div></div>
+    <div class="chips"><div class="chip" id="ch-reg">Regular</div><div class="chip" id="ch-std">Standard</div><div class="chip" id="ch-mild">Mild</div></div>
+    <div class="tabs"><div class="tab on" id="tab-prod">Product</div><div class="tab" id="tab-add">Add-Ons</div></div>
+    <div class="slabel">Required Modifiers <span style="color:#ef4444">*</span></div>
+    <div class="chips"><div class="chip sel" id="mg-size">Size</div><div class="chip" id="mg-prep">Preparation</div><div class="chip" id="mg-spice">Spice Level</div><div class="chip" id="mg-extras">Extras</div></div>
+    <div class="chips" id="modvals"></div>
+    <div class="slabel">Default Modifiers</div>
+    <div class="chips"><div class="chip" style="background:#f4f4f5;color:#111">No Modifications</div><div class="chip" style="background:#f4f4f5;color:#111">Extra Napkins</div><div class="chip" style="background:#f4f4f5;color:#111">To-Go Box</div></div>
+    <div id="sfoot"><div id="scancel">CANCEL</div><div id="sadd">ADD $10.99</div></div>
+  </div>
+
+  <div id="paymodal">
+    <div id="payleft">
+      <div id="paytitle">Total Due <span style="color:#ef4444" id="paydue">$46.67</span></div>
+      <div id="tenders">
+        <div class="tender"><div class="tc"></div>Loyalty</div>
+        <div class="tender" id="t-card"><div class="tc"></div>Card</div>
+        <div class="tender"><div class="tc"></div>Cash</div>
+        <div class="tender"><div class="tc"></div>Gift Card</div>
+        <div class="tender"><div class="tc"></div>Pay by Link</div>
+        <div class="tender"><div class="tc"></div>Split Check</div>
+      </div>
+      <div id="amount">$46.67</div>
+      <div id="quickamts"><div class="qa">$46.67</div><div class="qa">$1</div><div class="qa">$2</div><div class="qa">$5</div><div class="qa">$10</div><div class="qa">$20</div><div class="qa">$50</div><div class="qa">$100</div></div>
+      <div id="paycharge">CHARGE $46.67</div>
+    </div>
+    <div id="payright">
+      <div class="prhead"><span>Guest</span><span>05:27 pm</span></div>
+      <div class="prtags"><div class="prtag">DINE IN</div><div class="prtag">ORDER #115</div></div>
+      <div class="prcheck" style="position:relative"><span>Check 115</span><span id="paid">PAID</span><span>$46.67</span></div>
+      <div class="prline"><span>1 &nbsp;Spinach Artichoke Dip</span><span>$21.49</span></div>
+      <div class="prline"><span>1 &nbsp;Buffalo Wings (10pc)</span><span>$13.99</span></div>
+      <div class="prline"><span>1 &nbsp;Truffle Fries</span><span>$7.99</span></div>
+      <div class="prtot"><span>Subtotal</span><span>$43.47</span></div>
+      <div class="prtot"><span>Tax</span><span>$3.20</span></div>
+      <div class="prtot big"><span>Total Due</span><span style="color:#ef4444" id="prdue">$46.67</span></div>
+    </div>
+  </div>
+
+  <div id="success">
+    <div id="sucleft">
+      <div id="tick">&#10004;</div>
+      <div id="sucmsg"><b style="color:#22c55e">$46.67</b> has been successfully processed</div>
+      <div id="change"><div class="lab">Card Approved</div><div class="val">$46.67</div></div>
+      <div style="margin-top:20px;font-size:15px;font-weight:800">Receipt</div>
+      <div id="recopts"><div class="rec"><div class="ri"></div>Print</div><div class="rec"><div class="ri"></div>Text</div><div class="rec"><div class="ri"></div>Email</div></div>
+      <div id="norec">NO RECEIPT</div>
+    </div>
+    <div id="payright" style="width:340px">
+      <div class="prhead"><span>Guest</span><span>05:27 pm</span></div>
+      <div class="prtags"><div class="prtag">DINE IN</div><div class="prtag">ORDER #115</div></div>
+      <div class="prcheck"><span>Check 115</span><span>$46.67</span></div>
+      <div class="prline"><span>1 &nbsp;Spinach Artichoke Dip</span><span>$21.49</span></div>
+      <div class="prline"><span>1 &nbsp;Buffalo Wings (10pc)</span><span>$13.99</span></div>
+      <div class="prline"><span>1 &nbsp;Truffle Fries</span><span>$7.99</span></div>
+      <div class="prtot" style="color:#22c55e;font-weight:800"><span>Card</span><span>$46.67</span></div>
+      <div class="prtot"><span>Subtotal</span><span>$43.47</span></div>
+      <div class="prtot"><span>Tax</span><span>$3.20</span></div>
+      <div class="prtot big"><span>Total Due</span><span style="color:#22c55e">$0.00</span></div>
+    </div>
+  </div>
+
+  <div id="ripple"></div>
+  <div id="cursor"><svg width="22" height="30" viewBox="0 0 22 30"><path d="M2 1 L2 23 L8 17.5 L12 27 L16 25 L12 15.5 L20 15 Z" fill="#fff" stroke="#111" stroke-width="1.4"/></svg></div>
+  <div id="fader"></div>
+</div>
+<script src="scene.js"></script>
+</body>
+</html>
