@@ -106,12 +106,12 @@ export function DemoRailSection({
               </a>
             </div>
             {demo.media ? (
-              <div className="relative w-full aspect-[16/10] lg:aspect-auto lg:h-[480px] bg-black">
+              <div className="relative w-full aspect-[16/10] lg:aspect-auto lg:h-[480px] bg-black p-3 sm:p-4">
                 <TabletMockup
                   sources={demo.media.sources}
                   poster={demo.media.poster}
                   label={displayLabel(demo.id)}
-                  className="absolute inset-0 h-full w-full"
+                  className="h-full w-full"
                 />
               </div>
             ) : (
