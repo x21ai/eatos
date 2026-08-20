@@ -19,8 +19,7 @@ import {
   PanelTop,
 } from 'lucide-react';
 import { motion } from 'motion/react';
-import { Placeholder } from '@/components/marketing/Placeholder';
-import { features, hardware, hero, keyFeatures, offers } from './content';
+import { features, hardware, hero, keyFeatures } from './content';
 import { products } from '../products';
 
 const relatedIcons = [
