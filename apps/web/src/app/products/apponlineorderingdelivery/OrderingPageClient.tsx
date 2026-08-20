@@ -4,16 +4,16 @@
 import {
   ChevronRight,
   Check,
-  BarChart3,
+  ShoppingBag,
   Zap,
   Shield,
   Clock,
   Monitor,
   ChefHat,
   Users,
-  Activity,
-  Cloud,
-  MapPin,
+  Globe2,
+  UserRound,
+  BadgeDollarSign,
   MonitorSmartphone,
   FileSpreadsheet,
   Lock,
@@ -30,9 +30,9 @@ const relatedIcons = [
 ];
 
 const featureIcons = [
-  { Icon: Activity, tint: 'bg-cyan-500/10 text-cyan-400' },
-  { Icon: Cloud, tint: 'bg-emerald-500/10 text-emerald-400' },
-  { Icon: MapPin, tint: 'bg-sky-500/10 text-sky-400' },
+  { Icon: Globe2, tint: 'bg-cyan-500/10 text-cyan-400' },
+  { Icon: UserRound, tint: 'bg-emerald-500/10 text-emerald-400' },
+  { Icon: BadgeDollarSign, tint: 'bg-sky-500/10 text-sky-400' },
 ];
 
 const hardwareIcons = [
@@ -78,7 +78,7 @@ export default function OrderingPageClient() {
                 transition={{ duration: 0.5 }}
                 className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-8 text-cyan-400"
               >
-                <BarChart3 size={36} />
+                <ShoppingBag size={36} />
               </motion.div>
 
               <motion.p
