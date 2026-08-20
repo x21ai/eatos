@@ -2,9 +2,9 @@
 // All copy for the Point of Purchase (handheld) product page. Edit here.
 
 import heroAsset from './assets/pop-hero.jpg.asset.json';
-import costsAsset from './assets/pop-costs-new.png.asset.json';
+import costsAsset from './assets/pop-costs-handheld.png.asset.json';
 import menusyncAsset from './assets/pop-menusync-new.jpg.asset.json';
-import paymentsAsset from './assets/pop-payments-new.png.asset.json';
+import paymentsAsset from './assets/pop-payments-table.png.asset.json';
 import compatibilityAsset from './assets/pop-compatibility.jpg.asset.json';
 import tablesAsset from './assets/pop-tables.jpg.asset.json';
 import fireAsset from './assets/pop-fire.jpg.asset.json';
