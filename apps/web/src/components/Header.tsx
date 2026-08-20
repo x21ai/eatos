@@ -319,7 +319,7 @@ export default function Header() {
       iconWrap: "bg-slate-100 text-slate-600",
     },
     {
-      href: "/solutions/multi-location",
+      href: "/solutions/catering",
       title: "Multi-Location",
       description: "One platform, every location",
       Icon: Building2,

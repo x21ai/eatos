@@ -96,7 +96,7 @@ const solutions = [
     image: null,
   },
   {
-    href: '/solutions/multi-location',
+    href: '/solutions/catering',
     title: 'Multi-Location',
     description:
       'One platform for every location. Centralize menus, pricing, and reporting across your whole group.',
