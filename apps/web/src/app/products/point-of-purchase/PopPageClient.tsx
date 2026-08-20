@@ -101,7 +101,7 @@ export default function PopPageClient() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-6"
+                className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter mb-6"
               >
                 {hero.title}<br />
                 <span className="text-purple-400">{hero.titleAccent}</span>
@@ -227,13 +227,13 @@ export default function PopPageClient() {
               </div>
 
               <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
+                <div className="relative w-full overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
                   {feature.image ? (
                     <img
                       src={feature.image}
                       alt={feature.imageLabel}
                       loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover"
+                      className="w-full h-auto object-contain"
                     />
                   ) : (
                     <Placeholder label={feature.imageLabel} ratio="aspect-[16/10]" />
