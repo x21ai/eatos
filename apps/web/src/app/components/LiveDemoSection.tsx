@@ -76,7 +76,7 @@ export function LiveDemoSection() {
                     Open
                   </a>
                 </div>
-                <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-[460px]">
+                <div className={`relative w-full ${demo.id === 'pos' ? 'aspect-[16/9] lg:h-[460px]' : 'aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-[460px]'}`}>
                   <iframe
                     key={demo.id}
                     src={demo.url}
