@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
-import { features as allFeatures, hardware, hero, keyFeatures } from './content';
+import { features as allFeatures, hardware, hero, keyFeatures, offerNote } from './content';
 import { products } from '../products';
 
 const hiddenFeatures = ['compatibility', 'tables', 'fire-to-kitchen'];
