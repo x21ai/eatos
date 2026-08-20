@@ -53,18 +53,18 @@ export const products = [
   },
   {
     slug: "point-of-purchase",
-    title: "Handheld POP",
-    tagline: "Power in your pocket.",
+    title: "Point of Purchase",
+    tagline: "Full size Point of Sale in your hands.",
     description:
-      "The eatOS handheld: take orders tableside, process payments anywhere, manage the floor on the move.",
+      "The eatOS handheld: take orders tableside, fire to the kitchen and accept contactless payment anywhere on the floor.",
     icon: "Smartphone",
     color: "purple",
     href: "/products/point-of-purchase",
     features: [
-      "All-day battery life",
-      "Built-in card reader",
-      "Rugged design",
-      "Instant sync",
+      "All-in-One POS",
+      "Contactless payments",
+      "Real-time MenuSync",
+      "Fire to kitchen",
     ],
   },
   {
