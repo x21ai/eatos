@@ -431,7 +431,7 @@ export default function Header() {
                       </div>
                       <div>
                         <div className="font-semibold text-[15px] leading-snug [text-shadow:none]">{p.title}</div>
-                        <p className="text-[13px] text-gray-500 mt-1 leading-snug">
+                        <p className="text-[13px] text-gray-500 mt-1 leading-snug [text-shadow:none]">
                           {p.description}
                         </p>
                       </div>
@@ -486,7 +486,7 @@ export default function Header() {
                       </div>
                       <div>
                         <div className="font-semibold text-[15px] leading-snug [text-shadow:none]">{s.title}</div>
-                        <p className="text-[13px] text-gray-500 mt-1 leading-snug">
+                        <p className="text-[13px] text-gray-500 mt-1 leading-snug [text-shadow:none]">
                           {s.description}
                         </p>
                       </div>
