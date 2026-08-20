@@ -155,7 +155,7 @@ export default function KdsPageClient() {
         <div className="site-container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {marquee.map((stat) => (
-              <motion.div key={stat.label} {...rise} className="min-w-0">
+              <motion.div key={stat.label} {...rise} className="min-w-0 text-center">
                 <div className="text-3xl md:text-4xl font-bold tracking-tighter">{stat.value}</div>
                 <div className="mt-2 text-sm text-gray-500">{stat.label}</div>
               </motion.div>
