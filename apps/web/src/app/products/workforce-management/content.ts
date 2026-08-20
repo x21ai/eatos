@@ -14,7 +14,7 @@ export const hero = {
   imageLabel: 'Workforce management dashboard',
   image: null,
   stats: [
-    { value: '30%', label: 'Less admin time' },
+    { value: '30%', label: 'Less admin time. Increase checks.' },
     { value: '99%', label: 'Accurate timesheets' },
     { value: '24/7', label: 'Clock-in anywhere' },
   ],
