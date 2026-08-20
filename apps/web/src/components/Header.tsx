@@ -430,7 +430,7 @@ export default function Header() {
                         <p.Icon size={18} />
                       </div>
                       <div>
-                        <div className="font-bold text-[15px] leading-snug">{p.title}</div>
+                        <div className="font-semibold text-[15px] leading-snug [text-shadow:none]">{p.title}</div>
                         <p className="text-[13px] text-gray-500 mt-1 leading-snug">
                           {p.description}
                         </p>
@@ -485,7 +485,7 @@ export default function Header() {
                         <s.Icon size={18} />
                       </div>
                       <div>
-                        <div className="font-bold text-[15px] leading-snug">{s.title}</div>
+                        <div className="font-semibold text-[15px] leading-snug [text-shadow:none]">{s.title}</div>
                         <p className="text-[13px] text-gray-500 mt-1 leading-snug">
                           {s.description}
                         </p>
