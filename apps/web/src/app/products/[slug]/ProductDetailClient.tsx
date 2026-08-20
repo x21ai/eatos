@@ -467,8 +467,8 @@ export default function ProductDetailClient({ slug }) {
                 Ready to get started?
               </h2>
               <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-                See {product.title} in action. Book a demo and we'll show you how it fits your
-                operation.
+                See {product.title} in action. Book a quick demo and we will show you exactly how it seamlessly fits your
+                service.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
