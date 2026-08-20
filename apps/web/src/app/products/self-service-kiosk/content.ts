@@ -1,9 +1,9 @@
 // @ts-nocheck
 // All copy for the Self-Service Kiosk product page. Edit here.
 
-import designedAsset from './assets/kiosk-designed.jpg.asset.json';
-import waitAsset from './assets/kiosk-wait.jpg.asset.json';
-import hardwareAsset from './assets/kiosk-hardware.png.asset.json';
+import designedAsset from './assets/kiosk-designed-v3.png.asset.json';
+import waitAsset from './assets/kiosk-wait-v3.png.asset.json';
+import hardwareAsset from './assets/kiosk-hardware-v3.png.asset.json';
 import lineupAsset from './assets/kiosk-lineup.jpg.asset.json';
 import heroAsset from './assets/kiosk-hero.jpg.asset.json';
 
