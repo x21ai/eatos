@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { ExternalLink } from 'lucide-react';
 import { demoSources } from './demoSources';
+import { TabletMockup } from './TabletMockup';
 
 interface DemoRailSectionProps {
   title?: string;
@@ -104,17 +105,30 @@ export function DemoRailSection({
                 Open
               </a>
             </div>
-            <div className="relative w-full aspect-[16/10] lg:aspect-auto lg:h-[480px] bg-black">
-              <iframe
-                key={demo.id}
-                src={demo.url}
-                title={displayLabel(demo.id)}
-                className="absolute inset-0 w-full h-full border-0"
-                sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-                allow="fullscreen"
-                loading="lazy"
-              />
-            </div>
+            {demo.media ? (
+              <div className="w-full bg-black px-4 py-6 sm:px-8 sm:py-8 lg:min-h-[480px] flex flex-col items-center justify-center">
+                <TabletMockup
+                  sources={demo.media.sources}
+                  poster={demo.media.poster}
+                  label={displayLabel(demo.id)}
+                />
+                <p className="mt-4 text-center text-xs sm:text-sm text-gray-500">
+                  {demo.media.caption}
+                </p>
+              </div>
+            ) : (
+              <div className="relative w-full aspect-[16/10] lg:aspect-auto lg:h-[480px] bg-black">
+                <iframe
+                  key={demo.id}
+                  src={demo.url}
+                  title={displayLabel(demo.id)}
+                  className="absolute inset-0 w-full h-full border-0"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                  allow="fullscreen"
+                  loading="lazy"
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

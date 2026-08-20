@@ -1,9 +1,20 @@
+import posMp4 from './assets/pos-demo.mp4.asset.json';
+import posWebm from './assets/pos-demo.webm.asset.json';
+import posPoster from './assets/pos-demo-poster.jpg.asset.json';
+
+export type DemoMedia = {
+  poster: string;
+  sources: { src: string; type: string }[];
+  caption: string;
+};
+
 export type DemoSource = {
   id: string;
   label: string;
   url: string;
   blurb: string;
   device: 'phone' | 'tablet' | 'laptop';
+  media?: DemoMedia;
 };
 
 export const demoSources: DemoSource[] = [
@@ -12,7 +23,15 @@ export const demoSources: DemoSource[] = [
     label: 'Point of Sale',
     url: 'https://mobileposapp.lovable.app/',
     blurb: 'Ring in orders, split checks, and take payment in seconds anywhere.',
-    device: 'phone',
+    device: 'tablet',
+    media: {
+      poster: posPoster.url,
+      sources: [
+        { src: posWebm.url, type: 'video/webm' },
+        { src: posMp4.url, type: 'video/mp4' },
+      ],
+      caption: 'Ring in the order, take payment, close the ticket.',
+    },
   },
   {
     id: 'kds',
