@@ -14,7 +14,7 @@ export const hero = {
   imageLabel: 'Branded ordering app on a phone',
   image: null,
   stats: [
-    { value: '0%', label: 'App commission. Increase checks.' },
+    { value: '0%', label: 'App commission' },
     { value: '100%', label: 'Your guest data' },
     { value: '24/7', label: 'Always on support' },
   ],
