@@ -36,7 +36,7 @@ export const features = [
     body:
       'Launch an ordering app and website that carry your name, your menu and your look, not a marketplace listing you share with every other restaurant nearby.',
     more:
-      'Orders land straight on the POS and the kitchen display, so nothing has to be retyped during a rush.',
+      'Orders land straight on the Point of Sale and the kitchen display, so nothing has to be retyped during a rush.',
     imageLabel: 'White-labeled ordering app',
     image: null,
     metrics: [
