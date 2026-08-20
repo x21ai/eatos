@@ -214,11 +214,12 @@ export default function KioskPageClient() {
               </div>
 
               <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                <div className="rounded-[2rem] border border-white/10 bg-white/5 p-3 md:p-4">
-                  <Placeholder
-                    label={feature.imageLabel}
+                <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
+                  <img
                     src={feature.image}
-                    ratio="aspect-[16/10]"
+                    alt={feature.imageLabel}
+                    loading="lazy"
+                    className="block h-full w-full object-cover aspect-[4/3] lg:aspect-[16/10]"
                   />
                 </div>
               </div>
