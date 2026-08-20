@@ -2,9 +2,9 @@
 // All copy for the Point of Purchase (handheld) product page. Edit here.
 
 import heroAsset from './assets/pop-hero.jpg.asset.json';
-import costsAsset from './assets/pop-costs.jpg.asset.json';
-import menusyncAsset from './assets/pop-menusync.jpg.asset.json';
-import paymentsAsset from './assets/pop-payments.jpg.asset.json';
+import costsAsset from './assets/pop-costs-new.png.asset.json';
+import menusyncAsset from './assets/pop-menusync-new.jpg.asset.json';
+import paymentsAsset from './assets/pop-payments-new.png.asset.json';
 import compatibilityAsset from './assets/pop-compatibility.jpg.asset.json';
 import tablesAsset from './assets/pop-tables.jpg.asset.json';
 import fireAsset from './assets/pop-fire.jpg.asset.json';
@@ -12,8 +12,8 @@ import lineupAsset from './assets/pop-lineup.jpg.asset.json';
 
 export const hero = {
   eyebrow: 'Point of Purchase',
-  title: 'All The Power of Full Size',
-  titleAccent: 'Point of Sale in Your Hands',
+  title: 'Full Point of Sale',
+  titleAccent: 'In Your Hands',
   description:
     'Contactless payments keep things smooth. A handheld eatOS terminal takes orders, fires to the kitchen and accepts payment right at the table.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
@@ -30,9 +30,7 @@ export const hero = {
 export const keyFeatures = [
   'All-in-One Point of Purchase',
   'Contactless Payments',
-  'Fire To Kitchen',
   'Real-time MenuSync',
-  'Save Cost, Powerful Features',
   'Table management',
 ];
 
