@@ -17,7 +17,7 @@ export function TabletMockup({ sources, poster, label }: TabletMockupProps) {
             aria-hidden="true"
             className="absolute left-1.5 sm:left-2 top-1/2 -translate-y-1/2 h-1.5 w-1.5 rounded-full bg-white/25 ring-1 ring-black/60"
           />
-          <div className="relative overflow-hidden rounded-[0.9rem] sm:rounded-[1.15rem] bg-black aspect-[1600/804]">
+          <div className="relative overflow-hidden rounded-[0.9rem] sm:rounded-[1.15rem] bg-black aspect-[1920/1040]">
             <video
               className="absolute inset-0 h-full w-full object-cover"
               poster={poster}
