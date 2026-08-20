@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
-import { features as allFeatures, hardware, hero, keyFeatures, offerNote } from './content';
+import { features as allFeatures, hardware, hero, keyFeatures } from './content';
 import { products } from '../products';
 
 const hiddenFeatures = ['compatibility', 'tables', 'fire-to-kitchen'];
@@ -400,10 +400,6 @@ export default function PopPageClient() {
               </div>
             </div>
           </motion.div>
-
-          <p className="mt-8 text-center text-xs leading-relaxed text-gray-600 max-w-3xl mx-auto">
-            {offerNote}
-          </p>
         </div>
       </section>
     </div>
