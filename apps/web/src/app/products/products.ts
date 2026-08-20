@@ -38,7 +38,7 @@ export const products = [
   {
     slug: "self-service-kiosk",
     title: "Self-Service Kiosk",
-    tagline: "Reduce wait times. Increase check size.",
+    tagline: "Reduce wait times. Increase checks.",
     description:
       "Let guests order on their terms. Reduce labor costs while boosting average ticket by 20%.",
     icon: "Smartphone",
