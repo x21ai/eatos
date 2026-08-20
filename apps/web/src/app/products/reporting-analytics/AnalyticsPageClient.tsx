@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
-import { features, hardware, hero, keyFeatures, offerNote } from './content';
+import { features, hardware, hero, keyFeatures } from './content';
 import { products } from '../products';
 
 const relatedIcons = [
@@ -387,10 +387,6 @@ export default function AnalyticsPageClient() {
               </div>
             </div>
           </motion.div>
-
-          <p className="mt-8 text-center text-xs leading-relaxed text-gray-600 max-w-3xl mx-auto">
-            {offerNote}
-          </p>
         </div>
       </section>
     </div>
