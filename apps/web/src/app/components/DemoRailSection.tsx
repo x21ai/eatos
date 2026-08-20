@@ -106,15 +106,13 @@ export function DemoRailSection({
               </a>
             </div>
             {demo.media ? (
-              <div className="w-full bg-black px-4 py-6 sm:px-8 sm:py-8 lg:min-h-[480px] flex flex-col items-center justify-center">
+              <div className="relative w-full aspect-[16/10] lg:aspect-auto lg:h-[480px] bg-black">
                 <TabletMockup
                   sources={demo.media.sources}
                   poster={demo.media.poster}
                   label={displayLabel(demo.id)}
+                  className="absolute inset-0 h-full w-full"
                 />
-                <p className="mt-4 text-center text-xs sm:text-sm text-gray-500">
-                  {demo.media.caption}
-                </p>
               </div>
             ) : (
               <div className="relative w-full aspect-[16/10] lg:aspect-auto lg:h-[480px] bg-black">
