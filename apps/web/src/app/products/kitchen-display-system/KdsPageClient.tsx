@@ -293,7 +293,7 @@ export default function KdsPageClient() {
                   <Icon size={24} />
                 </div>
                 <h3 className="text-xl font-bold tracking-tighter mb-2">{item.title}</h3>
-                <p className="text-gray-500 mb-6">Reduce wait times. Increase checks.</p>
+                <p className="text-gray-500 mb-6">{item.tagline}</p>
                 <div className="flex items-center gap-1 text-sm font-semibold text-white group-hover:gap-2 transition-all">
                   Learn more
                   <ChevronRight

@@ -22,7 +22,7 @@ export const products = [
   {
     slug: "kitchen-display-system",
     title: "Kitchen Display System",
-    tagline: "Chaos, controlled.",
+    tagline: "Chaos, controlled. Reduce wait times. Increase checks.",
     description:
       "Kitchen-grade hardware that connects front and back of house in real time. Never miss a ticket.",
     icon: "ChefHat",
@@ -38,7 +38,7 @@ export const products = [
   {
     slug: "self-service-kiosk",
     title: "Self-Service Kiosk",
-    tagline: "Reduce wait times. Increase check size.",
+    tagline: "Reduce wait times. Increase checks.",
     description:
       "Let guests order on their terms. Reduce labor costs while boosting average ticket by 20%.",
     icon: "Smartphone",

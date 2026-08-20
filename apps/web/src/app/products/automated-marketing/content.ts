@@ -15,7 +15,7 @@ export const hero = {
   image: null,
   stats: [
     { value: '100%', label: 'Personalized' },
-    { value: '10x', label: 'More engagement' },
+    { value: '10x', label: 'More engagement. Increase checks.' },
     { value: '24/7', label: 'Always on support' },
   ],
 };

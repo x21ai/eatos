@@ -234,7 +234,7 @@ export default function WorkforcePageClient() {
               Why Workforce Management?
             </h2>
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-              Built for real restaurant operations. Designed to keep labor costs under control.
+              Built for real restaurant operations. Designed to disappear into workflow.
             </p>
           </motion.div>
 

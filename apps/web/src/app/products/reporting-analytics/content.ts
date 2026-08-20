@@ -14,7 +14,7 @@ export const hero = {
   imageLabel: 'Analytics dashboard on a tablet',
   image: null,
   stats: [
-    { value: '10x', label: 'Faster reporting' },
+    { value: '10x', label: 'Faster reporting. Increase checks.' },
     { value: '100%', label: 'Actionable insights' },
     { value: '24/7', label: 'Always on support' },
   ],

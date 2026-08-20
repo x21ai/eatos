@@ -236,7 +236,7 @@ export default function TablesidePageClient() {
               Why Tableside Order & Pay?
             </h2>
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-              Built for real restaurant operations. Designed to turn tables faster and give guests control.
+              Built for real restaurant operations. Designed to disappear into workflow.
             </p>
           </motion.div>
 

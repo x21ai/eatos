@@ -14,7 +14,7 @@ export const hero = {
   imageLabel: 'Guest scanning QR code at table',
   image: null,
   stats: [
-    { value: '30%', label: 'Faster turnover' },
+    { value: '30%', label: 'Faster turnover. Increase checks.' },
     { value: '100%', label: 'Contactless' },
     { value: '24/7', label: 'Always on service' },
   ],

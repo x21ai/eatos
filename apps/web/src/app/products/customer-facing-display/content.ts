@@ -14,7 +14,7 @@ export const hero = {
   imageLabel: 'Customer facing display screen',
   image: null,
   stats: [
-    { value: '100%', label: 'Transparent orders' },
+    { value: '100%', label: 'Transparent orders. Increase checks.' },
     { value: '10x', label: 'Faster checkout' },
     { value: '24/7', label: 'Always on support' },
   ],
