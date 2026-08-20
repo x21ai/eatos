@@ -28,7 +28,7 @@ export const hero = {
 };
 
 export const keyFeatures = [
-  'All-in-One POS',
+  'All-in-One Point of Purchase',
   'Contactless Payments',
   'Fire To Kitchen',
   'Real-time MenuSync',
