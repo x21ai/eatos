@@ -319,9 +319,9 @@ export default function Header() {
       iconWrap: "bg-slate-100 text-slate-600",
     },
     {
-      href: "/solutions/multi-location",
-      title: "Multi-Location",
-      description: "One platform, every location",
+      href: "/solutions/catering",
+      title: "Catering",
+      description: "Large events and off site orders",
       Icon: Building2,
       iconWrap: "bg-blue-100 text-blue-600",
     },

@@ -96,13 +96,13 @@ const solutions = [
     image: null,
   },
   {
-    href: '/solutions/multi-location',
-    title: 'Multi-Location',
+    href: '/solutions/catering',
+    title: 'Catering',
     description:
-      'One platform for every location. Centralize menus, pricing, and reporting across your whole group.',
+      'Handle large event orders swiftly, with custom menus, live inventory and repeat client data.',
     Icon: Building2,
     color: 'blue',
-    features: ['Centralized menu control', 'Cross-location reporting', 'Role-based access'],
+    features: ['Event menu customization', 'Large-order logistics', 'Client CRM and repeat business'],
     image: null,
   },
   {
