@@ -1,6 +1,10 @@
 // @ts-nocheck
 // All copy for the Enterprise solution page. Edit here.
 
+import platformImg from './assets/ent-platform.jpg.asset.json';
+import workforceImg from './assets/ent-workforce.jpg.asset.json';
+import alwaysOnImg from './assets/ent-always-on.jpg.asset.json';
+
 export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
   title: 'Point of Sale System For Enterprise',
@@ -43,6 +47,7 @@ export const pillars = [
     more:
       'It is built to help restaurant enterprises thrive efficiently, with corporate oversight and location-level control in one place.',
     imageLabel: 'Enterprise management suite',
+    image: platformImg.url,
   },
   {
     id: 'workforce',
@@ -52,6 +57,7 @@ export const pillars = [
     more:
       'Create an easy environment for your teams to work in, so they can focus on your products and your customers.',
     imageLabel: 'Workforce scheduling and attendance',
+    image: workforceImg.url,
   },
   {
     id: 'always-on',
@@ -61,6 +67,7 @@ export const pillars = [
     more:
       'Orders keep getting served without any hiccups, so your guests always get the best experience possible.',
     imageLabel: 'Offline mode service',
+    image: alwaysOnImg.url,
   },
 ];
 
