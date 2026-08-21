@@ -81,16 +81,16 @@ export default function AIPage() {
       </section>
 
       {/* Glass Cards Section */}
-      <section className="py-20 md:py-20 md:py-28 bg-black relative">
+      <section className="py-20 md:py-28 bg-black relative">
         <div className="site-container">
-          <div className="mb-20">
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6">
+          <div className="mb-12 md:mb-16 max-w-3xl">
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6 leading-[1.05]">
               It doesn't just analyze. <br />
-              <span className="text-gray-500">It acts.</span>
+              <span className="text-white/45">It acts.</span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
                 icon: Brain,
