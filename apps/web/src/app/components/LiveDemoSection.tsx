@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { ExternalLink } from 'lucide-react';
 
 const demos = [
   { id: 'pos', label: 'Point of Sale', url: 'https://mobileposapp.lovable.app/' },
