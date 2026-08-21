@@ -34,7 +34,7 @@ export function PaymentsIntelligenceSection() {
   );
 
   return (
-    <section className="py-28">
+    <section className="py-20 md:py-28">
       <div className="site-container">
         <Reveal id="payments-head">
           <div className="max-w-4xl">
@@ -56,8 +56,8 @@ export function PaymentsIntelligenceSection() {
             const Icon = c.Icon;
             const revealId = `pay-${idx}`;
             return (
-              <Reveal id={revealId} key={c.title}>
-                <Card className="p-6">
+              <Reveal id={revealId} key={c.title} className="h-full">
+                <Card className="h-full p-6">
                   <div className="w-10 h-10 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center">
                     <Icon size={20} className="text-[#A855F7]" />
                   </div>

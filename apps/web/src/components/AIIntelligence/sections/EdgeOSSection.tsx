@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { WifiOff } from "lucide-react";
+import { WifiOff, Check, X } from "lucide-react";
 import { useMemo } from "react";
 import { SectionLabel } from "../SectionLabel";
 import { StatRow } from "../StatRow";
@@ -29,11 +29,11 @@ export function EdgeOSSection() {
   );
 
   return (
-    <section className="py-28">
+    <section className="py-20 md:py-28 overflow-hidden">
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <Reveal id="edge-left">
-            <Card className="p-6 md:p-8">
+          <Reveal id="edge-left" className="order-2 lg:order-1">
+            <Card className="p-5 sm:p-6 md:p-8">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center">
                   <WifiOff size={20} className="text-[#A855F7]" />
@@ -47,14 +47,14 @@ export function EdgeOSSection() {
               </div>
 
               <div className="mt-6 overflow-hidden rounded-2xl border border-white/10">
-                <div className="grid grid-cols-3 bg-black/40">
-                  <div className="px-4 py-3 text-xs uppercase tracking-wider text-[#9CA3AF] border-r border-white/10">
+                <div className="grid grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_minmax(0,1fr)] bg-black/40">
+                  <div className="px-3 py-3 sm:px-4 text-[10px] sm:text-xs uppercase tracking-wider text-[#9CA3AF] border-r border-white/10">
                     Scenario
                   </div>
-                  <div className="px-4 py-3 text-xs uppercase tracking-wider text-[#9CA3AF] border-r border-white/10">
+                  <div className="px-3 py-3 sm:px-4 text-[10px] sm:text-xs uppercase tracking-wider text-[#9CA3AF] border-r border-white/10">
                     Cloud POS
                   </div>
-                  <div className="px-4 py-3 text-xs uppercase tracking-wider text-[#9CA3AF]">
+                  <div className="px-3 py-3 sm:px-4 text-[10px] sm:text-xs uppercase tracking-wider text-[#9CA3AF]">
                     <strong>eatOS</strong>
                   </div>
                 </div>
@@ -62,16 +62,21 @@ export function EdgeOSSection() {
                 {edgeRows.map((r) => (
                   <div
                     key={r.scenario}
-                    className="grid grid-cols-3 bg-black/20 border-t border-white/10"
+                    className="grid grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_minmax(0,1fr)] bg-black/20 border-t border-white/10"
                   >
-                    <div className="px-4 py-4 text-sm text-[#E5E7EB] border-r border-white/10">
+                    <div className="px-3 py-4 sm:px-4 text-[13px] sm:text-sm text-[#E5E7EB] border-r border-white/10">
                       {r.scenario}
                     </div>
-                    <div className="px-4 py-4 text-sm text-[#E5E7EB] border-r border-white/10 flex items-center justify-between">
-                      <span>{r.cloud} ❌</span>
+                    <div className="px-3 py-4 sm:px-4 text-[13px] sm:text-sm text-[#E5E7EB] border-r border-white/10 flex items-start gap-2">
+                      <X size={15} className="mt-0.5 shrink-0 text-red-400" />
+                      <span className="min-w-0">{r.cloud}</span>
                     </div>
-                    <div className="px-4 py-4 text-sm text-[#E5E7EB] flex items-center justify-between">
-                      <span>{r.eatos} ✅</span>
+                    <div className="px-3 py-4 sm:px-4 text-[13px] sm:text-sm text-[#E5E7EB] flex items-start gap-2">
+                      <Check
+                        size={15}
+                        className="mt-0.5 shrink-0 text-emerald-400"
+                      />
+                      <span className="min-w-0">{r.eatos}</span>
                     </div>
                   </div>
                 ))}
@@ -92,7 +97,7 @@ export function EdgeOSSection() {
             </Card>
           </Reveal>
 
-          <Reveal id="edge-right">
+          <Reveal id="edge-right" className="order-1 lg:order-2">
             <div>
               <SectionLabel>EDGEOS</SectionLabel>
               <h2 className="mt-5 text-4xl md:text-6xl font-bold tracking-tighter leading-[1.05]">

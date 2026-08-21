@@ -50,7 +50,7 @@ export function AgentsSection() {
   );
 
   return (
-    <section className="py-28">
+    <section className="py-20 md:py-28">
       <div className="site-container">
         <Reveal id="agents-head">
           <div className="max-w-4xl">
@@ -72,8 +72,8 @@ export function AgentsSection() {
             const Icon = a.Icon;
             const revealId = `agent-${idx}`;
             return (
-              <Reveal id={revealId} key={a.title}>
-                <Card className="p-7">
+              <Reveal id={revealId} key={a.title} className="h-full">
+                <Card className="h-full p-6 md:p-7">
                   <div className="w-12 h-12 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center">
                     <Icon size={22} className="text-[#A855F7]" />
                   </div>

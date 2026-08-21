@@ -5,7 +5,7 @@ import { Reveal } from "../Reveal";
 
 export function RitualIntelligenceSection() {
   return (
-    <section className="py-28">
+    <section className="py-20 md:py-28">
       <div className="site-container">
         <Reveal id="ritual">
           <div className="max-w-4xl">
@@ -27,7 +27,7 @@ export function RitualIntelligenceSection() {
                 { title: "Handover", body: "Missing notes, missed tasks" },
                 { title: "Close", body: "Audit breaks before they spread" },
               ].map((c) => (
-                <Card key={c.title} className="p-6">
+                <Card key={c.title} className="h-full p-6">
                   <div className="text-sm font-semibold">{c.title}</div>
                   <div className="mt-2 text-[13px] text-[#9CA3AF]">
                     {c.body}

@@ -7,11 +7,11 @@ import { Reveal } from "../Reveal";
 
 export function VoiceOSSection() {
   return (
-    <section className="py-28">
+    <section className="py-20 md:py-28 overflow-hidden">
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <Reveal id="voice-left">
-            <Card className="p-7 md:p-10 relative overflow-hidden">
+          <Reveal id="voice-left" className="order-2 lg:order-1">
+            <Card className="p-5 sm:p-7 md:p-10 relative overflow-hidden">
               <div className="absolute -top-24 -left-24 w-64 h-64 bg-[#8B5CF6]/20 blur-[80px] rounded-full" />
               <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-[#A855F7]/20 blur-[80px] rounded-full" />
 
@@ -56,7 +56,7 @@ export function VoiceOSSection() {
             </Card>
           </Reveal>
 
-          <Reveal id="voice-right">
+          <Reveal id="voice-right" className="order-1 lg:order-2">
             <div>
               <SectionLabel>VOICEOS</SectionLabel>
               <h2 className="mt-5 text-4xl md:text-6xl font-bold tracking-tighter leading-[1.05]">
