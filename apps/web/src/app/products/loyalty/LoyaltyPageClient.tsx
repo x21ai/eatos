@@ -134,15 +134,24 @@ export default function LoyaltyPageClient() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="min-w-0"
+              className="min-w-0 rounded-[2rem] md:rounded-[2.5rem] border border-rose-500/20 bg-white/5 backdrop-blur-xl p-8 md:p-10"
             >
-              <div className="rounded-[2rem] md:rounded-[2.5rem] border border-rose-500/20 bg-white/5 p-3 md:p-4">
-                <Placeholder
-                  label={hero.imageLabel}
-                  src={hero.image}
-                  ratio="aspect-[4/3]"
-                  tone="dark"
-                />
+              <h2 className="text-xl font-bold tracking-tighter mb-8">Key features</h2>
+              <div className="space-y-5 md:space-y-6">
+                {keyFeatures.map((feature, index) => (
+                  <motion.div
+                    key={feature}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.4 + index * 0.08 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="w-8 h-8 shrink-0 rounded-full bg-rose-500/10 text-rose-400 flex items-center justify-center mt-0.5">
+                      <Check size={16} />
+                    </div>
+                    <div className="min-w-0 text-base md:text-lg font-medium">{feature}</div>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
           </div>
