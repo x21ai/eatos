@@ -1,4 +1,7 @@
 // @ts-nocheck
+import work1 from '@/assets/work1.png.asset.json';
+import work2 from '@/assets/work2.png.asset.json';
+import work3 from '@/assets/work3.png.asset.json';
 // All copy for the Workforce Management product page. Edit here.
 // Images are intentionally left blank for now: the shared Placeholder renders
 // an empty surface when no `image` is provided.
