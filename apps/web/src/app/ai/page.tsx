@@ -56,7 +56,7 @@ export default function AIPage() {
             </h1>
 
             <p className="text-lg sm:text-xl md:text-2xl text-white/70 mb-10 md:mb-12 max-w-2xl mx-auto leading-relaxed font-light animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-              The first AI that runs your restaurant for you. Predicts demand, optimizes labor, and
+              The first AI that runs your restaurant. Predicts demand, optimizes labor, and
               personalizes service, all without you lifting a finger.
             </p>
 
