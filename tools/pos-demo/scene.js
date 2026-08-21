@@ -92,7 +92,18 @@ const TAPS = [
   { t: 10.60, id: 'paycharge' },
   { t: 13.60, id: 'norec' },
 ];
+/* login-phase taps, absolute time from 0 */
+const LOGIN_TAPS = [
+  { t: 1.15, id: 'siPwField' },
+  { t: 2.95, id: 'siBtn' },
+  { t: 5.35, id: 'k4' },
+  { t: 5.80, id: 'k9' },
+  { t: 6.25, id: 'k2' },
+  { t: 6.70, id: 'k1' },
+  { t: 7.45, id: 'kent' },
+];
 const START = { x: 1500, y: 960 };
+const LOGIN_START = { x: 980, y: 900 };
 let P = {};
 
 function settleAndMeasure() {
@@ -108,8 +119,94 @@ function settleAndMeasure() {
   collect(prepIds.concat(['mg-prep', 'sadd', 'item-spinach', 'plus-wings', 'plus-truffle', 'charge', 't-card', 'paycharge', 'norec']));
   paintMods('size', -1);
   collect(['mv-size-0', 'mv-size-1', 'mv-size-2']);
+  collect(['siPwField', 'siBtn', 'k1', 'k2', 'k4', 'k9', 'kent']);
   overlays.forEach(id => { $(id).style.opacity = 0; });
 }
+
+/* ---------- cursor + ripple, shared by both phases ---------- */
+function cursorAndRipple(t, taps, start, hide) {
+  let from = start, to = taps[0], prevT = 0;
+  for (let i = 0; i < taps.length; i++) {
+    if (t <= taps[i].t || i === taps.length - 1) { to = taps[i]; from = i === 0 ? start : P[taps[i - 1].id]; prevT = i === 0 ? 0 : taps[i - 1].t; break; }
+  }
+  const target = P[to.id] || start;
+  const travelStart = Math.max(prevT + 0.14, to.t - 0.7);
+  const cp = easeIO(seg(t, travelStart, to.t));
+  const cx = (from ? from.x : start.x) + (target.x - (from ? from.x : start.x)) * cp;
+  const cy = (from ? from.y : start.y) + (target.y - (from ? from.y : start.y)) * cp;
+  const cur = $('cursor');
+  cur.style.opacity = hide ? 0 : 1;
+  cur.style.left = cx + 'px';
+  cur.style.top = cy + 'px';
+
+  const rp = $('ripple');
+  rp.style.opacity = 0;
+  for (const tap of taps) {
+    const p = (t - tap.t) / 0.45;
+    if (p >= 0 && p <= 1) {
+      const pt = P[tap.id] || start;
+      rp.style.left = pt.x + 'px'; rp.style.top = pt.y + 'px';
+      rp.style.transform = `scale(${0.25 + 1.15 * easeOut(p)})`;
+      rp.style.opacity = 0.6 * (1 - p);
+    }
+    const pr = (t - tap.t) / 0.14;
+    if (pr >= 0 && pr <= 1) {
+      const el = $(tap.id);
+      if (el) el.style.transform = `scale(${1 - 0.045 * Math.sin(pr * Math.PI)})`;
+    }
+  }
+}
+
+/* ---------- login phase ---------- */
+const CAPS = [
+  ['The AI-first restaurant operating system', 'One platform to run, manage, and grow your restaurant.'],
+  ['Meet your AI restaurant manager', 'eatOS learns your menu, predicts demand, and helps your team serve faster.'],
+];
+function renderLogin(t) {
+  ['siPwField', 'siBtn', 'k1', 'k2', 'k4', 'k9', 'kent'].forEach(id => { const el = $(id); if (el) el.style.transform = ''; });
+
+  /* screen visibility */
+  const siOut = easeIO(seg(t, 3.25, 3.60));
+  const ldIn = easeIO(seg(t, 3.30, 3.60)), ldOut = easeIO(seg(t, 4.55, 4.85));
+  const ciIn = easeIO(seg(t, 4.60, 4.95));
+  $('signin').style.opacity = 1 - siOut;
+  $('loading').style.opacity = ldIn * (1 - ldOut);
+  $('clockin').style.opacity = ciIn;
+  $('posroot').style.opacity = easeIO(seg(t, OFFSET - 0.45, OFFSET));
+  $('clockin').style.opacity = ciIn * (1 - easeIO(seg(t, OFFSET - 0.45, OFFSET - 0.05)));
+
+  /* caption rotation on the marketing panel */
+  const ci = t >= 2.10 ? 1 : 0;
+  $('siCapTitle').textContent = CAPS[ci][0];
+  $('siCapBody').textContent = CAPS[ci][1];
+  $('siDot0').className = ci === 0 ? 'on' : '';
+  $('siDot1').className = ci === 1 ? 'on' : '';
+
+  /* password typing */
+  const typed = t < 1.20 ? 0 : Math.min(11, Math.floor((t - 1.20) / 0.075));
+  $('siPw').textContent = '\u2022'.repeat(typed);
+  $('siPwField').className = 'siField' + (t >= 1.15 ? ' on' : '');
+  const ready = typed >= 11;
+  $('siBtn').style.background = ready ? '#f4f4f5' : '#2a2d34';
+  $('siBtn').style.color = ready ? '#111318' : '#8b95a3';
+
+  /* spinner */
+  $('spinner').style.transform = `rotate(${(t * 420) % 360}deg)`;
+
+  /* PIN masks */
+  const pinTimes = [5.35, 5.80, 6.25, 6.70];
+  pinTimes.forEach((pt, i) => { $('ciM' + i).className = t >= pt ? 'on' : ''; });
+  $('kent').style.opacity = t >= 6.70 ? 1 : 0.75;
+  /* keypad dims after ENTER, as in the app */
+  const dimmed = t >= 7.45;
+  ['k1', 'k2', 'k3', 'k4', 'k5', 'k6', 'k7', 'k8', 'k9', 'k0'].forEach(id => {
+    const el = $(id); if (el) el.className = 'ciKey' + (dimmed ? ' dim' : '') + (id === 'kc' ? ' clr' : '');
+  });
+  $('kc').className = 'ciKey clr' + (dimmed ? ' dim' : '');
+
+  cursorAndRipple(t, LOGIN_TAPS, LOGIN_START, t > 7.80);
+}
+
 
 function render(t) {
   /* ---- reset transient ---- */
