@@ -5,8 +5,8 @@
 
 export const hero = {
   eyebrow: 'Simplified Inventory Management',
-  title: 'InventoryOS: Innovating',
-  titleAccent: 'Hospitality Inventory Control',
+  title: 'Smart Restaurant',
+  titleAccent: 'Inventory Management',
   description:
     'Introducing eatOS simplified inventory management for restaurants. Streamline tracking, reduce waste, and optimize stock levels effortlessly.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
