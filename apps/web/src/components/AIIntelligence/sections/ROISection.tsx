@@ -36,7 +36,7 @@ export function ROISection() {
             <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {roiStats.map((s) => (
                 <Card key={s.label} className="h-full p-6 md:p-8 text-left">
-                  <div className="text-[44px] md:text-[56px] leading-none font-bold tracking-tight">
+                  <div className="text-[36px] sm:text-[44px] md:text-[52px] leading-none font-bold tracking-tight">
                     {s.value}
                   </div>
                   <div className="mt-3 text-[13px] text-[#9CA3AF]">
