@@ -217,9 +217,16 @@ export default function WorkforcePageClient() {
               </div>
 
               <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                <div className="rounded-[2rem] border border-white/10 bg-white/5 p-3 md:p-4">
+                {feature.image ? (
+                  <img
+                    src={feature.image}
+                    alt={feature.imageLabel}
+                    loading="lazy"
+                    className="w-full aspect-[16/10] object-cover rounded-[2rem]"
+                  />
+                ) : (
                   <Placeholder label={feature.imageLabel} ratio="aspect-[16/10]" />
-                </div>
+                )}
               </div>
             </motion.div>
           ))}
