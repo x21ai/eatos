@@ -21,6 +21,7 @@ import {
 import { motion } from 'motion/react';
 import { features, hardware, hero, keyFeatures } from './content';
 import { products } from '../products';
+import BrochureButton from '@/components/BrochureButton';
 
 const relatedIcons = [
   { Icon: Monitor, tint: 'bg-sky-500/10 text-sky-400' },
@@ -125,6 +126,7 @@ export default function KioskPageClient() {
                 >
                   Get Started
                 </a>
+                <BrochureButton brochureId="self-service-kiosk" />
               </motion.div>
             </div>
 

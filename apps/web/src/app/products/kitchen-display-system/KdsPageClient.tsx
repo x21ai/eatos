@@ -21,6 +21,7 @@ import {
   marquee,
 } from './content';
 import { products } from '../products';
+import BrochureButton from '@/components/BrochureButton';
 
 const hiddenFeatures = ['kitchen-grade-hardware', 'analytics-reporting'];
 const features = allFeatures.filter((f) => !hiddenFeatures.includes(f.id));
@@ -118,6 +119,7 @@ export default function KdsPageClient() {
                 >
                   Get Started
                 </a>
+                <BrochureButton brochureId="kitchen-display-system" />
               </motion.div>
             </div>
 
