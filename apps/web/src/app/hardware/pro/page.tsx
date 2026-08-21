@@ -20,13 +20,13 @@ export default function ProPage() {
           <div className="flex items-center gap-6">
             <a
               href="#overview"
-              className="text-sm text-gray-400 hover:text-white transition-colors hidden md:block"
+              className="text-sm text-white/90 hover:text-white transition-colors hidden md:block"
             >
               Overview
             </a>
             <a
               href="#specs"
-              className="text-sm text-gray-400 hover:text-white transition-colors hidden md:block"
+              className="text-sm text-white/90 hover:text-white transition-colors hidden md:block"
             >
               Specs
             </a>
@@ -40,13 +40,13 @@ export default function ProPage() {
       {/* Hero */}
       <section className="pt-48 pb-32 relative overflow-hidden">
         <div className="site-container text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 text-xs font-medium mb-8 text-gray-400">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 text-xs font-medium mb-8 text-white/90">
             New Generation
           </div>
           <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-6">
             The ultimate <br /> countertop.
           </h1>
-          <p className="text-2xl text-gray-500 mb-12">
+          <p className="text-2xl text-white/70 mb-12">
             Fast. Powerful. And stunningly beautiful.
           </p>
         </div>
@@ -76,7 +76,7 @@ export default function ProPage() {
               <div className="relative z-10">
                 <Cpu size={32} className="text-blue-500 mb-6" />
                 <h3 className="text-3xl font-bold mb-4">M1 Speed.</h3>
-                <p className="text-gray-400 text-lg max-w-md">
+                <p className="text-white/90 text-lg max-w-md">
                   Powered by our custom silicon for instant menu loads and
                   zero-latency order processing.
                 </p>
@@ -88,7 +88,7 @@ export default function ProPage() {
               <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black to-transparent"></div>
               <Wifi size={32} className="text-green-500 mb-6" />
               <h3 className="text-2xl font-bold mb-4">Always On.</h3>
-              <p className="text-gray-400">
+              <p className="text-white/90">
                 Dual-band WiFi 6E + 5G LTE backup keeps you running even when
                 the internet goes down.
               </p>
@@ -98,7 +98,7 @@ export default function ProPage() {
             <div className="bg-zinc-900 rounded-3xl p-10 relative overflow-hidden group">
               <Layers size={32} className="text-orange-500 mb-6" />
               <h3 className="text-2xl font-bold mb-4">Kitchen Proof.</h3>
-              <p className="text-gray-400">
+              <p className="text-white/90">
                 IP54 rated against spills, dust, and grease. Built to survive
                 the dinner rush.
               </p>
@@ -109,7 +109,7 @@ export default function ProPage() {
               <div className="flex-1 relative z-10">
                 <Monitor size={32} className="text-purple-500 mb-6" />
                 <h3 className="text-3xl font-bold mb-4">Retina Clarity.</h3>
-                <p className="text-gray-400 text-lg">
+                <p className="text-white/90 text-lg">
                   15-inch 4K display with anti-glare coating. Crisp text and
                   vibrant food photos in any lighting.
                 </p>
@@ -126,24 +126,24 @@ export default function ProPage() {
           <h2 className="text-4xl font-bold mb-16">Specifications</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12 text-lg">
             <div className="border-b border-white/10 pb-8">
-              <div className="font-bold text-gray-500 mb-2">Display</div>
+              <div className="font-bold text-white/70 mb-2">Display</div>
               <div>15.6" Full HD Touchscreen</div>
-              <div className="text-gray-400">400 nits brightness</div>
+              <div className="text-white/90">400 nits brightness</div>
             </div>
             <div className="border-b border-white/10 pb-8">
-              <div className="font-bold text-gray-500 mb-2">Processor</div>
+              <div className="font-bold text-white/70 mb-2">Processor</div>
               <div>Octa-core 2.4GHz</div>
-              <div className="text-gray-400">4GB RAM / 64GB Storage</div>
+              <div className="text-white/90">4GB RAM / 64GB Storage</div>
             </div>
             <div className="border-b border-white/10 pb-8">
-              <div className="font-bold text-gray-500 mb-2">Connectivity</div>
+              <div className="font-bold text-white/70 mb-2">Connectivity</div>
               <div>WiFi 6, Bluetooth 5.0</div>
-              <div className="text-gray-400">Ethernet, USB-C x 4</div>
+              <div className="text-white/90">Ethernet, USB-C x 4</div>
             </div>
             <div className="border-b border-white/10 pb-8">
-              <div className="font-bold text-gray-500 mb-2">Printer</div>
+              <div className="font-bold text-white/70 mb-2">Printer</div>
               <div>Built-in Thermal Printer</div>
-              <div className="text-gray-400">80mm paper width, auto-cutter</div>
+              <div className="text-white/90">80mm paper width, auto-cutter</div>
             </div>
           </div>
         </div>

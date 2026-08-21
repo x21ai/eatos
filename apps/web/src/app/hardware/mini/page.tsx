@@ -32,16 +32,16 @@ export default function MiniPage() {
               Power in <br /> your{" "}
               <span className="text-purple-500">pocket.</span>
             </h1>
-            <p className="text-xl text-gray-400 mb-10 leading-relaxed">
+            <p className="text-xl text-white/90 mb-10 leading-relaxed">
               The full power of a POS terminal, shrunk down to the size of a
               phone. Tableside ordering, payments, and inventory management in
               the palm of your hand.
             </p>
             <div className="flex gap-4">
-              <div className="flex items-center gap-2 text-sm text-gray-300">
+              <div className="flex items-center gap-2 text-sm text-white/90">
                 <Battery size={16} className="text-green-500" /> 24h Battery
               </div>
-              <div className="flex items-center gap-2 text-sm text-gray-300">
+              <div className="flex items-center gap-2 text-sm text-white/90">
                 <Wifi size={16} className="text-blue-500" /> 5G Connected
               </div>
             </div>
@@ -79,14 +79,14 @@ export default function MiniPage() {
             <div className="bg-zinc-900/50 p-8 rounded-3xl border border-white/5 hover:bg-zinc-900 transition-colors">
               <Scan size={32} className="text-purple-400 mb-6" />
               <h3 className="text-xl font-bold mb-3">Built-in Scanner</h3>
-              <p className="text-gray-500">
+              <p className="text-white/70">
                 Scan barcodes for inventory or QR codes for loyalty instantly.
               </p>
             </div>
             <div className="bg-zinc-900/50 p-8 rounded-3xl border border-white/5 hover:bg-zinc-900 transition-colors">
               <CreditCard size={32} className="text-purple-400 mb-6" />
               <h3 className="text-xl font-bold mb-3">Accepts Everything</h3>
-              <p className="text-gray-500">
+              <p className="text-white/70">
                 Dip, tap, or swipe. Built-in card reader handles all payment
                 types.
               </p>
@@ -94,7 +94,7 @@ export default function MiniPage() {
             <div className="bg-zinc-900/50 p-8 rounded-3xl border border-white/5 hover:bg-zinc-900 transition-colors">
               <Smartphone size={32} className="text-purple-400 mb-6" />
               <h3 className="text-xl font-bold mb-3">Pocket Ready</h3>
-              <p className="text-gray-500">
+              <p className="text-white/70">
                 Slim profile fits in an apron or back pocket comfortably.
               </p>
             </div>

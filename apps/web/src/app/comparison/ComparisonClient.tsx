@@ -45,7 +45,7 @@ function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex items-center gap-2 text-sm text-gray-500 mb-8"
+          className="flex items-center gap-2 text-sm text-white/70 mb-8"
         >
           <a href="/products" className="hover:text-white transition-colors">
             Restaurant Type
@@ -87,7 +87,7 @@ function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg md:text-xl text-gray-400 leading-relaxed mb-10 max-w-xl"
+              className="text-lg md:text-xl text-white/90 leading-relaxed mb-10 max-w-xl"
             >
               {hero.description}
             </motion.p>
@@ -159,7 +159,7 @@ function WhySwitch() {
             <h2 className="mt-4 max-w-[16ch] font-bold leading-[1.1] tracking-tighter text-3xl md:text-4xl lg:max-w-none lg:text-5xl">
               Why switch to eatOS
             </h2>
-            <p className="mt-5 max-w-md text-sm leading-7 text-zinc-400 lg:max-w-lg lg:text-lg lg:leading-8">
+            <p className="mt-5 max-w-md text-sm leading-7 text-white/90 lg:max-w-lg lg:text-lg lg:leading-8">
               One platform, built end to end, so every part of your restaurant works together.
             </p>
             <div className="mt-7 overflow-hidden rounded-[22px] ring-1 ring-white/10">
@@ -180,14 +180,14 @@ function WhySwitch() {
                   href={item.link.href}
                   className="group grid grid-cols-[auto_minmax(0,1fr)] gap-5 border-t border-white/10 py-8 first:border-t-0 first:pt-0 sm:gap-8 sm:py-10 lg:py-11"
                 >
-                  <span className="pt-1 text-xs font-semibold tabular-nums tracking-[0.2em] text-zinc-500">
+                  <span className="pt-1 text-xs font-semibold tabular-nums tracking-[0.2em] text-white/70">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <span className="min-w-0 block">
                     <h3 className="text-lg font-bold tracking-tighter sm:text-xl lg:text-2xl">
                       {item.title}
                     </h3>
-                    <p className="mt-3 max-w-xl text-sm leading-7 text-zinc-400 lg:text-base lg:leading-8">
+                    <p className="mt-3 max-w-xl text-sm leading-7 text-white/90 lg:text-base lg:leading-8">
                       {item.body}
                     </p>
                     <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-400">
@@ -237,7 +237,7 @@ function Matrix() {
           <h2 className="mx-auto max-w-[26ch] text-center font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl whitespace-pre-line">
             Compare eatOS with other{"\n"}Point of Sale software
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-7 text-zinc-400 sm:text-base">
+          <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-7 text-white/90 sm:text-base">
             See why thousands of restaurant brands choose eatOS over other Point of Sale software for smarter, faster, and more efficient operations.
           </p>
         </Reveal>
@@ -258,7 +258,7 @@ function Matrix() {
                       className={`pb-6 text-center align-bottom text-sm font-semibold tracking-tight ${
                         i === 0
                           ? 'w-[13%] rounded-t-[20px] bg-white/[0.07] px-2 pt-7 text-white'
-                          : 'w-[9%] px-2 text-zinc-500'
+                          : 'w-[9%] px-2 text-white/70'
                       }`}
                     >
                       {i === 0 ? (
@@ -281,7 +281,7 @@ function Matrix() {
               <tbody>
                 {matrix.map((row, r) => (
                   <tr key={row.feature}>
-                    <td className="sticky left-0 z-10 border-t border-white/8 bg-black py-6 pl-2 pr-4 text-sm leading-6 text-zinc-300">
+                    <td className="sticky left-0 z-10 border-t border-white/8 bg-black py-6 pl-2 pr-4 text-sm leading-6 text-white/90">
                       {row.feature}
                     </td>
                     <td
@@ -343,7 +343,7 @@ function Matrix() {
                         key={row.feature}
                         className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-t border-white/8 pt-3 first:border-0 first:pt-0"
                       >
-                        <span className="min-w-0 text-[13px] leading-6 text-zinc-300">
+                        <span className="min-w-0 text-[13px] leading-6 text-white/90">
                           {row.feature}
                         </span>
                         <Mark on={on} accent={ci === 0} />
@@ -356,7 +356,7 @@ function Matrix() {
           ))}
         </div>
 
-        <p className="mx-auto mt-10 max-w-3xl text-center text-[11px] leading-5 text-zinc-500">
+        <p className="mx-auto mt-10 max-w-3xl text-center text-[11px] leading-5 text-white/70">
           {trademarkNote}
         </p>
       </div>
@@ -386,7 +386,7 @@ function Reasons() {
                 <h3 className="font-bold leading-[1.15] tracking-tighter text-2xl md:text-4xl">
                   {item.title}
                 </h3>
-                <p className="mt-5 max-w-xl text-sm leading-7 text-zinc-400 sm:text-base sm:leading-8">
+                <p className="mt-5 max-w-xl text-sm leading-7 text-white/90 sm:text-base sm:leading-8">
                   {item.body}
                 </p>
               </Reveal>
