@@ -29,11 +29,11 @@ export function EdgeOSSection() {
   );
 
   return (
-    <section className="py-28">
+    <section className="py-20 md:py-28 overflow-hidden">
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <Reveal id="edge-left">
-            <Card className="p-6 md:p-8">
+          <Reveal id="edge-left" className="order-2 lg:order-1">
+            <Card className="p-5 sm:p-6 md:p-8">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center">
                   <WifiOff size={20} className="text-[#A855F7]" />
