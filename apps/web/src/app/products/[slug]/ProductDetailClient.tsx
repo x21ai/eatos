@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { getProductBySlug, products } from '../products';
+import BrochureButton from '@/components/BrochureButton';
 
 const iconMap = {
   Monitor: Monitor,
@@ -286,6 +287,7 @@ export default function ProductDetailClient({ slug }) {
                 >
                   Get Started
                 </a>
+                <BrochureButton brochureId={product.slug} />
               </motion.div>
             </div>
 

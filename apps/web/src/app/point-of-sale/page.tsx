@@ -16,6 +16,7 @@ import {
   ChevronLeft,
 } from 'lucide-react';
 import { motion } from 'motion/react';
+import BrochureButton from '@/components/BrochureButton';
 
 export default function PointOfSalePage() {
   return (
@@ -52,6 +53,20 @@ export default function PointOfSalePage() {
               The interface that disappears. Designed for speed, clarity, and the service under
               pressure.
             </motion.p>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <a
+                href="/book-demo"
+                className="px-8 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform text-center"
+              >
+                Book a Demo
+              </a>
+              <BrochureButton brochureId="point-of-sale" />
+            </motion.div>
           </div>
         </section>
 
