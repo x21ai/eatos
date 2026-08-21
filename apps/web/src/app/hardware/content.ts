@@ -1,6 +1,12 @@
 // @ts-nocheck
 // All copy for the Hardware page. Edit here.
 
+import posImg from './assets/poshardware.png.asset.json';
+import kdsImg from './assets/kdsss.png.asset.json';
+import kioskImg from './assets/hardkios.png.asset.json';
+import payImg from './assets/handheld.png.asset.json';
+
+
 export const hero = {
   eyebrow: 'Hardware to fit your business',
   title: 'Hardware',
@@ -33,6 +39,7 @@ export const features = [
     more:
       'Counter, dual-screen and mobile setups all run the same eatOS software, so menus, staff and reporting stay in sync across every station.',
     imageLabel: 'eatOS Point of Sale terminal',
+    image: posImg.url,
     metrics: [
       { value: '10x', label: 'Faster Transaction' },
       { value: '100%', label: 'Automated' },
@@ -46,6 +53,7 @@ export const features = [
     more:
       'Sealed, fanless displays stay readable through heat and steam, and mount on a wall, pole or under a shelf with touch or bump bar control.',
     imageLabel: 'Kitchen display showing live tickets',
+    image: kdsImg.url,
     metrics: [
       { value: '100%', label: 'Real-Time Orders' },
       { value: '10x', label: 'Error-Free Orders' },
@@ -59,6 +67,7 @@ export const features = [
     more:
       'Countertop, freestanding and wall-mount formats let guests browse, customize and pay on their own while your team stays on the food.',
     imageLabel: 'Self ordering kiosk',
+    image: kioskImg.url,
     metrics: [
       { value: '100%', label: 'Precise' },
       { value: '100%', label: 'Integrated' },
@@ -72,24 +81,13 @@ export const features = [
     more:
       'EMV chip, tap and swipe in one device, with encrypted, PCI compliant processing at the counter or at the table.',
     imageLabel: 'Handheld card reader',
+    image: payImg.url,
     metrics: [
       { value: '10x', label: 'Safer' },
       { value: '100%', label: 'Secured' },
     ],
   },
-  {
-    id: 'accessories',
-    title: 'Accessories',
-    body:
-      'Find the perfect hardware fit for your restaurant. Choose from industry leaders like Apple, Star Micronics, HP, Clover, Samsung, Lenovo and more.',
-    more:
-      'Printers, cash drawers, scanners, mounts and cabling are all tested against eatOS so the setup works the day it arrives.',
-    imageLabel: 'eatOS accessories and printers',
-    metrics: [
-      { value: '10x', label: 'Adoptability' },
-      { value: '100%', label: 'Tested And Proven' },
-    ],
-  },
+
 ];
 
 export const hardware = {
