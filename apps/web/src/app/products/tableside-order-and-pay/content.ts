@@ -5,16 +5,16 @@
 
 export const hero = {
   eyebrow: 'Tableside Order & Pay',
-  title: 'Order and Pay from',
-  titleAccent: 'Any Table',
+  title: 'Order & Pay from Table',
+  titleAccent: '',
   description:
-    'Guests scan a QR code and order from their phone. No app download required. Orders land directly in the Point of Sale and kitchen so your team stays focused on service.',
+    'Guests scan a QR code and order from their phone. No app download required. Orders land directly in the Point of Sale so your team stays focused on service.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'Watch Video', href: '#' },
   imageLabel: 'Guest scanning QR code at table',
   image: null,
   stats: [
-    { value: '30%', label: 'Faster turnover. Increase checks.' },
+    { value: '30%', label: 'Faster turnover' },
     { value: '100%', label: 'Contactless' },
     { value: '24/7', label: 'Always on service' },
   ],
@@ -34,7 +34,7 @@ export const features = [
     id: 'merchant-platform',
     title: 'Merchant Platform',
     body:
-      'Run every order through a single, cloud-connected merchant platform. Transactions, tips, refunds, and reconciliation flow into one dashboard so you never chase payments across systems.',
+      'Run every order through a single, cloud-connected platform. Transactions, tips, refunds, and reconciliation flow into one dashboard so you never chase payments across systems.',
     more:
       'Whether guests pay tableside or at the counter, the experience is the same: secure, fast, and automatically tied to the right check.',
     imageLabel: 'Merchant platform dashboard',
