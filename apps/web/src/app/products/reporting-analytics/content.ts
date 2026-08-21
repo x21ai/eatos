@@ -1,4 +1,8 @@
 // @ts-nocheck
+import profitAsset from './assets/profit.png.asset.json';
+import breakdownAsset from './assets/breakdown.png.asset.json';
+import locationAsset from './assets/location.png.asset.json';
+
 // All copy for the Analytics & Reporting product page. Edit here.
 // Images are intentionally left blank for now: the shared Placeholder renders
 // an empty surface when no `image` is provided.
