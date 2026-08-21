@@ -1,4 +1,8 @@
 // @ts-nocheck
+import profitAsset from './assets/profit.png.asset.json';
+import breakdownAsset from './assets/breakdown.png.asset.json';
+import locationAsset from './assets/location.png.asset.json';
+
 // All copy for the Analytics & Reporting product page. Edit here.
 // Images are intentionally left blank for now: the shared Placeholder renders
 // an empty surface when no `image` is provided.
@@ -37,8 +41,8 @@ export const features = [
       'Watch sales, covers, labor and voids update as service happens, so you can fix a problem during the shift instead of reading about it the next morning.',
     more:
       'Every terminal, handheld and kiosk feeds the same live view, from a single store to the whole group.',
-    imageLabel: 'Live sales dashboard',
-    image: null,
+    imageLabel: 'Live profit and loss report',
+    image: profitAsset.url,
     metrics: [
       { value: '100%', label: 'Actionable Insights' },
       { value: '10x', label: 'Data Advantage' },
@@ -51,8 +55,8 @@ export const features = [
       'Your reports live in the cloud, so you can open them from the office, from home or between locations without exporting anything first.',
     more:
       'Schedule the reports your team needs and have them waiting in an inbox before the day starts.',
-    imageLabel: 'Cloud reports on a tablet',
-    image: null,
+    imageLabel: 'Breakdown report on a tablet',
+    image: breakdownAsset.url,
     metrics: [
       { value: '24/7', label: 'Profitable Insights' },
       { value: '100%', label: 'Instant Access' },
@@ -66,13 +70,14 @@ export const features = [
     more:
       'Roll up the whole group into one view, or slice it by region, brand or day part.',
     imageLabel: 'Multi-location comparison report',
-    image: null,
+    image: locationAsset.url,
     metrics: [
       { value: '100%', label: 'Targeted Insights' },
       { value: '100%', label: 'Information Security' },
     ],
   },
 ];
+
 
 export const offerNote =
   'Terms and conditions, and restaurant qualification criteria apply. Pricing is per location per device, excluding accessories, taxes and shipping.';
