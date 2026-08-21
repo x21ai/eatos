@@ -24,6 +24,7 @@ import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
 import { features as allFeatures, hardware, hero, keyFeatures } from './content';
 import { products } from '../products';
+import BrochureButton from '@/components/BrochureButton';
 
 const hiddenFeatures = ['compatibility', 'tables', 'fire-to-kitchen'];
 const features = allFeatures.filter((f) => !hiddenFeatures.includes(f.id));
@@ -128,12 +129,7 @@ export default function PopPageClient() {
                 >
                   {hero.primaryCta.label}
                 </a>
-                <a
-                  href={hero.secondaryCta.href}
-                  className="px-8 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors text-center"
-                >
-                  {hero.secondaryCta.label}
-                </a>
+                <BrochureButton brochureId="point-of-purchase" />
               </motion.div>
             </div>
 
