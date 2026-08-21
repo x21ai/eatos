@@ -47,14 +47,14 @@ export function EdgeOSSection() {
               </div>
 
               <div className="mt-6 overflow-hidden rounded-2xl border border-white/10">
-                <div className="grid grid-cols-3 bg-black/40">
-                  <div className="px-4 py-3 text-xs uppercase tracking-wider text-[#9CA3AF] border-r border-white/10">
+                <div className="grid grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_minmax(0,1fr)] bg-black/40">
+                  <div className="px-3 py-3 sm:px-4 text-[10px] sm:text-xs uppercase tracking-wider text-[#9CA3AF] border-r border-white/10">
                     Scenario
                   </div>
-                  <div className="px-4 py-3 text-xs uppercase tracking-wider text-[#9CA3AF] border-r border-white/10">
+                  <div className="px-3 py-3 sm:px-4 text-[10px] sm:text-xs uppercase tracking-wider text-[#9CA3AF] border-r border-white/10">
                     Cloud POS
                   </div>
-                  <div className="px-4 py-3 text-xs uppercase tracking-wider text-[#9CA3AF]">
+                  <div className="px-3 py-3 sm:px-4 text-[10px] sm:text-xs uppercase tracking-wider text-[#9CA3AF]">
                     <strong>eatOS</strong>
                   </div>
                 </div>
@@ -62,16 +62,21 @@ export function EdgeOSSection() {
                 {edgeRows.map((r) => (
                   <div
                     key={r.scenario}
-                    className="grid grid-cols-3 bg-black/20 border-t border-white/10"
+                    className="grid grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_minmax(0,1fr)] bg-black/20 border-t border-white/10"
                   >
-                    <div className="px-4 py-4 text-sm text-[#E5E7EB] border-r border-white/10">
+                    <div className="px-3 py-4 sm:px-4 text-[13px] sm:text-sm text-[#E5E7EB] border-r border-white/10">
                       {r.scenario}
                     </div>
-                    <div className="px-4 py-4 text-sm text-[#E5E7EB] border-r border-white/10 flex items-center justify-between">
-                      <span>{r.cloud} ❌</span>
+                    <div className="px-3 py-4 sm:px-4 text-[13px] sm:text-sm text-[#E5E7EB] border-r border-white/10 flex items-start gap-2">
+                      <X size={15} className="mt-0.5 shrink-0 text-red-400" />
+                      <span className="min-w-0">{r.cloud}</span>
                     </div>
-                    <div className="px-4 py-4 text-sm text-[#E5E7EB] flex items-center justify-between">
-                      <span>{r.eatos} ✅</span>
+                    <div className="px-3 py-4 sm:px-4 text-[13px] sm:text-sm text-[#E5E7EB] flex items-start gap-2">
+                      <Check
+                        size={15}
+                        className="mt-0.5 shrink-0 text-emerald-400"
+                      />
+                      <span className="min-w-0">{r.eatos}</span>
                     </div>
                   </div>
                 ))}
