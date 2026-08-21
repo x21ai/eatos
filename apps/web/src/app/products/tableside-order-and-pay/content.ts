@@ -43,7 +43,7 @@ export const features = [
     more:
       'Whether guests pay tableside or at the counter, the experience is the same: secure, fast, and automatically tied to the right check.',
     imageLabel: 'Merchant platform dashboard',
-    image: null,
+    image: tab1.url,
     metrics: [
       { value: '100%', label: 'Unified reporting' },
       { value: '2x', label: 'Faster reconciliation' },
@@ -57,7 +57,7 @@ export const features = [
     more:
       'From dietary tags to combo builders, configure the rules once and apply them across every table and every location.',
     imageLabel: 'Customizable tableside ordering',
-    image: tab1.url,
+    image: tab2.url,
     metrics: [
       { value: '100%', label: 'Brand control' },
       { value: '10x', label: 'More options' },
@@ -71,7 +71,7 @@ export const features = [
     more:
       'Sold-out items disappear automatically. New specials appear instantly. No reprinting, no outdated PDFs.',
     imageLabel: 'Interactive digital menu on phone',
-    image: tab2.url,
+    image: tab3.url,
     metrics: [
       { value: '100%', label: 'User friendly' },
       { value: '100%', label: 'More profitable' },
@@ -85,7 +85,7 @@ export const features = [
     more:
       'Payments are encrypted, tip entry is smooth, and every transaction posts directly to the check in real time.',
     imageLabel: 'Dynamic payment options on phone',
-    image: tab3.url,
+    image: tab4.url,
     metrics: [
       { value: '10x', label: 'More payment options' },
       { value: '100%', label: 'Flexible' },
@@ -109,4 +109,3 @@ export const hardware = {
     },
   ],
 };
-    image: tab4.url,
