@@ -41,7 +41,7 @@ export const features = [
     more:
       'Every count syncs across the Point of Sale, kitchen, and back office so the whole team sees one source of truth.',
     imageLabel: 'Real-time inventory tracking',
-    image: null,
+    image: inven1.url,
     metrics: [
       { value: '100%', label: 'Better Purchasing' },
       { value: '100%', label: 'Real-Time Tracking' },
@@ -55,7 +55,7 @@ export const features = [
     more:
       'Alerts reach the right person before a shortage affects service, so you never run out of what guests love.',
     imageLabel: 'Automated stock alerts',
-    image: null,
+    image: inven2.url,
     metrics: [
       { value: '100%', label: 'Effortless Tracking' },
       { value: '10x', label: 'Waste Reduction' },
@@ -69,7 +69,7 @@ export const features = [
     more:
       'Orders, invoices, and delivery notes live in one place, so reconciliation takes minutes instead of days.',
     imageLabel: 'Vendor management interface',
-    image: null,
+    image: inven3.url,
     metrics: [
       { value: '100%', label: 'Purchase Tracking' },
       { value: '100%', label: 'Smart Purchasing' },
@@ -83,7 +83,7 @@ export const features = [
     more:
       'Menu engineering highlights stars and underperformers automatically, so every plate contributes to margin.',
     imageLabel: 'Recipe costing and menu engineering',
-    image: null,
+    image: inve4.url,
     metrics: [
       { value: '100%', label: 'Data-Driven Menus' },
       { value: '10x', label: 'Profit Precision' },
