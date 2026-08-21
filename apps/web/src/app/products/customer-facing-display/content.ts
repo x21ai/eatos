@@ -38,7 +38,7 @@ export const features = [
     more:
       'Real-time line item display means fewer remakes, fewer refunds and a smoother experience for staff and guests alike.',
     imageLabel: 'Order confirmation on customer facing display',
-    image: null,
+    image: orderReview.url,
     metrics: [
       { value: '100%', label: 'Accurate orders' },
       { value: '10x', label: 'Fewer remakes' },
@@ -52,7 +52,7 @@ export const features = [
     more:
       'Targeted prompts and branded visuals keep your best offers visible at the exact moment guests are ready to add more.',
     imageLabel: 'Promotional offer on customer facing display',
-    image: orderReview.url,
+    image: marketing.url,
     metrics: [
       { value: '100%', label: 'Real-time insights' },
       { value: '10x', label: 'Faster decisions' },
@@ -66,7 +66,7 @@ export const features = [
     more:
       'Digital tipping removes cash awkwardness and gives staff a meaningful lift on every transaction.',
     imageLabel: 'Tip selection screen',
-    image: marketing.url,
+    image: tips.url,
     metrics: [
       { value: '100%', label: 'Tip control' },
       { value: '10x', label: 'More tips' },
@@ -90,4 +90,3 @@ export const hardware = {
     },
   ],
 };
-    image: tips.url,
