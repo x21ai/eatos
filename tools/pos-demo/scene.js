@@ -1,5 +1,6 @@
 /* Deterministic POS demo timeline. render(t) with t in seconds. */
-const FPS = 30, DUR = 17.6;
+const FPS = 30, POS_DUR = 17.6, OFFSET = 8.6, DUR = OFFSET + POS_DUR;
+
 
 const ITEMS = [
   ['Crispy Calamari','$12.99'],['Spinach Artichoke Dip','$10.99',{id:'item-spinach'}],['Loaded Potato Skins','$9.99'],['Mozzarella Sticks','$8.99'],
