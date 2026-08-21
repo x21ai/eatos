@@ -40,7 +40,7 @@ export const features = [
     more:
       'Guests earn points automatically, track progress and redeem rewards without friction at checkout or online.',
     imageLabel: 'Guest receiving a loyalty reward',
-    image: null,
+    image: loyalty1.url,
     metrics: [
       { value: '10x', label: 'Happier Guests' },
       { value: '100%', label: 'Personalized' },
@@ -54,7 +54,7 @@ export const features = [
     more:
       'Track referrals, automate reward delivery and watch your guest base grow organically through trusted recommendations.',
     imageLabel: 'Referral program invitation flow',
-    image: loyalty1.url,
+    image: loyalty2.url,
     metrics: [
       { value: '10x', label: 'New Guests' },
       { value: '100%', label: 'Trackable' },
@@ -68,7 +68,7 @@ export const features = [
     more:
       'Scheduled campaigns trigger on guest milestones, making your brand part of their celebration without manual work.',
     imageLabel: 'Birthday reward notification',
-    image: loyalty2.url,
+    image: loyalty3.url,
     metrics: [
       { value: '100%', label: 'Automated' },
       { value: '10x', label: 'More Celebrations' },
@@ -82,7 +82,7 @@ export const features = [
     more:
       'From visit-based points to spend-based tiers, build the program structure that matches your brand and your margins.',
     imageLabel: 'Loyalty tier progress dashboard',
-    image: loyalty3.url,
+    image: loyalty4.url,
     metrics: [
       { value: '10x', label: 'Repeat Visits' },
       { value: '100%', label: 'Customizable' },
@@ -106,4 +106,3 @@ export const hardware = {
     },
   ],
 };
-    image: loyalty4.url,
