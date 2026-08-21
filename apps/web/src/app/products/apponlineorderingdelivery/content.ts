@@ -38,7 +38,7 @@ export const features = [
     more:
       'Orders land straight on the Point of Sale and the kitchen display, so nothing has to be retyped during a rush.',
     imageLabel: 'White-labeled ordering app',
-    image: null,
+    image: '/__l5e/assets-v1/f3cffec4-78ea-4085-b9d6-cc1c6040c9f9/onli1.png',
     metrics: [
       { value: '100%', label: 'Direct Connection' },
       { value: '10x', label: 'Brand Presence' },
@@ -52,7 +52,7 @@ export const features = [
     more:
       'Profiles sync with loyalty and marketing, and payment details stay tokenized and secure.',
     imageLabel: 'Guest profile and order history',
-    image: null,
+    image: '/__l5e/assets-v1/da3c2145-23ee-4554-85fb-b6dd3a9af37f/onl2.png',
     metrics: [
       { value: '10x', label: 'Secured Transactions' },
       { value: '100%', label: 'Safe Storage' },
@@ -66,7 +66,7 @@ export const features = [
     more:
       'Delivery still works through your own drivers or an integrated partner, on your terms.',
     imageLabel: 'Commission free order summary',
-    image: null,
+    image: '/__l5e/assets-v1/d82d03c7-76ad-471b-b42b-c604cf342f15/onli3.png',
     metrics: [
       { value: '0%', label: 'App Commission' },
       { value: '100%', label: 'Order Value Kept' },
