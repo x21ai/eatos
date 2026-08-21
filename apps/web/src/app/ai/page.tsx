@@ -32,20 +32,20 @@ export default function AIPage() {
   return (
     <div className="bg-black min-h-screen text-white font-sans selection:bg-blue-500/30">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[80vh] md:min-h-[90vh] flex items-center justify-center overflow-hidden">
         {/* Dark Gradient Background */}
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-zinc-900 via-black to-black" />
 
-        <div className="site-container relative z-10 pt-20">
-          <div className="max-w-5xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl text-sm font-medium mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <Sparkles size={16} className="text-blue-400" />
+        <div className="site-container relative z-10 py-24 md:py-28">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl text-xs sm:text-sm font-medium mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+              <Sparkles size={16} className="shrink-0 text-blue-400" />
               <span className="text-blue-100">
                 Introducing <strong>eatOS</strong> Intelligence
               </span>
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 leading-[1.1] animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
+            <h1 className="text-[3rem] sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 leading-[1.05] animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
               <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
                 Invisible
               </span>
