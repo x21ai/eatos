@@ -318,7 +318,7 @@ export default function PlatformPage() {
                     <CreditCard size={24} />
                   </div>
                   <h3 className="text-2xl font-bold mb-2">{payments?.title || 'Payments'}</h3>
-                  <p className="text-gray-400">{payments?.tagline || '1.8% flat. No surprises.'}</p>
+                  <p className="text-gray-400">{payments?.tagline || '2.99%+20¢ flat. No surprises.'}</p>
                 </div>
                 <div className="flex items-center gap-2 text-emerald-400 font-medium">
                   Learn more{' '}

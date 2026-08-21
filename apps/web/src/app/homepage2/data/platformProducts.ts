@@ -26,7 +26,7 @@ export const platformProducts = [
   {
     icon: CreditCard,
     title: "Payments",
-    desc: "Cards, tap, mobile at 1.8% flat",
+    desc: "Cards, tap, mobile at 2.99%+20¢ flat",
     color: "from-blue-500 to-cyan-600",
   },
   {
