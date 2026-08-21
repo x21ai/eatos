@@ -15,7 +15,7 @@ export const hero = {
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'Watch Video', href: '#' },
   imageLabel: 'Workforce management dashboard',
-  image: work1.url,
+  image: null,
   stats: [
     { value: '30%', label: 'Less admin time. Increase checks.' },
     { value: '99%', label: 'Accurate timesheets' },
@@ -41,7 +41,7 @@ export const features = [
     more:
       "Auto-fill recurring shifts, track labor targets by role, and publish instantly to every team member's phone. Changes sync in real time so the floor is never short-staffed.",
     imageLabel: 'Schedule builder interface',
-    image: null,
+    image: work1.url,
     metrics: [
       { value: '75%', label: 'Faster scheduling' },
       { value: '0', label: 'Coverage gaps' },
@@ -55,7 +55,7 @@ export const features = [
     more:
       'Geofencing confirms staff are on-site, and photo clock-in prevents buddy punching. Every punch feeds directly into timesheets and payroll.',
     imageLabel: 'Mobile time clock',
-    image: null,
+    image: work2.url,
     metrics: [
       { value: '99%', label: 'Accurate punches' },
       { value: '100%', label: 'Audit ready' },
@@ -69,7 +69,7 @@ export const features = [
     more:
       'Integrate with leading payroll providers or run payroll inside eatOS. Breaks, overtime, and split shifts are calculated automatically.',
     imageLabel: 'Payroll integration',
-    image: null,
+    image: work3.url,
     metrics: [
       { value: '0', label: 'Double entry' },
       { value: '2x', label: 'Faster payroll' },
