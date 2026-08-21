@@ -110,31 +110,43 @@ export default function AIPage() {
                 desc: 'Recognizes returning guests and prompts servers with their favorite orders and allergies.',
                 color: 'green',
               },
-            ].map((feature, i) => (
-              <div
-                key={i}
-                className="group relative p-8 rounded-[2rem] bg-zinc-900/40 border border-white/10 hover:bg-zinc-900/60 transition-all duration-500 overflow-hidden"
-              >
+            ].map((feature, i) => {
+              const glow = {
+                blue: 'bg-blue-500/10',
+                purple: 'bg-purple-500/10',
+                green: 'bg-emerald-500/10',
+              }[feature.color];
+              const iconTone = {
+                blue: 'text-blue-400',
+                purple: 'text-purple-400',
+                green: 'text-emerald-400',
+              }[feature.color];
+              return (
                 <div
-                  className={`absolute top-0 right-0 w-64 h-64 bg-${feature.color}-500/10 blur-[80px] rounded-full group-hover:bg-${feature.color}-500/20 transition-all duration-500`}
-                />
-
-                <div className="relative z-10">
+                  key={i}
+                  className="group relative p-6 md:p-8 rounded-[1.75rem] bg-zinc-900/40 border border-white/10 hover:bg-zinc-900/60 transition-all duration-500 overflow-hidden"
+                >
                   <div
-                    className={`w-14 h-14 rounded-2xl bg-zinc-800/50 flex items-center justify-center mb-8 text-${feature.color}-400 group-hover:scale-110 transition-transform duration-500`}
-                  >
-                    <feature.icon size={28} />
-                  </div>
+                    className={`absolute top-0 right-0 w-64 h-64 ${glow} blur-[80px] rounded-full transition-all duration-500`}
+                  />
 
-                  <h3 className="text-2xl font-bold mb-4 group-hover:text-white transition-colors">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-400 leading-relaxed text-lg group-hover:text-gray-300 transition-colors">
-                    {feature.desc}
-                  </p>
+                  <div className="relative z-10">
+                    <div
+                      className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-zinc-800/50 flex items-center justify-center mb-6 ${iconTone} group-hover:scale-110 transition-transform duration-500`}
+                    >
+                      <feature.icon size={26} />
+                    </div>
+
+                    <h3 className="text-xl md:text-2xl font-bold mb-3 tracking-tight">
+                      {feature.title}
+                    </h3>
+                    <p className="text-white/70 leading-relaxed text-base md:text-lg group-hover:text-white/85 transition-colors">
+                      {feature.desc}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
