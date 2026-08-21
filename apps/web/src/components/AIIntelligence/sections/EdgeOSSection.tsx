@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { WifiOff } from "lucide-react";
+import { WifiOff, Check, X } from "lucide-react";
 import { useMemo } from "react";
 import { SectionLabel } from "../SectionLabel";
 import { StatRow } from "../StatRow";
