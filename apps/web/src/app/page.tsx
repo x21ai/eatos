@@ -18,6 +18,9 @@ import {
   Truck,
   Package,
   Building2,
+  Route,
+  Languages,
+  Clock,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { NewsletterSection } from '@/components/NewsletterSection';
