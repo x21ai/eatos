@@ -5,7 +5,7 @@ import { Reveal } from "../Reveal";
 
 export function RitualIntelligenceSection() {
   return (
-    <section className="py-28">
+    <section className="py-20 md:py-28">
       <div className="site-container">
         <Reveal id="ritual">
           <div className="max-w-4xl">

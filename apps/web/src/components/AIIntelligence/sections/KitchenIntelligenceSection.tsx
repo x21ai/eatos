@@ -7,7 +7,7 @@ import { Reveal } from "../Reveal";
 
 export function KitchenIntelligenceSection() {
   return (
-    <section className="py-28">
+    <section className="py-20 md:py-28">
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <Reveal id="kitchen-left">
@@ -53,7 +53,7 @@ export function KitchenIntelligenceSection() {
           </Reveal>
 
           <Reveal id="kitchen-right">
-            <Card className="p-6 md:p-8">
+            <Card className="p-5 sm:p-6 md:p-8">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-2xl bg-black/40 border border-white/10 flex items-center justify-center">

@@ -6,7 +6,7 @@ import { Reveal } from "../Reveal";
 export function FinalCTASection() {
   return (
     <>
-      <section className="py-28">
+      <section className="py-20 md:py-28 overflow-hidden">
         <div className="site-container">
           <Reveal id="final">
             <Card className="p-10 md:p-14 text-center overflow-hidden relative">
