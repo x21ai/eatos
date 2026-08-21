@@ -1,14 +1,16 @@
 // @ts-nocheck
 // All copy for the Customer Facing Display product page. Edit here.
-// Images are intentionally left blank for now: the shared Placeholder renders
-// an empty surface when no `image` is provided.
+
+import orderReview from '@/assets/cfd-order-review.png.asset.json';
+import marketing from '@/assets/cfd-marketing.png.asset.json';
+import tips from '@/assets/cfd-tips.png.asset.json';
 
 export const hero = {
   eyebrow: 'Customer Facing Display',
-  title: 'Transparent Order Viewing',
-  titleAccent: 'and Tips for Customers',
+  title: 'Transparent Orders',
+  titleAccent: 'and Easy Tipping',
   description:
-    'Enhance transparency through real-time ordering, and elevate service with contactless payments, digital tips, electronic receipts, and smartphone transactions. Revolutionize customer experiences for optimal convenience and engagement.',
+    'Show every order in real time, then close it out with contactless payments, digital tips and instant receipts.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'Watch Video', href: '#' },
   imageLabel: 'Customer facing display screen',
@@ -25,8 +27,6 @@ export const keyFeatures = [
   'Contactless payments',
   'Tip suggestions',
   'Digital receipts',
-  'Customer signatures',
-  'Transparent totals',
 ];
 
 export const features = [
