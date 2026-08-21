@@ -67,7 +67,7 @@ export default function QuickServiceClient() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-sm text-gray-500 mb-8"
+            className="flex items-center gap-2 text-sm text-white/70 mb-8"
           >
             <a href="/solutions" className="hover:text-white transition-colors">
               Solutions
@@ -109,7 +109,7 @@ export default function QuickServiceClient() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-base md:text-xl text-gray-400 leading-relaxed mb-10 max-w-xl"
+                className="text-base md:text-xl text-white/90 leading-relaxed mb-10 max-w-xl"
               >
                 {hero.description}
               </motion.p>
@@ -171,7 +171,7 @@ export default function QuickServiceClient() {
             {marquee.map((stat) => (
             <motion.div key={stat.label} {...rise} className="min-w-0 text-center">
                 <div className="text-3xl md:text-4xl font-bold tracking-tighter">{stat.value}</div>
-                <div className="mt-2 text-sm text-gray-500">{stat.label}</div>
+                <div className="mt-2 text-sm text-white/70">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -200,8 +200,8 @@ export default function QuickServiceClient() {
                 <h2 className="text-base sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter mb-5">
                   {pillar.title}
                 </h2>
-                <p className="text-lg text-gray-400 leading-relaxed mb-5">{pillar.body}</p>
-                <p className="text-base text-gray-500 leading-relaxed mb-8">{pillar.more}</p>
+                <p className="text-lg text-white/90 leading-relaxed mb-5">{pillar.body}</p>
+                <p className="text-base text-white/70 leading-relaxed mb-8">{pillar.more}</p>
                 <div className="flex flex-wrap gap-4">
                   {pillar.metrics.map((metric) => (
                     <div
@@ -211,7 +211,7 @@ export default function QuickServiceClient() {
                       <div className="text-2xl font-bold tracking-tighter text-emerald-400">
                         {metric.value}
                       </div>
-                      <div className="mt-1 text-xs text-gray-500">{metric.label}</div>
+                      <div className="mt-1 text-xs text-white/70">{metric.label}</div>
                     </div>
                   ))}
                 </div>
@@ -241,7 +241,7 @@ export default function QuickServiceClient() {
               Why eatOS for <br className="md:hidden" />
               quick service?
             </h2>
-            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
               Built for the pace of the counter. Designed to keep the line moving.
             </p>
           </motion.div>
@@ -279,7 +279,7 @@ export default function QuickServiceClient() {
                   <Icon size={28} />
                 </div>
                 <h3 className="text-2xl font-bold tracking-tighter mb-3">{title}</h3>
-                <p className="text-gray-400 leading-relaxed">{body}</p>
+                <p className="text-white/90 leading-relaxed">{body}</p>
               </motion.div>
             ))}
           </div>
@@ -297,7 +297,7 @@ export default function QuickServiceClient() {
               Get the Quick <br className="md:hidden" />
               Service Bundle
             </h2>
-            <p className="mt-5 text-base sm:text-lg text-gray-400 leading-relaxed">
+            <p className="mt-5 text-base sm:text-lg text-white/90 leading-relaxed">
               {bundle.description}
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
@@ -325,7 +325,7 @@ export default function QuickServiceClient() {
                 className="rounded-[2rem] border border-white/10 bg-white/5 p-8"
               >
                 <h3 className="text-xl font-bold tracking-tighter mb-3">{spec.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{spec.body}</p>
+                <p className="text-white/90 leading-relaxed">{spec.body}</p>
               </motion.div>
             ))}
           </div>
@@ -367,7 +367,7 @@ export default function QuickServiceClient() {
                   <Icon size={28} />
                 </div>
                 <h3 className="text-xl font-bold tracking-tighter mb-2">{title}</h3>
-                <p className="text-gray-500 mb-6">{tagline}</p>
+                <p className="text-white/70 mb-6">{tagline}</p>
                 <div className="flex items-center gap-1 text-sm font-semibold text-white group-hover:gap-2 transition-all">
                   Learn more
                   <ChevronRight
@@ -395,7 +395,7 @@ export default function QuickServiceClient() {
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
                 Start using restaurant technology cloud
               </h2>
-              <p className="text-sm md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 whitespace-pre-line">
+              <p className="text-sm md:text-xl text-white/90 max-w-2xl mx-auto mb-10 whitespace-pre-line">
                 See the quick service setup in action. Book a demo and{"\n"}
                 we will show you how it fits your counter.
               </p>

@@ -119,7 +119,7 @@ const colorMap = {
   },
   zinc: {
     gradient: 'from-zinc-400/20 via-zinc-500/10 to-transparent',
-    accent: 'text-zinc-300',
+    accent: 'text-white/90',
     bg: 'bg-zinc-500/10',
     border: 'border-zinc-500/20',
   },
@@ -149,7 +149,7 @@ export default function ProductDetailClient({ slug }) {
             animate={{ opacity: 1, scale: 1 }}
             className="w-20 h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-8"
           >
-            <Package size={32} className="text-gray-500" />
+            <Package size={32} className="text-white/70" />
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -162,7 +162,7 @@ export default function ProductDetailClient({ slug }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
-            className="text-gray-400 text-lg mb-10"
+            className="text-white/90 text-lg mb-10"
           >
             That product page doesn't exist yet. Want to see what we offer?
           </motion.p>
@@ -208,7 +208,7 @@ export default function ProductDetailClient({ slug }) {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-sm text-gray-500 mb-8"
+            className="flex items-center gap-2 text-sm text-white/70 mb-8"
           >
             <a href="/products" className="hover:text-white transition-colors">
               Products
@@ -224,7 +224,7 @@ export default function ProductDetailClient({ slug }) {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-sm font-medium mb-6 text-gray-300"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-sm font-medium mb-6 text-white/90"
                 >
                   <Clock size={14} />
                   <span>Coming Soon</span>
@@ -263,7 +263,7 @@ export default function ProductDetailClient({ slug }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-xl text-gray-400 leading-relaxed mb-10 max-w-xl"
+                className="text-xl text-white/90 leading-relaxed mb-10 max-w-xl"
               >
                 {product.description}
               </motion.p>
@@ -334,7 +334,7 @@ export default function ProductDetailClient({ slug }) {
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
               Why {product.title}?
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-xl text-white/90 max-w-2xl mx-auto">
               Built for real restaurant operations. Designed to disappear into workflow.
             </p>
           </motion.div>
@@ -351,7 +351,7 @@ export default function ProductDetailClient({ slug }) {
                 <Zap size={28} />
               </div>
               <h3 className="text-2xl font-bold mb-3">Built for Speed</h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-white/90 leading-relaxed">
                 Every interaction is designed to be fast. No lag, no waiting, no frustration during
                 the rush.
               </p>
@@ -368,7 +368,7 @@ export default function ProductDetailClient({ slug }) {
                 <Shield size={28} />
               </div>
               <h3 className="text-2xl font-bold mb-3">Reliable at Scale</h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-white/90 leading-relaxed">
                 From one location to hundreds. Our infrastructure handles millions of transactions
                 daily.
               </p>
@@ -385,7 +385,7 @@ export default function ProductDetailClient({ slug }) {
                 <Clock size={28} />
               </div>
               <h3 className="text-2xl font-bold mb-3">24/7 Support</h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-white/90 leading-relaxed">
                 Real humans, real help, any time. We're here when you need us, especially during the
                 dinner rush.
               </p>
@@ -434,7 +434,7 @@ export default function ProductDetailClient({ slug }) {
                     <RelatedIcon size={24} />
                   </div>
                   <h3 className="text-xl font-bold mb-2">{related.title}</h3>
-                  <p className="text-gray-500 mb-6">{related.tagline}</p>
+                  <p className="text-white/70 mb-6">{related.tagline}</p>
                   <div className="flex items-center gap-1 text-sm font-semibold text-white group-hover:gap-2 transition-all">
                     Learn more
                     <ChevronRight
@@ -466,7 +466,7 @@ export default function ProductDetailClient({ slug }) {
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
                 Ready to get started?
               </h2>
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+              <p className="text-xl text-white/90 max-w-2xl mx-auto mb-10">
                 See {product.title} in action. Book a quick demo and we will show you exactly how it seamlessly fits your
                 service.
               </p>

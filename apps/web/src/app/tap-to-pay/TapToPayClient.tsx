@@ -93,7 +93,7 @@ export default function TapToPayClient() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-sm text-gray-500 mb-8"
+            className="flex items-center gap-2 text-sm text-white/70 mb-8"
           >
             <a href="/products" className="hover:text-white transition-colors">
               Products
@@ -135,7 +135,7 @@ export default function TapToPayClient() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-xl text-gray-400 leading-relaxed mb-10 max-w-xl"
+                className="text-xl text-white/90 leading-relaxed mb-10 max-w-xl"
               >
                 Take the payment in the same breath as the order. Your phone is the terminal.
               </motion.p>
@@ -198,7 +198,7 @@ export default function TapToPayClient() {
                 <div className="mb-2 text-4xl md:text-5xl font-bold tracking-tighter text-white">
                   {s.value}
                 </div>
-                <div className="text-sm text-gray-500">{s.label}</div>
+                <div className="text-sm text-white/70">{s.label}</div>
               </div>
             ))}
           </div>
@@ -217,7 +217,7 @@ export default function TapToPayClient() {
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
               During the order
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-xl text-white/90 max-w-2xl mx-auto">
               Payment stops being a separate trip.
             </p>
           </motion.div>
@@ -236,7 +236,7 @@ export default function TapToPayClient() {
                   {s.step}
                 </div>
                 <h3 className="text-2xl font-bold tracking-tighter mb-3">{s.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{s.body}</p>
+                <p className="text-white/90 leading-relaxed">{s.body}</p>
               </motion.div>
             ))}
           </div>
@@ -255,7 +255,7 @@ export default function TapToPayClient() {
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
               Why Tap to Pay?
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-xl text-white/90 max-w-2xl mx-auto">
               Everything the terminal did. Nothing you have to carry.
             </p>
           </motion.div>
@@ -278,7 +278,7 @@ export default function TapToPayClient() {
                     <Icon size={26} />
                   </div>
                   <h3 className="text-2xl font-bold tracking-tighter mb-3">{f.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{f.body}</p>
+                  <p className="text-white/90 leading-relaxed">{f.body}</p>
                 </motion.div>
               );
             })}
@@ -295,7 +295,7 @@ export default function TapToPayClient() {
             </h2>
             <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:flex md:flex-wrap md:justify-end md:gap-8">
               {requirements.map((r) => (
-                <li key={r} className="flex items-center gap-2 text-sm text-gray-400 md:text-base">
+                <li key={r} className="flex items-center gap-2 text-sm text-white/90 md:text-base">
                   <Check size={16} className={`shrink-0 ${colors.accent}`} /> {r}
                 </li>
               ))}
@@ -344,7 +344,7 @@ export default function TapToPayClient() {
                     <RelatedIcon size={24} />
                   </div>
                   <h3 className="text-xl font-bold mb-2">{related.title}</h3>
-                  <p className="text-gray-500 mb-6">{related.tagline}</p>
+                  <p className="text-white/70 mb-6">{related.tagline}</p>
                   <div className="flex items-center gap-1 text-sm font-semibold text-white group-hover:gap-2 transition-all">
                     Learn more
                     <ChevronRight
@@ -375,7 +375,7 @@ export default function TapToPayClient() {
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
                 Ready to get started?
               </h2>
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+              <p className="text-xl text-white/90 max-w-2xl mx-auto mb-10">
                 Turn the phones already in your team's pockets into payment terminals.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

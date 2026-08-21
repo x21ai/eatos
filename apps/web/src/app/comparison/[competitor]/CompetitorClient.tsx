@@ -98,7 +98,7 @@ export default function CompetitorClient({ slug }) {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-sm text-gray-500 mb-8"
+            className="flex items-center gap-2 text-sm text-white/70 mb-8"
           >
             <a href="/comparison" className="hover:text-white transition-colors">
               Comparison
@@ -130,7 +130,7 @@ export default function CompetitorClient({ slug }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.15 }}
-                className="text-lg md:text-xl text-gray-400 leading-relaxed mb-10 max-w-xl"
+                className="text-lg md:text-xl text-white/90 leading-relaxed mb-10 max-w-xl"
               >
                 What is the best all-in-one restaurant Point of Sale for your business? See how
                 eatOS stacks up against {name} across the tools restaurants use every day.
@@ -192,7 +192,7 @@ export default function CompetitorClient({ slug }) {
             <h2 className="mx-auto max-w-[26ch] text-center font-bold leading-[1.1] tracking-tighter text-3xl md:text-5xl">
               How eatOS compares to {name}
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-7 text-zinc-400 sm:text-base">
+            <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-7 text-white/90 sm:text-base">
               A feature by feature look at what comes built in with eatOS.
             </p>
           </Reveal>
@@ -209,7 +209,7 @@ export default function CompetitorClient({ slug }) {
                     <th className="rounded-t-[20px] bg-white/[0.07] px-4 pb-6 pt-7 text-center align-bottom text-sm font-semibold tracking-tight text-white">
                       eatOS
                     </th>
-                    <th className="px-4 pb-6 text-center align-bottom text-sm font-semibold tracking-tight text-zinc-500">
+                    <th className="px-4 pb-6 text-center align-bottom text-sm font-semibold tracking-tight text-white/70">
                       {name}
                     </th>
                   </tr>
@@ -217,7 +217,7 @@ export default function CompetitorClient({ slug }) {
                 <tbody>
                   {rows.map((row, r) => (
                     <tr key={row.feature}>
-                      <td className="border-t border-white/8 py-5 pr-6 text-sm leading-6 text-zinc-300">
+                      <td className="border-t border-white/8 py-5 pr-6 text-sm leading-6 text-white/90">
                         {row.feature}
                       </td>
                       <td
@@ -250,7 +250,7 @@ export default function CompetitorClient({ slug }) {
                     </div>
                     <div className="flex items-center gap-2">
                       <Mark on={row.rival} />
-                      <span className="text-xs font-semibold text-zinc-400">{name}</span>
+                      <span className="text-xs font-semibold text-white/90">{name}</span>
                     </div>
                   </div>
                 </div>
@@ -258,7 +258,7 @@ export default function CompetitorClient({ slug }) {
             ))}
           </div>
 
-          <p className="mx-auto mt-10 max-w-3xl text-center text-[11px] leading-5 text-zinc-500">
+          <p className="mx-auto mt-10 max-w-3xl text-center text-[11px] leading-5 text-white/70">
             {trademarkNote}
           </p>
         </div>
@@ -285,7 +285,7 @@ export default function CompetitorClient({ slug }) {
                       <Icon size={22} />
                     </div>
                     <h3 className="text-lg font-bold tracking-tighter">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-zinc-400">{item.body}</p>
+                    <p className="mt-3 text-sm leading-7 text-white/90">{item.body}</p>
                     <a
                       href={item.link.href}
                       className="group mt-auto pt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-400 hover:text-emerald-300"

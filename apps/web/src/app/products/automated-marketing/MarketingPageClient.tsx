@@ -60,7 +60,7 @@ export default function MarketingPageClient() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-sm text-gray-500 mb-8"
+            className="flex items-center gap-2 text-sm text-white/70 mb-8"
           >
             <a href="/products" className="hover:text-white transition-colors">
               Products
@@ -101,7 +101,7 @@ export default function MarketingPageClient() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-lg md:text-xl text-gray-400 leading-relaxed mb-10 max-w-xl"
+                className="text-lg md:text-xl text-white/90 leading-relaxed mb-10 max-w-xl"
               >
                 {hero.description}
               </motion.p>
@@ -164,7 +164,7 @@ export default function MarketingPageClient() {
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter">
                   {stat.value}
                 </div>
-                <div className="mt-2 text-xs sm:text-sm text-gray-500">{stat.label}</div>
+                <div className="mt-2 text-xs sm:text-sm text-white/70">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -195,10 +195,10 @@ export default function MarketingPageClient() {
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter mb-5">
                   {feature.title}
                 </h2>
-                <p className="text-base md:text-lg text-gray-400 leading-relaxed mb-5">
+                <p className="text-base md:text-lg text-white/90 leading-relaxed mb-5">
                   {feature.body}
                 </p>
-                <p className="text-sm md:text-base text-gray-500 leading-relaxed mb-8">
+                <p className="text-sm md:text-base text-white/70 leading-relaxed mb-8">
                   {feature.more}
                 </p>
                 <div className="flex flex-wrap gap-4">
@@ -210,7 +210,7 @@ export default function MarketingPageClient() {
                       <div className="text-2xl font-bold tracking-tighter text-rose-400">
                         {metric.value}
                       </div>
-                      <div className="mt-1 text-xs text-gray-500">{metric.label}</div>
+                      <div className="mt-1 text-xs text-white/70">{metric.label}</div>
                     </div>
                   ))}
                 </div>
@@ -233,7 +233,7 @@ export default function MarketingPageClient() {
             <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">
               Why Automated Marketing?
             </h2>
-            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
               Built for real restaurant operations. Designed to disappear into workflow.
             </p>
           </motion.div>
@@ -271,7 +271,7 @@ export default function MarketingPageClient() {
                   <card.Icon size={28} />
                 </div>
                 <h3 className="text-2xl font-bold tracking-tighter mb-3">{card.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{card.body}</p>
+                <p className="text-white/90 leading-relaxed">{card.body}</p>
               </motion.div>
             ))}
           </div>
@@ -300,7 +300,7 @@ export default function MarketingPageClient() {
                   );
                 })()}
                 <h3 className="text-xl font-bold tracking-tighter">{spec.title}</h3>
-                <p className="mt-3 text-gray-400 leading-relaxed">{spec.body}</p>
+                <p className="mt-3 text-white/90 leading-relaxed">{spec.body}</p>
               </motion.div>
             ))}
           </div>
@@ -340,7 +340,7 @@ export default function MarketingPageClient() {
                     <Icon size={24} />
                   </div>
                   <h3 className="text-xl font-bold tracking-tighter mb-2">{item.title}</h3>
-                  <p className="text-gray-500 mb-6">{item.tagline}</p>
+                  <p className="text-white/70 mb-6">{item.tagline}</p>
                   <div className="flex items-center gap-1 text-sm font-semibold text-white group-hover:gap-2 transition-all">
                     Learn more
                     <ChevronRight
@@ -366,7 +366,7 @@ export default function MarketingPageClient() {
               <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-6">
                 Ready to get started?
               </h2>
-              <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+              <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-10">
                 See Automated Marketing in action. Book a demo and we will show you how it fits your
                 operation.
               </p>
