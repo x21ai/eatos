@@ -1,4 +1,8 @@
 // @ts-nocheck
+import loyalty1 from './assets/loyaty_1.png.asset.json';
+import loyalty2 from './assets/loy2.png.asset.json';
+import loyalty3 from './assets/bday.png.asset.json';
+import loyalty4 from './assets/loa.png.asset.json';
 // All copy for the Loyalty product page. Edit here.
 // Images are intentionally left blank for now: the shared Placeholder renders
 // an empty surface when no `image` is provided.
@@ -36,7 +40,7 @@ export const features = [
     more:
       'Guests earn points automatically, track progress and redeem rewards without friction at checkout or online.',
     imageLabel: 'Guest receiving a loyalty reward',
-    image: null,
+    image: loyalty1.url,
     metrics: [
       { value: '10x', label: 'Happier Guests' },
       { value: '100%', label: 'Personalized' },
@@ -50,7 +54,7 @@ export const features = [
     more:
       'Track referrals, automate reward delivery and watch your guest base grow organically through trusted recommendations.',
     imageLabel: 'Referral program invitation flow',
-    image: null,
+    image: loyalty2.url,
     metrics: [
       { value: '10x', label: 'New Guests' },
       { value: '100%', label: 'Trackable' },
@@ -64,7 +68,7 @@ export const features = [
     more:
       'Scheduled campaigns trigger on guest milestones, making your brand part of their celebration without manual work.',
     imageLabel: 'Birthday reward notification',
-    image: null,
+    image: loyalty3.url,
     metrics: [
       { value: '100%', label: 'Automated' },
       { value: '10x', label: 'More Celebrations' },
@@ -78,7 +82,7 @@ export const features = [
     more:
       'From visit-based points to spend-based tiers, build the program structure that matches your brand and your margins.',
     imageLabel: 'Loyalty tier progress dashboard',
-    image: null,
+    image: loyalty4.url,
     metrics: [
       { value: '10x', label: 'Repeat Visits' },
       { value: '100%', label: 'Customizable' },
