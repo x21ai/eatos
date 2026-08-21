@@ -1,14 +1,16 @@
 // @ts-nocheck
 // All copy for the Customer Facing Display product page. Edit here.
-// Images are intentionally left blank for now: the shared Placeholder renders
-// an empty surface when no `image` is provided.
+
+import orderReview from '@/assets/cfd-order-review.png.asset.json';
+import marketing from '@/assets/cfd-marketing.png.asset.json';
+import tips from '@/assets/cfd-tips.png.asset.json';
 
 export const hero = {
   eyebrow: 'Customer Facing Display',
-  title: 'Transparent Order Viewing',
-  titleAccent: 'and Tips for Customers',
+  title: 'Transparent Orders',
+  titleAccent: 'and Easy Tipping',
   description:
-    'Enhance transparency through real-time ordering, and elevate service with contactless payments, digital tips, electronic receipts, and smartphone transactions. Revolutionize customer experiences for optimal convenience and engagement.',
+    'Show every order in real time, then close it out with contactless payments, digital tips and instant receipts.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'Watch Video', href: '#' },
   imageLabel: 'Customer facing display screen',
@@ -25,8 +27,6 @@ export const keyFeatures = [
   'Contactless payments',
   'Tip suggestions',
   'Digital receipts',
-  'Customer signatures',
-  'Transparent totals',
 ];
 
 export const features = [
@@ -38,7 +38,7 @@ export const features = [
     more:
       'Real-time line item display means fewer remakes, fewer refunds and a smoother experience for staff and guests alike.',
     imageLabel: 'Order confirmation on customer facing display',
-    image: null,
+    image: orderReview.url,
     metrics: [
       { value: '100%', label: 'Accurate orders' },
       { value: '10x', label: 'Fewer remakes' },
@@ -52,7 +52,7 @@ export const features = [
     more:
       'Targeted prompts and branded visuals keep your best offers visible at the exact moment guests are ready to add more.',
     imageLabel: 'Promotional offer on customer facing display',
-    image: null,
+    image: marketing.url,
     metrics: [
       { value: '100%', label: 'Real-time insights' },
       { value: '10x', label: 'Faster decisions' },
@@ -66,7 +66,7 @@ export const features = [
     more:
       'Digital tipping removes cash awkwardness and gives staff a meaningful lift on every transaction.',
     imageLabel: 'Tip selection screen',
-    image: null,
+    image: tips.url,
     metrics: [
       { value: '100%', label: 'Tip control' },
       { value: '10x', label: 'More tips' },
