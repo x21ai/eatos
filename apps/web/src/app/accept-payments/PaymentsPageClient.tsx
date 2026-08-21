@@ -265,7 +265,7 @@ export default function PaymentsPageClient() {
                 Icon: Clock,
                 tint: 'bg-emerald-500/10 text-emerald-400',
                 title: '24/7 support',
-                body: 'Real people, real help, any time you need it, especially through the dinner rush.',
+                body: 'Real people, real help, when you need, especially during dinner rush.',
               },
             ].map((card, index) => (
               <motion.div
