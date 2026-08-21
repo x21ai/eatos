@@ -1,6 +1,12 @@
 // @ts-nocheck
 // All copy for the Hardware page. Edit here.
 
+import posImg from './assets/poshardware.png.asset.json';
+import kdsImg from './assets/kdsss.png.asset.json';
+import kioskImg from './assets/hardkios.png.asset.json';
+import payImg from './assets/handheld.png.asset.json';
+
+
 export const hero = {
   eyebrow: 'Hardware to fit your business',
   title: 'Hardware',
