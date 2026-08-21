@@ -174,29 +174,6 @@ export default function LoyaltyPageClient() {
         </div>
       </section>
 
-      {/* Key features */}
-      <section className="py-12 md:py-16 border-t border-white/5">
-        <div className="site-container">
-          <motion.div {...rise} className="text-center mb-10 md:mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter">Key features</h2>
-          </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {keyFeatures.map((feature, index) => (
-              <motion.div
-                key={feature}
-                {...rise}
-                transition={{ delay: index * 0.08 }}
-                className="rounded-[2rem] border border-white/10 bg-white/5 p-6 md:p-8"
-              >
-                <div className="w-10 h-10 rounded-full bg-rose-500/10 text-rose-400 flex items-center justify-center mb-4">
-                  <Check size={18} />
-                </div>
-                <div className="text-base md:text-lg font-semibold leading-snug">{feature}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Feature rows */}
       <section className="py-20 md:py-28 border-t border-white/5">
