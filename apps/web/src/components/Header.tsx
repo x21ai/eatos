@@ -75,7 +75,6 @@ export default function Header() {
     const checkTheme = () => {
       const path = window.location.pathname;
       const lightPages = [
-        "/accept-payments",
         "/pricing",
         "/contact-sales",
         "/shop",
@@ -88,8 +87,6 @@ export default function Header() {
         "/terms",
         "/customers",
         "/book-demo",
-
-
       ];
       const isLight = lightPages.some(
         (p) => path === p || path.startsWith(p + "/"),
