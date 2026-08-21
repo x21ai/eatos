@@ -1,7 +1,10 @@
 // @ts-nocheck
 // All copy for the Inventory Management product page. Edit here.
-// Images are intentionally left blank for now: the shared Placeholder renders
-// an empty surface when no `image` is provided.
+import inven1 from '@/assets/inven1.png.asset.json';
+import inven2 from '@/assets/inven2.png.asset.json';
+import inven3 from '@/assets/inven3.png.asset.json';
+import inve4 from '@/assets/inve4.png.asset.json';
+
 
 export const hero = {
   eyebrow: 'Simplified Inventory Management',
