@@ -96,7 +96,7 @@ export const hardware = {
     },
     {
       title: 'Order and Pay From Smartphone',
-      body: 'Guests scan, order, and pay on their own phone. No app download, no sign-up friction, and no extra hardware.',
+      body: 'Guests scan, order, and pay on their own phone. No app download, no sign-up friction.',
     },
     {
       title: 'Secure by Default',
