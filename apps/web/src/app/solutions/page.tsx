@@ -142,7 +142,7 @@ export default function SolutionsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-sm font-medium mb-6 text-gray-300"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-sm font-medium mb-6 text-white/90"
           >
             Built for every type of restaurant
           </motion.div>
@@ -155,14 +155,14 @@ export default function SolutionsPage() {
           >
             Your restaurant type.
             <br />
-            <span className="text-gray-500">Your way.</span>
+            <span className="text-white/70">Your way.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto mb-12"
+            className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-12"
           >
             eatOS adapts to how you serve. Whether you run a food truck or a fine dining room, we
             have a configuration built for it.
@@ -215,12 +215,12 @@ export default function SolutionsPage() {
                       <solution.Icon size={22} />
                     </div>
                     <h2 className="text-2xl font-bold mb-3">{solution.title}</h2>
-                    <p className="text-gray-400 leading-relaxed mb-6 flex-grow">
+                    <p className="text-white/90 leading-relaxed mb-6 flex-grow">
                       {solution.description}
                     </p>
                     <ul className="space-y-2 mb-6">
                       {solution.features.map((feature) => (
-                        <li key={feature} className="flex items-center gap-2 text-sm text-gray-300">
+                        <li key={feature} className="flex items-center gap-2 text-sm text-white/90">
                           <Check size={14} className={colors.text} />
                           {feature}
                         </li>
@@ -252,7 +252,7 @@ export default function SolutionsPage() {
             <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6">
               Not sure which fits?
             </h2>
-            <p className="text-gray-400 text-xl max-w-xl mx-auto mb-10">
+            <p className="text-white/90 text-xl max-w-xl mx-auto mb-10">
               Talk to one of our specialists. We will map the right configuration to your floor
               plan, volume, and service style.
             </p>

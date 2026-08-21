@@ -66,7 +66,7 @@ export default function FastCasualClient() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-sm text-gray-500 mb-8"
+            className="flex items-center gap-2 text-sm text-white/70 mb-8"
           >
             <a href="/solutions" className="hover:text-white transition-colors">
               Solutions
@@ -108,7 +108,7 @@ export default function FastCasualClient() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-base sm:text-lg text-gray-400 leading-relaxed mb-10 max-w-xl"
+                className="text-base sm:text-lg text-white/90 leading-relaxed mb-10 max-w-xl"
               >
                 {hero.description}
               </motion.p>
@@ -178,7 +178,7 @@ export default function FastCasualClient() {
                   <Check size={18} />
                 </div>
                 <div className="text-lg md:text-xl font-bold tracking-tighter">{item.value}</div>
-                <p className="mt-2 text-sm text-gray-400 leading-relaxed">{item.label}</p>
+                <p className="mt-2 text-sm text-white/90 leading-relaxed">{item.label}</p>
               </motion.div>
             ))}
           </div>
@@ -207,10 +207,10 @@ export default function FastCasualClient() {
                   <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-5">
                     {pillar.title}
                   </h2>
-                  <p className="text-base sm:text-lg text-gray-400 leading-relaxed mb-5">
+                  <p className="text-base sm:text-lg text-white/90 leading-relaxed mb-5">
                     {pillar.body}
                   </p>
-                  <p className="text-base text-gray-500 leading-relaxed mb-8">{pillar.more}</p>
+                  <p className="text-base text-white/70 leading-relaxed mb-8">{pillar.more}</p>
                 </div>
 
                 <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
@@ -236,7 +236,7 @@ export default function FastCasualClient() {
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
               Why eatOS for{" "}<br className="sm:hidden" />fast casual?
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
               Built for the pace of the counter, from the first order to the last table turn.
             </p>
           </motion.div>
@@ -274,7 +274,7 @@ export default function FastCasualClient() {
                   <Icon size={28} />
                 </div>
                 <h3 className="text-2xl font-bold tracking-tighter mb-3">{title}</h3>
-                <p className="text-gray-400 leading-relaxed">{body}</p>
+                <p className="text-white/90 leading-relaxed">{body}</p>
               </motion.div>
             ))}
           </div>
@@ -291,7 +291,7 @@ export default function FastCasualClient() {
             <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tighter">
               Get the{" "}<br className="sm:hidden" />Fast-Casual Bundle
             </h2>
-            <p className="mt-5 text-base sm:text-lg text-gray-400 leading-relaxed">
+            <p className="mt-5 text-base sm:text-lg text-white/90 leading-relaxed">
               $0 hardware upfront cost with{" "}<br className="sm:hidden" />Pay As You Go.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
@@ -319,7 +319,7 @@ export default function FastCasualClient() {
                 className="rounded-[2rem] border border-white/10 bg-white/5 p-8"
               >
                 <h3 className="text-xl font-bold tracking-tighter mb-3">{spec.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{spec.body}</p>
+                <p className="text-white/90 leading-relaxed">{spec.body}</p>
               </motion.div>
             ))}
           </div>
@@ -361,7 +361,7 @@ export default function FastCasualClient() {
                   <Icon size={28} />
                 </div>
                 <h3 className="text-xl font-bold tracking-tighter mb-2">{title}</h3>
-                <p className="text-gray-500 mb-6">{tagline}</p>
+                <p className="text-white/70 mb-6">{tagline}</p>
                 <div className="flex items-center gap-1 text-sm font-semibold text-white group-hover:gap-2 transition-all">
                   Learn more
                   <ChevronRight
@@ -389,7 +389,7 @@ export default function FastCasualClient() {
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
                 Run your fast-casual restaurant on eatOS
               </h2>
-              <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+              <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-10">
                 Book a demo and we will show you how eatOS speeds up ordering, fulfillment and table
                 turns.
               </p>

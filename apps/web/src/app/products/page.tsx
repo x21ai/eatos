@@ -112,7 +112,7 @@ export default function ProductsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed"
           >
             From order entry to kitchen flow, payments to insights, and guest growth. One ecosystem.
             One partner.
@@ -156,12 +156,12 @@ export default function ProductsPage() {
 
                   {/* Content */}
                   <h3 className="text-2xl font-bold tracking-tighter mb-2">{product.title}</h3>
-                  <p className="text-gray-400 leading-relaxed mb-6">{product.tagline}</p>
+                  <p className="text-white/90 leading-relaxed mb-6">{product.tagline}</p>
 
                   {/* Features */}
                   <div className="space-y-2 mb-8">
                     {product.features.slice(0, 3).map((feature, i) => (
-                      <div key={i} className="flex items-center gap-2 text-sm text-gray-500">
+                      <div key={i} className="flex items-center gap-2 text-sm text-white/70">
                         <div className="w-1 h-1 rounded-full bg-gray-600" />
                         {feature}
                       </div>
@@ -205,7 +205,7 @@ export default function ProductsPage() {
                   <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
                     Ready to see it in action?
                   </h2>
-                  <p className="text-xl text-gray-300">
+                  <p className="text-xl text-white/90">
                     Tell us about your service type and locations, and we'll show you the perfect
                     setup.
                   </p>

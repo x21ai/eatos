@@ -46,11 +46,11 @@ export function Placeholder({
             dark ? 'bg-white/[0.06]' : 'bg-white/70'
           }`}
         >
-          <ImageIcon size={18} className={dark ? 'text-zinc-500' : 'text-zinc-500'} />
+          <ImageIcon size={18} className={dark ? 'text-white/70' : 'text-white/70'} />
         </div>
         <span
           className={`text-[11px] font-medium uppercase tracking-[0.2em] ${
-            dark ? 'text-zinc-600' : 'text-zinc-500'
+            dark ? 'text-zinc-600' : 'text-white/70'
           }`}
         >
           {label}
