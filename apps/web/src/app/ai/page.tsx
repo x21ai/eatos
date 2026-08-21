@@ -152,36 +152,36 @@ export default function AIPage() {
       </section>
 
       {/* Feature Deep Dive */}
-      <section className="py-20 md:py-20 md:py-28 bg-black relative overflow-hidden">
+      <section className="py-20 md:py-28 bg-black relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
         <div className="site-container">
-          <div className="flex flex-col lg:flex-row items-center gap-20">
-            <div className="flex-1 space-y-8">
-              <div className="inline-flex items-center gap-2 text-purple-400 font-medium tracking-wide uppercase text-sm">
-                <Sparkles size={14} /> Neural Engine
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-16">
+            <div className="min-w-0 space-y-6 md:space-y-8">
+              <div className="inline-flex items-center gap-2 text-purple-400 font-medium tracking-wide uppercase text-xs sm:text-sm">
+                <Sparkles size={14} className="shrink-0" /> Neural Engine
               </div>
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter leading-tight">
-                Your restaurant's <br />
-                central nervous system.
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-[1.05]">
+                Your restaurant's central nervous system.
               </h2>
-              <p className="text-xl text-gray-400 leading-relaxed max-w-xl">
+              <p className="text-base md:text-xl text-white/70 leading-relaxed max-w-xl">
                 <strong>eatOS</strong> Intelligence isn't a report you read once a month. It's a
                 live, thinking system that makes thousands of micro-decisions daily to optimize your
                 margins.
               </p>
 
-              <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/10">
-                <div>
-                  <div className="text-4xl font-bold text-white mb-2">24/7</div>
-                  <div className="text-gray-500">Monitoring</div>
+              <div className="grid grid-cols-2 gap-6 pt-8 border-t border-white/10">
+                <div className="min-w-0">
+                  <div className="text-3xl md:text-4xl font-bold text-white mb-2">24/7</div>
+                  <div className="text-sm text-white/60">Monitoring</div>
                 </div>
-                <div>
-                  <div className="text-4xl font-bold text-white mb-2">0.2s</div>
-                  <div className="text-gray-500">Response Time</div>
+                <div className="min-w-0">
+                  <div className="text-3xl md:text-4xl font-bold text-white mb-2">0.2s</div>
+                  <div className="text-sm text-white/60">Response Time</div>
                 </div>
               </div>
             </div>
+
 
             <div className="flex-1 w-full">
               <div className="relative aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden border border-white/10 bg-zinc-900/50 backdrop-blur-sm">
