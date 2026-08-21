@@ -216,12 +216,12 @@ export default function PaymentsPageClient() {
 
               <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
                 {feature.image ? (
-                  <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#f5f6f5] p-4 md:p-6">
+                  <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#f5f6f5]">
                     <img
                       src={feature.image}
                       alt={feature.imageLabel}
                       loading="lazy"
-                      className="w-full aspect-[16/10] object-contain"
+                      className="w-full h-full aspect-[16/10] object-cover"
                     />
                   </div>
                 ) : (
