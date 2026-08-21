@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { ExternalLink } from 'lucide-react';
 import { demoSources } from './demoSources';
 import { TabletMockup } from './TabletMockup';
 
@@ -93,17 +92,8 @@ export function DemoRailSection({
           </div>
 
           <div className="relative w-full rounded-2xl border border-white/10 overflow-hidden bg-zinc-900 shadow-2xl">
-            <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-zinc-900/50">
+            <div className="flex items-center justify-center px-4 py-3 border-b border-white/10 bg-zinc-900/50">
               <div className="text-sm text-gray-400 font-medium">{displayLabel(demo.id)}</div>
-              <a
-                href={demo.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-sm text-gray-400 hover:text-white transition-colors"
-              >
-                <ExternalLink size={14} />
-                Open
-              </a>
             </div>
             {demo.media ? (
               <div className="relative w-full aspect-[16/10] lg:aspect-auto lg:h-[480px] bg-black p-3 sm:p-4">
