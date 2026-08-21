@@ -15,7 +15,7 @@ export const hero = {
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'Watch Video', href: '#' },
   imageLabel: 'Workforce management dashboard',
-  image: null,
+  image: work1.url,
   stats: [
     { value: '30%', label: 'Less admin time. Increase checks.' },
     { value: '99%', label: 'Accurate timesheets' },
