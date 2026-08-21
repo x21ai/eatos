@@ -198,7 +198,7 @@ export const products = [
   {
     slug: "payments",
     title: "Payments",
-    tagline: "1.8% flat. No surprises.",
+    tagline: "2.99%+20¢ flat. No surprises.",
     description:
       "Powerful cloud-based payment processing. Accept cards, mobile wallets, and contactless.",
     icon: "CreditCard",

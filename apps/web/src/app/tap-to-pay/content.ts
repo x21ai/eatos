@@ -16,7 +16,7 @@ export const heroVideo = heroVideoAsset.url;
 
 export const stats = [
   { value: '2 sec', label: 'From total to approved' },
-  { value: '1.8%', label: 'Flat rate processing' },
+  { value: '2.99%+20¢', label: 'Flat rate processing' },
   { value: '0', label: 'Extra terminals to buy' },
   { value: '100%', label: 'Contactless cards and wallets' },
 ];

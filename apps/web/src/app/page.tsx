@@ -336,7 +336,7 @@ export default function HomePage() {
                 </div>
                 <div className="mt-6 md:mt-auto">
                   {/* TODO: Pricing rate should be fetched from pricing API - do not hardcode */}
-                  <div className="text-4xl md:text-4xl lg:text-5xl font-bold tracking-tighter mb-1">1.8%</div>
+                  <div className="text-4xl md:text-4xl lg:text-5xl font-bold tracking-tighter mb-1 whitespace-nowrap">2.99%+20¢</div>
                   <div className="text-gray-500 text-sm">Flat rate processing</div>
                 </div>
               </div>
