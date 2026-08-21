@@ -107,7 +107,7 @@ export default function PricingPage() {
             />
             <FaqItem
               q="What are the processing rates?"
-              a="We offer flat rate processing starting at 2.4% + 10¢. Custom rates available for high volume."
+              a="We offer several pricing models: flat rate, interchange plus, and custom rates for high volume merchants. We will look at your current statements and recommend the option that best fits your need and costs you less."
             />
           </div>
         </div>
