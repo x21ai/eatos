@@ -716,33 +716,70 @@ export default function HomePage() {
       </section>
 
       {/* Kitchen Display */}
-      <section className="py-16 md:py-28 bg-black border-t border-white/5">
-        <div className="site-container">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-zinc-900 rounded-3xl md:rounded-[3rem] p-6 sm:p-8 md:p-20 text-center relative overflow-hidden border border-white/5"
-          >
-            <div className="relative z-10 max-w-3xl mx-auto">
-              <div className="bg-green-500/10 text-green-400 p-3.5 md:p-4 rounded-2xl w-fit mx-auto mb-6 md:mb-8">
-                <ChefHat className="w-7 h-7 md:w-8 md:h-8" />
+      <section className="py-16 md:py-28 bg-black text-white relative overflow-hidden">
+        <div className="site-container relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 text-green-400 text-sm font-semibold mb-6">
+                <ChefHat size={14} />
+                <span>Kitchen Display System</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-5 md:mb-6">
+
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-6">
                 Chaos, controlled.
               </h2>
-              <p className="text-gray-400 text-base sm:text-lg md:text-xl mb-8 md:mb-12">
-                The Kitchen Display System that keeps front and back of house in perfect sync.
-                Real-time updates, color-coded alerts, and performance tracking.
+
+              <p className="text-lg text-gray-400 mb-10 leading-relaxed max-w-lg">
+                The Kitchen Display System that keeps front and back of house in
+                perfect sync. Real-time updates, color-coded alerts, and
+                performance tracking.
               </p>
+
+              <div className="space-y-4 mb-10">
+                {[
+                  { icon: Route, title: "Prep station routing" },
+                  { icon: Languages, title: "Multi-lingual support" },
+                  { icon: Clock, title: "Real-time updates" },
+                ].map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <div key={item.title} className="flex items-center gap-4">
+                      <div className="bg-green-500/10 text-green-400 p-2.5 rounded-xl flex-shrink-0">
+                        <Icon size={20} />
+                      </div>
+                      <h4 className="text-base font-bold">{item.title}</h4>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <a
+                href="/products/kitchen-display-system"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-semibold text-sm hover:bg-gray-200 transition-colors"
+              >
+                Explore Kitchen Display <ChevronRight size={14} />
+              </a>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="absolute -inset-10 bg-gradient-to-tr from-green-500/10 to-emerald-500/5 rounded-[3rem] blur-3xl" />
               <img
                 src="https://ucarecdn.com/3532d108-2981-4a5d-bd16-9f6adf89c04d/-/format/auto/"
                 alt="Kitchen Display System"
                 loading="lazy"
-                className="w-full rounded-xl border border-white/10 shadow-2xl mx-auto"
+                className="relative z-10 rounded-3xl shadow-2xl w-full"
               />
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
