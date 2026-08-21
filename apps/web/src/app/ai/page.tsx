@@ -72,7 +72,7 @@ export default function AIPage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-purple-100 opacity-0 group-hover:opacity-100 transition-opacity" />
               </button>
 
-              <button className="px-8 py-4 rounded-full text-lg font-medium text-white border border-white/20 hover:bg-white/10 hover:border-white/40 transition-all backdrop-blur-sm">
+              <button className="px-7 py-3.5 rounded-full text-base sm:text-lg font-medium text-white border border-white/20 hover:bg-white/10 hover:border-white/40 transition-all backdrop-blur-sm">
                 Watch the Film
               </button>
             </div>
