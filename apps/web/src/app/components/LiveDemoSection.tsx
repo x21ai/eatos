@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { ExternalLink } from 'lucide-react';
 
 const demos = [
   { id: 'pos', label: 'Point of Sale', url: 'https://mobileposapp.lovable.app/' },
@@ -57,8 +56,8 @@ export function LiveDemoSection() {
               className="mt-0 focus-visible:outline-none focus-visible:ring-0"
             >
               <div className="relative w-full rounded-xl md:rounded-2xl border border-white/10 overflow-hidden bg-zinc-900 shadow-2xl">
-                <div className="flex items-center justify-between gap-3 px-3 py-2.5 md:px-4 md:py-3 border-b border-white/10 bg-zinc-900/50">
-                  <div className="flex shrink-0 items-center gap-1.5 md:gap-2">
+                <div className="flex items-center justify-center gap-3 px-3 py-2.5 md:px-4 md:py-3 border-b border-white/10 bg-zinc-900/50">
+                  <div className="flex shrink-0 items-center gap-1.5 md:gap-2 absolute left-3 md:left-4">
                     <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-red-500/80" />
                     <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-yellow-500/80" />
                     <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-green-500/80" />
@@ -66,15 +65,6 @@ export function LiveDemoSection() {
                   <div className="min-w-0 truncate text-xs md:text-sm text-gray-400 font-medium">
                     {demo.label}
                   </div>
-                  <a
-                    href={demo.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex shrink-0 items-center gap-1.5 text-xs md:text-sm text-gray-400 hover:text-white transition-colors"
-                  >
-                    <ExternalLink size={14} />
-                    Open
-                  </a>
                 </div>
                 <div className={`relative w-full ${demo.id === 'pos' ? 'aspect-[16/9] lg:h-[460px]' : 'aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-[460px]'}`}>
                   <iframe
