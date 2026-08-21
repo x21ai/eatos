@@ -20,6 +20,7 @@ import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
 import { features, hardware, hero, keyFeatures } from './content';
 import { products } from '../products';
+import BrochureButton from '@/components/BrochureButton';
 
 const relatedIcons = [
   { Icon: Monitor, tint: 'bg-sky-500/10 text-sky-400' },
@@ -117,12 +118,7 @@ export default function CfdPageClient() {
                 >
                   {hero.primaryCta.label}
                 </a>
-                <a
-                  href={hero.secondaryCta.href}
-                  className="px-8 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors text-center"
-                >
-                  {hero.secondaryCta.label}
-                </a>
+                <BrochureButton brochureId="customer-facing-display" />
               </motion.div>
             </div>
 
