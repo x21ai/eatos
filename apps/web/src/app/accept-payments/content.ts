@@ -1,5 +1,8 @@
 // @ts-nocheck
 // All copy for the Payment Solutions page. Edit here.
+import payCard from '@/assets/pay-card.png.asset.json';
+import payTap from '@/assets/pay-tap.png.asset.json';
+import payOnline from '@/assets/pay-online.png.asset.json';
 
 export const hero = {
   eyebrow: 'Payment Solutions',
@@ -36,7 +39,7 @@ export const features = [
     more:
       'Chip, swipe and contactless all clear through the same flow, so your team learns one screen and nothing else changes.',
     imageLabel: 'Handheld payment terminal on the swipe card screen',
-    image: null,
+    image: payCard.url,
     metrics: [
       { value: '100%', label: 'Easier' },
       { value: '10x', label: 'Faster transaction' },
@@ -50,7 +53,7 @@ export const features = [
     more:
       'No extra hardware to buy, nothing to charge and nothing to share across the floor. Card data is encrypted on the device and never stored in your app.',
     imageLabel: 'Guest tapping a phone on an iPhone to pay at the table',
-    image: null,
+    image: payTap.url,
     metrics: [
       { value: '2 sec', label: 'From total to approved' },
       { value: '0', label: 'Extra terminals to buy' },
@@ -64,7 +67,7 @@ export const features = [
     more:
       'Transactions queue locally when the connection drops and sync the moment it returns, so service never stops on a bad network.',
     imageLabel: 'Point of Sale, handheld and printer hardware lineup',
-    image: null,
+    image: payOnline.url,
     metrics: [
       { value: '100%', label: 'Easy transactions' },
       { value: '100%', label: 'Flexible checkout' },
