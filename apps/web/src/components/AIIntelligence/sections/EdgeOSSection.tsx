@@ -97,7 +97,7 @@ export function EdgeOSSection() {
             </Card>
           </Reveal>
 
-          <Reveal id="edge-right">
+          <Reveal id="edge-right" className="order-1 lg:order-2">
             <div>
               <SectionLabel>EDGEOS</SectionLabel>
               <h2 className="mt-5 text-4xl md:text-6xl font-bold tracking-tighter leading-[1.05]">
