@@ -60,8 +60,8 @@ export default function AIPage() {
               personalizes service, all without you lifting a finger.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-400">
-              <button className="group relative px-8 py-4 bg-white text-black rounded-full text-lg font-semibold hover:scale-105 transition-all duration-300 overflow-hidden">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-400">
+              <button className="group relative px-7 py-3.5 bg-white text-black rounded-full text-base sm:text-lg font-semibold hover:scale-[1.02] transition-all duration-300 overflow-hidden">
                 <span className="relative z-10 flex items-center gap-2">
                   Start Free Trial{' '}
                   <ArrowRight
