@@ -24,7 +24,7 @@ export const keyFeatures = [
   'Real-time Inventory Tracking',
   'Automated Stock Alerts',
   'Vendor Management Made Easy',
-  'Recipe Costing and Menu Engineering',
+  'Recipe Costing and Menu',
   'Comprehensive Reporting and Analytics',
   'Seamless Integration',
 ];
@@ -74,9 +74,9 @@ export const features = [
   },
   {
     id: 'recipe-costing-and-menu-engineering',
-    title: 'Recipe Costing and Menu Engineering',
+    title: 'Recipe Costing and Menu',
     body:
-      'Precisely determine the expenses of your menu items using eatOS recipe costing feature. Evaluate the profitability of each dish, pinpoint top-performing items, and utilize data-driven insights to enhance your menu. With eatOS, you gain insight into which dishes generate revenue, enabling you to refine your offerings accordingly.',
+      'Precisely determine the expenses of your menu items using eatOS recipe costing feature.  Utilize data-driven insights to enhance your menu. With eatOS, you gain insight into which dishes generate revenue, enabling you to refine your offerings accordingly.',
     more:
       'Menu engineering highlights stars and underperformers automatically, so every plate contributes to margin.',
     imageLabel: 'Recipe costing and menu engineering',
