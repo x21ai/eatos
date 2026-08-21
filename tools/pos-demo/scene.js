@@ -208,7 +208,7 @@ function renderLogin(t) {
 }
 
 
-function render(t) {
+function renderPos(t) {
   /* ---- reset transient ---- */
   ['item-spinach', 'plus-wings', 'plus-truffle', 'charge', 'sadd', 'mg-prep', 't-card', 'paycharge', 'norec', 'mv-size-1', 'mv-prep-1']
     .forEach(id => { const el = $(id); if (el) el.style.transform = ''; });
