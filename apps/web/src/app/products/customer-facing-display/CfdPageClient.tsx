@@ -217,7 +217,7 @@ export default function CfdPageClient() {
 
               <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
                 {feature.image ? (
-                  <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 md:p-6">
+                  <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#f5f6f5] p-4 md:p-6">
                     <img
                       src={feature.image}
                       alt={feature.imageLabel}
@@ -226,7 +226,7 @@ export default function CfdPageClient() {
                     />
                   </div>
                 ) : (
-                  <div className="rounded-[2rem] border border-white/10 bg-white/5 p-4 md:p-6">
+                  <div className="rounded-[2rem] border border-white/10 bg-[#f5f6f5] p-4 md:p-6">
                     <Placeholder label={feature.imageLabel} ratio="aspect-[16/10]" />
                   </div>
                 )}
