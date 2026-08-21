@@ -183,12 +183,12 @@ export default function AIPage() {
             </div>
 
 
-            <div className="flex-1 w-full">
-              <div className="relative aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden border border-white/10 bg-zinc-900/50 backdrop-blur-sm">
+            <div className="min-w-0 w-full">
+              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/10 bg-zinc-900/50 backdrop-blur-sm">
                 {/* Simulated UI or Abstract Vis */}
                 <div className="absolute inset-0 bg-grid-white/[0.02] [mask-image:linear-gradient(to_bottom,transparent,black)]" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative w-64 h-64">
+                  <div className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64">
                     <div className="absolute inset-0 bg-blue-500/30 rounded-full animate-pulse blur-3xl" />
                     <div className="absolute inset-0 bg-purple-500/30 rounded-full animate-pulse blur-3xl delay-700 translate-x-10" />
                     <div className="relative z-10 w-full h-full border border-white/10 bg-black/40 backdrop-blur-xl rounded-full flex items-center justify-center">
