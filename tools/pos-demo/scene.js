@@ -295,36 +295,19 @@ function renderPos(t) {
   }
 
   /* ---- cursor + ripple ---- */
-  let from = START, to = TAPS[0], prevT = 0;
-  for (let i = 0; i < TAPS.length; i++) {
-    if (t <= TAPS[i].t || i === TAPS.length - 1) { to = TAPS[i]; from = i === 0 ? START : P[TAPS[i - 1].id]; prevT = i === 0 ? 0 : TAPS[i - 1].t; break; }
-  }
-  const target = P[to.id] || START;
-  const travelStart = Math.max(prevT + 0.18, to.t - 0.75);
-  const cp = easeIO(seg(t, travelStart, to.t));
-  const cx = from.x + (target.x - from.x) * cp;
-  const cy = from.y + (target.y - from.y) * cp;
-  const cur = $('cursor');
-  const hidden = t > 16.5;
-  cur.style.opacity = hidden ? 0 : 1;
-  cur.style.left = cx + 'px';
-  cur.style.top = cy + 'px';
+  cursorAndRipple(t, TAPS, START, t > 16.5);
+}
 
-  const rp = $('ripple');
-  rp.style.opacity = 0;
-  for (const tap of TAPS) {
-    const p = (t - tap.t) / 0.45;
-    if (p >= 0 && p <= 1) {
-      const pt = P[tap.id] || START;
-      rp.style.left = pt.x + 'px'; rp.style.top = pt.y + 'px';
-      rp.style.transform = `scale(${0.25 + 1.15 * easeOut(p)})`;
-      rp.style.opacity = 0.6 * (1 - p);
-    }
-    const pr = (t - tap.t) / 0.14;
-    if (pr >= 0 && pr <= 1) {
-      const el = $(tap.id);
-      if (el) el.style.transform = `scale(${1 - 0.045 * Math.sin(pr * Math.PI)})`;
-    }
+function render(T) {
+  if (T < OFFSET) {
+    renderPos(0);
+    renderLogin(T);
+  } else {
+    $('signin').style.opacity = 0;
+    $('loading').style.opacity = 0;
+    $('clockin').style.opacity = 0;
+    $('posroot').style.opacity = 1;
+    renderPos(T - OFFSET);
   }
 }
 
@@ -332,3 +315,4 @@ settleAndMeasure();
 window.__render = render;
 window.__meta = { fps: FPS, dur: DUR, frames: Math.round(FPS * DUR) };
 render(0);
+
