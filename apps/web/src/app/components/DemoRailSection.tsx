@@ -2,8 +2,16 @@
 
 import { useState } from 'react';
 import { motion } from 'motion/react';
+import { Tablet, Laptop, Smartphone } from 'lucide-react';
 import { demoSources } from './demoSources';
 import { TabletMockup } from './TabletMockup';
+
+const deviceIcon = {
+  tablet: Tablet,
+  laptop: Laptop,
+  phone: Smartphone,
+} as const;
+
 
 interface DemoRailSectionProps {
   title?: string;
