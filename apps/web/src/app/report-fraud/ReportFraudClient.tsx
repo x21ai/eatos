@@ -420,7 +420,7 @@ export default function ReportFraudClient() {
       <Guidance />
       <ReportSection />
       <Help />
-      <Closing />
+      
     </main>
   );
 }
