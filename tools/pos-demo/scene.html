@@ -158,7 +158,7 @@ body{font-family:'Mont',sans-serif;color:#111;-webkit-font-smoothing:antialiased
 #pay{position:absolute;left:90px;top:52px;width:1510px;height:816px;background:#fff;opacity:0;}
 #pay .head{position:absolute;left:56px;top:26px;font-size:42px;font-weight:800;letter-spacing:-.02em;}
 #pay .head em{font-style:normal;color:#E6007E;}
-#pay .sub{position:absolute;left:58px;top:82px;font-size:19px;font-weight:600;color:#71717a;}
+#pay .paysub{position:absolute;left:58px;top:82px;font-size:19px;font-weight:600;color:#71717a;}
 #pay .ordcol{position:absolute;left:36px;top:128px;width:500px;height:660px;background:#f4f4f5;padding:22px;}
 #pay .ticket{background:#fff;padding:22px 24px;}
 #pay .ticket .tr{display:flex;justify-content:space-between;font-size:20px;font-weight:800;}
@@ -166,17 +166,17 @@ body{font-family:'Mont',sans-serif;color:#111;-webkit-font-smoothing:antialiased
 #pay .ticket .dash{border-top:2px dashed #dcdce0;margin:20px 0;}
 #pay .ticket .r{display:flex;justify-content:space-between;font-size:21px;font-weight:600;color:#3f3f46;padding:7px 0;}
 #pay .ticket .r.big{font-size:27px;font-weight:800;color:#111;}
-#pay .ticket .item{display:flex;gap:14px;margin-top:6px;}
-#pay .ticket .item .q{font-size:16px;font-weight:700;color:#71717a;}
-#pay .ticket .item .n{font-size:21px;font-weight:800;text-transform:uppercase;flex:1;}
-#pay .ticket .item .p{font-size:21px;font-weight:800;}
-#pay .ticket .mods{margin-left:58px;margin-top:6px;font-size:17px;font-weight:600;color:#71717a;line-height:1.6;}
-#pay .pmwrap{position:absolute;left:568px;top:128px;width:906px;}
+#pay .ticket .tkitem{display:flex;gap:14px;margin-top:6px;}
+#pay .ticket .tkitem .q{font-size:16px;font-weight:700;color:#71717a;}
+#pay .ticket .tkitem .n{font-size:21px;font-weight:800;text-transform:uppercase;flex:1;}
+#pay .ticket .tkitem .p{font-size:21px;font-weight:800;}
+#pay .ticket .mods{margin-left:58px;margin-top:4px;font-size:16px;font-weight:600;color:#71717a;line-height:1.55;}
+#pay .pmwrap{position:absolute;left:568px;top:118px;width:906px;}
 #pay .pmwrap h3{font-size:31px;font-weight:800;letter-spacing:-.01em;}
-#pay .pmwrap .pmsub{font-size:18px;font-weight:600;color:#71717a;margin-top:10px;}
-#pay .glabel{font-size:17px;font-weight:800;letter-spacing:.06em;color:#8a8a93;margin-top:26px;}
-#pay .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:14px;}
-.tender{height:70px;border:1.5px solid #e6e6ea;border-radius:10px;display:flex;align-items:center;gap:16px;padding:0 20px;font-size:21px;font-weight:700;background:#fff;}
+#pay .pmwrap .pmsub{font-size:17px;font-weight:600;color:#71717a;margin-top:10px;}
+#pay .glabel{font-size:16px;font-weight:800;letter-spacing:.06em;color:#8a8a93;margin-top:20px;}
+#pay .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px;}
+.tender{height:64px;border:1.5px solid #e6e6ea;border-radius:10px;display:flex;align-items:center;gap:16px;padding:0 20px;font-size:21px;font-weight:700;background:#fff;}
 .tender i{width:26px;height:26px;font-style:normal;font-size:22px;color:#3f3f46;display:flex;align-items:center;justify-content:center;}
 .tender u{text-decoration:none;display:flex;flex-direction:column;}
 .tender u s{text-decoration:none;font-size:15px;font-weight:600;color:#8a8a93;margin-top:2px;}
@@ -359,7 +359,7 @@ body{font-family:'Mont',sans-serif;color:#111;-webkit-font-smoothing:antialiased
     <!-- payment -->
     <div id="pay">
       <div class="head">Total Due <em id="paydue">$72.00</em></div>
-      <div class="sub">Order 7 &middot; Guest &middot; Dine In</div>
+      <div class="paysub">Order 7 &middot; Guest &middot; Dine In</div>
       <div class="ordcol">
         <div class="ticket">
           <div class="tr"><span>Order #7</span><span>DINE IN</span></div>
@@ -370,10 +370,10 @@ body{font-family:'Mont',sans-serif;color:#111;-webkit-font-smoothing:antialiased
           <div class="r"><span>Sub Total</span><span>$60.00</span></div>
           <div class="r"><span>TAX (20%)</span><span>$12.00</span></div>
           <div class="dash"></div>
-          <div class="item"><span class="q">1 ea</span><span class="n">Chicken Crepe</span><span class="p">$20.00</span></div>
+          <div class="tkitem"><span class="q">1 ea</span><span class="n">Chicken Crepe</span><span class="p">$20.00</span></div>
           <div class="mods">- Preparation &middot; Extra Sauce<br/>- Bread &middot; Foccacia<br/>- Course &middot; Main</div>
-          <div class="item" style="margin-top:18px"><span class="q">1 ea</span><span class="n">Caprice Sandwich</span><span class="p">$20.00</span></div>
-          <div class="item" style="margin-top:18px"><span class="q">1 ea</span><span class="n">Figaro BLT</span><span class="p">$20.00</span></div>
+          <div class="tkitem" style="margin-top:16px"><span class="q">1 ea</span><span class="n">Caprice Sandwich</span><span class="p">$20.00</span></div>
+          <div class="tkitem" style="margin-top:16px"><span class="q">1 ea</span><span class="n">Figaro BLT</span><span class="p">$20.00</span></div>
         </div>
       </div>
       <div class="pmwrap">
