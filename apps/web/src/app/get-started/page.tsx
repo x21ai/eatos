@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ArrowRight,
   Check,
@@ -16,16 +16,27 @@ import {
   HeadphonesIcon,
 } from 'lucide-react';
 
+const MEETINGS_SCRIPT_SRC =
+  'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
+
 export default function GetStartedPage() {
   const [step, setStep] = useState(1);
   const [selectedIndustry, setSelectedIndustry] = useState('');
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    firstName: '',
-    lastName: '',
-    companyName: '',
-  });
+
+  useEffect(() => {
+    if (step !== 2) return;
+    // Re-inject so the HubSpot embed script re-scans the newly mounted container.
+    document
+      .querySelectorAll(`script[src="${MEETINGS_SCRIPT_SRC}"]`)
+      .forEach((el) => el.remove());
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = MEETINGS_SCRIPT_SRC;
+    script.async = true;
+    document.body.appendChild(script);
+  }, [step]);
+
+
 
   const industries = [
     {
@@ -255,93 +266,31 @@ export default function GetStartedPage() {
                 {/* Right: Form */}
                 <div>
                   <div className="mb-8">
-                    <h1 className="text-3xl font-bold mb-3 tracking-tighter">Create your account</h1>
+                    <h1 className="text-3xl font-bold mb-3 tracking-tighter">Book your meeting</h1>
                     <p className="text-gray-500">
                       Setting up {selectedIndustry === 'food' ? 'your restaurant' : 'your business'}{' '}
                       for success.
                     </p>
                   </div>
 
-                  <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                          First Name
-                        </label>
-                        <input
-                          type="text"
-                          className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black/5 transition-all"
-                          placeholder="Jane"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Last Name
-                        </label>
-                        <input
-                          type="text"
-                          className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black/5 transition-all"
-                          placeholder="Doe"
-                        />
-                      </div>
-                    </div>
+                  <div
+                    className="meetings-iframe-container"
+                    data-src="https://meetings.hubspot.com/booka/initial-meeting?embed=true"
+                  />
 
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Company Name
-                      </label>
-                      <input
-                        type="text"
-                        className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black/5 transition-all"
-                        placeholder="Acme Inc."
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Work Email
-                      </label>
-                      <input
-                        type="email"
-                        className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black/5 transition-all"
-                        placeholder="name@company.com"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Password
-                      </label>
-                      <input
-                        type="password"
-                        className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black/5 transition-all"
-                        placeholder="••••••••"
-                      />
-                    </div>
-
-                    <div className="pt-4">
-                      <button
-                        type="submit"
-                        className="w-full bg-black text-white py-4 rounded-xl font-bold text-lg hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center justify-center gap-2"
-                      >
-                        Create Account
-                        <ArrowRight size={20} />
-                      </button>
-                    </div>
-
-                    <p className="text-center text-sm text-gray-500 mt-6">
-                      By clicking "Create Account", you agree to our{' '}
-                      <a href="/terms" className="underline text-black hover:no-underline">
-                        Terms
-                      </a>{' '}
-                      and{' '}
-                      <a href="/privacy" className="underline text-black hover:no-underline">
-                        Privacy Policy
-                      </a>
-                      .
-                    </p>
-                  </form>
+                  <p className="text-center text-sm text-gray-500 mt-6">
+                    By booking a meeting, you agree to our{' '}
+                    <a href="/terms" className="underline text-black hover:no-underline">
+                      Terms
+                    </a>{' '}
+                    and{' '}
+                    <a href="/privacy" className="underline text-black hover:no-underline">
+                      Privacy Policy
+                    </a>
+                    .
+                  </p>
                 </div>
+
               </div>
             </div>
           )}
