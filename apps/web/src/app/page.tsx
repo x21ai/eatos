@@ -42,7 +42,7 @@ const serviceStyles = [
     icon: Zap,
     iconClass: 'bg-orange-500/20 text-orange-400',
     checkClass: 'text-orange-500',
-    description: 'Speed is everything. Take orders and move queues without friction.',
+    description: 'Speed is everything. Take orders and move queues fast.',
     bullets: ['Lightning-fast order entry', 'Self-service kiosk mode', 'Next-day deposits'],
   },
   {
