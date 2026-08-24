@@ -7,7 +7,7 @@ export const hero = {
   title: 'Focus on',
   titleAccent: 'the food.',
   description:
-    'The interface that disappears. Designed for speed, clarity, and the service under pressure.',
+    'The interface that disappears. Designed for speed, clarity, and the service under pressure built for peak hours of restaurant.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
 };
 
