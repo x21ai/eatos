@@ -234,6 +234,7 @@ export default function GiftCardsPageClient() {
                   ratio="aspect-[16/10]"
                   src={feature.image ?? undefined}
                   bare
+                  contain
                 />
               </div>
             </motion.div>

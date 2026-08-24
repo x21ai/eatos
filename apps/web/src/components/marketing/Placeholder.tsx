@@ -11,6 +11,7 @@ export function Placeholder({
   src,
   pad = false,
   bare = false,
+  contain = false,
 }) {
   const dark = tone === 'dark';
 
@@ -30,9 +31,11 @@ export function Placeholder({
           alt={label}
           loading="lazy"
           className={
-            pad && !bare
-              ? 'absolute inset-0 h-full w-full p-4 object-contain sm:p-6 md:p-8'
-              : 'absolute inset-0 h-full w-full object-cover'
+            contain
+              ? 'absolute inset-0 h-full w-full object-contain'
+              : pad && !bare
+                ? 'absolute inset-0 h-full w-full p-4 object-contain sm:p-6 md:p-8'
+                : 'absolute inset-0 h-full w-full object-cover'
           }
         />
       </div>
