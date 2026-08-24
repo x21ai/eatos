@@ -8,7 +8,6 @@ import {
   Check,
   RefreshCw,
   Wallet,
-  Smartphone,
   CreditCard,
   Layers,
   WifiOff,
