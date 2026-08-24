@@ -89,6 +89,7 @@ export function DemoRailSection({
           <div className="lg:flex-col lg:h-full flex gap-2 lg:gap-0 overflow-x-auto lg:overflow-visible scrollbar-hidden justify-start lg:justify-between">
             {demoSources.map((d) => {
               const active = d.id === activeId;
+              const AppIcon = appIcon[d.id];
               const Icon = deviceIcon[d.device] ?? Tablet;
               return (
                 <button
@@ -107,13 +108,18 @@ export function DemoRailSection({
                   <span className="flex items-center gap-2">
                     <span
                       className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md ${
-                        active ? 'bg-black/10 text-black' : 'bg-white/5 text-gray-400'
+                        AppIcon
+                          ? `${appIconColor[d.id]} ${active ? 'bg-black/5' : 'bg-white/5'}`
+                          : active
+                            ? 'bg-black/10 text-black'
+                            : 'bg-white/5 text-gray-400'
                       }`}
                     >
-                      <Icon size={14} />
+                      {AppIcon ? <AppIcon className="h-4 w-4" /> : <Icon size={14} />}
                     </span>
                     <span className="block text-sm font-bold tracking-tighter">{displayLabel(d.id)}</span>
                   </span>
+
                   <span
                     className={`mt-1 block text-xs leading-snug ${
                       active ? 'text-black/60' : 'text-gray-500'
