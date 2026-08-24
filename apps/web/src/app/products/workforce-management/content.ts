@@ -9,7 +9,7 @@ import work3 from '@/assets/work3.png.asset.json';
 export const hero = {
   eyebrow: 'Workforce Management',
   title: 'Schedule. Track. Pay.',
-  titleAccent: 'Done.',
+  titleAccent: '',
   description:
     'GPS-enabled attendance, intelligent scheduling, and seamless payroll integration so your team stays focused on service, not paperwork.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
@@ -51,9 +51,9 @@ export const features = [
     id: 'gps-time-clock',
     title: 'GPS Time Clock',
     body:
-      'Clock in from any device with location verification. Managers see who is on shift, on break, or late, without chasing anyone down.',
+      'Clock in from any device with location verification. Managers see who is on shift, on break, or late, without chasing anyone.',
     more:
-      'Geofencing confirms staff are on-site, and photo clock-in prevents buddy punching. Every punch feeds directly into timesheets and payroll.',
+      'Geofencing confirms staff are on-site, and photo clock-in prevents buddy punching. Every punch feeds directly timesheets & payroll.',
     imageLabel: 'Mobile time clock',
     image: work2.url,
     metrics: [
