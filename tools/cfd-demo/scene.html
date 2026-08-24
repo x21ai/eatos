@@ -21,6 +21,38 @@ body{font-family:'Mont',sans-serif;color:#111;-webkit-font-smoothing:antialiased
 #pw{position:absolute;right:26px;bottom:22px;background:#3f3f46;color:#fff;border-radius:8px;padding:8px 14px;display:flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.18em;}
 #pw img{height:15px;width:auto;filter:invert(1);}
 
+/* 0. WELCOME / TAP TO BEGIN */
+#wel .l{position:absolute;left:0;top:0;width:960px;height:868px;background:#f7f3ea;padding:56px 62px;}
+#wel .brand{display:flex;align-items:center;gap:20px;}
+#wel .brand .mk{width:76px;height:76px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 1px rgba(17,17,17,.08);display:flex;align-items:center;justify-content:center;font-size:34px;}
+#wel .brand b{display:block;font-size:23px;font-weight:900;letter-spacing:-.01em;}
+#wel .brand s{text-decoration:none;display:block;margin-top:4px;font-size:17px;color:#7c7c85;font-weight:600;}
+#wel h1{margin-top:40px;font-size:88px;line-height:.98;font-weight:900;letter-spacing:-.045em;}
+#wel .hr{margin-top:32px;height:1px;background:rgba(17,17,17,.14);}
+#wel p{margin-top:26px;font-size:22px;line-height:1.5;color:#5c5c64;font-weight:600;max-width:720px;}
+#wel .tap{margin-top:30px;width:376px;height:100px;border-radius:60px;background:#fbe3f1;display:flex;align-items:center;gap:24px;padding:0 34px;box-shadow:0 22px 46px -26px rgba(230,0,126,.55);}
+#wel .tap i{width:54px;height:54px;border-radius:50%;background:#E6007E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;font-style:normal;}
+#wel .tap span{font-size:28px;font-weight:800;letter-spacing:-.01em;}
+#wel .acc{position:absolute;left:62px;bottom:48px;}
+#wel .acc .tiny{font-size:14px;letter-spacing:.2em;}
+#wel .brands{margin-top:20px;display:flex;gap:16px;}
+#wel .brands i{height:58px;width:96px;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1px rgba(17,17,17,.08);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;font-style:normal;color:#2b2b31;letter-spacing:.02em;}
+#wel .r{position:absolute;left:960px;top:0;width:640px;height:868px;overflow:hidden;background:#111;}
+#wel .r img{width:100%;height:100%;object-fit:cover;}
+#wel .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,.05) 46%,rgba(0,0,0,.25) 100%);}
+#wel .promo2{position:absolute;left:44px;top:44px;color:#fff;}
+#wel .promo2 .a{font-size:30px;font-weight:700;}
+#wel .promo2 .b{font-size:78px;font-weight:900;letter-spacing:-.04em;line-height:1;}
+#wel .promo2 .c{margin-top:10px;font-size:32px;font-weight:700;}
+#wel .promo2 .c b{font-weight:900;}
+#wel .sun{position:absolute;right:40px;top:40px;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.82);display:flex;align-items:center;justify-content:center;}
+#wel .join{position:absolute;left:34px;right:34px;bottom:110px;background:rgba(255,255,255,.94);border-radius:20px;padding:22px 24px;display:flex;gap:20px;align-items:center;}
+#wel .join .qr{width:104px;height:104px;flex:0 0 104px;}
+#wel .join b{display:block;font-size:23px;font-weight:900;letter-spacing:-.01em;}
+#wel .join s{text-decoration:none;display:block;margin-top:8px;font-size:16px;color:#5c5c64;font-weight:600;line-height:1.4;}
+#wel .join .pills{margin-top:14px;display:flex;gap:10px;}
+#wel .join .pills u{text-decoration:none;font-size:14px;font-weight:800;padding:8px 16px;border-radius:40px;background:#f4f0e6;}
+
 /* 1. LOYALTY CHECK IN */
 #loy .left{position:absolute;left:0;top:0;width:600px;height:868px;background:#f6f2e6;padding:78px 62px;}
 #loy .mark{width:92px;height:92px;border-radius:50%;border:2px solid #b9b2a1;display:flex;align-items:center;justify-content:center;font-size:38px;}
@@ -122,7 +154,46 @@ body{font-family:'Mont',sans-serif;color:#111;-webkit-font-smoothing:antialiased
 <body>
 <div id="stage">
 
+  <!-- 0 WELCOME -->
+  <div class="screen" id="wel">
+    <div class="l">
+      <div class="brand">
+        <div class="mk">&#9749;</div>
+        <div><b>The Grand Fork</b><s>Est. 2008</s></div>
+      </div>
+      <h1>Welcome<br/>to <span class="mag">The Grand<br/>Fork</span></h1>
+      <div class="hr"></div>
+      <p>Review your order, collect your rewards, and complete your experience all right here.</p>
+      <div class="tap" id="tapbegin"><i>&#8594;</i><span>Tap to begin</span></div>
+      <div class="acc">
+        <div class="tiny">We accept</div>
+        <div class="brands"><i>VISA</i><i>MC</i><i>AMEX</i><i>DISCOVER</i><i>APPLE&nbsp;PAY</i><i>G&nbsp;PAY</i></div>
+      </div>
+    </div>
+    <div class="r">
+      <img src="food.jpg" alt=""/>
+      <div class="shade"></div>
+      <div class="promo2">
+        <div class="a">Add a</div>
+        <div class="b">Croissant</div>
+        <div class="c">for just <b>$2</b></div>
+      </div>
+      <div class="sun">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3f3f46" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.3M12 19.1v2.3M2.6 12h2.3M19.1 12h2.3M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4L17 7M7 17l-1.6 1.6"/></svg>
+      </div>
+      <div class="join">
+        <svg class="qr" viewBox="0 0 29 29" shape-rendering="crispEdges"><rect width="29" height="29" fill="#fff"/><g fill="#111" id="qrcells"></g></svg>
+        <div>
+          <b>Join Rewards</b>
+          <s>Scan to earn points on every visit.<br/>Free to join.</s>
+          <div class="pills"><u>Points</u><u>Offers</u><u>Birthday</u></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- 1 LOYALTY -->
+
   <div class="screen" id="loy">
     <div class="blush"></div>
     <div class="left">
