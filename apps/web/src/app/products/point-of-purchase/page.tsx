@@ -2,7 +2,7 @@
 import PopPageClient from './PopPageClient';
 
 export const metadata = {
-  title: 'Point of Purchase Handheld POS | eatOS Restaurant Technology Cloud',
+  title: 'Point of Purchase Handheld POS | RESTAURANT TECHNOLOGY CLOUD',
   description:
     'All the power of a full size Point of Sale in your hands: contactless payments, real-time MenuSync, table management and fire to kitchen from one handheld.',
   openGraph: {

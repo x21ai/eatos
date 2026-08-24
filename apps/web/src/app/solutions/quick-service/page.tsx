@@ -2,7 +2,7 @@
 import QuickServiceClient from "./QuickServiceClient";
 
 export const metadata = {
-  title: "Quick Service POS | eatOS Restaurant Technology Cloud",
+  title: "Quick Service POS | RESTAURANT TECHNOLOGY CLOUD",
   description:
     "A versatile Point of Sale for quick-service and fast-casual restaurants, counter, kiosk, handheld and online orders in one cloud platform.",
   openGraph: {

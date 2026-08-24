@@ -7,7 +7,7 @@ import kdsImg from './assets/gk-kds-v2.png.asset.json';
 import brandsImg from './assets/gk-brands-v2.jpg.asset.json';
 
 export const hero = {
-  eyebrow: 'Restaurant Technology Cloud',
+  eyebrow: 'RESTAURANT TECHNOLOGY CLOUD',
   title: 'Solution For Ghost Kitchens',
   description:
     'The eatOS Restaurant Technology Cloud is built for delivery-first kitchens, streamlining online orders, expanding your reach and keeping every brand under control.',

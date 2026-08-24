@@ -4,7 +4,7 @@
 // an empty surface when no `image` is provided.
 
 export const hero = {
-  eyebrow: 'eatOS Restaurant Technology Cloud',
+  eyebrow: 'RESTAURANT TECHNOLOGY CLOUD',
   title: 'Let Your Guests Share',
   titleAccent: 'How Great Your Restaurant is!',
   description: 'Customize your own gift card design with eatOS.',

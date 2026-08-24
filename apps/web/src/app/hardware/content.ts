@@ -12,7 +12,7 @@ export const hero = {
   title: 'Hardware',
   titleAccent: 'built for service',
   description:
-    'eatOS Restaurant Technology Cloud is an all-in-one restaurant management solution built for every type of restaurant, including yours.',
+    'RESTAURANT TECHNOLOGY CLOUD is an all-in-one restaurant management solution built for every type of restaurant, including yours.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'Watch Video', href: '/book-demo' },
   imageLabel: 'eatOS hardware lineup',
