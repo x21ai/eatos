@@ -1,76 +1,22 @@
 // @ts-nocheck
 "use client";
 
-import { useState } from "react";
-import {
-  Calendar,
-  Clock,
-  User,
-  Mail,
-  Phone,
-  Building2,
-  Users,
-  CheckCircle2,
-} from "lucide-react";
+import { useEffect } from "react";
+import { Calendar, Users, CheckCircle2 } from "lucide-react";
+
+const MEETINGS_SCRIPT_SRC =
+  "https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js";
 
 export default function BookDemoPage() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    company: "",
-    restaurantType: "",
-    locations: "",
-    preferredDate: "",
-    preferredTime: "",
-    message: "",
-  });
+  useEffect(() => {
+    if (document.querySelector(`script[src="${MEETINGS_SCRIPT_SRC}"]`)) return;
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = MEETINGS_SCRIPT_SRC;
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
 
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    setSubmitted(true);
-    setLoading(false);
-  };
-
-  if (submitted) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center px-4">
-        <div className="max-w-md w-full text-center">
-          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CheckCircle2 size={40} className="text-green-600" />
-          </div>
-          <h1 className="text-3xl font-bold text-black mb-4">Demo Booked!</h1>
-          <p className="text-gray-600 mb-8">
-            Thank you for your interest in <strong>eatOS</strong>. We've
-            received your demo request and will reach out shortly to confirm
-            your preferred time.
-          </p>
-          <a
-            href="/"
-            className="inline-block px-8 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 transition-colors"
-          >
-            Return Home
-          </a>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-white">
