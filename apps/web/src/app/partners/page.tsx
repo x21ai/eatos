@@ -256,83 +256,8 @@ export default function PartnersPage() {
             {/* Right form */}
             <div className="rounded-3xl border border-zinc-200 bg-white p-7 shadow-[0_40px_90px_-60px_rgba(0,0,0,0.4)] md:p-10">
               <h3 className="text-2xl font-bold tracking-tighter">Apply to become a partner</h3>
-              <form className="mt-7 space-y-4">
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  <div>
-                    <label className="mb-1.5 block text-sm font-medium text-zinc-700">
-                      First name
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/10"
-                      placeholder="Jane"
-                    />
-                  </div>
-                  <div>
-                    <label className="mb-1.5 block text-sm font-medium text-zinc-700">
-                      Last name
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/10"
-                      placeholder="Doe"
-                    />
-                  </div>
-                </div>
+              <PartnerForm />
 
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-zinc-700">
-                    Work email
-                  </label>
-                  <input
-                    type="email"
-                    className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/10"
-                    placeholder="jane@company.com"
-                  />
-                </div>
-
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-zinc-700">
-                    Company name
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/10"
-                    placeholder="Acme Inc."
-                  />
-                </div>
-
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-zinc-700">
-                    Partner type
-                  </label>
-                  <select className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/10">
-                    <option>Reseller / VAR</option>
-                    <option>Integration Partner</option>
-                    <option>Referral Partner</option>
-                    <option>Consultant</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-zinc-700">Message</label>
-                  <textarea
-                    className="h-32 w-full resize-none rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black/10"
-                    placeholder="Tell us about your business..."
-                  ></textarea>
-                </div>
-
-                <button
-                  type="button"
-                  className="group flex w-full items-center justify-center gap-2 rounded-full bg-black py-4 text-sm font-semibold text-white transition-colors hover:bg-zinc-800"
-                >
-                  Submit application
-                  <ArrowRight
-                    size={16}
-                    className="transition-transform group-hover:translate-x-1"
-                  />
-                </button>
-              </form>
             </div>
           </div>
         </div>
