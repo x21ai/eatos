@@ -23,9 +23,9 @@ export const hero = {
 export const keyFeatures = [
   'Personalized Customer Experiences',
   'Lead Scoring',
-  'Email Marketing Automation',
   'Data-Driven Insights',
 ];
+
 
 export const features = [
   {
