@@ -42,7 +42,7 @@ export default function PricingPage() {
 
             <RateCard
               title="$0 Upfront Hardware Cost"
-              rate="2.99%+20¢"
+              rate="2.99%+15¢"
               subline={<>No Hardware to Purchase,<br />No Monthly SaaS Fees*</>}
               finePrint="*Restaurant qualification criteria applies. Pricing is per location per Point of Sale, excluding accessories."
             />
