@@ -21,7 +21,7 @@ export function PaymentsIntelligenceSection() {
       },
       {
         title: "Fraud patterns",
-        body: "Void abuse, retry storms, partial approvals",
+        body: "Void abuse, retry storms",
         Icon: ShieldCheck,
       },
       {
@@ -46,7 +46,7 @@ export function PaymentsIntelligenceSection() {
             </h2>
             <p className="mt-6 text-lg md:text-xl text-[#9CA3AF] leading-relaxed max-w-3xl">
               Monitors every transaction. Catches what you'd miss. Explains
-              effective cost, not headline rates.
+              effective cost.
             </p>
           </div>
         </Reveal>

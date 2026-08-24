@@ -20,7 +20,7 @@ export function KitchenIntelligenceSection() {
               </h2>
               <p className="mt-6 text-lg md:text-xl text-[#9CA3AF] leading-relaxed max-w-xl">
                 Not a timer. Pattern recognition across every shift. Learns
-                which items break your flow and which stations fall behind.
+                which items break your flow, which stations fall behind.
               </p>
 
               <div className="mt-8 grid gap-3">

@@ -32,7 +32,7 @@ export function AgentsSection() {
       },
       {
         title: "Labor Agent",
-        desc: "Builds schedules from demand forecasts. Identifies training gaps. Cuts labor cost 18%.",
+        desc: "Builds schedules from demand forecasts. Identifies gaps. Cuts labor cost 18%.",
         Icon: Calendar,
       },
       {

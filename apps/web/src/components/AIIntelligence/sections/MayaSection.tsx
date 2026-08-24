@@ -21,7 +21,7 @@ export function MayaSection() {
               </h2>
               <p className="mt-6 text-lg md:text-xl text-[#9CA3AF] leading-relaxed max-w-xl">
                 Maya is your AI operations co-pilot. She doesn't guess. She
-                knows your data and explains what's happening and why.
+                knows your data and explains what's happening.
               </p>
 
               <div className="mt-8 flex flex-col gap-3">
