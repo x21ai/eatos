@@ -2,8 +2,16 @@
 
 import { useState } from 'react';
 import { motion } from 'motion/react';
+import { Tablet, Laptop, Smartphone } from 'lucide-react';
 import { demoSources } from './demoSources';
 import { TabletMockup } from './TabletMockup';
+
+const deviceIcon = {
+  tablet: Tablet,
+  laptop: Laptop,
+  phone: Smartphone,
+} as const;
+
 
 interface DemoRailSectionProps {
   title?: string;
@@ -64,6 +72,7 @@ export function DemoRailSection({
           <div className="lg:flex-col lg:h-full flex gap-2 lg:gap-0 overflow-x-auto lg:overflow-visible scrollbar-hidden justify-start lg:justify-between">
             {demoSources.map((d) => {
               const active = d.id === activeId;
+              const Icon = deviceIcon[d.device] ?? Tablet;
               return (
                 <button
                   key={d.id}
@@ -78,7 +87,16 @@ export function DemoRailSection({
                   {active && (
                     <span className="absolute left-0 top-3 bottom-3 w-1 rounded-full bg-emerald-500 hidden lg:block" />
                   )}
-                  <span className="block text-sm font-bold tracking-tighter">{displayLabel(d.id)}</span>
+                  <span className="flex items-center gap-2">
+                    <span
+                      className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md ${
+                        active ? 'bg-black/10 text-black' : 'bg-white/5 text-gray-400'
+                      }`}
+                    >
+                      <Icon size={14} />
+                    </span>
+                    <span className="block text-sm font-bold tracking-tighter">{displayLabel(d.id)}</span>
+                  </span>
                   <span
                     className={`mt-1 block text-xs leading-snug ${
                       active ? 'text-black/60' : 'text-gray-500'
@@ -92,9 +110,14 @@ export function DemoRailSection({
           </div>
 
           <div className="relative w-full rounded-2xl border border-white/10 overflow-hidden bg-zinc-900 shadow-2xl">
-            <div className="flex items-center justify-center px-4 py-3 border-b border-white/10 bg-zinc-900/50">
+            <div className="flex items-center justify-center gap-2 px-4 py-3 border-b border-white/10 bg-zinc-900/50">
+              {(() => {
+                const Icon = deviceIcon[demo.device] ?? Tablet;
+                return <Icon size={14} className="text-gray-400" />;
+              })()}
               <div className="text-sm text-gray-400 font-medium">{displayLabel(demo.id)}</div>
             </div>
+
             {demo.media ? (
               <div className="relative w-full aspect-[16/10] lg:aspect-auto lg:h-[480px] bg-black p-3 sm:p-4">
                 <TabletMockup
