@@ -67,6 +67,7 @@ export const pillars = [
     more:
       'Shorter wait times and clearer kitchen communication enhance the overall experience for your patrons.',
     imageLabel: 'Kitchen display order flow',
+    image: managementImg.url,
   },
 ];
 
