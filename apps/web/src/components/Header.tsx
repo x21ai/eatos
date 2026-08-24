@@ -411,7 +411,7 @@ export default function Header() {
               />
             </button>
             <div
-              className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[640px] transition-all duration-200 ${productsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"}`}
+              className={`absolute top-full left-0 pt-2 w-[640px] max-w-[calc(100vw-2rem)] transition-all duration-200 ${productsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"}`}
             >
               <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-4 text-black normal-case tracking-normal">
                 <div className="grid grid-cols-2 gap-2 max-h-[480px] overflow-y-auto pr-1">
@@ -466,7 +466,7 @@ export default function Header() {
               />
             </button>
             <div
-              className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[460px] transition-all duration-200 ${solutionsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"}`}
+              className={`absolute top-full left-0 pt-2 w-[460px] max-w-[calc(100vw-2rem)] transition-all duration-200 ${solutionsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"}`}
             >
               <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-4 text-black normal-case tracking-normal">
                 <div className="grid grid-cols-2 gap-2">
