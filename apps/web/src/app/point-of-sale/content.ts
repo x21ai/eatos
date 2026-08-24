@@ -1,6 +1,12 @@
 // @ts-nocheck
 // All copy for the Point of Sale product page. Edit here.
-// Images are intentionally left null so real assets can be dropped in later.
+
+import menuImg from './assets/pos-1f-2.jpg.asset.json';
+import tablesImg from './assets/pos-tablemanagement.png.asset.json';
+import orderingImg from './assets/pos-onlineordering.png.asset.json';
+import offlineImg from './assets/pos-workoffline.png.asset.json';
+
+
 
 export const hero = {
   eyebrow: 'RESTAURANT TECHNOLOGY CLOUD',
