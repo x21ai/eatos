@@ -2,7 +2,8 @@
    window.__render(t) paints the exact state at time t (seconds). */
 
 const FPS = 30;
-const DUR = 26.0;
+const OFF = 4.4;              // welcome / tap to begin screen
+const DUR = 26.0 + OFF;
 window.__meta = { fps: FPS, frames: Math.round(FPS * DUR) };
 
 const $ = (id) => document.getElementById(id);
@@ -10,6 +11,40 @@ const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 const ease = (x) => (x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2);
 const seg = (t, t0, t1) => ease(clamp((t - t0) / (t1 - t0), 0, 1));
 const cls = (el, c, on) => el.classList.toggle(c, !!on);
+
+/* ---------- decorative deterministic QR ---------- */
+(function () {
+  const g = $('qrcells');
+  if (!g) return;
+  const N = 29;
+  let s = 20260824;
+  const rnd = () => ((s = (s * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff);
+  const finder = (x, y) => {
+    const add = (px, py, w, h) => {
+      const r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      r.setAttribute('x', px); r.setAttribute('y', py);
+      r.setAttribute('width', w); r.setAttribute('height', h);
+      g.appendChild(r);
+    };
+    add(x, y, 7, 1); add(x, y + 6, 7, 1); add(x, y + 1, 1, 5); add(x + 6, y + 1, 1, 5);
+    add(x + 2, y + 2, 3, 3);
+  };
+  const inFinder = (x, y) =>
+    (x < 8 && y < 8) || (x > N - 9 && y < 8) || (x < 8 && y > N - 9);
+  for (let y = 0; y < N; y++) {
+    for (let x = 0; x < N; x++) {
+      if (inFinder(x, y)) continue;
+      if (rnd() > 0.52) {
+        const r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        r.setAttribute('x', x); r.setAttribute('y', y);
+        r.setAttribute('width', 1); r.setAttribute('height', 1);
+        g.appendChild(r);
+      }
+    }
+  }
+  finder(0, 0); finder(N - 7, 0); finder(0, N - 7);
+})();
+
 
 /* ---------- keypad ---------- */
 const KEYS = ['7', '8', '9', '4', '5', '6', '1', '2', '3', 'C', '0', '\u232B'];
