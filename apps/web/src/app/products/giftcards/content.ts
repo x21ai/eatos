@@ -6,7 +6,7 @@
 export const hero = {
   eyebrow: 'RESTAURANT TECHNOLOGY CLOUD',
   title: 'Gift Cards Guests',
-  titleAccent: 'Love to Share',
+  titleAccent: '',
   description: 'Customize your own gift card design with eatOS.',
   primaryCta: { label: 'Order Now', href: '/book-demo' },
   imageLabel: 'Custom branded eatOS gift cards',
