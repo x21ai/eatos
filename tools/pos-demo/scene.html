@@ -359,23 +359,52 @@ body{font-family:'Mont',sans-serif;color:#111;-webkit-font-smoothing:antialiased
     <!-- payment -->
     <div id="pay">
       <div class="head">Total Due <em id="paydue">$72.00</em></div>
-      <div class="sub">Order #6 &middot; Dine In &middot; Table T3 &middot; Elizer Cruz</div>
+      <div class="sub">Order 7 &middot; Guest &middot; Dine In</div>
       <div class="ordcol">
-        <div class="r"><span>Sub Total</span><span>$60.00</span></div>
-        <div class="r"><span>Tax (20%)</span><span>$12.00</span></div>
-        <div class="r big"><span>Total Due</span><span>$72.00</span></div>
-        <div class="r"><span>1 ea &nbsp; CHICKEN CREPE</span><span>$20.00</span></div>
-        <div class="r"><span>1 ea &nbsp; CAPRICE SANDWICH</span><span>$20.00</span></div>
-        <div class="r"><span>1 ea &nbsp; FIGARO BLT</span><span>$20.00</span></div>
+        <div class="ticket">
+          <div class="tr"><span>Order #7</span><span>DINE IN</span></div>
+          <div class="tr mut"><span>Guest Name</span><span>Ticket No. 7 &middot; Amount Due $72.00</span></div>
+          <div class="dash"></div>
+          <div class="r big"><span>Total Due</span><span>$72.00</span></div>
+          <div class="r" style="font-weight:800;color:#111"><span>TOTAL</span><span>$72.00</span></div>
+          <div class="r"><span>Sub Total</span><span>$60.00</span></div>
+          <div class="r"><span>TAX (20%)</span><span>$12.00</span></div>
+          <div class="dash"></div>
+          <div class="item"><span class="q">1 ea</span><span class="n">Chicken Crepe</span><span class="p">$20.00</span></div>
+          <div class="mods">- Preparation &middot; Extra Sauce<br/>- Bread &middot; Foccacia<br/>- Course &middot; Main</div>
+          <div class="item" style="margin-top:18px"><span class="q">1 ea</span><span class="n">Caprice Sandwich</span><span class="p">$20.00</span></div>
+          <div class="item" style="margin-top:18px"><span class="q">1 ea</span><span class="n">Figaro BLT</span><span class="p">$20.00</span></div>
+        </div>
       </div>
-      <div class="tenders">
-        <div class="tender" id="tcash"><i></i>Cash</div>
-        <div class="tender"><i></i>Manual CC</div>
-        <div class="tender"><i></i>Gift Card</div>
-        <div class="tender"><i></i>Grubhub</div>
+      <div class="pmwrap">
+        <h3>Payment Method</h3>
+        <div class="pmsub">Cash, manual card entry and Pay by Link are supported online. Connect a card reader for Tap to Pay.</div>
+        <div class="glabel">STANDARD</div>
+        <div class="pgrid">
+          <div class="tender" id="tcash"><i>&#128176;</i>Cash</div>
+          <div class="tender"><i>&#9636;</i>Manual Card</div>
+          <div class="tender"><i>&#9673;</i>Manual CC</div>
+          <div class="tender"><i>&#8673;</i>External CC</div>
+          <div class="tender"><i>&#8599;</i>Split Check</div>
+        </div>
+        <div class="glabel">ACCOUNTS AND REWARDS</div>
+        <div class="pgrid">
+          <div class="tender"><i>&#9634;</i>Account</div>
+          <div class="tender"><i>&#127963;</i>House</div>
+          <div class="tender"><i>&#127873;</i>Gift Card</div>
+          <div class="tender"><i>&#9825;</i>Loyalty</div>
+          <div class="tender"><i>&#9997;</i><u>In-kind<s>Manager PIN</s></u></div>
+        </div>
+        <div class="glabel">DELIVERY PARTNERS</div>
+        <div class="pgrid">
+          <div class="tender"><i>&#128692;</i>Uber Eats</div>
+          <div class="tender"><i>&#128692;</i>Doordash</div>
+          <div class="tender"><i>&#127860;</i>Grubhub</div>
+        </div>
       </div>
-      <div id="paybar">CHARGE $72.00</div>
+      <div id="paybar">SELECT A PAYMENT METHOD</div>
     </div>
+
 
     <div id="cashwrap">
       <div id="cashscrim"></div>
