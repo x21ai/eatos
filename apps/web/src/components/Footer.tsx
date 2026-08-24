@@ -128,7 +128,7 @@ const SOCIAL_LINKS = [
   },
   {
     label: 'LinkedIn',
-    href: 'https://www.linkedin.com/company/eatos',
+    href: 'https://www.linkedin.com/company/myeatos',
     Icon: LinkedinIcon,
   },
   { label: 'YouTube', href: 'https://www.youtube.com/@myeatos', Icon: YoutubeIcon },
