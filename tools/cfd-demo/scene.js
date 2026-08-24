@@ -162,7 +162,11 @@ window.__render = function (t) {
     el.style.pointerEvents = 'none';
   }
 
+  /* 0. welcome */
+  $('tapbegin').style.transform = pressed(t, A.tapBegin) ? 'scale(0.975)' : 'scale(1)';
+
   /* 1. loyalty keypad */
+
   const typed = DIGITS.filter((_, i) => t >= typeAt(i)).length;
   $('numv').textContent = typed ? fmtPhone(typed) : '(555) 555 5555';
   cls($('numv'), 'filled', typed > 0);
