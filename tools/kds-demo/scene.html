@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<style>
+@font-face{font-family:'Mont';src:url('montserrat.ttf');font-weight:100 900;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:1600px;height:868px;overflow:hidden;background:#fff;}
+body{font-family:'Mont',sans-serif;color:#111;-webkit-font-smoothing:antialiased;}
+#stage{position:relative;width:1600px;height:868px;background:#fff;overflow:hidden;}
+.screen{position:absolute;inset:0;}
+
+/* ---------- SIGN IN ---------- */
+#signin{background:#f2f2f3;}
+#signin .photo{position:absolute;left:0;top:0;width:880px;height:868px;overflow:hidden;}
+#signin .photo img{width:100%;height:100%;object-fit:cover;}
+#signin .cap{position:absolute;left:0;bottom:120px;width:880px;text-align:center;color:#fff;font-size:42px;font-weight:800;letter-spacing:-.01em;text-shadow:0 2px 24px rgba(0,0,0,.5);}
+#signin .dots{position:absolute;left:0;bottom:78px;width:880px;display:flex;justify-content:center;gap:16px;}
+#signin .dots i{width:11px;height:11px;border-radius:50%;background:rgba(255,255,255,.45);}
+#signin .dots i.on{background:#fff;}
+#signin .panel{position:absolute;left:880px;top:0;width:720px;height:868px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 96px;}
+.logo{display:flex;flex-direction:column;align-items:center;margin-bottom:18px;}
+.logo b{font-size:44px;font-weight:900;letter-spacing:-.03em;background:#111;color:#fff;padding:4px 14px;border-radius:6px;}
+.logo s{text-decoration:none;font-size:13px;font-weight:700;margin-top:7px;letter-spacing:.01em;color:#111;}
+#signin h1{font-size:42px;font-weight:800;letter-spacing:-.02em;margin-bottom:36px;text-align:center;}
+.flabel{align-self:flex-start;font-size:19px;font-weight:600;margin-bottom:9px;color:#3f3f46;}
+.field{width:100%;height:66px;border-radius:12px;background:#fff;border:1.5px solid #d4d4d8;display:flex;align-items:center;padding:0 22px;font-size:22px;font-weight:500;color:#111;margin-bottom:22px;}
+.field.focus{border-color:#E6007E;}
+.field .ph{color:#a1a1aa;}
+.field .eye{margin-left:auto;font-size:20px;color:#71717a;}
+#signbtn{width:100%;height:70px;border-radius:12px;background:#E6007E;color:#fff;font-size:23px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+#signin .forgot{margin-top:26px;font-size:21px;font-weight:700;}
+#signin .create{margin-top:24px;width:100%;height:66px;border-radius:12px;border:1.5px solid #d4d4d8;background:#fff;display:flex;align-items:center;justify-content:center;font-size:21px;font-weight:700;}
+#signin .ver{margin-top:22px;font-size:15px;color:#71717a;font-weight:600;}
+
+/* ---------- LOADING ---------- */
+#loading{background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;}
+#loading .ring{width:150px;height:150px;border-radius:50%;border:12px solid #f1f1f3;border-top-color:#E6007E;}
+#loading .pct{margin-top:32px;font-size:32px;font-weight:800;color:#111;}
+
+/* ---------- APP (KDS) ---------- */
+#app{background:#e9e9ec;opacity:0;}
+#topbar{position:absolute;left:0;top:0;width:1600px;height:52px;background:#111;display:flex;align-items:center;padding:0 22px;gap:16px;color:#fff;}
+.tbback{font-size:21px;color:#d4d4d8;}
+.tbinit{width:30px;height:30px;border-radius:50%;background:#C6007A;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.tbname{font-size:21px;font-weight:800;letter-spacing:-.01em;}
+.tbrole{background:#3f3f46;border-radius:6px;padding:5px 10px;font-size:13px;font-weight:800;letter-spacing:.06em;color:#e4e4e7;}
+.tbchip{display:flex;align-items:center;gap:9px;background:#27272a;border-radius:999px;padding:7px 18px;font-size:17px;font-weight:600;color:#e4e4e7;}
+.tbright{margin-left:auto;display:flex;align-items:center;gap:20px;color:#a1a1aa;}
+.tbright .ic{width:20px;height:20px;border-radius:5px;background:#3f3f46;}
+.tbright .mag{width:22px;height:22px;border-radius:50%;background:#E6007E;}
+.tbclock{text-align:right;}
+.tbclock b{display:block;font-size:19px;font-weight:800;color:#fff;letter-spacing:.02em;}
+.tbclock s{text-decoration:none;display:block;font-size:12px;font-weight:600;color:#a1a1aa;margin-top:2px;}
+
+#rail{position:absolute;left:0;top:52px;width:76px;height:764px;background:#fff;border-right:1px solid #e2e2e6;display:flex;flex-direction:column;align-items:center;padding-top:16px;gap:28px;}
+.rico{position:relative;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#52525b;}
+.rico.on{background:#eef2fb;color:#2563eb;}
+.rico.brand{background:#faf3e6;color:#b45309;font-size:11px;font-weight:800;text-align:center;line-height:1.1;}
+.rico b{position:absolute;top:-2px;right:-2px;width:19px;height:19px;border-radius:50%;background:#dc2626;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+#rlogo{position:absolute;left:0;bottom:14px;width:76px;text-align:center;}
+#rlogo b{font-size:24px;font-weight:900;letter-spacing:-.04em;color:#111;}
+#rlogo s{text-decoration:none;display:block;font-size:11px;font-weight:600;color:#8a8a93;margin-top:3px;}
+
+#board{position:absolute;left:76px;top:52px;width:1329px;height:764px;overflow:hidden;padding:22px 0 0 22px;}
+#track{display:flex;gap:14px;align-items:flex-start;}
+.tk{position:relative;width:322px;flex:0 0 322px;background:#fff;border-radius:14px;box-shadow:0 4px 18px rgba(15,15,20,.09);padding:14px 14px 12px;}
+.tkhead{display:flex;align-items:flex-start;gap:12px;}
+.tknum{font-size:38px;font-weight:900;letter-spacing:-.04em;line-height:1;}
+.tkmeta{flex:1;min-width:0;}
+.tktype{display:flex;align-items:center;gap:7px;font-size:22px;font-weight:800;letter-spacing:-.01em;}
+.tktype i{font-style:normal;font-size:17px;color:#52525b;}
+.tksub{display:flex;align-items:center;gap:6px;font-size:16px;font-weight:600;color:#3f3f46;margin-top:4px;}
+.timer{flex:0 0 auto;height:30px;padding:0 13px;border-radius:999px;font-size:18px;font-weight:800;display:flex;align-items:center;letter-spacing:.01em;}
+.timer.amber{background:#fde68a;color:#7c4a03;}
+.timer.red{background:#fecdd3;color:#b3123a;}
+.timer.violet{background:#e9d5ff;color:#6b21a8;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px;}
+.tag{height:25px;padding:0 10px;border-radius:999px;background:#fde8ee;color:#b3123a;font-size:12px;font-weight:800;letter-spacing:.03em;display:flex;align-items:center;text-transform:uppercase;}
+.note{display:flex;gap:9px;background:#f5f5f7;border-radius:8px;padding:9px 11px;margin-top:9px;font-size:14px;font-weight:600;color:#3f3f46;line-height:1.35;}
+.note i{font-style:normal;color:#71717a;}
+.noteh{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:800;color:#111;margin-top:11px;}
+.noteh s{text-decoration:none;margin-left:auto;font-size:13px;font-weight:600;color:#8a8a93;}
+.sech{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:800;letter-spacing:.09em;color:#3f3f46;border-top:1px solid #efeff2;margin-top:12px;padding-top:11px;}
+.sech s{text-decoration:none;margin-left:auto;font-size:13px;font-weight:600;color:#8a8a93;letter-spacing:0;}
+.li{display:flex;gap:10px;padding:11px 0;border-top:1px solid #f5f5f7;}
+.li:first-of-type{border-top:none;}
+.liq{font-size:15px;font-weight:800;color:#71717a;width:30px;flex:0 0 30px;}
+.libody{flex:1;min-width:0;}
+.lin{font-size:20px;font-weight:800;letter-spacing:-.01em;line-height:1.15;}
+.lit{font-size:14px;font-weight:600;color:#8a8a93;margin-top:2px;}
+.lim{font-size:14px;font-weight:600;color:#3f3f46;margin-top:4px;line-height:1.4;}
+.lim em{font-style:normal;color:#b3123a;}
+.liact{flex:0 0 auto;display:flex;align-items:center;gap:7px;}
+.litime{font-size:14px;font-weight:800;color:#7c4a03;background:#fef3c7;border-radius:999px;padding:3px 9px;}
+.bump{width:32px;height:32px;border-radius:9px;background:#f2f2f5;color:#52525b;font-size:15px;display:flex;align-items:center;justify-content:center;}
+.bump.done{background:#111;color:#fff;}
+.bump.press{filter:brightness(.86);}
+.li.done .lin,.li.done .lit,.li.done .lim{color:#a1a1aa;}
+.li.done .lin{text-decoration:line-through;}
+.tkfoot{display:flex;gap:10px;margin-top:12px;}
+.undo{width:44px;height:44px;border-radius:10px;background:#f5f5f7;color:#52525b;font-size:19px;display:flex;align-items:center;justify-content:center;}
+.act{flex:1;height:44px;border-radius:10px;background:#f5f5f7;color:#111;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:9px;}
+.act.prep{background:#111;color:#fff;font-weight:800;}
+.act.press{filter:brightness(.9);}
+
+#sum{position:absolute;left:1405px;top:52px;width:195px;height:764px;background:#fff;border-left:1px solid #e2e2e6;padding:18px 16px;}
+#sum .sh{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:900;letter-spacing:.06em;}
+#sum .sh em{font-style:normal;margin-left:auto;font-size:15px;font-weight:800;color:#111;}
+#sum .exp{display:flex;align-items:center;font-size:14px;font-weight:600;color:#3f3f46;margin-top:14px;}
+#sum .exp u{text-decoration:none;margin-left:auto;width:38px;height:20px;border-radius:999px;background:#e4e4e7;}
+.srow{display:flex;align-items:center;gap:8px;border-top:1px solid #f1f1f4;padding:13px 0;font-size:14px;font-weight:800;letter-spacing:.06em;color:#111;}
+.srow i{font-style:normal;color:#a1a1aa;font-size:12px;}
+.srow b{margin-left:auto;width:22px;height:22px;border-radius:50%;background:#f1f1f4;color:#111;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.srow.ot{color:#b3123a;}
+.srow.ot b{background:#fecdd3;color:#b3123a;}
+.srow.un{color:#b45309;}
+.srow.un b{background:#fde68a;color:#7c4a03;}
+
+#botbar{position:absolute;left:0;bottom:0;width:1600px;height:52px;background:#f4f4f6;border-top:1px solid #e2e2e6;display:flex;align-items:center;padding:0 20px;}
+#queue{font-size:19px;font-weight:800;}
+#queue b{font-weight:900;}
+#botmid{position:absolute;left:0;bottom:0;width:1600px;height:52px;display:flex;align-items:center;justify-content:center;gap:12px;}
+.bic{width:34px;height:30px;border-radius:8px;background:#e8e8ec;color:#52525b;font-size:15px;display:flex;align-items:center;justify-content:center;}
+.vgroup{display:flex;background:#e8e8ec;border-radius:8px;padding:3px;gap:3px;}
+.vgroup div{height:26px;padding:0 14px;border-radius:6px;font-size:14px;font-weight:700;color:#52525b;display:flex;align-items:center;gap:6px;}
+.vgroup div.on{background:#111;color:#fff;font-weight:800;}
+.prod{height:32px;border-radius:8px;background:#e8e8ec;color:#3f3f46;font-size:12px;font-weight:700;display:flex;align-items:center;gap:8px;padding:0 12px;line-height:1.15;}
+
+/* scrim + keypad (clock in) */
+#scrim{position:absolute;inset:0;background:rgba(10,10,12,.82);opacity:0;}
+#keypad{position:absolute;left:1002px;top:120px;width:520px;opacity:0;}
+#keypad .stars{height:80px;background:#f7f7f8;border-radius:10px 10px 0 0;display:flex;align-items:center;justify-content:space-around;}
+#keypad .stars i{font-size:34px;color:#c7c7cc;font-style:normal;}
+#keypad .stars i.on{color:#111;}
+.kgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#d9d9de;}
+.key{height:78px;background:linear-gradient(#fff,#f0f0f2);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#111;}
+.key.dark{background:#111;color:#fff;font-size:22px;letter-spacing:.06em;}
+.key.red{color:#dc2626;}
+.key.out{background:#dc2626;color:#fff;font-size:22px;}
+.key.brk{font-size:22px;}
+.key.in{background:#16a34a;color:#fff;font-size:22px;}
+.key.press{filter:brightness(.88);}
+#logout{margin-top:14px;height:64px;border:2px solid #fff;border-radius:10px;color:#fff;font-size:20px;font-weight:800;letter-spacing:.1em;display:flex;align-items:center;justify-content:center;}
+#clockleft{position:absolute;left:190px;top:250px;color:#fff;opacity:0;}
+#clockleft .dt{font-size:26px;font-weight:600;}
+#clockleft .tm{font-size:96px;font-weight:800;letter-spacing:-.02em;margin-top:10px;}
+#clockleft .wx{font-size:52px;font-weight:700;margin-top:18px;}
+#clockleft .loc{font-size:34px;font-weight:800;margin-top:14px;}
+
+/* toast */
+#toast{position:absolute;left:600px;top:70px;width:420px;height:64px;background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.16);display:flex;align-items:center;gap:14px;padding:0 22px;font-size:20px;font-weight:600;opacity:0;z-index:70;}
+#toast .ck{width:26px;height:26px;border-radius:50%;background:#16a34a;color:#fff;font-size:15px;display:flex;align-items:center;justify-content:center;}
+
+/* cursor + ripple */
+#cursor{position:absolute;left:0;top:0;width:26px;height:26px;z-index:200;pointer-events:none;}
+#cursor svg{filter:drop-shadow(0 2px 4px rgba(0,0,0,.4));}
+.ripple{position:absolute;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;border:3px solid rgba(230,0,126,.85);z-index:190;opacity:0;}
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- SIGN IN -->
+  <div class="screen" id="signin">
+    <div class="photo"><img src="signin-photo.jpg" alt=""/></div>
+    <div class="cap">Keep every ticket on time</div>
+    <div class="dots"><i></i><i class="on"></i><i></i><i></i></div>
+    <div class="panel">
+      <div class="logo"><b>eatos</b><s>Restaurants Made Simple</s></div>
+      <h1>Kitchen Display System</h1>
+      <div class="flabel">Email Address</div>
+      <div class="field" id="emailf"><span id="emailv" class="ph">Enter Email</span></div>
+      <div class="flabel">Password</div>
+      <div class="field" id="passf"><span id="passv" class="ph">Enter Password</span><span class="eye">&#9788;</span></div>
+      <div id="signbtn">Sign in</div>
+      <div class="forgot">Forgot Your Password?</div>
+      <div class="create">Create an account</div>
+      <div class="ver">4.10.2 (+11350) / 3.44.2 / 24.08.26</div>
+    </div>
+  </div>
+
+  <!-- LOADING -->
+  <div class="screen" id="loading">
+    <div class="ring" id="lring"></div>
+    <div class="pct" id="lpct">0%</div>
+  </div>
+
+  <!-- APP -->
+  <div class="screen" id="app">
+    <div id="topbar">
+      <div class="tbback">&#8630;</div>
+      <div class="tbinit">MR</div>
+      <div class="tbname">Marcus Rivera</div>
+      <div class="tbrole">HEAD CHEF</div>
+      <div class="tbchip"><span>&#9679;</span>Dinner Service (9:00 PM)</div>
+      <div class="tbright">
+        <div class="mag"></div><div class="ic"></div><div class="ic"></div><div class="ic"></div><div class="ic"></div>
+        <div class="tbclock"><b id="tbtime">6:40 PM</b><s>24 August 2026</s></div>
+      </div>
+    </div>
+
+    <div id="rail">
+      <div class="rico">&#8646;</div>
+      <div class="rico">&#9750;</div>
+      <div class="rico brand">RUSTIC<br/>TABLE</div>
+      <div class="rico">&#9707;</div>
+      <div class="rico on">&#9673;<b id="rb1">1</b></div>
+      <div class="rico">&#9678;<b id="rb2">9</b></div>
+      <div class="rico">&#9201;</div>
+      <div class="rico">&#9873;<b>11</b></div>
+      <div class="rico">&#9881;</div>
+      <div id="rlogo"><b>OS</b><s>v4.10.2</s></div>
+    </div>
+
+    <div id="board"><div id="track"></div></div>
+
+    <div id="sum">
+      <div class="sh"><span>&#8942;</span>SUMMARY<em id="sumtot">80 &#8250;</em></div>
+      <div class="exp"><span>Expand all</span><u></u></div>
+      <div class="srow ot"><i>&#8250;</i>OVERTIME<b id="c0">32</b></div>
+      <div class="srow un"><i>&#8250;</i>UNSEEN<b id="c1">77</b></div>
+      <div class="srow"><i>&#8250;</i>APPETIZERS<b id="c2">12</b></div>
+      <div class="srow"><i>&#8250;</i>ENTREES<b id="c3">25</b></div>
+      <div class="srow"><i>&#8250;</i>ITEMS<b id="c4">30</b></div>
+      <div class="srow"><i>&#8250;</i>DESSERTS<b>9</b></div>
+      <div class="srow"><i>&#8250;</i>SALADS<b>4</b></div>
+    </div>
+
+    <div id="botbar"><div id="queue"><b id="qn">11</b> Orders in queue</div></div>
+    <div id="botmid">
+      <div class="bic">&#9662;</div>
+      <div class="bic">&#9635;</div>
+      <div class="bic">&#9776;</div>
+      <div class="bic">&#8645;</div>
+      <div class="vgroup">
+        <div>&#9636; Grid</div>
+        <div class="on">&#9707; Horizontal</div>
+        <div>&#9707; Stagger</div>
+      </div>
+      <div class="bic">&#9998;</div>
+      <div class="bic">&#9836;</div>
+      <div class="bic">&#9789;</div>
+      <div class="prod"><span>86<br/>Products</span><span>&#9873;</span></div>
+    </div>
+
+    <!-- clock in -->
+    <div id="scrim"></div>
+    <div id="clockleft">
+      <div class="dt">Monday, 24 August 2026</div>
+      <div class="tm">18:40</div>
+      <div class="wx">&#9925; 24&deg;</div>
+      <div class="loc">New York, NY</div>
+    </div>
+    <div id="keypad">
+      <div class="stars"><i id="s0">&#10033;</i><i id="s1">&#10033;</i><i id="s2">&#10033;</i><i id="s3">&#10033;</i></div>
+      <div class="kgrid" id="kgrid"></div>
+      <div id="logout">LOG OUT</div>
+    </div>
+
+    <div id="toast"><div class="ck">&#10003;</div><span>Clocked in at 6:40 PM</span></div>
+  </div>
+
+  <div class="ripple" id="rip"></div>
+  <div id="cursor">
+    <svg width="26" height="30" viewBox="0 0 26 30"><path d="M2 1 L2 24 L8.5 18.5 L12.5 27.5 L16.5 25.5 L12.5 17 L21 16 Z" fill="#fff" stroke="#111" stroke-width="1.6"/></svg>
+  </div>
+</div>
+<script src="scene.js"></script>
+</body>
+</html>
