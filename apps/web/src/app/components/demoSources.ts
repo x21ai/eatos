@@ -7,6 +7,10 @@ import kdsPoster from './assets/kds-demo-poster.jpg.asset.json';
 import cfdMp4 from './assets/cfd-demo.mp4.asset.json';
 import cfdWebm from './assets/cfd-demo.webm.asset.json';
 import cfdPoster from './assets/cfd-demo-poster.jpg.asset.json';
+import kioskMp4 from './assets/kiosk-demo.mp4.asset.json';
+import kioskWebm from './assets/kiosk-demo.webm.asset.json';
+import kioskPoster from './assets/kiosk-demo-poster.jpg.asset.json';
+
 
 
 export type DemoMedia = {
