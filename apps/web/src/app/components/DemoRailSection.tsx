@@ -5,12 +5,29 @@ import { motion } from 'motion/react';
 import { Tablet, Laptop, Smartphone } from 'lucide-react';
 import { demoSources } from './demoSources';
 import { TabletMockup } from './TabletMockup';
+import { PosIcon, KdsIcon, CfdIcon, KioskIcon } from './DeviceIcons';
 
 const deviceIcon = {
   tablet: Tablet,
   laptop: Laptop,
   phone: Smartphone,
 } as const;
+
+const appIcon: Record<string, (props: { className?: string }) => JSX.Element> = {
+  pos: PosIcon,
+  kds: KdsIcon,
+  cfd: CfdIcon,
+  kiosk: KioskIcon,
+};
+
+// Each product keeps its own accent color for its icon
+const appIconColor: Record<string, string> = {
+  pos: 'text-indigo-500',
+  kds: 'text-emerald-500',
+  cfd: 'text-sky-500',
+  kiosk: 'text-amber-500',
+};
+
 
 
 interface DemoRailSectionProps {
