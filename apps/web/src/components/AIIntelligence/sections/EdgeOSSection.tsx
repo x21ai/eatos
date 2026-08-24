@@ -106,7 +106,7 @@ export function EdgeOSSection() {
                 You don't.
               </h2>
               <p className="mt-6 text-lg md:text-xl text-[#9CA3AF] leading-relaxed max-w-xl">
-                Cloud POS becomes a paperweight without WiFi.{" "}
+                Cloud Point of Sale becomes a paperweight without WiFi.{" "}
                 <strong>eatOS</strong> runs on the edge. Local mesh. Automatic
                 sync. Zero excuses.
               </p>
