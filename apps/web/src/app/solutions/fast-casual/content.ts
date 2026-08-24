@@ -3,6 +3,7 @@
 
 import turnaroundImg from './assets/fc-turnaround.png.asset.json';
 import fulfillmentImg from './assets/fc-fulfillment.png.asset.json';
+import managementImg from './assets/fc-management.jpg.asset.json';
 
 export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
