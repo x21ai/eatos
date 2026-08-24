@@ -43,7 +43,16 @@ export const demoSources: DemoSource[] = [
     url: 'https://kds6.lovable.app/kds/v3',
     blurb: 'Route tickets to the right station and keep orders moving on time.',
     device: 'tablet',
+    media: {
+      poster: kdsPoster.url,
+      sources: [
+        { src: kdsWebm.url, type: 'video/webm' },
+        { src: kdsMp4.url, type: 'video/mp4' },
+      ],
+      caption: 'Clock in, work the board, bump the ticket.',
+    },
   },
+
   {
     id: 'kiosk',
     label: 'Kiosk',
