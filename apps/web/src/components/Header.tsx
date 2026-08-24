@@ -511,9 +511,6 @@ export default function Header() {
           <a href="/pricing" className={navLinkClass}>
             Pricing
           </a>
-          <a href="/enterprise" className={navLinkClass}>
-            Enterprise
-          </a>
         </nav>
 
         {/* Right Side (visible at xl and wider) */}
