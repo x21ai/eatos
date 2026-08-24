@@ -18,7 +18,7 @@ export const hero = {
   imageLabel: 'Loyalty program dashboard',
   image: null,
   stats: [
-    { value: '10x', label: 'More repeat visits. Increase checks.' },
+    { value: '10x', label: 'More repeat visits' },
     { value: '100%', label: 'Personalized rewards' },
     { value: '24/7', label: 'Always on support' },
   ],
@@ -28,7 +28,7 @@ export const keyFeatures = [
   'Enhanced Customer Satisfaction',
   'Referral System',
   'Birthday & Special Occasion Perks',
-  'Loyalty Programs that Drive Repeat Business',
+  'Loyalty Programs',
 ];
 
 export const features = [
@@ -36,7 +36,7 @@ export const features = [
     id: 'enhanced-customer-satisfaction',
     title: 'Enhanced Customer Satisfaction',
     body:
-      'Make every guest feel recognized. Personalized rewards and tiered perks create a dining experience that goes beyond the meal.',
+      'Make every guest feel recognized. Personalized rewards tiered perks create a dining experience that goes beyond the meal.',
     more:
       'Guests earn points automatically, track progress and redeem rewards without friction at checkout or online.',
     imageLabel: 'Guest receiving a loyalty reward',
@@ -64,7 +64,7 @@ export const features = [
     id: 'birthday-special-occasion-perks',
     title: 'Birthday & Special Occasion Perks',
     body:
-      'Celebrate the moments that matter. Automatically send birthday rewards, anniversary offers and special occasion surprises.',
+      'Celebrate the moments that matter. Automatically send birthday, anniversary offers and special occasion surprises.',
     more:
       'Scheduled campaigns trigger on guest milestones, making your brand part of their celebration without manual work.',
     imageLabel: 'Birthday reward notification',
@@ -76,9 +76,9 @@ export const features = [
   },
   {
     id: 'loyalty-programs-repeat-business',
-    title: 'Loyalty Programs that Drive Repeat Business',
+    title: 'Loyalty Programs',
     body:
-      'Design points, tiers and challenges that keep guests choosing you over the competition. Loyalty becomes a habit, not a one-time visit.',
+      'Design points, tiers and challenges that keep guests choosing you over the competition. Loyalty becomes a habit.',
     more:
       'From visit-based points to spend-based tiers, build the program structure that matches your brand and your margins.',
     imageLabel: 'Loyalty tier progress dashboard',
