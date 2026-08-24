@@ -37,7 +37,7 @@ export const features = [
     body:
       'Transform your restaurant with cutting-edge hardware. Tailored configurations from Clover and HP are designed to optimize ordering, payment and management, boosting speed and enhancing the dining experience.',
     more:
-      'Counter, dual-screen and mobile setups all run the same eatOS software, so menus, staff and reporting stay in sync across every station.',
+      'Counter, screens and mobile setups all run the same eatOS software, menus, staff, reporting stay in sync across every station.',
     imageLabel: 'eatOS Point of Sale terminal',
     image: posImg.url,
     metrics: [
@@ -51,7 +51,7 @@ export const features = [
     body:
       'Boost efficiency with our ticket system. Connect multiple kitchen displays for real-time updates so prep, fire and expo work from one source of truth.',
     more:
-      'Sealed, fanless displays stay readable through heat and steam, and mount on a wall, pole or under a shelf with touch or bump bar control.',
+      'Sealed, fanless displays stay readable through heat and steam, and mount on a wall, pole or under a shelf with touch.',
     imageLabel: 'Kitchen display showing live tickets',
     image: kdsImg.url,
     metrics: [
@@ -65,7 +65,7 @@ export const features = [
     body:
       'Boost customer satisfaction with our self-ordering kiosks. Seamless integration with eatOS Point of Sale and Kitchen Display ensures fast, accurate orders.',
     more:
-      'Countertop, freestanding and wall-mount formats let guests browse, customize and pay on their own while your team stays on the food.',
+      'Kiosk, freestanding and wall-mount formats let guests browse, customize and pay on their own while your team stays on food.'
     imageLabel: 'Self ordering kiosk',
     image: kioskImg.url,
     metrics: [
