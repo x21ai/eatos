@@ -63,20 +63,21 @@ const keyOf = (ch) => KEYS.indexOf(ch);
 
 /* phone digits typed one at a time */
 const DIGITS = '5551234567'.split('');
-const T0 = 0.9;          // first key press
+const T0 = OFF + 0.9;    // first key press
 const STEP = 0.34;       // per key
 const typeAt = (n) => T0 + n * STEP;
 const TYPE_END = typeAt(DIGITS.length - 1);
 
 /* ---------- screen windows ---------- */
 const S = {
-  loy: [0.0, 6.6],
-  rew: [6.6, 11.0],
-  tip: [11.0, 14.4],
-  sig: [14.4, 18.2],
-  pay: [18.2, 21.8],
-  rcp: [21.8, 24.4],
-  ty: [24.4, 26.0],
+  wel: [0.0, OFF],
+  loy: [OFF, OFF + 6.6],
+  rew: [OFF + 6.6, OFF + 11.0],
+  tip: [OFF + 11.0, OFF + 14.4],
+  sig: [OFF + 14.4, OFF + 18.2],
+  pay: [OFF + 18.2, OFF + 21.8],
+  rcp: [OFF + 21.8, OFF + 24.4],
+  ty: [OFF + 24.4, OFF + 26.0],
 };
 const FADE = 0.36;
 function opacityOf(w, t) {
@@ -87,21 +88,25 @@ function opacityOf(w, t) {
 
 /* ---------- action beats ---------- */
 const A = {
+  tapBegin: 3.2,
   tapCheckin: TYPE_END + 0.7,
-  tapReward: 8.4,
-  tapRedeem: 9.9,
-  tapTip: 12.3,
-  signStart: 15.4,
-  signEnd: 16.6,
-  tapSigGo: 17.3,
-  tapEmail: 22.9,
+  tapReward: OFF + 8.4,
+  tapRedeem: OFF + 9.9,
+  tapTip: OFF + 12.3,
+  signStart: OFF + 15.4,
+  signEnd: OFF + 16.6,
+  tapSigGo: OFF + 17.3,
+  tapEmail: OFF + 22.9,
 };
-const TAPS = [A.tapCheckin, A.tapReward, A.tapRedeem, A.tapTip, A.tapSigGo, A.tapEmail]
+const TAPS = [A.tapBegin, A.tapCheckin, A.tapReward, A.tapRedeem, A.tapTip, A.tapSigGo, A.tapEmail]
   .concat(DIGITS.map((_, i) => typeAt(i)));
 
 /* cursor waypoints [t, x, y] */
 const WP = [
-  [0.0, 1180, 760],
+  [0.0, 520, 830],
+  [A.tapBegin - 0.35, 256, 700],
+  [A.tapBegin + 0.35, 256, 700],
+  [OFF + 0.2, 1180, 760],
 ];
 DIGITS.forEach((d, i) => {
   const p = keyPos(keyOf(d));
@@ -116,7 +121,8 @@ WP.push([A.signStart, 470, 500]);
 WP.push([A.signEnd, 650, 520]);
 WP.push([A.tapSigGo - 0.25, 800, 742], [A.tapSigGo + 0.3, 800, 742]);
 WP.push([A.tapEmail - 0.3, 1182, 521], [A.tapEmail + 0.4, 1182, 521]);
-WP.push([25.4, 1182, 640]);
+WP.push([OFF + 25.4, 1182, 640]);
+
 
 function cursorAt(t) {
   if (t <= WP[0][0]) return [WP[0][1], WP[0][2]];
