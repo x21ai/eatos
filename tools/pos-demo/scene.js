@@ -242,8 +242,12 @@ window.__render = function (t) {
   const pOut = seg(t, T.successIn[0], T.successIn[1]);
   $('pay').style.opacity = pIn;
   $('pay').style.transform = 'translateX(' + (60 * (1 - pIn)).toFixed(1) + 'px)';
-  cls($('tcash'), 'on', t >= T.tapCash + 0.05);
+  const cashSel = t >= T.tapCash + 0.05;
+  cls($('tcash'), 'on', cashSel);
   $('tcash').style.transform = pressed(t, T.tapCash) ? 'scale(0.985)' : 'scale(1)';
+  cls($('paybar'), 'live', cashSel);
+  $('paybar').textContent = cashSel ? 'CHARGE $72.00' : 'SELECT A PAYMENT METHOD';
+
 
   const cIn = seg(t, T.cashIn[0], T.cashIn[1]);
   $('cashwrap').style.opacity = cIn * (1 - pOut);
