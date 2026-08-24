@@ -104,8 +104,8 @@ const TAPS = [A.tapBegin, A.tapCheckin, A.tapReward, A.tapRedeem, A.tapTip, A.ta
 /* cursor waypoints [t, x, y] */
 const WP = [
   [0.0, 520, 830],
-  [A.tapBegin - 0.35, 256, 700],
-  [A.tapBegin + 0.35, 256, 700],
+  [A.tapBegin - 0.35, 250, 640],
+  [A.tapBegin + 0.35, 250, 640],
   [OFF + 0.2, 1180, 760],
 ];
 DIGITS.forEach((d, i) => {
