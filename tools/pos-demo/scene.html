@@ -154,19 +154,19 @@ body{font-family:'Mont',sans-serif;color:#111;-webkit-font-smoothing:antialiased
 #sheet .pctbtn{width:64px;height:66px;border-radius:12px;border:1.5px solid #e6e6ea;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:#52525b;}
 #addbtn{flex:1;height:66px;border-radius:12px;background:#111;color:#fff;font-size:23px;font-weight:800;display:flex;align-items:center;justify-content:center;}
 
-/* payment method screen */
-#pay{position:absolute;inset:0;background:#f5f6f5;opacity:0;padding:64px 96px 0;}
-#pay .head{font-size:46px;font-weight:800;letter-spacing:-.02em;color:#0a0a0a;}
-#pay .sub{font-size:21px;font-weight:600;color:#71717a;margin-top:12px;background:none;border:0;padding:0;box-shadow:none;border-radius:0;}
-#pay .glabel{font-size:19px;font-weight:800;letter-spacing:.09em;color:#71717a;margin:30px 0 14px;}
-#pay .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.tender{height:84px;background:#fff;border:1px solid #ececee;border-radius:16px;display:flex;align-items:center;gap:20px;padding:0 26px;font-size:25px;font-weight:800;color:#0a0a0a;box-shadow:0 1px 2px rgba(16,16,20,.04);}
-.tender i{width:32px;height:32px;flex:0 0 32px;border:2.5px solid #111;border-radius:8px;font-style:normal;}
-.tender i.rd{border-radius:50%;}
-.tender i.pill{border-radius:6px;border-width:2.5px;height:24px;margin:0;}
-.tender .mp{display:block;font-size:19px;font-weight:600;color:#8a8a92;margin-top:2px;}
-.tender.on{border-color:#E6007E;box-shadow:0 0 0 2px #E6007E inset;}
-
+/* payment */
+#pay{position:absolute;inset:0;background:#fff;opacity:0;}
+#pay .head{position:absolute;left:116px;top:70px;font-size:44px;font-weight:800;}
+#pay .head em{font-style:normal;color:#E6007E;}
+#pay .sub{position:absolute;left:118px;top:126px;font-size:19px;font-weight:600;color:#71717a;}
+#pay .ordcol{position:absolute;left:116px;top:200px;width:520px;}
+#pay .ordcol .r{display:flex;justify-content:space-between;font-size:21px;font-weight:700;padding:13px 0;border-bottom:1px solid #f1f1f4;color:#3f3f46;}
+#pay .ordcol .r.big{font-size:29px;font-weight:800;color:#111;}
+#pay .tenders{position:absolute;right:120px;top:200px;width:420px;}
+.tender{height:78px;border:1.5px solid #e6e6ea;border-radius:14px;display:flex;align-items:center;gap:16px;padding:0 24px;font-size:22px;font-weight:700;margin-bottom:18px;}
+.tender i{width:30px;height:30px;border-radius:8px;background:#f1f1f4;font-style:normal;}
+.tender.on{border-color:#E6007E;background:#fdf2f8;}
+#paybar{position:absolute;left:116px;right:120px;bottom:56px;height:78px;border-radius:14px;background:#111;color:#fff;font-size:24px;font-weight:800;display:flex;align-items:center;justify-content:center;}
 
 #cashwrap{position:absolute;inset:0;opacity:0;}
 #cashscrim{position:absolute;inset:0;background:rgba(10,10,12,.62);}
@@ -339,36 +339,26 @@ body{font-family:'Mont',sans-serif;color:#111;-webkit-font-smoothing:antialiased
       </div>
     </div>
 
-    <!-- payment method -->
+    <!-- payment -->
     <div id="pay">
-      <div class="head">Payment Method</div>
-      <div class="sub">Cash, manual card entry and Pay by Link are supported online. Connect a card reader for Tap to Pay.</div>
-      <div class="glabel">STANDARD</div>
-      <div class="grid">
+      <div class="head">Total Due <em id="paydue">$72.00</em></div>
+      <div class="sub">Order #6 &middot; Dine In &middot; Table T3 &middot; Elizer Cruz</div>
+      <div class="ordcol">
+        <div class="r"><span>Sub Total</span><span>$60.00</span></div>
+        <div class="r"><span>Tax (20%)</span><span>$12.00</span></div>
+        <div class="r big"><span>Total Due</span><span>$72.00</span></div>
+        <div class="r"><span>1 ea &nbsp; CHICKEN CREPE</span><span>$20.00</span></div>
+        <div class="r"><span>1 ea &nbsp; CAPRICE SANDWICH</span><span>$20.00</span></div>
+        <div class="r"><span>1 ea &nbsp; FIGARO BLT</span><span>$20.00</span></div>
+      </div>
+      <div class="tenders">
         <div class="tender" id="tcash"><i></i>Cash</div>
-        <div class="tender"><i class="pill"></i>Manual Card</div>
-        <div class="tender"><i class="rd"></i>Manual CC</div>
-        <div class="tender"><i class="rd"></i>External CC</div>
-        <div class="tender"><i></i>Split Check</div>
-        <div></div>
-      </div>
-      <div class="glabel">ACCOUNTS AND REWARDS</div>
-      <div class="grid">
-        <div class="tender"><i></i>Account</div>
-        <div class="tender"><i></i>House</div>
+        <div class="tender"><i></i>Manual CC</div>
         <div class="tender"><i></i>Gift Card</div>
-        <div class="tender"><i class="rd"></i>Loyalty</div>
-        <div class="tender"><i class="rd"></i><span>In-kind<span class="mp">Manager PIN</span></span></div>
-        <div></div>
-      </div>
-      <div class="glabel">DELIVERY PARTNERS</div>
-      <div class="grid">
-        <div class="tender"><i class="rd"></i>Uber Eats</div>
-        <div class="tender"><i class="rd"></i>Doordash</div>
         <div class="tender"><i></i>Grubhub</div>
       </div>
+      <div id="paybar">CHARGE $72.00</div>
     </div>
-
 
     <div id="cashwrap">
       <div id="cashscrim"></div>
