@@ -1,6 +1,8 @@
 'use client';
 
+import type React from 'react';
 import { useState } from 'react';
+
 import { motion } from 'motion/react';
 import { Tablet, Laptop, Smartphone } from 'lucide-react';
 import { demoSources } from './demoSources';
