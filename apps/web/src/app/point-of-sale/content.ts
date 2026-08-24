@@ -61,7 +61,7 @@ export const features = [
     body:
       'Automate order tracking with integrated accounting and get rid of the inconvenience of manually monitoring third party ordering apps.',
     more:
-      'Orders flow straight into the Point of Sale and Kitchen Display System, so data sharing stays smooth and updates land almost instantly.',
+      'Orders flow straight into the Point of Sale and Kitchen Display System, so data sharing stays smooth and updates land instantly.',
     imageLabel: 'Phone showing a white labeled ordering app',
     image: orderingImg.url,
     metrics: [
@@ -73,7 +73,7 @@ export const features = [
     id: 'works-offline',
     title: 'Works Offline',
     body:
-      'Restaurants keep functioning offline: orders reach the kitchen and payments stay secure even without an internet connection.',
+      'Restaurants keep functioning offline: orders reach the kitchen and payments stay secure even without an internet.',
     more:
       'With offline mode, orders are collected and sent to kitchen displays and printers instantly, and payments are processed securely once you reconnect.',
     imageLabel: 'Order taking continuing in offline mode',
