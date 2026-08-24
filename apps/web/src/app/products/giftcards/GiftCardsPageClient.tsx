@@ -15,12 +15,10 @@ import {
   Smartphone,
   CreditCard,
   BarChart3,
-  Store,
-  RefreshCw,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
-import { features, hardware, hero, keyFeatures, orderPanel } from './content';
+import { features, hero, keyFeatures, orderPanel } from './content';
 import { products } from '../products';
 import BrochureButton from '@/components/BrochureButton';
 
@@ -35,12 +33,6 @@ const featureIcons = [
   { Icon: Smartphone, tint: 'bg-pink-500/10 text-pink-400' },
   { Icon: CreditCard, tint: 'bg-rose-500/10 text-rose-400' },
   { Icon: BarChart3, tint: 'bg-pink-500/10 text-pink-400' },
-];
-
-const hardwareIcons = [
-  { Icon: Palette, tint: 'bg-rose-500/10 text-rose-400' },
-  { Icon: Store, tint: 'bg-pink-500/10 text-pink-400' },
-  { Icon: RefreshCw, tint: 'bg-rose-500/10 text-rose-400' },
 ];
 
 const related = products.filter((p) => p.slug !== 'giftcards').slice(0, 3);
@@ -149,22 +141,6 @@ export default function GiftCardsPageClient() {
                 ))}
               </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Numbers strip */}
-      <section className="border-t border-white/5 py-12 md:py-16">
-        <div className="site-container">
-          <div className="grid grid-cols-3 gap-6 md:gap-8">
-            {hero.stats.map((stat) => (
-              <motion.div key={stat.label} {...rise} className="min-w-0 text-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tighter">
-                  {stat.value}
-                </div>
-                <div className="mt-2 text-xs sm:text-sm text-white/70">{stat.label}</div>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
@@ -306,35 +282,6 @@ export default function GiftCardsPageClient() {
                 </div>
                 <h3 className="text-2xl font-bold tracking-tighter mb-3">{card.title}</h3>
                 <p className="text-white/90 leading-relaxed">{card.body}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Spec cards */}
-      <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="site-container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {hardware.specs.map((spec, index) => (
-              <motion.div
-                key={spec.title}
-                {...rise}
-                transition={{ delay: index * 0.08 }}
-                className="rounded-[2rem] border border-white/10 bg-white/5 p-8"
-              >
-                {(() => {
-                  const { Icon, tint } = hardwareIcons[index % hardwareIcons.length];
-                  return (
-                    <div
-                      className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-5 ${tint}`}
-                    >
-                      <Icon size={24} />
-                    </div>
-                  );
-                })()}
-                <h3 className="text-xl font-bold tracking-tighter">{spec.title}</h3>
-                <p className="mt-3 text-white/90 leading-relaxed">{spec.body}</p>
               </motion.div>
             ))}
           </div>
