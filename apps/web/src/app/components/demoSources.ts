@@ -4,12 +4,19 @@ import posPoster from './assets/pos-demo-poster.jpg.asset.json';
 import kdsMp4 from './assets/kds-demo.mp4.asset.json';
 import kdsWebm from './assets/kds-demo.webm.asset.json';
 import kdsPoster from './assets/kds-demo-poster.jpg.asset.json';
-import cfdMp4 from './assets/cfd-demo.mp4.asset.json';
-import cfdWebm from './assets/cfd-demo.webm.asset.json';
-import cfdPoster from './assets/cfd-demo-poster.jpg.asset.json';
+import cfdMp4 from './assets/cfd2-demo.mp4.asset.json';
+import cfdWebm from './assets/cfd2-demo.webm.asset.json';
+import cfdPoster from './assets/cfd2-demo-poster.jpg.asset.json';
 import kioskMp4 from './assets/kiosk-demo.mp4.asset.json';
 import kioskWebm from './assets/kiosk-demo.webm.asset.json';
 import kioskPoster from './assets/kiosk-demo-poster.jpg.asset.json';
+import dashMp4 from './assets/dashboard-demo.mp4.asset.json';
+import dashWebm from './assets/dashboard-demo.webm.asset.json';
+import dashPoster from './assets/dashboard-demo-poster.jpg.asset.json';
+import invMp4 from './assets/inventoryos-demo.mp4.asset.json';
+import invWebm from './assets/inventoryos-demo.webm.asset.json';
+import invPoster from './assets/inventoryos-demo-poster.jpg.asset.json';
+
 
 
 
@@ -97,6 +104,14 @@ export const demoSources: DemoSource[] = [
     url: 'https://dashboard6c.lovable.app/',
     blurb: 'Sales, labor and menu performance across every location, updated live.',
     device: 'laptop',
+    media: {
+      poster: dashPoster.url,
+      sources: [
+        { src: dashWebm.url, type: 'video/webm' },
+        { src: dashMp4.url, type: 'video/mp4' },
+      ],
+      caption: 'Track sales, labor and stock hour by hour across locations.',
+    },
   },
   {
     id: 'inventoryos',
@@ -104,7 +119,16 @@ export const demoSources: DemoSource[] = [
     url: 'https://inventoryos6.lovable.app/',
     blurb: 'Counts, vendors and recipe costing in one place, synced to every store.',
     device: 'laptop',
+    media: {
+      poster: invPoster.url,
+      sources: [
+        { src: invWebm.url, type: 'video/webm' },
+        { src: invMp4.url, type: 'video/mp4' },
+      ],
+      caption: 'Counts, purchases, waste and production value in one view.',
+    },
   },
+
 ];
 
 export const displayName = (id: string) => {
