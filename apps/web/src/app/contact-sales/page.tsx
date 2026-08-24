@@ -173,76 +173,22 @@ export default function ContactSalesPage() {
               <p className="text-gray-500 text-sm mb-8">
                 We typically respond within 2 hours during business hours.
               </p>
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      First Name
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black"
-                      placeholder="Jane"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Last Name
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black"
-                      placeholder="Doe"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Work Email</label>
-                  <input
-                    type="email"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black"
-                    placeholder="jane@company.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black"
-                    placeholder="(555) 123-4567"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Business Name
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black"
-                    placeholder="Joe's Cafe"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    How can we help?
-                  </label>
-                  <textarea
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-black h-32"
-                    placeholder="Tell us about your needs..."
-                  ></textarea>
-                </div>
-                <button
-                  type="button"
-                  className="w-full bg-black text-white font-bold py-4 rounded-xl hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
-                >
-                  Send Message <ArrowRight size={20} />
-                </button>
-                <p className="text-xs text-center text-gray-400 mt-4">
-                  By submitting this form, you agree to our Terms of Service and Privacy Policy.
-                </p>
-              </form>
+              <div
+                className="meetings-iframe-container"
+                data-src="https://meetings.hubspot.com/booka/initial-meeting?embed=true"
+              />
+              <p className="text-xs text-center text-gray-400 mt-4">
+                By booking a meeting, you agree to our{' '}
+                <a href="/terms" className="underline hover:no-underline">
+                  Terms of Service
+                </a>{' '}
+                and{' '}
+                <a href="/privacy" className="underline hover:no-underline">
+                  Privacy Policy
+                </a>
+                .
+              </p>
+
             </div>
           </div>
         </div>
