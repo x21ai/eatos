@@ -2,7 +2,7 @@
 import WorkforcePageClient from './WorkforcePageClient';
 
 export const metadata = {
-  title: 'Workforce Management | eatOS Restaurant Technology Cloud',
+  title: 'Workforce Management | RESTAURANT TECHNOLOGY CLOUD',
   description:
     'eatOS Workforce Management simplifies scheduling, GPS time clock, shift swapping, overtime alerts and payroll sync for restaurant teams.',
   openGraph: {

@@ -2,7 +2,7 @@
 import BrochuresClient from './BrochuresClient';
 
 export const metadata = {
-  title: 'Product Brochures | eatOS Restaurant Technology Cloud',
+  title: 'Product Brochures | RESTAURANT TECHNOLOGY CLOUD',
   description:
     'Browse and download eatOS product brochures, Point of Sale, Kiosk, KDS, Online Ordering, Workforce Management, Reporting and more.',
   openGraph: {
