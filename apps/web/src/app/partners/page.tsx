@@ -1,6 +1,7 @@
 // @ts-nocheck
 import Link from 'next/link';
 import { ArrowRight, Users, Megaphone, BarChart3, Puzzle, CheckCircle2 } from 'lucide-react';
+import PartnerForm from './PartnerForm';
 import { heroImage, programsImage, partnerTracks, integrationPartners } from './content';
 
 export const metadata = {
