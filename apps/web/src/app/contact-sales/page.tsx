@@ -13,10 +13,25 @@ import {
   Star,
   ChevronDown,
 } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+const MEETINGS_SCRIPT_SRC =
+  'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
 
 export default function ContactSalesPage() {
   const [openFaq, setOpenFaq] = useState(null);
+
+  useEffect(() => {
+    document
+      .querySelectorAll(`script[src="${MEETINGS_SCRIPT_SRC}"]`)
+      .forEach((el) => el.remove());
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = MEETINGS_SCRIPT_SRC;
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
 
   const faqs = [
     {
