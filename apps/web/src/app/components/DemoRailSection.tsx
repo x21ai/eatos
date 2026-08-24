@@ -1,16 +1,35 @@
 'use client';
 
+import type React from 'react';
 import { useState } from 'react';
+
 import { motion } from 'motion/react';
 import { Tablet, Laptop, Smartphone } from 'lucide-react';
 import { demoSources } from './demoSources';
 import { TabletMockup } from './TabletMockup';
+import { PosIcon, KdsIcon, CfdIcon, KioskIcon } from './DeviceIcons';
 
 const deviceIcon = {
   tablet: Tablet,
   laptop: Laptop,
   phone: Smartphone,
 } as const;
+
+const appIcon: Record<string, (props: { className?: string }) => React.ReactElement> = {
+  pos: PosIcon,
+  kds: KdsIcon,
+  cfd: CfdIcon,
+  kiosk: KioskIcon,
+};
+
+// Each product keeps its own accent color for its icon
+const appIconColor: Record<string, string> = {
+  pos: 'text-indigo-500',
+  kds: 'text-emerald-500',
+  cfd: 'text-sky-500',
+  kiosk: 'text-amber-500',
+};
+
 
 
 interface DemoRailSectionProps {
@@ -72,6 +91,7 @@ export function DemoRailSection({
           <div className="lg:flex-col lg:h-full flex gap-2 lg:gap-0 overflow-x-auto lg:overflow-visible scrollbar-hidden justify-start lg:justify-between">
             {demoSources.map((d) => {
               const active = d.id === activeId;
+              const AppIcon = appIcon[d.id];
               const Icon = deviceIcon[d.device] ?? Tablet;
               return (
                 <button
@@ -90,13 +110,18 @@ export function DemoRailSection({
                   <span className="flex items-center gap-2">
                     <span
                       className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md ${
-                        active ? 'bg-black/10 text-black' : 'bg-white/5 text-gray-400'
+                        AppIcon
+                          ? `${appIconColor[d.id]} ${active ? 'bg-black/5' : 'bg-white/5'}`
+                          : active
+                            ? 'bg-black/10 text-black'
+                            : 'bg-white/5 text-gray-400'
                       }`}
                     >
-                      <Icon size={14} />
+                      {AppIcon ? <AppIcon className="h-4 w-4" /> : <Icon size={14} />}
                     </span>
                     <span className="block text-sm font-bold tracking-tighter">{displayLabel(d.id)}</span>
                   </span>
+
                   <span
                     className={`mt-1 block text-xs leading-snug ${
                       active ? 'text-black/60' : 'text-gray-500'
@@ -112,9 +137,14 @@ export function DemoRailSection({
           <div className="relative w-full rounded-2xl border border-white/10 overflow-hidden bg-zinc-900 shadow-2xl">
             <div className="flex items-center justify-center gap-2 px-4 py-3 border-b border-white/10 bg-zinc-900/50">
               {(() => {
+                const AppIcon = appIcon[demo.id];
+                if (AppIcon) {
+                  return <AppIcon className={`h-4 w-4 ${appIconColor[demo.id]}`} />;
+                }
                 const Icon = deviceIcon[demo.device] ?? Tablet;
                 return <Icon size={14} className="text-gray-400" />;
               })()}
+
               <div className="text-sm text-gray-400 font-medium">{displayLabel(demo.id)}</div>
             </div>
 
