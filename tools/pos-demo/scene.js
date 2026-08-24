@@ -1,318 +1,281 @@
-/* Deterministic POS demo timeline. render(t) with t in seconds. */
-const FPS = 30, POS_DUR = 17.6, OFFSET = 8.6, DUR = OFFSET + POS_DUR;
+/* Deterministic eatOS Point of Sale demo scene.
+   window.__render(t) paints the exact state at time t (seconds). */
 
+const FPS = 30;
+const DUR = 20.0;
+window.__meta = { fps: FPS, frames: Math.round(FPS * DUR) };
 
+const $ = (id) => document.getElementById(id);
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const ease = (x) => (x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2);
+// eased 0..1 progress across [t0,t1]
+const seg = (t, t0, t1) => ease(clamp((t - t0) / (t1 - t0), 0, 1));
+const money = (n) => '$' + n.toFixed(2);
+
+/* ---------- menu grid ---------- */
 const ITEMS = [
-  ['Crispy Calamari','$12.99'],['Spinach Artichoke Dip','$10.99',{id:'item-spinach'}],['Loaded Potato Skins','$9.99'],['Mozzarella Sticks','$8.99'],
-  ['Buffalo Wings (10pc)','$13.99',{plus:'plus-wings'}],['Chicken Tenders','$11.99'],['Fried Pickles','$7.99'],['Jalapeno Poppers','$9.99'],
-  ['Nachos Grande','$12.99'],['Bar Burger Deluxe','$16.99'],['Fish & Chips','$15.99'],['Grilled Chicken Sandwich','$14.99'],
-  ['Philly Cheesesteak','$17.99'],['BBQ Pulled Pork','$15.99'],['Club Sandwich','$14.99'],['Reuben Sandwich','$15.99'],
-  ['BLT Deluxe','$12.99'],['Grilled Cheese & Tomato Soup','$11.99'],['Truffle Fries','$7.99',{plus:'plus-truffle'}],['Onion Rings','$6.99'],
-  ['Coleslaw','$4.99'],['Sweet Potato Fries','$7.49'],['Mac & Cheese','$6.99'],['Side Salad','$5.99'],
-  ['Garlic Bread','$4.99'],['Loaded Fries','$8.99'],['Cheese Curds','$8.99'],['House Salad','$9.99'],
-  ['Caesar Salad','$10.99'],['Cobb Salad','$14.99'],['Greek Salad','$11.99'],['Buffalo Chicken Salad','$14.99'],
-  ['Spinach Salad','$11.99'],['Wedge Salad','$10.99'],['Asian Chicken Salad','$13.99'],['Southwest Salad','$13.99'],
+  { nm: 'Caprice Sandwich', pr: '$20.00' },
+  { nm: 'Chicken Crepe', pr: '$19.00', badge: '12' },
+  { nm: 'Chicken Sandwich (Poulet)', pr: '$20.00' },
+  { nm: 'Croque Madame', pr: '$21.00', badge: '- 5' },
+  { nm: 'Croque Monsieur', pr: 'Out of stock', off: true },
+  { nm: 'Figaro BLT', pr: '$20.00' },
+  { nm: 'Fromage Fondu', pr: 'Open price' },
+  { nm: 'Half Sandwich and Soup', pr: '$22.00' },
+  { nm: 'Jambon (Ham) Sandwich', pr: '$20.00' },
 ];
-const grid = document.getElementById('grid');
-ITEMS.forEach(([name, price, opt]) => {
+const grid = $('grid');
+ITEMS.forEach((it, i) => {
   const d = document.createElement('div');
-  d.className = 'item' + (opt && opt.plus ? ' hot' : '');
-  if (opt && opt.id) d.id = opt.id;
-  d.innerHTML = `<span>${name}</span><span class="price">${price}</span><span class="plus"${opt&&opt.plus?` id="${opt.plus}"`:''}>+</span>`;
+  d.className = 'item' + (it.off ? ' off' : '');
+  d.id = 'it' + i;
+  d.innerHTML =
+    '<div class="nm">' + it.nm + '</div><div class="pr">' + it.pr + '</div>' +
+    '<div class="plus">+</div>' + (it.badge ? '<div class="badge">' + it.badge + '</div>' : '');
   grid.appendChild(d);
 });
 
-const TICKETS = [
-  ['114','Quick Order','DINE IN, 17:30 | 00:12 Min','Card','PAID','$46.67', true],
-  ['113','Quick Order','DINE IN, 17:03 | 27:51 Min','Cash','PAID','$27.08', false],
-  ['112','Quick Order','DINE IN, 17:03 | 28:37 Min','','ORDERED','$52.02', false],
-  ['111','Guest','Dine-In, 16:52 | 34:10 Min','Staff','ORDERING','$0.00', false],
-  ['110','Quick Order','DINE IN, 16:44 | 41:02 Min','Card','PAID','$18.40', false],
-  ['109','Quick Order','DINE IN, 16:43 | 42:27 Min','','HOLD (5 min)','$21.45', false],
-  ['108','Quick Order','DINE IN, 16:42 | 43:34 Min','Cash','PAID','$33.25', false],
-  ['107','Quick Order','DINE IN, 16:41 | 44:18 Min','','HOLD (5 min)','$21.45', false],
-  ['106','Quick Order','DINE IN, 16:38 | 47:20 Min','Cash','PAID','$26.97', false],
+/* ---------- clock-in keypad ---------- */
+const KEYS = [
+  ['7', ''], ['8', ''], ['9', ''],
+  ['4', ''], ['5', ''], ['6', ''],
+  ['1', ''], ['2', ''], ['3', ''],
+  ['C', 'red'], ['0', ''], ['ENTER', 'dark'],
+  ['Clock Out', 'out'], ['Break', 'brk'], ['Clock In', 'in'],
 ];
-const tlist = document.getElementById('tlist');
-TICKETS.forEach(([n, name, sub, pay, stat, amt, on], i) => {
+const kgrid = $('kgrid');
+KEYS.forEach((k, i) => {
   const d = document.createElement('div');
-  d.className = 'trow';
-  if (on) d.id = 'trow-114';
-  const col = stat === 'PAID' ? '#eab308' : stat === 'ORDERED' ? '#9aa1ad' : stat.startsWith('HOLD') ? '#f59e0b' : '#ef4444';
-  d.innerHTML = `<div class="tnum">${n}<div class="tsub">000</div></div>
-    <div><div class="tname">${name}</div><div class="tsub">${sub}</div></div>
-    <div style="margin-left:60px;font-size:12.5px;font-weight:700;color:#9aa1ad">${pay}</div>
-    <div class="tpay"><div class="tstat" style="color:${col}">${stat}</div><div class="tamt">${amt}</div><div class="tsub">$0.00</div></div>`;
-  tlist.appendChild(d);
+  d.className = 'key ' + k[1];
+  d.id = 'k' + i;
+  d.textContent = k[0];
+  kgrid.appendChild(d);
 });
 
+/* ---------- check line items ---------- */
 const LINES = [
-  { name: 'Spinach Artichoke Dip', price: '$21.49', mods: ['Extra Crispy', 'To-Go Container', 'Side Dressing', 'Add: Avocado +$2.50', 'Add: Bacon +$2.00', 'Add: Extra Cheese +$1.50', 'Add: Mushrooms +$1.00'] },
-  { name: 'Buffalo Wings (10pc)', price: '$13.99', mods: ['Extra Spicy', 'Ranch on Side'] },
-  { name: 'Truffle Fries', price: '$7.99', mods: ['Extra Parmesan'] },
+  { qty: '1 ea', nm: 'Chicken Crepe', sub: 'Preparation: Extra Sauce', pr: '$20.00' },
+  { qty: '1 ea', nm: 'Caprice Sandwich', sub: 'Main', pr: '$20.00' },
+  { qty: '1 ea', nm: 'Figaro BLT', sub: 'Main', pr: '$20.00' },
 ];
-const lines = document.getElementById('lines');
+const linesEl = $('lines');
 LINES.forEach((l, i) => {
   const d = document.createElement('div');
-  d.className = 'line'; d.id = 'line' + i;
-  d.innerHTML = `<div class="lhead"><span class="qty">1</span><span class="lname">${l.name}</span><span class="lprice">${l.price}</span></div>
-    <div class="mods">${l.mods.map(m => '&bull; ' + m).join('<br/>')}</div>`;
-  lines.appendChild(d);
+  d.className = 'line';
+  d.id = 'ln' + i;
+  d.innerHTML =
+    '<div class="qty">' + l.qty + '</div>' +
+    '<div style="flex:1"><div class="lnm">' + l.nm + '</div><div class="lsub">' + l.sub + '</div></div>' +
+    '<div class="lpr">' + l.pr + '</div>';
+  linesEl.appendChild(d);
 });
 
-const MODVALS = {
-  size: [['Regular', ''], ['Large', '$2.00'], ['Extra Large', '$3.50']],
-  prep: [['Standard', ''], ['Extra Crispy', ''], ['Well Done', ''], ['Lightly Baked', '']],
+/* ---------- timeline ---------- */
+const T = {
+  signIn: [0, 0.5],
+  email: [0.7, 1.9],
+  pass: [2.0, 2.9],
+  tapSignIn: 3.25,
+  loading: [3.45, 4.5],
+  appIn: [4.45, 4.85],
+  pins: [5.0, 5.4, 5.8, 6.2],
+  tapClockIn: 6.7,
+  tapEnter: 7.1,
+  keypadOut: [7.25, 7.75],
+  toast: [7.6, 10.6],
+  tapCrepe: 8.6,
+  sheetIn: [8.7, 9.2],
+  tapSauce: 9.75,
+  tapAdd: 10.3,
+  sheetOut: [10.4, 10.85],
+  addItems: [10.9, 11.6, 12.2], // line 0,1,2 land times
+  tapCharge: 13.1,
+  payIn: [13.2, 13.75],
+  tapCash: 14.3,
+  cashIn: [14.4, 14.85],
+  tapExact: 15.4,
+  tapChargeCash: 16.0,
+  successIn: [16.3, 16.8],
+  outro: [18.7, 19.6],
 };
-const modvals = document.getElementById('modvals');
-function paintMods(group, selIdx) {
-  modvals.innerHTML = MODVALS[group].map(([n, p], i) =>
-    `<div class="chip${i === selIdx ? ' sel' : ''}" id="mv-${group}-${i}">${n}${p ? ` <span style="opacity:.6">${p}</span>` : ''}</div>`).join('');
+
+/* cursor waypoints: [t, x, y] */
+const WP = [
+  [0.0, 1180, 300],
+  [0.8, 1195, 330],   // email field
+  [2.05, 1195, 425],  // password field
+  [3.1, 1240, 500],   // sign in
+  [4.9, 1180, 300],
+  [5.0, 1140, 280],   // pin 7
+  [5.4, 1300, 280],   // 8
+  [5.8, 1140, 355],   // 4
+  [6.2, 1300, 430],   // 2
+  [6.65, 1400, 630],  // Clock In
+  [7.1, 1400, 470],   // ENTER
+  [8.5, 465, 420],    // chicken crepe
+  [9.7, 785, 620],    // extra sauce
+  [10.25, 800, 800],  // ADD
+  [11.5, 240, 500],   // caprice plus
+  [12.15, 1070, 500], // figaro plus
+  [13.05, 1420, 830], // CHARGE
+  [14.25, 1390, 245], // Cash tender
+  [15.35, 745, 360],  // EXACT
+  [15.95, 800, 745],  // CHARGE cash
+  [17.2, 800, 500],
+];
+
+function cursorAt(t) {
+  let a = WP[0];
+  let b = WP[WP.length - 1];
+  for (let i = 0; i < WP.length - 1; i++) {
+    if (t >= WP[i][0] && t <= WP[i + 1][0]) { a = WP[i]; b = WP[i + 1]; break; }
+    if (t > WP[WP.length - 1][0]) { a = b = WP[WP.length - 1]; }
+  }
+  const p = a === b ? 1 : ease(clamp((t - a[0]) / (b[0] - a[0]), 0, 1));
+  return [a[1] + (b[1] - a[1]) * p, a[2] + (b[2] - a[2]) * p];
 }
-paintMods('size', -1);
 
-const $ = (id) => document.getElementById(id);
-const easeIO = (p) => p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
-const easeOut = (p) => 1 - Math.pow(1 - p, 3);
-const clamp01 = (p) => Math.max(0, Math.min(1, p));
-const seg = (t, a, b) => clamp01((t - a) / (b - a));
-const money = (v) => '$' + v.toFixed(2);
-
-/* taps: time + element id (measured once with overlays settled) */
 const TAPS = [
-  { t: 1.10, id: 'item-spinach' },
-  { t: 2.40, id: 'mv-size-1' },
-  { t: 3.20, id: 'mg-prep' },
-  { t: 3.90, id: 'mv-prep-1' },
-  { t: 4.70, id: 'sadd' },
-  { t: 6.10, id: 'plus-wings' },
-  { t: 7.20, id: 'plus-truffle' },
-  { t: 8.30, id: 'charge' },
-  { t: 9.70, id: 't-card' },
-  { t: 10.60, id: 'paycharge' },
-  { t: 13.60, id: 'norec' },
+  T.tapSignIn, T.pins[0], T.pins[1], T.pins[2], T.pins[3], T.tapClockIn, T.tapEnter,
+  T.tapCrepe, T.tapSauce, T.tapAdd, T.addItems[1] - 0.1, T.addItems[2] - 0.1,
+  T.tapCharge, T.tapCash, T.tapExact, T.tapChargeCash,
 ];
-/* login-phase taps, absolute time from 0 */
-const LOGIN_TAPS = [
-  { t: 1.15, id: 'siPwField' },
-  { t: 2.95, id: 'siBtn' },
-  { t: 5.35, id: 'k4' },
-  { t: 5.80, id: 'k9' },
-  { t: 6.25, id: 'k2' },
-  { t: 6.70, id: 'k1' },
-  { t: 7.45, id: 'kent' },
-];
-const START = { x: 1500, y: 960 };
-const LOGIN_START = { x: 980, y: 900 };
-let P = {};
 
-function settleAndMeasure() {
-  paintMods('prep', -1);
-  const prepIds = ['mv-prep-0', 'mv-prep-1', 'mv-prep-2', 'mv-prep-3'];
-  const overlays = ['sheet', 'paymodal', 'success'];
-  overlays.forEach(id => { $(id).style.opacity = 1; $(id).style.transform = 'none'; });
-  const collect = (ids) => ids.forEach(id => {
-    const el = $(id); if (!el) return;
-    const r = el.getBoundingClientRect();
-    P[id] = { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+const EMAIL = 'memocafe@eatos.com';
+
+function pressed(t, at) {
+  return t >= at && t < at + 0.16;
+}
+
+window.__render = function (t) {
+  const cls = (el, c, on) => el.classList.toggle(c, !!on);
+
+  /* --- sign in --- */
+  const signVis = t < T.loading[0] + 0.1 ? 1 - seg(t, T.loading[0] - 0.15, T.loading[0] + 0.1) : 0;
+  $('signin').style.opacity = Math.min(seg(t, T.signIn[0], T.signIn[1]), signVis);
+
+  const en = Math.round(seg(t, T.email[0], T.email[1]) * EMAIL.length);
+  const emailv = $('emailv');
+  if (en === 0) { emailv.textContent = 'Enter Email'; emailv.className = 'ph'; }
+  else { emailv.textContent = EMAIL.slice(0, en); emailv.className = ''; }
+  cls($('emailf'), 'focus', t >= T.email[0] - 0.2 && t < T.pass[0]);
+
+  const pn = Math.round(seg(t, T.pass[0], T.pass[1]) * 10);
+  const passv = $('passv');
+  if (pn === 0) { passv.textContent = 'Enter Password'; passv.className = 'ph'; }
+  else { passv.textContent = '\u2022'.repeat(pn); passv.className = ''; }
+  cls($('passf'), 'focus', t >= T.pass[0] - 0.2 && t < T.tapSignIn + 0.2);
+  $('signbtn').style.transform = pressed(t, T.tapSignIn) ? 'scale(0.97)' : 'scale(1)';
+
+  /* --- loading --- */
+  const lv = seg(t, T.loading[0] - 0.1, T.loading[0] + 0.15) * (1 - seg(t, T.appIn[0], T.appIn[1]));
+  $('loading').style.opacity = lv;
+  const lp = clamp((t - T.loading[0]) / (T.loading[1] - T.loading[0]), 0, 1);
+  $('lpct').textContent = Math.round(lp * 100) + '%';
+  $('lring').style.transform = 'rotate(' + (t * 620).toFixed(1) + 'deg)';
+
+  /* --- app --- */
+  $('app').style.opacity = seg(t, T.appIn[0], T.appIn[1]) * (1 - seg(t, T.outro[0] + 0.6, T.outro[1]));
+
+  /* clock-in overlay */
+  const kIn = seg(t, T.appIn[0], T.appIn[1] + 0.15);
+  const kOut = seg(t, T.keypadOut[0], T.keypadOut[1]);
+  const kv = kIn * (1 - kOut);
+  $('scrim').style.opacity = kv;
+  $('clockleft').style.opacity = kv;
+  $('keypad').style.opacity = kv;
+  $('keypad').style.transform = 'translateY(' + (18 * (1 - kIn) + 26 * kOut).toFixed(1) + 'px)';
+
+  let filled = 0;
+  T.pins.forEach((pt) => { if (t >= pt + 0.05) filled++; });
+  for (let i = 0; i < 4; i++) cls($('s' + i), 'on', i < filled);
+
+  const keyTaps = { 0: T.pins[0], 1: T.pins[1], 3: T.pins[2], 7: T.pins[3], 14: T.tapClockIn, 11: T.tapEnter };
+  Object.keys(keyTaps).forEach((k) => cls($('k' + k), 'press', pressed(t, keyTaps[k])));
+
+  /* toast */
+  $('toast').style.opacity = seg(t, T.toast[0], T.toast[0] + 0.3) * (1 - seg(t, T.toast[1], T.toast[1] + 0.35));
+  $('toast').style.transform = 'translateY(' + (-16 * (1 - seg(t, T.toast[0], T.toast[0] + 0.3))).toFixed(1) + 'px)';
+
+  /* item press feedback */
+  for (let i = 0; i < ITEMS.length; i++) $('it' + i).style.transform = 'scale(1)';
+  if (pressed(t, T.tapCrepe)) $('it1').style.transform = 'scale(0.975)';
+  if (pressed(t, T.addItems[1] - 0.1)) $('it0').style.transform = 'scale(0.975)';
+  if (pressed(t, T.addItems[2] - 0.1)) $('it5').style.transform = 'scale(0.975)';
+
+  /* modifier sheet */
+  const sIn = seg(t, T.sheetIn[0], T.sheetIn[1]);
+  const sOut = seg(t, T.sheetOut[0], T.sheetOut[1]);
+  const sv = sIn * (1 - sOut);
+  $('sheetwrap').style.opacity = sv;
+  $('sheet').style.transform = 'translateY(' + (120 * (1 - sIn) + 140 * sOut).toFixed(1) + 'px)';
+  const sauceOn = t >= T.tapSauce + 0.05;
+  cls($('optsauce'), 'on', sauceOn);
+  $('addbtn').textContent = 'ADD \u00b7 ' + (sauceOn ? '$20.00' : '$19.00');
+  $('sheetsum').textContent = 'Foccacia \u00b7 Medium Rare \u00b7 Main' + (sauceOn ? ' \u00b7 Extra Sauce' : '');
+  $('addbtn').style.transform = pressed(t, T.tapAdd) ? 'scale(0.98)' : 'scale(1)';
+
+  /* check panel */
+  let count = 0;
+  T.addItems.forEach((at, i) => {
+    const v = seg(t, at, at + 0.32);
+    const el = $('ln' + i);
+    el.style.opacity = v;
+    el.style.transform = 'translateY(' + (14 * (1 - v)).toFixed(1) + 'px)';
+    if (t >= at + 0.16) count++;
   });
-  collect(prepIds.concat(['mg-prep', 'sadd', 'item-spinach', 'plus-wings', 'plus-truffle', 'charge', 't-card', 'paycharge', 'norec']));
-  paintMods('size', -1);
-  collect(['mv-size-0', 'mv-size-1', 'mv-size-2']);
-  collect(['siPwField', 'siBtn', 'k1', 'k2', 'k4', 'k9', 'kent']);
-  overlays.forEach(id => { $(id).style.opacity = 0; });
-}
+  $('empty').style.opacity = 1 - seg(t, T.addItems[0], T.addItems[0] + 0.25);
+  $('empty').style.display = t >= T.addItems[0] + 0.3 ? 'none' : 'flex';
+  const sub = count * 20;
+  const growth = seg(t, T.addItems[0], T.addItems[0] + 0.3);
+  const subShown = count === 0 ? 0 : sub;
+  $('tsub').textContent = money(subShown * (count === 1 ? growth : 1));
+  $('ttax').textContent = money(subShown * 0.2 * (count === 1 ? growth : 1));
+  $('ttot').textContent = money(subShown * 1.2 * (count === 1 ? growth : 1));
+  cls($('chargebtn'), 'live', count > 0);
+  $('chargebtn').textContent = count > 0 ? 'CHARGE ' + money(subShown * 1.2) : 'CHARGE';
+  $('chargebtn').style.transform = pressed(t, T.tapCharge) ? 'scale(0.98)' : 'scale(1)';
+  $('gstat').textContent = t >= T.addItems[0] ? 'ARRIVED AT 5:43 PM' : 'NOT STARTED';
 
-/* ---------- cursor + ripple, shared by both phases ---------- */
-function cursorAndRipple(t, taps, start, hide) {
-  let from = start, to = taps[0], prevT = 0;
-  for (let i = 0; i < taps.length; i++) {
-    if (t <= taps[i].t || i === taps.length - 1) { to = taps[i]; from = i === 0 ? start : P[taps[i - 1].id]; prevT = i === 0 ? 0 : taps[i - 1].t; break; }
+  /* payment screen */
+  const pIn = seg(t, T.payIn[0], T.payIn[1]);
+  const pOut = seg(t, T.successIn[0], T.successIn[1]);
+  $('pay').style.opacity = pIn;
+  $('pay').style.transform = 'translateX(' + (60 * (1 - pIn)).toFixed(1) + 'px)';
+  cls($('tcash'), 'on', t >= T.tapCash + 0.05);
+  $('tcash').style.transform = pressed(t, T.tapCash) ? 'scale(0.985)' : 'scale(1)';
+
+  const cIn = seg(t, T.cashIn[0], T.cashIn[1]);
+  $('cashwrap').style.opacity = cIn * (1 - pOut);
+  $('cash').style.transform = 'translateY(' + (90 * (1 - cIn)).toFixed(1) + 'px)';
+  const exact = t >= T.tapExact + 0.05;
+  cls($('qexact'), 'on', exact);
+  $('amt').textContent = exact ? '$72.00' : '$0.00';
+  cls($('cashcharge'), 'live', exact);
+  $('cashcharge').style.transform = pressed(t, T.tapChargeCash) ? 'scale(0.985)' : 'scale(1)';
+
+  /* success */
+  const suc = pOut * (1 - seg(t, T.outro[0], T.outro[0] + 0.5));
+  $('success').style.opacity = suc;
+  const pop = seg(t, T.successIn[0], T.successIn[1] + 0.2);
+  $('success').querySelector('.ring').style.transform = 'scale(' + (0.7 + 0.3 * pop).toFixed(3) + ')';
+
+  /* cursor + ripple */
+  const cur = cursorAt(t);
+  const hideCursor = suc > 0.4 ? 0 : 1;
+  $('cursor').style.transform = 'translate(' + cur[0].toFixed(1) + 'px,' + cur[1].toFixed(1) + 'px)';
+  $('cursor').style.opacity = hideCursor;
+
+  let rv = 0, rs = 0.2;
+  for (const tp of TAPS) {
+    const p = clamp((t - tp) / 0.5, 0, 1);
+    if (t >= tp && p < 1) { rv = 1 - p; rs = 0.2 + 0.9 * ease(p); }
   }
-  const target = P[to.id] || start;
-  const travelStart = Math.max(prevT + 0.14, to.t - 0.7);
-  const cp = easeIO(seg(t, travelStart, to.t));
-  const cx = (from ? from.x : start.x) + (target.x - (from ? from.x : start.x)) * cp;
-  const cy = (from ? from.y : start.y) + (target.y - (from ? from.y : start.y)) * cp;
-  const cur = $('cursor');
-  cur.style.opacity = hide ? 0 : 1;
-  cur.style.left = cx + 'px';
-  cur.style.top = cy + 'px';
+  const rip = $('rip');
+  rip.style.opacity = rv * 0.9;
+  rip.style.left = cur[0] + 'px';
+  rip.style.top = cur[1] + 'px';
+  rip.style.transform = 'scale(' + rs.toFixed(3) + ')';
+};
 
-  const rp = $('ripple');
-  rp.style.opacity = 0;
-  for (const tap of taps) {
-    const p = (t - tap.t) / 0.45;
-    if (p >= 0 && p <= 1) {
-      const pt = P[tap.id] || start;
-      rp.style.left = pt.x + 'px'; rp.style.top = pt.y + 'px';
-      rp.style.transform = `scale(${0.25 + 1.15 * easeOut(p)})`;
-      rp.style.opacity = 0.6 * (1 - p);
-    }
-    const pr = (t - tap.t) / 0.14;
-    if (pr >= 0 && pr <= 1) {
-      const el = $(tap.id);
-      if (el) el.style.transform = `scale(${1 - 0.045 * Math.sin(pr * Math.PI)})`;
-    }
-  }
-}
-
-/* ---------- login phase ---------- */
-const CAPS = [
-  ['The AI-first restaurant operating system', 'One platform to run, manage, and grow your restaurant.'],
-  ['Meet your AI restaurant manager', 'eatOS learns your menu, predicts demand, and helps your team serve faster.'],
-];
-function renderLogin(t) {
-  ['siPwField', 'siBtn', 'k1', 'k2', 'k4', 'k9', 'kent'].forEach(id => { const el = $(id); if (el) el.style.transform = ''; });
-
-  /* screen visibility */
-  const siOut = easeIO(seg(t, 3.25, 3.60));
-  const ldIn = easeIO(seg(t, 3.30, 3.60)), ldOut = easeIO(seg(t, 4.55, 4.85));
-  const ciIn = easeIO(seg(t, 4.60, 4.95));
-  $('signin').style.opacity = 1 - siOut;
-  $('loading').style.opacity = ldIn * (1 - ldOut);
-  $('clockin').style.opacity = ciIn;
-  $('posroot').style.opacity = easeIO(seg(t, OFFSET - 0.45, OFFSET));
-  $('clockin').style.opacity = ciIn * (1 - easeIO(seg(t, OFFSET - 0.45, OFFSET - 0.05)));
-
-  /* caption rotation on the marketing panel */
-  const ci = t >= 2.10 ? 1 : 0;
-  $('siCapTitle').textContent = CAPS[ci][0];
-  $('siCapBody').textContent = CAPS[ci][1];
-  $('siDot0').className = ci === 0 ? 'on' : '';
-  $('siDot1').className = ci === 1 ? 'on' : '';
-
-  /* password typing */
-  const typed = t < 1.20 ? 0 : Math.min(11, Math.floor((t - 1.20) / 0.075));
-  $('siPw').textContent = '\u2022'.repeat(typed);
-  $('siPwField').className = 'siField' + (t >= 1.15 ? ' on' : '');
-  const ready = typed >= 11;
-  $('siBtn').style.background = ready ? '#f4f4f5' : '#2a2d34';
-  $('siBtn').style.color = ready ? '#111318' : '#8b95a3';
-
-  /* spinner */
-  $('spinner').style.transform = `rotate(${(t * 420) % 360}deg)`;
-
-  /* PIN masks */
-  const pinTimes = [5.35, 5.80, 6.25, 6.70];
-  pinTimes.forEach((pt, i) => { $('ciM' + i).className = t >= pt ? 'on' : ''; });
-  $('kent').style.opacity = t >= 6.70 ? 1 : 0.75;
-  /* keypad dims after ENTER, as in the app */
-  const dimmed = t >= 7.45;
-  ['k1', 'k2', 'k3', 'k4', 'k5', 'k6', 'k7', 'k8', 'k9', 'k0'].forEach(id => {
-    const el = $(id); if (el) el.className = 'ciKey' + (dimmed ? ' dim' : '') + (id === 'kc' ? ' clr' : '');
-  });
-  $('kc').className = 'ciKey clr' + (dimmed ? ' dim' : '');
-
-  cursorAndRipple(t, LOGIN_TAPS, LOGIN_START, t > 7.80);
-}
-
-
-function renderPos(t) {
-  /* ---- reset transient ---- */
-  ['item-spinach', 'plus-wings', 'plus-truffle', 'charge', 'sadd', 'mg-prep', 't-card', 'paycharge', 'norec', 'mv-size-1', 'mv-prep-1']
-    .forEach(id => { const el = $(id); if (el) el.style.transform = ''; });
-
-  /* ---- modifier group + selections ---- */
-  const prepActive = t >= 3.20;
-  paintMods(prepActive ? 'prep' : 'size', prepActive ? (t >= 3.90 ? 1 : -1) : (t >= 2.40 ? 1 : -1));
-  $('mg-size').className = 'chip' + (prepActive ? '' : ' sel');
-  $('mg-prep').className = 'chip' + (prepActive ? ' sel' : '');
-  const sizeUp = t >= 2.40;
-  $('sheetprice').textContent = sizeUp ? '$12.99' : '$10.99';
-  $('sadd').textContent = sizeUp ? 'ADD $12.99' : 'ADD $10.99';
-
-  /* ---- sheet ---- */
-  const sIn = seg(t, 1.25, 1.85), sOut = seg(t, 4.72, 5.15);
-  const sheetVis = easeOut(sIn) * (1 - easeIO(sOut));
-  $('sheet').style.opacity = sheetVis;
-  $('sheet').style.transform = `translateY(${(1 - easeOut(sIn)) * 70 + easeIO(sOut) * 50}px) scale(${0.97 + 0.03 * easeOut(sIn)})`;
-
-  /* ---- check lines ---- */
-  const addTimes = [5.00, 6.16, 7.26];
-  let n = 0;
-  addTimes.forEach((at, i) => {
-    const p = easeOut(seg(t, at, at + 0.45));
-    const el = $('line' + i);
-    el.style.opacity = p;
-    el.style.transform = `translateY(${(1 - p) * 14}px)`;
-    if (t >= at) n = i + 1;
-  });
-  $('empty').style.display = t >= 5.0 ? 'none' : 'flex';
-  $('lines').style.display = t >= 5.0 ? 'block' : 'none';
-
-  const subs = [0, 21.49, 35.48, 43.47];
-  let sub = subs[n];
-  if (n > 0) { const at = addTimes[n - 1]; sub = subs[n - 1] + (subs[n] - subs[n - 1]) * easeOut(seg(t, at, at + 0.5)); }
-  const tax = sub * 0.0736;
-  $('tsub').textContent = money(sub);
-  $('ttax').textContent = money(tax);
-  $('charge').textContent = 'CHARGE ' + money(sub + tax);
-  $('ordnum').textContent = '115';
-
-  /* ---- payment modal ---- */
-  const pIn = seg(t, 8.42, 9.00), pOut = seg(t, 11.42, 11.72);
-  const payVis = easeOut(pIn) * (1 - easeIO(pOut));
-  $('paymodal').style.opacity = payVis;
-  $('paymodal').style.transform = `translateY(${(1 - easeOut(pIn)) * 60 - easeIO(pOut) * 24}px) scale(${0.97 + 0.03 * easeOut(pIn) - 0.02 * easeIO(pOut)})`;
-  $('t-card').className = 'tender' + (t >= 9.70 ? ' sel' : '');
-  const processing = t >= 10.62 && t < 11.5;
-  $('amount').textContent = processing ? 'Processing' + '.'.repeat(1 + (Math.floor((t - 10.62) * 3) % 3)) : '$46.67';
-  $('amount').style.color = processing ? '#e5e7eb' : '#22c55e';
-  $('paycharge').style.opacity = processing ? 0.45 : 1;
-
-  /* ---- success ---- */
-  const scIn = seg(t, 11.78, 12.18), scOut = seg(t, 13.62, 14.05);
-  const scVis = easeOut(scIn) * (1 - easeIO(scOut));
-  $('success').style.opacity = scVis;
-  $('success').style.transform = `translateY(${(1 - easeOut(scIn)) * 40}px)`;
-  const tickP = easeOut(seg(t, 11.98, 12.45));
-  $('tick').style.transform = `scale(${0.4 + 0.6 * tickP})`;
-  $('tick').style.opacity = tickP;
-  $('change').style.opacity = easeOut(seg(t, 12.35, 12.8));
-
-  /* ---- scrim ---- */
-  const scrim = Math.max(sheetVis, payVis, scVis);
-  $('scrim').style.opacity = scrim * 0.9;
-
-  /* ---- tickets view ---- */
-  const tv = easeOut(seg(t, 13.75, 14.35));
-  $('ticketsview').style.opacity = tv;
-  $('ticketsview').style.transform = `translateX(${(1 - tv) * 60}px)`;
-  $('menuview').style.opacity = 1 - tv;
-  const hl = easeOut(seg(t, 14.4, 14.9));
-  $('trow-114').style.outline = hl > 0.5 ? '2px solid #fff' : 'none';
-  $('trow-114').style.background = hl > 0.5 ? '#16202f' : '#111722';
-
-  /* ---- reset wipe to loop ---- */
-  const fUp = easeIO(seg(t, 16.60, 17.05)), fDn = easeIO(seg(t, 17.15, 17.60));
-  $('fader').style.opacity = fUp - fDn;
-  if (t >= 17.12) { /* back to idle menu */
-    $('ticketsview').style.opacity = 0; $('menuview').style.opacity = 1;
-    $('empty').style.display = 'flex'; $('lines').style.display = 'none';
-    $('tsub').textContent = '$0.00'; $('ttax').textContent = '$0.00'; $('charge').textContent = 'CHARGE $0.00';
-    $('success').style.opacity = 0; $('scrim').style.opacity = 0;
-  }
-
-  /* ---- cursor + ripple ---- */
-  cursorAndRipple(t, TAPS, START, t > 16.5);
-}
-
-function render(T) {
-  if (T < OFFSET) {
-    renderPos(0);
-    renderLogin(T);
-  } else {
-    $('signin').style.opacity = 0;
-    $('loading').style.opacity = 0;
-    $('clockin').style.opacity = 0;
-    $('posroot').style.opacity = 1;
-    renderPos(T - OFFSET);
-  }
-}
-
-settleAndMeasure();
-window.__render = render;
-window.__meta = { fps: FPS, dur: DUR, frames: Math.round(FPS * DUR) };
-render(0);
-
+window.__render(0);
