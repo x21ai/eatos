@@ -2,7 +2,7 @@
    window.__render(t) paints the exact state at time t (seconds). */
 
 const FPS = 30;
-const DUR = 22.0;
+const DUR = 23.0;
 window.__meta = { fps: FPS, frames: Math.round(FPS * DUR) };
 
 const $ = (id) => document.getElementById(id);
@@ -149,14 +149,12 @@ const T = {
   toast: [7.6, 10.4],
   boardStart: 4.5,
   bump1: 8.9,
-  seen1: 10.1,
-  prep1: 12.0,
-  slide1: [12.15, 12.9],
-  bump2: 14.3,
-  seen2: 15.5,
-  prep2: 17.2,
-  slide2: [17.35, 18.1],
-  outro: [20.8, 21.7],
+  acts1: [9.9, 10.9, 11.9],
+  slide1: [12.6, 13.35],
+  bump2: 14.6,
+  acts2: [15.6, 16.6, 17.6],
+  slide2: [18.3, 19.05],
+  outro: [21.6, 22.6],
 };
 
 const PITCH = 336;
@@ -175,11 +173,9 @@ function tapPos(id, off) {
 
 const P = {
   bump1: tapPos('bmp0_0', 0),
-  seen1: tapPos('act0', 0),
-  prep1: tapPos('act0', 0),
+  act1: tapPos('act0', 0),
   bump2: tapPos('bmp1_0', 1),
-  seen2: tapPos('act1', 1),
-  prep2: tapPos('act1', 1),
+  act2: tapPos('act1', 1),
 };
 
 /* cursor waypoints: [t, x, y] */
@@ -196,12 +192,10 @@ const WP = [
   [6.65, 1400, 630],
   [7.1, 1400, 470],
   [T.bump1, P.bump1[0], P.bump1[1]],
-  [T.seen1, P.seen1[0], P.seen1[1]],
-  [T.prep1, P.prep1[0], P.prep1[1]],
+  ...T.acts1.map((tt) => [tt, P.act1[0], P.act1[1]]),
   [T.bump2, P.bump2[0], P.bump2[1]],
-  [T.seen2, P.seen2[0], P.seen2[1]],
-  [T.prep2, P.prep2[0], P.prep2[1]],
-  [19.6, 700, 430],
+  ...T.acts2.map((tt) => [tt, P.act2[0], P.act2[1]]),
+  [20.4, 700, 430],
 ];
 
 function cursorAt(t) {
@@ -217,8 +211,11 @@ function cursorAt(t) {
 
 const TAPS = [
   T.tapSignIn, T.pins[0], T.pins[1], T.pins[2], T.pins[3], T.tapClockIn, T.tapEnter,
-  T.bump1, T.seen1, T.prep1, T.bump2, T.seen2, T.prep2,
+  T.bump1, ...T.acts1, T.bump2, ...T.acts2,
 ];
+
+const STATES = ['Seen', 'Preparing', 'Ready', 'Served'];
+const STATE_CLASS = ['', 'prep', 'ready', 'served'];
 
 const EMAIL = 'kitchen@eatos.com';
 const pressed = (t, at) => t >= at && t < at + 0.16;
@@ -292,27 +289,23 @@ window.__render = function (t) {
   $('tk1').style.opacity = (1 - seg(t, T.slide2[0], T.slide2[0] + 0.4)).toFixed(3);
   $('tk1').style.transform = 'scale(' + (1 - 0.06 * s2).toFixed(3) + ')';
 
-  /* --- ticket 0 interaction --- */
-  const done0 = t >= T.bump1 + 0.08;
-  cls($('li0_0'), 'done', done0);
-  cls($('bmp0_0'), 'done', done0);
-  cls($('bmp0_0'), 'press', pressed(t, T.bump1));
-  const prep0 = t >= T.seen1 + 0.08;
-  cls($('act0'), 'prep', prep0);
-  cls($('act0'), 'press', pressed(t, T.seen1) || pressed(t, T.prep1));
-  $('actl0').textContent = prep0 ? 'Preparing' : 'Seen';
-  $('un0').style.display = prep0 ? 'flex' : 'none';
-
-  /* --- ticket 1 interaction --- */
-  const done1 = t >= T.bump2 + 0.08;
-  cls($('li1_0'), 'done', done1);
-  cls($('bmp1_0'), 'done', done1);
-  cls($('bmp1_0'), 'press', pressed(t, T.bump2));
-  const prep1 = t >= T.seen2 + 0.08;
-  cls($('act1'), 'prep', prep1);
-  cls($('act1'), 'press', pressed(t, T.seen2) || pressed(t, T.prep2));
-  $('actl1').textContent = prep1 ? 'Preparing' : 'Seen';
-  $('un1').style.display = prep1 ? 'flex' : 'none';
+  /* --- ticket interactions --- */
+  function ticket(idx, bumpT, acts) {
+    const done = t >= bumpT + 0.08;
+    cls($('li' + idx + '_0'), 'done', done);
+    cls($('bmp' + idx + '_0'), 'done', done);
+    cls($('bmp' + idx + '_0'), 'press', pressed(t, bumpT));
+    let n = 0;
+    acts.forEach((at) => { if (t >= at + 0.08) n++; });
+    const st = Math.min(n, STATES.length - 1);
+    STATE_CLASS.forEach((c, k) => { if (c) cls($('act' + idx), c, k === st && n > 0); });
+    cls($('act' + idx), 'press', acts.some((at) => pressed(t, at)));
+    $('actl' + idx).textContent = STATES[st];
+    $('un' + idx).style.display = n > 0 ? 'flex' : 'none';
+    return done;
+  }
+  const done0 = ticket(0, T.bump1, T.acts1);
+  const done1 = ticket(1, T.bump2, T.acts2);
 
   /* --- counters --- */
   const cleared = (t >= T.slide1[0] + 0.25 ? 1 : 0) + (t >= T.slide2[0] + 0.25 ? 1 : 0);
