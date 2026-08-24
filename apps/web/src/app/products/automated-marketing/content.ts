@@ -64,7 +64,7 @@ export const features = [
     id: 'data-driven-insights',
     title: 'Data-Driven Insights',
     body:
-      'See which campaigns bring guests back and which offers fall flat. Track opens, clicks, redemptions and revenue in one clear dashboard.',
+      'See which campaigns bring guests back and which offers fall flat. Track opens, redemptions and revenue in one dashboard.',
     more:
       'Use real-time analytics to refine strategies, identify new opportunities and optimize restaurant operations based on actionable data-driven insights.',
     imageLabel: 'Marketing analytics and performance report',
@@ -81,7 +81,7 @@ export const hardware = {
   specs: [
     {
       title: 'Behavior triggers',
-      body: 'Launch campaigns automatically when a guest visits, spends, abandons a cart or celebrates a birthday.',
+      body: 'Launch campaigns automatically when a guest visits, spends, celebrates a birthday.',
     },
     {
       title: 'Multi-channel reach',
@@ -89,7 +89,7 @@ export const hardware = {
     },
     {
       title: 'Built-in compliance',
-      body: 'Opt-in management, unsubscribe handling and secure data practices keep your marketing clean and compliant.',
+      body: 'Opt-in management, unsubscribe handling and secure data practices keep your marketing clean.',
     },
   ],
 };
