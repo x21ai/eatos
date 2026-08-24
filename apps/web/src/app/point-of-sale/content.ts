@@ -35,7 +35,7 @@ export const features = [
     more:
       'Tailor multiple menus to suit different times of day, special events and happy hours with ease, and push changes live in seconds.',
     imageLabel: 'Point of Sale terminal showing a live menu grid',
-    image: null,
+    image: menuImg.url,
     metrics: [
       { value: '100%', label: 'AI Generated' },
       { value: '100%', label: 'Efficiency Gain' },
@@ -49,7 +49,7 @@ export const features = [
     more:
       'Optimize efficiency through tailored layouts and dedicated service sections, while gaining insight from turnover data across the whole room.',
     imageLabel: 'Terminal showing a restaurant floor plan',
-    image: null,
+    image: tablesImg.url,
     metrics: [
       { value: '24/7', label: 'Optimize Service Flow' },
       { value: '100%', label: 'Turnover Visibility' },
@@ -63,7 +63,7 @@ export const features = [
     more:
       'Orders flow straight into the Point of Sale and Kitchen Display System, so data sharing stays smooth and updates land almost instantly.',
     imageLabel: 'Phone showing a white labeled ordering app',
-    image: null,
+    image: orderingImg.url,
     metrics: [
       { value: '$0', label: '3rd Party App Commission' },
       { value: '100%', label: 'White Labeled App and Website' },
@@ -77,7 +77,7 @@ export const features = [
     more:
       'With offline mode, orders are collected and sent to kitchen displays and printers instantly, and payments are processed securely once you reconnect.',
     imageLabel: 'Order taking continuing in offline mode',
-    image: null,
+    image: offlineImg.url,
     metrics: [
       { value: '100%', label: 'Offline Reliability' },
       { value: '100%', label: 'Business Continuity' },
