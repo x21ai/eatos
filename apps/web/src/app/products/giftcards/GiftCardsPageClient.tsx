@@ -150,7 +150,12 @@ export default function GiftCardsPageClient() {
         <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <motion.div {...rise} className="min-w-0">
-              <Placeholder label="eatOS custom gift card" ratio="aspect-[16/10]" bare />
+              <Placeholder
+                label="eatOS custom gift card"
+                ratio="aspect-[16/10]"
+                src="/__l5e/assets-v1/0bae0601-e371-46b7-978d-aadf4d3cdd45/giftcard-single.webp"
+                bare
+              />
             </motion.div>
 
             <motion.div {...rise} className="min-w-0">

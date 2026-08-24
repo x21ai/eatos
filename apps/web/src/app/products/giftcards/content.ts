@@ -5,8 +5,8 @@
 
 export const hero = {
   eyebrow: 'RESTAURANT TECHNOLOGY CLOUD',
-  title: 'Let Your Guests Share',
-  titleAccent: 'How Great Your Restaurant is!',
+  title: 'Gift Cards Guests',
+  titleAccent: 'Love to Share',
   description: 'Customize your own gift card design with eatOS.',
   primaryCta: { label: 'Order Now', href: '/book-demo' },
   imageLabel: 'Custom branded eatOS gift cards',
@@ -40,7 +40,7 @@ export const features = [
     more:
       'Guests buy digital cards from your website and send them by email, while physical cards activate at the register.',
     imageLabel: 'Physical and digital gift card purchase flow',
-    image: null,
+    image: '/__l5e/assets-v1/64f101ab-bd8c-40d1-bb34-e0279fee60d8/giftcard-digital.webp',
     metrics: [
       { value: '2', label: 'Formats, One System' },
       { value: '24/7', label: 'Online Sales' },
@@ -53,8 +53,8 @@ export const features = [
       'Every card works at every location you run, with live balances and liability reporting in one dashboard.',
     more:
       'See cards sold, value redeemed and outstanding liability by location, day or campaign.',
-    imageLabel: 'Gift card reporting dashboard',
-    image: null,
+    imageLabel: 'Custom branded gift card designs',
+    image: '/__l5e/assets-v1/9dc380a1-af4e-49db-9786-509ee97743fe/giftcard-designs.png',
     metrics: [
       { value: 'All', label: 'Locations Synced' },
       { value: 'Live', label: 'Liability Reporting' },
