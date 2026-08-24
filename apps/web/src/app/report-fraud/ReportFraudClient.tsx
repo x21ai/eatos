@@ -387,7 +387,7 @@ export default function ReportFraudClient() {
     <main className="bg-black">
       <Hero />
       <Guidance />
-      <ReportSection />
+      
       <Help />
       
     </main>
