@@ -184,11 +184,11 @@ export default function Footer({ variant = 'light' }) {
 
   const bgClass = isDark ? 'bg-black border-white/5' : 'bg-white border-gray-100';
   const headingClass = isDark
-    ? 'text-[11px] font-semibold tracking-widest text-gray-500 uppercase'
-    : 'text-[11px] font-semibold tracking-widest text-[#6e6e73] uppercase';
+    ? 'text-[11px] font-bold tracking-widest text-gray-300 uppercase'
+    : 'text-[11px] font-bold tracking-widest text-[#1d1d1f] uppercase';
   const linkClass = isDark
-    ? 'text-[14px] leading-6 text-gray-400 hover:text-white transition-colors'
-    : 'text-[14px] leading-6 text-[#424245] hover:text-black transition-colors';
+    ? 'text-[14px] leading-6 text-gray-400 transition-colors duration-200 hover:text-white hover:underline underline-offset-4 decoration-white/40'
+    : 'text-[14px] leading-6 text-[#424245] transition-colors duration-200 hover:text-black hover:underline underline-offset-4 decoration-black/30';
   const descClass = isDark
     ? 'text-[14px] leading-6 text-gray-500'
     : 'text-[14px] leading-6 text-[#6e6e73]';
