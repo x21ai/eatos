@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
+import BrochureButton from '@/components/BrochureButton';
 import { features, hardware, hero, keyFeatures } from './content';
 import { products } from '../products/products';
 
@@ -119,12 +120,7 @@ export default function HardwarePageClient() {
                 >
                   {hero.primaryCta.label}
                 </a>
-                <a
-                  href={hero.secondaryCta.href}
-                  className="px-8 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors text-center"
-                >
-                  {hero.secondaryCta.label}
-                </a>
+                <BrochureButton brochureId="restaurants-made-simple" />
               </motion.div>
             </div>
 
