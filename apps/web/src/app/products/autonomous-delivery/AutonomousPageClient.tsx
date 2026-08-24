@@ -4,16 +4,18 @@
 import {
   ChevronRight,
   Check,
-  ShoppingBag,
+  Bot,
   Zap,
   Shield,
   Clock,
   Monitor,
   ChefHat,
   Users,
-  Globe2,
-  UserRound,
-  BadgeDollarSign,
+  Bot,
+  Network,
+  Scale,
+
+
   MonitorSmartphone,
   FileSpreadsheet,
   Lock,
@@ -31,18 +33,18 @@ const relatedIcons = [
 ];
 
 const featureIcons = [
-  { Icon: Globe2, tint: 'bg-cyan-500/10 text-cyan-400' },
-  { Icon: UserRound, tint: 'bg-emerald-500/10 text-emerald-400' },
-  { Icon: BadgeDollarSign, tint: 'bg-sky-500/10 text-sky-400' },
+  { Icon: Bot, tint: 'bg-violet-500/10 text-violet-400' },
+  { Icon: Network, tint: 'bg-emerald-500/10 text-emerald-400' },
+  { Icon: Scale, tint: 'bg-sky-500/10 text-sky-400' },
 ];
 
 const hardwareIcons = [
-  { Icon: MonitorSmartphone, tint: 'bg-cyan-500/10 text-cyan-400' },
+  { Icon: MonitorSmartphone, tint: 'bg-violet-500/10 text-violet-400' },
   { Icon: FileSpreadsheet, tint: 'bg-emerald-500/10 text-emerald-400' },
   { Icon: Lock, tint: 'bg-sky-500/10 text-sky-400' },
 ];
 
-const related = products.filter((p) => p.slug !== 'autonomous-delivery').slice(0, 3);
+const related = products.filter((p) => p.slug !== 'autonomous-delivery' && !p.comingSoon).slice(0, 3);
 
 const rise = {
   initial: { opacity: 0, y: 30 },
@@ -50,13 +52,13 @@ const rise = {
   viewport: { once: true, amount: 0.2 },
 };
 
-export default function OrderingPageClient() {
+export default function AutonomousPageClient() {
   return (
-    <div className="min-h-screen bg-black text-white font-montserrat selection:bg-cyan-500/30">
+    <div className="min-h-screen bg-black text-white font-montserrat selection:bg-violet-500/30">
       {/* Hero */}
       <section className="relative pt-32 md:pt-44 pb-16 md:pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/20 via-cyan-600/10 to-transparent pointer-events-none" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-cyan-500/10 rounded-full blur-[150px] pointer-events-none opacity-50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-violet-500/20 via-violet-600/10 to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-violet-500/10 rounded-full blur-[150px] pointer-events-none opacity-50" />
 
         <div className="site-container relative z-10">
           <motion.div
@@ -68,7 +70,7 @@ export default function OrderingPageClient() {
               Products
             </a>
             <ChevronRight size={14} className="shrink-0" />
-            <span className="text-white">Online Ordering &amp; Delivery</span>
+            <span className="text-white">Autonomous Delivery</span>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -77,15 +79,15 @@ export default function OrderingPageClient() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-8 text-cyan-400"
+                className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center mb-8 text-violet-400"
               >
-                <ShoppingBag size={36} />
+                <Bot size={36} />
               </motion.div>
 
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-400 mb-4"
+                className="text-xs font-semibold uppercase tracking-[0.24em] text-violet-400 mb-4"
               >
                 {hero.eyebrow}
               </motion.p>
@@ -96,7 +98,7 @@ export default function OrderingPageClient() {
                 transition={{ duration: 0.6 }}
                 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-6"
               >
-                {hero.title} <span className="text-cyan-400">{hero.titleAccent}</span>
+                {hero.title} <span className="text-violet-400">{hero.titleAccent}</span>
               </motion.h1>
 
               <motion.p
@@ -120,7 +122,7 @@ export default function OrderingPageClient() {
                 >
                   {hero.primaryCta.label}
                 </a>
-                <BrochureButton brochureId="online-ordering-and-delivery" />
+                <BrochureButton brochureId="autonomous-delivery" />
               </motion.div>
             </div>
 
@@ -128,7 +130,7 @@ export default function OrderingPageClient() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="min-w-0 rounded-[2rem] md:rounded-[2.5rem] border border-cyan-500/20 bg-white/5 backdrop-blur-xl p-8 md:p-10"
+              className="min-w-0 rounded-[2rem] md:rounded-[2.5rem] border border-violet-500/20 bg-white/5 backdrop-blur-xl p-8 md:p-10"
             >
               <h2 className="text-xl font-bold tracking-tighter mb-8">Key features</h2>
               <div className="space-y-5 md:space-y-6">
@@ -140,7 +142,7 @@ export default function OrderingPageClient() {
                     transition={{ delay: 0.4 + index * 0.08 }}
                     className="flex items-start gap-4"
                   >
-                    <div className="w-8 h-8 shrink-0 rounded-full bg-cyan-500/10 text-cyan-400 flex items-center justify-center mt-0.5">
+                    <div className="w-8 h-8 shrink-0 rounded-full bg-violet-500/10 text-violet-400 flex items-center justify-center mt-0.5">
                       <Check size={16} />
                     </div>
                     <div className="min-w-0 text-base md:text-lg font-medium">{feature}</div>
@@ -204,7 +206,7 @@ export default function OrderingPageClient() {
                       key={metric.label}
                       className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 min-w-0"
                     >
-                      <div className="text-2xl font-bold tracking-tighter text-cyan-400">
+                      <div className="text-2xl font-bold tracking-tighter text-violet-400">
                         {metric.value}
                       </div>
                       <div className="mt-1 text-xs text-white/70">{metric.label}</div>
@@ -231,7 +233,7 @@ export default function OrderingPageClient() {
         <div className="site-container">
           <motion.div {...rise} className="text-center mb-14 md:mb-20">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">
-              Why Online Ordering &amp; Delivery?
+              Why Autonomous Delivery?
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
               Built for real restaurant operations. Designed to disappear into workflow.
@@ -359,7 +361,7 @@ export default function OrderingPageClient() {
       <section className="pb-20 md:pb-28">
         <div className="site-container">
           <motion.div {...rise} className="relative rounded-[2.5rem] md:rounded-[3rem] overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-cyan-600/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-br from-violet-500/20 via-violet-600/10 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
 
             <div className="relative z-10 p-10 md:p-20 text-center">
@@ -367,7 +369,7 @@ export default function OrderingPageClient() {
                 Ready to get started?
               </h2>
               <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-10">
-                See Online Ordering and Delivery in action. Book a demo and we will show you how it fits
+                See Autonomous Delivery in action. Book a demo and we will show you how it fits
                 your operation.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
