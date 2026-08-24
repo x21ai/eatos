@@ -66,7 +66,16 @@ export const demoSources: DemoSource[] = [
     url: 'https://kiosk6.lovable.app/',
     blurb: 'Self ordering that upsells guests, handles modifiers, and cuts waits.',
     device: 'tablet',
+    media: {
+      poster: kioskPoster.url,
+      sources: [
+        { src: kioskWebm.url, type: 'video/webm' },
+        { src: kioskMp4.url, type: 'video/mp4' },
+      ],
+      caption: 'Touch to start, build the order, tip and pay.',
+    },
   },
+
   {
     id: 'cfd',
     label: 'CFD',
