@@ -377,7 +377,7 @@ export default function HardwarePageClient() {
                 Ready to get started?
               </h2>
               <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-10">
-                See eatOS hardware in action. Book a quick{"\u00A0"}demo and we will show you{"\u00A0"}exactly how it{"\u00A0"}fits your restaurant.
+                See eatOS hardware in action. Book a demo and we will show you exactly how it fits your operation from day one.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
