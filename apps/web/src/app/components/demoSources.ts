@@ -4,6 +4,9 @@ import posPoster from './assets/pos-demo-poster.jpg.asset.json';
 import kdsMp4 from './assets/kds-demo.mp4.asset.json';
 import kdsWebm from './assets/kds-demo.webm.asset.json';
 import kdsPoster from './assets/kds-demo-poster.jpg.asset.json';
+import cfdMp4 from './assets/cfd-demo.mp4.asset.json';
+import cfdWebm from './assets/cfd-demo.webm.asset.json';
+import cfdPoster from './assets/cfd-demo-poster.jpg.asset.json';
 
 
 export type DemoMedia = {
@@ -65,7 +68,15 @@ export const demoSources: DemoSource[] = [
     label: 'CFD',
     url: 'https://cfd6.lovable.app/',
     blurb: 'A guest facing display for order clarity, tips, and pickup details.',
-    device: 'phone',
+    device: 'tablet',
+    media: {
+      poster: cfdPoster.url,
+      sources: [
+        { src: cfdWebm.url, type: 'video/webm' },
+        { src: cfdMp4.url, type: 'video/mp4' },
+      ],
+      caption: 'Check in, redeem a reward, tip, pay, and get the receipt.',
+    },
   },
   {
     id: 'dashboard',
