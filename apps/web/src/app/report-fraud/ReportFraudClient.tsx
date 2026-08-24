@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
-import { closing, helpChannels, hero, report, safetyRules, spotlights } from './content';
+import { helpChannels, hero, report, safetyRules, spotlights } from './content';
 
 const rise = {
   initial: { opacity: 0, y: 28 },
@@ -381,37 +381,6 @@ function Help() {
   );
 }
 
-function Closing() {
-  return (
-    <section className="bg-black text-white">
-      <div className="container mx-auto px-4 py-20 text-center md:px-6 md:py-28">
-        <Reveal>
-          <h2 className="mx-auto max-w-[24ch] font-bold leading-[1.12] tracking-tighter text-3xl md:text-5xl">
-            {closing.title}
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
-            {closing.description}
-          </p>
-          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
-              href={closing.primaryCta.href}
-              className="inline-flex w-full items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:w-auto"
-            >
-              {closing.primaryCta.label}
-            </a>
-            <a
-              href={closing.secondaryCta.href}
-              className="inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-white/20 px-7 py-3.5 text-sm font-semibold text-white/90 transition-colors hover:border-white/40 hover:text-white sm:w-auto"
-            >
-              {closing.secondaryCta.label}
-              <ArrowRight size={15} />
-            </a>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
 
 export default function ReportFraudClient() {
   return (
@@ -420,7 +389,7 @@ export default function ReportFraudClient() {
       <Guidance />
       <ReportSection />
       <Help />
-      <Closing />
+      
     </main>
   );
 }
