@@ -217,7 +217,9 @@ export default function MarketingPageClient() {
                   label={feature.imageLabel}
                   ratio="aspect-[16/10]"
                   src={feature.image ?? undefined}
+                  bare
                 />
+
               </div>
 
             </motion.div>
