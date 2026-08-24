@@ -251,8 +251,8 @@ export default function PosPageClient() {
                       label={feature.imageLabel}
                       src={feature.image || undefined}
                       ratio="aspect-[16/10]"
-                      contain
                     />
+
                   </div>
                 </motion.div>
               );
