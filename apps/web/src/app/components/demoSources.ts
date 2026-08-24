@@ -104,6 +104,14 @@ export const demoSources: DemoSource[] = [
     url: 'https://dashboard6c.lovable.app/',
     blurb: 'Sales, labor and menu performance across every location, updated live.',
     device: 'laptop',
+    media: {
+      poster: dashPoster.url,
+      sources: [
+        { src: dashWebm.url, type: 'video/webm' },
+        { src: dashMp4.url, type: 'video/mp4' },
+      ],
+      caption: 'Track sales, labor and stock hour by hour across locations.',
+    },
   },
   {
     id: 'inventoryos',
@@ -111,7 +119,16 @@ export const demoSources: DemoSource[] = [
     url: 'https://inventoryos6.lovable.app/',
     blurb: 'Counts, vendors and recipe costing in one place, synced to every store.',
     device: 'laptop',
+    media: {
+      poster: invPoster.url,
+      sources: [
+        { src: invWebm.url, type: 'video/webm' },
+        { src: invMp4.url, type: 'video/mp4' },
+      ],
+      caption: 'Counts, purchases, waste and production value in one view.',
+    },
   },
+
 ];
 
 export const displayName = (id: string) => {
