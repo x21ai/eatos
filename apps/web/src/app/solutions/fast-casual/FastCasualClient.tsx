@@ -237,7 +237,7 @@ export default function FastCasualClient() {
               Why eatOS for{" "}<br className="sm:hidden" />fast casual?
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
-              Built for the pace of the counter, from the first order to the last table turn.
+              Built for the pace of the counter, from the first order to last table turn.
             </p>
           </motion.div>
 
