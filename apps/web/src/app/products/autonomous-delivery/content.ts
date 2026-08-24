@@ -6,7 +6,7 @@ export const hero = {
   title: 'Get Your Restaurant a',
   titleAccent: 'Reliable Robot',
   description:
-    'ServeBot is built to manage various tasks, enabling your team to concentrate on delivering exceptional customer service.',
+    'ServeBot is built to manage various tasks, enabling team to concentrate on deliver exceptional customer service.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'ServeBot running food in a dining room',
@@ -45,7 +45,7 @@ export const features = [
     body:
       'ServeBot integrated automation functionality facilitates smooth coordination and communication across various units.',
     more:
-      'Whether it is in the kitchen, the bar, or the serving stations, ServeBot guarantees that all operations synchronize effectively, enhancing workflow efficiency and minimizing the risk of errors or delays.',
+      'Whether it is in the kitchen, the bar, or the serving stations, ServeBot guarantees that all operations synchronize effectively, enhancing workflow efficiency and minimizing the risk of errors.',
     imageLabel: 'ServeBot serving a table',
     image: '/__l5e/assets-v1/790b3e11-88f4-4c87-81a5-d6b8bf032d78/auto2.png',
     metrics: [
@@ -57,7 +57,7 @@ export const features = [
     id: 'weight-responsive-auto-return',
     title: 'Weight-Responsive Auto Return',
     body:
-      'ServeBot auto return feature, which responds to weight, guarantees it always goes back to its assigned spot once tasks are done.',
+      'ServeBot auto return feature, which responds to weight, guarantees it always goes back to its assigned spot.',
     more:
       'This eliminates the need for manual retrieval by your staff, allowing them to concentrate on other crucial tasks and saving both time and effort.',
     imageLabel: 'ServeBot returning with cleared plates',
