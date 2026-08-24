@@ -6,7 +6,7 @@ export const metadata = {
   description:
     "A versatile Point of Sale for quick-service and fast-casual restaurants, counter, kiosk, handheld and online orders in one cloud platform.",
   openGraph: {
-    title: "Quick Service POS | eatOS Restaurant Technology Cloud",
+    title: "Quick Service POS | RESTAURANT TECHNOLOGY CLOUD",
     description:
       "Keep the line moving with eatOS quick-service POS, online and offline ordering, kiosks, KDS and analytics in one platform.",
     type: "website",

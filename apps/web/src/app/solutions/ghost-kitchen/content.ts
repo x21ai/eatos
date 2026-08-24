@@ -10,7 +10,7 @@ export const hero = {
   eyebrow: 'RESTAURANT TECHNOLOGY CLOUD',
   title: 'Solution For Ghost Kitchens',
   description:
-    'The eatOS Restaurant Technology Cloud is built for delivery-first kitchens, streamlining online orders, expanding your reach and keeping every brand under control.',
+    'The RESTAURANT TECHNOLOGY CLOUD is built for delivery-first kitchens, streamlining online orders, expanding your reach and keeping every brand under control.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Ghost kitchen team working an eatOS order queue',
