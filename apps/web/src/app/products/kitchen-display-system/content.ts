@@ -2,7 +2,7 @@
 // All copy + metrics for the Kitchen Display System page. Edit here.
 
 import heroAsset from './assets/kds-hero.jpg.asset.json';
-import prepAsset from './assets/prep-station-routing-v3.png.asset.json';
+import prepAsset from './assets/prep-station-routing-v4.png.asset.json';
 import multiLingualAsset from './assets/multilingual-ui.png.asset.json';
 import connectivityAsset from './assets/connectivity-ui.png.asset.json';
 import hardwareAsset from './assets/kitchen-grade-hardware.jpg.asset.json';
