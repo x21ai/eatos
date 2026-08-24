@@ -136,6 +136,11 @@ const SOCIAL_LINKS = [
 
 const OFFICES = [
   {
+    city: 'San Francesco',
+    address: '20289 Stevens Creek Blvd, PH 1019',
+    state: 'Cupertino, CA 95014',
+  },
+  {
     city: 'Miami',
     address: '1111 Brickell Ave, FL 10',
     state: 'Miami, FL 33131',
@@ -244,7 +249,7 @@ export default function Footer({ variant = 'light' }) {
               ))}
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {OFFICES.map(({ city, address, state }) => (
                 <div key={city} className="flex items-start gap-2">
                   <MapPin size={13} className={`${iconColor} mt-0.5 flex-shrink-0`} />
