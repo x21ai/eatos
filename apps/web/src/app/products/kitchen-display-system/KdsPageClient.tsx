@@ -113,12 +113,6 @@ export default function KdsPageClient() {
                 >
                   {hero.primaryCta.label}
                 </a>
-                <a
-                  href="/get-started"
-                  className="px-8 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors text-center"
-                >
-                  Get Started
-                </a>
                 <BrochureButton brochureId="kitchen-display-system" />
               </motion.div>
             </div>
