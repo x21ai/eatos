@@ -509,7 +509,7 @@ export default function Footer({ variant = 'light' }) {
               onClick={() => {
                 if (typeof window !== 'undefined') {
                   localStorage.removeItem('eatos_cookie_consent');
-                  window.dispatchEvent(new Event('eatos_show_cookie_banner'));
+                  window.dispatchEvent(new Event('openCookieBanner'));
                 }
               }}
               className={`${bottomLink} bg-transparent border-0 cursor-pointer p-0 text-[12px]`}
