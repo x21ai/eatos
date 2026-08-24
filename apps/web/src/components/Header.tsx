@@ -436,12 +436,12 @@ export default function Header() {
                   ))}
                 </div>
                 <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
-                  <div className="text-xs text-gray-500">
+                  <div className="text-xs text-gray-500 [text-shadow:none]">
                     Looking for the full suite?
                   </div>
                   <a
                     href="/products"
-                    className="text-sm font-semibold text-black hover:opacity-70 transition-opacity"
+                    className="text-sm font-semibold text-black hover:opacity-70 transition-opacity [text-shadow:none]"
                   >
                     View all products →
                   </a>
@@ -491,12 +491,12 @@ export default function Header() {
                   ))}
                 </div>
                 <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
-                  <div className="text-xs text-gray-500">
+                  <div className="text-xs text-gray-500 [text-shadow:none]">
                     Find your restaurant type
                   </div>
                   <a
                     href="/solutions"
-                    className="text-sm font-semibold text-black hover:opacity-70 transition-opacity"
+                    className="text-sm font-semibold text-black hover:opacity-70 transition-opacity [text-shadow:none]"
                   >
                     View all solutions →
                   </a>
@@ -510,9 +510,6 @@ export default function Header() {
           </a>
           <a href="/pricing" className={navLinkClass}>
             Pricing
-          </a>
-          <a href="/enterprise" className={navLinkClass}>
-            Enterprise
           </a>
         </nav>
 
