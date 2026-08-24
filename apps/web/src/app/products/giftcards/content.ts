@@ -19,9 +19,7 @@ export const hero = {
 };
 
 export const keyFeatures = [
-  'Custom Card Design',
   'Physical and Digital Gift Cards',
-  'Instant Redemption at Checkout',
   'Balance Tracking Across Locations',
 ];
 
@@ -35,20 +33,6 @@ export const orderPanel = {
 
 export const features = [
   {
-    id: 'custom-card-design',
-    title: 'Custom Card Design',
-    body:
-      'Upload your own artwork or work from a template. Your logo, your colors, your brand in your guests wallets.',
-    more:
-      'Matte, gloss and premium black finishes are available, so the card in hand feels like the room it came from.',
-    imageLabel: 'Custom gift card artwork options',
-    image: null,
-    metrics: [
-      { value: '79¢', label: 'Per Card' },
-      { value: '100%', label: 'Your Artwork' },
-    ],
-  },
-  {
     id: 'physical-and-digital',
     title: 'Physical and Digital Gift Cards',
     body:
@@ -60,20 +44,6 @@ export const features = [
     metrics: [
       { value: '2', label: 'Formats, One System' },
       { value: '24/7', label: 'Online Sales' },
-    ],
-  },
-  {
-    id: 'instant-redemption',
-    title: 'Instant Redemption at Checkout',
-    body:
-      'Scan or key the card at the Point of Sale and the balance applies instantly, with partial redemption handled automatically.',
-    more:
-      'Remaining value stays on the card, so guests come back to finish it and usually spend beyond it.',
-    imageLabel: 'Gift card redemption at the Point of Sale',
-    image: null,
-    metrics: [
-      { value: '1', label: 'Tap to Redeem' },
-      { value: '100%', label: 'Accurate Balances' },
     ],
   },
   {
@@ -92,19 +62,3 @@ export const features = [
   },
 ];
 
-export const hardware = {
-  specs: [
-    {
-      title: 'Print ready templates',
-      body: 'Start from a designed template or supply your own art files for a fully custom card.',
-    },
-    {
-      title: 'Sell anywhere',
-      body: 'Counter, online ordering, kiosk and customer facing display all sell the same gift cards.',
-    },
-    {
-      title: 'Reorder in a click',
-      body: 'Repeat a previous order or refresh the design for seasonal campaigns.',
-    },
-  ],
-};
