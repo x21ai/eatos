@@ -10,24 +10,27 @@ export function Placeholder({
   className = '',
   src,
   pad = false,
+  bare = false,
 }) {
   const dark = tone === 'dark';
 
   if (src) {
+    const surface = bare
+      ? ''
+      : dark
+        ? 'bg-zinc-900 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]'
+        : 'bg-zinc-200/70 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.35)]';
+
     return (
       <div
-        className={`relative ${ratio} w-full overflow-hidden rounded-[24px] md:rounded-[32px] ${
-          dark
-            ? 'bg-zinc-900 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]'
-            : 'bg-zinc-200/70 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.35)]'
-        } ${className}`}
+        className={`relative ${ratio} w-full overflow-hidden rounded-[24px] md:rounded-[32px] ${surface} ${className}`}
       >
         <img
           src={src}
           alt={label}
           loading="lazy"
           className={
-            pad
+            pad && !bare
               ? 'absolute inset-0 h-full w-full p-4 object-contain sm:p-6 md:p-8'
               : 'absolute inset-0 h-full w-full object-cover'
           }
@@ -35,6 +38,7 @@ export function Placeholder({
       </div>
     );
   }
+
 
   return (
     <div
