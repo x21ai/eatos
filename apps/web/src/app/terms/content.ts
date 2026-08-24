@@ -5,7 +5,7 @@ export type Block =
 
 export type Section = { id: string; title: string; blocks: Block[] };
 
-export const effectiveDate = "September 14, 2022 | Ver. 1.3";
+export const effectiveDate = "September 14, 2025 | Ver. 1.3";
 
 export const sections: Section[] = [
   {
