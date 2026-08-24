@@ -38,7 +38,8 @@ export const features = [
     more:
       'Birthday rewards, win-back offers and loyalty surprises land automatically, keeping your brand top of mind without adding work for the team.',
     imageLabel: 'Personalized guest marketing campaign',
-    image: null,
+    image: mar1.url,
+
     metrics: [
       { value: '100%', label: 'Personalized' },
       { value: '10x', label: 'More Engagements' },
@@ -52,26 +53,13 @@ export const features = [
     more:
       'Qualify and prioritize leads based on demographics and actions, helping sales teams focus on the most promising prospects.',
     imageLabel: 'Lead scoring and guest behavior dashboard',
-    image: null,
+    image: mar2.url,
     metrics: [
       { value: '100%', label: 'Behavior Tracking' },
       { value: '10x', label: 'Campaign Builder' },
     ],
   },
-  {
-    id: 'email-marketing-automation',
-    title: 'Email Marketing Automation',
-    body:
-      'Build, schedule and send beautiful emails that drive repeat visits. From newsletters to triggered drips, every campaign runs on autopilot tied to real guest actions.',
-    more:
-      'Templates, segmentation and send-time optimization are built in, so you stay out of the inbox weeds and into revenue.',
-    imageLabel: 'Email marketing automation workflow',
-    image: null,
-    metrics: [
-      { value: '100%', label: 'Build Trust' },
-      { value: '10x', label: 'Open Rates' },
-    ],
-  },
+
   {
     id: 'data-driven-insights',
     title: 'Data-Driven Insights',
