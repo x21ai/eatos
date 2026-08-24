@@ -272,8 +272,7 @@ export default function PosPageClient() {
                   Ready to get started?
                 </h2>
                 <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-10">
-                  See the Point of Sale in action. Book a demo and{"\n"}
-                  we will show you how it fits your service.
+                  See the Point of Sale in action. Book a demo and we will show you exactly how it fits your operation from day one.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <a
