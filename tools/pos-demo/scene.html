@@ -155,18 +155,35 @@ body{font-family:'Mont',sans-serif;color:#111;-webkit-font-smoothing:antialiased
 #addbtn{flex:1;height:66px;border-radius:12px;background:#111;color:#fff;font-size:23px;font-weight:800;display:flex;align-items:center;justify-content:center;}
 
 /* payment */
-#pay{position:absolute;inset:0;background:#fff;opacity:0;}
-#pay .head{position:absolute;left:116px;top:70px;font-size:44px;font-weight:800;}
+#pay{position:absolute;left:90px;top:52px;width:1510px;height:816px;background:#fff;opacity:0;}
+#pay .head{position:absolute;left:56px;top:26px;font-size:42px;font-weight:800;letter-spacing:-.02em;}
 #pay .head em{font-style:normal;color:#E6007E;}
-#pay .sub{position:absolute;left:118px;top:126px;font-size:19px;font-weight:600;color:#71717a;}
-#pay .ordcol{position:absolute;left:116px;top:200px;width:520px;}
-#pay .ordcol .r{display:flex;justify-content:space-between;font-size:21px;font-weight:700;padding:13px 0;border-bottom:1px solid #f1f1f4;color:#3f3f46;}
-#pay .ordcol .r.big{font-size:29px;font-weight:800;color:#111;}
-#pay .tenders{position:absolute;right:120px;top:200px;width:420px;}
-.tender{height:78px;border:1.5px solid #e6e6ea;border-radius:14px;display:flex;align-items:center;gap:16px;padding:0 24px;font-size:22px;font-weight:700;margin-bottom:18px;}
-.tender i{width:30px;height:30px;border-radius:8px;background:#f1f1f4;font-style:normal;}
+#pay .sub{position:absolute;left:58px;top:82px;font-size:19px;font-weight:600;color:#71717a;}
+#pay .ordcol{position:absolute;left:36px;top:128px;width:500px;height:660px;background:#f4f4f5;padding:22px;}
+#pay .ticket{background:#fff;padding:22px 24px;}
+#pay .ticket .tr{display:flex;justify-content:space-between;font-size:20px;font-weight:800;}
+#pay .ticket .tr.mut{font-size:17px;font-weight:600;color:#52525b;margin-top:10px;}
+#pay .ticket .dash{border-top:2px dashed #dcdce0;margin:20px 0;}
+#pay .ticket .r{display:flex;justify-content:space-between;font-size:21px;font-weight:600;color:#3f3f46;padding:7px 0;}
+#pay .ticket .r.big{font-size:27px;font-weight:800;color:#111;}
+#pay .ticket .item{display:flex;gap:14px;margin-top:6px;}
+#pay .ticket .item .q{font-size:16px;font-weight:700;color:#71717a;}
+#pay .ticket .item .n{font-size:21px;font-weight:800;text-transform:uppercase;flex:1;}
+#pay .ticket .item .p{font-size:21px;font-weight:800;}
+#pay .ticket .mods{margin-left:58px;margin-top:6px;font-size:17px;font-weight:600;color:#71717a;line-height:1.6;}
+#pay .pmwrap{position:absolute;left:568px;top:128px;width:906px;}
+#pay .pmwrap h3{font-size:31px;font-weight:800;letter-spacing:-.01em;}
+#pay .pmwrap .pmsub{font-size:18px;font-weight:600;color:#71717a;margin-top:10px;}
+#pay .glabel{font-size:17px;font-weight:800;letter-spacing:.06em;color:#8a8a93;margin-top:26px;}
+#pay .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:14px;}
+.tender{height:70px;border:1.5px solid #e6e6ea;border-radius:10px;display:flex;align-items:center;gap:16px;padding:0 20px;font-size:21px;font-weight:700;background:#fff;}
+.tender i{width:26px;height:26px;font-style:normal;font-size:22px;color:#3f3f46;display:flex;align-items:center;justify-content:center;}
+.tender u{text-decoration:none;display:flex;flex-direction:column;}
+.tender u s{text-decoration:none;font-size:15px;font-weight:600;color:#8a8a93;margin-top:2px;}
 .tender.on{border-color:#E6007E;background:#fdf2f8;}
-#paybar{position:absolute;left:116px;right:120px;bottom:56px;height:78px;border-radius:14px;background:#111;color:#fff;font-size:24px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+#paybar{position:absolute;left:568px;right:36px;bottom:34px;height:74px;border-radius:8px;background:#b6b6bd;color:#fff;font-size:24px;font-weight:800;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;}
+#paybar.live{background:#111;}
+
 
 #cashwrap{position:absolute;inset:0;opacity:0;}
 #cashscrim{position:absolute;inset:0;background:rgba(10,10,12,.62);}
