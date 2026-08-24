@@ -1,6 +1,10 @@
 import posMp4 from './assets/pos-demo.mp4.asset.json';
 import posWebm from './assets/pos-demo.webm.asset.json';
 import posPoster from './assets/pos-demo-poster.jpg.asset.json';
+import kdsMp4 from './assets/kds-demo.mp4.asset.json';
+import kdsWebm from './assets/kds-demo.webm.asset.json';
+import kdsPoster from './assets/kds-demo-poster.jpg.asset.json';
+
 
 export type DemoMedia = {
   poster: string;
@@ -39,7 +43,16 @@ export const demoSources: DemoSource[] = [
     url: 'https://kds6.lovable.app/kds/v3',
     blurb: 'Route tickets to the right station and keep orders moving on time.',
     device: 'tablet',
+    media: {
+      poster: kdsPoster.url,
+      sources: [
+        { src: kdsWebm.url, type: 'video/webm' },
+        { src: kdsMp4.url, type: 'video/mp4' },
+      ],
+      caption: 'Clock in, work the board, bump the ticket.',
+    },
   },
+
   {
     id: 'kiosk',
     label: 'Kiosk',
