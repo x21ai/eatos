@@ -1,6 +1,10 @@
 import posMp4 from './assets/pos-demo.mp4.asset.json';
 import posWebm from './assets/pos-demo.webm.asset.json';
 import posPoster from './assets/pos-demo-poster.jpg.asset.json';
+import kdsMp4 from './assets/kds-demo.mp4.asset.json';
+import kdsWebm from './assets/kds-demo.webm.asset.json';
+import kdsPoster from './assets/kds-demo-poster.jpg.asset.json';
+
 
 export type DemoMedia = {
   poster: string;
