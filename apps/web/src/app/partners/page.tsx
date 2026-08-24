@@ -194,75 +194,79 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* Why partner + application form */}
       <section className="border-t border-zinc-200 bg-zinc-50 py-20 md:py-28">
         <div className="site-container">
-          <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-16">
-            {/* Left content */}
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">
-                Why partner with us?
-              </h2>
-              <div className="mt-10 space-y-8">
-                <div className="flex gap-4">
-                  <div className="mt-1 h-fit rounded-xl bg-black/5 p-2">
-                    <CheckCircle2 size={22} className="text-black" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold tracking-tighter">Generous revenue share</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-zinc-600 md:text-base">
-                      Earn ongoing residuals on payments and software subscriptions. We believe in
-                      sharing the success.
-                    </p>
-                  </div>
-                </div>
+          {/* Why partner */}
+          <div className="max-w-3xl">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+              Partner program
+            </span>
+            <h2 className="mt-4 text-3xl font-bold tracking-tighter md:text-4xl">
+              Why partner with us?
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-zinc-600 md:text-lg">
+              Grow recurring revenue with a platform restaurants keep using, backed by a team that
+              supports every merchant you bring on.
+            </p>
+          </div>
 
-                <div className="flex gap-4">
-                  <div className="mt-1 h-fit rounded-xl bg-black/5 p-2">
-                    <CheckCircle2 size={22} className="text-black" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold tracking-tighter">Dedicated support</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-zinc-600 md:text-base">
-                      Get a dedicated partner manager and priority support for your merchants.
-                    </p>
-                  </div>
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {[
+              {
+                title: 'Generous revenue share',
+                body: 'Earn ongoing residuals on payments and software subscriptions. We believe in sharing the success.',
+              },
+              {
+                title: 'Dedicated support',
+                body: 'Get a dedicated partner manager and priority support for your merchants.',
+              },
+              {
+                title: 'Co-marketing',
+                body: 'Access marketing resources, leads and co-branded collateral to help you sell more.',
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="rounded-3xl border border-zinc-200 bg-white p-7 md:p-8"
+              >
+                <div className="h-fit w-fit rounded-xl bg-black/5 p-2">
+                  <CheckCircle2 size={22} className="text-black" />
                 </div>
-
-                <div className="flex gap-4">
-                  <div className="mt-1 h-fit rounded-xl bg-black/5 p-2">
-                    <CheckCircle2 size={22} className="text-black" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold tracking-tighter">Co-marketing</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-zinc-600 md:text-base">
-                      Access marketing resources, leads and co-branded collateral to help you sell
-                      more.
-                    </p>
-                  </div>
-                </div>
+                <h3 className="mt-5 text-lg font-bold tracking-tighter">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600 md:text-base">
+                  {item.body}
+                </p>
               </div>
+            ))}
+          </div>
 
-              <div className="mt-12 rounded-3xl border border-zinc-200 bg-white p-8">
-                <blockquote className="text-base font-medium leading-relaxed md:text-lg">
-                  &ldquo;Partnering with eatOS has been the best decision for our agency. The
-                  product sells itself and the support is unmatched.&rdquo;
-                </blockquote>
-                <div className="mt-4 text-sm font-bold text-zinc-700">
-                  &mdash; Sarah J., Digital Dining Solutions
-                </div>
-              </div>
+          <div className="mt-10 rounded-3xl border border-zinc-200 bg-white px-8 py-10 text-center">
+            <blockquote className="mx-auto max-w-3xl text-lg font-medium leading-relaxed md:text-xl">
+              &ldquo;Partnering with eatOS has been the best decision for our agency. The product
+              sells itself and the support is unmatched.&rdquo;
+            </blockquote>
+            <div className="mt-4 text-sm font-bold text-zinc-700">
+              Sarah J., Digital Dining Solutions
             </div>
+          </div>
 
-            {/* Right form */}
-            <div className="rounded-3xl border border-zinc-200 bg-white p-7 shadow-[0_40px_90px_-60px_rgba(0,0,0,0.4)] md:p-10">
-              <h3 className="text-2xl font-bold tracking-tighter">Apply to become a partner</h3>
+          {/* Full width form */}
+          <div className="mt-16 rounded-3xl border border-zinc-200 bg-white p-7 shadow-[0_40px_90px_-60px_rgba(0,0,0,0.4)] md:p-12">
+            <div className="text-center">
+              <h3 className="text-2xl font-bold tracking-tighter md:text-3xl">
+                Apply to become a partner
+              </h3>
+              <p className="mt-3 text-sm text-zinc-600 md:text-base">
+                Tell us about your business and our partner team will follow up shortly.
+              </p>
+            </div>
+            <div className="mx-auto mt-8 w-full max-w-3xl">
               <PartnerForm />
-
             </div>
           </div>
         </div>
       </section>
+
     </div>
   );
 }
