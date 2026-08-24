@@ -65,7 +65,7 @@ export const features = [
     body:
       'Boost customer satisfaction with our self-ordering kiosks. Seamless integration with eatOS Point of Sale and Kitchen Display ensures fast, accurate orders.',
     more:
-      'Kiosk, freestanding and wall-mount formats let guests browse, customize and pay on their own while your team stays on food.'
+      'Kiosk, freestanding and wall-mount formats let guests browse, customize and pay on their own while your team stays on food.',
     imageLabel: 'Self ordering kiosk',
     image: kioskImg.url,
     metrics: [
