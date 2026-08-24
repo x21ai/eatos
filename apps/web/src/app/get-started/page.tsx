@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ArrowRight,
   Check,
@@ -16,16 +16,22 @@ import {
   HeadphonesIcon,
 } from 'lucide-react';
 
+const MEETINGS_SCRIPT_SRC =
+  'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
+
 export default function GetStartedPage() {
   const [step, setStep] = useState(1);
   const [selectedIndustry, setSelectedIndustry] = useState('');
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    firstName: '',
-    lastName: '',
-    companyName: '',
-  });
+
+  useEffect(() => {
+    if (document.querySelector(`script[src="${MEETINGS_SCRIPT_SRC}"]`)) return;
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = MEETINGS_SCRIPT_SRC;
+    script.async = true;
+    document.body.appendChild(script);
+  }, [step]);
+
 
   const industries = [
     {
