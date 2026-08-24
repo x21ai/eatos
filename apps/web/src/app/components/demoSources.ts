@@ -68,7 +68,15 @@ export const demoSources: DemoSource[] = [
     label: 'CFD',
     url: 'https://cfd6.lovable.app/',
     blurb: 'A guest facing display for order clarity, tips, and pickup details.',
-    device: 'phone',
+    device: 'tablet',
+    media: {
+      poster: cfdPoster.url,
+      sources: [
+        { src: cfdWebm.url, type: 'video/webm' },
+        { src: cfdMp4.url, type: 'video/mp4' },
+      ],
+      caption: 'Check in, redeem a reward, tip, pay, and get the receipt.',
+    },
   },
   {
     id: 'dashboard',
