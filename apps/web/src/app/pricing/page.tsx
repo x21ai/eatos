@@ -49,7 +49,7 @@ export default function PricingPage() {
 
             <RateCard
               title="Build your Own Bundle"
-              rate="2.39%+15¢"
+              rate="2.59%+15¢"
               subline="Customize Your Hardware*"
               finePrint="*Pricing is per location cost. Terms apply."
             />
