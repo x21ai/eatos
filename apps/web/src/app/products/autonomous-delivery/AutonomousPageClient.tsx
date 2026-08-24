@@ -37,9 +37,9 @@ const featureIcons = [
 ];
 
 const hardwareIcons = [
-  { Icon: MonitorSmartphone, tint: 'bg-violet-500/10 text-violet-400' },
-  { Icon: FileSpreadsheet, tint: 'bg-emerald-500/10 text-emerald-400' },
-  { Icon: Lock, tint: 'bg-sky-500/10 text-sky-400' },
+  { Icon: Route, tint: 'bg-violet-500/10 text-violet-400' },
+  { Icon: BatteryCharging, tint: 'bg-emerald-500/10 text-emerald-400' },
+  { Icon: Sparkles, tint: 'bg-sky-500/10 text-sky-400' },
 ];
 
 const related = products.filter((p) => p.slug !== 'autonomous-delivery' && !p.comingSoon).slice(0, 3);
