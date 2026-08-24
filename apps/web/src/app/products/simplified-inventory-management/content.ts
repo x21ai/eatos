@@ -79,7 +79,7 @@ export const features = [
     id: 'recipe-costing-and-menu-engineering',
     title: 'Recipe Costing and Menu',
     body:
-      'Precisely determine the expenses of your menu items using eatOS recipe costing feature.  Utilize data-driven insights to enhance your menu. With eatOS, you gain insight into which dishes generate revenue, enabling you to refine your offerings accordingly.',
+      'Precisely determine the expenses of your menu items using eatOS recipe costing feature.  Utilize insights to enhance menu. With eatOS, you gain insight into which dishes generate revenue, enabling you to refine your offerings accordingly.',
     more:
       'Menu engineering highlights stars and underperformers automatically, so every plate contributes to margin.',
     imageLabel: 'Recipe costing and menu engineering',
@@ -94,9 +94,9 @@ export const features = [
 export const hardware = {
   specs: [
     {
-      title: 'Comprehensive Reporting and Analytics',
+      title: 'Comprehensive Reporting ',
       body:
-        'Transform complex data into clear, visual reports and dashboards. Gain valuable restaurant insights quickly and easily, without the need for technical expertise.',
+        'Transform complex data into clear, visual reports and dashboards. Gain valuable restaurant insights quickly and easily.',
     },
     {
       title: 'Seamless Integration',
