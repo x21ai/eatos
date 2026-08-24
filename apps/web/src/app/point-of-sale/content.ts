@@ -64,34 +64,6 @@ export const features = [
     ],
   },
   {
-    id: 'order-and-pay',
-    title: 'Order & Pay at Table',
-    body:
-      'Eliminate queues with tableside payments or customer device payments, boosting efficiency and transforming the guest experience.',
-    more:
-      'Empower staff to accept payments right at the table, or let guests pay conveniently from their own devices without waiting on a check.',
-    imageLabel: 'Guest paying from a phone at the table',
-    image: null,
-    metrics: [
-      { value: '100%', label: 'Speedy Checkout' },
-      { value: '100%', label: 'Payment Agility' },
-    ],
-  },
-  {
-    id: 'multi-user',
-    title: 'Multi User Environment',
-    body:
-      'Inform and connect staff with data and orders across devices, anywhere. Keep the team updated with shared information across all areas.',
-    more:
-      'Provide access to data and orders on multiple devices, anytime, so every station works from the same live picture of service.',
-    imageLabel: 'eatOS device family sharing one platform',
-    image: null,
-    metrics: [
-      { value: '100%', label: 'Data Driven' },
-      { value: '100%', label: 'Team Synergy' },
-    ],
-  },
-  {
     id: 'works-offline',
     title: 'Works Offline',
     body:

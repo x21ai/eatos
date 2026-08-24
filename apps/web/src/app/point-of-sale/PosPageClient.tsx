@@ -16,7 +16,7 @@ import {
 import { motion } from 'motion/react';
 import BrochureButton from '@/components/BrochureButton';
 import { Placeholder } from '@/components/marketing/Placeholder';
-import { features, hero, keyFeatures } from './content';
+import { features, hero } from './content';
 
 const featureIcons = [
   { Icon: RefreshCw, tint: 'bg-emerald-500/10 text-emerald-400' },
@@ -26,8 +26,6 @@ const featureIcons = [
   { Icon: Layers, tint: 'bg-indigo-500/10 text-indigo-400' },
   { Icon: WifiOff, tint: 'bg-rose-500/10 text-rose-400' },
 ];
-
-const keyFeatureIcons = [Smartphone, CreditCard, LayoutGrid, WifiOff, RefreshCw, Users];
 
 const rise = {
   initial: { opacity: 0, y: 30 },
@@ -207,36 +205,6 @@ export default function PosPageClient() {
           </div>
         </section>
 
-        {/* Key features */}
-        <section className="border-t border-white/5 py-14 md:py-20 bg-black">
-          <div className="site-container">
-            <motion.h2
-              {...rise}
-              className="text-2xl md:text-3xl font-bold tracking-tighter text-center mb-8 md:mb-12"
-            >
-              Key Features
-            </motion.h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-              {keyFeatures.map((feature, index) => {
-                const Icon = keyFeatureIcons[index % keyFeatureIcons.length];
-                return (
-                  <motion.div
-                    key={feature}
-                    {...rise}
-                    transition={{ delay: index * 0.05 }}
-                    className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-4 min-w-0"
-                  >
-                    <div className="w-9 h-9 shrink-0 rounded-xl bg-orange-500/10 text-orange-400 flex items-center justify-center">
-                      <Icon size={18} />
-                    </div>
-                    <span className="text-sm md:text-base font-semibold min-w-0">{feature}</span>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
         {/* Feature rows */}
         <section className="py-20 md:py-28 border-t border-white/5 bg-black">
           <div className="site-container space-y-16 md:space-y-24">
@@ -290,6 +258,40 @@ export default function PosPageClient() {
                 </motion.div>
               );
             })}
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="pb-20 md:pb-28">
+          <div className="site-container">
+            <motion.div {...rise} className="relative rounded-[2.5rem] md:rounded-[3rem] overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-orange-600/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+
+              <div className="relative z-10 p-10 md:p-20 text-center">
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
+                  Ready to get started?
+                </h2>
+                <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-10">
+                  See the Point of Sale in action. Book a demo and{"\n"}
+                  we will show you how it fits your service.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a
+                    href="/book-demo"
+                    className="px-10 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform"
+                  >
+                    Book a Demo
+                  </a>
+                  <a
+                    href="/contact-sales"
+                    className="px-10 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors"
+                  >
+                    Contact Sales
+                  </a>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
       </div>
