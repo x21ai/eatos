@@ -1,7 +1,9 @@
 // @ts-nocheck
 // All copy for the Automated Marketing product page. Edit here.
-// Images are intentionally left blank for now: the shared Placeholder renders
-// an empty surface when no `image` is provided.
+import mar1 from './assets/mar1.png.asset.json';
+import mar2 from './assets/mar2.png.asset.json';
+import mar3 from './assets/mar3.png.asset.json';
+
 
 export const hero = {
   eyebrow: 'Automated Marketing',
