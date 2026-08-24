@@ -213,10 +213,13 @@ export default function MarketingPageClient() {
               </div>
 
               <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                <div className="rounded-[2rem] border border-white/10 bg-white/5 p-3 md:p-4">
-                  <Placeholder label={feature.imageLabel} ratio="aspect-[16/10]" />
-                </div>
+                <Placeholder
+                  label={feature.imageLabel}
+                  ratio="aspect-[16/10]"
+                  src={feature.image ?? undefined}
+                />
               </div>
+
             </motion.div>
           ))}
         </div>

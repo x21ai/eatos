@@ -1,7 +1,9 @@
 // @ts-nocheck
 // All copy for the Automated Marketing product page. Edit here.
-// Images are intentionally left blank for now: the shared Placeholder renders
-// an empty surface when no `image` is provided.
+import mar1 from './assets/mar1.png.asset.json';
+import mar2 from './assets/mar2.png.asset.json';
+import mar3 from './assets/mar3.png.asset.json';
+
 
 export const hero = {
   eyebrow: 'Automated Marketing',
@@ -23,9 +25,9 @@ export const hero = {
 export const keyFeatures = [
   'Personalized Customer Experiences',
   'Lead Scoring',
-  'Email Marketing Automation',
   'Data-Driven Insights',
 ];
+
 
 export const features = [
   {
@@ -36,7 +38,8 @@ export const features = [
     more:
       'Birthday rewards, win-back offers and loyalty surprises land automatically, keeping your brand top of mind without adding work for the team.',
     imageLabel: 'Personalized guest marketing campaign',
-    image: null,
+    image: mar1.url,
+
     metrics: [
       { value: '100%', label: 'Personalized' },
       { value: '10x', label: 'More Engagements' },
@@ -50,26 +53,13 @@ export const features = [
     more:
       'Qualify and prioritize leads based on demographics and actions, helping sales teams focus on the most promising prospects.',
     imageLabel: 'Lead scoring and guest behavior dashboard',
-    image: null,
+    image: mar2.url,
     metrics: [
       { value: '100%', label: 'Behavior Tracking' },
       { value: '10x', label: 'Campaign Builder' },
     ],
   },
-  {
-    id: 'email-marketing-automation',
-    title: 'Email Marketing Automation',
-    body:
-      'Build, schedule and send beautiful emails that drive repeat visits. From newsletters to triggered drips, every campaign runs on autopilot tied to real guest actions.',
-    more:
-      'Templates, segmentation and send-time optimization are built in, so you stay out of the inbox weeds and into revenue.',
-    imageLabel: 'Email marketing automation workflow',
-    image: null,
-    metrics: [
-      { value: '100%', label: 'Build Trust' },
-      { value: '10x', label: 'Open Rates' },
-    ],
-  },
+
   {
     id: 'data-driven-insights',
     title: 'Data-Driven Insights',
@@ -78,7 +68,8 @@ export const features = [
     more:
       'Use real-time analytics to refine strategies, identify new opportunities and optimize restaurant operations based on actionable data-driven insights.',
     imageLabel: 'Marketing analytics and performance report',
-    image: null,
+    image: mar3.url,
+
     metrics: [
       { value: '10x', label: 'Accurate' },
       { value: '10x', label: 'Faster' },
