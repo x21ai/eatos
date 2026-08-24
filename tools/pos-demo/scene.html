@@ -155,18 +155,35 @@ body{font-family:'Mont',sans-serif;color:#111;-webkit-font-smoothing:antialiased
 #addbtn{flex:1;height:66px;border-radius:12px;background:#111;color:#fff;font-size:23px;font-weight:800;display:flex;align-items:center;justify-content:center;}
 
 /* payment */
-#pay{position:absolute;inset:0;background:#fff;opacity:0;}
-#pay .head{position:absolute;left:116px;top:70px;font-size:44px;font-weight:800;}
+#pay{position:absolute;left:90px;top:52px;width:1510px;height:816px;background:#fff;opacity:0;}
+#pay .head{position:absolute;left:56px;top:26px;font-size:42px;font-weight:800;letter-spacing:-.02em;}
 #pay .head em{font-style:normal;color:#E6007E;}
-#pay .sub{position:absolute;left:118px;top:126px;font-size:19px;font-weight:600;color:#71717a;}
-#pay .ordcol{position:absolute;left:116px;top:200px;width:520px;}
-#pay .ordcol .r{display:flex;justify-content:space-between;font-size:21px;font-weight:700;padding:13px 0;border-bottom:1px solid #f1f1f4;color:#3f3f46;}
-#pay .ordcol .r.big{font-size:29px;font-weight:800;color:#111;}
-#pay .tenders{position:absolute;right:120px;top:200px;width:420px;}
-.tender{height:78px;border:1.5px solid #e6e6ea;border-radius:14px;display:flex;align-items:center;gap:16px;padding:0 24px;font-size:22px;font-weight:700;margin-bottom:18px;}
-.tender i{width:30px;height:30px;border-radius:8px;background:#f1f1f4;font-style:normal;}
+#pay .paysub{position:absolute;left:58px;top:82px;font-size:19px;font-weight:600;color:#71717a;}
+#pay .ordcol{position:absolute;left:36px;top:128px;width:500px;height:660px;background:#f4f4f5;padding:22px;}
+#pay .ticket{background:#fff;padding:22px 24px;}
+#pay .ticket .tr{display:flex;justify-content:space-between;font-size:20px;font-weight:800;}
+#pay .ticket .tr.mut{font-size:17px;font-weight:600;color:#52525b;margin-top:10px;}
+#pay .ticket .dash{border-top:2px dashed #dcdce0;margin:20px 0;}
+#pay .ticket .r{display:flex;justify-content:space-between;font-size:21px;font-weight:600;color:#3f3f46;padding:7px 0;}
+#pay .ticket .r.big{font-size:27px;font-weight:800;color:#111;}
+#pay .ticket .tkitem{display:flex;gap:14px;margin-top:6px;}
+#pay .ticket .tkitem .q{font-size:16px;font-weight:700;color:#71717a;}
+#pay .ticket .tkitem .n{font-size:21px;font-weight:800;text-transform:uppercase;flex:1;}
+#pay .ticket .tkitem .p{font-size:21px;font-weight:800;}
+#pay .ticket .mods{margin-left:58px;margin-top:4px;font-size:16px;font-weight:600;color:#71717a;line-height:1.55;}
+#pay .pmwrap{position:absolute;left:568px;top:118px;width:906px;}
+#pay .pmwrap h3{font-size:31px;font-weight:800;letter-spacing:-.01em;}
+#pay .pmwrap .pmsub{font-size:17px;font-weight:600;color:#71717a;margin-top:10px;}
+#pay .glabel{font-size:16px;font-weight:800;letter-spacing:.06em;color:#8a8a93;margin-top:20px;}
+#pay .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px;}
+.tender{height:64px;border:1.5px solid #e6e6ea;border-radius:10px;display:flex;align-items:center;gap:16px;padding:0 20px;font-size:21px;font-weight:700;background:#fff;}
+.tender i{width:26px;height:26px;font-style:normal;font-size:22px;color:#3f3f46;display:flex;align-items:center;justify-content:center;}
+.tender u{text-decoration:none;display:flex;flex-direction:column;}
+.tender u s{text-decoration:none;font-size:15px;font-weight:600;color:#8a8a93;margin-top:2px;}
 .tender.on{border-color:#E6007E;background:#fdf2f8;}
-#paybar{position:absolute;left:116px;right:120px;bottom:56px;height:78px;border-radius:14px;background:#111;color:#fff;font-size:24px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+#paybar{position:absolute;left:568px;right:36px;bottom:34px;height:74px;border-radius:8px;background:#b6b6bd;color:#fff;font-size:24px;font-weight:800;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;}
+#paybar.live{background:#111;}
+
 
 #cashwrap{position:absolute;inset:0;opacity:0;}
 #cashscrim{position:absolute;inset:0;background:rgba(10,10,12,.62);}
@@ -342,23 +359,52 @@ body{font-family:'Mont',sans-serif;color:#111;-webkit-font-smoothing:antialiased
     <!-- payment -->
     <div id="pay">
       <div class="head">Total Due <em id="paydue">$72.00</em></div>
-      <div class="sub">Order #6 &middot; Dine In &middot; Table T3 &middot; Elizer Cruz</div>
+      <div class="paysub">Order 7 &middot; Guest &middot; Dine In</div>
       <div class="ordcol">
-        <div class="r"><span>Sub Total</span><span>$60.00</span></div>
-        <div class="r"><span>Tax (20%)</span><span>$12.00</span></div>
-        <div class="r big"><span>Total Due</span><span>$72.00</span></div>
-        <div class="r"><span>1 ea &nbsp; CHICKEN CREPE</span><span>$20.00</span></div>
-        <div class="r"><span>1 ea &nbsp; CAPRICE SANDWICH</span><span>$20.00</span></div>
-        <div class="r"><span>1 ea &nbsp; FIGARO BLT</span><span>$20.00</span></div>
+        <div class="ticket">
+          <div class="tr"><span>Order #7</span><span>DINE IN</span></div>
+          <div class="tr mut"><span>Guest Name</span><span>Ticket No. 7 &middot; Amount Due $72.00</span></div>
+          <div class="dash"></div>
+          <div class="r big"><span>Total Due</span><span>$72.00</span></div>
+          <div class="r" style="font-weight:800;color:#111"><span>TOTAL</span><span>$72.00</span></div>
+          <div class="r"><span>Sub Total</span><span>$60.00</span></div>
+          <div class="r"><span>TAX (20%)</span><span>$12.00</span></div>
+          <div class="dash"></div>
+          <div class="tkitem"><span class="q">1 ea</span><span class="n">Chicken Crepe</span><span class="p">$20.00</span></div>
+          <div class="mods">- Preparation &middot; Extra Sauce<br/>- Bread &middot; Foccacia<br/>- Course &middot; Main</div>
+          <div class="tkitem" style="margin-top:16px"><span class="q">1 ea</span><span class="n">Caprice Sandwich</span><span class="p">$20.00</span></div>
+          <div class="tkitem" style="margin-top:16px"><span class="q">1 ea</span><span class="n">Figaro BLT</span><span class="p">$20.00</span></div>
+        </div>
       </div>
-      <div class="tenders">
-        <div class="tender" id="tcash"><i></i>Cash</div>
-        <div class="tender"><i></i>Manual CC</div>
-        <div class="tender"><i></i>Gift Card</div>
-        <div class="tender"><i></i>Grubhub</div>
+      <div class="pmwrap">
+        <h3>Payment Method</h3>
+        <div class="pmsub">Cash, manual card entry and Pay by Link are supported online. Connect a card reader for Tap to Pay.</div>
+        <div class="glabel">STANDARD</div>
+        <div class="pgrid">
+          <div class="tender" id="tcash"><i>&#9707;</i>Cash</div>
+          <div class="tender"><i>&#9636;</i>Manual Card</div>
+          <div class="tender"><i>&#9673;</i>Manual CC</div>
+          <div class="tender"><i>&#8673;</i>External CC</div>
+          <div class="tender"><i>&#8599;</i>Split Check</div>
+        </div>
+        <div class="glabel">ACCOUNTS AND REWARDS</div>
+        <div class="pgrid">
+          <div class="tender"><i>&#9634;</i>Account</div>
+          <div class="tender"><i>&#8963;</i>House</div>
+          <div class="tender"><i>&#9744;</i>Gift Card</div>
+          <div class="tender"><i>&#9825;</i>Loyalty</div>
+          <div class="tender"><i>&#8776;</i><u>In-kind<s>Manager PIN</s></u></div>
+        </div>
+        <div class="glabel">DELIVERY PARTNERS</div>
+        <div class="pgrid">
+          <div class="tender"><i>&#9679;</i>Uber Eats</div>
+          <div class="tender"><i>&#9679;</i>Doordash</div>
+          <div class="tender"><i>&#9666;</i>Grubhub</div>
+        </div>
       </div>
-      <div id="paybar">CHARGE $72.00</div>
+      <div id="paybar">SELECT A PAYMENT METHOD</div>
     </div>
+
 
     <div id="cashwrap">
       <div id="cashscrim"></div>
