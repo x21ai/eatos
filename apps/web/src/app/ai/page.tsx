@@ -61,8 +61,11 @@ export default function AIPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-400">
-              <button className="group relative px-7 py-3.5 bg-white text-black rounded-full text-base sm:text-lg font-semibold hover:scale-[1.02] transition-all duration-300 overflow-hidden">
-                <span className="relative z-10 flex items-center gap-2">
+              <a
+                href="/book-demo"
+                className="group relative px-7 py-3.5 bg-white text-black rounded-full text-base sm:text-lg font-semibold hover:scale-[1.02] transition-all duration-300 overflow-hidden"
+              >
+                <span className="relative z-10 flex items-center justify-center gap-2">
                   Start Free Trial{' '}
                   <ArrowRight
                     size={20}
@@ -70,11 +73,7 @@ export default function AIPage() {
                   />
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-purple-100 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </button>
-
-              <button className="px-7 py-3.5 rounded-full text-base sm:text-lg font-medium text-white border border-white/20 hover:bg-white/10 hover:border-white/40 transition-all backdrop-blur-sm">
-                Watch the Film
-              </button>
+              </a>
             </div>
           </div>
         </div>
