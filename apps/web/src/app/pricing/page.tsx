@@ -136,8 +136,9 @@ function RateCard({ title, rate, subline, finePrint }) {
       <div className="flex flex-1 flex-col px-6 py-10 text-center">
         <p className="text-2xl font-bold tracking-tight md:text-3xl">{rate}</p>
         <p className="text-2xl font-bold tracking-tight md:text-3xl">per tap, dip or swipe</p>
-        <p className="mt-4 text-sm font-medium text-black/80">{subline}</p>
+        <p className="mt-4 flex min-h-[3.25rem] items-start justify-center text-sm font-medium text-black/80">{subline}</p>
         <div className="mt-6">
+
           <a
             href="/book-demo"
             className="inline-block rounded-md bg-black px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-black/85"
