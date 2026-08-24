@@ -20,7 +20,7 @@ export function TabletMockup({ sources, poster, label, className = '' }: TabletM
           />
           <div className="relative h-full w-full overflow-hidden rounded-[0.9rem] sm:rounded-[1.15rem] bg-black">
             <video
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-contain"
               poster={poster}
               autoPlay
               muted

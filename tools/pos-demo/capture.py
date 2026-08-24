@@ -9,7 +9,7 @@ url = 'file://' + str(pathlib.Path(__file__).parent.resolve() / 'scene.html')
 async def main():
     async with async_playwright() as p:
         b = await p.chromium.launch(headless=True)
-        ctx = await b.new_context(viewport={'width':1600,'height':1000}, device_scale_factor=1)
+        ctx = await b.new_context(viewport={'width':1600,'height':868}, device_scale_factor=1)
         page = await ctx.new_page()
         await page.goto(url, wait_until='load')
         await page.wait_for_timeout(1200)
