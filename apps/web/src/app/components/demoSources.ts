@@ -4,12 +4,19 @@ import posPoster from './assets/pos-demo-poster.jpg.asset.json';
 import kdsMp4 from './assets/kds-demo.mp4.asset.json';
 import kdsWebm from './assets/kds-demo.webm.asset.json';
 import kdsPoster from './assets/kds-demo-poster.jpg.asset.json';
-import cfdMp4 from './assets/cfd-demo.mp4.asset.json';
-import cfdWebm from './assets/cfd-demo.webm.asset.json';
-import cfdPoster from './assets/cfd-demo-poster.jpg.asset.json';
+import cfdMp4 from './assets/cfd2-demo.mp4.asset.json';
+import cfdWebm from './assets/cfd2-demo.webm.asset.json';
+import cfdPoster from './assets/cfd2-demo-poster.jpg.asset.json';
 import kioskMp4 from './assets/kiosk-demo.mp4.asset.json';
 import kioskWebm from './assets/kiosk-demo.webm.asset.json';
 import kioskPoster from './assets/kiosk-demo-poster.jpg.asset.json';
+import dashMp4 from './assets/dashboard-demo.mp4.asset.json';
+import dashWebm from './assets/dashboard-demo.webm.asset.json';
+import dashPoster from './assets/dashboard-demo-poster.jpg.asset.json';
+import invMp4 from './assets/inventoryos-demo.mp4.asset.json';
+import invWebm from './assets/inventoryos-demo.webm.asset.json';
+import invPoster from './assets/inventoryos-demo-poster.jpg.asset.json';
+
 
 
 
