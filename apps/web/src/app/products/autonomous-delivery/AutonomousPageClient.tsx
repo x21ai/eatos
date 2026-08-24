@@ -11,15 +11,13 @@ import {
   Monitor,
   ChefHat,
   Users,
-  Bot,
   Network,
   Scale,
-
-
-  MonitorSmartphone,
-  FileSpreadsheet,
-  Lock,
+  Route,
+  BatteryCharging,
+  Sparkles,
 } from 'lucide-react';
+
 import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
 import { features, hardware, hero, keyFeatures } from './content';
