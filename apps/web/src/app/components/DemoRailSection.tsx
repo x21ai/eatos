@@ -13,7 +13,7 @@ const deviceIcon = {
   phone: Smartphone,
 } as const;
 
-const appIcon: Record<string, (props: { className?: string }) => JSX.Element> = {
+const appIcon: Record<string, (props: { className?: string }) => React.ReactElement> = {
   pos: PosIcon,
   kds: KdsIcon,
   cfd: CfdIcon,
