@@ -24,13 +24,18 @@ export default function GetStartedPage() {
   const [selectedIndustry, setSelectedIndustry] = useState('');
 
   useEffect(() => {
-    if (document.querySelector(`script[src="${MEETINGS_SCRIPT_SRC}"]`)) return;
+    if (step !== 2) return;
+    // Re-inject so the HubSpot embed script re-scans the newly mounted container.
+    document
+      .querySelectorAll(`script[src="${MEETINGS_SCRIPT_SRC}"]`)
+      .forEach((el) => el.remove());
     const script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = MEETINGS_SCRIPT_SRC;
     script.async = true;
     document.body.appendChild(script);
   }, [step]);
+
 
 
   const industries = [
