@@ -367,7 +367,7 @@ export default function HomePage() {
 
             {/* Card 4: Hardware (Wide) */}
             <motion.a
-              href="/hardware/pro"
+              href="/hardware"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
