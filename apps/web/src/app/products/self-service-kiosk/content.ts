@@ -49,7 +49,7 @@ export const features = [
     id: 'wait-times',
     title: 'Reduce wait times',
     body:
-      'Multiple guests order at once instead of queuing for one register. Orders route to prep stations the second payment clears.',
+      'Multiple guests order at once instead of queuing for one register. Orders route to prep stations second payment clears.',
     more:
       'Peak-hour throughput rises without adding headcount, and the counter team moves from taking orders to expediting them.',
     imageLabel: 'Queue-free ordering',
