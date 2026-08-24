@@ -135,9 +135,14 @@ export function DemoRailSection({
           <div className="relative w-full rounded-2xl border border-white/10 overflow-hidden bg-zinc-900 shadow-2xl">
             <div className="flex items-center justify-center gap-2 px-4 py-3 border-b border-white/10 bg-zinc-900/50">
               {(() => {
+                const AppIcon = appIcon[demo.id];
+                if (AppIcon) {
+                  return <AppIcon className={`h-4 w-4 ${appIconColor[demo.id]}`} />;
+                }
                 const Icon = deviceIcon[demo.device] ?? Tablet;
                 return <Icon size={14} className="text-gray-400" />;
               })()}
+
               <div className="text-sm text-gray-400 font-medium">{displayLabel(demo.id)}</div>
             </div>
 
