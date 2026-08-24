@@ -68,7 +68,8 @@ export const features = [
     more:
       'Use real-time analytics to refine strategies, identify new opportunities and optimize restaurant operations based on actionable data-driven insights.',
     imageLabel: 'Marketing analytics and performance report',
-    image: null,
+    image: mar3.url,
+
     metrics: [
       { value: '10x', label: 'Accurate' },
       { value: '10x', label: 'Faster' },
