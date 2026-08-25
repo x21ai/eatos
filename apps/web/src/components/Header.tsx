@@ -93,25 +93,7 @@ export default function Header() {
   }, [mobileMenuOpen]);
 
   useEffect(() => {
-    const checkStatus = async () => {
-      try {
-        const res = await fetch("https://status.eatos.com/api/v2/status.json");
-        if (res.ok) {
-          const data = await res.json();
-          const indicator = data?.status?.indicator;
-          if (indicator === "none") setStatusColor("text-green-500");
-          else if (indicator === "minor") setStatusColor("text-yellow-500");
-          else if (indicator === "major" || indicator === "critical")
-            setStatusColor("text-red-500");
-          else setStatusColor("text-green-500");
-        }
-      } catch (e) {
-        setStatusColor("text-green-500");
-      }
-    };
-    checkStatus();
-    const interval = setInterval(checkStatus, 300000);
-    return () => clearInterval(interval);
+    setStatusColor(overallHeaderColor());
   }, []);
 
   useEffect(() => {
@@ -175,7 +157,7 @@ export default function Header() {
   // Close mobile menu on resize to xl+
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1280) setMobileMenuOpen(false);
+      if (window.innerWidth >= 1024) setMobileMenuOpen(false);
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -574,7 +556,7 @@ export default function Header() {
               label="Support"
             />
             <NavIcon
-              href="https://status.eatos.com/en/"
+              href="/system-status"
               icon={Activity}
               label="System Status"
               colorClass={statusColor}
@@ -972,7 +954,7 @@ export default function Header() {
                   external: true,
                 },
                 {
-                  href: "https://status.eatos.com/en/",
+                  href: "/system-status",
                   Icon: Activity,
                   label: "Status",
                   external: true,
