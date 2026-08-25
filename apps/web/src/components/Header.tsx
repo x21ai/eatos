@@ -419,7 +419,7 @@ export default function Header() {
                 : "https://ucarecdn.com/4352d127-4bf5-42cf-a022-3110926687de/-/format/auto/"
             }
             alt="eatOS"
-            className={`hidden xl:block h-[44px] w-auto transition-all duration-300 ${isDarkPage ? "drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]" : ""}`}
+            className={`hidden lg:block h-[44px] w-auto transition-all duration-300 ${isDarkPage ? "drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]" : ""}`}
           />
           {/* Mobile / tablet mark */}
           <img
@@ -429,7 +429,7 @@ export default function Header() {
                 : mobileLogoBlack.url
             }
             alt="eatOS"
-            className={`xl:hidden h-[34px] w-auto transition-all duration-300 ${isDarkPage && !mobileMenuOpen ? "drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]" : ""}`}
+            className={`lg:hidden h-[34px] w-auto transition-all duration-300 ${isDarkPage && !mobileMenuOpen ? "drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]" : ""}`}
           />
         </a>
 
