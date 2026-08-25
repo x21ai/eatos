@@ -1,35 +1,44 @@
-# Import all blog posts from Wix
+# Import ~1500-2000 blog posts from Wix into a database-backed blog
 
-## Approach
-Your blog pages now render from a static content module (`apps/web/src/app/blog/content.ts`), not a database. So the import is a one-time sync: pull every published post from your Wix site through the Wix connector and write them into that module. Posts prerender into the static site exactly like the existing 8 posts.
+## Why a database (not the static module)
+With 1500-2000 posts, keeping posts in `content.ts` would:
+- Bundle every post's full text into the JavaScript download (multiple MB on every page load).
+- Make builds slow and brittle (thousands of prerendered pages).
+- Force the index page to download all post metadata just to render filters.
+
+A database serves only the page of posts being viewed, scales to any volume, and lets you keep publishing in Wix and re-syncing on demand.
 
 ## Steps
 
-**1. Connect Wix**
-- Link your Wix account via the connector card (API key from Wix dashboard: Settings > API Keys).
-- The gateway authenticates with the key; nothing is exposed to the browser.
+**1. Enable Lovable Cloud**
+- Built-in database and server functions, no external accounts.
 
-**2. Discover your site and posts**
-- Call Wix `Query Sites` to find your site ID (confirm it is the right one if you have multiple sites).
-- Pull all published posts from the Wix Blog API (v3): title, slug, excerpt, rich content, cover image, publish date, author, categories/tags.
+**2. Create the `blog_posts` table**
+- Columns: slug (unique), title, category, excerpt, content (rich HTML or block JSON), cover_image, author, published_at, seo_title, seo_description.
+- Public read policy (published posts only) so the blog stays fast and anonymous-friendly.
+- Full-text search index on title/excerpt for the search box.
+- Migrate the 8 existing static posts into the table as part of the migration seed.
 
-**3. Import script (run once, committed for re-runs)**
-- Script at `tools/wix-blog-import/` that calls the Blog API through the gateway.
-- Converts Wix rich content to the `body` block format our post page already renders (paragraphs, headings, lists, images, links).
-- Downloads each cover image into `apps/web/src/app/blog/assets/blog/` as committed assets.
-- Maps Wix categories to our existing category list; new categories get added to the filter row.
-- Writes the merged entries into `content.ts` (existing 8 posts stay, duplicates by slug are skipped).
-- Sanitizes copy on import: no em dashes (replaced with commas/colons per project rule).
+**3. Connect Wix and import**
+- Link your Wix account via the connector card.
+- Import script at `tools/wix-blog-import/` pulling all published posts through the Wix Blog API (v3), batched inserts, idempotent (safe to re-run; matches on slug, updates changed posts, inserts new ones).
+- Cover images uploaded to Cloud storage; body images keep their Wix CDN URLs (they are public) so no 1500-image re-hosting chore.
+- Sanitize on import: em dashes replaced per project rule; category mapping to our filter list.
 
-**4. Verify**
-- Blog index shows all imported posts with correct images, dates, excerpts and categories.
-- Spot-check several post pages for correct body rendering, then publish.
+**4. Rebuild blog pages on the database**
+- Index: server function with cursor pagination, category filter and search; "Load more" appends pages; hero and featured post unchanged.
+- Post page `/blog/[slug]`: fetches the single post by slug with related posts; 404 state for unknown slugs.
+- SEO: per-post head metadata from the post row.
+
+**5. Verify and publish**
+- Check index pagination/filtering with the full dataset, spot-check several imported posts, confirm mobile layout.
 
 ## Notes
-- **Ongoing publishing**: if you keep writing in Wix, the script is re-runnable to import new posts on demand. A fully automatic sync (fetching from Wix at request time) is possible but would re-introduce a live dependency that slows the static site; on-demand re-import is the better fit.
-- Posts with complex Wix widgets (video embeds, galleries) that do not map to our block types will render the text around them; I will flag any such posts in the import report so we can handle them individually.
+- **Ongoing sync**: re-run the import script anytime to pull new/updated Wix posts. If you later want automatic sync, we can add a Wix webhook endpoint.
+- The existing 8 static posts remain live until the database cutover, so nothing breaks mid-migration.
+- Admin `/api/blog` routes stay untouched.
 
 ## Technical details
-- Wix endpoints: `POST /site-list/v2/sites/query`, then blog query with `wix-site-id` header, all via `https://connector-gateway.lovable.dev/wix/...`.
-- Import runs server-side (Node script), reads `LOVABLE_API_KEY` and `WIX_API_KEY` from env.
-- No database or schema changes; `/api/blog` admin routes untouched.
+- Reads go through `createServerFn` public server functions using the publishable key with a narrow `TO anon` SELECT policy on published rows.
+- Import script runs server-side with the service role key, reading `LOVABLE_API_KEY` + `WIX_API_KEY` for the Wix gateway calls.
+- Pagination is cursor-based: `{ data, next_cursor, has_more }` per project API rules.
