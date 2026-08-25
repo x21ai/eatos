@@ -1,39 +1,29 @@
-# Import 1,000 Wix blog posts into this website
+# Rebuild /pricing on the shared site template
 
-## Goal
-Move all ~1,000 posts from the Wix Blog app into this site, store them in a Lovable Cloud database, show them on the existing `/blog` pages, and let you publish new posts from the site's own admin dashboard.
+## Why it looks different today
+The pricing page was built as a one-off from a reference screenshot (light gray background, white cards, black header strips), while every other page (home, Point of Sale, accept-payments, solutions) uses the dark editorial template: black background, orange accent, Montserrat type, shared container spacing. The content is fine; only the styling is off-brand.
 
-## Steps
+## What gets changed
+Restyle `/pricing` (apps/web/src/app/pricing) to match the shared template, keeping all existing content and rates:
 
-**1. Enable Lovable Cloud**
-- Provisions the built-in database and auth. Replaces the current D1-based `/api/blog` backend, which fails in preview and on the live static site.
+**1. Hero**
+- Dark hero matching other pages: eyebrow label, "Simple Pricing" headline, short supporting line, Book a Demo primary CTA.
 
-**2. Connect Wix**
-- Link your Wix account through the Wix connector. We then query your Wix sites, pick the right one, and use the Wix Blog API (`/blog/v3/posts/query`) to read every post: title, slug, excerpt, full HTML content, cover image, author, publish date, tags, categories, and SEO fields.
+**2. Rate cards**
+- "$0 Upfront Hardware Cost" (2.99%+15¢) and "Build your Own Bundle" (2.59%+15¢) as dark cards with white borders, orange rate highlight, Book a Demo buttons, footnote text preserved.
 
-**3. Database table: `blog_posts`**
-- Columns: title, slug (unique), excerpt, content (HTML), cover_image, author_name, published_at, categories, tags, seo_title, seo_description, status (draft/published), timestamps.
-- Public read access for published posts only; writes restricted to the signed-in admin. Includes the required GRANT statements and RLS policies.
+**3. "Your Price" quote panel**
+- "We will beat it" intro copy plus the black quote panel ("Any Point of Sale or Payment Processing Quote", 6 bullet points, Learn More) restyled as a single dark section consistent with other pages' feature blocks.
 
-**4. One-click "Import from Wix" action**
-- A protected server-side import that pages through all 1,000 Wix posts in batches and upserts them into `blog_posts` (safe to re-run; no duplicates, matched by slug).
-- Triggered once from the admin area; shows progress (imported count) as it runs.
+**4. FAQ**
+- "Questions?" section kept, restyled to the dark accordion/typography style used on other pages.
 
-**5. Public blog pages read from the database**
-- `/blog` keeps its current design but loads posts from the database with server-side pagination and the existing category filters (categories come from the real imported data).
-- `/blog/[slug]` renders the full article HTML, cover image, author, date, and per-post SEO meta from the database.
-- Sitemap updated to include all published post URLs.
-
-**6. Admin dashboard for new posts**
-- `/admin/blog` is repointed from the broken D1 API to the database: list, search, filter by status, create, edit, publish.
-- Protected with Lovable Cloud sign-in so only you can create or edit posts.
-- Publishing a new post makes it appear on `/blog` immediately, no republish needed.
-
-## What stays the same
-- The current blog index and article designs; only the data source changes.
-- The existing 8 hand-written posts are imported into the database as part of the migration so nothing is lost.
+**5. Consistency details**
+- Same site-container side padding, section spacing, heading sizes, and border/hover treatments as the Point of Sale and accept-payments pages.
+- Header shows white-on-dark variant; footer unchanged.
+- Responsive across mobile, tablet, desktop.
+- No copy changes, no rate changes, no em dashes.
 
 ## Technical notes
-- The site currently exports static HTML; the blog routes will read from the database at request time instead of at build time.
-- Import is idempotent (slug-keyed upsert), so you can re-run it any time to pull in posts added on Wix before cutover.
-- Cover images stay on Wix's CDN URLs initially; they keep working as long as the Wix media is public.
+- Edit only the pricing page files; no other pages touched.
+- Verified with screenshots on desktop and mobile after the change.
