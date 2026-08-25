@@ -211,9 +211,9 @@ export default function Footer({ variant = 'light' }) {
     : 'bg-gray-50 hover:bg-gray-100 transition-colors rounded-xl p-3 flex items-start gap-3';
   const iconColor = isDark ? 'text-gray-400' : 'text-[#6e6e73]';
   const addrLabel = isDark
-    ? 'text-[12px] font-semibold text-gray-400'
-    : 'text-[12px] font-semibold text-[#1d1d1f]';
-  const addrText = isDark ? 'text-[12px] text-gray-600' : 'text-[12px] text-[#6e6e73]';
+    ? 'text-[14px] font-semibold text-gray-400'
+    : 'text-[14px] font-semibold text-[#1d1d1f]';
+  const addrText = isDark ? 'text-[13px] text-gray-600' : 'text-[13px] text-[#6e6e73]';
 
   const logoSrc = isDark ? mobileLogoWhite.url : mobileLogoBlack.url;
 
@@ -275,14 +275,14 @@ export default function Footer({ variant = 'light' }) {
                   target={href.startsWith('http') ? '_blank' : undefined}
                   rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 >
-                  <Icon size={16} className={`${iconColor} mt-0.5 flex-shrink-0`} />
+                  <Icon size={18} className={`${iconColor} mt-0.5 flex-shrink-0`} />
                   <div>
                     <div
-                      className={`text-[12px] font-semibold ${isDark ? 'text-gray-300' : 'text-[#1d1d1f]'}`}
+                      className={`text-[14px] font-semibold ${isDark ? 'text-gray-300' : 'text-[#1d1d1f]'}`}
                     >
                       {label}
                     </div>
-                    <div className={`text-[12px] ${isDark ? 'text-gray-500' : 'text-[#6e6e73]'}`}>
+                    <div className={`text-[13px] ${isDark ? 'text-gray-500' : 'text-[#6e6e73]'}`}>
                       {detail}
                     </div>
                   </div>
