@@ -145,18 +145,18 @@ const LINK_GROUPS = [
 
 export default function Footer() {
   const headingClass = 'text-[11px] font-semibold uppercase tracking-[0.18em] text-white';
-  const linkClass = 'text-[13px] text-gray-500 transition-colors hover:text-white';
-  const descClass = 'text-[15px] leading-relaxed text-gray-500';
-  const socialClass = 'flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-gray-400 transition-colors hover:border-white/40 hover:text-white';
+  const linkClass = 'text-[13px] text-gray-300 transition-colors hover:text-white';
+  const descClass = 'text-[15px] leading-relaxed text-gray-300';
+  const socialClass = 'flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-gray-300 transition-colors hover:border-white/40 hover:text-white';
   const cardClass = 'group flex flex-col justify-between rounded-2xl border border-white/10 bg-white/5 p-8 transition-colors hover:border-white/25';
-  const cardLabel = 'text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500';
+  const cardLabel = 'text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-300';
   const cardTitle = 'text-xl font-medium mt-2 text-white';
   const cardLink = 'mt-8 inline-flex items-center gap-2 font-medium text-white transition-all group-hover:gap-3';
-  const officeLabel = 'text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500';
+  const officeLabel = 'text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-300';
   const officeCity = 'text-[13px] text-gray-300';
-  const officeAddr = 'text-[12px] text-gray-600';
-  const bottomText = 'text-[12px] text-gray-600';
-  const bottomLink = 'text-gray-500 transition-colors hover:text-white';
+  const officeAddr = 'text-[12px] text-gray-300';
+  const bottomText = 'text-[12px] text-gray-300';
+  const bottomLink = 'text-gray-300 transition-colors hover:text-white';
   
 
   return (
@@ -265,7 +265,7 @@ export default function Footer() {
               </button>
             </div>
 
-            <span className="flex items-center gap-1.5 text-[12px] text-gray-500">
+            <span className="flex items-center gap-1.5 text-[12px] text-gray-300">
               <Globe size={13} /> United States - EN
             </span>
           </div>
