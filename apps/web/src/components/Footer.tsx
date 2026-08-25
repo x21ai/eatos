@@ -246,8 +246,6 @@ export default function Footer() {
 
         <div className="pt-10 border-t border-white/10">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
-
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
             <div className={`flex flex-wrap items-center gap-x-6 gap-y-2 ${bottomText}`}>
               <span suppressHydrationWarning>
                 &copy; 2017 - 2026 <strong className="font-semibold">eatOS POS Inc.</strong> All rights reserved.
