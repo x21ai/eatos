@@ -107,7 +107,7 @@ export function DemoRailSection({
                   {active && (
                     <span className="absolute left-0 top-3 bottom-3 w-1 rounded-full bg-emerald-500 hidden lg:block" />
                   )}
-                  <span className="flex items-center gap-2">
+                  <span className="flex min-w-0 items-center gap-2">
                     <span
                       className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md ${
                         AppIcon
