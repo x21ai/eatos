@@ -292,6 +292,23 @@ export default function Footer({ variant = 'light' }) {
               </a>
             </div>
           </div>
+
+          {/* Full width: offices */}
+          <div className="md:col-span-2">
+            <h4 className={`${headingClass} mb-5`}>Our Offices</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {OFFICES.map(({ city, address, state }) => (
+                <div key={city} className="flex items-start gap-2">
+                  <MapPin size={13} className={`${iconColor} mt-0.5 flex-shrink-0`} />
+                  <div>
+                    <div className={addrLabel}>{city}</div>
+                    <div className={addrText}>{address}</div>
+                    <div className={addrText}>{state}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* ── Link columns ── */}
