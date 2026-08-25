@@ -225,7 +225,7 @@ export default function Footer({ variant = 'light' }) {
           {/* Left: logo · description · social */}
           <div>
             <a href="/" className="inline-block mb-5">
-              <img src={logoSrc} alt="eatOS" className="h-9 w-auto" />
+              <img src={logoSrc} alt="eatOS" className="h-12 w-auto" />
             </a>
             <p className={`${descClass} max-w-sm mb-6`}>
               The operating system for the modern restaurant, built for the way hospitality actually
