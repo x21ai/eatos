@@ -35,7 +35,7 @@ export const features = [
     id: 'point-of-sale',
     title: 'Point of Sale',
     body:
-      'Transform your restaurant with cutting-edge hardware. Tailored configurations from Clover and HP are designed to optimize ordering, payment and management, boosting speed and enhancing the dining experience.',
+      'Transform your restaurant with cutting-edge hardware. Tailored eatOS configurations are designed to optimize ordering, payment and management, boosting speed and enhancing the dining experience.',
     more:
       'Counter, screens and mobile setups all run the same eatOS software, menus, staff, reporting stay in sync across every station.',
     imageLabel: 'eatOS Point of Sale terminal',
