@@ -217,9 +217,7 @@ export default function Footer({ variant = 'light' }) {
     : 'text-[12px] font-semibold text-[#1d1d1f]';
   const addrText = isDark ? 'text-[12px] text-gray-600' : 'text-[12px] text-[#6e6e73]';
 
-  const logoSrc = isDark
-    ? 'https://ucarecdn.com/03d261bb-af6b-4183-a35c-afdbb7e1a2b7/-/format/auto/'
-    : 'https://ucarecdn.com/4352d127-4bf5-42cf-a022-3110926687de/-/format/auto/';
+  const logoSrc = isDark ? mobileLogoWhite.url : mobileLogoBlack.url;
 
   return (
     <footer className={`${bgClass} border-t pt-16 pb-8`}>
