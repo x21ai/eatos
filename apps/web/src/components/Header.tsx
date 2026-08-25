@@ -703,7 +703,7 @@ export default function Header() {
                 <a
                   key={href}
                   href={href}
-                  className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] font-medium hover:bg-gray-50"
+                  className={`flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] hover:bg-gray-50 ${currentPath === href ? "font-bold text-gray-900 bg-gray-50" : "font-medium"}`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Icon size={18} className={color} /> {label}
@@ -755,7 +755,7 @@ export default function Header() {
                 <a
                   key={href}
                   href={href}
-                  className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] font-medium hover:bg-gray-50"
+                  className={`flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] hover:bg-gray-50 ${currentPath === href ? "font-bold text-gray-900 bg-gray-50" : "font-medium"}`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Icon size={18} className={color} /> {label}
@@ -809,7 +809,7 @@ export default function Header() {
                 <a
                   key={href}
                   href={href}
-                  className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] font-medium hover:bg-gray-50"
+                  className={`flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] hover:bg-gray-50 ${currentPath === href ? "font-bold text-gray-900 bg-gray-50" : "font-medium"}`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Icon size={18} className={color} /> {label}
@@ -857,7 +857,7 @@ export default function Header() {
                 <a
                   key={href}
                   href={href}
-                  className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] font-medium hover:bg-gray-50"
+                  className={`flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] hover:bg-gray-50 ${currentPath === href ? "font-bold text-gray-900 bg-gray-50" : "font-medium"}`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Icon size={18} className={color} /> {label}
