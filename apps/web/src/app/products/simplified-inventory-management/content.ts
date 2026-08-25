@@ -67,7 +67,7 @@ export const features = [
     body:
       'With eatOS, vendor management becomes effortless. Keep a detailed supplier database, monitor purchase orders, and handle delivery schedules seamlessly. Access price comparisons, negotiate contracts, and guarantee optimal value for your investments.',
     more:
-      'Orders, invoices, and delivery notes live in one place, so reconciliation takes minutes instead of days.',
+      'Orders, invoices, and delivery notes live in one place, so reconciliation takes minutes.',
     imageLabel: 'Vendor management interface',
     image: inven3.url,
     metrics: [
