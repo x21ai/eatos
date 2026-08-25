@@ -156,7 +156,7 @@ export default function Footer() {
   const officeCity = 'text-[13px] text-gray-300';
   const officeAddr = 'text-[12px] text-gray-300';
   const bottomText = 'text-[12px] text-gray-300';
-  const bottomLink = 'text-gray-300 transition-colors hover:text-white';
+  const bottomLink = 'text-[12px] text-gray-300 transition-colors hover:text-white';
   
 
   return (
