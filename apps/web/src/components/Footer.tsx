@@ -282,42 +282,9 @@ export default function Footer() {
               </button>
             </div>
 
-            <div className="flex flex-wrap items-center gap-4">
-              {/* TODO: replace with the real eatOS App Store URL */}
-              <a
-                href="https://apps.apple.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={badgeClass}
-                aria-label="Download on the App Store"
-              >
-                <AppleIcon size={16} />
-                <span className="text-[11px] font-semibold leading-tight">App Store</span>
-              </a>
-              {/* TODO: replace with the real eatOS Google Play URL */}
-              <a
-                href="https://play.google.com/store"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={badgeClass}
-                aria-label="Get it on Google Play"
-              >
-                <GooglePlayIcon size={14} />
-                <span className="text-[11px] font-semibold leading-tight">Google Play</span>
-              </a>
-              <a
-                href="https://status.eatos.com/en/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`flex items-center gap-2 text-[12px] ${bottomLink}`}
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                Systems Operational
-              </a>
-              <span className="flex items-center gap-1.5 text-[12px] text-gray-500">
-                <Globe size={13} /> United States - EN
-              </span>
-            </div>
+            <span className="flex items-center gap-1.5 text-[12px] text-gray-500">
+              <Globe size={13} /> United States - EN
+            </span>
           </div>
         </div>
       </div>
