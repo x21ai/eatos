@@ -41,9 +41,47 @@ export default function Header() {
   const [statusColor, setStatusColor] = useState("text-green-500");
   const [mobileTab, setMobileTab] = useState("products");
   const [openGroup, setOpenGroup] = useState("Operations");
+  const [currentPath, setCurrentPath] = useState("/");
+
+  const groupForPath = (path: string) => {
+    if (
+      [
+        "/point-of-sale",
+        "/products/kitchen-display-system",
+        "/products/simplified-inventory-management",
+        "/products/workforce-management",
+      ].some((p) => path === p || path.startsWith(p + "/"))
+    )
+      return "Operations";
+    if (
+      [
+        "/products/self-service-kiosk",
+        "/products/tableside-order-and-pay",
+        "/products/apponlineorderingdelivery",
+      ].some((p) => path === p || path.startsWith(p + "/"))
+    )
+      return "Guest Experience";
+    if (
+      [
+        "/accept-payments",
+        "/products/loyalty",
+        "/products/automated-marketing",
+      ].some((p) => path === p || path.startsWith(p + "/"))
+    )
+      return "Growth & Payments";
+    if (
+      ["/ai", "/hardware"].some((p) => path === p || path.startsWith(p + "/"))
+    )
+      return "Intelligence & Hardware";
+    return "Operations";
+  };
 
   useEffect(() => {
-    if (!mobileMenuOpen) {
+    if (mobileMenuOpen) {
+      const path = window.location.pathname;
+      setMobileTab(path.startsWith("/solutions") ? "solutions" : "products");
+      setOpenGroup(groupForPath(path));
+    } else {
       setMobileTab("products");
       setOpenGroup("Operations");
     }
