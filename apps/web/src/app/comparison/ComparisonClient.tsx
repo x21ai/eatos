@@ -397,6 +397,7 @@ function Reasons() {
                   ratio="aspect-[16/11]"
                   tone="dark"
                   bare
+                  contain
                 />
               </Reveal>
             </div>
