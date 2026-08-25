@@ -736,7 +736,7 @@ export default function HomePage() {
                 Chaos, controlled.
               </h2>
 
-              <p className="text-base lg:text-lg text-gray-400 mb-10 leading-relaxed max-w-lg">
+              <p className="text-sm lg:text-lg text-gray-400 mb-10 leading-relaxed max-w-lg">
                 The Kitchen Display System that keeps front and back of house in
                 perfect sync. Real-time updates, color-coded alerts, and
                 performance tracking.
