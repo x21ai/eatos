@@ -870,6 +870,12 @@ export default function Header() {
                   label: "Hardware",
                   color: "text-gray-500",
                 },
+                {
+                  href: "/offline-point-of-sale",
+                  Icon: Wifi,
+                  label: "Offline Connectivity",
+                  color: "text-sky-500",
+                },
               ].map(({ href, Icon, label, color }) => (
                 <a
                   key={href}
