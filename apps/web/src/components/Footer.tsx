@@ -227,6 +227,16 @@ export default function Footer() {
           </div>
         </div>
 
+        <div className="flex flex-wrap gap-x-12 gap-y-5 pt-10 pb-14 border-b border-white/10">
+          <div className={officeLabel}>Offices</div>
+          {OFFICES.map(({ city, address }) => (
+            <div key={city}>
+              <div className={officeCity}>{city}</div>
+              <div className={officeAddr}>{address}</div>
+            </div>
+          ))}
+        </div>
+
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 py-16 items-start">
           {LINK_GROUPS.map(({ title, links }) => (
             <div key={title}>
