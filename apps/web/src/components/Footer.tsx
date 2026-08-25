@@ -6,8 +6,11 @@ import {
   Mail,
   MapPin,
   MessageCircle,
+  MessageSquare,
+  FileDown,
   CalendarCheck,
   HelpCircle,
+  Globe,
 } from 'lucide-react';
 import mobileLogoWhite from './marketing/assets/brand/logo-mobile-white.png.asset.json';
 import mobileLogoBlack from './marketing/assets/brand/logo-mobile-black.png.asset.json';
@@ -113,6 +116,36 @@ function YoutubeIcon({ size = 24, ...props }) {
   );
 }
 
+function AppleIcon({ size = 24, ...props }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+    </svg>
+  );
+}
+
+function GooglePlayIcon({ size = 24, ...props }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      {...props}
+    >
+      <path d="M4 2.9v18.2c0 .55.6.88 1.05.58l16-9.1c.42-.24.42-.82 0-1.06l-16-9.1C4.6 2.03 4 2.36 4 2.9z" />
+    </svg>
+  );
+}
+
 // Social channels: handle is @myeatOS across all platforms
 const SOCIAL_LINKS = [
   {
@@ -177,6 +210,18 @@ const CONTACT_CHANNELS = [
     Icon: MessageCircle,
   },
   {
+    label: 'Text Us',
+    detail: '+1 (844) 563-2867',
+    href: 'sms:+18445632867',
+    Icon: MessageSquare,
+  },
+  {
+    label: 'Brochures',
+    detail: 'Download PDFs',
+    href: '/brochures',
+    Icon: FileDown,
+  },
+  {
     label: 'Help Center',
     detail: 'Browse articles',
     href: 'https://support.eatos.com/en-us/',
@@ -189,17 +234,17 @@ export default function Footer({ variant = 'light' }) {
 
   const bgClass = isDark ? 'bg-black border-white/5' : 'bg-white border-gray-100';
   const headingClass = isDark
-    ? 'text-[11px] font-bold tracking-widest text-gray-300 uppercase'
-    : 'text-[11px] font-bold tracking-widest text-[#1d1d1f] uppercase';
+    ? 'text-[11px] font-bold tracking-[0.14em] text-gray-300 uppercase'
+    : 'text-[11px] font-bold tracking-[0.14em] text-[#1d1d1f] uppercase';
   const linkClass = isDark
-    ? 'text-[14px] leading-6 text-gray-400 transition-colors duration-200 hover:text-white hover:underline underline-offset-4 decoration-white/40'
-    : 'text-[14px] leading-6 text-[#424245] transition-colors duration-200 hover:text-black hover:underline underline-offset-4 decoration-black/30';
+    ? 'inline-block text-[14px] leading-6 text-gray-400 transition-[color,transform] duration-200 hover:text-white hover:translate-x-0.5 hover:underline underline-offset-4 decoration-white/40'
+    : 'inline-block text-[14px] leading-6 text-[#424245] transition-[color,transform] duration-200 hover:text-black hover:translate-x-0.5 hover:underline underline-offset-4 decoration-black/30';
   const descClass = isDark
     ? 'text-[14px] leading-6 text-gray-500'
     : 'text-[14px] leading-6 text-[#6e6e73]';
   const socialClass = isDark
-    ? 'text-gray-500 hover:text-white transition-colors'
-    : 'text-[#6e6e73] hover:text-black transition-colors';
+    ? 'flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-gray-400 transition-colors hover:border-white/40 hover:bg-white/10 hover:text-white'
+    : 'flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 text-[#6e6e73] transition-colors hover:border-gray-400 hover:bg-gray-100 hover:text-black';
   const bottomBorder = isDark ? 'border-white/5' : 'border-gray-200';
   const bottomText = isDark ? 'text-gray-600 text-[12px]' : 'text-[#6e6e73] text-[12px]';
   const bottomLink = isDark
@@ -207,13 +252,24 @@ export default function Footer({ variant = 'light' }) {
     : 'hover:text-black transition-colors';
   const divider = isDark ? 'border-white/5' : 'border-gray-100';
   const contactCard = isDark
-    ? 'bg-white/5 hover:bg-white/10 transition-colors rounded-xl p-3 flex items-start gap-3'
-    : 'bg-gray-50 hover:bg-gray-100 transition-colors rounded-xl p-3 flex items-start gap-3';
+    ? 'bg-white/5 hover:bg-white/10 transition-colors rounded-xl p-3 flex items-start gap-3 h-full'
+    : 'bg-gray-50 hover:bg-gray-100 transition-colors rounded-xl p-3 flex items-start gap-3 h-full';
   const iconColor = isDark ? 'text-gray-400' : 'text-[#6e6e73]';
   const addrLabel = isDark
     ? 'text-[14px] font-semibold text-gray-400'
     : 'text-[14px] font-semibold text-[#1d1d1f]';
   const addrText = isDark ? 'text-[13px] text-gray-600' : 'text-[13px] text-[#6e6e73]';
+  const badgeClass = isDark
+    ? 'inline-flex items-center gap-2.5 rounded-lg border border-white/15 px-3 py-2 text-gray-200 transition-colors hover:border-white/40 hover:bg-white/5'
+    : 'inline-flex items-center gap-2.5 rounded-lg border border-gray-200 px-3 py-2 text-[#1d1d1f] transition-colors hover:border-gray-400 hover:bg-gray-50';
+  const badgeSmall = 'block text-[10px] leading-tight opacity-70';
+  const badgeBig = 'block text-[13px] font-semibold leading-tight';
+  const trustChip = isDark
+    ? 'inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1.5 text-[12px] text-gray-300 transition-colors hover:border-white/40 hover:bg-white/5'
+    : 'inline-flex items-center gap-2 rounded-full border border-gray-200 px-3 py-1.5 text-[12px] text-[#424245] transition-colors hover:border-gray-400 hover:bg-gray-50';
+  const regionChip = isDark
+    ? 'inline-flex items-center gap-1.5 rounded-full border border-white/15 px-3 py-1.5'
+    : 'inline-flex items-center gap-1.5 rounded-full border border-gray-200 px-3 py-1.5';
 
   const logoSrc = isDark ? mobileLogoWhite.url : mobileLogoBlack.url;
 
@@ -221,18 +277,20 @@ export default function Footer({ variant = 'light' }) {
     <footer className={`${bgClass} border-t pt-16 pb-8`}>
       <div className="site-container">
         {/* ── Top: brand / offices  +  contact channels ── */}
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 pb-12 border-b ${divider} mb-12`}>
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 gap-10 pb-12 border-b ${divider} mb-12`}
+        >
           {/* Left: logo · description · social */}
           <div>
             <a href="/" className="inline-block mb-5">
               <img src={logoSrc} alt="eatOS" className="h-12 w-auto" />
             </a>
             <p className={`${descClass} max-w-sm mb-6`}>
-              The operating system for the modern restaurant, built for the way hospitality actually
-              works.
+              The operating system for the modern restaurant, built for the way hospitality
+              actually works.
             </p>
 
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex items-center gap-3 mb-8">
               {SOCIAL_LINKS.map(({ label, href, Icon }) => (
                 <a
                   key={label}
@@ -242,7 +300,7 @@ export default function Footer({ variant = 'light' }) {
                   aria-label={label}
                   className={socialClass}
                 >
-                  <Icon size={18} />
+                  <Icon size={16} />
                 </a>
               ))}
             </div>
@@ -276,7 +334,7 @@ export default function Footer({ variant = 'light' }) {
                   rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                 >
                   <Icon size={18} className={`${iconColor} mt-0.5 flex-shrink-0`} />
-                  <div>
+                  <div className="min-w-0">
                     <div
                       className={`text-[14px] font-semibold ${isDark ? 'text-gray-300' : 'text-[#1d1d1f]'}`}
                     >
@@ -297,8 +355,8 @@ export default function Footer({ variant = 'light' }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {OFFICES.map(({ city, address, state }) => (
                 <div key={city} className="flex items-start gap-2">
-                  <MapPin size={15} className={`${iconColor} mt-0.5 flex-shrink-0`} />
-                  <div>
+                  <MapPin size={15} className={`${iconColor} mt-1 flex-shrink-0`} />
+                  <div className="min-w-0">
                     <div className={addrLabel}>{city}</div>
                     <div className={addrText}>{address}</div>
                     <div className={addrText}>{state}</div>
@@ -310,7 +368,7 @@ export default function Footer({ variant = 'light' }) {
         </div>
 
         {/* ── Link columns ── */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-6 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-6 mb-12 items-start">
           {/* Platform */}
           <div>
             <h4 className={`${headingClass} mb-5`}>Platform</h4>
@@ -481,9 +539,50 @@ export default function Footer({ variant = 'light' }) {
           </div>
         </div>
 
+        {/* ── App badges & trust marks ── */}
+        <div className={`flex flex-wrap items-center gap-3 pb-10 mb-8 border-b ${divider}`}>
+          {/* TODO: replace with the real eatOS App Store URL */}
+          <a
+            href="https://apps.apple.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={badgeClass}
+            aria-label="Download on the App Store"
+          >
+            <AppleIcon size={18} />
+            <span>
+              <span className={badgeSmall}>Download on the</span>
+              <span className={badgeBig}>App Store</span>
+            </span>
+          </a>
+          {/* TODO: replace with the real eatOS Google Play URL */}
+          <a
+            href="https://play.google.com/store"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={badgeClass}
+            aria-label="Get it on Google Play"
+          >
+            <GooglePlayIcon size={16} />
+            <span>
+              <span className={badgeSmall}>Get it on</span>
+              <span className={badgeBig}>Google Play</span>
+            </span>
+          </a>
+          <a
+            href="https://status.eatos.com/en/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={trustChip}
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+            System status: Operational
+          </a>
+        </div>
+
         {/* ── Legal strip ── */}
         <div
-          className={`border-t ${bottomBorder} pt-6 flex flex-col md:flex-row justify-between items-center gap-4 ${bottomText}`}
+          className={`flex flex-col md:flex-row justify-between items-center gap-4 ${bottomText}`}
         >
           <p suppressHydrationWarning>
             &copy; 2017 - 2026 <strong>eatOS POS Inc.</strong> All rights reserved.
@@ -507,7 +606,9 @@ export default function Footer({ variant = 'light' }) {
               Cookie Settings
             </button>
           </div>
-          <p className="flex items-center gap-1">🌍 United States · EN</p>
+          <span className={regionChip}>
+            <Globe size={13} /> United States - EN
+          </span>
         </div>
       </div>
     </footer>
