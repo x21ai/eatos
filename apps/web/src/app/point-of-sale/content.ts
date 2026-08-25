@@ -59,7 +59,7 @@ export const features = [
     id: 'online-ordering',
     title: 'Built-in Online Ordering',
     body:
-      'Automate order tracking with integrated accounting and get rid of the inconvenience of manually monitoring third party ordering apps.',
+      'Automate order tracking with integrated accounting and get rid of inconvenience of manually monitoring 3rd party ordering app.',
     more:
       'Orders flow straight into the Point of Sale and Kitchen Display System, so data sharing stays smooth and updates land instantly.',
     imageLabel: 'Phone showing a white labeled ordering app',
