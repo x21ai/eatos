@@ -11,6 +11,8 @@ import {
   CalendarCheck,
   HelpCircle,
 } from 'lucide-react';
+import mobileLogoWhite from './marketing/assets/brand/logo-mobile-white.png.asset.json';
+import mobileLogoBlack from './marketing/assets/brand/logo-mobile-black.png.asset.json';
 
 // Brand icons removed from lucide-react v1.x, replaced with inline SVGs
 function TwitterIcon({ size = 24, ...props }) {
@@ -215,16 +217,14 @@ export default function Footer({ variant = 'light' }) {
     : 'text-[12px] font-semibold text-[#1d1d1f]';
   const addrText = isDark ? 'text-[12px] text-gray-600' : 'text-[12px] text-[#6e6e73]';
 
-  const logoSrc = isDark
-    ? 'https://ucarecdn.com/03d261bb-af6b-4183-a35c-afdbb7e1a2b7/-/format/auto/'
-    : 'https://ucarecdn.com/4352d127-4bf5-42cf-a022-3110926687de/-/format/auto/';
+  const logoSrc = isDark ? mobileLogoWhite.url : mobileLogoBlack.url;
 
   return (
     <footer className={`${bgClass} border-t pt-16 pb-8`}>
       <div className="site-container">
         {/* ── Top: brand / offices  +  contact channels ── */}
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 pb-12 border-b ${divider} mb-12`}>
-          {/* Left: logo · description · social · offices */}
+          {/* Left: logo · description · social */}
           <div>
             <a href="/" className="inline-block mb-5">
               <img src={logoSrc} alt="eatOS" className="h-9 w-auto" />
@@ -246,19 +246,6 @@ export default function Footer({ variant = 'light' }) {
                 >
                   <Icon size={18} />
                 </a>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {OFFICES.map(({ city, address, state }) => (
-                <div key={city} className="flex items-start gap-2">
-                  <MapPin size={13} className={`${iconColor} mt-0.5 flex-shrink-0`} />
-                  <div>
-                    <div className={addrLabel}>{city}</div>
-                    <div className={addrText}>{address}</div>
-                    <div className={addrText}>{state}</div>
-                  </div>
-                </div>
               ))}
             </div>
           </div>
@@ -303,6 +290,23 @@ export default function Footer({ variant = 'light' }) {
               >
                 Contact Sales
               </a>
+            </div>
+          </div>
+
+          {/* Full width: offices */}
+          <div className="md:col-span-2">
+            <h4 className={`${headingClass} mb-5`}>Our Offices</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {OFFICES.map(({ city, address, state }) => (
+                <div key={city} className="flex items-start gap-2">
+                  <MapPin size={13} className={`${iconColor} mt-0.5 flex-shrink-0`} />
+                  <div>
+                    <div className={addrLabel}>{city}</div>
+                    <div className={addrText}>{address}</div>
+                    <div className={addrText}>{state}</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
