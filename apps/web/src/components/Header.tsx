@@ -41,9 +41,47 @@ export default function Header() {
   const [statusColor, setStatusColor] = useState("text-green-500");
   const [mobileTab, setMobileTab] = useState("products");
   const [openGroup, setOpenGroup] = useState("Operations");
+  const [currentPath, setCurrentPath] = useState("/");
+
+  const groupForPath = (path: string) => {
+    if (
+      [
+        "/point-of-sale",
+        "/products/kitchen-display-system",
+        "/products/simplified-inventory-management",
+        "/products/workforce-management",
+      ].some((p) => path === p || path.startsWith(p + "/"))
+    )
+      return "Operations";
+    if (
+      [
+        "/products/self-service-kiosk",
+        "/products/tableside-order-and-pay",
+        "/products/apponlineorderingdelivery",
+      ].some((p) => path === p || path.startsWith(p + "/"))
+    )
+      return "Guest Experience";
+    if (
+      [
+        "/accept-payments",
+        "/products/loyalty",
+        "/products/automated-marketing",
+      ].some((p) => path === p || path.startsWith(p + "/"))
+    )
+      return "Growth & Payments";
+    if (
+      ["/ai", "/hardware"].some((p) => path === p || path.startsWith(p + "/"))
+    )
+      return "Intelligence & Hardware";
+    return "Operations";
+  };
 
   useEffect(() => {
-    if (!mobileMenuOpen) {
+    if (mobileMenuOpen) {
+      const path = window.location.pathname;
+      setMobileTab(path.startsWith("/solutions") ? "solutions" : "products");
+      setOpenGroup(groupForPath(path));
+    } else {
       setMobileTab("products");
       setOpenGroup("Operations");
     }
@@ -74,6 +112,7 @@ export default function Header() {
   useEffect(() => {
     const checkTheme = () => {
       const path = window.location.pathname;
+      setCurrentPath(path);
       const lightPages = [
         "/pricing",
         "/contact-sales",
@@ -664,7 +703,7 @@ export default function Header() {
                 <a
                   key={href}
                   href={href}
-                  className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] font-medium hover:bg-gray-50"
+                  className={`flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] hover:bg-gray-50 ${currentPath === href ? "font-bold text-gray-900 bg-gray-50" : "font-medium"}`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Icon size={18} className={color} /> {label}
@@ -716,7 +755,7 @@ export default function Header() {
                 <a
                   key={href}
                   href={href}
-                  className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] font-medium hover:bg-gray-50"
+                  className={`flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] hover:bg-gray-50 ${currentPath === href ? "font-bold text-gray-900 bg-gray-50" : "font-medium"}`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Icon size={18} className={color} /> {label}
@@ -770,7 +809,7 @@ export default function Header() {
                 <a
                   key={href}
                   href={href}
-                  className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] font-medium hover:bg-gray-50"
+                  className={`flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] hover:bg-gray-50 ${currentPath === href ? "font-bold text-gray-900 bg-gray-50" : "font-medium"}`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Icon size={18} className={color} /> {label}
@@ -818,7 +857,7 @@ export default function Header() {
                 <a
                   key={href}
                   href={href}
-                  className="flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] font-medium hover:bg-gray-50"
+                  className={`flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] hover:bg-gray-50 ${currentPath === href ? "font-bold text-gray-900 bg-gray-50" : "font-medium"}`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <Icon size={18} className={color} /> {label}
