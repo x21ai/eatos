@@ -6,8 +6,6 @@ import {
   Mail,
   MapPin,
   MessageCircle,
-  FileText,
-  BookOpen,
   CalendarCheck,
   HelpCircle,
 } from 'lucide-react';
@@ -479,33 +477,6 @@ export default function Footer({ variant = 'light' }) {
                   </a>
                 </li>
               ))}
-            </ul>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className={`${headingClass} mb-5`}>Quick Links</h4>
-            <ul className="space-y-3">
-              <li>
-                <a href="/products" className={`${linkClass} flex items-center gap-2`}>
-                  <FileText size={13} className="flex-shrink-0" /> Product Overview
-                </a>
-              </li>
-              <li>
-                <a href="/pricing" className={`${linkClass} flex items-center gap-2`}>
-                  <FileText size={13} className="flex-shrink-0" /> Pricing Guide
-                </a>
-              </li>
-              <li>
-                <a href="/enterprise" className={`${linkClass} flex items-center gap-2`}>
-                  <BookOpen size={13} className="flex-shrink-0" /> Enterprise
-                </a>
-              </li>
-              <li>
-                <a href="/hardware" className={`${linkClass} flex items-center gap-2`}>
-                  <BookOpen size={13} className="flex-shrink-0" /> Hardware Guide
-                </a>
-              </li>
             </ul>
           </div>
         </div>
