@@ -119,7 +119,7 @@ export function DemoRailSection({
                     >
                       {AppIcon ? <AppIcon className="h-4 w-4" /> : <Icon size={14} />}
                     </span>
-                    <span className="block text-sm font-bold tracking-tighter">{displayLabel(d.id)}</span>
+                    <span className="block min-w-0 text-sm font-bold tracking-tighter leading-tight">{displayLabel(d.id)}</span>
                   </span>
 
                   <span
