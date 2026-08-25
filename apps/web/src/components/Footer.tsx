@@ -148,7 +148,7 @@ export default function Footer() {
   const linkClass = 'text-[13px] text-gray-300 transition-colors hover:text-white';
   const descClass = 'text-[15px] leading-relaxed text-gray-300';
   const socialClass = 'flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-gray-300 transition-colors hover:border-white/40 hover:text-white';
-  const cardClass = 'group flex flex-col justify-between rounded-2xl border border-white/10 bg-white/5 p-8 transition-colors hover:border-white/25';
+  const cardClass = 'group flex flex-col justify-between rounded-2xl border border-white/25 bg-white/5 p-8 transition-colors hover:border-white/25';
   const cardLabel = 'text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-300';
   const cardTitle = 'text-xl font-medium mt-2 text-white';
   const cardLink = 'mt-8 inline-flex items-center gap-2 font-medium text-white transition-all group-hover:gap-3';
@@ -160,10 +160,10 @@ export default function Footer() {
   
 
   return (
-    <footer className="bg-black border-t border-white/10 pt-20 pb-10">
+    <footer className="bg-black border-t border-white/25 pt-20 pb-10">
       <div className="site-container">
         {/* Top band: brand + contact cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-white/25">
           <div className="lg:col-span-4">
             <a href="/" className="inline-block mb-6">
               <img src={mobileLogoWhite.url} alt="eatOS" className="h-9 w-auto" />
@@ -212,7 +212,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-x-12 gap-y-5 pt-10 pb-14 border-b border-white/10">
+        <div className="flex flex-wrap gap-x-12 gap-y-5 pt-10 pb-14 border-b border-white/25">
           <div className={officeLabel}>Offices</div>
           {OFFICES.map(({ city, address }) => (
             <div key={city}>
@@ -244,7 +244,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="pt-10 border-t border-white/10">
+        <div className="pt-10 border-t border-white/25">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
             <div className={`flex-1 ${bottomText}`}>
               <span suppressHydrationWarning>
