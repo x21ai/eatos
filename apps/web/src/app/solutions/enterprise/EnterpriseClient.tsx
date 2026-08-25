@@ -365,7 +365,7 @@ export default function EnterpriseClient() {
             ))}
           </div>
 
-          <p className="mt-10 text-center text-xs leading-relaxed text-gray-600 max-w-3xl mx-auto">
+          <p className="mt-10 text-center text-xs leading-relaxed text-white max-w-3xl mx-auto">
             {bundle.note}
           </p>
         </div>
