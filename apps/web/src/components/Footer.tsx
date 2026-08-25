@@ -137,7 +137,7 @@ const LINK_GROUPS = [
       { label: 'Book a Demo', href: '/book-demo' },
       { label: 'Get Started', href: '/get-started' },
       { label: 'Help Center', href: 'https://support.eatos.com/en-us/', external: true },
-      { label: 'Status', href: 'https://status.eatos.com/en/', external: true },
+      { label: 'Status', href: '/system-status' },
       { label: 'Dashboard', href: 'https://dashboard.eatos.com/', external: true },
     ],
   },

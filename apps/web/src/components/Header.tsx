@@ -30,6 +30,7 @@ import {
   Package,
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { overallHeaderColor } from "@/app/system-status/systems";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -957,7 +958,7 @@ export default function Header() {
                   href: "/system-status",
                   Icon: Activity,
                   label: "Status",
-                  external: true,
+                  external: false,
                   colorClass: statusColor,
                 },
               ].map(({ href, Icon, label, external, colorClass }) => (
