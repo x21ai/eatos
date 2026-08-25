@@ -227,7 +227,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row items-stretch justify-center divide-y sm:divide-y-0 sm:divide-x divide-white/10 max-w-3xl mx-auto">
               {[
                 { value: '99.9%', label: 'Uptime' },
-                { value: '$300M+', label: 'Processed annually' },
+                { value: 'Over $2 Billion+', label: 'Processed' },
                 { value: '24/7', label: 'Live support' },
               ].map((stat) => (
                 <div
