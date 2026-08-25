@@ -87,8 +87,8 @@ export function DemoRailSection({
         </div>
 
         <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6">
-          {/* Rail: vertical on desktop, horizontal scroll on smaller screens */}
-          <div className="lg:flex-col lg:h-full flex gap-2 lg:gap-0 overflow-x-auto lg:overflow-visible scrollbar-hidden justify-start lg:justify-between">
+          {/* Rail: vertical on desktop, 2-column grid on mobile */}
+          <div className="grid grid-cols-2 gap-2 lg:flex lg:flex-col lg:h-full lg:gap-0 lg:justify-between">
             {demoSources.map((d) => {
               const active = d.id === activeId;
               const AppIcon = appIcon[d.id];
