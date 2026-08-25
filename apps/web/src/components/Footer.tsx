@@ -3,7 +3,6 @@
 
 import { ArrowRight, Globe } from 'lucide-react';
 import mobileLogoWhite from './marketing/assets/brand/logo-mobile-white.png.asset.json';
-import mobileLogoBlack from './marketing/assets/brand/logo-mobile-black.png.asset.json';
 
 function TwitterIcon({ size = 24, ...props }) {
   return (
@@ -159,57 +158,30 @@ const LINK_GROUPS = [
   },
 ];
 
-export default function Footer({ variant = 'light' }) {
-  const isDark = variant === 'dark';
-
-  const bgClass = isDark ? 'bg-black border-white/10' : 'bg-white border-gray-200';
-  const divider = isDark ? 'border-white/10' : 'border-gray-100';
-  const headingClass = isDark
-    ? 'text-[11px] font-semibold uppercase tracking-[0.18em] text-white'
-    : 'text-[11px] font-semibold uppercase tracking-[0.18em] text-[#1d1d1f]';
-  const linkClass = isDark
-    ? 'text-[13px] text-gray-500 transition-colors hover:text-white'
-    : 'text-[13px] text-[#6e6e73] transition-colors hover:text-black';
-  const descClass = isDark
-    ? 'text-[15px] leading-relaxed text-gray-500'
-    : 'text-[15px] leading-relaxed text-[#6e6e73]';
-  const socialClass = isDark
-    ? 'flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-gray-400 transition-colors hover:border-white/40 hover:text-white'
-    : 'flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-[#6e6e73] transition-colors hover:border-gray-400 hover:text-black';
-  const cardClass = isDark
-    ? 'group flex flex-col justify-between rounded-2xl border border-white/10 bg-white/5 p-8 transition-colors hover:border-white/25'
-    : 'group flex flex-col justify-between rounded-2xl border border-gray-100 bg-[#fafafa] p-8 transition-colors hover:border-gray-300';
-  const cardLabel = isDark
-    ? 'text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500'
-    : 'text-[11px] font-semibold uppercase tracking-[0.18em] text-[#86868b]';
-  const cardTitle = isDark ? 'text-xl font-medium mt-2 text-white' : 'text-xl font-medium mt-2 text-[#1d1d1f]';
-  const cardLink = isDark
-    ? 'mt-8 inline-flex items-center gap-2 font-medium text-white transition-all group-hover:gap-3'
-    : 'mt-8 inline-flex items-center gap-2 font-medium text-[#1d1d1f] transition-all group-hover:gap-3';
-  const officeLabel = isDark
-    ? 'text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500'
-    : 'text-[11px] font-semibold uppercase tracking-[0.18em] text-[#86868b]';
-  const officeCity = isDark ? 'text-[13px] text-gray-300' : 'text-[13px] text-[#424245]';
-  const officeAddr = isDark ? 'text-[12px] text-gray-600' : 'text-[12px] text-[#86868b]';
-  const bottomText = isDark ? 'text-[12px] text-gray-600' : 'text-[12px] text-[#86868b]';
-  const bottomLink = isDark
-    ? 'text-gray-500 transition-colors hover:text-white'
-    : 'text-[#6e6e73] transition-colors hover:text-black';
-  const badgeClass = isDark
-    ? 'flex h-10 items-center gap-2 rounded-lg border border-white/15 px-3 text-gray-200 transition-colors hover:border-white/40'
-    : 'flex h-10 items-center gap-2 rounded-lg bg-[#1d1d1f] px-3 text-white transition-opacity hover:opacity-90';
-  const regionChip = isDark ? 'text-gray-500' : 'text-[#6e6e73]';
-
-  const logoSrc = isDark ? mobileLogoWhite.url : mobileLogoBlack.url;
+export default function Footer() {
+  const headingClass = 'text-[11px] font-semibold uppercase tracking-[0.18em] text-white';
+  const linkClass = 'text-[13px] text-gray-500 transition-colors hover:text-white';
+  const descClass = 'text-[15px] leading-relaxed text-gray-500';
+  const socialClass = 'flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-gray-400 transition-colors hover:border-white/40 hover:text-white';
+  const cardClass = 'group flex flex-col justify-between rounded-2xl border border-white/10 bg-white/5 p-8 transition-colors hover:border-white/25';
+  const cardLabel = 'text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500';
+  const cardTitle = 'text-xl font-medium mt-2 text-white';
+  const cardLink = 'mt-8 inline-flex items-center gap-2 font-medium text-white transition-all group-hover:gap-3';
+  const officeLabel = 'text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500';
+  const officeCity = 'text-[13px] text-gray-300';
+  const officeAddr = 'text-[12px] text-gray-600';
+  const bottomText = 'text-[12px] text-gray-600';
+  const bottomLink = 'text-gray-500 transition-colors hover:text-white';
+  const badgeClass = 'flex h-10 items-center gap-2 rounded-lg border border-white/15 px-3 text-gray-200 transition-colors hover:border-white/40';
 
   return (
-    <footer className={`${bgClass} border-t pt-20 pb-10`}>
+    <footer className="bg-black border-t border-white/10 pt-20 pb-10">
       <div className="site-container">
         {/* Top band: brand + contact cards */}
-        <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b ${divider}`}>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
           <div className="lg:col-span-4">
             <a href="/" className="inline-block mb-6">
-              <img src={logoSrc} alt="eatOS" className="h-9 w-auto" />
+              <img src={mobileLogoWhite.url} alt="eatOS" className="h-9 w-auto" />
             </a>
             <p className={`${descClass} max-w-sm mb-8`}>
               The operating system for the modern restaurant, built for the way hospitality
@@ -255,7 +227,6 @@ export default function Footer({ variant = 'light' }) {
           </div>
         </div>
 
-        {/* Link grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 py-16 items-start">
           {LINK_GROUPS.map(({ title, links }) => (
             <div key={title}>
@@ -278,8 +249,7 @@ export default function Footer({ variant = 'light' }) {
           ))}
         </div>
 
-        {/* Offices + legal */}
-        <div className={`pt-10 border-t ${divider}`}>
+        <div className="pt-10 border-t border-white/10">
           <div className="flex flex-wrap gap-x-12 gap-y-5 mb-10">
             <div className={officeLabel}>Offices</div>
             {OFFICES.map(({ city, address }) => (
@@ -342,7 +312,7 @@ export default function Footer({ variant = 'light' }) {
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                 Systems Operational
               </a>
-              <span className={`flex items-center gap-1.5 text-[12px] ${regionChip}`}>
+              <span className="flex items-center gap-1.5 text-[12px] text-gray-500">
                 <Globe size={13} /> United States - EN
               </span>
             </div>
