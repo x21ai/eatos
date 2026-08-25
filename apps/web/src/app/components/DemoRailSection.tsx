@@ -98,7 +98,7 @@ export function DemoRailSection({
                   key={d.id}
                   type="button"
                   onClick={() => setActiveId(d.id)}
-                  className={`relative shrink-0 lg:shrink text-left rounded-xl border px-4 py-3 transition-colors min-w-[190px] lg:min-w-0 lg:w-full ${
+                  className={`relative min-w-0 text-left rounded-xl border px-4 py-3 transition-colors lg:w-full ${
                     active
                       ? 'bg-white text-black border-white'
                       : 'bg-zinc-900/60 border-white/10 text-gray-400 hover:text-white hover:border-white/30'
