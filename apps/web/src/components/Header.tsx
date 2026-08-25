@@ -11,6 +11,7 @@ import {
   Monitor,
   CreditCard,
   Cpu,
+  Wifi,
   ShoppingBag,
   LifeBuoy,
   Activity,
@@ -76,7 +77,7 @@ export default function Header() {
     )
       return "Growth & Payments";
     if (
-      ["/ai", "/hardware"].some((p) => path === p || path.startsWith(p + "/"))
+      ["/ai", "/hardware", "/offline-point-of-sale"].some((p) => path === p || path.startsWith(p + "/"))
     )
       return "Intelligence & Hardware";
     return "Operations";
