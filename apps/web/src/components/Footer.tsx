@@ -195,7 +195,7 @@ export default function Footer() {
                 <h3 className={cardTitle}>Dedicated help, whenever service runs</h3>
               </div>
               <span className={cardLink}>
-                cs(at)eatos.com
+                sales at eatOS.com
                 <ArrowRight size={16} />
               </span>
             </a>
