@@ -1,124 +1,133 @@
 // @ts-nocheck
-'use client';
-
-import { ArrowRight, ShoppingBag } from 'lucide-react';
-import { motion } from 'motion/react';
-import { catalog, formatMoney } from './catalog';
-import { useBagCount } from './cart';
+import { ArrowRight, ShoppingBag, Star } from 'lucide-react';
 
 export default function ShopPage() {
-  const count = useBagCount();
+  const products = [
+    {
+      id: 'pro',
+      name: 'eatOS Pro',
+      category: 'Terminals',
+      price: '$999',
+      image: 'https://raw.createusercontent.com/75fa62cf-3729-443e-a8de-86db72e732a9/',
+      badge: 'Best Seller',
+      link: '/hardware/pro',
+    },
+    {
+      id: 'mini',
+      name: 'eatOS Mini',
+      category: 'Handhelds',
+      price: '$299',
+      image: null, // CSS Placeholder
+      badge: 'New',
+      link: '/hardware/mini',
+    },
+    {
+      id: 'kitchen',
+      name: 'Kitchen Display',
+      category: 'Screens',
+      price: '$399',
+      image: null,
+      link: '/hardware',
+    },
+    {
+      id: 'printer',
+      name: 'Thermal Printer',
+      category: 'Accessories',
+      price: '$199',
+      image: null,
+      link: '/hardware',
+    },
+    {
+      id: 'stand',
+      name: 'Swivel Stand',
+      category: 'Accessories',
+      price: '$49',
+      image: null,
+      link: '/hardware',
+    },
+    {
+      id: 'drawer',
+      name: 'Cash Drawer',
+      category: 'Accessories',
+      price: '$79',
+      image: null,
+      link: '/hardware',
+    },
+  ];
 
   return (
-    <div className="bg-black min-h-screen text-white font-sans">
-      <div className="h-20" />
+    <div className="bg-gray-50 min-h-screen font-sans">
+      {/* Header Space */}
+      <div className="h-20"></div>
 
-      {/* Apple-style store header */}
-      <section className="pt-16 pb-10 md:pt-24 md:pb-16 border-b border-white/10">
+      {/* Hero */}
+      <section className="bg-white pt-20 pb-16 border-b border-gray-100">
         <div className="site-container">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter leading-[1.05] max-w-3xl">
-              <span className="text-white/60">Shop.</span> Premium hardware
-              for the way you serve.
-            </h1>
-            <a
-              href="/contact-sales"
-              className="text-blue-400 hover:underline text-sm font-medium inline-flex items-center gap-1 shrink-0"
-            >
-              Need help choosing? Talk to a specialist <ArrowRight size={14} />
-            </a>
-          </div>
-          <div className="mt-6 flex items-center justify-between text-sm text-white/50">
-            <span>All hardware ships free. Financing available at checkout.</span>
-            <a href="/shop/bag" className="inline-flex items-center gap-2 text-white/80 hover:text-white">
-              <ShoppingBag size={16} />
-              Bag{count > 0 ? ` (${count})` : ''}
-            </a>
-          </div>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">Shop Hardware</h1>
+          <p className="text-xl text-gray-500 max-w-2xl">
+            Premium hardware designed for speed, durability, and style.
+          </p>
         </div>
       </section>
 
-      {/* Product shelves */}
-      <section className="py-16 md:py-24">
+      {/* Product Grid */}
+      <section className="py-12">
         <div className="site-container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {catalog.map((product, index) => (
-              <motion.div
-                key={product.slug}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="group relative rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/[0.06] to-transparent p-8 md:p-10 overflow-hidden"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products.map((product) => (
+              <a
+                key={product.id}
+                href={product.link || '#'}
+                className="group bg-white rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col"
               >
-                {product.badge && (
-                  <span className="absolute top-6 left-6 text-xs font-semibold px-3 py-1 rounded-full bg-white text-black">
-                    {product.badge}
-                  </span>
-                )}
-                <a href={`/shop/${product.slug}`} className="block">
-                  <div className="aspect-square flex items-center justify-center mb-8">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      loading="lazy"
-                      className="max-h-full max-w-full object-contain group-hover:scale-[1.03] transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="text-sm text-white/50 font-medium mb-1">{product.category}</div>
-                  <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
-                    {product.name}
-                  </h2>
-                  <p className="text-white/70 mb-6">{product.tagline}</p>
-                </a>
-                <div className="flex items-center justify-between gap-4 flex-wrap">
-                  <div>
-                    <div className="text-lg font-semibold">{formatMoney(product.price)}</div>
-                    {product.monthlyFrom && (
-                      <div className="text-xs text-white/50">or {product.monthlyFrom}</div>
+                <div className="relative aspect-square bg-gray-50 rounded-2xl mb-6 overflow-hidden flex items-center justify-center">
+                  {product.badge && (
+                    <div className="absolute top-4 left-4 bg-black text-white text-xs font-bold px-3 py-1 rounded-full z-10">
+                      {product.badge}
+                    </div>
+                  )}
+
+                  {/* Product Placeholder / Image */}
+                  <div className="w-2/3 h-2/3 bg-white shadow-lg rounded-xl flex items-center justify-center text-gray-300 font-medium group-hover:scale-105 transition-transform duration-500">
+                    {product.id === 'pro' ? (
+                      <div className="w-full h-full bg-zinc-900 rounded-xl relative p-2">
+                        <div className="w-full h-full bg-black rounded-lg border border-gray-800"></div>
+                      </div>
+                    ) : product.id === 'mini' ? (
+                      <div className="w-1/2 h-full bg-zinc-900 rounded-xl relative"></div>
+                    ) : (
+                      <ShoppingBag size={32} />
                     )}
                   </div>
-                  <div className="flex gap-3">
-                    <a
-                      href={`/shop/${product.slug}`}
-                      className="px-5 py-2.5 rounded-full border border-white/20 text-sm font-semibold hover:bg-white/10 transition-colors"
-                    >
-                      Learn more
-                    </a>
-                    <a
-                      href={`/shop/${product.slug}`}
-                      className="px-5 py-2.5 rounded-full bg-blue-500 text-sm font-semibold hover:bg-blue-400 transition-colors"
-                    >
-                      Buy
-                    </a>
+                </div>
+
+                <div className="mt-auto">
+                  <div className="text-sm text-gray-500 font-medium mb-1">{product.category}</div>
+                  <div className="flex justify-between items-end">
+                    <h3 className="text-xl font-bold text-gray-900">{product.name}</h3>
+                    <div className="text-lg font-medium text-gray-900">{product.price}</div>
                   </div>
                 </div>
-              </motion.div>
+              </a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Full-width feature strip */}
-      <section className="pb-24">
-        <div className="site-container">
-          <div className="rounded-[3rem] bg-gradient-to-br from-indigo-950/60 via-black to-black border border-white/10 p-10 md:p-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-            <div className="max-w-xl">
-              <h3 className="text-3xl md:text-4xl font-bold tracking-tighter mb-3">
-                Not sure what fits your floor?
-              </h3>
-              <p className="text-white/70 text-lg">
-                Tell us about your service style and volume, and we will design the
-                perfect hardware setup for your restaurant.
-              </p>
-            </div>
-            <a
-              href="/contact-sales"
-              className="px-8 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform shrink-0"
-            >
-              Talk to an Expert
-            </a>
-          </div>
+      {/* Support Section */}
+      <section className="py-20 md:py-28 bg-white border-t border-gray-100">
+        <div className="site-container text-center">
+          <h2 className="text-3xl font-bold mb-6">Need help choosing?</h2>
+          <p className="text-gray-500 mb-8 max-w-xl mx-auto">
+            Our specialists can help you design the perfect setup for your restaurant's floor plan
+            and volume.
+          </p>
+          <a
+            href="/contact-sales"
+            className="inline-flex items-center gap-2 text-black font-bold border-b-2 border-black pb-1 hover:text-gray-600 hover:border-gray-600 transition-colors"
+          >
+            Talk to an Expert <ArrowRight size={16} />
+          </a>
         </div>
       </section>
     </div>
