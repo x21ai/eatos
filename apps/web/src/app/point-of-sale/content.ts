@@ -66,7 +66,7 @@ export const features = [
     image: orderingImg.url,
     metrics: [
       { value: '$0', label: '3rd Party App Commission' },
-      { value: '100%', label: 'White Labeled App and Website' },
+      { value: '100%', label: 'White Labeled App' },
     ],
   },
   {
