@@ -60,13 +60,6 @@ export default function PosPageClient() {
         {/* Hero */}
         <section className="pt-32 pb-10 md:pt-44 md:pb-14">
           <div className="site-container text-center">
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-xs font-semibold uppercase tracking-[0.24em] text-orange-400 mb-5"
-            >
-              {hero.eyebrow}
-            </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -76,6 +69,13 @@ export default function PosPageClient() {
               {hero.title} <br />
               <span className="text-orange-500">{hero.titleAccent}</span>
             </motion.h1>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-xs font-semibold uppercase tracking-[0.24em] text-orange-400 mb-5"
+            >
+              {hero.eyebrow}
+            </motion.p>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
