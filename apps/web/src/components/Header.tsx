@@ -183,7 +183,7 @@ export default function Header() {
 
   if (isHidden) return null;
 
-  const navTextClass = `text-[14px] xl:text-[15px] font-medium tracking-[-0.01em]`;
+  const navTextClass = `text-[13px] xl:text-[15px] font-medium tracking-[-0.01em]`;
   const navLinkClass = `${navTextClass} hover:opacity-70 transition-opacity whitespace-nowrap`;
 
   const productLinks = [
@@ -435,7 +435,7 @@ export default function Header() {
 
         {/* Desktop Nav (visible at xl / 1280px and wider) */}
         <nav
-          className={`hidden xl:flex items-center gap-8 2xl:gap-10 flex-1 justify-center ${isDarkPage ? "text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]" : "text-black"}`}
+          className={`hidden lg:flex items-center gap-5 xl:gap-8 2xl:gap-10 flex-1 justify-center ${isDarkPage ? "text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]" : "text-black"}`}
           aria-label="Primary"
         >
           {/* Restaurant Type Dropdown */}
@@ -559,7 +559,7 @@ export default function Header() {
 
         {/* Right Side (visible at xl and wider) */}
         <div
-          className={`hidden xl:flex items-center gap-3 2xl:gap-4 flex-shrink-0 ${isDarkPage ? "text-white" : "text-black"}`}
+          className={`hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-4 flex-shrink-0 ${isDarkPage ? "text-white" : "text-black"}`}
         >
           {/* Icon group */}
           <div className="flex items-center gap-4 2xl:gap-5">
@@ -617,7 +617,7 @@ export default function Header() {
 
         {/* Hamburger (visible below xl, under 1280px) */}
         <button
-          className={`xl:hidden flex-shrink-0 ${mobileMenuOpen ? "text-black" : isDarkPage ? "text-white" : "text-black"} relative z-10 p-1`}
+          className={`lg:hidden flex-shrink-0 ${mobileMenuOpen ? "text-black" : isDarkPage ? "text-white" : "text-black"} relative z-10 p-1`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
         >
@@ -627,7 +627,7 @@ export default function Header() {
 
       {/* Mobile and Tablet Menu: slides down below xl */}
       {mobileMenuOpen && (
-        <div className="xl:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-xl flex flex-col h-[calc(100vh-70px)] text-black">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-xl flex flex-col h-[calc(100vh-70px)] text-black">
           {/* Tab switcher */}
           <div className="shrink-0 px-3 pt-3 pb-3 border-b border-gray-100">
             <div className="grid grid-cols-2 gap-1 rounded-full bg-gray-100 p-1">
