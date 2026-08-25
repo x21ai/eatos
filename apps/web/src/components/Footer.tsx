@@ -245,11 +245,14 @@ export default function Footer() {
         </div>
 
         <div className="pt-10 border-t border-white/10">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
-            <div className={`flex flex-wrap items-center gap-x-6 gap-y-2 ${bottomText}`}>
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
+            <div className={`flex-1 ${bottomText}`}>
               <span suppressHydrationWarning>
                 &copy; 2017 - 2026 <strong className="font-semibold">eatOS POS Inc.</strong> All rights reserved.
               </span>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
               <a href="/privacy" className={bottomLink}>Privacy Policy</a>
               <a href="/terms" className={bottomLink}>Terms of Service</a>
               <button
@@ -265,7 +268,7 @@ export default function Footer() {
               </button>
             </div>
 
-            <span className="flex items-center gap-1.5 text-[12px] text-gray-300">
+            <span className="flex flex-1 items-center lg:justify-end gap-1.5 text-[12px] text-gray-300">
               <Globe size={13} /> United States - EN
             </span>
           </div>
