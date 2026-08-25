@@ -2,7 +2,7 @@
 import heroImg from './assets/comparison-hero.jpg.asset.json';
 import whyImg from './assets/comparison-why.webp.asset.json';
 import easeImg from './assets/comparison-ease.png.asset.json';
-import scalableImg from './assets/comparison-scalable-v2.png.asset.json';
+import scalableImg from './assets/comparison-scalable-v3.png.asset.json';
 
 export const hero = {
   eyebrow: 'eatOS vs Other POS',
