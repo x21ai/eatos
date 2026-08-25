@@ -224,7 +224,7 @@ export default function Footer({ variant = 'light' }) {
       <div className="site-container">
         {/* ── Top: brand / offices  +  contact channels ── */}
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-10 pb-12 border-b ${divider} mb-12`}>
-          {/* Left: logo · description · social · offices */}
+          {/* Left: logo · description · social */}
           <div>
             <a href="/" className="inline-block mb-5">
               <img src={logoSrc} alt="eatOS" className="h-9 w-auto" />
@@ -246,19 +246,6 @@ export default function Footer({ variant = 'light' }) {
                 >
                   <Icon size={18} />
                 </a>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {OFFICES.map(({ city, address, state }) => (
-                <div key={city} className="flex items-start gap-2">
-                  <MapPin size={13} className={`${iconColor} mt-0.5 flex-shrink-0`} />
-                  <div>
-                    <div className={addrLabel}>{city}</div>
-                    <div className={addrText}>{address}</div>
-                    <div className={addrText}>{state}</div>
-                  </div>
-                </div>
               ))}
             </div>
           </div>
