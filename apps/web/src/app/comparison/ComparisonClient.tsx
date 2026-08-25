@@ -396,7 +396,7 @@ function Reasons() {
                   src={item.mediaSrc}
                   ratio="aspect-[16/11]"
                   tone="dark"
-                  pad
+                  bare
                 />
               </Reveal>
             </div>
