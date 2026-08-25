@@ -6,8 +6,6 @@ import {
   Mail,
   MapPin,
   MessageCircle,
-  FileText,
-  BookOpen,
   CalendarCheck,
   HelpCircle,
 } from 'lucide-react';
@@ -248,12 +246,27 @@ export default function Footer({ variant = 'light' }) {
                 </a>
               ))}
             </div>
+
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="/book-demo"
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[13px] font-semibold transition-all ${isDark ? 'bg-white text-black hover:bg-gray-100' : 'bg-black text-white hover:bg-gray-800'}`}
+              >
+                <CalendarCheck size={13} /> Book a Demo
+              </a>
+              <a
+                href="/contact-sales"
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[13px] font-semibold border transition-all ${isDark ? 'border-white/20 text-gray-300 hover:border-white/40' : 'border-gray-300 text-[#424245] hover:border-gray-500'}`}
+              >
+                Contact Sales
+              </a>
+            </div>
           </div>
 
-          {/* Right: contact channels + CTAs */}
+          {/* Right: contact channels */}
           <div>
             <h4 className={`${headingClass} mb-5`}>Get in touch</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+            <div className="grid grid-cols-2 gap-3">
               {CONTACT_CHANNELS.map(({ label, detail, href, Icon }) => (
                 <a
                   key={label}
@@ -275,21 +288,6 @@ export default function Footer({ variant = 'light' }) {
                   </div>
                 </a>
               ))}
-            </div>
-
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="/book-demo"
-                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[13px] font-semibold transition-all ${isDark ? 'bg-white text-black hover:bg-gray-100' : 'bg-black text-white hover:bg-gray-800'}`}
-              >
-                <CalendarCheck size={13} /> Book a Demo
-              </a>
-              <a
-                href="/contact-sales"
-                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[13px] font-semibold border transition-all ${isDark ? 'border-white/20 text-gray-300 hover:border-white/40' : 'border-gray-300 text-[#424245] hover:border-gray-500'}`}
-              >
-                Contact Sales
-              </a>
             </div>
           </div>
 
@@ -362,6 +360,21 @@ export default function Footer({ variant = 'light' }) {
                   href: '/products/simplified-inventory-management',
                 },
                 { label: 'Workforce', href: '/products/workforce-management' },
+              ].map(({ label, href }) => (
+                <li key={href}>
+                  <a href={href} className={linkClass}>
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Grow */}
+          <div>
+            <h4 className={`${headingClass} mb-5`}>Grow</h4>
+            <ul className="space-y-3">
+              {[
                 { label: 'Analytics', href: '/products/reporting-analytics' },
                 { label: 'Loyalty', href: '/products/loyalty' },
                 { label: 'Gift Cards', href: '/products/giftcards' },
@@ -464,33 +477,6 @@ export default function Footer({ variant = 'light' }) {
                   </a>
                 </li>
               ))}
-            </ul>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className={`${headingClass} mb-5`}>Quick Links</h4>
-            <ul className="space-y-3">
-              <li>
-                <a href="/products" className={`${linkClass} flex items-center gap-2`}>
-                  <FileText size={13} className="flex-shrink-0" /> Product Overview
-                </a>
-              </li>
-              <li>
-                <a href="/pricing" className={`${linkClass} flex items-center gap-2`}>
-                  <FileText size={13} className="flex-shrink-0" /> Pricing Guide
-                </a>
-              </li>
-              <li>
-                <a href="/enterprise" className={`${linkClass} flex items-center gap-2`}>
-                  <BookOpen size={13} className="flex-shrink-0" /> Enterprise
-                </a>
-              </li>
-              <li>
-                <a href="/hardware" className={`${linkClass} flex items-center gap-2`}>
-                  <BookOpen size={13} className="flex-shrink-0" /> Hardware Guide
-                </a>
-              </li>
             </ul>
           </div>
         </div>
