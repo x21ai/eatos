@@ -3,6 +3,17 @@
 
 import mobileLogoWhite from "./marketing/assets/brand/logo-mobile-white.png.asset.json";
 import mobileLogoBlack from "./marketing/assets/brand/logo-mobile-black.png.asset.json";
+import { useBagCount } from "../app/shop/cart";
+
+function BagCountBadge() {
+  const count = useBagCount();
+  if (!count) return null;
+  return (
+    <span className="absolute -top-1 -right-1 min-w-[16px] h-4 px-1 rounded-full bg-blue-500 text-white text-[10px] font-bold flex items-center justify-center">
+      {count}
+    </span>
+  );
+}
 
 import {
   Menu,
@@ -590,9 +601,15 @@ export default function Header() {
           {/* CTA Buttons */}
           <div className="flex items-center gap-2">
             <a
-              href="https://shop.eatos.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/shop/bag"
+              aria-label="Shopping bag"
+              className="relative p-1.5 hover:scale-105 transition-all"
+            >
+              <ShoppingBag size={18} />
+              <BagCountBadge />
+            </a>
+            <a
+              href="/shop"
               className={`px-4 py-1.5 rounded-full text-[13px] xl:text-[14px] font-semibold hover:scale-105 transition-all whitespace-nowrap
                 ${
                   isDarkPage
