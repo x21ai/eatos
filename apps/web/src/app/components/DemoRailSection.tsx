@@ -123,7 +123,7 @@ export function DemoRailSection({
                   </span>
 
                   <span
-                    className={`mt-1 block text-xs leading-snug ${
+                    className={`mt-1 hidden lg:block text-xs leading-snug ${
                       active ? 'text-black/60' : 'text-gray-500'
                     }`}
                   >
