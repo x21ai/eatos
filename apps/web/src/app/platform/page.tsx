@@ -177,7 +177,7 @@ function CategorySection({ category, index }) {
   const isEven = index % 2 === 0;
 
   return (
-    <section className="py-24 relative">
+    <section className="py-24 relative overflow-hidden">
       {/* Background glow */}
       <div
         className={`absolute ${isEven ? 'left-0' : 'right-0'} top-1/2 -translate-y-1/2 w-[600px] h-[600px] ${colors.glow} rounded-full blur-[150px] opacity-30 pointer-events-none`}
