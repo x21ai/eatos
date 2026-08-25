@@ -11,6 +11,8 @@ import {
   CalendarCheck,
   HelpCircle,
 } from 'lucide-react';
+import mobileLogoWhite from './marketing/assets/brand/logo-mobile-white.png.asset.json';
+import mobileLogoBlack from './marketing/assets/brand/logo-mobile-black.png.asset.json';
 
 // Brand icons removed from lucide-react v1.x, replaced with inline SVGs
 function TwitterIcon({ size = 24, ...props }) {
