@@ -49,21 +49,6 @@ function YoutubeIcon({ size = 24, ...props }) {
   );
 }
 
-function AppleIcon({ size = 24, ...props }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.53 4.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
-    </svg>
-  );
-}
-
-function GooglePlayIcon({ size = 24, ...props }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M4 2.9v18.2c0 .55.6.88 1.05.58l16-9.1c.42-.24.42-.82 0-1.06l-16-9.1C4.6 2.03 4 2.36 4 2.9z" />
-    </svg>
-  );
-}
 
 // Social channels: handle is @myeatOS across all platforms
 const SOCIAL_LINKS = [
@@ -172,7 +157,7 @@ export default function Footer() {
   const officeAddr = 'text-[12px] text-gray-600';
   const bottomText = 'text-[12px] text-gray-600';
   const bottomLink = 'text-gray-500 transition-colors hover:text-white';
-  const badgeClass = 'flex h-10 items-center gap-2 rounded-lg border border-white/15 px-3 text-gray-200 transition-colors hover:border-white/40';
+  
 
   return (
     <footer className="bg-black border-t border-white/10 pt-20 pb-10">
@@ -227,6 +212,16 @@ export default function Footer() {
           </div>
         </div>
 
+        <div className="flex flex-wrap gap-x-12 gap-y-5 pt-10 pb-14 border-b border-white/10">
+          <div className={officeLabel}>Offices</div>
+          {OFFICES.map(({ city, address }) => (
+            <div key={city}>
+              <div className={officeCity}>{city}</div>
+              <div className={officeAddr}>{address}</div>
+            </div>
+          ))}
+        </div>
+
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 py-16 items-start">
           {LINK_GROUPS.map(({ title, links }) => (
             <div key={title}>
@@ -250,16 +245,6 @@ export default function Footer() {
         </div>
 
         <div className="pt-10 border-t border-white/10">
-          <div className="flex flex-wrap gap-x-12 gap-y-5 mb-10">
-            <div className={officeLabel}>Offices</div>
-            {OFFICES.map(({ city, address }) => (
-              <div key={city}>
-                <div className={officeCity}>{city}</div>
-                <div className={officeAddr}>{address}</div>
-              </div>
-            ))}
-          </div>
-
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
             <div className={`flex flex-wrap items-center gap-x-6 gap-y-2 ${bottomText}`}>
               <span suppressHydrationWarning>
@@ -280,42 +265,9 @@ export default function Footer() {
               </button>
             </div>
 
-            <div className="flex flex-wrap items-center gap-4">
-              {/* TODO: replace with the real eatOS App Store URL */}
-              <a
-                href="https://apps.apple.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={badgeClass}
-                aria-label="Download on the App Store"
-              >
-                <AppleIcon size={16} />
-                <span className="text-[11px] font-semibold leading-tight">App Store</span>
-              </a>
-              {/* TODO: replace with the real eatOS Google Play URL */}
-              <a
-                href="https://play.google.com/store"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={badgeClass}
-                aria-label="Get it on Google Play"
-              >
-                <GooglePlayIcon size={14} />
-                <span className="text-[11px] font-semibold leading-tight">Google Play</span>
-              </a>
-              <a
-                href="https://status.eatos.com/en/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`flex items-center gap-2 text-[12px] ${bottomLink}`}
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                Systems Operational
-              </a>
-              <span className="flex items-center gap-1.5 text-[12px] text-gray-500">
-                <Globe size={13} /> United States - EN
-              </span>
-            </div>
+            <span className="flex items-center gap-1.5 text-[12px] text-gray-500">
+              <Globe size={13} /> United States - EN
+            </span>
           </div>
         </div>
       </div>
