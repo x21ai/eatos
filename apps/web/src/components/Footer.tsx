@@ -320,7 +320,7 @@ export default function Footer({ variant = 'light' }) {
                 { label: 'Hardware', href: '/hardware' },
                 { label: 'Tap to Pay', href: '/tap-to-pay' },
                 { label: 'Platform', href: '/platform' },
-                { label: 'Enterprise', href: '/enterprise' },
+                { label: 'Enterprise', href: '/solutions/enterprise' },
               ].map(({ label, href }) => (
                 <li key={href}>
                   <a href={href} className={linkClass}>
