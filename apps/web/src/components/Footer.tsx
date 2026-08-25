@@ -168,7 +168,7 @@ const CONTACT_CHANNELS = [
   },
   {
     label: 'Email Us',
-    detail: 'cs@eatos.com',
+    detail: 'cs(at)eatos.com',
     href: 'mailto:cs@eatos.com',
     Icon: Mail,
   },
