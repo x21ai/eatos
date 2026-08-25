@@ -260,15 +260,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-10 border-t border-white/10">
-          <div className="flex flex-wrap gap-x-12 gap-y-5 mb-10">
-            <div className={officeLabel}>Offices</div>
-            {OFFICES.map(({ city, address }) => (
-              <div key={city}>
-                <div className={officeCity}>{city}</div>
-                <div className={officeAddr}>{address}</div>
-              </div>
-            ))}
-          </div>
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
 
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
             <div className={`flex flex-wrap items-center gap-x-6 gap-y-2 ${bottomText}`}>
