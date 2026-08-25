@@ -112,6 +112,7 @@ export default function Header() {
   useEffect(() => {
     const checkTheme = () => {
       const path = window.location.pathname;
+      setCurrentPath(path);
       const lightPages = [
         "/pricing",
         "/contact-sales",
