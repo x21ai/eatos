@@ -227,14 +227,19 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row items-stretch justify-center divide-y sm:divide-y-0 sm:divide-x divide-white/10 max-w-3xl mx-auto">
               {[
                 { value: '99.9%', label: 'Uptime' },
-                { value: 'Over $2 Billion+', label: 'Processed' },
+                { prefix: 'Over', value: '$2 Billion+', label: 'Processed' },
                 { value: '24/7', label: 'Live support' },
               ].map((stat) => (
                 <div
                   key={stat.value}
                   className="flex-1 flex flex-col items-center py-6 sm:py-0 px-6"
                 >
-                  <div className="text-4xl md:text-5xl font-bold tracking-tighter text-white mb-2">
+                  <div className={`${stat.prefix ? 'text-3xl md:text-4xl whitespace-nowrap' : 'text-4xl md:text-5xl'} font-bold tracking-tighter text-white mb-2`}>
+                    {stat.prefix && (
+                      <span className="text-sm font-normal tracking-normal text-gray-500 align-middle mr-2">
+                        {stat.prefix}
+                      </span>
+                    )}
                     {stat.value}
                   </div>
                   <div className="text-sm text-gray-500">{stat.label}</div>
