@@ -136,7 +136,7 @@ const SOCIAL_LINKS = [
 
 const OFFICES = [
   {
-    city: 'San Francesco',
+    city: 'Cupertino',
     address: '20289 Stevens Creek Blvd, PH 1019',
     state: 'Cupertino, CA 95014',
   },
