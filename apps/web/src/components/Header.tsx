@@ -50,6 +50,8 @@ export default function Header() {
         "/products/kitchen-display-system",
         "/products/simplified-inventory-management",
         "/products/workforce-management",
+        "/products/point-of-purchase",
+        "/products/reporting-analytics",
       ].some((p) => path === p || path.startsWith(p + "/"))
     )
       return "Operations";
@@ -58,6 +60,8 @@ export default function Header() {
         "/products/self-service-kiosk",
         "/products/tableside-order-and-pay",
         "/products/apponlineorderingdelivery",
+        "/products/customer-facing-display",
+        "/products/autonomous-delivery",
       ].some((p) => path === p || path.startsWith(p + "/"))
     )
       return "Guest Experience";
@@ -66,6 +70,7 @@ export default function Header() {
         "/accept-payments",
         "/products/loyalty",
         "/products/automated-marketing",
+        "/products/giftcards",
       ].some((p) => path === p || path.startsWith(p + "/"))
     )
       return "Growth & Payments";
@@ -699,6 +704,18 @@ export default function Header() {
                   label: "Workforce",
                   color: "text-pink-600",
                 },
+                {
+                  href: "/products/point-of-purchase",
+                  Icon: Phone,
+                  label: "Handheld",
+                  color: "text-indigo-600",
+                },
+                {
+                  href: "/products/reporting-analytics",
+                  Icon: LayoutDashboard,
+                  label: "Analytics",
+                  color: "text-amber-600",
+                },
               ].map(({ href, Icon, label, color }) => (
                 <a
                   key={href}
@@ -750,6 +767,18 @@ export default function Header() {
                   Icon: Store,
                   label: "Online Ordering",
                   color: "text-lime-600",
+                },
+                {
+                  href: "/products/customer-facing-display",
+                  Icon: CreditCard,
+                  label: "Customer Display",
+                  color: "text-sky-600",
+                },
+                {
+                  href: "/products/autonomous-delivery",
+                  Icon: Truck,
+                  label: "Autonomous Delivery",
+                  color: "text-slate-600",
                 },
               ].map(({ href, Icon, label, color }) => (
                 <a
@@ -804,6 +833,12 @@ export default function Header() {
                   Icon: Star,
                   label: "Marketing",
                   color: "text-violet-600",
+                },
+                {
+                  href: "/products/giftcards",
+                  Icon: CreditCard,
+                  label: "Gift Cards",
+                  color: "text-rose-600",
                 },
               ].map(({ href, Icon, label, color }) => (
                 <a
