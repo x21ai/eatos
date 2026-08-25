@@ -87,8 +87,8 @@ export function DemoRailSection({
         </div>
 
         <div className="mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6">
-          {/* Rail: vertical on desktop, horizontal scroll on smaller screens */}
-          <div className="lg:flex-col lg:h-full flex gap-2 lg:gap-0 overflow-x-auto lg:overflow-visible scrollbar-hidden justify-start lg:justify-between">
+          {/* Rail: vertical on desktop, 2-column grid on mobile */}
+          <div className="grid grid-cols-2 gap-2 lg:flex lg:flex-col lg:h-full lg:gap-0 lg:justify-between">
             {demoSources.map((d) => {
               const active = d.id === activeId;
               const AppIcon = appIcon[d.id];
@@ -98,7 +98,7 @@ export function DemoRailSection({
                   key={d.id}
                   type="button"
                   onClick={() => setActiveId(d.id)}
-                  className={`relative shrink-0 lg:shrink text-left rounded-xl border px-4 py-3 transition-colors min-w-[190px] lg:min-w-0 lg:w-full ${
+                  className={`relative min-w-0 text-left rounded-xl border px-4 py-3 transition-colors lg:w-full ${
                     active
                       ? 'bg-white text-black border-white'
                       : 'bg-zinc-900/60 border-white/10 text-gray-400 hover:text-white hover:border-white/30'
@@ -107,7 +107,7 @@ export function DemoRailSection({
                   {active && (
                     <span className="absolute left-0 top-3 bottom-3 w-1 rounded-full bg-emerald-500 hidden lg:block" />
                   )}
-                  <span className="flex items-center gap-2">
+                  <span className="flex min-w-0 items-center gap-2">
                     <span
                       className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md ${
                         AppIcon
@@ -119,11 +119,11 @@ export function DemoRailSection({
                     >
                       {AppIcon ? <AppIcon className="h-4 w-4" /> : <Icon size={14} />}
                     </span>
-                    <span className="block text-sm font-bold tracking-tighter">{displayLabel(d.id)}</span>
+                    <span className="block min-w-0 text-sm font-bold tracking-tighter leading-tight">{displayLabel(d.id)}</span>
                   </span>
 
                   <span
-                    className={`mt-1 block text-xs leading-snug ${
+                    className={`mt-1 hidden lg:block text-xs leading-snug ${
                       active ? 'text-black/60' : 'text-gray-500'
                     }`}
                   >
