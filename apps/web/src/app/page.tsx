@@ -721,7 +721,7 @@ export default function HomePage() {
       {/* Kitchen Display */}
       <section className="py-16 md:py-28 bg-black text-white relative overflow-hidden">
         <div className="site-container relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -732,11 +732,11 @@ export default function HomePage() {
                 <span>Kitchen Display System</span>
               </div>
 
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-6">
+              <h2 className="text-4xl lg:text-6xl font-bold tracking-tighter mb-6">
                 Chaos, controlled.
               </h2>
 
-              <p className="text-lg text-gray-400 mb-10 leading-relaxed max-w-lg">
+              <p className="text-base lg:text-lg text-gray-400 mb-10 leading-relaxed max-w-lg">
                 The Kitchen Display System that keeps front and back of house in
                 perfect sync. Real-time updates, color-coded alerts, and
                 performance tracking.
