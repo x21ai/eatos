@@ -75,6 +75,7 @@ const LINK_GROUPS = [
       { label: 'Intelligence', href: '/ai' },
       { label: 'Hardware', href: '/hardware' },
       { label: 'Tap to Pay', href: '/tap-to-pay' },
+      { label: 'Offline Connectivity', href: '/offline-point-of-sale' },
       { label: 'Platform', href: '/platform' },
       { label: 'Enterprise', href: '/solutions/enterprise' },
     ],

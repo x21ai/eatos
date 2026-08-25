@@ -32,6 +32,7 @@ export default async function sitemap() {
     '/terms',
     '/report-fraud',
     '/system-status',
+    '/offline-point-of-sale',
     '/solutions',
     '/solutions/quick-service',
     '/solutions/full-service',
