@@ -248,12 +248,27 @@ export default function Footer({ variant = 'light' }) {
                 </a>
               ))}
             </div>
+
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="/book-demo"
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[13px] font-semibold transition-all ${isDark ? 'bg-white text-black hover:bg-gray-100' : 'bg-black text-white hover:bg-gray-800'}`}
+              >
+                <CalendarCheck size={13} /> Book a Demo
+              </a>
+              <a
+                href="/contact-sales"
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-[13px] font-semibold border transition-all ${isDark ? 'border-white/20 text-gray-300 hover:border-white/40' : 'border-gray-300 text-[#424245] hover:border-gray-500'}`}
+              >
+                Contact Sales
+              </a>
+            </div>
           </div>
 
-          {/* Right: contact channels + CTAs */}
+          {/* Right: contact channels */}
           <div>
             <h4 className={`${headingClass} mb-5`}>Get in touch</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+            <div className="grid grid-cols-2 gap-3">
               {CONTACT_CHANNELS.map(({ label, detail, href, Icon }) => (
                 <a
                   key={label}
