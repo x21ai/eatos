@@ -297,7 +297,7 @@ export default function Footer({ variant = 'light' }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {OFFICES.map(({ city, address, state }) => (
                 <div key={city} className="flex items-start gap-2">
-                  <MapPin size={13} className={`${iconColor} mt-0.5 flex-shrink-0`} />
+                  <MapPin size={15} className={`${iconColor} mt-0.5 flex-shrink-0`} />
                   <div>
                     <div className={addrLabel}>{city}</div>
                     <div className={addrText}>{address}</div>
