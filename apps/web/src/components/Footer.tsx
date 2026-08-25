@@ -362,6 +362,21 @@ export default function Footer({ variant = 'light' }) {
                   href: '/products/simplified-inventory-management',
                 },
                 { label: 'Workforce', href: '/products/workforce-management' },
+              ].map(({ label, href }) => (
+                <li key={href}>
+                  <a href={href} className={linkClass}>
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Grow */}
+          <div>
+            <h4 className={`${headingClass} mb-5`}>Grow</h4>
+            <ul className="space-y-3">
+              {[
                 { label: 'Analytics', href: '/products/reporting-analytics' },
                 { label: 'Loyalty', href: '/products/loyalty' },
                 { label: 'Gift Cards', href: '/products/giftcards' },
