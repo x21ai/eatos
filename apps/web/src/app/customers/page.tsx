@@ -59,7 +59,7 @@ const caseStudies = [
     image:
       "https://framerusercontent.com/images/cLG0kROuoRurUKeaXm2SUjBYH9k.png",
     quote:
-      "Switching to eatOS was the best decision we made last year. Revenue up 22% and our team loves it. The AI features are a game-changer.",
+      "Switching to eatOS was the best decision we made last year.\nRevenue up 22% and our team loves it. The AI features are a game-changer.",
     person: "David Kim",
     role: "Owner",
     initials: "DK",
