@@ -135,7 +135,6 @@ export default function Header() {
       const path = window.location.pathname;
       setCurrentPath(path);
       const lightPages = [
-        "/contact-sales",
         "/shop",
         "/partners",
         "/login",
