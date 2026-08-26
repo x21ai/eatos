@@ -553,7 +553,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-sm font-medium mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#d70480]/30 bg-[#d70480]/10 text-[#d70480] text-sm font-medium mb-6">
                 <BarChart2 size={12} />
                 <span>Real-time Reporting</span>
               </div>
@@ -568,12 +568,12 @@ export default function HomePage() {
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-8 md:mb-10">
                 {[
-                  { label: 'Sales by hour, day, or location', color: 'text-emerald-400' },
-                  { label: 'Labor cost vs. revenue', color: 'text-emerald-400' },
-                  { label: 'Top-selling items ranked', color: 'text-emerald-400' },
-                  { label: 'Void and discount tracking', color: 'text-emerald-400' },
-                  { label: 'End-of-day summary reports', color: 'text-emerald-400' },
-                  { label: 'Export to CSV or your accountant', color: 'text-emerald-400' },
+                  { label: 'Sales by hour, day, or location', color: 'text-[#d70480]' },
+                  { label: 'Labor cost vs. revenue', color: 'text-[#d70480]' },
+                  { label: 'Top-selling items ranked', color: 'text-[#d70480]' },
+                  { label: 'Void and discount tracking', color: 'text-[#d70480]' },
+                  { label: 'End-of-day summary reports', color: 'text-[#d70480]' },
+                  { label: 'Export to CSV or your accountant', color: 'text-[#d70480]' },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-3 text-gray-300 text-sm">
                     <Check size={16} className={`${item.color} shrink-0`} />
@@ -729,7 +729,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 text-green-400 text-sm font-semibold mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#d70480]/10 text-[#d70480] text-sm font-semibold mb-6">
                 <ChefHat size={14} />
                 <span>Kitchen Display System</span>
               </div>
@@ -753,7 +753,7 @@ export default function HomePage() {
                   const Icon = item.icon;
                   return (
                     <div key={item.title} className="flex items-center gap-4">
-                      <div className="bg-green-500/10 text-green-400 p-2.5 rounded-xl flex-shrink-0">
+                      <div className="bg-[#d70480]/10 text-[#d70480] p-2.5 rounded-xl flex-shrink-0">
                         <Icon size={20} />
                       </div>
                       <h4 className="text-base font-bold">{item.title}</h4>
