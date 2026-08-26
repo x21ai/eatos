@@ -516,6 +516,7 @@ export default function Header() {
           {/* Solutions Dropdown */}
           <div
             className="relative"
+            ref={solutionsTriggerRef}
             onMouseEnter={() => setSolutionsOpen(true)}
             onMouseLeave={() => setSolutionsOpen(false)}
           >
@@ -529,8 +530,10 @@ export default function Header() {
               />
             </button>
             <div
-              className={`absolute top-full left-0 pt-2 w-[460px] max-w-[calc(100vw-2rem)] transition-all duration-200 ${solutionsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"}`}
+              style={{ left: `${solutionsShift}px` }}
+              className={`absolute top-full pt-2 w-[460px] max-w-[calc(100vw-2rem)] transition-all duration-200 ${solutionsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"}`}
             >
+
               <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-4 text-black normal-case tracking-normal">
                 <div className="grid grid-cols-2 gap-2">
                   {solutionLinks.map((s) => (
