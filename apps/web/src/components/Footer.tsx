@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client';
 
-import { ArrowRight, Globe } from 'lucide-react';
+import { ArrowRight, Globe, MessageCircle, MessageSquareText, MessagesSquare, Send } from 'lucide-react';
 import mobileLogoWhite from './marketing/assets/brand/logo-mobile-white.png.asset.json';
 
 function XIcon({ size = 24, ...props }) {
