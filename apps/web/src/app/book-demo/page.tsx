@@ -19,87 +19,90 @@ export default function BookDemoPage() {
 
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black text-white font-montserrat">
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-gray-50 to-white">
-        <div className="mx-auto w-full px-5 md:px-8 lg:px-10 max-w-4xl text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/5 text-sm font-medium mb-6">
+      <section className="pt-32 pb-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/[0.03] to-transparent pointer-events-none" />
+        <div className="site-container relative z-10 max-w-4xl text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 text-sm font-medium mb-6 text-white/90">
             <Calendar size={16} />
             <span>Schedule Your Demo</span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-black mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-white mb-6">
             See <strong>eatOS</strong> in action
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-white/80 max-w-2xl mx-auto">
             Book a personalized demo with our team and discover how{" "}
-            <strong>eatOS</strong> can transform your restaurant operations.
+            <strong className="text-white">eatOS</strong> can transform your
+            restaurant operations.
           </p>
         </div>
       </section>
 
       {/* HubSpot Meetings Embed */}
-      <section className="py-16">
-        <div className="mx-auto w-full px-5 md:px-8 lg:px-10 max-w-4xl">
-          <div
-            className="meetings-iframe-container"
-            data-src="https://meetings.hubspot.com/booka/initial-meeting?embed=true"
-          />
-          <p className="text-sm text-gray-500 text-center mt-6">
+      <section className="py-16 border-t border-white/10">
+        <div className="site-container max-w-4xl">
+          <div className="rounded-[2rem] border border-white/10 bg-white p-2 md:p-4 overflow-hidden">
+            <div
+              className="meetings-iframe-container"
+              data-src="https://meetings.hubspot.com/booka/initial-meeting?embed=true"
+            />
+          </div>
+          <p className="text-sm text-white/60 text-center mt-6">
             By booking a meeting, you agree to our{" "}
-            <a href="/privacy" className="underline hover:text-black">
+            <a href="/privacy" className="underline hover:text-white">
               Privacy Policy
             </a>
           </p>
         </div>
       </section>
 
-
       {/* Benefits Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="mx-auto w-full px-5 md:px-8 lg:px-10 max-w-5xl">
-          <h2 className="text-3xl font-bold text-black text-center mb-12">
+      <section className="py-16 border-t border-white/10">
+        <div className="site-container max-w-5xl">
+          <h2 className="text-3xl font-bold text-white text-center mb-12 tracking-tighter">
             What to expect from your demo
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Users size={32} className="text-white" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {[
+              {
+                Icon: Users,
+                title: "Personalized Walkthrough",
+                body: "A tailored demo focused on your restaurant's specific needs and challenges.",
+                iconClass: "bg-sky-500/15 text-sky-400",
+              },
+              {
+                Icon: Calendar,
+                title: "30-Minute Session",
+                body: "Quick, focused demo that respects your time while covering all key features.",
+                iconClass: "bg-violet-500/15 text-violet-400",
+              },
+              {
+                Icon: CheckCircle2,
+                title: "No Commitment",
+                body: "Learn about eatOS with zero pressure. We are here to help, not to push.",
+                iconClass: "bg-emerald-500/15 text-emerald-400",
+              },
+            ].map(({ Icon, title, body, iconClass }) => (
+              <div
+                key={title}
+                className="text-center rounded-[2rem] border border-white/10 bg-white/5 p-8"
+              >
+                <div
+                  className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 ${iconClass}`}
+                >
+                  <Icon size={30} />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2 tracking-tighter">
+                  {title}
+                </h3>
+                <p className="text-white/80 leading-relaxed">{body}</p>
               </div>
-              <h3 className="text-xl font-bold text-black mb-2">
-                Personalized Walkthrough
-              </h3>
-              <p className="text-gray-600">
-                A tailored demo focused on your restaurant's specific needs and
-                challenges.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Calendar size={32} className="text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-black mb-2">
-                30-Minute Session
-              </h3>
-              <p className="text-gray-600">
-                Quick, focused demo that respects your time while covering all
-                key features.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-black rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <CheckCircle2 size={32} className="text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-black mb-2">
-                No Commitment
-              </h3>
-              <p className="text-gray-600">
-                Learn about <strong>eatOS</strong> with zero pressure. We're
-                here to help, not to push.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
     </div>
   );
 }
+
