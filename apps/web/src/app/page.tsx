@@ -727,7 +727,7 @@ export default function HomePage() {
       {/* Kitchen Display */}
       <section className="py-16 md:py-28 bg-black text-white relative overflow-hidden">
         <div className="site-container relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 lg:gap-14 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
