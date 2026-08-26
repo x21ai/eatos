@@ -66,7 +66,6 @@ export function HardwareSection() {
                 Payments & handheld ordering
               </h3>
               <p className="text-gray-400 mb-6">
-                {/* TODO: Pricing rate should be fetched from pricing API - do not hardcode */}
                 Accept every payment type at 2.99%+20¢ flat rate. Plus handheld
                 devices that let your staff take orders from anywhere.
               </p>

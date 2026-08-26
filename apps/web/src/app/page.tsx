@@ -340,7 +340,6 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="mt-6 md:mt-auto">
-                  {/* TODO: Pricing rate should be fetched from pricing API - do not hardcode */}
                   <div className="text-4xl md:text-4xl lg:text-5xl font-bold tracking-tighter mb-1 whitespace-nowrap">2.99%+15¢</div>
                   <div className="text-gray-500 text-sm">Flat rate processing</div>
                 </div>
@@ -503,7 +502,6 @@ export default function HomePage() {
                   Point of Sale
                 </h3>
                 <p className="text-gray-400 text-sm sm:text-base mb-5 sm:mb-6">The ultimate restaurant terminal.</p>
-                {/* TODO: Price should be fetched from pricing API - do not hardcode */}
                 <div className="flex items-center justify-center gap-2 text-sm font-medium bg-white/10 px-4 py-2 rounded-full w-fit mx-auto mb-6 sm:mb-8">
                   <span>From $99</span>
                 </div>
@@ -531,7 +529,6 @@ export default function HomePage() {
                   Point of Purchase
                 </h3>
                 <p className="text-gray-400 text-sm sm:text-base mb-5 sm:mb-6">Power in your pocket.</p>
-                {/* TODO: Price should be fetched from pricing API - do not hardcode */}
                 <div className="flex items-center justify-center gap-2 text-sm font-medium bg-white/10 px-4 py-2 rounded-full w-fit mx-auto mb-6 sm:mb-8">
                   <span>From $49</span>
                 </div>

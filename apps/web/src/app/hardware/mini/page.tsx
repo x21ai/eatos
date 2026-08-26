@@ -17,7 +17,6 @@ export default function MiniPage() {
             <strong>eatOS</strong> Mini
           </div>
           <div className="flex items-center gap-6">
-            {/* TODO: Price should be fetched from pricing API - do not hardcode */}
             <button className="bg-purple-600 text-white px-4 py-1.5 rounded-full text-sm font-bold hover:bg-purple-500 transition-colors">
               Buy Now $299
             </button>
