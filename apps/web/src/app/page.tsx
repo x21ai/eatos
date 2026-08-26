@@ -528,7 +528,7 @@ export default function HomePage() {
               <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-orange-500/10 to-transparent z-10" />
               <div className="relative z-10 pt-8 px-6 sm:pt-12 sm:px-12">
                 <h3 className="text-2xl sm:text-3xl font-bold tracking-tighter mb-2">
-                  <strong>eatOS</strong> Point of Purchase
+                  Point of Purchase
                 </h3>
                 <p className="text-gray-400 text-sm sm:text-base mb-5 sm:mb-6">Power in your pocket.</p>
                 {/* TODO: Price should be fetched from pricing API - do not hardcode */}
