@@ -1,6 +1,6 @@
 export const hero = {
   eyebrow: 'Connectivity',
-  title: 'Industry leading offline',
+  title: 'Industry leading offline\n',
   titleAccent: 'connectivity system',
   description:
     'eatOS runs on a peer-to-peer mesh network built for hospitality. Every device in your venue stays connected and in sync, with or without the internet.',
