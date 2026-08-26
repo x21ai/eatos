@@ -145,8 +145,8 @@ export default function Header() {
         "/privacy",
         "/terms",
         "/customers",
-        "/book-demo",
       ];
+
       const isLight = lightPages.some(
         (p) => path === p || path.startsWith(p + "/"),
       );
