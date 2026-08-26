@@ -88,10 +88,10 @@ export default function GetStartedPage() {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] bg-white overflow-y-auto">
+    <div className="fixed inset-0 z-[100] bg-black text-white overflow-y-auto">
       <div className="min-h-screen flex flex-col">
         {/* Minimal Header */}
-        <header className="py-6 border-b border-gray-100 bg-white sticky top-0 z-10">
+        <header className="py-6 border-b border-white/25 bg-black sticky top-0 z-10">
           <div className="site-container flex items-center justify-between">
             <a href="/" className="flex items-center gap-2">
               <img
@@ -100,18 +100,19 @@ export default function GetStartedPage() {
                 className="h-10 w-auto"
               />
             </a>
-            <div className="text-sm text-gray-500 font-medium">Step {step} of 2</div>
+            <div className="text-sm text-gray-300 font-medium">Step {step} of 2</div>
           </div>
         </header>
 
 
         {/* Progress Bar */}
-        <div className="h-1 bg-gray-100 w-full">
+        <div className="h-1 bg-white/15 w-full">
           <div
-            className="h-full bg-black transition-all duration-500 ease-out"
+            className="h-full bg-white transition-all duration-500 ease-out"
             style={{ width: `${step === 1 ? '50%' : '100%'}` }}
           ></div>
         </div>
+
 
         {/* Main Content */}
         <main className="site-container flex-grow flex flex-col items-center justify-center py-10 md:py-16">
@@ -121,7 +122,7 @@ export default function GetStartedPage() {
                 <h1 className="text-3xl md:text-4xl font-bold mb-4 tracking-tighter">
                   What industry is your business in?
                 </h1>
-                <p className="text-gray-500 text-lg">
+                <p className="text-gray-300 text-lg">
                   We'll tailor your setup experience based on your industry needs.
                 </p>
               </div>
@@ -139,31 +140,32 @@ export default function GetStartedPage() {
                         relative p-6 rounded-2xl text-left transition-all duration-200 border-2
                         ${
                           isSelected
-                            ? 'border-black bg-gray-50 shadow-md scale-[1.02]'
-                            : 'border-gray-100 hover:border-gray-200 hover:bg-gray-50/50'
+                            ? 'border-white bg-white/10 shadow-lg scale-[1.02]'
+                            : 'border-white/15 hover:border-white/40 hover:bg-white/5'
                         }
                       `}
                     >
                       <div
                         className={`
                         w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors
-                        ${isSelected ? 'bg-black text-white' : 'bg-gray-100 text-gray-600'}
+                        ${isSelected ? 'bg-white text-black' : 'bg-white/10 text-gray-200'}
                       `}
                       >
                         <Icon size={24} />
                       </div>
-                      <h3 className="font-bold text-lg mb-1">{industry.label}</h3>
-                      <p className="text-sm text-gray-500 leading-relaxed">
+                      <h3 className="font-bold text-lg mb-1 text-white">{industry.label}</h3>
+                      <p className="text-sm text-gray-300 leading-relaxed">
                         {industry.description}
                       </p>
 
                       {isSelected && (
-                        <div className="absolute top-4 right-4 text-black">
-                          <div className="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center">
+                        <div className="absolute top-4 right-4">
+                          <div className="w-6 h-6 bg-white text-black rounded-full flex items-center justify-center">
                             <Check size={14} strokeWidth={3} />
                           </div>
                         </div>
                       )}
+
                     </button>
                   );
                 })}
@@ -177,9 +179,10 @@ export default function GetStartedPage() {
                     flex items-center gap-2 px-8 py-4 rounded-full font-bold text-lg transition-all
                     ${
                       selectedIndustry
-                        ? 'bg-black text-white hover:bg-gray-800 shadow-lg hover:shadow-xl hover:-translate-y-1'
-                        : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                        ? 'bg-white text-black hover:bg-gray-200 shadow-lg hover:shadow-xl hover:-translate-y-1'
+                        : 'bg-white/10 text-gray-500 cursor-not-allowed'
                     }
+
                   `}
                 >
                   Continue
