@@ -41,7 +41,7 @@ export function EdgeOSSection() {
                 <div>
                   <div className="text-sm font-semibold">Resilience</div>
                   <div className="text-xs text-[#9CA3AF]">
-                    Cloud POS vs. edgeOS
+                    Cloud Point of Sale vs. edgeOS
                   </div>
                 </div>
               </div>
@@ -52,7 +52,7 @@ export function EdgeOSSection() {
                     Scenario
                   </div>
                   <div className="px-3 py-3 sm:px-4 text-[10px] sm:text-xs uppercase tracking-wider text-[#9CA3AF] border-r border-white/10">
-                    Cloud POS
+                    Cloud Point of Sale
                   </div>
                   <div className="px-3 py-3 sm:px-4 text-[10px] sm:text-xs uppercase tracking-wider text-[#9CA3AF]">
                     <strong>eatOS</strong>

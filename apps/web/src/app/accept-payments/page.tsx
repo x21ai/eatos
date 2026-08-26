@@ -2,7 +2,7 @@
 import PaymentsPageClient from './PaymentsPageClient';
 
 export const metadata = {
-  title: 'Restaurant Payment Solutions | eatOS',
+  title: 'Restaurant Payment Solutions',
   description:
     'Cloud based restaurant payment processing with Tap to Pay on iPhone, EMV and contactless cards, Apple Pay, Google Pay, offline mode and processor agnostic routing.',
   openGraph: {

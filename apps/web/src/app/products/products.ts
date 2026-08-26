@@ -61,7 +61,7 @@ export const products = [
     color: "purple",
     href: "/products/point-of-purchase",
     features: [
-      "All-in-One POS",
+      "All-in-One Point of Sale",
       "Contactless payments",
       "Real-time MenuSync",
       "Fire to kitchen",

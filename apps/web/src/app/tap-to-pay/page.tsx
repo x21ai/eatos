@@ -2,7 +2,7 @@
 import TapToPayClient from './TapToPayClient';
 
 export const metadata = {
-  title: 'Tap to Pay | eatOS',
+  title: 'Tap to Pay',
   description:
     'Take contactless payments during the order with eatOS Tap to Pay. Cards, wallets and watches on the phone your team already carries, no extra terminals.',
   openGraph: {

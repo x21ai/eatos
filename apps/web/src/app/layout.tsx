@@ -14,7 +14,7 @@ export const metadata = {
   description:
     'eatOS is the all-in-one restaurant operating system. Point of sale, payments, kitchen display, online ordering, inventory, and AI intelligence built for restaurants of every size.',
   keywords: [
-    'restaurant POS',
+    'restaurant Point of Sale',
     'restaurant software',
     'point of sale',
     'restaurant management',
@@ -27,7 +27,7 @@ export const metadata = {
     siteName: 'eatOS',
     title: 'eatOS - The Restaurant Operating System',
     description:
-      'All-in-one restaurant software: POS, payments, kitchen display, online ordering, and AI intelligence.',
+      'All-in-one restaurant software: Point of Sale, payments, kitchen display, online ordering, and AI intelligence.',
     images: [
       {
         url: 'https://ucarecdn.com/c0c7e8e9-324d-4d51-8fa6-8a867032ad32/-/format/auto/',
@@ -42,7 +42,7 @@ export const metadata = {
     site: '@myeatos',
     title: 'eatOS - The Restaurant Operating System',
     description:
-      'All-in-one restaurant software: POS, payments, kitchen display, online ordering, and AI intelligence.',
+      'All-in-one restaurant software: Point of Sale, payments, kitchen display, online ordering, and AI intelligence.',
   },
   robots: {
     index: true,

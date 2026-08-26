@@ -2,7 +2,7 @@
 import GhostKitchenClient from "./GhostKitchenClient";
 
 export const metadata = {
-  title: "Point of Sale System for Ghost Kitchens | eatOS",
+  title: "Point of Sale System for Ghost Kitchens",
   description:
     "Ghost kitchen Point of Sale built for delivery: commission free online ordering, kitchen display routing and multi brand reporting in one platform.",
   openGraph: {

@@ -2,7 +2,7 @@
 import CafeClient from "./CafeClient";
 
 export const metadata = {
-  title: "Point of Sale System for Cafes | eatOS",
+  title: "Point of Sale System for Cafes",
   description:
     "Cafe Point of Sale that is easy to learn, with menu and inventory control, employee management and self-service kiosk ordering.",
   openGraph: {

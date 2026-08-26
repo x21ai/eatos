@@ -7,6 +7,25 @@ import {
   Scan,
 } from "lucide-react";
 
+export const metadata = {
+  title: 'Mini Handheld Terminal',
+  description:
+    'The eatOS Mini puts a full Point of Sale in your hand for tableside ordering, payments and inventory checks.',
+  openGraph: {
+    type: 'website',
+    title: 'Mini Handheld Terminal | eatOS',
+    description:
+      'The eatOS Mini puts a full Point of Sale in your hand for tableside ordering, payments and inventory checks.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Mini Handheld Terminal | eatOS',
+    description:
+      'The eatOS Mini puts a full Point of Sale in your hand for tableside ordering, payments and inventory checks.',
+  },
+};
+
+
 export default function MiniPage() {
   return (
     <div className="bg-black min-h-screen text-white font-sans selection:bg-purple-500/30">
@@ -17,7 +36,6 @@ export default function MiniPage() {
             <strong>eatOS</strong> Mini
           </div>
           <div className="flex items-center gap-6">
-            {/* TODO: Price should be fetched from pricing API - do not hardcode */}
             <button className="bg-purple-600 text-white px-4 py-1.5 rounded-full text-sm font-bold hover:bg-purple-500 transition-colors">
               Buy Now $299
             </button>
@@ -33,7 +51,7 @@ export default function MiniPage() {
               <span className="text-purple-500">pocket.</span>
             </h1>
             <p className="text-xl text-white/90 mb-10 leading-relaxed">
-              The full power of a POS terminal, shrunk down to the size of a
+              The full power of a Point of Sale terminal, shrunk down to the size of a
               phone. Tableside ordering, payments, and inventory management in
               the palm of your hand.
             </p>

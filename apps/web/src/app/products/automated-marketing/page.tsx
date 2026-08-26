@@ -2,7 +2,7 @@
 import MarketingPageClient from './MarketingPageClient';
 
 export const metadata = {
-  title: 'Automated Marketing for Restaurants | eatOS',
+  title: 'Automated Marketing for Restaurants',
   description:
     'Boost guest engagement with personalized promotions, lead scoring, email marketing automation and data-driven insights from eatOS.',
   openGraph: {

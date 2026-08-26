@@ -23,7 +23,7 @@ export function HardwareSection() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* POS Card */}
+          {/* Point of Sale Card */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -66,7 +66,6 @@ export function HardwareSection() {
                 Payments & handheld ordering
               </h3>
               <p className="text-gray-400 mb-6">
-                {/* TODO: Pricing rate should be fetched from pricing API - do not hardcode */}
                 Accept every payment type at 2.99%+20¢ flat rate. Plus handheld
                 devices that let your staff take orders from anywhere.
               </p>

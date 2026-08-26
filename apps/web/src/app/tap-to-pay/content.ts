@@ -81,7 +81,7 @@ export const features = [
     iconBorder: 'border-sky-400/20',
   },
   {
-    title: 'One ledger with your POS',
+    title: 'One ledger with your Point of Sale',
     body: 'Tap payments land in the same reporting, payouts and reconciliation as every other tender.',
     icon: 'Layers',
     iconColor: 'text-rose-400',

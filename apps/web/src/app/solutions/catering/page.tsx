@@ -2,7 +2,7 @@
 import CateringClient from "./CateringClient";
 
 export const metadata = {
-  title: "Catering Point of Sale Solution | eatOS",
+  title: "Catering Point of Sale Solution",
   description:
     "Catering Point of Sale built for large orders: event menus, real-time ingredient inventory and CRM driven client service in one platform.",
   openGraph: {

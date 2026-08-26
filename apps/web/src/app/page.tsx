@@ -315,7 +315,7 @@ export default function HomePage() {
                 {/* Abstract UI representation */}
                 <img
                   src="https://ucarecdn.com/c0c7e8e9-324d-4d51-8fa6-8a867032ad32/-/format/auto/"
-                  alt="Interactive POS Preview"
+                  alt="Interactive Point of Sale Preview"
                   loading="lazy"
                   className="w-full rounded-xl shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-500"
                 />
@@ -340,7 +340,6 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="mt-6 md:mt-auto">
-                  {/* TODO: Pricing rate should be fetched from pricing API - do not hardcode */}
                   <div className="text-4xl md:text-4xl lg:text-5xl font-bold tracking-tighter mb-1 whitespace-nowrap">2.99%+15¢</div>
                   <div className="text-gray-500 text-sm">Flat rate processing</div>
                 </div>
@@ -500,10 +499,9 @@ export default function HomePage() {
               <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-indigo-500/10 to-transparent z-10" />
               <div className="relative z-10 pt-8 px-6 sm:pt-12 sm:px-12">
                 <h3 className="text-2xl sm:text-3xl font-bold tracking-tighter mb-2">
-                  <strong>eatOS</strong> Point of Sale
+                  Point of Sale
                 </h3>
                 <p className="text-gray-400 text-sm sm:text-base mb-5 sm:mb-6">The ultimate restaurant terminal.</p>
-                {/* TODO: Price should be fetched from pricing API - do not hardcode */}
                 <div className="flex items-center justify-center gap-2 text-sm font-medium bg-white/10 px-4 py-2 rounded-full w-fit mx-auto mb-6 sm:mb-8">
                   <span>From $99</span>
                 </div>
@@ -528,10 +526,9 @@ export default function HomePage() {
               <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-orange-500/10 to-transparent z-10" />
               <div className="relative z-10 pt-8 px-6 sm:pt-12 sm:px-12">
                 <h3 className="text-2xl sm:text-3xl font-bold tracking-tighter mb-2">
-                  <strong>eatOS</strong> Point of Purchase
+                  Point of Purchase
                 </h3>
                 <p className="text-gray-400 text-sm sm:text-base mb-5 sm:mb-6">Power in your pocket.</p>
-                {/* TODO: Price should be fetched from pricing API - do not hardcode */}
                 <div className="flex items-center justify-center gap-2 text-sm font-medium bg-white/10 px-4 py-2 rounded-full w-fit mx-auto mb-6 sm:mb-8">
                   <span>From $49</span>
                 </div>

@@ -21,7 +21,7 @@ export function OnePlatformSection() {
             <span className="text-gray-400">one place.</span>
           </h2>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-            No more juggling vendors. eatOS combines POS, payments, kitchen
+            No more juggling vendors. eatOS combines Point of Sale, payments, kitchen
             management, AI, workforce tools, marketing, and more into a single
             unified system.
           </p>
@@ -47,7 +47,7 @@ export function OnePlatformSection() {
             "Loyalty",
             "Gift Cards",
             "Marketing",
-            "Handheld POS",
+            "Handheld Point of Sale",
             "Tableside",
             "Delivery",
           ].map((name) => (

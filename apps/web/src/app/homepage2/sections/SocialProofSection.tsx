@@ -60,7 +60,7 @@ export function SocialProofSection() {
               One platform
             </div>
             <div className="text-sm text-gray-500 mt-1">
-              POS · Payments · AI
+              Point of Sale · Payments · AI
             </div>
           </div>
           <div className="text-center">

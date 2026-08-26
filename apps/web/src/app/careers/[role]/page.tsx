@@ -8,7 +8,7 @@ const ROLES = {
     location: "Remote (US) / On-site",
     type: "Full-time",
     intro:
-      "Build fast, clean product experiences across POS, payments, and intelligence, with a strong focus on polish and reliability.",
+      "Build fast, clean product experiences across Point of Sale, payments, and intelligence, with a strong focus on polish and reliability.",
     whatYoullDo: [
       "Ship user-facing features across the web app and internal tools.",
       "Collaborate closely with design to keep quality high.",
@@ -30,7 +30,7 @@ const ROLES = {
     intro:
       "Own core services, reliability, and the infrastructure that keeps restaurants running, even when networks don't.",
     whatYoullDo: [
-      "Build and maintain backend services for POS, payments, and intelligence.",
+      "Build and maintain backend services for Point of Sale, payments, and intelligence.",
       "Improve uptime, observability, and incident response.",
       "Design safe rollouts and migrations that avoid downtime.",
       "Partner with product engineering to ship features without regressions.",
@@ -50,7 +50,7 @@ const ROLES = {
     intro:
       "Design calm, high-trust interfaces for high-stress environments. The bar is Apple-level clarity.",
     whatYoullDo: [
-      "Design flows for POS, payments, and management tools.",
+      "Design flows for Point of Sale, payments, and management tools.",
       "Create systems (type, spacing, components) that scale.",
       "Run lightweight research with operators and staff.",
       "Partner with engineering to ship pixel-perfect work.",

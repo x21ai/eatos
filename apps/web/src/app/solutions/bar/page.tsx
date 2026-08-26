@@ -2,7 +2,7 @@
 import BarClient from "./BarClient";
 
 export const metadata = {
-  title: "Point of Sale System for Bars and Nightclubs | eatOS",
+  title: "Point of Sale System for Bars and Nightclubs",
   description:
     "Bar Point of Sale with fast tab management, card on file, real-time keg and bottle inventory, and built-in age verification.",
   openGraph: {

@@ -5,19 +5,19 @@ import easeImg from './assets/comparison-ease.png.asset.json';
 import scalableImg from './assets/comparison-scalable-v3.png.asset.json';
 
 export const hero = {
-  eyebrow: 'eatOS vs Other POS',
+  eyebrow: 'eatOS vs Other Point of Sale',
   title: 'eatOS Restaurant Cloud: Complete Comparison',
   description:
     'Equipped with essential tools, eatOS empowers you to connect with customers and expand your business, both in-person and online.',
   primaryCta: { label: 'Book a Demo', href: '/book-demo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
-  media: 'eatOS POS terminals',
+  media: 'eatOS Point of Sale terminals',
   mediaSrc: heroImg.url,
 };
 
 export const highlights = [
   'AI-enabled integration built for restaurants',
-  'All-in-one POS, kitchen, kiosk, and workforce platform',
+  'All-in-one Point of Sale, kitchen, kiosk, and workforce platform',
   'Offline mode plus 4G backup and hotspot capability',
   'Works with multiple payment processors',
 ];

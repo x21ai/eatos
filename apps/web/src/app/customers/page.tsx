@@ -23,7 +23,7 @@ const caseStudies = [
     image:
       "https://framerusercontent.com/images/jmUYZhUVZsYzpWQJh0KHr9yn7oc.png",
     quote:
-      "eatOS completely transformed how we run our restaurant. From POS to kitchen display to payments, everything just works together seamlessly.",
+      "eatOS completely transformed how we run our restaurant. From Point of Sale to kitchen display to payments, everything just works together seamlessly.",
     person: "James Miller",
     role: "Owner",
     initials: "JM",
@@ -159,7 +159,7 @@ export default function CustomersPage() {
               <div className="text-3xl font-bold tracking-tighter mb-1">
                 One platform
               </div>
-              <div className="text-sm text-gray-500">POS, payments & AI</div>
+              <div className="text-sm text-gray-500">Point of Sale, payments & AI</div>
             </div>
             <div className="bg-gray-50 rounded-2xl p-6">
               <div className="text-3xl font-bold tracking-tighter mb-1">

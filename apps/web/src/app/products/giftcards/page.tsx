@@ -2,7 +2,7 @@
 import GiftCardsPageClient from './GiftCardsPageClient';
 
 export const metadata = {
-  title: 'Custom Restaurant Gift Cards | eatOS',
+  title: 'Custom Restaurant Gift Cards',
   description:
     'Design custom physical and digital gift cards for your restaurant. From 79¢ per card, packs start at 250 cards, with instant redemption at the Point of Sale.',
   openGraph: {

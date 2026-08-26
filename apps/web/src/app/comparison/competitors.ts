@@ -128,7 +128,7 @@ const reasons = {
     {
       icon: 'zap',
       title: 'Lightning Fast Navigation',
-      body: 'Instantly sync your menu across your dashboard and POS. Save time and resources with automated updates and smooth coordination.',
+      body: 'Instantly sync your menu across your dashboard and Point of Sale. Save time and resources with automated updates and smooth coordination.',
       link: { label: 'Learn more about eatOS Point of Sale', href: '/point-of-sale' },
     },
     {
@@ -160,7 +160,7 @@ const reasons = {
     {
       icon: 'chart',
       title: 'Delight Diners, Boost Profits',
-      body: 'Revolutionize your fast casual dining with eatOS POS. Streamline operations, elevate service and delight your customers.',
+      body: 'Revolutionize your fast casual dining with eatOS Point of Sale. Streamline operations, elevate service and delight your customers.',
       link: { label: 'Learn more about eatOS', href: '/about' },
     },
   ],
@@ -174,7 +174,7 @@ const reasons = {
     {
       icon: 'delivery',
       title: 'Delivery Software Designed',
-      body: 'Effortless menu integration for a consistent experience across all customer touchpoints, from POS and apps to websites and beyond.',
+      body: 'Effortless menu integration for a consistent experience across all customer touchpoints, from Point of Sale and apps to websites and beyond.',
       link: { label: 'Learn more about eatOS products', href: '/products' },
     },
     {
@@ -186,7 +186,7 @@ const reasons = {
     {
       icon: 'wifi',
       title: 'Never Miss A Sale',
-      body: 'Stay open even when the internet is down. Process orders and payments seamlessly offline with our reliable restaurant POS system.',
+      body: 'Stay open even when the internet is down. Process orders and payments seamlessly offline with our reliable restaurant Point of Sale system.',
       link: { label: 'Learn more about eatOS', href: '/about' },
     },
   ],
@@ -200,13 +200,13 @@ const reasons = {
     {
       icon: 'zap',
       title: 'Fast Food, Faster Service',
-      body: 'Powerful cloud based POS streamlines payments for quick service restaurants, whether customers order at the counter or on the go.',
+      body: 'Powerful cloud based Point of Sale streamlines payments for quick service restaurants, whether customers order at the counter or on the go.',
       link: { label: 'Learn more about eatOS products', href: '/products' },
     },
     {
       icon: 'layers',
       title: 'Menu Management Across Channels',
-      body: 'Seamlessly integrate orders from multiple POS systems and our dedicated tablet solution, all from a single menu source.',
+      body: 'Seamlessly integrate orders from multiple Point of Sale systems and our dedicated tablet solution, all from a single menu source.',
       link: { label: 'Learn more about eatOS Point of Sale', href: '/point-of-sale' },
     },
     {

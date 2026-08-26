@@ -8,6 +8,25 @@ import {
   Layers,
 } from "lucide-react";
 
+export const metadata = {
+  title: 'Point of Sale Pro Terminal',
+  description:
+    'The eatOS Pro terminal: a commercial grade countertop Point of Sale with a bright touch display, built in payments and offline reliability.',
+  openGraph: {
+    type: 'website',
+    title: 'Point of Sale Pro Terminal | eatOS',
+    description:
+      'The eatOS Pro terminal: a commercial grade countertop Point of Sale with a bright touch display, built in payments and offline reliability.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Point of Sale Pro Terminal | eatOS',
+    description:
+      'The eatOS Pro terminal: a commercial grade countertop Point of Sale with a bright touch display, built in payments and offline reliability.',
+  },
+};
+
+
 export default function ProPage() {
   return (
     <div className="bg-black min-h-screen text-white font-sans selection:bg-white/20">

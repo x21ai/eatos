@@ -231,7 +231,7 @@ export const sections: Section[] = [
     blocks: [
       {
         type: "p",
-        text: "In the event of non-usage of the POS machine, i.e., no transaction is done on the POS machine by the merchant for a period of three (3) months or more, eatOS may terminate this Agreement or deactivate the services for the usage of both the eatOS application and hardware device with immediate effect, at any time. The merchant will not be entitled to any refund in any such case.",
+        text: "In the event of non-usage of the Point of Sale machine, i.e., no transaction is done on the Point of Sale machine by the merchant for a period of three (3) months or more, eatOS may terminate this Agreement or deactivate the services for the usage of both the eatOS application and hardware device with immediate effect, at any time. The merchant will not be entitled to any refund in any such case.",
       },
     ],
   },

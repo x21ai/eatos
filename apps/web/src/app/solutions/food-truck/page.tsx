@@ -2,7 +2,7 @@
 import FoodTruckClient from "./FoodTruckClient";
 
 export const metadata = {
-  title: "Point of Sale System for Food Trucks | eatOS",
+  title: "Point of Sale System for Food Trucks",
   description:
     "Food truck Point of Sale built for mobile service: compact hardware, fast tap payments, live inventory and offline ready order taking.",
   openGraph: {

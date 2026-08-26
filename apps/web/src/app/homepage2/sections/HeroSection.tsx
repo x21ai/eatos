@@ -53,7 +53,7 @@ export function HeroSection() {
           transition={{ duration: 1, delay: 0.8 }}
           className="text-lg md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed font-light"
         >
-          POS. Payments. Kitchen. AI. Workforce. Marketing. One platform that
+          Point of Sale. Payments. Kitchen. AI. Workforce. Marketing. One platform that
           runs your entire restaurant, so you can focus on hospitality.
         </motion.p>
 
