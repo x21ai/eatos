@@ -457,6 +457,7 @@ export default function Header() {
           {/* Restaurant Type Dropdown */}
           <div
             className="relative"
+            ref={productsTriggerRef}
             onMouseEnter={() => setProductsOpen(true)}
             onMouseLeave={() => setProductsOpen(false)}
           >
@@ -470,8 +471,10 @@ export default function Header() {
               />
             </button>
             <div
-              className={`absolute top-full left-0 pt-2 w-[860px] max-w-[calc(100vw-2rem)] transition-all duration-200 ${productsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"}`}
+              style={{ left: `${productsShift}px` }}
+              className={`absolute top-full pt-2 w-[860px] max-w-[calc(100vw-2rem)] transition-all duration-200 ${productsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"}`}
             >
+
               <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-4 text-black normal-case tracking-normal">
                 <div className="grid grid-cols-3 gap-x-3 gap-y-1">
                   {productLinks.map((p) => (
