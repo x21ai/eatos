@@ -51,10 +51,9 @@ export default function OfflinePosClient() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter max-w-4xl mx-auto"
+            className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter max-w-4xl mx-auto whitespace-pre-line"
           >
-            {hero.title}{' '}
-            <span className="text-sky-400">{hero.titleAccent}</span>
+            {hero.title}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
