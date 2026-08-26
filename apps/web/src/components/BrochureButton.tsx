@@ -76,6 +76,9 @@ function BrochureModal({ item, onClose }) {
       </div>
     </div>
   );
+
+  if (typeof document === 'undefined') return null;
+  return createPortal(overlay, document.body);
 }
 
 export default function BrochureButton({
