@@ -297,7 +297,7 @@ export default function QuickServiceClient() {
               Get the Quick <br className="md:hidden" />
               Service Bundle
             </h2>
-            <p className="mt-5 text-base sm:text-lg text-white/90 leading-relaxed">
+            <p className="mt-5 text-[13px] sm:text-lg text-white/90 leading-relaxed">
               {bundle.description}
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
