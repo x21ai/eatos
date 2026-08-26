@@ -195,14 +195,14 @@ export default function Footer() {
               The operating system for the modern restaurant, built for the way hospitality
               actually works.
             </p>
-            <div className="flex items-center gap-3">
-              {SOCIAL_LINKS.map(({ label, href, Icon }) => (
+            <div className="flex flex-wrap items-center gap-3">
+              {SOCIAL_LINKS.map(({ label, href, Icon, internal }) => (
                 <a
                   key={label}
                   href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  {...(internal ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
                   aria-label={label}
+                  title={label}
                   className={socialClass}
                 >
                   <Icon size={16} />
