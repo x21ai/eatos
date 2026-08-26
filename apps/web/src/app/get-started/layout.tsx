@@ -1,6 +1,6 @@
 // @ts-nocheck
 export const metadata = {
-  title: 'Get Started with eatOS | Restaurant Technology Cloud',
+  title: 'Get Started with eatOS',
   description:
     'Tell us about your restaurant and an eatOS specialist will build a hardware and software plan sized to your locations and service style.',
   openGraph: {

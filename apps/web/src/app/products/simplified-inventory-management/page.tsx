@@ -2,7 +2,7 @@
 import InventoryPageClient from './InventoryPageClient';
 
 export const metadata = {
-  title: 'Inventory Management | RESTAURANT TECHNOLOGY CLOUD',
+  title: 'Inventory Management',
   description:
     'eatOS Inventory Management simplifies real-time tracking, automated stock alerts, vendor management, recipe costing, and menu engineering for restaurants.',
   openGraph: {

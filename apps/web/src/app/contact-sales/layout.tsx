@@ -1,6 +1,6 @@
 // @ts-nocheck
 export const metadata = {
-  title: 'Contact eatOS Sales | Restaurant Technology Cloud',
+  title: 'Contact eatOS Sales',
   description:
     'Talk to the eatOS sales team about pricing, hardware bundles, multi location rollouts and migrating from your current Point of Sale.',
   openGraph: {

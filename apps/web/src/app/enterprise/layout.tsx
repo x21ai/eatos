@@ -1,6 +1,6 @@
 // @ts-nocheck
 export const metadata = {
-  title: 'Enterprise Restaurant Technology | eatOS',
+  title: 'Enterprise Restaurant Technology',
   description:
     'Multi location restaurant groups run eatOS for centralized menus, consolidated reporting, role based access and enterprise grade support.',
   openGraph: {

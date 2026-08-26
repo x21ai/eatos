@@ -1,7 +1,7 @@
 import OfflinePosClient from './OfflinePosClient';
 
 export const metadata = {
-  title: 'Offline Point of Sale Connectivity | eatOS',
+  title: 'Offline Point of Sale Connectivity',
   description:
     'eatOS runs on a peer-to-peer mesh network built for hospitality. Every device stays connected and in sync, with or without the internet.',
   alternates: { canonical: 'https://eatos.com/offline-point-of-sale' },

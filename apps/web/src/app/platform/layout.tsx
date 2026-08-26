@@ -1,6 +1,6 @@
 // @ts-nocheck
 export const metadata = {
-  title: 'Restaurant Technology Platform | eatOS',
+  title: 'Restaurant Technology Platform',
   description:
     'One connected platform for Point of Sale, payments, kitchen display, kiosk, online ordering, inventory and workforce management.',
   openGraph: {

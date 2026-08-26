@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: 'Mini Handheld Terminal | eatOS',
+  title: 'Mini Handheld Terminal',
   description:
     'The eatOS Mini puts a full Point of Sale in your hand for tableside ordering, payments and inventory checks.',
   openGraph: {

@@ -1,6 +1,6 @@
 // @ts-nocheck
 export const metadata = {
-  title: 'Restaurant Products and Devices | eatOS',
+  title: 'Restaurant Products and Devices',
   description:
     'Explore the eatOS product family: Point of Sale terminals, handhelds, kitchen displays, kiosks, customer displays and payment devices.',
   openGraph: {

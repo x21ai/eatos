@@ -1,6 +1,6 @@
 // @ts-nocheck
 export const metadata = {
-  title: 'Privacy Policy | eatOS',
+  title: 'Privacy Policy',
   description:
     'How eatOS collects, uses, stores and protects personal information across our restaurant technology products and services.',
   openGraph: {

@@ -2,7 +2,7 @@
 import AnalyticsPageClient from './AnalyticsPageClient';
 
 export const metadata = {
-  title: 'Analytics & Reporting for Restaurants | eatOS',
+  title: 'Analytics & Reporting for Restaurants',
   description:
     'Real-time data, cloud reporting and multi-location reporting for restaurants. Track sales, labor and menu mix and act on it during service.',
   openGraph: {

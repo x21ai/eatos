@@ -2,7 +2,7 @@
 import EnterpriseClient from "./EnterpriseClient";
 
 export const metadata = {
-  title: "Enterprise Restaurant Point of Sale | eatOS",
+  title: "Enterprise Restaurant Point of Sale",
   description:
     "Enterprise Point of Sale from eatOS: streamline transactions, manage staff and attendance, and get real-time insights across every location.",
   openGraph: {

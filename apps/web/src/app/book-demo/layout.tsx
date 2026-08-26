@@ -1,6 +1,6 @@
 // @ts-nocheck
 export const metadata = {
-  title: 'Book a Restaurant Technology Demo | eatOS',
+  title: 'Book a Restaurant Technology Demo',
   description:
     'Pick a time with an eatOS specialist for a walkthrough of Point of Sale, payments, kitchen display, kiosk and reporting built for your service style.',
   openGraph: {

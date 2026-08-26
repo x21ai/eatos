@@ -2,7 +2,7 @@
 import { effectiveDate, sections } from "./content";
 
 export const metadata = {
-  title: 'Terms of Service | eatOS',
+  title: 'Terms of Service',
   description:
     'The terms that govern use of eatOS restaurant technology software, hardware and payment services.',
   openGraph: {

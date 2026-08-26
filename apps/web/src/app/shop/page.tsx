@@ -2,7 +2,7 @@
 import { ArrowRight, ShoppingBag, Star } from 'lucide-react';
 
 export const metadata = {
-  title: 'Shop Restaurant Hardware | eatOS',
+  title: 'Shop Restaurant Hardware',
   description:
     'Buy eatOS Point of Sale terminals, handhelds, kitchen displays, kiosks and payment readers, or build a custom bundle.',
   openGraph: {

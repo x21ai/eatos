@@ -1,6 +1,6 @@
 // @ts-nocheck
 export const metadata = {
-  title: 'Restaurant AI Intelligence | eatOS',
+  title: 'Restaurant AI Intelligence',
   description:
     'AI built into restaurant operations: demand forecasting, menu performance insight, labor planning and guest personalization on one platform.',
   openGraph: {

@@ -2,7 +2,7 @@
 import LoyaltyPageClient from './LoyaltyPageClient';
 
 export const metadata = {
-  title: 'Loyalty Program for Restaurants | eatOS',
+  title: 'Loyalty Program for Restaurants',
   description:
     'Build loyalty programs that drive repeat business with personalized rewards, referrals, birthday perks and omnichannel points from eatOS.',
   openGraph: {
