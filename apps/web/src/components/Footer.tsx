@@ -226,9 +226,9 @@ export default function Footer() {
                   {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                   aria-label={label}
                   title={label}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black transition-opacity hover:opacity-80"
+                  className={socialClass}
                 >
-                  <Icon size={18} />
+                  <Icon size={16} />
                 </a>
               ))}
             </div>
