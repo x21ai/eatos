@@ -1,5 +1,12 @@
 // @ts-nocheck
-import { systems, statusMeta, overallStatus, LAST_UPDATED } from './systems';
+import {
+  systems,
+  systemGroups,
+  statusMeta,
+  overallStatus,
+  LAST_UPDATED,
+} from './systems';
+
 
 export const metadata = {
   title: 'System Status',
