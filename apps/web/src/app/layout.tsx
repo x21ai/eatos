@@ -8,7 +8,7 @@ import CookieBanner from '@/components/CookieBanner';
 export const metadata = {
   metadataBase: new URL('https://eatos.com'),
   title: {
-    default: 'eatOS - The Restaurant Operating System',
+    default: 'The Restaurant Management System of the Future | eatOS RMS',
     template: '%s | eatOS',
   },
   description:
@@ -25,7 +25,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     siteName: 'eatOS',
-    title: 'eatOS - The Restaurant Operating System',
+    title: 'The Restaurant Management System of the Future | eatOS RMS',
     description:
       'All-in-one restaurant software: Point of Sale, payments, kitchen display, online ordering, and AI intelligence.',
     images: [
@@ -40,7 +40,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     site: '@myeatos',
-    title: 'eatOS - The Restaurant Operating System',
+    title: 'The Restaurant Management System of the Future | eatOS RMS',
     description:
       'All-in-one restaurant software: Point of Sale, payments, kitchen display, online ordering, and AI intelligence.',
   },
