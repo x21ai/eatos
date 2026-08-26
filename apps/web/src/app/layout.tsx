@@ -8,7 +8,7 @@ import CookieBanner from '@/components/CookieBanner';
 export const metadata = {
   metadataBase: new URL('https://eatos.com'),
   title: {
-    default: 'eatOS - The Restaurant Operating System',
+    default: 'The Restaurant Management System of the Future | eatOS RMS',
     template: '%s | eatOS',
   },
   description:
