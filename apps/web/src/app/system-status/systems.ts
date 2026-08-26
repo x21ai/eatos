@@ -6,57 +6,89 @@ export type SystemStatus = 'operational' | 'degraded' | 'outage' | 'maintenance'
 
 export interface SystemEntry {
   name: string;
-  url: string;
+  url?: string;
   status: SystemStatus;
   uptime: string;
 }
 
-export const LAST_UPDATED = '2026-08-25T00:00:00Z';
+export interface SystemGroup {
+  name: string;
+  systems: SystemEntry[];
+}
 
-export const systems: SystemEntry[] = [
+export const LAST_UPDATED = '2026-08-26T00:00:00Z';
+
+export const systemGroups: SystemGroup[] = [
   {
-    name: 'Point of Sale',
-    url: 'https://pos.eatos.com',
-    status: 'operational',
-    uptime: '99.99%',
+    name: 'Web Services',
+    systems: [
+      { name: 'eatOS.com', url: 'https://eatos.com', status: 'operational', uptime: '99.99%' },
+      {
+        name: 'eatOS Dashboard',
+        url: 'https://dashboard.eatos.com',
+        status: 'operational',
+        uptime: '99.99%',
+      },
+      {
+        name: 'eatOS Helpdesk',
+        url: 'https://support.eatos.com',
+        status: 'operational',
+        uptime: '99.95%',
+      },
+      {
+        name: 'Online Ordering',
+        url: 'https://order.eatos.com',
+        status: 'operational',
+        uptime: '99.98%',
+      },
+    ],
   },
   {
-    name: 'Dashboard',
-    url: 'https://dashboard.eatos.com',
-    status: 'operational',
-    uptime: '99.99%',
+    name: 'Application Services',
+    systems: [
+      { name: 'Point of Sale', url: 'https://pos.eatos.com', status: 'operational', uptime: '99.99%' },
+      {
+        name: 'Kitchen Display System',
+        url: 'https://kds.eatos.com',
+        status: 'operational',
+        uptime: '99.97%',
+      },
+      {
+        name: 'Payments',
+        url: 'https://payments.eatos.com',
+        status: 'operational',
+        uptime: '99.99%',
+      },
+    ],
   },
   {
-    name: 'Online Ordering',
-    url: 'https://order.eatos.com',
-    status: 'operational',
-    uptime: '99.98%',
+    name: 'Backend Services',
+    systems: [
+      { name: 'Attendance API', status: 'operational', uptime: '99.99%' },
+      { name: 'Roles API', status: 'operational', uptime: '99.99%' },
+      { name: 'Mobile API', status: 'operational', uptime: '99.99%' },
+      { name: 'Reports API', status: 'operational', uptime: '99.98%' },
+      { name: 'Menus API', status: 'operational', uptime: '99.99%' },
+      { name: 'Merchants API', status: 'operational', uptime: '99.99%' },
+      { name: 'Users API', status: 'operational', uptime: '99.99%' },
+      { name: 'Orders API', status: 'operational', uptime: '99.99%' },
+      { name: 'Browser API', status: 'operational', uptime: '99.97%' },
+      { name: 'Notifications API', status: 'operational', uptime: '99.98%' },
+      { name: 'Customers API', status: 'operational', uptime: '99.99%' },
+      { name: 'Payments API', status: 'operational', uptime: '99.99%' },
+      { name: 'Websockets API', status: 'operational', uptime: '99.96%' },
+    ],
   },
   {
-    name: 'Payments',
-    url: 'https://payments.eatos.com',
-    status: 'operational',
-    uptime: '99.99%',
-  },
-  {
-    name: 'Kitchen Display System',
-    url: 'https://kds.eatos.com',
-    status: 'operational',
-    uptime: '99.97%',
-  },
-  {
-    name: 'API',
-    url: 'https://api.eatos.com',
-    status: 'operational',
-    uptime: '99.99%',
-  },
-  {
-    name: 'Support Portal',
-    url: 'https://support.eatos.com',
-    status: 'operational',
-    uptime: '99.95%',
+    name: 'Notification Services',
+    systems: [
+      { name: 'Firebase', status: 'operational', uptime: '99.99%' },
+      { name: 'Resend email service', status: 'operational', uptime: '99.95%' },
+    ],
   },
 ];
+
+export const systems: SystemEntry[] = systemGroups.flatMap((g) => g.systems);
 
 export const statusMeta: Record<
   SystemStatus,
