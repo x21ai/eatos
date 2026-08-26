@@ -54,9 +54,10 @@ export default function ContactSalesPage() {
   return (
     <div className="bg-black text-white font-montserrat min-h-screen pt-44 md:pt-52 pb-0">
       <div className="site-container">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
-          {/* Left Column: Info */}
+        <div>
+          {/* Intro */}
           <div>
+
             <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 text-white">
               Talk to our <br /> sales team.
             </h1>
@@ -84,7 +85,7 @@ export default function ContactSalesPage() {
             </div>
 
             {/* Contact details */}
-            <div className="space-y-8 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-white/10 border border-white/10 rounded-full flex items-center justify-center shrink-0">
                   <Phone size={20} className="text-white" />
@@ -124,7 +125,7 @@ export default function ContactSalesPage() {
               <h3 className="font-bold text-lg mb-6 flex items-center gap-2 text-white">
                 <Clock size={20} /> What to Expect
               </h3>
-              <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-white text-black rounded-full flex items-center justify-center text-sm font-bold shrink-0">
                     1
@@ -180,20 +181,21 @@ export default function ContactSalesPage() {
             </div>
           </div>
 
-          {/* Right Column: Booking */}
-          <div>
-            <div className="sticky top-32">
-              <h2 className="text-2xl font-bold mb-2 text-white">Get in touch</h2>
-              <p className="text-white/60 text-sm mb-8">
+          {/* Booking: full width */}
+          <div className="pt-4">
+            <div className="text-center max-w-2xl mx-auto mb-8">
+              <h2 className="text-3xl font-bold mb-2 text-white tracking-tighter">Get in touch</h2>
+              <p className="text-white/60 text-sm">
                 We typically respond within 2 hours during business hours.
               </p>
-              <div
-                className="meetings-iframe-container bg-transparent rounded-2xl overflow-hidden"
-                data-src="https://meetings.hubspot.com/booka/initial-meeting?embed=true"
-              />
             </div>
+            <div
+              className="meetings-iframe-container bg-transparent overflow-hidden w-full"
+              data-src="https://meetings.hubspot.com/booka/initial-meeting?embed=true"
+            />
           </div>
         </div>
+
 
         {/* FAQ Section */}
         <div className="max-w-3xl mx-auto py-20 mt-10 border-t border-white/10">
