@@ -727,11 +727,12 @@ export default function HomePage() {
       {/* Kitchen Display */}
       <section className="py-16 md:py-28 bg-black text-white relative overflow-hidden">
         <div className="site-container relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 lg:gap-14 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              className="md:col-span-5"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#d70480]/10 text-[#d70480] text-sm font-semibold mb-6">
                 <ChefHat size={14} />
@@ -778,13 +779,13 @@ export default function HomePage() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative"
+              className="relative md:col-span-7 md:-mr-4 lg:-mr-10 xl:-mr-16"
             >
               <img
                 src={kdsKitchenAsset.url}
                 alt="Chef working beside an eatOS Kitchen Display System screen"
                 loading="lazy"
-                className="relative z-10 rounded-3xl w-full"
+                className="relative z-10 rounded-3xl w-full h-auto object-cover"
               />
             </motion.div>
           </div>
