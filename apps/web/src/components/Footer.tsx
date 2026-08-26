@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client';
 
-import { ArrowRight, Globe, MessageCircle, MessageSquareText, MessagesSquare, Send } from 'lucide-react';
+import { ArrowRight, Globe, MessageCircle, MessageSquareText, MessagesSquare } from 'lucide-react';
 import mobileLogoWhite from './marketing/assets/brand/logo-mobile-white.png.asset.json';
 
 function XIcon({ size = 24, ...props }) {
@@ -179,7 +179,7 @@ const LINK_GROUPS = [
 const CONTACT_CHANNELS = [
   { label: 'WhatsApp', href: 'https://wa.me/+18449732867', Icon: MessageCircle, external: true },
   { label: 'Text Message', href: 'sms:+18449732867', Icon: MessageSquareText },
-  { label: 'Facebook Messenger', href: 'https://www.facebook.com/myeatos', Icon: Send, external: true },
+  { label: 'Facebook Messenger', href: 'https://www.facebook.com/myeatos', Icon: MessengerIcon, external: true },
   { label: 'Chat', href: 'tel:+18449732867', Icon: MessagesSquare },
 ];
 
