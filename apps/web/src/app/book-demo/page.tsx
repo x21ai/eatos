@@ -42,12 +42,13 @@ export default function BookDemoPage() {
       {/* HubSpot Meetings Embed */}
       <section className="py-16 border-t border-white/10">
         <div className="site-container max-w-4xl">
-          <div className="rounded-[2rem] border border-white/10 bg-white p-2 md:p-4 overflow-hidden">
+          <div className="rounded-[2rem] border border-white/10 bg-black overflow-hidden">
             <div
-              className="meetings-iframe-container"
+              className="meetings-iframe-container bg-black"
               data-src="https://meetings.hubspot.com/booka/initial-meeting?embed=true"
             />
           </div>
+
           <p className="text-sm text-white/60 text-center mt-6">
             By booking a meeting, you agree to our{" "}
             <a href="/privacy" className="underline hover:text-white">
