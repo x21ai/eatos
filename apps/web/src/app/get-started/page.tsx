@@ -91,16 +91,19 @@ export default function GetStartedPage() {
     <div className="fixed inset-0 z-[100] bg-white overflow-y-auto">
       <div className="min-h-screen flex flex-col">
         {/* Minimal Header */}
-        <header className="px-6 py-6 border-b border-gray-100 flex items-center justify-between bg-white sticky top-0 z-10">
-          <a href="/" className="flex items-center gap-2">
-            <img
-              src="https://ucarecdn.com/4352d127-4bf5-42cf-a022-3110926687de/-/format/auto/"
-              alt="eatOS"
-              className="h-10 w-auto"
-            />
-          </a>
-          <div className="text-sm text-gray-500 font-medium">Step {step} of 2</div>
+        <header className="py-6 border-b border-gray-100 bg-white sticky top-0 z-10">
+          <div className="site-container flex items-center justify-between">
+            <a href="/" className="flex items-center gap-2">
+              <img
+                src="https://ucarecdn.com/4352d127-4bf5-42cf-a022-3110926687de/-/format/auto/"
+                alt="eatOS"
+                className="h-10 w-auto"
+              />
+            </a>
+            <div className="text-sm text-gray-500 font-medium">Step {step} of 2</div>
+          </div>
         </header>
+
 
         {/* Progress Bar */}
         <div className="h-1 bg-gray-100 w-full">
@@ -111,7 +114,7 @@ export default function GetStartedPage() {
         </div>
 
         {/* Main Content */}
-        <main className="flex-grow flex flex-col items-center justify-center p-6 md:p-12">
+        <main className="site-container flex-grow flex flex-col items-center justify-center py-10 md:py-16">
           {step === 1 && (
             <div className="w-full max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div className="text-center mb-10">
