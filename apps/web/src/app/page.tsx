@@ -34,6 +34,7 @@ import svcFoodTruck from '../assets/svc-food-truck.jpg.asset.json';
 import svcGhostKitchen from '../assets/svc-ghost-kitchen.jpg.asset.json';
 import svcFranchise from '../assets/svc-franchise.jpg.asset.json';
 import popTerminalsAsset from '../assets/point-of-purchase-terminals.png.asset.json';
+import kdsKitchenAsset from '../assets/kds-kitchen.png.asset.json';
 
 
 const serviceStyles = [
