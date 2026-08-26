@@ -230,11 +230,11 @@ export default function OfflinePosClient() {
           <motion.div {...rise} className="relative rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border border-white/10">
             <div className="absolute inset-0 bg-gradient-to-br from-sky-500/20 via-sky-600/10 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-            <div className="relative z-10 p-10 md:p-20">
+            <div className="relative z-10 p-10 md:p-20 text-center">
               <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-3">
                 {cta.title}
               </h2>
-              <p className="text-xl md:text-2xl text-white/80 mb-10">{cta.subtitle}</p>
+              <p className="mx-auto max-w-2xl text-xl md:text-2xl text-white/80 mb-10">{cta.subtitle}</p>
               <a
                 href={cta.button.href}
                 className="inline-block px-10 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform"
