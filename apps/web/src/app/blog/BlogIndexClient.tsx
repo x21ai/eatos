@@ -11,10 +11,10 @@ import { blogHero, categories, posts, formatDate } from './content';
 const PAGE_SIZE = 6;
 
 function Meta({ post, tone = 'light' }) {
-  const muted = tone === 'dark' ? 'text-zinc-400' : 'text-zinc-500';
+  const muted = tone === 'light' ? 'text-zinc-500' : 'text-zinc-400';
   return (
     <div className={`flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${muted}`}>
-      <span className={tone === 'dark' ? 'text-green-400' : 'text-green-600'}>{post.category}</span>
+      <span className={tone === 'light' ? 'text-green-600' : 'text-green-400'}>{post.category}</span>
       <span aria-hidden>·</span>
       <span>{formatDate(post.date)}</span>
     </div>
@@ -49,19 +49,19 @@ function Hero() {
 function Featured({ post }) {
   if (!post) return null;
   return (
-    <section className="border-b border-zinc-200 bg-white py-14 md:py-20">
+    <section className="border-b border-white/10 bg-black py-14 md:py-20">
       <div className="site-container">
         <a href={`/blog/${post.slug}`} className="group grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-14">
-          <Placeholder label={post.title} src={post.image} tone="light" ratio="aspect-[16/10]" />
+          <Placeholder label={post.title} src={post.image} tone="dark" ratio="aspect-[16/10]" />
           <div className="min-w-0">
             <Meta post={post} />
-            <h2 className="mt-5 line-clamp-2 max-w-2xl text-2xl font-bold leading-[1.1] tracking-tighter text-black sm:text-3xl md:text-4xl">
+            <h2 className="mt-5 line-clamp-2 max-w-2xl text-2xl font-bold leading-[1.1] tracking-tighter text-white sm:text-3xl md:text-4xl">
               {post.title}
             </h2>
-            <p className="mt-5 line-clamp-3 max-w-xl text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8">
+            <p className="mt-5 line-clamp-3 max-w-xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
               {post.excerpt}
             </p>
-            <span className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-black">
+            <span className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-white">
               Read the story
               <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
             </span>
@@ -82,13 +82,13 @@ function Card({ post, index }) {
       transition={{ duration: 0.5, delay: Math.min(index, 5) * 0.05 }}
       className="group flex min-w-0 flex-col"
     >
-      <Placeholder label={post.title} src={post.image} tone="light" ratio="aspect-[16/10]" />
+      <Placeholder label={post.title} src={post.image} tone="dark" ratio="aspect-[16/10]" />
       <div className="mt-6 min-w-0">
         <Meta post={post} />
-        <h3 className="mt-3 line-clamp-2 text-xl font-bold leading-snug tracking-tighter text-black transition-colors group-hover:text-zinc-600 sm:text-[1.375rem]">
+        <h3 className="mt-3 line-clamp-2 text-xl font-bold leading-snug tracking-tighter text-white transition-colors group-hover:text-zinc-300 sm:text-[1.375rem]">
           {post.title}
         </h3>
-        <p className="mt-3 line-clamp-3 text-sm leading-6 text-zinc-600 sm:text-base sm:leading-7">{post.excerpt}</p>
+        <p className="mt-3 line-clamp-3 text-sm leading-6 text-zinc-400 sm:text-base sm:leading-7">{post.excerpt}</p>
       </div>
     </motion.a>
   );
@@ -117,13 +117,13 @@ export default function BlogIndexClient() {
   );
 
   return (
-    <main className="bg-white">
+    <main className="bg-black">
       <Hero />
       <Featured post={featured} />
 
-      <section className="bg-white py-14 md:py-20">
+      <section className="bg-black py-14 md:py-20">
         <div className="site-container">
-          <div className="grid grid-cols-[minmax(0,1fr)] gap-6 border-b border-zinc-200 pb-6 sm:flex sm:flex-wrap sm:items-center sm:justify-between">
+          <div className="grid grid-cols-[minmax(0,1fr)] gap-6 border-b border-white/10 pb-6 sm:flex sm:flex-wrap sm:items-center sm:justify-between">
             <h2 className="min-w-0 text-sm font-semibold uppercase tracking-[0.2em] text-zinc-500">
               Latest posts
             </h2>
@@ -138,8 +138,8 @@ export default function BlogIndexClient() {
                   }}
                   className={`shrink-0 rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${
                     active === c
-                      ? 'border-black bg-black text-white'
-                      : 'border-zinc-200 bg-white text-zinc-600 hover:border-zinc-400 hover:text-black'
+                      ? 'border-white bg-white text-black'
+                      : 'border-white/15 bg-white/5 text-zinc-300 hover:border-white/40 hover:text-white'
                   }`}
                 >
                   {c}
@@ -159,7 +159,7 @@ export default function BlogIndexClient() {
               <button
                 type="button"
                 onClick={() => setVisible((v) => v + PAGE_SIZE)}
-                className="rounded-full border border-zinc-300 px-8 py-3 text-sm font-semibold text-black transition-colors hover:border-black"
+                className="rounded-full border border-white/20 px-8 py-3 text-sm font-semibold text-white transition-colors hover:border-white"
               >
                 Load more stories
               </button>
