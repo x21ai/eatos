@@ -32,7 +32,7 @@ export default function MiniPage() {
               <span className="text-purple-500">pocket.</span>
             </h1>
             <p className="text-xl text-white/90 mb-10 leading-relaxed">
-              The full power of a POS terminal, shrunk down to the size of a
+              The full power of a Point of Sale terminal, shrunk down to the size of a
               phone. Tableside ordering, payments, and inventory management in
               the palm of your hand.
             </p>

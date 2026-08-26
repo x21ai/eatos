@@ -30,7 +30,7 @@ export const heroAssets = [
     category: "Hero",
   },
   {
-    name: "Restaurant Ambience (POS Page)",
+    name: "Restaurant Ambience (Point of Sale Page)",
     url: "https://raw.createusercontent.com/0f9f7bed-312b-405c-a290-ec7efd519ed4/",
     location: "/point-of-sale/page.jsx",
     category: "Hero",

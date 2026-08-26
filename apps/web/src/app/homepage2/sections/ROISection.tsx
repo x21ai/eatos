@@ -58,7 +58,7 @@ export function ROISection() {
           <div>
             <blockquote className="text-xl md:text-2xl text-gray-300 font-light leading-relaxed mb-6 italic">
               "<strong>eatOS</strong> completely transformed how we run our
-              restaurant. From the POS to kitchen display to payments,
+              restaurant. From the Point of Sale to kitchen display to payments,
               everything just works together seamlessly. We saved 12 hours a
               week on admin alone."
             </blockquote>

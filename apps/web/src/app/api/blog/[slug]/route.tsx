@@ -22,7 +22,7 @@ export async function GET(request, { params }) {
         <p>Internet outages are unpredictable. Whether it's a storm, a service provider issue, or a hardware glitch, losing connectivity can cost restaurants thousands of dollars in lost revenue during peak hours. Traditional cloud-based systems often freeze up, leaving staff unable to process orders or payments.</p>
         
         <h2>How Offline Resilience Works</h2>
-        <p>With advanced offline resilience technology, your POS system locally stores all transaction data. The moment connectivity is lost, the system seamlessly switches to offline mode without skipping a beat. Staff can continue to:</p>
+        <p>With advanced offline resilience technology, your Point of Sale system locally stores all transaction data. The moment connectivity is lost, the system seamlessly switches to offline mode without skipping a beat. Staff can continue to:</p>
         <ul>
           <li>Take orders and send tickets to the kitchen</li>
           <li>Process credit card payments (stored for later authorization)</li>
@@ -39,7 +39,7 @@ export async function GET(request, { params }) {
         "https://ucarecdn.com/d08b4ab7-c83d-4cd2-b37e-4b202ad04b97/-/format/auto/",
       author_name: "eatOS Team",
       published_at: "2025-11-19T10:00:00Z",
-      seo_title: "Never Miss a Beat: Offline Resilience in POS",
+      seo_title: "Never Miss a Beat: Offline Resilience in Point of Sale",
       seo_description:
         "Keep your restaurant running even when the internet is down with offline resilience.",
       keywords: "offline mode, restaurant pos, resilience, business continuity",

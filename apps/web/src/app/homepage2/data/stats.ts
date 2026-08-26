@@ -13,7 +13,7 @@ export const stats = [
   {
     value: "Higher",
     unit: "",
-    label: "Staff satisfaction vs. previous POS",
+    label: "Staff satisfaction vs. previous Point of Sale",
     icon: Users,
   },
   {

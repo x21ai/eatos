@@ -8,7 +8,7 @@ export const metadata = {
   openGraph: {
     title: "Quick Service Point of Sale | RESTAURANT TECHNOLOGY CLOUD",
     description:
-      "Keep the line moving with eatOS quick-service POS, online and offline ordering, kiosks, KDS and analytics in one platform.",
+      "Keep the line moving with eatOS quick-service Point of Sale, online and offline ordering, kiosks, KDS and analytics in one platform.",
     type: "website",
   },
   twitter: { card: "summary_large_image" },

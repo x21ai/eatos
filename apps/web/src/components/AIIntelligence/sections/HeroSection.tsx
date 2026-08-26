@@ -20,7 +20,7 @@ export function HeroSection() {
                 that acts.
               </h1>
               <p className="mt-6 text-lg md:text-2xl text-[#9CA3AF] leading-relaxed max-w-3xl">
-                Not a chatbot bolted onto a POS. An intelligence layer that
+                Not a chatbot bolted onto a Point of Sale. An intelligence layer that
                 perceives, predicts, and executes.
               </p>
             </div>

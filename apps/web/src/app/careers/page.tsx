@@ -17,7 +17,7 @@ const OPEN_ROLES = [
     location: "Remote (US) / On-site",
     type: "Full-time",
     blurb:
-      "Build fast, clean product experiences across POS, payments, and intelligence.",
+      "Build fast, clean product experiences across Point of Sale, payments, and intelligence.",
   },
   {
     slug: "backend-platform-engineer",

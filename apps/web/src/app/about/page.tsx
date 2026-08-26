@@ -103,7 +103,7 @@ export default function AboutPage() {
               </div>
               <ul className="space-y-4 text-gray-700">
                 <li>
-                  <span className="font-semibold">POS + KDS</span> that keeps front and back in
+                  <span className="font-semibold">Point of Sale + KDS</span> that keeps front and back in
                   sync.
                 </li>
                 <li>

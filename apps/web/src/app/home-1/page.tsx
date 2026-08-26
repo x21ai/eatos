@@ -319,7 +319,7 @@ export default function HomePage() {
                 {/* Abstract UI representation */}
                 <img
                   src="https://ucarecdn.com/c0c7e8e9-324d-4d51-8fa6-8a867032ad32/-/format/auto/"
-                  alt="Interactive POS Preview"
+                  alt="Interactive Point of Sale Preview"
                   loading="lazy"
                   className="w-full rounded-xl shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-500"
                 />

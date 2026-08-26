@@ -43,7 +43,7 @@ export const platformProducts = [
   },
   {
     icon: Smartphone,
-    title: "Handheld POS",
+    title: "Handheld Point of Sale",
     desc: "Take orders tableside",
     color: "from-indigo-500 to-violet-600",
   },
