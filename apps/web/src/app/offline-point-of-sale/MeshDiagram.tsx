@@ -98,7 +98,7 @@ export default function MeshDiagram() {
           <Cloud size={36} className="relative text-sky-300" />
         </motion.div>
         <p className="mt-2 text-center text-[11px] font-semibold uppercase tracking-widest text-sky-300">
-          eatOS Cloud
+          eatOS CLOUD
         </p>
       </div>
 
