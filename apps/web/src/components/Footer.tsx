@@ -21,6 +21,16 @@ function VimeoIcon({ size = 24, ...props }) {
   );
 }
 
+function MessengerIcon({ size = 24, ...props }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M12 3c5 0 9 3.7 9 8.4 0 4.6-4 8.4-9 8.4a10 10 0 0 1-2.7-.4L5 21l.8-3.3A8.1 8.1 0 0 1 3 11.4C3 6.7 7 3 12 3z" />
+      <path d="M7.5 14.2l2.9-3.1 2.3 1.8 2.2-2.4-2.4 4.1-2.3-1.8-1.9 2z" />
+    </svg>
+  );
+}
+
+
 function BrochureIcon({ size = 24, ...props }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
