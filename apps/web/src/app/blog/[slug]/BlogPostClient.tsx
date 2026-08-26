@@ -23,14 +23,14 @@ export default function BlogPostClient({ slug }) {
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-white text-black flex flex-col justify-center items-center gap-6">
-        <div className="text-black text-2xl font-bold">Article not found</div>
-        <p className="text-gray-500">
+      <div className="min-h-screen bg-black text-white flex flex-col justify-center items-center gap-6">
+        <div className="text-white text-2xl font-bold">Article not found</div>
+        <p className="text-zinc-400">
           The story you are looking for does not exist or has been moved.
         </p>
         <a
           href="/blog"
-          className="px-8 py-3 rounded-full bg-black text-white hover:bg-gray-800 transition-colors font-medium"
+          className="px-8 py-3 rounded-full bg-white text-black hover:bg-zinc-200 transition-colors font-medium"
         >
           Back to Newsroom
         </a>
@@ -39,7 +39,7 @@ export default function BlogPostClient({ slug }) {
   }
 
   return (
-    <article className="bg-white text-zinc-900">
+    <article className="bg-black text-zinc-200">
       <header className="bg-black pt-32 pb-16 md:pt-40 md:pb-20">
         <div className="site-container">
           <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
@@ -84,7 +84,7 @@ export default function BlogPostClient({ slug }) {
 
       <div className="site-container">
         <div className="-mt-10 md:-mt-14">
-          <Placeholder label={post.title} src={post.image} tone="light" ratio="aspect-[16/9]" />
+          <Placeholder label={post.title} src={post.image} tone="dark" ratio="aspect-[16/9]" />
         </div>
 
         <div className="mx-auto max-w-[700px] py-16 md:py-24">
@@ -93,7 +93,7 @@ export default function BlogPostClient({ slug }) {
               return (
                 <h2
                   key={i}
-                  className="mt-14 text-2xl font-bold tracking-tighter text-black first:mt-0 sm:text-3xl"
+                  className="mt-14 text-2xl font-bold tracking-tighter text-white first:mt-0 sm:text-3xl"
                 >
                   {block.text}
                 </h2>
@@ -103,7 +103,7 @@ export default function BlogPostClient({ slug }) {
               return (
                 <ul key={i} className="mt-6 space-y-3">
                   {block.items.map((item) => (
-                    <li key={item} className="flex gap-3 text-base leading-8 text-zinc-700 sm:text-lg">
+                    <li key={item} className="flex gap-3 text-base leading-8 text-zinc-300 sm:text-lg">
                       <span aria-hidden className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-green-500" />
                       <span className="min-w-0">{item}</span>
                     </li>
@@ -112,7 +112,7 @@ export default function BlogPostClient({ slug }) {
               );
             }
             return (
-              <p key={i} className="mt-6 text-base leading-8 text-zinc-700 sm:text-lg sm:leading-9">
+              <p key={i} className="mt-6 text-base leading-8 text-zinc-300 sm:text-lg sm:leading-9">
                 {block.text}
               </p>
             );
@@ -121,7 +121,7 @@ export default function BlogPostClient({ slug }) {
       </div>
 
       {related.length > 0 && (
-        <section className="border-t border-zinc-200 bg-zinc-50 py-16 md:py-24">
+        <section className="border-t border-white/10 bg-zinc-950 py-16 md:py-24">
           <div className="site-container">
             <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-500">
               Keep reading
@@ -129,15 +129,15 @@ export default function BlogPostClient({ slug }) {
             <div className="mt-10 grid gap-10 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-3 lg:gap-x-10">
               {related.map((item) => (
                 <a key={item.slug} href={`/blog/${item.slug}`} className="group flex min-w-0 flex-col">
-                  <Placeholder label={item.title} src={item.image} tone="light" ratio="aspect-[16/10]" />
+                  <Placeholder label={item.title} src={item.image} tone="dark" ratio="aspect-[16/10]" />
                   <div className="mt-5 min-w-0">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-green-600">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-green-400">
                       {item.category}
                     </p>
-                    <h3 className="mt-2 line-clamp-2 text-lg font-bold leading-snug tracking-tighter text-black transition-colors group-hover:text-zinc-600">
+                    <h3 className="mt-2 line-clamp-2 text-lg font-bold leading-snug tracking-tighter text-white transition-colors group-hover:text-zinc-300">
                       {item.title}
                     </h3>
-                    <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-black">
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-white">
                       Read
                       <ArrowRight
                         size={14}
