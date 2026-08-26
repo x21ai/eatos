@@ -780,12 +780,11 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="absolute -inset-10 bg-gradient-to-tr from-green-500/10 to-emerald-500/5 rounded-[3rem] blur-3xl" />
               <img
-                src="https://ucarecdn.com/3532d108-2981-4a5d-bd16-9f6adf89c04d/-/format/auto/"
-                alt="Kitchen Display System"
+                src={kdsKitchenAsset.url}
+                alt="Chef working beside an eatOS Kitchen Display System screen"
                 loading="lazy"
-                className="relative z-10 rounded-3xl shadow-2xl w-full"
+                className="relative z-10 rounded-3xl w-full"
               />
             </motion.div>
           </div>
