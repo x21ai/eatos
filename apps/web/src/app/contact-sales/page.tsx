@@ -182,7 +182,7 @@ export default function ContactSalesPage() {
 
           {/* Right Column: Booking */}
           <div>
-            <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 md:p-12 sticky top-32">
+            <div className="sticky top-32">
               <h2 className="text-2xl font-bold mb-2 text-white">Get in touch</h2>
               <p className="text-white/60 text-sm mb-8">
                 We typically respond within 2 hours during business hours.
@@ -191,17 +191,6 @@ export default function ContactSalesPage() {
                 className="meetings-iframe-container bg-transparent rounded-2xl overflow-hidden"
                 data-src="https://meetings.hubspot.com/booka/initial-meeting?embed=true"
               />
-              <p className="text-xs text-center text-white/50 mt-4">
-                By booking a meeting, you agree to our{"\n"}
-                <a href="/terms" className="underline hover:text-white">
-                  Terms of Service
-                </a>{' '}
-                and{' '}
-                <a href="/privacy" className="underline hover:text-white">
-                  Privacy Policy
-                </a>
-                .
-              </p>
             </div>
           </div>
         </div>
