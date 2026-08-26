@@ -73,10 +73,12 @@ function YoutubeIcon({ size = 24, ...props }) {
 // Social channels: handle is @myeatOS across all platforms
 const SOCIAL_LINKS = [
   { label: 'Facebook', href: 'https://www.facebook.com/myeatos', Icon: FacebookIcon },
-  { label: 'X / Twitter', href: 'https://twitter.com/myeatos', Icon: TwitterIcon },
+  { label: 'X', href: 'https://x.com/myeatos', Icon: XIcon },
   { label: 'Instagram', href: 'https://www.instagram.com/myeatos', Icon: InstagramIcon },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/myeatos', Icon: LinkedinIcon },
+  { label: 'Vimeo', href: 'https://vimeo.com/myeatos', Icon: VimeoIcon },
   { label: 'YouTube', href: 'https://www.youtube.com/@myeatos', Icon: YoutubeIcon },
+  { label: 'Brochures', href: '/brochures', Icon: BrochureIcon, internal: true },
 ];
 
 const OFFICES = [
