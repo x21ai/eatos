@@ -142,13 +142,13 @@ export default function CookieBanner() {
             {CATEGORIES.map((category) => (
               <div
                 key={category.id}
-                className="flex items-start justify-between gap-6 py-5"
+                className="flex items-start justify-between gap-5 py-5"
               >
-                <div>
-                  <p className="text-[15px] font-semibold text-black">
+                <div className="flex-1">
+                  <p className="text-[16px] font-semibold text-black">
                     {category.title}
                   </p>
-                  <p className="mt-1 text-[14px] leading-5 text-gray-600">
+                  <p className="mt-1.5 text-[15px] leading-6 text-gray-600">
                     {category.description}
                   </p>
                 </div>
