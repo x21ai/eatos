@@ -67,7 +67,7 @@ export default function BlogPostClient({ slug }) {
             className="mt-10 max-w-3xl"
           >
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-400">
-              <span className="text-green-400">{post.category}</span>
+              <span className="text-[#d70480]">{post.category}</span>
               <span aria-hidden>·</span>
               <span>{formatDate(post.date)}</span>
             </div>
@@ -104,7 +104,7 @@ export default function BlogPostClient({ slug }) {
                 <ul key={i} className="mt-6 space-y-3">
                   {block.items.map((item) => (
                     <li key={item} className="flex gap-3 text-base leading-8 text-zinc-300 sm:text-lg">
-                      <span aria-hidden className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-green-500" />
+                      <span aria-hidden className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[#d70480]" />
                       <span className="min-w-0">{item}</span>
                     </li>
                   ))}
@@ -131,7 +131,7 @@ export default function BlogPostClient({ slug }) {
                 <a key={item.slug} href={`/blog/${item.slug}`} className="group flex min-w-0 flex-col">
                   <Placeholder label={item.title} src={item.image} tone="dark" ratio="aspect-[16/10]" />
                   <div className="mt-5 min-w-0">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-green-400">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d70480]">
                       {item.category}
                     </p>
                     <h3 className="mt-2 line-clamp-2 text-lg font-bold leading-snug tracking-tighter text-white transition-colors group-hover:text-zinc-300">
