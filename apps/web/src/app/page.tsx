@@ -33,6 +33,8 @@ import svcBar from '../assets/svc-bar.jpg.asset.json';
 import svcFoodTruck from '../assets/svc-food-truck.jpg.asset.json';
 import svcGhostKitchen from '../assets/svc-ghost-kitchen.jpg.asset.json';
 import svcFranchise from '../assets/svc-franchise.jpg.asset.json';
+import popTerminalsAsset from '../assets/point-of-purchase-terminals.png.asset.json';
+
 
 const serviceStyles = [
   {
@@ -534,11 +536,12 @@ export default function HomePage() {
                 </div>
               </div>
               <img
-                src="https://ucarecdn.com/5a63729f-c40f-4f55-b93c-04430c68d784/-/format/auto/"
-                alt="eatOS Mini"
+                src={popTerminalsAsset.url}
+                alt="eatOS Point of Purchase handheld terminals"
                 loading="lazy"
-                className="w-full object-cover mt-auto rounded-b-3xl md:rounded-b-[2.5rem]"
+                className="w-full object-contain mt-auto rounded-b-3xl md:rounded-b-[2.5rem]"
               />
+
             </motion.a>
           </div>
         </div>
