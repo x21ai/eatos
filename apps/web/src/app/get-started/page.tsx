@@ -190,7 +190,7 @@ export default function GetStartedPage() {
           )}
 
           {step === 2 && (
-            <div className="w-full max-w-4xl animate-in fade-in slide-in-from-right-8 duration-500">
+            <div className="w-full max-w-5xl animate-in fade-in slide-in-from-right-8 duration-500">
               <button
                 onClick={handleBack}
                 className="flex items-center gap-2 text-gray-500 hover:text-black mb-8 transition-colors text-sm font-medium"
@@ -199,103 +199,95 @@ export default function GetStartedPage() {
                 Back to Industry
               </button>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
-                {/* Left: Trust & Benefits */}
-                <div className="hidden md:flex flex-col justify-center">
-                  <h2 className="text-3xl font-bold tracking-tighter mb-4">
-                    You're in good company.
-                  </h2>
-                  <p className="text-gray-500 mb-8 leading-relaxed">
-                    Join restaurants across the US already using <strong>eatOS</strong> to
-                    streamline operations and grow revenue.
-                  </p>
+              {/* Intro */}
+              <div className="mx-auto max-w-2xl text-center">
+                <h1 className="text-3xl md:text-4xl font-bold tracking-tighter mb-3">
+                  Book your meeting
+                </h1>
+                <p className="text-gray-500 leading-relaxed">
+                  Setting up {selectedIndustry === 'food' ? 'your restaurant' : 'your business'} for
+                  success. Join restaurants across the US already using <strong>eatOS</strong> to
+                  streamline operations and grow revenue.
+                </p>
+              </div>
 
-                  <div className="space-y-5 mb-10">
-                    <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center shrink-0">
-                        <Zap size={20} className="text-green-600" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-sm mb-0.5">Up and running in 48 hours</h4>
-                        <p className="text-xs text-gray-400">
-                          We handle setup, training, and data migration.
-                        </p>
-                      </div>
+              {/* Trust points */}
+              <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
+                {[
+                  {
+                    Icon: Zap,
+                    tile: 'bg-green-50',
+                    color: 'text-green-600',
+                    title: 'Up and running in 48 hours',
+                    body: 'We handle setup, training, and data migration.',
+                  },
+                  {
+                    Icon: Shield,
+                    tile: 'bg-blue-50',
+                    color: 'text-blue-600',
+                    title: 'No contracts, cancel anytime',
+                    body: 'Flexible month-to-month plans that grow with you.',
+                  },
+                  {
+                    Icon: HeadphonesIcon,
+                    tile: 'bg-purple-50',
+                    color: 'text-purple-600',
+                    title: '24/7 live support',
+                    body: "Real humans, not bots. We're here when you need us.",
+                  },
+                ].map(({ Icon, tile, color, title, body }) => (
+                  <div key={title} className="flex items-start gap-3 sm:flex-col sm:items-center sm:text-center">
+                    <div
+                      className={`w-10 h-10 ${tile} rounded-xl flex items-center justify-center shrink-0`}
+                    >
+                      <Icon size={20} className={color} />
                     </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center shrink-0">
-                        <Shield size={20} className="text-blue-600" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-sm mb-0.5">
-                          No contracts, cancel anytime
-                        </h4>
-                        <p className="text-xs text-gray-400">
-                          Flexible month-to-month plans that grow with you.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center shrink-0">
-                        <HeadphonesIcon size={20} className="text-purple-600" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-sm mb-0.5">24/7 live support</h4>
-                        <p className="text-xs text-gray-400">
-                          Real humans, not bots. We're here when you need us.
-                        </p>
-                      </div>
+                    <div className="min-w-0">
+                      <h4 className="font-semibold text-sm mb-0.5 sm:mt-2">{title}</h4>
+                      <p className="text-xs text-gray-400 leading-relaxed">{body}</p>
                     </div>
                   </div>
+                ))}
+              </div>
 
-                  {/* Mini testimonial */}
-                  <div className="bg-gray-50 rounded-2xl p-6">
-                    <p className="text-sm text-gray-600 italic leading-relaxed mb-3">
-                      "Switching to <strong>eatOS</strong> was the best decision we made last year.
-                      Revenue up 22% and our team loves it."
-                    </p>
-                    <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-full bg-orange-100 flex items-center justify-center text-xs font-bold text-orange-700">
-                        DK
-                      </div>
-                      <div>
-                        <div className="text-xs font-semibold">David Kim</div>
-                        <div className="text-[10px] text-gray-400">Owner, Seoul Kitchen, LA</div>
-                      </div>
-                    </div>
+              {/* Form */}
+              <div className="mt-12">
+                <div
+                  className="meetings-iframe-container w-full"
+                  data-src="https://meetings.hubspot.com/booka/initial-meeting?embed=true"
+                />
+
+                <p className="text-center text-sm text-gray-500 mt-6">
+                  By booking a meeting, you agree to our{' '}
+                  <a href="/terms" className="underline text-black hover:no-underline">
+                    Terms
+                  </a>{' '}
+                  and{' '}
+                  <a href="/privacy" className="underline text-black hover:no-underline">
+                    Privacy Policy
+                  </a>
+                  .
+                </p>
+              </div>
+
+              {/* Testimonial */}
+              <div className="mx-auto mt-12 max-w-2xl bg-gray-50 rounded-2xl p-6 text-center">
+                <p className="text-sm text-gray-600 italic leading-relaxed mb-4">
+                  "Switching to <strong>eatOS</strong> was the best decision we made last year.
+                  Revenue up 22% and our team loves it."
+                </p>
+                <div className="flex items-center justify-center gap-2">
+                  <div className="w-7 h-7 rounded-full bg-orange-100 flex items-center justify-center text-xs font-bold text-orange-700">
+                    DK
+                  </div>
+                  <div className="text-left">
+                    <div className="text-xs font-semibold">David Kim</div>
+                    <div className="text-[10px] text-gray-400">Owner, Seoul Kitchen, LA</div>
                   </div>
                 </div>
-
-                {/* Right: Form */}
-                <div>
-                  <div className="mb-8">
-                    <h1 className="text-3xl font-bold mb-3 tracking-tighter">Book your meeting</h1>
-                    <p className="text-gray-500">
-                      Setting up {selectedIndustry === 'food' ? 'your restaurant' : 'your business'}{' '}
-                      for success.
-                    </p>
-                  </div>
-
-                  <div
-                    className="meetings-iframe-container"
-                    data-src="https://meetings.hubspot.com/booka/initial-meeting?embed=true"
-                  />
-
-                  <p className="text-center text-sm text-gray-500 mt-6">
-                    By booking a meeting, you agree to our{' '}
-                    <a href="/terms" className="underline text-black hover:no-underline">
-                      Terms
-                    </a>{' '}
-                    and{' '}
-                    <a href="/privacy" className="underline text-black hover:no-underline">
-                      Privacy Policy
-                    </a>
-                    .
-                  </p>
-                </div>
-
               </div>
             </div>
+
           )}
         </main>
 
