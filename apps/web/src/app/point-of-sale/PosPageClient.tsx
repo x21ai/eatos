@@ -45,9 +45,10 @@ const menuItems = [
 
 export default function PosPageClient() {
   return (
-    <div className="bg-black min-h-screen font-montserrat selection:bg-orange-500/30 text-white">
+    <div className="relative overflow-hidden bg-black min-h-screen font-montserrat selection:bg-orange-500/30 text-white">
       {/* Background Ambience */}
-      <div className="fixed inset-0 z-0 opacity-40 pointer-events-none">
+      <div className="absolute inset-x-0 top-0 h-screen z-0 opacity-40 pointer-events-none">
+
         <img
           src="https://raw.createusercontent.com/0f9f7bed-312b-405c-a290-ec7efd519ed4/"
           className="w-full h-full object-cover blur-sm"
