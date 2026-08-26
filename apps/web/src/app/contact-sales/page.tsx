@@ -52,7 +52,7 @@ export default function ContactSalesPage() {
   ];
 
   return (
-    <div className="bg-black text-white font-montserrat min-h-screen pt-32 pb-0">
+    <div className="bg-black text-white font-montserrat min-h-screen pt-44 md:pt-52 pb-0">
       <div className="site-container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
           {/* Left Column: Info */}
@@ -188,7 +188,7 @@ export default function ContactSalesPage() {
                 We typically respond within 2 hours during business hours.
               </p>
               <div
-                className="meetings-iframe-container bg-black rounded-2xl overflow-hidden"
+                className="meetings-iframe-container bg-transparent rounded-2xl overflow-hidden"
                 data-src="https://meetings.hubspot.com/booka/initial-meeting?embed=true"
               />
               <p className="text-xs text-center text-white/50 mt-4">
