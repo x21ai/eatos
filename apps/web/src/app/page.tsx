@@ -732,6 +732,7 @@ export default function HomePage() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              className="md:col-span-5"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#d70480]/10 text-[#d70480] text-sm font-semibold mb-6">
                 <ChefHat size={14} />
