@@ -62,39 +62,55 @@ export default function SystemStatusPage() {
       </section>
 
       {/* Systems list */}
-      <section className="site-container pb-16 md:pb-24">
-        <div className="rounded-2xl border border-white/10 divide-y divide-white/10 overflow-hidden bg-white/[0.02]">
-          {systems.map((s) => {
-            const m = statusMeta[s.status];
-            return (
-              <div
-                key={s.name}
-                className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 px-5 md:px-8 py-5 hover:bg-white/[0.03] transition-colors"
-              >
-                <div className="flex items-center gap-3 flex-1 min-w-0">
-                  <span className={`h-2.5 w-2.5 rounded-full shrink-0 ${m.dot}`} />
-                  <span className="font-semibold text-base md:text-lg truncate">
-                    {s.name}
-                  </span>
-                </div>
-                <a
-                  href={s.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-gray-400 hover:text-white transition-colors truncate sm:max-w-[240px]"
-                >
-                  {s.url.replace('https://', '')}
-                </a>
-                <div className="flex items-center gap-6 sm:ml-auto">
-                  <span className="text-sm text-gray-400">
-                    Uptime <span className="text-white font-medium">{s.uptime}</span>
-                  </span>
-                  <span className={`text-sm font-medium ${m.text}`}>{m.label}</span>
-                </div>
+      <section className="site-container pb-16 md:pb-24 space-y-8">
+        {systemGroups.map((group) => {
+          const gm = statusMeta[overallStatus(group.systems)];
+          return (
+            <div key={group.name}>
+              <div className="flex items-center gap-3 mb-3">
+                <span className={`h-2.5 w-2.5 rounded-full ${gm.dot}`} />
+                <h2 className="text-sm md:text-base font-semibold uppercase tracking-widest text-gray-300">
+                  {group.name}
+                </h2>
               </div>
-            );
-          })}
-        </div>
+              <div className="rounded-2xl border border-white/10 divide-y divide-white/10 overflow-hidden bg-white/[0.02]">
+                {group.systems.map((s) => {
+                  const m = statusMeta[s.status];
+                  return (
+                    <div
+                      key={s.name}
+                      className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 px-5 md:px-8 py-5 hover:bg-white/[0.03] transition-colors"
+                    >
+                      <div className="flex items-center gap-3 flex-1 min-w-0">
+                        <span className={`h-2.5 w-2.5 rounded-full shrink-0 ${m.dot}`} />
+                        <span className="font-semibold text-base md:text-lg truncate">
+                          {s.name}
+                        </span>
+                      </div>
+                      {s.url ? (
+                        <a
+                          href={s.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-gray-400 hover:text-white transition-colors truncate sm:max-w-[240px]"
+                        >
+                          {s.url.replace('https://', '')}
+                        </a>
+                      ) : null}
+                      <div className="flex items-center gap-6 sm:ml-auto">
+                        <span className="text-sm text-gray-400">
+                          Uptime <span className="text-white font-medium">{s.uptime}</span>
+                        </span>
+                        <span className={`text-sm font-medium ${m.text}`}>{m.label}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+
 
         {/* Legend */}
         <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
