@@ -95,9 +95,9 @@ export default function GetStartedPage() {
           <div className="site-container flex items-center justify-between">
             <a href="/" className="flex items-center gap-2">
               <img
-                src="https://ucarecdn.com/4352d127-4bf5-42cf-a022-3110926687de/-/format/auto/"
+                src="https://ucarecdn.com/03d261bb-af6b-4183-a35c-afdbb7e1a2b7/-/format/auto/"
                 alt="eatOS"
-                className="h-10 w-auto"
+                className="h-[44px] w-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]"
               />
             </a>
             <div className="text-sm text-gray-300 font-medium">Step {step} of 2</div>
