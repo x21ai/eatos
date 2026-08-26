@@ -181,20 +181,21 @@ export default function ContactSalesPage() {
             </div>
           </div>
 
-          {/* Right Column: Booking */}
-          <div>
-            <div className="sticky top-32">
-              <h2 className="text-2xl font-bold mb-2 text-white">Get in touch</h2>
-              <p className="text-white/60 text-sm mb-8">
+          {/* Booking: full width */}
+          <div className="pt-4">
+            <div className="text-center max-w-2xl mx-auto mb-8">
+              <h2 className="text-3xl font-bold mb-2 text-white tracking-tighter">Get in touch</h2>
+              <p className="text-white/60 text-sm">
                 We typically respond within 2 hours during business hours.
               </p>
-              <div
-                className="meetings-iframe-container bg-transparent rounded-2xl overflow-hidden"
-                data-src="https://meetings.hubspot.com/booka/initial-meeting?embed=true"
-              />
             </div>
+            <div
+              className="meetings-iframe-container bg-transparent overflow-hidden w-full"
+              data-src="https://meetings.hubspot.com/booka/initial-meeting?embed=true"
+            />
           </div>
         </div>
+
 
         {/* FAQ Section */}
         <div className="max-w-3xl mx-auto py-20 mt-10 border-t border-white/10">
