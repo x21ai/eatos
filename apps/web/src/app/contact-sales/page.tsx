@@ -192,7 +192,7 @@ export default function ContactSalesPage() {
                 data-src="https://meetings.hubspot.com/booka/initial-meeting?embed=true"
               />
               <p className="text-xs text-center text-white/50 mt-4">
-                By booking a meeting, you agree to our{' '}
+                By booking a meeting, you agree to our{"\n"}
                 <a href="/terms" className="underline hover:text-white">
                   Terms of Service
                 </a>{' '}
