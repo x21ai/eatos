@@ -32,7 +32,6 @@ export default function ContactSalesPage() {
     document.body.appendChild(script);
   }, []);
 
-
   const faqs = [
     {
       q: 'How long does setup take?',
@@ -53,109 +52,109 @@ export default function ContactSalesPage() {
   ];
 
   return (
-    <div className="bg-white min-h-screen pt-32 pb-0">
+    <div className="bg-black text-white font-montserrat min-h-screen pt-32 pb-0">
       <div className="site-container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
           {/* Left Column: Info */}
           <div>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 text-slate-900">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 text-white">
               Talk to our <br /> sales team.
             </h1>
-            <p className="text-xl text-gray-500 mb-12 leading-relaxed">
+            <p className="text-xl text-white/70 mb-12 leading-relaxed">
               We'll help you find the right solution for your business. Whether you're a small cafe
               or a global chain.
             </p>
 
             {/* Trust bar */}
-            <div className="flex items-center gap-3 mb-12 pb-12 border-b border-gray-100">
+            <div className="flex items-center gap-3 mb-12 pb-12 border-b border-white/10">
               <div className="flex -space-x-2">
-                <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-xs font-bold text-indigo-700 border-2 border-white">
+                <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center text-xs font-bold text-indigo-300 border-2 border-black">
                   JM
                 </div>
-                <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-xs font-bold text-orange-700 border-2 border-white">
+                <div className="w-8 h-8 rounded-full bg-orange-500/20 flex items-center justify-center text-xs font-bold text-orange-300 border-2 border-black">
                   SK
                 </div>
-                <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-xs font-bold text-green-700 border-2 border-white">
+                <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-xs font-bold text-emerald-300 border-2 border-black">
                   AT
                 </div>
               </div>
-              <p className="text-sm text-gray-500">
-                Trusted by restaurants <span className="font-semibold text-black">nationwide</span>
+              <p className="text-sm text-white/60">
+                Trusted by restaurants <span className="font-semibold text-white">nationwide</span>
               </p>
             </div>
 
             {/* Contact details */}
             <div className="space-y-8 mb-12">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center shrink-0">
-                  <Phone size={20} className="text-gray-900" />
+                <div className="w-12 h-12 bg-white/10 border border-white/10 rounded-full flex items-center justify-center shrink-0">
+                  <Phone size={20} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg mb-1">Call Us</h3>
-                  <p className="text-gray-500">+1 (888) 555-0123</p>
-                  <p className="text-gray-400 text-sm mt-1">Mon-Fri, 9am - 6pm EST</p>
+                  <h3 className="font-bold text-lg mb-1 text-white">Call Us</h3>
+                  <p className="text-white/70">+1 (888) 555-0123</p>
+                  <p className="text-white/50 text-sm mt-1">Mon-Fri, 9am - 6pm EST</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center shrink-0">
-                  <Mail size={20} className="text-gray-900" />
+                <div className="w-12 h-12 bg-white/10 border border-white/10 rounded-full flex items-center justify-center shrink-0">
+                  <Mail size={20} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg mb-1">Email</h3>
-                  <p className="text-gray-500">sales@eatos.com</p>
+                  <h3 className="font-bold text-lg mb-1 text-white">Email</h3>
+                  <p className="text-white/70">sales@eatos.com</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center shrink-0">
-                  <MapPin size={20} className="text-gray-900" />
+                <div className="w-12 h-12 bg-white/10 border border-white/10 rounded-full flex items-center justify-center shrink-0">
+                  <MapPin size={20} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg mb-1">Headquarters</h3>
-                  <p className="text-gray-500">
-                    123 Innovation Dr
+                  <h3 className="font-bold text-lg mb-1 text-white">Headquarters</h3>
+                  <p className="text-white/70">
+                    20289 Stevens Creek Blvd PH 1019
                     <br />
-                    San Francisco, CA 94103
+                    Cupertino, California 95014
                   </p>
                 </div>
               </div>
             </div>
 
             {/* What to Expect */}
-            <div className="bg-gray-50 rounded-2xl p-8 mb-12">
-              <h3 className="font-bold text-lg mb-6 flex items-center gap-2">
+            <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 mb-12">
+              <h3 className="font-bold text-lg mb-6 flex items-center gap-2 text-white">
                 <Clock size={20} /> What to Expect
               </h3>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center text-sm font-bold shrink-0">
+                  <div className="w-8 h-8 bg-white text-black rounded-full flex items-center justify-center text-sm font-bold shrink-0">
                     1
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-1">Discovery Call (15 min)</h4>
-                    <p className="text-sm text-gray-500">
+                    <h4 className="font-semibold mb-1 text-white">Discovery Call (15 min)</h4>
+                    <p className="text-sm text-white/70">
                       We'll learn about your restaurant, service style, and goals.
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center text-sm font-bold shrink-0">
+                  <div className="w-8 h-8 bg-white text-black rounded-full flex items-center justify-center text-sm font-bold shrink-0">
                     2
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-1">Custom Demo (30 min)</h4>
-                    <p className="text-sm text-gray-500">
-                      See <strong>eatOS</strong> configured for your exact setup: menu, floor plan,
-                      and all.
+                    <h4 className="font-semibold mb-1 text-white">Custom Demo (30 min)</h4>
+                    <p className="text-sm text-white/70">
+                      See <strong className="text-white">eatOS</strong> configured for your exact
+                      setup: menu, floor plan, and all.
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center text-sm font-bold shrink-0">
+                  <div className="w-8 h-8 bg-white text-black rounded-full flex items-center justify-center text-sm font-bold shrink-0">
                     3
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-1">Proposal & Pricing</h4>
-                    <p className="text-sm text-gray-500">
+                    <h4 className="font-semibold mb-1 text-white">Proposal & Pricing</h4>
+                    <p className="text-sm text-white/70">
                       Get a tailored plan with transparent pricing. No surprises.
                     </p>
                   </div>
@@ -164,71 +163,70 @@ export default function ContactSalesPage() {
             </div>
 
             {/* Testimonial */}
-            <div className="border-l-4 border-indigo-500 pl-6 mb-12">
-              <p className="text-gray-700 italic leading-relaxed mb-3">
-                "The onboarding was incredibly smooth. The <strong>eatOS</strong> team had us
+            <div className="border-l-4 border-indigo-400/70 pl-6 mb-12">
+              <p className="text-white/80 italic leading-relaxed mb-3">
+                "The onboarding was incredibly smooth. The <strong className="text-white">eatOS</strong> team had us
                 running in 2 days, and our staff actually loved the new system from day one."
               </p>
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-xs font-bold text-indigo-700">
+                <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center text-xs font-bold text-indigo-300">
                   RM
                 </div>
                 <div>
-                  <div className="text-sm font-semibold">Rachel Martinez</div>
-                  <div className="text-xs text-gray-400">GM, Coastal Grill, Miami, FL</div>
+                  <div className="text-sm font-semibold text-white">Rachel Martinez</div>
+                  <div className="text-xs text-white/50">GM, Coastal Grill, Miami, FL</div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Form */}
+          {/* Right Column: Booking */}
           <div>
-            <div className="bg-gray-50 rounded-3xl p-8 md:p-12 sticky top-32">
-              <h2 className="text-2xl font-bold mb-2">Get in touch</h2>
-              <p className="text-gray-500 text-sm mb-8">
+            <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 md:p-12 sticky top-32">
+              <h2 className="text-2xl font-bold mb-2 text-white">Get in touch</h2>
+              <p className="text-white/60 text-sm mb-8">
                 We typically respond within 2 hours during business hours.
               </p>
               <div
-                className="meetings-iframe-container"
+                className="meetings-iframe-container bg-black rounded-2xl overflow-hidden"
                 data-src="https://meetings.hubspot.com/booka/initial-meeting?embed=true"
               />
-              <p className="text-xs text-center text-gray-400 mt-4">
+              <p className="text-xs text-center text-white/50 mt-4">
                 By booking a meeting, you agree to our{' '}
-                <a href="/terms" className="underline hover:no-underline">
+                <a href="/terms" className="underline hover:text-white">
                   Terms of Service
                 </a>{' '}
                 and{' '}
-                <a href="/privacy" className="underline hover:no-underline">
+                <a href="/privacy" className="underline hover:text-white">
                   Privacy Policy
                 </a>
                 .
               </p>
-
             </div>
           </div>
         </div>
 
         {/* FAQ Section */}
-        <div className="max-w-3xl mx-auto py-20 mt-10 border-t border-gray-100">
-          <h2 className="text-3xl font-bold tracking-tighter mb-10 text-center">
+        <div className="max-w-3xl mx-auto py-20 mt-10 border-t border-white/10">
+          <h2 className="text-3xl font-bold tracking-tighter mb-10 text-center text-white">
             Frequently Asked Questions
           </h2>
           <div className="space-y-4">
             {faqs.map((faq, i) => {
               const isOpen = openFaq === i;
               return (
-                <div key={i} className="border border-gray-100 rounded-2xl overflow-hidden">
+                <div key={i} className="border border-white/10 bg-white/5 rounded-2xl overflow-hidden">
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : i)}
-                    className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+                    className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/10 transition-colors"
                   >
-                    <span className="font-semibold text-lg">{faq.q}</span>
+                    <span className="font-semibold text-lg text-white">{faq.q}</span>
                     <ChevronDown
                       size={20}
-                      className={`text-gray-400 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                      className={`text-white/50 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
                     />
                   </button>
-                  {isOpen && <div className="px-6 pb-5 text-gray-500 leading-relaxed">{faq.a}</div>}
+                  {isOpen && <div className="px-6 pb-5 text-white/70 leading-relaxed">{faq.a}</div>}
                 </div>
               );
             })}
