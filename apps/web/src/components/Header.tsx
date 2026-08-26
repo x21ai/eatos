@@ -30,7 +30,7 @@ import {
   Network,
   Package,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { overallHeaderColor } from "@/app/system-status/systems";
 
 export default function Header() {
@@ -44,6 +44,38 @@ export default function Header() {
   const [mobileTab, setMobileTab] = useState("products");
   const [openGroup, setOpenGroup] = useState("Operations");
   const [currentPath, setCurrentPath] = useState("/");
+
+  // Keep desktop dropdown panels inside the page content area.
+  const productsTriggerRef = useRef<HTMLDivElement | null>(null);
+  const solutionsTriggerRef = useRef<HTMLDivElement | null>(null);
+  const [productsShift, setProductsShift] = useState(0);
+  const [solutionsShift, setSolutionsShift] = useState(0);
+
+  const computeShift = useCallback(
+    (el: HTMLDivElement | null, panelWidth: number) => {
+      if (!el || typeof window === "undefined") return 0;
+      const gutter = 16;
+      const left = el.getBoundingClientRect().left;
+      const available = window.innerWidth - gutter;
+      const width = Math.min(panelWidth, window.innerWidth - gutter * 2);
+      const overflow = left + width - available;
+      if (overflow <= 0) return 0;
+      // Never push the panel past the left gutter.
+      return -Math.min(overflow, Math.max(0, left - gutter));
+    },
+    [],
+  );
+
+  useEffect(() => {
+    const update = () => {
+      setProductsShift(computeShift(productsTriggerRef.current, 860));
+      setSolutionsShift(computeShift(solutionsTriggerRef.current, 460));
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, [computeShift, productsOpen, solutionsOpen]);
+
 
   const groupForPath = (path: string) => {
     if (
