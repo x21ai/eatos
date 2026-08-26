@@ -9,6 +9,25 @@ import {
   Wrench,
 } from "lucide-react";
 
+export const metadata = {
+  title: 'Careers at eatOS | Restaurant Technology Cloud',
+  description:
+    'Join the eatOS team building restaurant technology used by operators across the country. See open engineering, design and go to market roles.',
+  openGraph: {
+    type: 'website',
+    title: 'Careers at eatOS | Restaurant Technology Cloud',
+    description:
+      'Join the eatOS team building restaurant technology used by operators across the country. See open engineering, design and go to market roles.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Careers at eatOS | Restaurant Technology Cloud',
+    description:
+      'Join the eatOS team building restaurant technology used by operators across the country. See open engineering, design and go to market roles.',
+  },
+};
+
+
 const OPEN_ROLES = [
   {
     slug: "product-engineer",

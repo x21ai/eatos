@@ -1,6 +1,25 @@
 // @ts-nocheck
 import { effectiveDate, sections } from "./content";
 
+export const metadata = {
+  title: 'Terms of Service | eatOS',
+  description:
+    'The terms that govern use of eatOS restaurant technology software, hardware and payment services.',
+  openGraph: {
+    type: 'website',
+    title: 'Terms of Service | eatOS',
+    description:
+      'The terms that govern use of eatOS restaurant technology software, hardware and payment services.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Terms of Service | eatOS',
+    description:
+      'The terms that govern use of eatOS restaurant technology software, hardware and payment services.',
+  },
+};
+
+
 export default function TermsOfServicePage() {
   const cardClass =
     "rounded-3xl border border-gray-200 bg-white p-7 md:p-9 shadow-sm";

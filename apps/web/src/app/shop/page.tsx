@@ -1,6 +1,25 @@
 // @ts-nocheck
 import { ArrowRight, ShoppingBag, Star } from 'lucide-react';
 
+export const metadata = {
+  title: 'Shop Restaurant Hardware | eatOS',
+  description:
+    'Buy eatOS Point of Sale terminals, handhelds, kitchen displays, kiosks and payment readers, or build a custom bundle.',
+  openGraph: {
+    type: 'website',
+    title: 'Shop Restaurant Hardware | eatOS',
+    description:
+      'Buy eatOS Point of Sale terminals, handhelds, kitchen displays, kiosks and payment readers, or build a custom bundle.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Shop Restaurant Hardware | eatOS',
+    description:
+      'Buy eatOS Point of Sale terminals, handhelds, kitchen displays, kiosks and payment readers, or build a custom bundle.',
+  },
+};
+
+
 export default function ShopPage() {
   const products = [
     {

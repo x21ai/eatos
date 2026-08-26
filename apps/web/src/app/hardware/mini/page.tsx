@@ -7,6 +7,25 @@ import {
   Scan,
 } from "lucide-react";
 
+export const metadata = {
+  title: 'Mini Handheld Terminal | eatOS',
+  description:
+    'The eatOS Mini puts a full Point of Sale in your hand for tableside ordering, payments and inventory checks.',
+  openGraph: {
+    type: 'website',
+    title: 'Mini Handheld Terminal | eatOS',
+    description:
+      'The eatOS Mini puts a full Point of Sale in your hand for tableside ordering, payments and inventory checks.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Mini Handheld Terminal | eatOS',
+    description:
+      'The eatOS Mini puts a full Point of Sale in your hand for tableside ordering, payments and inventory checks.',
+  },
+};
+
+
 export default function MiniPage() {
   return (
     <div className="bg-black min-h-screen text-white font-sans selection:bg-purple-500/30">
