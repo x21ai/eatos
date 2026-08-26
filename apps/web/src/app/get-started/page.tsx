@@ -114,7 +114,7 @@ export default function GetStartedPage() {
         </div>
 
         {/* Main Content */}
-        <main className="flex-grow flex flex-col items-center justify-center p-6 md:p-12">
+        <main className="site-container flex-grow flex flex-col items-center justify-center py-10 md:py-16">
           {step === 1 && (
             <div className="w-full max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-500">
               <div className="text-center mb-10">
