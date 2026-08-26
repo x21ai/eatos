@@ -2,6 +2,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { ArrowUpRight, Download, X } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import { brochures, hero } from './content';
@@ -35,12 +36,13 @@ function FlipbookModal({ item, onClose }) {
     };
   }, [onClose]);
 
-  return (
+  const overlay = (
     <div
       role="dialog"
       aria-modal="true"
       aria-label={`${item.title} brochure`}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-0 backdrop-blur-sm sm:p-6"
+      style={{ zIndex: 2147483000 }}
+      className="fixed inset-0 flex items-center justify-center bg-black/80 p-0 backdrop-blur-sm sm:p-6"
       onClick={onClose}
     >
       <div
@@ -92,6 +94,9 @@ function FlipbookModal({ item, onClose }) {
       </div>
     </div>
   );
+
+  if (typeof document === 'undefined') return null;
+  return createPortal(overlay, document.body);
 }
 
 function Cover({ title, index, large = false, src }) {
