@@ -50,6 +50,6 @@ export const platform = {
 
 export const cta = {
   title: 'New to eatOS?',
-  subtitle: 'See how offline mode keeps service running, even when the internet drops.',
+  subtitle: 'See how offline mode keeps every order, payment, and ticket moving, even when the internet drops in the middle of your busiest service.',
   button: { label: 'Book a Demo', href: '/book-demo' },
 };

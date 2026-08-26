@@ -97,8 +97,8 @@ export default function MeshDiagram() {
           <span className="absolute inline-flex h-full w-full animate-ping rounded-3xl bg-sky-400/20" />
           <Cloud size={36} className="relative text-sky-300" />
         </motion.div>
-        <p className="mt-2 text-center text-[11px] font-semibold uppercase tracking-widest text-sky-300">
-          eatOS CLOUD
+        <p className="mt-2 text-center text-[11px] font-semibold tracking-widest text-sky-300">
+          <span className="lowercase">eat</span>OS CLOUD
         </p>
       </div>
 
