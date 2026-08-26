@@ -291,8 +291,9 @@ export default function FastCasualClient() {
             <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tighter">
               Get the{" "}<br className="sm:hidden" />Fast-Casual Bundle
             </h2>
-            <p className="mt-5 text-base sm:text-lg text-white/90 leading-relaxed">
-              $0 hardware upfront cost with{" "}<br className="sm:hidden" />Pay As You Go.
+            <p className="mt-5 text-[13px] sm:text-lg text-white/90 leading-relaxed">
+              $0 hardware upfront cost with Pay As You Go.
+
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <a

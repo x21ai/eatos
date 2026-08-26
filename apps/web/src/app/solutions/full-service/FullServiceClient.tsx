@@ -290,8 +290,9 @@ export default function FullServiceClient() {
             <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tighter">
               Get the Full{" "}<br className="sm:hidden" />Service Bundle
             </h2>
-            <p className="mt-5 text-lg text-white/90 leading-relaxed">
-              $0 hardware upfront cost with{" "}<br className="sm:hidden" />Pay As You Go.
+            <p className="mt-5 text-[13px] sm:text-lg text-white/90 leading-relaxed">
+              $0 hardware upfront cost with Pay As You Go.
+
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <a
