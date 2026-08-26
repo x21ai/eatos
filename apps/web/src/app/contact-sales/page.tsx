@@ -85,7 +85,7 @@ export default function ContactSalesPage() {
             </div>
 
             {/* Contact details */}
-            <div className="space-y-8 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-white/10 border border-white/10 rounded-full flex items-center justify-center shrink-0">
                   <Phone size={20} className="text-white" />
