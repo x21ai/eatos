@@ -2,6 +2,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { ArrowUpRight, Download, X } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import { brochures, hero } from './content';
