@@ -19,10 +19,10 @@ export function NewsletterSection() {
     <section className="border-t border-white/5 bg-black py-20 md:py-28">
       <div className="site-container">
         <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-900 p-8 sm:p-12 md:rounded-[3rem] md:p-16">
-          <div className="pointer-events-none absolute -top-32 left-1/2 h-[280px] w-[280px] max-w-full -translate-x-1/2 rounded-full bg-green-500/10 blur-[110px] sm:h-[420px] sm:w-[420px]" />
+          <div className="pointer-events-none absolute -top-32 left-1/2 h-[280px] w-[280px] max-w-full -translate-x-1/2 rounded-full bg-[#d70480]/20 blur-[110px] sm:h-[420px] sm:w-[420px]" />
 
           <div className="relative mx-auto max-w-2xl text-center">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-green-400">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#d70480]">
               Newsletter
             </p>
             <h2 className="mt-5 font-bold leading-[1.05] tracking-tighter text-white text-[clamp(1.5rem,5vw,3.5rem)]">
@@ -48,7 +48,7 @@ export function NewsletterSection() {
                     setStatus('idle');
                   }}
                   placeholder="Add your email"
-                  className="min-h-[48px] w-full min-w-0 flex-1 rounded-full border border-white/10 bg-black/60 px-5 text-base text-white placeholder:text-gray-500 focus:border-green-500/50 focus:outline-none sm:h-11 sm:min-h-0 sm:text-sm sm:border-transparent sm:bg-transparent"
+                  className="min-h-[48px] w-full min-w-0 flex-1 rounded-full border border-white/10 bg-black/60 px-5 text-base text-white placeholder:text-gray-500 focus:border-[#d70480]/60 focus:outline-none sm:h-11 sm:min-h-0 sm:text-sm sm:border-transparent sm:bg-transparent"
                 />
                 <button
                   type="submit"
@@ -62,7 +62,7 @@ export function NewsletterSection() {
                 role="status"
                 className={`mt-4 min-h-5 text-sm ${
                   status === 'success'
-                    ? 'text-green-400'
+                    ? 'text-[#d70480]'
                     : status === 'error'
                       ? 'text-red-400'
                       : 'text-gray-500'
