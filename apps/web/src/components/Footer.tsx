@@ -166,6 +166,51 @@ const LINK_GROUPS = [
   },
 ];
 
+function WhatsappGlyph({ size = 20, ...props }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z" />
+      <path d="M9 9.3c0 3 2.2 5.2 5 5.4.6 0 1.1-.4 1.2-.9.1-.5-.2-.8-.7-1l-.9-.4c-.3-.1-.6 0-.8.3l-.2.3c-.9-.4-1.6-1.1-2-2l.3-.2c.3-.2.4-.5.3-.8l-.4-.9c-.2-.5-.5-.8-1-.7-.5.1-.9.6-.8 1.2z" />
+    </svg>
+  );
+}
+
+function TextMessageGlyph({ size = 20, ...props }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z" />
+      <circle cx="8.5" cy="11.5" r="1" fill="currentColor" stroke="none" />
+      <circle cx="12" cy="11.5" r="1" fill="currentColor" stroke="none" />
+      <circle cx="15.5" cy="11.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function MessengerGlyph({ size = 20, ...props }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M12 3c5 0 9 3.7 9 8.3 0 4.6-4 8.3-9 8.3-1 0-2-.2-2.9-.5L5 21l1-3.2A8 8 0 0 1 3 11.3C3 6.7 7 3 12 3z" />
+      <path d="M7.5 14l3-4.2 2.6 2 2.4-2.8-3 4.2-2.6-2z" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function ChatGlyph({ size = 20, ...props }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M20.5 11.2c0 4.2-3.8 7.6-8.5 7.6-1 0-2-.2-2.9-.4L4 21l1.4-3.6a7.2 7.2 0 0 1-2.4-5.2C3 7 6.8 3.6 11.5 3.6S20.5 7 20.5 11.2z" />
+    </svg>
+  );
+}
+
+const CONTACT_CHANNELS = [
+  { label: 'WhatsApp', href: 'https://wa.me/+18449732867', Icon: WhatsappGlyph, external: true },
+  { label: 'Text Message', href: 'sms:+18449732867', Icon: TextMessageGlyph },
+  { label: 'Facebook Messenger', href: 'https://www.facebook.com/myeatos', Icon: MessengerGlyph, external: true },
+  { label: 'Chat', href: 'tel:+18449732867', Icon: ChatGlyph },
+];
+
+
 export default function Footer() {
   const headingClass = 'text-[11px] font-semibold uppercase tracking-[0.18em] text-white';
   const linkClass = 'text-[13px] text-gray-300 transition-colors hover:text-white';
