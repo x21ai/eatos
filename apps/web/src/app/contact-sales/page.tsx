@@ -125,7 +125,7 @@ export default function ContactSalesPage() {
               <h3 className="font-bold text-lg mb-6 flex items-center gap-2 text-white">
                 <Clock size={20} /> What to Expect
               </h3>
-              <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-white text-black rounded-full flex items-center justify-center text-sm font-bold shrink-0">
                     1
