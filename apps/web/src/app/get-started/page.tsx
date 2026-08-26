@@ -196,7 +196,7 @@ export default function GetStartedPage() {
             <div className="w-full max-w-5xl animate-in fade-in slide-in-from-right-8 duration-500">
               <button
                 onClick={handleBack}
-                className="flex items-center gap-2 text-gray-500 hover:text-black mb-8 transition-colors text-sm font-medium"
+                className="flex items-center gap-2 text-gray-300 hover:text-white mb-8 transition-colors text-sm font-medium"
               >
                 <ChevronLeft size={16} />
                 Back to Industry
@@ -207,7 +207,7 @@ export default function GetStartedPage() {
                 <h1 className="text-3xl md:text-4xl font-bold tracking-tighter mb-3">
                   Book your meeting
                 </h1>
-                <p className="text-gray-500 leading-relaxed">
+                <p className="text-gray-300 leading-relaxed">
                   Setting up {selectedIndustry === 'food' ? 'your restaurant' : 'your business'} for
                   success. Join restaurants across the US already using <strong>eatOS</strong> to
                   streamline operations and grow revenue.
@@ -219,22 +219,22 @@ export default function GetStartedPage() {
                 {[
                   {
                     Icon: Zap,
-                    tile: 'bg-green-50',
-                    color: 'text-green-600',
+                    tile: 'bg-white/10',
+                    color: 'text-emerald-400',
                     title: 'Up and running in 48 hours',
                     body: 'We handle setup, training, and data migration.',
                   },
                   {
                     Icon: Shield,
-                    tile: 'bg-blue-50',
-                    color: 'text-blue-600',
+                    tile: 'bg-white/10',
+                    color: 'text-sky-400',
                     title: 'No contracts, cancel anytime',
                     body: 'Flexible month-to-month plans that grow with you.',
                   },
                   {
                     Icon: HeadphonesIcon,
-                    tile: 'bg-purple-50',
-                    color: 'text-purple-600',
+                    tile: 'bg-white/10',
+                    color: 'text-violet-400',
                     title: '24/7 live support',
                     body: "Real humans, not bots. We're here when you need us.",
                   },
@@ -246,8 +246,9 @@ export default function GetStartedPage() {
                       <Icon size={20} className={color} />
                     </div>
                     <div className="min-w-0">
-                      <h4 className="font-semibold text-sm mb-0.5 sm:mt-2">{title}</h4>
+                      <h4 className="font-semibold text-sm mb-0.5 sm:mt-2 text-white">{title}</h4>
                       <p className="text-xs text-gray-400 leading-relaxed">{body}</p>
+
                     </div>
                   </div>
                 ))}
@@ -260,13 +261,13 @@ export default function GetStartedPage() {
                   data-src="https://meetings.hubspot.com/booka/initial-meeting?embed=true"
                 />
 
-                <p className="text-center text-sm text-gray-500 mt-6">
+                <p className="text-center text-sm text-gray-300 mt-6">
                   By booking a meeting, you agree to our{' '}
-                  <a href="/terms" className="underline text-black hover:no-underline">
+                  <a href="/terms" className="underline text-white hover:no-underline">
                     Terms
                   </a>{' '}
                   and{' '}
-                  <a href="/privacy" className="underline text-black hover:no-underline">
+                  <a href="/privacy" className="underline text-white hover:no-underline">
                     Privacy Policy
                   </a>
                   .
@@ -274,17 +275,18 @@ export default function GetStartedPage() {
               </div>
 
               {/* Testimonial */}
-              <div className="mx-auto mt-12 max-w-2xl bg-gray-50 rounded-2xl p-6 text-center">
-                <p className="text-sm text-gray-600 italic leading-relaxed mb-4">
+              <div className="mx-auto mt-12 max-w-2xl bg-white/5 border border-white/15 rounded-2xl p-6 text-center">
+                <p className="text-sm text-gray-200 italic leading-relaxed mb-4">
                   "Switching to <strong>eatOS</strong> was the best decision we made last year.
+                  <br />
                   Revenue up 22% and our team loves it."
                 </p>
                 <div className="flex items-center justify-center gap-2">
-                  <div className="w-7 h-7 rounded-full bg-orange-100 flex items-center justify-center text-xs font-bold text-orange-700">
+                  <div className="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center text-xs font-bold text-white">
                     DK
                   </div>
                   <div className="text-left">
-                    <div className="text-xs font-semibold">David Kim</div>
+                    <div className="text-xs font-semibold text-white">David Kim</div>
                     <div className="text-[10px] text-gray-400">Owner, Seoul Kitchen, LA</div>
                   </div>
                 </div>
@@ -295,8 +297,9 @@ export default function GetStartedPage() {
         </main>
 
         {/* Simple Footer */}
-        <footer className="py-6 border-t border-gray-100 text-center text-sm text-gray-400">
+        <footer className="py-6 border-t border-white/25 text-center text-sm text-gray-400">
           &copy; 2026 <strong>eatOS POS Inc.</strong>
+
         </footer>
       </div>
     </div>
