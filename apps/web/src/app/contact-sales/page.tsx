@@ -54,9 +54,10 @@ export default function ContactSalesPage() {
   return (
     <div className="bg-black text-white font-montserrat min-h-screen pt-44 md:pt-52 pb-0">
       <div className="site-container">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
-          {/* Left Column: Info */}
+        <div>
+          {/* Intro */}
           <div>
+
             <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8 text-white">
               Talk to our <br /> sales team.
             </h1>
