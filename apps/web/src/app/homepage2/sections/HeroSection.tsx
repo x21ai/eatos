@@ -67,7 +67,7 @@ export function HeroSection() {
             href="/book-demo"
             className="group px-8 py-4 bg-white text-black rounded-full text-lg font-semibold hover:scale-105 transition-all duration-300 flex items-center gap-2"
           >
-            Get Started Free{" "}
+            Book a Demo{" "}
             <ArrowRight
               size={18}
               className="group-hover:translate-x-1 transition-transform"

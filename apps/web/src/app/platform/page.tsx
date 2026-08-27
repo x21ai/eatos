@@ -434,7 +434,7 @@ export default function PlatformPage() {
                   href="/book-demo"
                   className="px-8 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform"
                 >
-                  Get Started Free
+                  Book a Demo
                 </a>
                 <a
                   href="/contact-sales"

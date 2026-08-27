@@ -631,7 +631,7 @@ export default function Header() {
                     : "bg-black text-white border border-black/10 shadow-[0_0_20px_rgba(0,0,0,0.1)]"
                 }`}
             >
-              Get Started
+              Book a Demo
             </a>
           </div>
         </div>
@@ -1036,7 +1036,7 @@ export default function Header() {
                 className="bg-black text-white text-center py-3 rounded-full font-semibold text-[15px]"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Get Started
+                Book a Demo
               </a>
             </div>
           </div>
