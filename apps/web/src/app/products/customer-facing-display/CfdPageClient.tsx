@@ -49,6 +49,8 @@ const rise = {
 };
 
 export default function CfdPageClient() {
+  const demo = demoSources.find((d) => d.id === 'cfd');
+
   return (
     <div className="min-h-screen bg-black text-white font-montserrat selection:bg-pink-500/30">
       {/* Hero */}
