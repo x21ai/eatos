@@ -164,13 +164,20 @@ export default function KdsPageClient() {
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="min-w-0 rounded-[1.5rem] md:rounded-[2rem] border border-white/10 bg-zinc-900 shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-hidden"
           >
-            <img
+            <video
               className="w-full h-auto block"
-              src={demo?.media?.gif}
-              alt="Kitchen Display System demo animation"
-              loading="lazy"
-              decoding="async"
-            />
+              poster={demo?.media?.poster}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              aria-label="Kitchen Display System demo animation"
+            >
+              {demo?.media?.sources.map((s) => (
+                <source key={s.src} src={s.src} type={s.type} />
+              ))}
+            </video>
 
           </motion.div>
         </div>
