@@ -111,96 +111,22 @@ export default function PosPageClient() {
               transition={{ duration: 0.9, ease: 'easeOut' }}
               className="min-w-0"
             >
-              <div className="bg-zinc-900 rounded-[1.5rem] md:rounded-[2rem] shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/10 overflow-hidden relative flex flex-col lg:flex-row lg:h-[70vh]">
-                {/* Sidebar */}
-                <div className="flex lg:w-20 bg-black border-b lg:border-b-0 lg:border-r border-white/5 flex-row lg:flex-col items-center justify-center lg:justify-start gap-6 lg:gap-8 px-4 py-4 lg:py-8 z-20">
-                  <div className="w-10 h-10 shrink-0 rounded-xl bg-orange-500 flex items-center justify-center text-white font-bold">
-                    e
-                  </div>
-                  <div className="flex flex-row lg:flex-col gap-4 lg:gap-6 lg:flex-1 lg:w-full items-center">
-                    <div className="p-3 bg-white/10 text-white rounded-xl">
-                      <LayoutGrid size={22} />
-                    </div>
-                    <div className="p-3 text-gray-500">
-                      <Users size={22} />
-                    </div>
-                    <div className="p-3 text-gray-500">
-                      <Clock size={22} />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Main */}
-                <div className="flex-1 min-w-0 bg-zinc-900 p-5 md:p-6 flex flex-col relative overflow-hidden">
-                  <div className="flex flex-wrap justify-between items-center gap-3 mb-6">
-                    <div className="flex items-center gap-3">
-                      <h2 className="text-xl md:text-2xl font-bold text-white">Dinner Service</h2>
-                      <span className="px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full font-mono">
-                        ONLINE
-                      </span>
-                    </div>
-                    <div className="text-gray-400 text-sm" suppressHydrationWarning>
-                      --:--
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4 lg:overflow-y-auto lg:pb-8">
-                    {menuItems.map((item) => (
-                      <motion.button
-                        key={item.name}
-                        whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.05)' }}
-                        whileTap={{ scale: 0.98 }}
-                        className="bg-black/40 border border-white/5 rounded-2xl p-5 text-left relative overflow-hidden group h-32 md:h-36 flex flex-col justify-between min-w-0"
-                      >
-                        <div
-                          className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-                        />
-                        <span className="font-bold text-base md:text-lg relative z-10">
-                          {item.name}
-                        </span>
-                        <span className="text-gray-400 relative z-10">{item.price}</span>
-                      </motion.button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Order rail */}
-                <div className="w-full lg:w-80 xl:w-96 bg-black border-t lg:border-t-0 lg:border-l border-white/5 flex flex-col z-20">
-                  <div className="p-5 md:p-6 border-b border-white/5">
-                    <h3 className="text-lg md:text-xl font-bold mb-1">Table 4</h3>
-                    <p className="text-sm text-gray-500">Server: Sarah M.</p>
-                  </div>
-                  <div className="flex-1 p-5 md:p-6 space-y-4 lg:overflow-y-auto">
-                    <div className="flex justify-between items-start gap-4">
-                      <div className="min-w-0">
-                        <div className="font-medium">1x Wagyu Burger</div>
-                        <div className="text-xs text-gray-500">Medium Rare</div>
-                      </div>
-                      <div>$24.00</div>
-                    </div>
-                    <div className="flex justify-between items-start gap-4">
-                      <div className="min-w-0 font-medium">2x Old Fashioned</div>
-                      <div>$36.00</div>
-                    </div>
-                    <div className="flex justify-between items-start gap-4 text-green-400">
-                      <div className="min-w-0">
-                        <div className="font-medium">1x Truffle Fries</div>
-                        <div className="text-xs text-green-500/70">Happy Hour Promo</div>
-                      </div>
-                      <div>$0.00</div>
-                    </div>
-                  </div>
-                  <div className="p-5 md:p-6 bg-zinc-900 border-t border-white/5">
-                    <div className="flex justify-between text-xl md:text-2xl font-bold mb-5">
-                      <span>Total</span>
-                      <span>$60.00</span>
-                    </div>
-                    <button className="w-full py-4 bg-orange-500 text-white font-bold rounded-xl hover:bg-orange-600 transition-colors">
-                      Charge $60.00
-                    </button>
-                  </div>
-                </div>
+              <div className="bg-zinc-900 rounded-[1.5rem] md:rounded-[2rem] shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/10 overflow-hidden relative">
+                <video
+                  className="w-full h-auto block"
+                  poster={posDemo?.media?.poster}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                >
+                  {posDemo?.media?.sources.map((source) => (
+                    <source key={source.src} src={source.src} type={source.type} />
+                  ))}
+                </video>
               </div>
+
             </motion.div>
           </div>
         </section>
