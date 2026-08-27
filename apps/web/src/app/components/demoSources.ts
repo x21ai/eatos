@@ -95,7 +95,8 @@ export const demoSources: DemoSource[] = [
     blurb: 'Sales, labor and menu performance across every location, updated live.',
     device: 'laptop',
     media: {
-      gif: dashGif.url,
+      sources: videoSources(dashWebm, dashMp4),
+      poster: dashPoster.url,
       caption: 'Track sales, labor and stock hour by hour across locations.',
     },
   },
