@@ -1,7 +1,7 @@
 // @ts-nocheck
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const CONSENT_KEY = "eatos_cookie_consent";
 const PREFS_KEY = "eatos_cookie_prefs";
