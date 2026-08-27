@@ -8,7 +8,8 @@ const description =
 export const metadata = {
   title: 'Comparison',
   description,
-  openGraph: { type: 'website', title, description },
+  alternates: { canonical: '/eatos-vs-other-pos-software' },
+  openGraph: { type: 'website', title, description, url: '/eatos-vs-other-pos-software' },
   twitter: { card: 'summary_large_image', title, description },
 };
 
