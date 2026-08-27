@@ -9,7 +9,7 @@ export const hero = {
   title: 'eatOS Restaurant Cloud: Complete Comparison',
   description:
     'Equipped with essential tools, eatOS empowers you to connect with customers and expand your business, both in-person and online.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   media: 'eatOS Point of Sale terminals',
   mediaSrc: heroImg.url,
@@ -41,12 +41,12 @@ export const whySwitch = [
   {
     title: 'Robust Feature Set',
     body: 'From every management to customer engagement, eatOS offers a comprehensive suite of tools to run your restaurant.',
-    link: { label: 'Learn more about eatOS Point of Sale', href: '/point-of-sale' },
+    link: { label: 'Learn more about eatOS Point of Sale', href: '/pointofsale' },
   },
   {
     title: 'Unparalleled Support',
     body: 'Receive unparalleled 24/7 customer support to maximize eatOS potential for your business, ensuring assistance whenever needed.',
-    link: { label: 'Learn more about eatOS', href: '/about' },
+    link: { label: 'Learn more about eatOS', href: '/about-eatos' },
   },
 ];
 
@@ -96,7 +96,7 @@ export const reasons = [
 ];
 
 export const ecosystem = [
-  { title: 'Point of Sale', href: '/point-of-sale' },
+  { title: 'Point of Sale', href: '/pointofsale' },
   { title: 'Online Ordering', href: '/products/apponlineorderingdelivery' },
   { title: 'Workforce Management', href: '/products/workforce-management' },
   { title: 'Kitchen Display System', href: '/products/kitchen-display-system' },

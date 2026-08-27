@@ -15,8 +15,8 @@ export const hero = {
   title: 'Chaos, controlled.',
   description:
     'The digital command center that keeps your kitchen in sync, prep, fire and serve without missing a ticket.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
-  secondaryCta: { label: 'Watch Video', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
+  secondaryCta: { label: 'Watch Video', href: '/bookademo' },
   image: heroAsset.url,
 };
 
@@ -164,7 +164,7 @@ export const offerNote =
   'Terms and conditions apply. Product availability, pricing and specifications are subject to change. Contact sales for current configurations.';
 
 export const cloudProducts = [
-  { title: 'Point of Sale', href: '/point-of-sale' },
+  { title: 'Point of Sale', href: '/pointofsale' },
   { title: 'Online Ordering', href: '/products/apponlineorderingdelivery' },
   { title: 'Workforce Management', href: '/products/workforce-management' },
   { title: 'Kitchen Display System', href: '/products/kitchen-display-system' },

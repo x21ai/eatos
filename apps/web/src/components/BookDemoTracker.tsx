@@ -23,7 +23,7 @@ export default function BookDemoTracker() {
       const anchor = target?.closest('a');
       if (!anchor) return;
       const href = anchor.getAttribute('href') || '';
-      if (!href.startsWith('/book-demo')) return;
+      if (!href.startsWith('/bookademo')) return;
       trackBookDemoClick(
         locationForElement(anchor),
         anchor.textContent?.trim().slice(0, 60) || undefined,

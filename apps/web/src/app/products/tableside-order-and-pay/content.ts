@@ -14,7 +14,7 @@ export const hero = {
   titleAccent: '',
   description:
     'Guests scan a QR code and order from their phone. No app download required. Orders land directly in the Point of Sale so your team stays focused on service.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'Watch Video', href: '#' },
   imageLabel: 'Guest scanning QR code at table',
   image: null,

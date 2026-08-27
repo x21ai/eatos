@@ -11,7 +11,7 @@ export const products = [
       "Cloud-based restaurant management that adapts to your flow. Beautiful, fast, reliable.",
     icon: "Monitor",
     color: "orange",
-    href: "/point-of-sale",
+    href: "/pointofsale",
     features: [
       "Dark mode native",
       "Offline-first architecture",
@@ -219,7 +219,7 @@ export const products = [
       "Milled aluminum terminals, kitchen-grade displays, and all-day battery handhelds.",
     icon: "Box",
     color: "zinc",
-    href: "/hardware",
+    href: "/products/hardware",
     features: [
       "Milled aluminum",
       "Tempered glass",
@@ -267,7 +267,7 @@ export const products = [
       "Autonomous delivery robots that bring food to your guests. Coming soon.",
     icon: "Truck",
     color: "slate",
-    href: "/products/autonomous-delivery",
+    href: "/products/autonomous-and-automated-delivery",
     comingSoon: true,
     features: [
       "Sidewalk navigation",

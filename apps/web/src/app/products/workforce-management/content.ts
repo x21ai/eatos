@@ -12,7 +12,7 @@ export const hero = {
   titleAccent: '',
   description:
     'GPS-enabled attendance, intelligent scheduling, and seamless payroll integration so your team stays focused on service, not paperwork.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'Watch Video', href: '#' },
   imageLabel: 'Workforce management dashboard',
   image: null,

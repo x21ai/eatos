@@ -4,7 +4,7 @@ export const hero = {
   titleAccent: '',
   description:
     'eatOS runs on a peer-to-peer mesh network built for hospitality. Every device in your venue stays connected and in sync, with or without the internet.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   stats: [
     { value: '100%', label: 'Offline capable' },
     { value: '<1s', label: 'Device to device sync' },
@@ -51,5 +51,5 @@ export const platform = {
 export const cta = {
   title: 'New to eatOS?',
   subtitle: 'See how offline mode keeps every order, payment, even when the internet drops in the middle of your busiest service.',
-  button: { label: 'Book a Demo', href: '/book-demo' },
+  button: { label: 'Book a Demo', href: '/bookademo' },
 };

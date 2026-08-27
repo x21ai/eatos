@@ -9,7 +9,7 @@ export const hero = {
   titleAccent: 'Online Ordering App',
   description:
     'Your own branded ordering app and website, built for order ahead, pickup and delivery. Keep the guest relationship, keep the data and keep the margin.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Branded ordering app on a phone',
   image: null,

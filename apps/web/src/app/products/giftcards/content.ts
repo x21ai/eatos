@@ -8,7 +8,7 @@ export const hero = {
   title: 'Gift Cards Guests',
   titleAccent: '',
   description: 'Customize your own gift card design with eatOS.',
-  primaryCta: { label: 'Order Now', href: '/book-demo' },
+  primaryCta: { label: 'Order Now', href: '/bookademo' },
   imageLabel: 'Custom branded eatOS gift cards',
   image: null,
   stats: [
@@ -28,7 +28,7 @@ export const orderPanel = {
   price: 'From 79¢ USD per card',
   body:
     'Upload your own art for the most customized card available. Packs start at 250 gift cards and take 15 business days to produce.',
-  cta: { label: 'Order Now', href: '/book-demo' },
+  cta: { label: 'Order Now', href: '/bookademo' },
 };
 
 export const features = [

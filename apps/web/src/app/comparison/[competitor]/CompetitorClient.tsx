@@ -143,7 +143,7 @@ export default function CompetitorClient({ slug }) {
                 className="flex flex-col sm:flex-row gap-4"
               >
                 <a
-                  href="/book-demo"
+                  href="/bookademo"
                   className="px-8 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform text-center inline-flex items-center justify-center gap-2"
                 >
                   Book a Demo <ArrowRight size={18} />
@@ -314,7 +314,7 @@ export default function CompetitorClient({ slug }) {
             </h2>
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
-                href="/book-demo"
+                href="/bookademo"
                 className="inline-flex w-full items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:w-auto"
               >
                 Book a Demo

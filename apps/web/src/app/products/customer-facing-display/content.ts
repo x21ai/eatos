@@ -11,7 +11,7 @@ export const hero = {
   titleAccent: 'and Easy Tipping',
   description:
     'Show every order in real time, then close it out with contactless payments, digital tips and instant receipts.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'Watch Video', href: '#' },
   imageLabel: 'Customer facing display screen',
   image: null,

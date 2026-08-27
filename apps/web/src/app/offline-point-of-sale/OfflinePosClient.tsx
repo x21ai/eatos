@@ -30,14 +30,14 @@ const syncIcons = [RefreshCw, Wifi, CloudUpload];
 const capabilityIcons = [Network, Wifi, CloudUpload];
 
 const platformLinks = [
-  { title: 'Point of Sale', href: '/point-of-sale', Icon: Monitor, tint: 'bg-sky-500/10 text-sky-400' },
+  { title: 'Point of Sale', href: '/pointofsale', Icon: Monitor, tint: 'bg-sky-500/10 text-sky-400' },
   { title: 'Payments', href: '/accept-payments', Icon: CreditCard, tint: 'bg-emerald-500/10 text-emerald-400' },
   { title: 'Kitchen Display', href: '/products/kitchen-display-system', Icon: ChefHat, tint: 'bg-amber-500/10 text-amber-400' },
   { title: 'Self-Service Kiosk', href: '/products/self-service-kiosk', Icon: TabletSmartphone, tint: 'bg-violet-500/10 text-violet-400' },
   { title: 'Handheld', href: '/products/point-of-purchase', Icon: Smartphone, tint: 'bg-rose-500/10 text-rose-400' },
   { title: 'Analytics', href: '/products/reporting-analytics', Icon: BarChart3, tint: 'bg-sky-500/10 text-sky-400' },
   { title: 'Inventory', href: '/products/simplified-inventory-management', Icon: Package, tint: 'bg-emerald-500/10 text-emerald-400' },
-  { title: 'Autonomous Delivery', href: '/products/autonomous-delivery', Icon: Bot, tint: 'bg-violet-500/10 text-violet-400' },
+  { title: 'Autonomous Delivery', href: '/products/autonomous-and-automated-delivery', Icon: Bot, tint: 'bg-violet-500/10 text-violet-400' },
 ];
 
 export default function OfflinePosClient() {

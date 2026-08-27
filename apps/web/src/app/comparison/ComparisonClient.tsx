@@ -265,7 +265,7 @@ function Matrix() {
                         name
                       ) : (
                         <a
-                          href={`/comparison/${slugForCompetitor(name)}`}
+                          href={`/eatos-vs-${slugForCompetitor(name)}`}
                           className="inline-flex flex-col items-center gap-1 transition-colors hover:text-white"
                         >
                           {name}
@@ -328,7 +328,7 @@ function Matrix() {
                 </div>
                 {ci !== 0 && (
                   <a
-                    href={`/comparison/${slugForCompetitor(name)}`}
+                    href={`/eatos-vs-${slugForCompetitor(name)}`}
                     className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400"
                   >
                     See full comparison
@@ -421,7 +421,7 @@ function ClosingCta() {
           </h2>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href="/book-demo"
+              href="/bookademo"
               className="inline-flex w-full items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:w-auto"
             >
               Book a Demo

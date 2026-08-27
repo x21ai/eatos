@@ -147,7 +147,7 @@ const LINK_GROUPS = [
     links: [
       { label: 'Payments', href: '/accept-payments' },
       { label: 'Intelligence', href: '/ai' },
-      { label: 'Hardware', href: '/hardware' },
+      { label: 'Hardware', href: '/products/hardware' },
       { label: 'Tap to Pay', href: '/tap-to-pay' },
       { label: 'edgeOS', href: '/offline-point-of-sale' },
       { label: 'Platform', href: '/platform' },
@@ -156,7 +156,7 @@ const LINK_GROUPS = [
   {
     title: 'RESTAURANT TYPE',
     links: [
-      { label: 'Point of Sale', href: '/point-of-sale' },
+      { label: 'Point of Sale', href: '/pointofsale' },
       { label: 'Kitchen Display', href: '/products/kitchen-display-system' },
       { label: 'Self-Service Kiosk', href: '/products/self-service-kiosk' },
       { label: 'Handheld', href: '/products/point-of-purchase' },
@@ -179,26 +179,26 @@ const LINK_GROUPS = [
   {
     title: 'Solutions',
     links: [
-      { label: 'Quick Service', href: '/solutions/quick-service' },
-      { label: 'Full Service', href: '/solutions/full-service' },
-      { label: 'Fast Casual', href: '/solutions/fast-casual' },
-      { label: 'Pizzeria', href: '/solutions/pizzeria' },
-      { label: 'Café', href: '/solutions/cafe' },
-      { label: 'Bar & Nightclub', href: '/solutions/bar' },
-      { label: 'Food Truck', href: '/solutions/food-truck' },
-      { label: 'Ghost Kitchen', href: '/solutions/ghost-kitchen' },
-      { label: 'Catering', href: '/solutions/catering' },
-      { label: 'Enterprise', href: '/solutions/enterprise' },
+      { label: 'Quick Service', href: '/quick-service' },
+      { label: 'Full Service', href: '/full-service' },
+      { label: 'Fast Casual', href: '/fast-casual' },
+      { label: 'Pizzeria', href: '/pizzeria' },
+      { label: 'Café', href: '/cafe-pos' },
+      { label: 'Bar & Nightclub', href: '/bar-and-brewery' },
+      { label: 'Food Truck', href: '/food-truck' },
+      { label: 'Ghost Kitchen', href: '/ghost-kitchens' },
+      { label: 'Catering', href: '/catering' },
+      { label: 'Enterprise', href: '/enterprise-pos' },
     ],
   },
   {
     title: 'Company',
     links: [
-      { label: 'About Us', href: '/about' },
-      { label: 'Careers', href: '/careers' },
+      { label: 'About Us', href: '/about-eatos' },
+      { label: 'Careers', href: '/work-with-us' },
       { label: 'Partners', href: '/partners' },
       { label: 'Customers', href: '/customers' },
-      { label: 'Contact Sales', href: '/contact-sales' },
+      { label: 'Contact Sales', href: '/contact' },
       { label: 'Report Fraud', href: '/report-fraud' },
       { label: 'Newsroom', href: '/blog' },
       { label: 'Comparison', href: '/comparison' },
@@ -210,7 +210,7 @@ const LINK_GROUPS = [
       { label: 'Pricing', href: '/pricing' },
       { label: 'Blog', href: '/blog' },
       { label: 'Brochures', href: '/brochures' },
-      { label: 'Book a Demo', href: '/book-demo' },
+      { label: 'Book a Demo', href: '/bookademo' },
       { label: 'Help Center', href: 'https://support.eatos.com/en-us/', external: true },
       { label: 'Status', href: '/system-status' },
       { label: 'Dashboard', href: 'https://dashboard.eatos.com/', external: true },
@@ -289,7 +289,7 @@ export default function Footer() {
 
               {/* Sales card with its contact channels inside the same surface */}
               <div className={`${cardClass} h-full`}>
-                <a href="/book-demo" className="flex flex-1 flex-col justify-between">
+                <a href="/bookademo" className="flex flex-1 flex-col justify-between">
                   <div>
                     <span className={cardLabel}>Sales</span>
                     <h3 className={cardTitle}>Book a personalized demo</h3>
@@ -371,8 +371,8 @@ export default function Footer() {
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-              <a href="/privacy" className={bottomLink}>Privacy Policy</a>
-              <a href="/terms" className={bottomLink}>Terms of Service</a>
+              <a href="/privacy-policy" className={bottomLink}>Privacy Policy</a>
+              <a href="/terms-and-conditions" className={bottomLink}>Terms of Service</a>
               <button
                 onClick={() => {
                   if (typeof window !== 'undefined') {

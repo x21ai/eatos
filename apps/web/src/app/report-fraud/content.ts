@@ -112,5 +112,5 @@ export const closing = {
   description:
     'Existing customer? Our support team is here to help 24/7 by phone, live chat, email and text.',
   primaryCta: { label: 'Visit Help Center', href: '/contact' },
-  secondaryCta: { label: 'Contact support', href: '/contact-sales' },
+  secondaryCta: { label: 'Contact support', href: '/contact' },
 };

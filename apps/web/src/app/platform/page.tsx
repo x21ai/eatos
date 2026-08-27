@@ -332,7 +332,7 @@ export default function PlatformPage() {
 
             {/* Hardware */}
             <motion.a
-              href="/hardware"
+              href="/products/hardware"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -396,7 +396,7 @@ export default function PlatformPage() {
               </p>
 
               <a
-                href="/contact-sales"
+                href="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 border border-white/20 text-white font-medium hover:bg-white/20 transition-colors"
               >
                 Get Early Access <ArrowRight size={16} />
@@ -431,13 +431,13 @@ export default function PlatformPage() {
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
-                  href="/book-demo"
+                  href="/bookademo"
                   className="px-8 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform"
                 >
                   Book a Demo
                 </a>
                 <a
-                  href="/contact-sales"
+                  href="/contact"
                   className="px-8 py-4 rounded-full border border-white/30 text-white font-semibold hover:bg-white/10 transition-colors"
                 >
                   Talk to Sales

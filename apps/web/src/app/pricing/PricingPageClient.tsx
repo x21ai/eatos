@@ -63,7 +63,7 @@ export default function PricingPageClient() {
               className="flex flex-col justify-center gap-4 sm:flex-row"
             >
               <a
-                href="/book-demo"
+                href="/bookademo"
                 className="rounded-full bg-white px-8 py-4 text-center font-semibold text-black transition-transform hover:scale-105"
               >
                 Book a Demo
@@ -136,7 +136,7 @@ export default function PricingPageClient() {
 
               <div className="mt-10 text-center">
                 <a
-                  href="/book-demo"
+                  href="/bookademo"
                   className="inline-block rounded-full bg-orange-500 px-8 py-4 font-semibold text-white transition-colors hover:bg-orange-600"
                 >
                   Learn More
@@ -191,7 +191,7 @@ function RateCard({ icon: Icon, title, rate, subline, finePrint }) {
       <p className="mt-4 text-sm font-medium text-white/60">{subline}</p>
       <div className="mt-8">
         <a
-          href="/book-demo"
+          href="/bookademo"
           className="inline-block rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-transform hover:scale-105"
         >
           Book a Demo

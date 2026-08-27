@@ -11,7 +11,7 @@ export const hero = {
   titleAccent: 'Personalized Promotions with AI',
   description:
     'Automate tailored promotions that resonate with your customers, boosting engagement effortlessly.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Marketing automation dashboard',
   image: null,

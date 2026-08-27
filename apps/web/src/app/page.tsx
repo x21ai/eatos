@@ -41,7 +41,7 @@ import kdsKitchenAsset from '../assets/kds-kitchen-desk.jpg.asset.json';
 const serviceStyles = [
   {
     name: 'Quick Service',
-    href: '/solutions/quick-service',
+    href: '/quick-service',
     image: svcQuickService.url,
     icon: Zap,
     iconClass: 'bg-orange-500/20 text-orange-400',
@@ -51,7 +51,7 @@ const serviceStyles = [
   },
   {
     name: 'Full Service',
-    href: '/solutions/full-service',
+    href: '/full-service',
     image: svcFullService.url,
     icon: Utensils,
     iconClass: 'bg-indigo-500/20 text-indigo-400',
@@ -61,7 +61,7 @@ const serviceStyles = [
   },
   {
     name: 'Fast Casual',
-    href: '/solutions/fast-casual',
+    href: '/fast-casual',
     image: svcFineDining.url,
     icon: Star,
     iconClass: 'bg-amber-500/20 text-amber-400',
@@ -71,7 +71,7 @@ const serviceStyles = [
   },
   {
     name: 'Cafe',
-    href: '/solutions/cafe',
+    href: '/cafe-pos',
     image: svcCafe.url,
     icon: Coffee,
     iconClass: 'bg-rose-500/20 text-rose-400',
@@ -81,7 +81,7 @@ const serviceStyles = [
   },
   {
     name: 'Bar',
-    href: '/solutions/bar',
+    href: '/bar-and-brewery',
     image: svcBar.url,
     icon: Wine,
     iconClass: 'bg-purple-500/20 text-purple-400',
@@ -91,7 +91,7 @@ const serviceStyles = [
   },
   {
     name: 'Food Truck',
-    href: '/solutions/food-truck',
+    href: '/food-truck',
     image: svcFoodTruck.url,
     icon: Truck,
     iconClass: 'bg-emerald-500/20 text-emerald-400',
@@ -101,7 +101,7 @@ const serviceStyles = [
   },
   {
     name: 'Ghost Kitchen',
-    href: '/solutions/ghost-kitchen',
+    href: '/ghost-kitchens',
     image: svcGhostKitchen.url,
     icon: Package,
     iconClass: 'bg-sky-500/20 text-sky-400',
@@ -111,7 +111,7 @@ const serviceStyles = [
   },
   {
     name: 'Enterprise',
-    href: '/solutions/enterprise',
+    href: '/enterprise-pos',
     image: svcFranchise.url,
     icon: Building2,
     iconClass: 'bg-cyan-500/20 text-cyan-400',
@@ -184,7 +184,7 @@ export default function HomePage() {
             className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6"
           >
             <a
-              href="/book-demo"
+              href="/bookademo"
               className="group relative px-8 py-3.5 md:py-4 bg-white text-black rounded-full text-base md:text-lg font-semibold hover:scale-105 transition-all duration-300 overflow-hidden w-full sm:w-auto"
             >
               <span className="relative z-10 flex items-center justify-center gap-2">
@@ -300,7 +300,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-4 md:gap-5 lg:gap-6 h-auto">
             {/* Card 1: Point of Sale (Large) */}
             <motion.a
-              href="/point-of-sale"
+              href="/pointofsale"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -375,7 +375,7 @@ export default function HomePage() {
 
             {/* Card 4: Hardware (Wide) */}
             <motion.a
-              href="/hardware"
+              href="/products/hardware"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -481,7 +481,7 @@ export default function HomePage() {
               </p>
             </motion.div>
             <motion.a
-              href="/hardware"
+              href="/products/hardware"
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -494,7 +494,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {/* Terminal Pro */}
             <motion.a
-              href="/point-of-sale"
+              href="/pointofsale"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

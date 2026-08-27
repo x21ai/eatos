@@ -12,7 +12,7 @@ export const hero = {
   titleAccent: 'Inventory Management',
   description:
     'Introducing eatOS simplified inventory management for restaurants. Streamline tracking, reduce waste, and optimize stock levels effortlessly.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'Watch Video', href: '#' },
   imageLabel: 'Inventory management dashboard',
   image: null,

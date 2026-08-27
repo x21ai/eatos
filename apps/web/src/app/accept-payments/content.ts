@@ -10,7 +10,7 @@ export const hero = {
   titleAccent: 'Anywhere',
   description:
     'A powerful cloud based processing platform built for Quick and Full Service restaurants, available on both Android and iOS devices.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'Watch Video', href: '#' },
   imageLabel: 'eatOS payment terminal',
   image: null,

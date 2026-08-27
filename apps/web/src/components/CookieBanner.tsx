@@ -206,7 +206,7 @@ export default function CookieBanner() {
 
           <div className="flex flex-col gap-3 border-t border-white/15 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
             <a
-              href="/privacy#cookies"
+              href="/privacy-policy#cookies"
               className="text-[14px] text-gray-300 underline transition-colors hover:text-white"
             >
               Read our Cookie Policy
@@ -258,14 +258,14 @@ export default function CookieBanner() {
               We use cookies to improve your experience. By continuing, you
               agree to our{" "}
               <a
-                href="/privacy"
+                href="/privacy-policy"
                 className="underline transition-colors hover:text-white"
               >
                 Privacy Policy
               </a>{" "}
               and{" "}
               <a
-                href="/privacy#cookies"
+                href="/privacy-policy#cookies"
                 className="underline transition-colors hover:text-white"
               >
                 Cookie Policy

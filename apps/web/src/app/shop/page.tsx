@@ -29,7 +29,7 @@ export default function ShopPage() {
       price: '$999',
       image: 'https://raw.createusercontent.com/75fa62cf-3729-443e-a8de-86db72e732a9/',
       badge: 'Best Seller',
-      link: '/hardware/pro',
+      link: '/products/hardware/pro',
     },
     {
       id: 'mini',
@@ -38,7 +38,7 @@ export default function ShopPage() {
       price: '$299',
       image: null, // CSS Placeholder
       badge: 'New',
-      link: '/hardware/mini',
+      link: '/products/hardware/mini',
     },
     {
       id: 'kitchen',
@@ -46,7 +46,7 @@ export default function ShopPage() {
       category: 'Screens',
       price: '$399',
       image: null,
-      link: '/hardware',
+      link: '/products/hardware',
     },
     {
       id: 'printer',
@@ -54,7 +54,7 @@ export default function ShopPage() {
       category: 'Accessories',
       price: '$199',
       image: null,
-      link: '/hardware',
+      link: '/products/hardware',
     },
     {
       id: 'stand',
@@ -62,7 +62,7 @@ export default function ShopPage() {
       category: 'Accessories',
       price: '$49',
       image: null,
-      link: '/hardware',
+      link: '/products/hardware',
     },
     {
       id: 'drawer',
@@ -70,7 +70,7 @@ export default function ShopPage() {
       category: 'Accessories',
       price: '$79',
       image: null,
-      link: '/hardware',
+      link: '/products/hardware',
     },
   ];
 
@@ -142,7 +142,7 @@ export default function ShopPage() {
             and volume.
           </p>
           <a
-            href="/contact-sales"
+            href="/contact"
             className="inline-flex items-center gap-2 text-black font-bold border-b-2 border-black pb-1 hover:text-gray-600 hover:border-gray-600 transition-colors"
           >
             Talk to an Expert <ArrowRight size={16} />

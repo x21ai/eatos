@@ -213,13 +213,13 @@ export default function ProductsPage() {
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
-                    href="/contact-sales"
+                    href="/contact"
                     className="px-8 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform text-center"
                   >
                     Contact Sales
                   </a>
                   <a
-                    href="/book-demo"
+                    href="/bookademo"
                     className="px-8 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors text-center"
                   >
                     Book a Demo

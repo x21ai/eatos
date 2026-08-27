@@ -62,7 +62,7 @@ export default function AIPage() {
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-400">
               <a
-                href="/book-demo"
+                href="/bookademo"
                 className="group relative px-7 py-3.5 bg-white text-black rounded-full text-base sm:text-lg font-semibold hover:scale-[1.02] transition-all duration-300 overflow-hidden"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">

@@ -12,7 +12,7 @@ export const hero = {
   titleAccent: 'Pay. Go.',
   description:
     'Let guests order, customize and pay on their own. Your team stays focused on the food, not the line.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Self-service kiosk',
   image: heroAsset.url,
