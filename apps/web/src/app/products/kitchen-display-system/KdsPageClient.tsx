@@ -24,7 +24,6 @@ import { products } from '../products';
 import { demoSources } from '../../components/demoSources';
 import BrochureButton from '@/components/BrochureButton';
 
-const kdsDemo = demoSources.find((d) => d.id === 'kds');
 
 
 const hiddenFeatures = ['kitchen-grade-hardware', 'analytics-reporting'];
@@ -178,14 +177,14 @@ export default function KdsPageClient() {
           >
             <video
               className="w-full h-auto block"
-              poster={kdsDemo?.media?.poster}
+              poster={demo?.media?.poster}
               autoPlay
               muted
               loop
               playsInline
               preload="metadata"
             >
-              {kdsDemo?.media?.sources.map((source) => (
+              {demo?.media?.sources.map((source) => (
                 <source key={source.src} src={source.src} type={source.type} />
               ))}
             </video>
