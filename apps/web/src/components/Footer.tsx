@@ -92,11 +92,12 @@ const SOCIAL_LINKS = [
 ];
 
 const OFFICES = [
-  { city: 'Cupertino, CA', address: '20289 Stevens Creek Blvd PH 1019' },
-  { city: 'Miami, FL', address: '1111 Brickell Ave FL 10' },
-  { city: 'Los Angeles, CA', address: '750 N. San Vicente Blvd Ste 800' },
-  { city: 'Houston, TX', address: '21755 Interstate 45, Bldg 1 Ste 107' },
+  { city: 'Cupertino, CA', address: '20289 Stevens Creek Blvd PH 1019,', state: 'Cupertino - California - 95014.' },
+  { city: 'Miami, FL', address: '1111 Brickell Ave FL 10,', state: 'Miami - Florida - 33131.' },
+  { city: 'Los Angeles, CA', address: '750 N. San Vicente Blvd Ste 800', state: 'Los Angeles, California - 90048.' },
+  { city: 'Houston, TX', address: '21755 Interstate 45, Bldg 1 Ste 107', state: 'Spring, Texas - 77388.' },
 ];
+
 
 const LINK_GROUPS = [
   {
@@ -194,8 +195,9 @@ export default function Footer() {
   const cardTitle = 'text-xl font-medium mt-2 text-white';
   const cardLink = 'mt-8 inline-flex items-center gap-2 font-medium text-white transition-all group-hover:gap-3';
   const officeLabel = 'text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-300';
-  const officeCity = 'text-[13px] text-gray-300';
+  const officeCity = 'text-[13px] font-semibold text-white';
   const officeAddr = 'text-[12px] text-gray-300';
+
   const bottomText = 'text-[12px] text-gray-300';
   const bottomLink = 'text-[12px] text-gray-300 transition-colors hover:text-white';
   
@@ -228,7 +230,34 @@ export default function Footer() {
               ))}
             </div>
 
-            <div className="mt-4 flex flex-wrap items-center gap-3">
+          </div>
+
+
+          <div className="lg:col-span-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <a href="mailto:cs@eatos.com" className={cardClass}>
+                <div>
+                  <span className={cardLabel}>Support</span>
+                  <h3 className={cardTitle}>Dedicated help, whenever service runs</h3>
+                </div>
+                <span className={cardLink}>
+                  sales at eatOS.com
+                  <ArrowRight size={16} />
+                </span>
+              </a>
+              <a href="/book-demo" className={cardClass}>
+                <div>
+                  <span className={cardLabel}>Sales</span>
+                  <h3 className={cardTitle}>Book a personalized demo</h3>
+                </div>
+                <span className={cardLink}>
+                  +1 (844) 563-2867
+                  <ArrowRight size={16} />
+                </span>
+              </a>
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center gap-3 md:justify-end">
               {CONTACT_CHANNELS.map(({ label, href, Icon, external }) => (
                 <a
                   key={label}
@@ -243,42 +272,21 @@ export default function Footer() {
               ))}
             </div>
           </div>
-
-          <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <a href="mailto:cs@eatos.com" className={cardClass}>
-              <div>
-                <span className={cardLabel}>Support</span>
-                <h3 className={cardTitle}>Dedicated help, whenever service runs</h3>
-              </div>
-              <span className={cardLink}>
-                sales at eatOS.com
-                <ArrowRight size={16} />
-              </span>
-            </a>
-            <a href="/book-demo" className={cardClass}>
-              <div>
-                <span className={cardLabel}>Sales</span>
-                <h3 className={cardTitle}>Book a personalized demo</h3>
-              </div>
-              <span className={cardLink}>
-                +1 (844) 563-2867
-                <ArrowRight size={16} />
-              </span>
-            </a>
-          </div>
         </div>
 
         <div className="pt-10 pb-14 border-b border-white/25">
           <div className={`${officeLabel} mb-5 sm:mb-6`}>Offices</div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-10">
-            {OFFICES.map(({ city, address }) => (
+            {OFFICES.map(({ city, address, state }) => (
               <div key={city}>
                 <div className={officeCity}>{city}</div>
                 <div className={`${officeAddr} break-words`}>{address}</div>
+                <div className={`${officeAddr} break-words`}>{state}</div>
               </div>
             ))}
           </div>
         </div>
+
 
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 py-16 items-start">
