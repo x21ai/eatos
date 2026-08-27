@@ -151,22 +151,8 @@ export default function KdsPageClient() {
         </div>
       </section>
 
-      {/* Numbers strip */}
-      <section className="border-t border-white/5 py-12 md:py-16">
-        <div className="site-container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {marquee.map((stat) => (
-              <motion.div key={stat.label} {...rise} className="min-w-0 text-center">
-                <div className="text-3xl md:text-4xl font-bold tracking-tighter">{stat.value}</div>
-                <div className="mt-2 text-sm text-white/70">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* KDS demo animation */}
-      <section className="pb-20 md:pb-28 border-t border-white/5 pt-16 md:pt-20">
+      <section className="pb-16 md:pb-20 border-t border-white/5 pt-16 md:pt-20">
         <div className="site-container">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -191,6 +177,21 @@ export default function KdsPageClient() {
           </motion.div>
         </div>
       </section>
+
+      {/* Numbers strip */}
+      <section className="border-t border-white/5 py-12 md:py-16">
+        <div className="site-container">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {marquee.map((stat) => (
+              <motion.div key={stat.label} {...rise} className="min-w-0 text-center">
+                <div className="text-3xl md:text-4xl font-bold tracking-tighter">{stat.value}</div>
+                <div className="mt-2 text-sm text-white/70">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
 
 
