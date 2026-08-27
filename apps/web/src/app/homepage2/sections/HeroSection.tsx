@@ -64,7 +64,7 @@ export function HeroSection() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
-            href="/get-started"
+            href="/book-demo"
             className="group px-8 py-4 bg-white text-black rounded-full text-lg font-semibold hover:scale-105 transition-all duration-300 flex items-center gap-2"
           >
             Get Started Free{" "}

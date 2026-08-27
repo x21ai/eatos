@@ -26,7 +26,7 @@ export function FinalCTASection() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="/get-started"
+              href="/book-demo"
               className="px-8 py-4 bg-white text-black rounded-full text-lg font-semibold hover:scale-105 transition-all flex items-center gap-2 shadow-xl"
             >
               Start Free <ArrowRight size={18} />
