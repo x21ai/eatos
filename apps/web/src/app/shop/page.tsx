@@ -29,7 +29,7 @@ export default function ShopPage() {
       price: '$999',
       image: 'https://raw.createusercontent.com/75fa62cf-3729-443e-a8de-86db72e732a9/',
       badge: 'Best Seller',
-      link: '/hardware/pro',
+      link: '/products/hardware/pro',
     },
     {
       id: 'mini',
@@ -38,7 +38,7 @@ export default function ShopPage() {
       price: '$299',
       image: null, // CSS Placeholder
       badge: 'New',
-      link: '/hardware/mini',
+      link: '/products/hardware/mini',
     },
     {
       id: 'kitchen',
