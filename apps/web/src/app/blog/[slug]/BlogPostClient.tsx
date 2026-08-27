@@ -7,6 +7,8 @@ import { ArrowLeft, ArrowRight, Share2 } from 'lucide-react';
 import { Placeholder } from '@/components/marketing/Placeholder';
 import { NewsletterSection } from '@/components/NewsletterSection';
 import { getPost, getRelated, formatDate } from '../content';
+import PostReactions from './PostReactions';
+
 
 export default function BlogPostClient({ slug }) {
   const post = getPost(slug);
