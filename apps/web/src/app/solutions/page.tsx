@@ -7,6 +7,7 @@ import {
   Star,
   Coffee,
   Wine,
+  Pizza,
   Truck,
   Package,
   Building2,
