@@ -671,7 +671,7 @@ export default function HomePage() {
               <br />
               <span className="text-gray-500">your whole stack.</span>
             </h2>
-            <p className="text-gray-400 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
+            <p className="text-white font-medium text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
               eatOS connects with the tools your restaurant already uses.
               <br />
               No double entry, no workarounds.
@@ -704,7 +704,7 @@ export default function HomePage() {
                 <div className="text-sm md:text-base font-semibold text-white mb-1">
                   {integration.name}
                 </div>
-                <div className="text-xs text-gray-500">{integration.category}</div>
+                <div className="text-xs font-medium text-white/75">{integration.category}</div>
               </motion.div>
             ))}
           </div>
