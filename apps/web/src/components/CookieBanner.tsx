@@ -112,43 +112,43 @@ export default function CookieBanner() {
 
   if (showPreferences) {
     return (
-      <div className="fixed inset-0 z-[60] flex items-end justify-center bg-black/50 p-0 sm:items-center sm:p-6">
+      <div className="fixed inset-0 z-[60] flex items-end justify-center bg-black/70 p-0 sm:items-center sm:p-6 font-montserrat">
         <div
           role="dialog"
           aria-modal="true"
           aria-label="Cookie preferences"
-          className="flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-t-2xl bg-white shadow-2xl sm:rounded-2xl"
+          className="flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-t-2xl border border-white/15 bg-black shadow-2xl sm:rounded-2xl"
         >
-          <div className="flex items-start justify-between gap-4 border-b border-gray-200 px-6 py-5">
+          <div className="flex items-start justify-between gap-4 border-b border-white/15 px-6 py-5">
             <div>
-              <h2 className="text-[19px] font-semibold text-black">
+              <h2 className="text-[19px] font-semibold text-white">
                 Cookie preferences
               </h2>
-              <p className="mt-1 text-[14px] leading-5 text-gray-600">
+              <p className="mt-1 text-[14px] leading-5 text-gray-300">
                 Choose which cookies eatOS can use. You can change this at any
                 time from Cookie Settings in the footer.
               </p>
             </div>
             <button
               onClick={() => setShowPreferences(false)}
-              className="p-1 text-gray-400 transition-colors hover:text-black"
+              className="p-1 text-gray-400 transition-colors hover:text-white"
               aria-label="Close cookie preferences"
             >
               ✕
             </button>
           </div>
 
-          <div className="flex-1 divide-y divide-gray-200 overflow-y-auto px-6">
+          <div className="flex-1 divide-y divide-white/10 overflow-y-auto px-6">
             {CATEGORIES.map((category) => (
               <div
                 key={category.id}
                 className="flex items-start justify-between gap-5 py-5"
               >
                 <div className="flex-1">
-                  <p className="text-[16px] font-semibold text-black">
+                  <p className="text-[16px] font-semibold text-white">
                     {category.title}
                   </p>
-                  <p className="mt-1.5 text-[15px] leading-6 text-gray-600">
+                  <p className="mt-1.5 text-[15px] leading-6 text-gray-300">
                     {category.description}
                   </p>
                 </div>
@@ -161,8 +161,8 @@ export default function CookieBanner() {
                   onClick={() => !category.required && toggle(category.id)}
                   className={`relative mt-1 h-6 w-11 shrink-0 rounded-full transition-colors ${
                     category.required || prefs[category.id]
-                      ? "bg-black"
-                      : "bg-gray-300"
+                      ? "bg-brand"
+                      : "bg-white/25"
                   } ${category.required ? "cursor-not-allowed opacity-60" : "cursor-pointer"}`}
                 >
                   <span
@@ -177,34 +177,37 @@ export default function CookieBanner() {
             ))}
           </div>
 
-          <div className="flex flex-col gap-3 border-t border-gray-200 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-3 border-t border-white/15 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
             <a
               href="/privacy#cookies"
-              className="text-[14px] text-gray-600 underline transition-colors hover:text-black"
+              className="text-[14px] text-gray-300 underline transition-colors hover:text-white"
             >
               Read our Cookie Policy
             </a>
             <div className="flex flex-wrap items-center gap-3">
               <button
                 onClick={handleRejectAll}
-                className="px-5 py-2.5 text-[15px] font-medium text-gray-700 transition-colors hover:text-black"
+                className="px-5 py-2.5 text-[15px] font-medium text-gray-300 transition-colors hover:text-white"
               >
                 Reject All
               </button>
               <button
                 onClick={handleSavePreferences}
-                className="rounded-lg border border-black px-5 py-2.5 text-[15px] font-medium text-black transition-colors hover:bg-gray-100"
+                className="rounded-lg border border-white/30 px-5 py-2.5 text-[15px] font-medium text-white transition-colors hover:border-white/60"
               >
                 Save Preferences
               </button>
               <button
                 onClick={handleAcceptAll}
-                className="rounded-lg bg-black px-6 py-2.5 text-[15px] font-medium text-white transition-colors hover:bg-gray-800"
+                className="rounded-lg bg-white px-6 py-2.5 text-[15px] font-medium text-black transition-colors hover:bg-gray-200"
               >
                 Accept All
               </button>
             </div>
           </div>
+        </div>
+      </div>
+
         </div>
       </div>
     );
