@@ -22,6 +22,7 @@ import { Placeholder } from '@/components/marketing/Placeholder';
 import { features, hardware, hero, keyFeatures } from './content';
 import { products } from '../products';
 import BrochureButton from '@/components/BrochureButton';
+import { demoSources } from '../../components/demoSources';
 
 const relatedIcons = [
   { Icon: Monitor, tint: 'bg-sky-500/10 text-sky-400' },
