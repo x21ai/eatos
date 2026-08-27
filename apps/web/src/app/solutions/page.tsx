@@ -52,6 +52,16 @@ const solutions = [
     image: null,
   },
   {
+    href: '/solutions/pizzeria',
+    title: 'Pizzeria',
+    description:
+      'Custom pies without the slow down. Fast toppings and halves, delivery and pickup in one queue.',
+    Icon: Pizza,
+    color: 'red',
+    features: ['Pizza builder modifiers', 'Delivery and dispatch', 'Cost per pie visibility'],
+    image: null,
+  },
+  {
     href: '/solutions/cafe',
     title: 'Cafe and Coffee Shop',
     description:
