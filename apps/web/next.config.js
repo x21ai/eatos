@@ -110,11 +110,11 @@ const nextConfig = {
       ['/support', '/contact'],
       ['/nameyourprice', '/pricing'],
       ['/newsroom', '/blog'],
-      ['/newsroom/:path*', '/blog'],
+      ['/newsroom/:path+', '/blog'],
       ['/news', '/blog'],
-      ['/news/:path*', '/blog'],
+      ['/news/:path+', '/blog'],
       ['/event-list', '/blog'],
-      ['/event-pages/:path*', '/blog'],
+      ['/event-pages/:path+', '/blog'],
       ['/blogs', '/blog'],
       ['/blogs/:slug', '/blog'],
       ['/blog/categories/:category', '/blog'],
@@ -128,7 +128,7 @@ const nextConfig = {
       ['/general/sms-policy', '/terms-and-conditions'],
       ['/general/hardware-policy', '/terms-and-conditions'],
       ['/general/privacy-policy', '/privacy-policy'],
-      ['/general/:path*', '/terms-and-conditions'],
+      ['/general/:path+', '/terms-and-conditions'],
 
       // Careers cluster.
       ['/benefits', '/work-with-us'],
@@ -140,7 +140,7 @@ const nextConfig = {
       ['/protect-yourself-from-job-scams', '/work-with-us'],
 
       // Partner cluster.
-      ['/partners/:path*', '/partners'],
+      ['/partners/:path+', '/partners'],
       ['/referral-partners', '/partners'],
       ['/integration-partners', '/partners'],
       ['/ambassadors', '/partners'],
@@ -158,7 +158,7 @@ const nextConfig = {
       ['/restaurant/cafe', '/cafe-pos'],
       ['/restaurant/enterprise', '/enterprise-pos'],
       ['/restaurant/enterprises', '/enterprise-pos'],
-      ['/restaurant/:path*', '/solutions'],
+      ['/restaurant/:path+', '/solutions'],
 
       // Store collection pages.
       ['/product-page/:slug', '/shop'],
