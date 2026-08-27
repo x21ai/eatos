@@ -91,12 +91,54 @@ const SOCIAL_LINKS = [
   { label: 'Brochures', href: '/brochures', Icon: BrochureIcon, internal: true },
 ];
 
+// Structured office records. Line breaks are never authored by hand: the
+// formatter below turns each record into the same multi-line block so city,
+// state and ZIP always stay together on one line.
 const OFFICES = [
-  { city: 'Cupertino, CA', address: '20289 Stevens Creek Blvd PH 1019,', state: 'Cupertino - California - 95014.' },
-  { city: 'Miami, FL', address: '1111 Brickell Ave FL 10,', state: 'Miami - Florida - 33131.' },
-  { city: 'Los Angeles, CA', address: '750 N. San Vicente Blvd Ste 800', state: 'Los Angeles, California - 90048.' },
-  { city: 'Houston, TX', address: '21755 Interstate 45, Bldg 1 Ste 107', state: 'Spring, Texas - 77388.' },
+  {
+    stateCode: 'CA',
+    street: '20289 Stevens Creek Blvd',
+    suite: 'PH 1019',
+    city: 'Cupertino',
+    state: 'California',
+    zip: '95014',
+  },
+  {
+    stateCode: 'FL',
+    street: '1111 Brickell Ave',
+    suite: 'FL 10',
+    city: 'Miami',
+    state: 'Florida',
+    zip: '33131',
+  },
+  {
+    stateCode: 'CA',
+    street: '750 N. San Vicente Blvd',
+    suite: 'Ste 800',
+    city: 'Los Angeles',
+    state: 'California',
+    zip: '90048',
+  },
+  {
+    stateCode: 'TX',
+    street: '21755 Interstate 45, Bldg 1',
+    suite: 'Ste 107',
+    city: 'Spring',
+    state: 'Texas',
+    zip: '77388',
+  },
 ];
+
+// Single source of truth for address rendering across the site.
+export function formatOfficeAddress(office) {
+  const { stateCode, street, suite, city, state, zip } = office;
+  return {
+    heading: `${city}, ${stateCode}`,
+    streetLine: [street, suite].filter(Boolean).join(' '),
+    localityLine: `${city}, ${state} ${zip}`,
+  };
+}
+
 
 
 const LINK_GROUPS = [
@@ -234,7 +276,7 @@ export default function Footer() {
 
 
           <div className="lg:col-span-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
               <a href="mailto:cs@eatos.com" className={cardClass}>
                 <div>
                   <span className={cardLabel}>Support</span>
@@ -245,45 +287,54 @@ export default function Footer() {
                   <ArrowRight size={16} />
                 </span>
               </a>
-              <a href="/book-demo" className={cardClass}>
-                <div>
-                  <span className={cardLabel}>Sales</span>
-                  <h3 className={cardTitle}>Book a personalized demo</h3>
-                </div>
-                <span className={cardLink}>
-                  +1 (844) 563-2867
-                  <ArrowRight size={16} />
-                </span>
-              </a>
-            </div>
 
-            <div className="mt-6 flex flex-wrap items-center gap-3 md:justify-end">
-              {CONTACT_CHANNELS.map(({ label, href, Icon, external }) => (
-                <a
-                  key={label}
-                  href={href}
-                  {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                  aria-label={label}
-                  title={label}
-                  className={socialClass}
-                >
-                  <Icon size={16} />
+              {/* Sales column: card plus the contact channels that belong to it */}
+              <div className="flex flex-col gap-6">
+                <a href="/book-demo" className={cardClass}>
+                  <div>
+                    <span className={cardLabel}>Sales</span>
+                    <h3 className={cardTitle}>Book a personalized demo</h3>
+                  </div>
+                  <span className={cardLink}>
+                    +1 (844) 563-2867
+                    <ArrowRight size={16} />
+                  </span>
                 </a>
-              ))}
+
+                <div className="flex flex-wrap items-center gap-3">
+                  {CONTACT_CHANNELS.map(({ label, href, Icon, external }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                      aria-label={label}
+                      title={label}
+                      className={socialClass}
+                    >
+                      <Icon size={16} />
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
+
         </div>
 
         <div className="pt-10 pb-14 border-b border-white/25">
           <div className={`${officeLabel} mb-5 sm:mb-6`}>Offices</div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-10">
-            {OFFICES.map(({ city, address, state }) => (
-              <div key={city}>
-                <div className={officeCity}>{city}</div>
-                <div className={`${officeAddr} break-words`}>{address}</div>
-                <div className={`${officeAddr} break-words`}>{state}</div>
-              </div>
-            ))}
+            {OFFICES.map((office) => {
+              const { heading, streetLine, localityLine } = formatOfficeAddress(office);
+              return (
+                <div key={heading}>
+                  <div className={officeCity}>{heading}</div>
+                  <div className={`${officeAddr} text-balance`}>{streetLine}</div>
+                  <div className={`${officeAddr} whitespace-nowrap`}>{localityLine}</div>
+                </div>
+              );
+            })}
+
           </div>
         </div>
 
