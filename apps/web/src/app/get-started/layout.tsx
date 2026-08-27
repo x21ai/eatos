@@ -1,19 +1,13 @@
 // @ts-nocheck
+// This route permanently redirects to /book-demo, which is the primary URL.
 export const metadata = {
-  title: 'Get Started with eatOS',
-  description:
-    'Tell us about your restaurant and an eatOS specialist will build a hardware and software plan sized to your locations and service style.',
-  openGraph: {
-    type: 'website',
-    title: 'Get Started with eatOS | Restaurant Technology Cloud',
-    description:
-      'Tell us about your restaurant and get a hardware and software plan sized to your locations.',
+  title: 'Book a Restaurant Technology Demo',
+  robots: {
+    index: false,
+    follow: true,
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Get Started with eatOS | Restaurant Technology Cloud',
-    description:
-      'Tell us about your restaurant and get a hardware and software plan sized to your locations.',
+  alternates: {
+    canonical: 'https://eatos.com/book-demo',
   },
 };
 
