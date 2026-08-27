@@ -51,7 +51,14 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+    /* ---- Site theme setting: brand accent ---- */
+    --brand: #d70480;
+    --brand-on-dark: #ff4fa3;
+    --brand-strong: #b0036a;
+    --brand-soft: rgb(215 4 128 / 0.14);
+
     --background: hsl(0 0% 100%);
+
     --foreground: hsl(240 10% 3.9%);
     --card: hsl(0 0% 100%);
     --card-foreground: hsl(240 10% 3.9%);
