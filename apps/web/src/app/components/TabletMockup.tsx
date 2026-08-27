@@ -1,12 +1,15 @@
 'use client';
 
+export type VideoSource = { src: string; type: string };
+
 interface TabletMockupProps {
-  gif: string;
+  sources: VideoSource[];
+  poster?: string;
   label: string;
   className?: string;
 }
 
-export function TabletMockup({ gif, label, className = '' }: TabletMockupProps) {
+export function TabletMockup({ sources, poster, label, className = '' }: TabletMockupProps) {
   return (
     <div className={`relative mx-auto w-full max-w-[820px] ${className}`}>
       {/* Tablet shell */}
@@ -18,14 +21,21 @@ export function TabletMockup({ gif, label, className = '' }: TabletMockupProps) 
             className="absolute left-1.5 sm:left-2 top-1/2 -translate-y-1/2 h-1.5 w-1.5 rounded-full bg-white/25 ring-1 ring-black/60"
           />
           <div className="relative h-full w-full overflow-hidden rounded-[0.9rem] sm:rounded-[1.15rem] bg-black">
-            <img
-              key={gif}
-              src={gif}
-              alt={`${label} demo animation`}
-              loading="lazy"
-              decoding="async"
+            <video
+              key={sources[0]?.src}
               className="absolute inset-0 h-full w-full object-contain"
-            />
+              poster={poster}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              aria-label={`${label} demo animation`}
+            >
+              {sources.map((s) => (
+                <source key={s.src} src={s.src} type={s.type} />
+              ))}
+            </video>
           </div>
         </div>
       </div>
