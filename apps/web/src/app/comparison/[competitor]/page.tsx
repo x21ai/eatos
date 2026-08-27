@@ -15,7 +15,8 @@ export async function generateMetadata({ params }) {
   return {
     title: `eatOS vs ${name}`,
     description,
-    openGraph: { type: 'website', title, description },
+    alternates: { canonical: `/eatos-vs-${competitor}` },
+    openGraph: { type: 'website', title, description, url: `/eatos-vs-${competitor}` },
     twitter: { card: 'summary_large_image', title, description },
   };
 }
