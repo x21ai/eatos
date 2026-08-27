@@ -154,6 +154,9 @@ export default function KdsPageClient() {
       {/* KDS demo animation */}
       <section className="pb-16 md:pb-20 border-t border-white/5 pt-16 md:pt-20">
         <div className="site-container">
+          <motion.h2 {...rise} className="mb-8 md:mb-12 text-center text-3xl md:text-5xl font-bold tracking-tighter">
+            How it Works
+          </motion.h2>
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
