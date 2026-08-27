@@ -36,16 +36,6 @@ const rise = {
   viewport: { once: true, amount: 0.2 },
 };
 
-const menuItems = [
-  { name: 'Wagyu Burger', price: '$24', color: 'from-orange-500/20 to-red-500/20' },
-  { name: 'Truffle Fries', price: '$12', color: 'from-yellow-500/20 to-orange-500/20' },
-  { name: 'Caesar Salad', price: '$16', color: 'from-green-500/20 to-emerald-500/20' },
-  { name: 'Spicy Tuna', price: '$22', color: 'from-red-500/20 to-pink-500/20' },
-  { name: 'Ribeye Steak', price: '$45', color: 'from-red-900/20 to-red-600/20' },
-  { name: 'Lobster Roll', price: '$32', color: 'from-orange-400/20 to-red-400/20' },
-  { name: 'Old Fashioned', price: '$18', color: 'from-amber-700/20 to-amber-500/20' },
-  { name: 'Martini', price: '$16', color: 'from-blue-200/10 to-white/10' },
-];
 
 export default function PosPageClient() {
   return (
