@@ -41,7 +41,12 @@ export default async function sitemap() {
     '/food-truck',
     '/ghost-kitchens',
     '/catering',
-    '/enterprise-pos',
+    '/pizzeria',
+    '/brochures',
+    '/eatos-vs-other-pos-software',
+    ...['square', 'toast', 'lightspeed', 'spoton', 'touchbistro', 'revel', 'micros'].map(
+      (competitor) => `/eatos-vs-${competitor}`
+    ),
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
