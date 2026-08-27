@@ -83,7 +83,8 @@ export const demoSources: DemoSource[] = [
     blurb: 'A guest facing display for order clarity, tips, and pickup details.',
     device: 'tablet',
     media: {
-      gif: cfdGif.url,
+      sources: videoSources(cfdWebm, cfdMp4),
+      poster: cfdPoster.url,
       caption: 'Check in, redeem a reward, tip, pay, and get the receipt.',
     },
   },
