@@ -16,6 +16,10 @@ import { motion } from 'motion/react';
 import BrochureButton from '@/components/BrochureButton';
 import { Placeholder } from '@/components/marketing/Placeholder';
 import { features, hero } from './content';
+import { demoSources } from '../components/demoSources';
+
+const posDemo = demoSources.find((d) => d.id === 'pos');
+
 
 const featureIcons = [
   { Icon: RefreshCw, tint: 'bg-emerald-500/10 text-emerald-400' },
