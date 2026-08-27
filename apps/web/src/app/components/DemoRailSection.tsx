@@ -80,7 +80,7 @@ export function DemoRailSection({
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-gray-400 text-lg max-w-2xl mx-auto"
+            className="text-white/85 text-lg font-medium max-w-2xl mx-auto"
           >
             {description}
           </motion.p>
