@@ -1,7 +1,7 @@
 // @ts-nocheck
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const CONSENT_KEY = "eatos_cookie_consent";
 const PREFS_KEY = "eatos_cookie_prefs";
@@ -101,12 +101,39 @@ export default function CookieBanner() {
     setIsVisible(false);
   };
 
+  // Reserve space at the bottom of the page while the consent bar is on screen so
+  // the bar sits below the last footer row instead of covering it. The padding is
+  // removed as soon as the bar goes away or the preferences dialog takes over.
+  const barRef = useRef(null);
+  const showBar = isVisible && !showPreferences;
+
+  useEffect(() => {
+    if (!showBar) {
+      document.body.style.paddingBottom = "";
+      return;
+    }
+
+    const applyPadding = () => {
+      const height = barRef.current?.offsetHeight;
+      if (height) document.body.style.paddingBottom = `${height}px`;
+    };
+
+    applyPadding();
+    window.addEventListener("resize", applyPadding);
+
+    return () => {
+      window.removeEventListener("resize", applyPadding);
+      document.body.style.paddingBottom = "";
+    };
+  }, [showBar]);
+
   const handleAcceptAll = () => persist("accepted", ALL_ON);
   const handleRejectAll = () => persist("rejected", DEFAULT_PREFS);
   const handleSavePreferences = () => persist("custom", { ...prefs, necessary: true });
 
   const toggle = (id) =>
     setPrefs((current) => ({ ...current, [id]: !current[id] }));
+
 
   if (!isVisible) return null;
 
@@ -212,8 +239,19 @@ export default function CookieBanner() {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/15 bg-black shadow-2xl font-montserrat">
+    // The outer wrapper spans the full viewport width but is mostly empty space
+    // sitting over the footer, so it must not capture clicks. Only the visible
+    // panel below re-enables pointer events.
+    <div
+      className="pointer-events-none fixed bottom-0 left-0 right-0 z-50 font-montserrat"
+      aria-live="polite"
+    >
+      <div
+        ref={barRef}
+        className="pointer-events-auto border-t border-white/15 bg-black shadow-2xl"
+      >
       <div className="site-container py-6">
+
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
           <div className="flex-1 text-[15px] leading-6 text-gray-300">
             <p>
@@ -258,8 +296,9 @@ export default function CookieBanner() {
             </button>
           </div>
         </div>
-
+      </div>
       </div>
     </div>
+
   );
 }
