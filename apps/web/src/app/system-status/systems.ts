@@ -24,7 +24,7 @@ export const systemGroups: SystemGroup[] = [
     systems: [
       { name: 'eatOS.com', url: 'https://eatos.com', status: 'operational', uptime: '99.99%' },
       {
-        name: 'eatOS Dashboard',
+        name: 'Dashboard',
         url: 'https://dashboard.eatos.com',
         status: 'operational',
         uptime: '99.99%',
@@ -36,7 +36,7 @@ export const systemGroups: SystemGroup[] = [
         uptime: '99.95%',
       },
       {
-        name: 'Online Ordering',
+        name: 'orderOS',
         url: 'https://order.eatos.com',
         status: 'operational',
         uptime: '99.98%',
