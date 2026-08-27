@@ -42,7 +42,7 @@ export default function SystemStatusPage() {
     <main className="min-h-screen bg-black text-white">
       {/* Hero */}
       <section className="site-container pt-36 pb-12 md:pt-44 md:pb-16">
-        <p className="text-xs md:text-sm uppercase tracking-widest text-gray-500 font-semibold mb-6">
+        <p className="text-xs md:text-sm tracking-widest text-gray-500 font-semibold mb-6">
           eatOS SYSTEM STATUS
         </p>
         <div className="flex items-center gap-4">
