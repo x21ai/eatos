@@ -21,7 +21,11 @@ import {
   marquee,
 } from './content';
 import { products } from '../products';
+import { demoSources } from '../../components/demoSources';
 import BrochureButton from '@/components/BrochureButton';
+
+const kdsDemo = demoSources.find((d) => d.id === 'kds');
+
 
 const hiddenFeatures = ['kitchen-grade-hardware', 'analytics-reporting'];
 const features = allFeatures.filter((f) => !hiddenFeatures.includes(f.id));
