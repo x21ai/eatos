@@ -156,7 +156,7 @@ const LINK_GROUPS = [
     ],
   },
   {
-    title: 'Products',
+    title: 'RESTAURANT TYPE',
     links: [
       { label: 'Kitchen Display', href: '/products/kitchen-display-system' },
       { label: 'Self-Service Kiosk', href: '/products/self-service-kiosk' },
