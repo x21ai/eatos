@@ -141,8 +141,6 @@ export default function Header() {
         "/get-started",
         "/about",
         "/careers",
-        "/privacy",
-        "/terms",
         "/customers",
       ];
 
@@ -235,7 +233,7 @@ export default function Header() {
       title: "Kitchen Display",
       description: "Real-time kitchen flow",
       Icon: LayoutGrid,
-      iconWrap: "bg-emerald-100 text-emerald-700",
+      iconWrap: "bg-brand-soft text-brand",
     },
     {
       href: "/products/self-service-kiosk",
@@ -364,7 +362,7 @@ export default function Header() {
       title: "Food Truck",
       description: "Mobile. Powerful. Reliable.",
       Icon: Truck,
-      iconWrap: "bg-green-100 text-green-600",
+      iconWrap: "bg-brand-soft text-brand",
     },
     {
       href: "/solutions/ghost-kitchen",
@@ -710,7 +708,7 @@ export default function Header() {
                   href: "/products/kitchen-display-system",
                   Icon: LayoutGrid,
                   label: "Kitchen Display",
-                  color: "text-emerald-600",
+                  color: "text-brand",
                 },
                 {
                   href: "/products/simplified-inventory-management",

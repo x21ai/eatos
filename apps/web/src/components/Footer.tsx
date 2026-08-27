@@ -325,10 +325,10 @@ export default function Footer() {
               <button
                 onClick={() => {
                   if (typeof window !== 'undefined') {
-                    localStorage.removeItem('eatos_cookie_consent');
-                    window.dispatchEvent(new Event('openCookieBanner'));
+                    window.dispatchEvent(new Event('openCookiePreferences'));
                   }
                 }}
+
                 className={`${bottomLink} bg-transparent border-0 cursor-pointer p-0 text-[12px]`}
               >
                 Cookie Settings

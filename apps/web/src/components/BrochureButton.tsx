@@ -33,7 +33,7 @@ function BrochureModal({ item, onClose }) {
       >
         <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-3 sm:px-6">
           <div className="min-w-0">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-emerald-500">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-brand-on-dark">
               Brochure
             </p>
             <h2 className="truncate text-sm font-bold text-white sm:text-base">{item.title}</h2>

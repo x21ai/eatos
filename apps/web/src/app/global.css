@@ -51,7 +51,14 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+    /* ---- Site theme setting: brand accent ---- */
+    --brand: #d70480;
+    --brand-on-dark: #ff4fa3;
+    --brand-strong: #b0036a;
+    --brand-soft: rgb(215 4 128 / 0.14);
+
     --background: hsl(0 0% 100%);
+
     --foreground: hsl(240 10% 3.9%);
     --card: hsl(0 0% 100%);
     --card-foreground: hsl(240 10% 3.9%);
@@ -158,7 +165,22 @@
     --radius-md: calc(var(--radius) - 2px);
     --radius-lg: var(--radius);
     --radius-xl: calc(var(--radius) + 4px);
+
+    /*
+     * Brand accent (single source of truth).
+     * Change --brand below and every brand accent across the site follows:
+     * eyebrows, category labels, list bullets, focus rings and washes.
+     * - brand         : the core brand color, for large text, fills, bullets, borders
+     * - brand-on-dark : lightened variant for SMALL text on dark surfaces (AA 4.5:1)
+     * - brand-strong  : hover / pressed state
+     * - brand-soft    : translucent wash for backgrounds and chips
+     */
+    --color-brand: var(--brand);
+    --color-brand-on-dark: var(--brand-on-dark);
+    --color-brand-strong: var(--brand-strong);
+    --color-brand-soft: var(--brand-soft);
 }
+
 
 @layer base {
     * {
