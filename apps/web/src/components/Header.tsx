@@ -222,13 +222,7 @@ export default function Header() {
       iconWrap: "bg-purple-100 text-purple-600",
     },
     {
-      href: "/hardware",
-      title: "Hardware",
-      description: "Terminals & accessories",
-      Icon: ShoppingBag,
-      iconWrap: "bg-gray-100 text-gray-600",
-    },
-    {
+
       href: "/products/kitchen-display-system",
       title: "Kitchen Display",
       description: "Real-time kitchen flow",
