@@ -343,7 +343,7 @@ export default function BlogIndexClient() {
   );
 
   return (
-    <main className="bg-black">
+    <div className="bg-black">
       <HeroBanner />
 
       <section className="bg-black pb-16 md:pb-24">
@@ -386,6 +386,6 @@ export default function BlogIndexClient() {
       </section>
 
       <NewsletterSection />
-    </main>
+    </div>
   );
 }
