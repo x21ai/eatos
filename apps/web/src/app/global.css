@@ -158,7 +158,22 @@
     --radius-md: calc(var(--radius) - 2px);
     --radius-lg: var(--radius);
     --radius-xl: calc(var(--radius) + 4px);
+
+    /*
+     * Brand accent (single source of truth).
+     * Change --brand below and every brand accent across the site follows:
+     * eyebrows, category labels, list bullets, focus rings and washes.
+     * - brand         : the core brand color, for large text, fills, bullets, borders
+     * - brand-on-dark : lightened variant for SMALL text on dark surfaces (AA 4.5:1)
+     * - brand-strong  : hover / pressed state
+     * - brand-soft    : translucent wash for backgrounds and chips
+     */
+    --color-brand: var(--brand);
+    --color-brand-on-dark: var(--brand-on-dark);
+    --color-brand-strong: var(--brand-strong);
+    --color-brand-soft: var(--brand-soft);
 }
+
 
 @layer base {
     * {
