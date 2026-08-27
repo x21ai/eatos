@@ -2,6 +2,10 @@
 // All copy for the Pizzeria solution page. Edit here.
 // Images are placeholders for now, set `image` to an asset url when available.
 
+import builderAsset from '@/assets/pizzeria-builder.png.asset.json';
+import deliveryAsset from '@/assets/pizzeria-delivery.jpg.asset.json';
+import costAsset from '@/assets/pizzeria-cost.png.asset.json';
+
 export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
   title: 'Point of Sale for Pizzerias',
@@ -29,7 +33,7 @@ export const pillars = [
     more:
       'Pricing rules follow the build, so an extra topping on a half charges correctly every time with no manual math at the register.',
     imageLabel: 'Pizza builder on the Point of Sale',
-    image: null,
+    image: builderAsset.url,
     metrics: [
       { value: '1 tap', label: 'Per topping' },
       { value: '100%', label: 'Accurate pricing' },
@@ -43,7 +47,7 @@ export const pillars = [
     more:
       'Assign drivers, track runs and reconcile delivery cash and tips at close, all inside the same platform your counter runs on.',
     imageLabel: 'Delivery dispatch and order queue',
-    image: null,
+    image: deliveryAsset.url,
     metrics: [
       { value: '1', label: 'Unified queue' },
       { value: '4', label: 'Order channels' },
@@ -57,7 +61,7 @@ export const pillars = [
     more:
       'Low-stock alerts, waste logging and vendor ordering keep prep tight on your highest volume items.',
     imageLabel: 'Recipe-level inventory reporting',
-    image: null,
+    image: costAsset.url,
     metrics: [
       { value: 'Per pie', label: 'Cost visibility' },
       { value: 'Live', label: 'Stock counts' },
