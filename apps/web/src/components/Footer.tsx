@@ -195,8 +195,9 @@ export default function Footer() {
   const cardTitle = 'text-xl font-medium mt-2 text-white';
   const cardLink = 'mt-8 inline-flex items-center gap-2 font-medium text-white transition-all group-hover:gap-3';
   const officeLabel = 'text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-300';
-  const officeCity = 'text-[13px] text-gray-300';
+  const officeCity = 'text-[13px] font-semibold text-white';
   const officeAddr = 'text-[12px] text-gray-300';
+
   const bottomText = 'text-[12px] text-gray-300';
   const bottomLink = 'text-[12px] text-gray-300 transition-colors hover:text-white';
   
