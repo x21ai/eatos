@@ -22,6 +22,7 @@ import { motion } from 'motion/react';
 import { features, hardware, hero, keyFeatures } from './content';
 import { products } from '../products';
 import BrochureButton from '@/components/BrochureButton';
+import { demoSources } from '../../components/demoSources';
 
 const relatedIcons = [
   { Icon: Monitor, tint: 'bg-sky-500/10 text-sky-400' },
@@ -50,6 +51,8 @@ const rise = {
 };
 
 export default function KioskPageClient() {
+  const demo = demoSources.find((d) => d.id === 'kiosk');
+
   return (
     <div className="min-h-screen bg-black text-white font-montserrat selection:bg-indigo-500/30">
       {/* Hero */}
@@ -156,6 +159,37 @@ export default function KioskPageClient() {
               </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Kiosk demo animation */}
+      <section className="pb-16 md:pb-20 border-t border-white/5 pt-16 md:pt-20">
+        <div className="site-container">
+          <motion.h2 {...rise} className="mb-8 md:mb-12 text-center text-3xl md:text-5xl font-bold tracking-tighter">
+            How it Works
+          </motion.h2>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="mx-auto min-w-0 max-w-3xl rounded-[1.5rem] md:rounded-[2rem] border border-white/10 bg-zinc-900 shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-hidden"
+          >
+            <video
+              className="w-full h-auto block"
+              poster={demo?.media?.poster}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              aria-label="Self Service Kiosk demo animation"
+            >
+              {demo?.media?.sources.map((s) => (
+                <source key={s.src} src={s.src} type={s.type} />
+              ))}
+            </video>
+          </motion.div>
         </div>
       </section>
 
