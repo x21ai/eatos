@@ -57,7 +57,8 @@ export const demoSources: DemoSource[] = [
     blurb: 'Route tickets to the right station and keep orders moving on time.',
     device: 'tablet',
     media: {
-      gif: kdsGif.url,
+      sources: videoSources(kdsWebm, kdsMp4),
+      poster: kdsPoster.url,
       caption: 'Clock in, work the board, bump the ticket.',
     },
   },
