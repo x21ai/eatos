@@ -8,6 +8,7 @@ import {
   Command,
   CreditCard,
   Box,
+  Sparkles,
   ChefHat,
   Utensils,
   Zap,
@@ -191,10 +192,10 @@ export default function HomePage() {
               </span>
             </a>
             <a
-              href="/hardware"
+              href="/ai"
               className="px-8 py-3.5 md:py-4 rounded-full text-base md:text-lg font-medium text-white border border-white/20 hover:bg-white/10 hover:border-white/40 transition-all backdrop-blur-sm w-full sm:w-auto flex items-center justify-center gap-2"
             >
-              <Box size={18} /> Explore Hardware
+              <Sparkles size={18} /> Explore Intelligence
             </a>
           </motion.div>
         </div>
