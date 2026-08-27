@@ -107,7 +107,8 @@ export const demoSources: DemoSource[] = [
     blurb: 'Counts, vendors and recipe costing in one place, synced to every store.',
     device: 'laptop',
     media: {
-      gif: invGif.url,
+      sources: videoSources(invWebm, invMp4),
+      poster: invPoster.url,
       caption: 'Counts, purchases, waste and production value in one view.',
     },
   },
