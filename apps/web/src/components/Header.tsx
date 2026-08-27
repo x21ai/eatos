@@ -463,7 +463,7 @@ export default function Header() {
             <button
               className={`flex items-center gap-1 py-2 hover:opacity-70 transition-opacity ${navTextClass}`}
             >
-              Restaurant Type
+              Solutions
               <ChevronDown
                 size={13}
                 className={`transition-transform duration-200 ${productsOpen ? "rotate-180" : ""}`}
@@ -522,7 +522,7 @@ export default function Header() {
             <button
               className={`flex items-center gap-1 py-2 hover:opacity-70 transition-opacity ${navTextClass}`}
             >
-              Solutions
+              Restaurant Type
               <ChevronDown
                 size={13}
                 className={`transition-transform duration-200 ${solutionsOpen ? "rotate-180" : ""}`}
