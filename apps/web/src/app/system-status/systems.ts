@@ -22,18 +22,11 @@ export const systemGroups: SystemGroup[] = [
   {
     name: 'Web Services',
     systems: [
-      { name: 'eatOS.com', url: 'https://eatos.com', status: 'operational', uptime: '99.99%' },
       {
         name: 'Dashboard',
         url: 'https://dashboard.eatos.com',
         status: 'operational',
         uptime: '99.99%',
-      },
-      {
-        name: 'eatOS Helpdesk',
-        url: 'https://support.eatos.com',
-        status: 'operational',
-        uptime: '99.95%',
       },
       {
         name: 'orderOS',
@@ -82,7 +75,7 @@ export const systemGroups: SystemGroup[] = [
   {
     name: 'Notification Services',
     systems: [
-      { name: 'Firebase', status: 'operational', uptime: '99.99%' },
+      
       { name: 'Resend email service', status: 'operational', uptime: '99.95%' },
     ],
   },
