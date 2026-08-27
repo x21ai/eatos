@@ -175,7 +175,7 @@ export default function SolutionsPage() {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <a
-              href="/get-started"
+              href="/book-demo"
               className="px-8 py-4 bg-white text-black rounded-full font-semibold hover:scale-105 transition-all"
             >
               Get Started

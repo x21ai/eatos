@@ -99,7 +99,7 @@ export default function LoginPage() {
           <div className="mt-8 text-center text-sm text-gray-500">
             Don't have an account?{" "}
             <a
-              href="/get-started"
+              href="/book-demo"
               className="text-black font-bold hover:underline"
             >
               Get started

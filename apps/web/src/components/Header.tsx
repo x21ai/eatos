@@ -138,7 +138,7 @@ export default function Header() {
         "/shop",
         "/partners",
         "/login",
-        "/get-started",
+        "/book-demo",
         "/about",
         "/careers",
         "/customers",
@@ -623,7 +623,7 @@ export default function Header() {
               Shop
             </a>
             <a
-              href="/get-started"
+              href="/book-demo"
               className={`px-4 py-1.5 rounded-full text-[13px] xl:text-[14px] font-semibold hover:scale-105 transition-all whitespace-nowrap
                 ${
                   isDarkPage
@@ -1032,7 +1032,7 @@ export default function Header() {
                 Shop
               </a>
               <a
-                href="/get-started"
+                href="/book-demo"
                 className="bg-black text-white text-center py-3 rounded-full font-semibold text-[15px]"
                 onClick={() => setMobileMenuOpen(false)}
               >

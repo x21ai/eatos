@@ -431,7 +431,7 @@ export default function PlatformPage() {
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
-                  href="/get-started"
+                  href="/book-demo"
                   className="px-8 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform"
                 >
                   Get Started Free

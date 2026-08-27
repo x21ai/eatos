@@ -26,7 +26,7 @@ export default async function sitemap() {
     '/products',
     '/platform',
     '/customers',
-    '/get-started',
+    '/book-demo',
     '/book-demo',
     '/privacy',
     '/terms',

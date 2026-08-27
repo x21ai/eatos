@@ -64,7 +64,7 @@ export default function AboutPage() {
 
             <div className="mt-10 flex flex-col sm:flex-row gap-3">
               <a
-                href="/get-started"
+                href="/book-demo"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-black text-white font-semibold hover:bg-gray-900 transition-colors"
               >
                 Get Started <ArrowRight size={18} />
