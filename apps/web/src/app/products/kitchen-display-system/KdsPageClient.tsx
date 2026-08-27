@@ -160,6 +160,35 @@ export default function KdsPageClient() {
         </div>
       </section>
 
+      {/* KDS demo animation */}
+      <section className="pb-20 md:pb-28 border-t border-white/5 pt-16 md:pt-20">
+        <div className="site-container">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="min-w-0 rounded-[1.5rem] md:rounded-[2rem] border border-white/10 bg-zinc-900 shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-hidden"
+          >
+            <video
+              className="w-full h-auto block"
+              poster={kdsDemo?.media?.poster}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              {kdsDemo?.media?.sources.map((source) => (
+                <source key={source.src} src={source.src} type={source.type} />
+              ))}
+            </video>
+          </motion.div>
+        </div>
+      </section>
+
+
+
       {/* Feature rows */}
       <section className="py-20 md:py-28 border-t border-white/5">
         <div className="site-container space-y-16 md:space-y-24">
