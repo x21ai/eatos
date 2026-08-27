@@ -186,7 +186,7 @@ export default function HomePage() {
               className="group relative px-8 py-4 bg-white text-black rounded-full text-lg font-semibold hover:scale-105 transition-all duration-300 overflow-hidden w-full sm:w-auto"
             >
               <span className="relative z-10 flex items-center justify-center gap-2">
-                Get Started <ChevronRight size={18} />
+                Book a Demo <ChevronRight size={18} />
               </span>
             </a>
             <a
@@ -631,7 +631,7 @@ export default function HomePage() {
                 href="/book-demo"
                 className="px-8 py-4 bg-white text-black rounded-full text-lg font-semibold hover:scale-105 transition-transform w-full sm:w-auto"
               >
-                Get Started Free
+                Book a Demo
               </a>
               <a
                 href="/contact"

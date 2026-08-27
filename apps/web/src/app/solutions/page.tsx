@@ -178,7 +178,7 @@ export default function SolutionsPage() {
               href="/book-demo"
               className="px-8 py-4 bg-white text-black rounded-full font-semibold hover:scale-105 transition-all"
             >
-              Get Started
+              Book a Demo
             </a>
             <a
               href="/book-demo"

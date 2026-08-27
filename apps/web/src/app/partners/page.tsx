@@ -99,7 +99,7 @@ export default function PartnersPage() {
                     href="/contact-sales"
                     className="group mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-black"
                   >
-                    Get started
+                    Book a Demo
                     <ArrowRight
                       size={15}
                       className="transition-transform group-hover:translate-x-1"

@@ -67,7 +67,7 @@ export default function AboutPage() {
                 href="/book-demo"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-black text-white font-semibold hover:bg-gray-900 transition-colors"
               >
-                Get Started <ArrowRight size={18} />
+                Book a Demo <ArrowRight size={18} />
               </a>
               <a
                 href="/careers"

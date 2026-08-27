@@ -285,7 +285,7 @@ export default function ProductDetailClient({ slug }) {
                   href="/book-demo"
                   className="px-8 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors text-center"
                 >
-                  Get Started
+                  Book a Demo
                 </a>
                 <BrochureButton brochureId={product.slug} />
               </motion.div>
@@ -483,7 +483,7 @@ export default function ProductDetailClient({ slug }) {
                   href="/book-demo"
                   className="px-10 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors"
                 >
-                  Get Started Now
+                  Book a Demo
                 </a>
               </div>
             </div>

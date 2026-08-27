@@ -102,7 +102,7 @@ export default function LoginPage() {
               href="/book-demo"
               className="text-black font-bold hover:underline"
             >
-              Get started
+              Book a Demo
             </a>
           </div>
         </div>

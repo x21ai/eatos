@@ -3,6 +3,7 @@
 
 import { useEffect } from "react";
 import { Calendar, Users, CheckCircle2 } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 const MEETINGS_SCRIPT_SRC =
   "https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js";
@@ -16,6 +17,28 @@ export default function BookDemoPage() {
     script.async = true;
     document.body.appendChild(script);
   }, []);
+
+  // Conversion tracking: page view plus completed booking.
+  useEffect(() => {
+    trackEvent("book_demo_view", { path: "/book-demo" });
+
+    function onMessage(event) {
+      const data = event?.data;
+      if (!data || typeof data !== "object") return;
+      const type = data.meetingsPayload?.event || data.event || data.eventName;
+      if (typeof type !== "string") return;
+      if (
+        type === "meetingBookSucceeded" ||
+        type.toLowerCase().includes("bookings")
+      ) {
+        trackEvent("book_demo_submit", { path: "/book-demo", source: "hubspot" });
+      }
+    }
+
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, []);
+
 
 
   return (

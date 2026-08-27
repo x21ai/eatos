@@ -3,8 +3,12 @@ export const metadata = {
   title: 'Book a Restaurant Technology Demo',
   description:
     'Pick a time with an eatOS specialist for a walkthrough of Point of Sale, payments, kitchen display, kiosk and reporting built for your service style.',
+  alternates: {
+    canonical: 'https://eatos.com/book-demo',
+  },
   openGraph: {
     type: 'website',
+    url: 'https://eatos.com/book-demo',
     title: 'Book a Restaurant Technology Demo | eatOS',
     description:
       'Pick a time with an eatOS specialist for a walkthrough built around your service style.',
