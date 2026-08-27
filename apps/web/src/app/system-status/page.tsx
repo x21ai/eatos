@@ -43,7 +43,7 @@ export default function SystemStatusPage() {
       {/* Hero */}
       <section className="site-container pt-36 pb-12 md:pt-44 md:pb-16">
         <p className="text-xs md:text-sm uppercase tracking-widest text-gray-500 font-semibold mb-6">
-          eatOS System Status
+          EATOS SYSTEM STATUS
         </p>
         <div className="flex items-center gap-4">
           <span className={`relative flex h-4 w-4 md:h-5 md:w-5`}>
