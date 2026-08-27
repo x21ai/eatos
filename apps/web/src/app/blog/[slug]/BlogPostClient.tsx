@@ -117,7 +117,10 @@ export default function BlogPostClient({ slug }) {
               </p>
             );
           })}
+
+          <PostReactions slug={slug} title={post.title} onCopyLink={handleShare} />
         </div>
+
       </div>
 
       {related.length > 0 && (
