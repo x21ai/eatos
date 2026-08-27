@@ -319,13 +319,17 @@ export default function Footer() {
         <div className="pt-10 pb-14 border-b border-white/25">
           <div className={`${officeLabel} mb-5 sm:mb-6`}>Offices</div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-10">
-            {OFFICES.map(({ city, address, state }) => (
-              <div key={city}>
-                <div className={officeCity}>{city}</div>
-                <div className={`${officeAddr} break-words`}>{address}</div>
-                <div className={`${officeAddr} break-words`}>{state}</div>
-              </div>
-            ))}
+            {OFFICES.map((office) => {
+              const { heading, streetLine, localityLine } = formatOfficeAddress(office);
+              return (
+                <div key={heading}>
+                  <div className={officeCity}>{heading}</div>
+                  <div className={`${officeAddr} text-balance`}>{streetLine}</div>
+                  <div className={`${officeAddr} whitespace-nowrap`}>{localityLine}</div>
+                </div>
+              );
+            })}
+
           </div>
         </div>
 
