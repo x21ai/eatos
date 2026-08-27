@@ -29,6 +29,7 @@ import {
   Building2,
   Network,
   Package,
+  Pizza,
 } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { overallHeaderColor } from "@/app/system-status/systems";
