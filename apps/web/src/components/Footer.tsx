@@ -231,41 +231,60 @@ export default function Footer() {
           </div>
 
 
-          <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <a href="mailto:cs@eatos.com" className={cardClass}>
-              <div>
-                <span className={cardLabel}>Support</span>
-                <h3 className={cardTitle}>Dedicated help, whenever service runs</h3>
-              </div>
-              <span className={cardLink}>
-                sales at eatOS.com
-                <ArrowRight size={16} />
-              </span>
-            </a>
-            <a href="/book-demo" className={cardClass}>
-              <div>
-                <span className={cardLabel}>Sales</span>
-                <h3 className={cardTitle}>Book a personalized demo</h3>
-              </div>
-              <span className={cardLink}>
-                +1 (844) 563-2867
-                <ArrowRight size={16} />
-              </span>
-            </a>
+          <div className="lg:col-span-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <a href="mailto:cs@eatos.com" className={cardClass}>
+                <div>
+                  <span className={cardLabel}>Support</span>
+                  <h3 className={cardTitle}>Dedicated help, whenever service runs</h3>
+                </div>
+                <span className={cardLink}>
+                  sales at eatOS.com
+                  <ArrowRight size={16} />
+                </span>
+              </a>
+              <a href="/book-demo" className={cardClass}>
+                <div>
+                  <span className={cardLabel}>Sales</span>
+                  <h3 className={cardTitle}>Book a personalized demo</h3>
+                </div>
+                <span className={cardLink}>
+                  +1 (844) 563-2867
+                  <ArrowRight size={16} />
+                </span>
+              </a>
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center gap-3 md:justify-end">
+              {CONTACT_CHANNELS.map(({ label, href, Icon, external }) => (
+                <a
+                  key={label}
+                  href={href}
+                  {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  aria-label={label}
+                  title={label}
+                  className={socialClass}
+                >
+                  <Icon size={16} />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 
         <div className="pt-10 pb-14 border-b border-white/25">
           <div className={`${officeLabel} mb-5 sm:mb-6`}>Offices</div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-10">
-            {OFFICES.map(({ city, address }) => (
+            {OFFICES.map(({ city, address, state }) => (
               <div key={city}>
                 <div className={officeCity}>{city}</div>
                 <div className={`${officeAddr} break-words`}>{address}</div>
+                <div className={`${officeAddr} break-words`}>{state}</div>
               </div>
             ))}
           </div>
         </div>
+
 
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 py-16 items-start">
