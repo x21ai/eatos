@@ -276,8 +276,8 @@ export default function Footer() {
 
 
           <div className="lg:col-span-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-              <a href="mailto:cs@eatos.com" className={cardClass}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+              <a href="mailto:cs@eatos.com" className={`${cardClass} h-full`}>
                 <div>
                   <span className={cardLabel}>Support</span>
                   <h3 className={cardTitle}>Dedicated help, whenever service runs</h3>
@@ -288,9 +288,9 @@ export default function Footer() {
                 </span>
               </a>
 
-              {/* Sales column: card plus the contact channels that belong to it */}
-              <div className="flex flex-col gap-6">
-                <a href="/book-demo" className={cardClass}>
+              {/* Sales card with its contact channels inside the same surface */}
+              <div className={`${cardClass} h-full`}>
+                <a href="/book-demo" className="flex flex-1 flex-col justify-between">
                   <div>
                     <span className={cardLabel}>Sales</span>
                     <h3 className={cardTitle}>Book a personalized demo</h3>
@@ -301,7 +301,7 @@ export default function Footer() {
                   </span>
                 </a>
 
-                <div className="flex flex-wrap items-center gap-3">
+                <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-white/15 pt-6">
                   {CONTACT_CHANNELS.map(({ label, href, Icon, external }) => (
                     <a
                       key={label}
@@ -317,6 +317,7 @@ export default function Footer() {
                 </div>
               </div>
             </div>
+
           </div>
 
         </div>
