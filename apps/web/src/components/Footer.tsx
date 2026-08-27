@@ -174,7 +174,7 @@ const LINK_GROUPS = [
       { label: 'Loyalty', href: '/products/loyalty' },
       { label: 'Gift Cards', href: '/products/giftcards' },
       { label: 'Marketing', href: '/products/automated-marketing' },
-      { label: 'Tableside', href: '/products/tableside-order-and-pay' },
+      { label: 'Order at Table', href: '/products/tableside-order-and-pay' },
     ],
   },
   {
