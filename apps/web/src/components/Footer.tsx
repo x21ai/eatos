@@ -92,11 +92,12 @@ const SOCIAL_LINKS = [
 ];
 
 const OFFICES = [
-  { city: 'Cupertino, CA', address: '20289 Stevens Creek Blvd PH 1019' },
-  { city: 'Miami, FL', address: '1111 Brickell Ave FL 10' },
-  { city: 'Los Angeles, CA', address: '750 N. San Vicente Blvd Ste 800' },
-  { city: 'Houston, TX', address: '21755 Interstate 45, Bldg 1 Ste 107' },
+  { city: 'Cupertino, CA', address: '20289 Stevens Creek Blvd PH 1019,', state: 'Cupertino - California - 95014.' },
+  { city: 'Miami, FL', address: '1111 Brickell Ave FL 10,', state: 'Miami - Florida - 33131.' },
+  { city: 'Los Angeles, CA', address: '750 N. San Vicente Blvd Ste 800', state: 'Los Angeles, California - 90048.' },
+  { city: 'Houston, TX', address: '21755 Interstate 45, Bldg 1 Ste 107', state: 'Spring, Texas - 77388.' },
 ];
+
 
 const LINK_GROUPS = [
   {
