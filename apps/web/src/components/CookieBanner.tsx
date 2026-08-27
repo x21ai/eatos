@@ -101,12 +101,39 @@ export default function CookieBanner() {
     setIsVisible(false);
   };
 
+  // Reserve space at the bottom of the page while the consent bar is on screen so
+  // the bar sits below the last footer row instead of covering it. The padding is
+  // removed as soon as the bar goes away or the preferences dialog takes over.
+  const barRef = useRef(null);
+  const showBar = isVisible && !showPreferences;
+
+  useEffect(() => {
+    if (!showBar) {
+      document.body.style.paddingBottom = "";
+      return;
+    }
+
+    const applyPadding = () => {
+      const height = barRef.current?.offsetHeight;
+      if (height) document.body.style.paddingBottom = `${height}px`;
+    };
+
+    applyPadding();
+    window.addEventListener("resize", applyPadding);
+
+    return () => {
+      window.removeEventListener("resize", applyPadding);
+      document.body.style.paddingBottom = "";
+    };
+  }, [showBar]);
+
   const handleAcceptAll = () => persist("accepted", ALL_ON);
   const handleRejectAll = () => persist("rejected", DEFAULT_PREFS);
   const handleSavePreferences = () => persist("custom", { ...prefs, necessary: true });
 
   const toggle = (id) =>
     setPrefs((current) => ({ ...current, [id]: !current[id] }));
+
 
   if (!isVisible) return null;
 
