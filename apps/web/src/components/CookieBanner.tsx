@@ -214,23 +214,23 @@ export default function CookieBanner() {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-white shadow-2xl">
+    <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/15 bg-black shadow-2xl font-montserrat">
       <div className="site-container py-6">
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
-          <div className="flex-1 text-[15px] leading-6 text-gray-700">
+          <div className="flex-1 text-[15px] leading-6 text-gray-300">
             <p>
               We use cookies to improve your experience. By continuing, you
               agree to our{" "}
               <a
                 href="/privacy"
-                className="underline transition-colors hover:text-black"
+                className="underline transition-colors hover:text-white"
               >
                 Privacy Policy
               </a>{" "}
               and{" "}
               <a
                 href="/privacy#cookies"
-                className="underline transition-colors hover:text-black"
+                className="underline transition-colors hover:text-white"
               >
                 Cookie Policy
               </a>
@@ -241,25 +241,26 @@ export default function CookieBanner() {
           <div className="flex flex-wrap items-center gap-3">
             <button
               onClick={() => setShowPreferences(true)}
-              className="px-5 py-2.5 text-[15px] font-medium text-gray-700 transition-colors hover:text-black"
+              className="px-5 py-2.5 text-[15px] font-medium text-gray-300 transition-colors hover:text-white"
             >
               Manage Preferences
             </button>
             <button
               onClick={handleAcceptAll}
-              className="rounded-lg bg-black px-6 py-2.5 text-[15px] font-medium text-white transition-colors hover:bg-gray-800"
+              className="rounded-lg bg-white px-6 py-2.5 text-[15px] font-medium text-black transition-colors hover:bg-gray-200"
             >
               Accept All
             </button>
             <button
               onClick={handleRejectAll}
-              className="p-2 text-gray-400 transition-colors hover:text-black"
+              className="p-2 text-gray-400 transition-colors hover:text-white"
               aria-label="Reject all cookies"
             >
               ✕
             </button>
           </div>
         </div>
+
       </div>
     </div>
   );
