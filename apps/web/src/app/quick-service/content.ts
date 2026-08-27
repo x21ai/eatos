@@ -1,7 +1,7 @@
 // @ts-nocheck
 // All copy for the Quick Service solution page. Edit here.
 
-import heroImg from '../../../assets/svc-quick-service.jpg.asset.json';
+import heroImg from '@/assets/svc-quick-service.jpg.asset.json';
 import versatileImg from './assets/qs-versatile-v5.png.asset.json';
 import offlineImg from './assets/qs-offline-v4.png.asset.json';
 import repeatImg from './assets/qs-repeat-v3.jpg.asset.json';

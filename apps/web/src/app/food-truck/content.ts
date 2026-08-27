@@ -1,7 +1,7 @@
 // @ts-nocheck
 // All copy for the Food Truck solution page. Edit here.
 
-import heroImg from '../../../assets/svc-food-truck.jpg.asset.json';
+import heroImg from '@/assets/svc-food-truck.jpg.asset.json';
 import speedImg from './assets/truck-speed-new.png.asset.json';
 import costsImg from './assets/truck-costs-new.jpg.asset.json';
 import loyaltyImg from './assets/truck-loyalty-new.jpg.asset.json';

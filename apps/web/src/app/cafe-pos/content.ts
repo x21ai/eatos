@@ -1,7 +1,7 @@
 // @ts-nocheck
 // All copy for the Cafe solution page. Edit here.
 
-import heroImg from '../../../assets/svc-cafe.jpg.asset.json';
+import heroImg from '@/assets/svc-cafe.jpg.asset.json';
 import connectImg from './assets/cafe-connect-2.png.asset.json';
 import teamImg from './assets/cafe-team-2.jpg.asset.json';
 import kioskImg from './assets/cafe-kiosk-2.png.asset.json';
