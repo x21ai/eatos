@@ -50,6 +50,8 @@ const rise = {
 };
 
 export default function KioskPageClient() {
+  const demo = demoSources.find((d) => d.id === 'kiosk');
+
   return (
     <div className="min-h-screen bg-black text-white font-montserrat selection:bg-indigo-500/30">
       {/* Hero */}
