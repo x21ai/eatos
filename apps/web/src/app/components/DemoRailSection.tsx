@@ -151,8 +151,8 @@ export function DemoRailSection({
             {demo.media ? (
               <div className="relative w-full aspect-[16/10] lg:aspect-auto lg:h-[480px] bg-black p-3 sm:p-4">
                 <TabletMockup
-                  sources={demo.media.sources}
-                  poster={demo.media.poster}
+                  gif={demo.media.gif}
+
                   label={displayLabel(demo.id)}
                   className="h-full w-full"
                 />

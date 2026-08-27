@@ -104,19 +104,14 @@ export default function PosPageClient() {
               className="min-w-0"
             >
               <div className="bg-zinc-900 rounded-[1.5rem] md:rounded-[2rem] shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/10 overflow-hidden relative">
-                <video
+                <img
                   className="w-full h-auto block"
-                  poster={posDemo?.media?.poster}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                >
-                  {posDemo?.media?.sources.map((source) => (
-                    <source key={source.src} src={source.src} type={source.type} />
-                  ))}
-                </video>
+                  src={posDemo?.media?.gif}
+                  alt="Point of Sale demo animation"
+                  loading="lazy"
+                  decoding="async"
+                />
+
               </div>
 
             </motion.div>
