@@ -276,7 +276,7 @@ export default function Footer() {
 
 
           <div className="lg:col-span-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
               <a href="mailto:cs@eatos.com" className={cardClass}>
                 <div>
                   <span className={cardLabel}>Support</span>
@@ -287,33 +287,38 @@ export default function Footer() {
                   <ArrowRight size={16} />
                 </span>
               </a>
-              <a href="/book-demo" className={cardClass}>
-                <div>
-                  <span className={cardLabel}>Sales</span>
-                  <h3 className={cardTitle}>Book a personalized demo</h3>
-                </div>
-                <span className={cardLink}>
-                  +1 (844) 563-2867
-                  <ArrowRight size={16} />
-                </span>
-              </a>
-            </div>
 
-            <div className="mt-6 flex flex-wrap items-center gap-3 md:justify-end">
-              {CONTACT_CHANNELS.map(({ label, href, Icon, external }) => (
-                <a
-                  key={label}
-                  href={href}
-                  {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                  aria-label={label}
-                  title={label}
-                  className={socialClass}
-                >
-                  <Icon size={16} />
+              {/* Sales column: card plus the contact channels that belong to it */}
+              <div className="flex flex-col gap-6">
+                <a href="/book-demo" className={cardClass}>
+                  <div>
+                    <span className={cardLabel}>Sales</span>
+                    <h3 className={cardTitle}>Book a personalized demo</h3>
+                  </div>
+                  <span className={cardLink}>
+                    +1 (844) 563-2867
+                    <ArrowRight size={16} />
+                  </span>
                 </a>
-              ))}
+
+                <div className="flex flex-wrap items-center gap-3">
+                  {CONTACT_CHANNELS.map(({ label, href, Icon, external }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                      aria-label={label}
+                      title={label}
+                      className={socialClass}
+                    >
+                      <Icon size={16} />
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
+
         </div>
 
         <div className="pt-10 pb-14 border-b border-white/25">
