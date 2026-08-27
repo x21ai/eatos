@@ -45,7 +45,8 @@ export const demoSources: DemoSource[] = [
     blurb: 'Ring in orders, split checks, and take payment in seconds anywhere.',
     device: 'tablet',
     media: {
-      gif: posGif.url,
+      sources: videoSources(posWebm, posMp4),
+      poster: posPoster.url,
       caption: 'Ring in the order, take payment, close the ticket.',
     },
   },
