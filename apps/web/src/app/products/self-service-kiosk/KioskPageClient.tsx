@@ -124,7 +124,7 @@ export default function KioskPageClient() {
                   {hero.primaryCta.label}
                 </a>
                 <a
-                  href="/book-demo"
+                  href="/bookademo"
                   className="px-8 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors text-center"
                 >
                   Book a Demo
@@ -422,13 +422,13 @@ export default function KioskPageClient() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="/book-demo"
+                  href="/bookademo"
                   className="px-10 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform"
                 >
                   Book a Demo
                 </a>
                 <a
-                  href="/contact-sales"
+                  href="/contact"
                   className="px-10 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors"
                 >
                   Contact Sales

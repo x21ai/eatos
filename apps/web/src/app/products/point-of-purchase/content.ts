@@ -16,7 +16,7 @@ export const hero = {
   titleAccent: 'In Your Hands',
   description:
     'Contactless payments keep things smooth. A handheld eatOS terminal takes orders, fires to the kitchen and accepts payment right at the table.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Guest paying on a handheld eatOS terminal',
   image: heroAsset.url,

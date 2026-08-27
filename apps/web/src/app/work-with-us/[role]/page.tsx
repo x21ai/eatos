@@ -97,7 +97,7 @@ export default async function CareerRolePage({ params }) {
       <div className="min-h-screen bg-white text-black font-sans">
         <div className="site-container pt-32 md:pt-44 pb-24">
           <a
-            href="/careers"
+            href="/work-with-us"
             className="inline-flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-black"
           >
             <ArrowLeft size={16} /> Back to Careers
@@ -127,7 +127,7 @@ export default async function CareerRolePage({ params }) {
       <section className="pt-32 md:pt-44 pb-16 bg-gray-50 border-b border-gray-100">
         <div className="site-container">
           <a
-            href="/careers"
+            href="/work-with-us"
             className="inline-flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-black"
           >
             <ArrowLeft size={16} /> Back to Careers
@@ -158,7 +158,7 @@ export default async function CareerRolePage({ params }) {
                 Apply via email <ArrowRight size={18} />
               </a>
               <a
-                href="/careers#open-roles"
+                href="/work-with-us#open-roles"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-gray-200 bg-white font-semibold hover:bg-gray-50 transition-colors"
               >
                 Browse roles <ArrowRight size={18} />

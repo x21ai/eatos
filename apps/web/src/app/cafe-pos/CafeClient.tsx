@@ -32,7 +32,7 @@ const related = [
     iconClass: 'bg-violet-500/15 text-violet-400',
   },
   {
-    href: '/point-of-sale',
+    href: '/pointofsale',
     title: 'Point of Sale',
     tagline: 'Fast order entry built for the morning rush.',
     Icon: CreditCard,
@@ -335,7 +335,7 @@ export default function CafeClient() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="/book-demo"
+                  href="/bookademo"
                   className="px-10 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform"
                 >
                   Book a Demo

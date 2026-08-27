@@ -89,7 +89,7 @@ export function HardwareSection() {
           className="text-center mt-10"
         >
           <a
-            href="/hardware"
+            href="/products/hardware"
             className="inline-flex items-center gap-2 text-white font-semibold border-b border-white/30 pb-1 hover:border-white transition-colors"
           >
             Explore all hardware <ArrowRight size={16} />

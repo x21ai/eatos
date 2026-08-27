@@ -81,7 +81,7 @@ export default function Header() {
   const groupForPath = (path: string) => {
     if (
       [
-        "/point-of-sale",
+        "/pointofsale",
         "/products/kitchen-display-system",
         "/products/simplified-inventory-management",
         "/products/workforce-management",
@@ -96,7 +96,7 @@ export default function Header() {
         "/products/tableside-order-and-pay",
         "/products/apponlineorderingdelivery",
         "/products/customer-facing-display",
-        "/products/autonomous-delivery",
+        "/products/autonomous-and-automated-delivery",
       ].some((p) => path === p || path.startsWith(p + "/"))
     )
       return "Guest Experience";
@@ -110,7 +110,7 @@ export default function Header() {
     )
       return "Growth & Payments";
     if (
-      ["/ai", "/hardware", "/offline-point-of-sale"].some((p) => path === p || path.startsWith(p + "/"))
+      ["/ai", "/products/hardware", "/offline-point-of-sale"].some((p) => path === p || path.startsWith(p + "/"))
     )
       return "Intelligence & Hardware";
     return "Operations";
@@ -139,9 +139,9 @@ export default function Header() {
         "/shop",
         "/partners",
         "/login",
-        "/book-demo",
-        "/about",
-        "/careers",
+        "/bookademo",
+        "/about-eatos",
+        "/work-with-us",
         "/customers",
       ];
 
@@ -202,7 +202,7 @@ export default function Header() {
 
   const productLinks = [
     {
-      href: "/point-of-sale",
+      href: "/pointofsale",
       title: "Point of Sale",
       description: "Manage tables, orders & kitchen",
       Icon: Monitor,
@@ -308,14 +308,14 @@ export default function Header() {
       iconWrap: "bg-rose-100 text-rose-700",
     },
     {
-      href: "/products/autonomous-delivery",
+      href: "/products/autonomous-and-automated-delivery",
       title: "Autonomous Delivery",
       description: "Service, reimagined",
       Icon: Truck,
       iconWrap: "bg-slate-100 text-slate-700",
     },
     {
-      href: "/hardware",
+      href: "/products/hardware",
       title: "Hardware",
       description: "Terminals & accessories",
       Icon: ShoppingBag,
@@ -326,70 +326,70 @@ export default function Header() {
 
   const solutionLinks = [
     {
-      href: "/solutions/quick-service",
+      href: "/quick-service",
       title: "Quick Service",
       description: "Built for speed and volume",
       Icon: Zap,
       iconWrap: "bg-orange-100 text-orange-600",
     },
     {
-      href: "/solutions/full-service",
+      href: "/full-service",
       title: "Full Service",
       description: "Table-to-kitchen flow",
       Icon: Utensils,
       iconWrap: "bg-indigo-100 text-indigo-600",
     },
     {
-      href: "/solutions/fast-casual",
+      href: "/fast-casual",
       title: "Fast Casual",
       description: "Speed and accuracy at the counter",
       Icon: Star,
       iconWrap: "bg-purple-100 text-purple-600",
     },
     {
-      href: "/solutions/pizzeria",
+      href: "/pizzeria",
       title: "Pizzeria",
       description: "Custom pies, delivery and pickup",
       Icon: Pizza,
       iconWrap: "bg-red-100 text-red-600",
     },
     {
-      href: "/solutions/cafe",
+      href: "/cafe-pos",
       title: "Café & Coffee Shop",
       description: "Handle rushes effortlessly",
       Icon: Coffee,
       iconWrap: "bg-amber-100 text-amber-600",
     },
     {
-      href: "/solutions/bar",
+      href: "/bar-and-brewery",
       title: "Bar & Nightclub",
       description: "Fast tabs, real-time inventory",
       Icon: Wine,
       iconWrap: "bg-rose-100 text-rose-600",
     },
     {
-      href: "/solutions/food-truck",
+      href: "/food-truck",
       title: "Food Truck",
       description: "Mobile. Powerful. Reliable.",
       Icon: Truck,
       iconWrap: "bg-brand-soft text-brand",
     },
     {
-      href: "/solutions/ghost-kitchen",
+      href: "/ghost-kitchens",
       title: "Ghost Kitchen",
       description: "Delivery-first operations",
       Icon: Package,
       iconWrap: "bg-slate-100 text-slate-600",
     },
     {
-      href: "/solutions/catering",
+      href: "/catering",
       title: "Catering",
       description: "Large events and off site orders",
       Icon: Building2,
       iconWrap: "bg-blue-100 text-blue-600",
     },
     {
-      href: "/solutions/enterprise",
+      href: "/enterprise-pos",
       title: "Enterprise",
       description: "Point of Sale built for enterprise scale",
       Icon: Network,
@@ -631,7 +631,7 @@ export default function Header() {
               Shop
             </a>
             <a
-              href="/book-demo"
+              href="/bookademo"
               className={`px-4 py-1.5 rounded-full text-[13px] xl:text-[14px] font-semibold hover:scale-105 transition-all whitespace-nowrap
                 ${
                   isDarkPage
@@ -709,7 +709,7 @@ export default function Header() {
               <div className="space-y-0.5 pb-1">
               {[
                 {
-                  href: "/point-of-sale",
+                  href: "/pointofsale",
                   Icon: Monitor,
                   label: "Point of Sale",
                   color: "text-orange-500",
@@ -803,7 +803,7 @@ export default function Header() {
                   color: "text-sky-600",
                 },
                 {
-                  href: "/products/autonomous-delivery",
+                  href: "/products/autonomous-and-automated-delivery",
                   Icon: Truck,
                   label: "Autonomous Delivery",
                   color: "text-slate-600",
@@ -911,7 +911,7 @@ export default function Header() {
                   color: "text-purple-500",
                 },
                 {
-                  href: "/hardware",
+                  href: "/products/hardware",
                   Icon: ShoppingBag,
                   label: "Hardware",
                   color: "text-gray-500",
@@ -974,7 +974,7 @@ export default function Header() {
               {[
                 { href: "/platform", label: "Platform" },
                 { href: "/pricing", label: "Pricing" },
-                { href: "/enterprise", label: "Enterprise" },
+                { href: "/enterprise-pos", label: "Enterprise" },
                 { href: "/customers", label: "Customers" },
               ].map(({ href, label }) => (
                 <a
@@ -1040,7 +1040,7 @@ export default function Header() {
                 Shop
               </a>
               <a
-                href="/book-demo"
+                href="/bookademo"
                 className="bg-black text-white text-center py-3 rounded-full font-semibold text-[15px]"
                 onClick={() => setMobileMenuOpen(false)}
               >

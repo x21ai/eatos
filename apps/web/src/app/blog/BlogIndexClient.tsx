@@ -77,7 +77,7 @@ function HeroBanner() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
-                href="/book-demo"
+                href="/bookademo"
                 className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-zinc-200"
               >
                 Book a Demo

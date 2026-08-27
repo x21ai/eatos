@@ -35,14 +35,14 @@ export default function PartnersPage() {
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <Link
-                  href="/contact-sales"
+                  href="/contact"
                   className="group inline-flex items-center justify-center gap-2 rounded-full bg-black px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-zinc-800"
                 >
                   Become a partner
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
-                  href="/book-demo"
+                  href="/bookademo"
                   className="inline-flex items-center justify-center rounded-full border border-zinc-300 px-7 py-3.5 text-sm font-semibold text-black transition-colors hover:border-black"
                 >
                   Talk to our team
@@ -96,7 +96,7 @@ export default function PartnersPage() {
                     {track.body}
                   </p>
                   <Link
-                    href="/contact-sales"
+                    href="/contact"
                     className="group mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-black"
                   >
                     Book a Demo
@@ -150,7 +150,7 @@ export default function PartnersPage() {
                 business solutions.
               </p>
               <Link
-                href="/contact-sales"
+                href="/contact"
                 className="group mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-zinc-200"
               >
                 Apply now

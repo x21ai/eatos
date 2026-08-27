@@ -10,7 +10,7 @@ export const hero = {
   title: 'Solution for Fast-Casual Restaurants',
   description:
     'Embrace the future of fast-casual dining with an eatOS Point of Sale system that delivers exceptional service, streamlines operations and creates a delightful guest experience.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Fast-casual counter and kiosk setup',
 };
@@ -84,7 +84,7 @@ export const bundle = {
   eyebrow: 'Hardware',
   title: 'Get the Fast-Casual Bundle',
   description: '$0 hardware upfront cost with Pay As You Go.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'Shop Now', href: '/shop' },
   note:
     'Terms and conditions, and restaurant qualification criteria apply. Pricing is per location per Point of Sale, excluding accessories.',

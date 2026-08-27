@@ -11,7 +11,7 @@ export const hero = {
   title: 'Full-Service Restaurant\u00a0',
   description:
     'Designed for full-service restaurants, with additional modules including reservations, table management, and functionality to support order coursing, course timing, and split-check payments at the table.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Full service dining room setup',
   image: heroImg.url,
@@ -86,7 +86,7 @@ export const bundle = {
   eyebrow: 'Hardware',
   title: 'Get the Full Service Bundle',
   description: '$0 hardware upfront cost with Pay As You Go.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'Shop Now', href: '/shop' },
   note:
     'Terms and conditions, and restaurant qualification criteria apply. Pricing is per location per Point of Sale, excluding accessories.',

@@ -12,7 +12,7 @@ export const hero = {
   title: 'Solution for Quick Service',
   description:
     'A versatile Point of Sale system for your restaurant. Ideal for Quick-Service and Fast-Casual concepts, built to\u00a0 serve more guests, and turn every order into a faster sale.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Quick service counter setup',
   image: heroImg.url,
@@ -85,7 +85,7 @@ export const bundle = {
   description: '$0 hardware upfront cost with Pay As You Go.',
   imageLabel: 'Quick service hardware bundle',
   image: bundleImg.url,
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'Shop Now', href: 'https://shop.eatos.com', external: true },
   note:
     'Terms and conditions, and restaurant qualification criteria apply. Pricing is per location per Point of Sale, excluding accessories.',

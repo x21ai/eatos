@@ -10,7 +10,7 @@ export const hero = {
   title: 'Point of Sale System For Enterprise',
   description:
     'Transform operations with the eatOS Enterprise Point of Sale system: streamline transactions, enhance efficiency, and get real-time insights for smarter decisions.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Enterprise point of sale hardware',
 };
@@ -117,7 +117,7 @@ export const bundle = {
   eyebrow: 'Hardware',
   title: 'Get the Enterprise Bundle',
   description: '$0 hardware upfront cost with Pay As You Go.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'Shop Now', href: '/shop' },
   note:
     'Terms and conditions, and restaurant qualification criteria apply. Pricing is per location per Point of Sale, excluding accessories.',

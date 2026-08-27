@@ -13,7 +13,7 @@ export function trackEvent(event: string, payload: TrackPayload = {}) {
   w.dataLayer.push({ event, ...payload });
 }
 
-export const BOOK_DEMO_PATH = '/book-demo';
+export const BOOK_DEMO_PATH = '/bookademo';
 
 export function trackBookDemoClick(location: string, label?: string) {
   trackEvent('book_demo_click', { location, label, destination: BOOK_DEMO_PATH });

@@ -7,7 +7,7 @@ export const hero = {
   titleAccent: 'Reliable Robot',
   description:
     'ServeBot is built to manage various tasks, enabling team to concentrate on deliver exceptional customer service.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'ServeBot running food in a dining room',
   image: '/__l5e/assets-v1/8405e851-9c4f-4768-a692-13c8d3d61447/auto1.png',

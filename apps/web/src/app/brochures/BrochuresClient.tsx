@@ -263,7 +263,7 @@ export default function BrochuresClient() {
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
-                href="/book-demo"
+                href="/bookademo"
                 className="inline-flex w-full items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:w-auto"
               >
                 Book a Demo

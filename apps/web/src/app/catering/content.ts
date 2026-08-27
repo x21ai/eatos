@@ -11,7 +11,7 @@ export const hero = {
   title: 'Catering Solution',
   description:
     'Elevate your catering business with eatOS Point of Sale. Boost visibility without a storefront, handle large orders swiftly and impress clients for repeat business.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Catering buffet setup at an upscale event',
   image: heroImg.url,

@@ -13,8 +13,8 @@ export const hero = {
   titleAccent: 'built for service',
   description:
     'Restaurant Technology Cloud is an all-in-one restaurant management solution built for every type of restaurant, including yours.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
-  secondaryCta: { label: 'Watch Video', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
+  secondaryCta: { label: 'Watch Video', href: '/bookademo' },
   imageLabel: 'eatOS hardware lineup',
   stats: [
     { value: '10x', label: 'Faster transactions' },

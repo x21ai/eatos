@@ -11,7 +11,7 @@ export const hero = {
   title: 'Point of Sale for Pizzerias',
   description:
     'Built for pizza operations, from slice counters to delivery-heavy shops. Fast order entry with modifiers, halves and toppings, plus delivery and pickup in one system.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Pizzeria counter setup',
   image: null,
@@ -84,7 +84,7 @@ export const bundle = {
   description: '$0 hardware upfront cost with Pay As You Go.',
   imageLabel: 'Pizzeria hardware bundle',
   image: null,
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'Shop Now', href: 'https://shop.eatos.com', external: true },
   note:
     'Terms and conditions, and restaurant qualification criteria apply. Pricing is per location per Point of Sale, excluding accessories.',

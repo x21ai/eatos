@@ -11,7 +11,7 @@ export const hero = {
   title: 'Solution For Ghost Kitchens',
   description:
     'The RESTAURANT TECHNOLOGY CLOUD is built for delivery-first kitchens, streamlining online orders, expanding your reach and keeping every brand under control.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Ghost kitchen team working an eatOS order queue',
   image: heroImg.url,

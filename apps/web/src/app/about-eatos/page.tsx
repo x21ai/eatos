@@ -64,13 +64,13 @@ export default function AboutPage() {
 
             <div className="mt-10 flex flex-col sm:flex-row gap-3">
               <a
-                href="/book-demo"
+                href="/bookademo"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-black text-white font-semibold hover:bg-gray-900 transition-colors"
               >
                 Book a Demo <ArrowRight size={18} />
               </a>
               <a
-                href="/careers"
+                href="/work-with-us"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-gray-200 bg-white font-semibold hover:bg-gray-50 transition-colors"
               >
                 Join the team <ArrowRight size={18} />
@@ -183,7 +183,7 @@ export default function AboutPage() {
                 </p>
               </div>
               <a
-                href="/careers"
+                href="/work-with-us"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-colors whitespace-nowrap"
               >
                 View open roles <ArrowRight size={18} />

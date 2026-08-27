@@ -13,7 +13,7 @@ export const hero = {
   titleAccent: 'Keep Them Coming Back',
   description:
     'Build loyalty programs that turn first-time guests into regulars. Points, rewards and exclusive offers that feel personal and drive repeat visits.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Loyalty program dashboard',
   image: null,

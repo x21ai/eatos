@@ -11,7 +11,7 @@ export const hero = {
   title: 'Point of Sale System for Cafes',
   description:
     'Easy to learn and built for bustling cafes. Menu and inventory control keep complex orders fast, while reporting and loyalty bring guests back every morning.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Cafe counter with eatOS terminal',
   image: heroImg.url,
@@ -82,7 +82,7 @@ export const bundle = {
   eyebrow: 'Hardware',
   title: 'Get the Cafe Bundle',
   description: '$0 hardware upfront cost with Pay As You Go.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'Shop Now', href: '/shop' },
   note:
     'Terms and conditions, and restaurant qualification criteria apply. Pricing is per location per Point of Sale, excluding accessories.',

@@ -19,7 +19,7 @@ import { motion } from 'motion/react';
 
 const solutions = [
   {
-    href: '/solutions/quick-service',
+    href: '/quick-service',
     title: 'Quick Service',
     description:
       'Built for speed and volume. Take orders fast, move lines, and process payments without friction.',
@@ -29,7 +29,7 @@ const solutions = [
     image: 'https://ucarecdn.com/570caf20-51b9-47b0-98a7-778538be2392/-/format/auto/',
   },
   {
-    href: '/solutions/full-service',
+    href: '/full-service',
     title: 'Full Service',
     description:
       'Seamless table-to-kitchen flow. Manage your floor, pace courses, and close checks with ease.',
@@ -39,7 +39,7 @@ const solutions = [
     image: 'https://ucarecdn.com/95432288-86ee-4542-a032-acde33a12956/-/format/auto/',
   },
   {
-    href: '/solutions/fast-casual',
+    href: '/fast-casual',
     title: 'Fast Casual',
     description:
       'Speed with accuracy. Move more guests through the counter without slowing your team down.',
@@ -53,7 +53,7 @@ const solutions = [
     image: null,
   },
   {
-    href: '/solutions/pizzeria',
+    href: '/pizzeria',
     title: 'Pizzeria',
     description:
       'Custom pies without the slow down. Fast toppings and halves, delivery and pickup in one queue.',
@@ -63,7 +63,7 @@ const solutions = [
     image: null,
   },
   {
-    href: '/solutions/cafe',
+    href: '/cafe-pos',
     title: 'Cafe and Coffee Shop',
     description:
       'Handle the morning rush without missing a beat. Fast modifiers, loyalty built in, and reliable hardware.',
@@ -73,7 +73,7 @@ const solutions = [
     image: null,
   },
   {
-    href: '/solutions/bar',
+    href: '/bar-and-brewery',
     title: 'Bar and Nightclub',
     description:
       'Fast tabs, real-time inventory, and the flexibility to keep the night moving at full speed.',
@@ -83,7 +83,7 @@ const solutions = [
     image: null,
   },
   {
-    href: '/solutions/food-truck',
+    href: '/food-truck',
     title: 'Food Truck',
     description:
       'Mobile, powerful, and reliable. Run your truck anywhere with hardware that works offline.',
@@ -93,7 +93,7 @@ const solutions = [
     image: null,
   },
   {
-    href: '/solutions/ghost-kitchen',
+    href: '/ghost-kitchens',
     title: 'Ghost Kitchen',
     description:
       'Delivery-first operations built for multi-brand kitchens. One platform, multiple storefronts.',
@@ -107,7 +107,7 @@ const solutions = [
     image: null,
   },
   {
-    href: '/solutions/catering',
+    href: '/catering',
     title: 'Catering',
     description:
       'Handle large event orders swiftly, with custom menus, live inventory and repeat client data.',
@@ -117,7 +117,7 @@ const solutions = [
     image: null,
   },
   {
-    href: '/solutions/enterprise',
+    href: '/enterprise-pos',
     title: 'Enterprise',
     description:
       'Built for enterprise scale. Central control of menus, staff and reporting across every property.',
@@ -187,13 +187,13 @@ export default function SolutionsPage() {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <a
-              href="/book-demo"
+              href="/bookademo"
               className="px-8 py-4 bg-white text-black rounded-full font-semibold hover:scale-105 transition-all"
             >
               Book a Demo
             </a>
             <a
-              href="/book-demo"
+              href="/bookademo"
               className="px-8 py-4 border border-white/20 text-white rounded-full font-semibold hover:bg-white/10 transition-all"
             >
               Book a Demo
@@ -269,7 +269,7 @@ export default function SolutionsPage() {
               plan, volume, and service style.
             </p>
             <a
-              href="/contact-sales"
+              href="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black rounded-full font-semibold hover:scale-105 transition-all"
             >
               Talk to Sales <ArrowRight size={16} />

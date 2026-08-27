@@ -11,7 +11,7 @@ export const hero = {
   title: 'Bar & Nightclub Point of Sale',
   description:
     'A powerful Point of Sale system for bars and nightclubs. Built to keep tabs moving, drinks pouring, and payments clearing from the first round to last call.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Bartender working an eatOS terminal at the rail',
   image: heroImg.url,

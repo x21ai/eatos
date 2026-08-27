@@ -11,7 +11,7 @@ export const hero = {
   title: 'Solution For Food Trucks',
   description:
     'Built for a mobile, space-conscious business, the eatOS food truck Point of Sale matches the pace of your service and clears long queues fast.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Food truck team serving guests on an eatOS terminal',
   image: heroImg.url,

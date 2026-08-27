@@ -13,7 +13,7 @@ export const hero = {
   titleAccent: 'Analytics and Reporting',
   description:
     'Reporting and analytics you will actually use. Track every service, spot patterns early and turn what happens on the floor into decisions you can act on.',
-  primaryCta: { label: 'Book a Demo', href: '/book-demo' },
+  primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   imageLabel: 'Analytics dashboard on a tablet',
   image: null,

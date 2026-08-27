@@ -62,7 +62,7 @@ export function EnterpriseSection() {
 
             <div className="mt-8">
               <a
-                href="/enterprise"
+                href="/enterprise-pos"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full font-semibold text-sm hover:bg-gray-800 transition-colors"
               >
                 Learn about Enterprise <ArrowRight size={14} />

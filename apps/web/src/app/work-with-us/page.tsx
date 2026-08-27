@@ -245,7 +245,7 @@ export default function CareersPage() {
             {OPEN_ROLES.map((r) => (
               <a
                 key={r.slug}
-                href={`/careers/${r.slug}`}
+                href={`/work-with-us/${r.slug}`}
                 className="block rounded-3xl border border-gray-200 bg-white p-6 md:p-8 hover:bg-gray-50 transition-colors"
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">

@@ -20,7 +20,7 @@ export default function BookDemoPage() {
 
   // Conversion tracking: page view plus completed booking.
   useEffect(() => {
-    trackEvent("book_demo_view", { path: "/book-demo" });
+    trackEvent("book_demo_view", { path: "/bookademo" });
 
     function onMessage(event) {
       const data = event?.data;
@@ -31,7 +31,7 @@ export default function BookDemoPage() {
         type === "meetingBookSucceeded" ||
         type.toLowerCase().includes("bookings")
       ) {
-        trackEvent("book_demo_submit", { path: "/book-demo", source: "hubspot" });
+        trackEvent("book_demo_submit", { path: "/bookademo", source: "hubspot" });
       }
     }
 
@@ -74,7 +74,7 @@ export default function BookDemoPage() {
 
           <p className="text-sm text-white/60 text-center mt-6">
             By booking a meeting, you agree to our{" "}
-            <a href="/privacy" className="underline hover:text-white">
+            <a href="/privacy-policy" className="underline hover:text-white">
               Privacy Policy
             </a>
           </p>

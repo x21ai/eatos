@@ -400,7 +400,7 @@ export default function FullServiceClient() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="/book-demo"
+                  href="/bookademo"
                   className="px-10 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform"
                 >
                   Book a Demo

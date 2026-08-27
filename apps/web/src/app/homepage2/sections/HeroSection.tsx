@@ -64,7 +64,7 @@ export function HeroSection() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
-            href="/book-demo"
+            href="/bookademo"
             className="group px-8 py-4 bg-white text-black rounded-full text-lg font-semibold hover:scale-105 transition-all duration-300 flex items-center gap-2"
           >
             Book a Demo{" "}
@@ -74,7 +74,7 @@ export function HeroSection() {
             />
           </a>
           <a
-            href="/contact-sales"
+            href="/contact"
             className="px-8 py-4 rounded-full text-lg font-medium text-white border border-white/20 hover:bg-white/10 transition-all flex items-center gap-2"
           >
             <Phone size={18} /> Talk to Sales

@@ -273,13 +273,13 @@ export default function CustomersPage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="/book-demo"
+              href="/bookademo"
               className="px-8 py-4 bg-white text-black rounded-full font-semibold text-lg hover:scale-105 transition-all flex items-center gap-2"
             >
               Book a Demo <ArrowRight size={18} />
             </a>
             <a
-              href="/contact-sales"
+              href="/contact"
               className="px-8 py-4 border border-white/20 rounded-full font-medium text-lg hover:bg-white/10 transition-all"
             >
               Contact Sales
