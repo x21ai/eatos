@@ -37,7 +37,7 @@ export const pillars = [
   },
   {
     id: 'delivery',
-    title: 'Delivery and pickup without the chaos',
+    title: 'Effortless Delivery & Pickup',
     body:
       'Phone, web and third-party orders land in one queue, with driver dispatch and live order status so nothing gets lost between the oven and the door.',
     more:
