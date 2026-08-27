@@ -7,6 +7,7 @@ import {
   Star,
   Coffee,
   Wine,
+  Pizza,
   Truck,
   Package,
   Building2,
@@ -49,6 +50,16 @@ const solutions = [
       'Accurate order fulfillment',
       'Kitchen display routing',
     ],
+    image: null,
+  },
+  {
+    href: '/solutions/pizzeria',
+    title: 'Pizzeria',
+    description:
+      'Custom pies without the slow down. Fast toppings and halves, delivery and pickup in one queue.',
+    Icon: Pizza,
+    color: 'red',
+    features: ['Pizza builder modifiers', 'Delivery and dispatch', 'Cost per pie visibility'],
     image: null,
   },
   {
@@ -127,6 +138,7 @@ const colorMap = {
   slate: { bg: 'bg-slate-500/10', text: 'text-slate-300', border: 'border-slate-500/20' },
   blue: { bg: 'bg-blue-500/10', text: 'text-blue-400', border: 'border-blue-500/20' },
   violet: { bg: 'bg-violet-500/10', text: 'text-violet-400', border: 'border-violet-500/20' },
+  red: { bg: 'bg-red-500/10', text: 'text-red-400', border: 'border-red-500/20' },
 };
 
 export default function SolutionsPage() {

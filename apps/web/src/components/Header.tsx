@@ -29,6 +29,7 @@ import {
   Building2,
   Network,
   Package,
+  Pizza,
 } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { overallHeaderColor } from "@/app/system-status/systems";
@@ -344,6 +345,13 @@ export default function Header() {
       description: "Speed and accuracy at the counter",
       Icon: Star,
       iconWrap: "bg-purple-100 text-purple-600",
+    },
+    {
+      href: "/solutions/pizzeria",
+      title: "Pizzeria",
+      description: "Custom pies, delivery and pickup",
+      Icon: Pizza,
+      iconWrap: "bg-red-100 text-red-600",
     },
     {
       href: "/solutions/cafe",

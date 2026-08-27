@@ -182,6 +182,7 @@ const LINK_GROUPS = [
       { label: 'Quick Service', href: '/solutions/quick-service' },
       { label: 'Full Service', href: '/solutions/full-service' },
       { label: 'Fast Casual', href: '/solutions/fast-casual' },
+      { label: 'Pizzeria', href: '/solutions/pizzeria' },
       { label: 'Café', href: '/solutions/cafe' },
       { label: 'Bar & Nightclub', href: '/solutions/bar' },
       { label: 'Food Truck', href: '/solutions/food-truck' },
