@@ -70,7 +70,8 @@ export const demoSources: DemoSource[] = [
     blurb: 'Self ordering that upsells guests, handles modifiers, and cuts waits.',
     device: 'tablet',
     media: {
-      gif: kioskGif.url,
+      sources: videoSources(kioskWebm, kioskMp4),
+      poster: kioskPoster.url,
       caption: 'Touch to start, build the order, tip and pay.',
     },
   },
