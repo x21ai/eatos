@@ -14,7 +14,7 @@ function Meta({ post, tone = 'light' }) {
   const muted = tone === 'light' ? 'text-zinc-500' : 'text-zinc-400';
   return (
     <div className={`flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${muted}`}>
-      <span className={tone === 'light' ? 'text-[#d70480]' : 'text-[#d70480]'}>{post.category}</span>
+      <span className={tone === 'light' ? 'text-brand-on-dark' : 'text-brand-on-dark'}>{post.category}</span>
       <span aria-hidden>·</span>
       <span>{formatDate(post.date)}</span>
     </div>
@@ -31,7 +31,7 @@ function Hero() {
           transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
           className="max-w-3xl"
         >
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#d70480]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-on-dark">
             {blogHero.eyebrow}
           </p>
           <h1 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tighter text-white sm:text-5xl md:text-6xl">
