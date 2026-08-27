@@ -51,6 +51,8 @@ const rise = {
 };
 
 export default function InventoryPageClient() {
+  const demo = demoSources.find((d) => d.id === 'inventoryos');
+
   return (
     <div className="min-h-screen bg-black text-white font-montserrat selection:bg-amber-500/30">
       {/* Hero */}
