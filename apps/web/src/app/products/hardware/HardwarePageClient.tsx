@@ -19,7 +19,7 @@ import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
 import BrochureButton from '@/components/BrochureButton';
 import { features, hardware, hero, keyFeatures } from './content';
-import { products } from '../products/products';
+import { products } from '../products';
 
 const featureIcons = [
   { Icon: Monitor, tint: 'bg-sky-500/10 text-sky-400' },
