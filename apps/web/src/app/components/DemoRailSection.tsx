@@ -123,8 +123,8 @@ export function DemoRailSection({
                   </span>
 
                   <span
-                    className={`mt-1 hidden lg:block text-xs leading-snug ${
-                      active ? 'text-black/60' : 'text-gray-500'
+                    className={`mt-1 hidden lg:block text-xs font-medium leading-snug ${
+                      active ? 'text-black/70' : 'text-white/75'
                     }`}
                   >
                     {d.blurb}
