@@ -80,7 +80,7 @@ export function DemoRailSection({
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-gray-400 text-lg max-w-2xl mx-auto"
+            className="text-white/85 text-lg font-medium max-w-2xl mx-auto"
           >
             {description}
           </motion.p>
@@ -101,7 +101,7 @@ export function DemoRailSection({
                   className={`relative min-w-0 text-left rounded-xl border px-4 py-3 transition-colors lg:w-full ${
                     active
                       ? 'bg-white text-black border-white'
-                      : 'bg-zinc-900/60 border-white/10 text-gray-400 hover:text-white hover:border-white/30'
+                      : 'bg-zinc-900/60 border-white/10 text-white hover:border-white/30'
                   }`}
                 >
                   {active && (
@@ -123,8 +123,8 @@ export function DemoRailSection({
                   </span>
 
                   <span
-                    className={`mt-1 hidden lg:block text-xs leading-snug ${
-                      active ? 'text-black/60' : 'text-gray-500'
+                    className={`mt-1 hidden lg:block text-xs font-medium leading-snug ${
+                      active ? 'text-black/70' : 'text-white/75'
                     }`}
                   >
                     {d.blurb}
