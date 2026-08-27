@@ -54,7 +54,117 @@ const nextConfig = {
         source: '/fontawesome/:path*',
         destination: 'https://ka-p.fontawesome.com/:path*',
       },
+      // Live comparison URLs keep their exact paths and are served by the
+      // /comparison routes underneath.
+      { source: '/eatos-vs-other-pos-software', destination: '/comparison' },
+      { source: '/eatos-vs-:competitor', destination: '/comparison/:competitor' },
     ];
+  },
+  redirects() {
+    const permanent = (pairs) =>
+      pairs.map(([source, destination]) => ({ source, destination, permanent: true }));
+
+    return permanent([
+      // Slugs used during the rebuild now point at the live canonical URLs.
+      ['/about', '/about-eatos'],
+      ['/contact-sales', '/contact'],
+      ['/privacy', '/privacy-policy'],
+      ['/terms', '/terms-and-conditions'],
+      ['/book-demo', '/bookademo'],
+      ['/get-started', '/bookademo'],
+      ['/point-of-sale', '/pointofsale'],
+      ['/careers', '/work-with-us'],
+      ['/careers/:role', '/work-with-us/:role'],
+      ['/hardware', '/products/hardware'],
+      ['/hardware/:model', '/products/hardware/:model'],
+      ['/enterprise', '/enterprise-pos'],
+      ['/products/autonomous-delivery', '/products/autonomous-and-automated-delivery'],
+      ['/solutions/quick-service', '/quick-service'],
+      ['/solutions/fast-casual', '/fast-casual'],
+      ['/solutions/full-service', '/full-service'],
+      ['/solutions/food-truck', '/food-truck'],
+      ['/solutions/ghost-kitchen', '/ghost-kitchens'],
+      ['/solutions/catering', '/catering'],
+      ['/solutions/bar', '/bar-and-brewery'],
+      ['/solutions/cafe', '/cafe-pos'],
+      ['/solutions/enterprise', '/enterprise-pos'],
+      ['/solutions/pizzeria', '/pizzeria'],
+      ['/comparison/:competitor', '/eatos-vs-:competitor'],
+      ['/eatos-vs-other-pos-software/eatos-vs-:competitor', '/eatos-vs-:competitor'],
+
+      // Live flat product aliases consolidate onto one product page each.
+      ['/products/point-of-sale', '/pointofsale'],
+      ['/kitchendisplaysystem', '/products/kitchen-display-system'],
+      ['/kioskos', '/products/self-service-kiosk'],
+      ['/customerfacingdisplay', '/products/customer-facing-display'],
+      ['/pointofpurchase', '/products/point-of-purchase'],
+      ['/reportingandanalytics', '/products/reporting-analytics'],
+      ['/orderattable', '/products/tableside-order-and-pay'],
+      ['/workforceos', '/products/workforce-management'],
+      ['/products/payment-solutions', '/accept-payments'],
+      ['/products/ai-enabled-ordering-automation', '/ai'],
+      ['/maya-ai', '/ai'],
+
+      // Live pages with no direct equivalent yet go to the nearest page.
+      ['/why-eatos', '/platform'],
+      ['/support', '/contact'],
+      ['/nameyourprice', '/pricing'],
+      ['/newsroom', '/blog'],
+      ['/newsroom/:path*', '/blog'],
+      ['/news', '/blog'],
+      ['/news/:path*', '/blog'],
+      ['/event-list', '/blog'],
+      ['/event-pages/:path*', '/blog'],
+      ['/blogs', '/blog'],
+      ['/blogs/:slug', '/blog'],
+      ['/blog/categories/:category', '/blog'],
+      ['/legal', '/terms-and-conditions'],
+      ['/legal-terms', '/terms-and-conditions'],
+      ['/e-sign-consent', '/terms-and-conditions'],
+      ['/sms-terms', '/terms-and-conditions'],
+      ['/payment-terms', '/terms-and-conditions'],
+      ['/hardware-policies-warranty', '/terms-and-conditions'],
+      ['/general/legal-terms', '/terms-and-conditions'],
+      ['/general/sms-policy', '/terms-and-conditions'],
+      ['/general/hardware-policy', '/terms-and-conditions'],
+      ['/general/privacy-policy', '/privacy-policy'],
+      ['/general/:path*', '/terms-and-conditions'],
+
+      // Careers cluster.
+      ['/benefits', '/work-with-us'],
+      ['/how-we-hire', '/work-with-us'],
+      ['/application-tips', '/work-with-us'],
+      ['/resource-groups', '/work-with-us'],
+      ['/principles-of-employment', '/work-with-us'],
+      ['/the-employment-arbitration-policy', '/work-with-us'],
+      ['/protect-yourself-from-job-scams', '/work-with-us'],
+
+      // Partner cluster.
+      ['/partners/:path*', '/partners'],
+      ['/referral-partners', '/partners'],
+      ['/integration-partners', '/partners'],
+      ['/ambassadors', '/partners'],
+      ['/resellers', '/partners'],
+      ['/resellers-', '/partners'],
+
+      // Restaurant type collection pages.
+      ['/restaurant/quick-service', '/quick-service'],
+      ['/restaurant/fast-casual', '/fast-casual'],
+      ['/restaurant/full-service', '/full-service'],
+      ['/restaurant/food-truck', '/food-truck'],
+      ['/restaurant/ghost-kitchen', '/ghost-kitchens'],
+      ['/restaurant/catering', '/catering'],
+      ['/restaurant/bar-and-brewery', '/bar-and-brewery'],
+      ['/restaurant/cafe', '/cafe-pos'],
+      ['/restaurant/enterprise', '/enterprise-pos'],
+      ['/restaurant/enterprises', '/enterprise-pos'],
+      ['/restaurant/:path*', '/solutions'],
+
+      // Store collection pages.
+      ['/product-page/:slug', '/shop'],
+      ['/category/:slug', '/shop'],
+      ['/brochures/:slug', '/brochures'],
+    ]);
   },
 };
 
