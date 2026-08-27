@@ -110,7 +110,7 @@ export default function PostReactions({ slug, title, onCopyLink }) {
     {
       label: 'Share on Facebook',
       href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-      icon: <Facebook size={18} />,
+      icon: <FacebookIcon size={18} />,
     },
     {
       label: 'Share on X',
@@ -120,7 +120,7 @@ export default function PostReactions({ slug, title, onCopyLink }) {
     {
       label: 'Share on LinkedIn',
       href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
-      icon: <Linkedin size={18} />,
+      icon: <LinkedinIcon size={18} />,
     },
   ];
 
