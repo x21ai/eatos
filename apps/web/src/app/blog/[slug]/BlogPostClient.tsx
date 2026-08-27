@@ -6,7 +6,8 @@ import { toast } from 'sonner';
 import { ArrowLeft, ArrowRight, Share2 } from 'lucide-react';
 import { Placeholder } from '@/components/marketing/Placeholder';
 import { NewsletterSection } from '@/components/NewsletterSection';
-import { getPost, getRelated, formatDate } from '../content';
+import { getPost, getRelated, formatDate, posts, categories } from '../content';
+import CategoryFilter from '../CategoryFilter';
 import PostReactions from './PostReactions';
 
 
@@ -40,9 +41,19 @@ export default function BlogPostClient({ slug }) {
     );
   }
 
+  const available = categories.filter(
+    (c) => c === 'All Posts' || posts.some((p) => p.category === c),
+  );
+
   return (
     <article className="bg-black text-zinc-200">
-      <header className="bg-black pt-32 pb-16 md:pt-40 md:pb-20">
+      <div className="bg-black pt-28 md:pt-32">
+        <div className="site-container">
+          <CategoryFilter available={available} active={post.category} asLinks />
+        </div>
+      </div>
+
+      <header className="bg-black pt-8 pb-16 md:pt-10 md:pb-20">
         <div className="site-container">
           <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
             <a
