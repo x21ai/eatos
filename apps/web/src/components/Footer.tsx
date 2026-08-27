@@ -145,19 +145,18 @@ const LINK_GROUPS = [
   {
     title: 'Platform',
     links: [
-      { label: 'Point of Sale', href: '/point-of-sale' },
       { label: 'Payments', href: '/accept-payments' },
       { label: 'Intelligence', href: '/ai' },
       { label: 'Hardware', href: '/hardware' },
       { label: 'Tap to Pay', href: '/tap-to-pay' },
       { label: 'edgeOS', href: '/offline-point-of-sale' },
       { label: 'Platform', href: '/platform' },
-      { label: 'Enterprise', href: '/solutions/enterprise' },
     ],
   },
   {
     title: 'RESTAURANT TYPE',
     links: [
+      { label: 'Point of Sale', href: '/point-of-sale' },
       { label: 'Kitchen Display', href: '/products/kitchen-display-system' },
       { label: 'Self-Service Kiosk', href: '/products/self-service-kiosk' },
       { label: 'Handheld', href: '/products/point-of-purchase' },
