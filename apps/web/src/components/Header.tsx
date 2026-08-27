@@ -347,6 +347,13 @@ export default function Header() {
       iconWrap: "bg-purple-100 text-purple-600",
     },
     {
+      href: "/solutions/pizzeria",
+      title: "Pizzeria",
+      description: "Custom pies, delivery and pickup",
+      Icon: Pizza,
+      iconWrap: "bg-red-100 text-red-600",
+    },
+    {
       href: "/solutions/cafe",
       title: "Café & Coffee Shop",
       description: "Handle rushes effortlessly",
