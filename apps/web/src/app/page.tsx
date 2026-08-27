@@ -779,13 +779,13 @@ export default function HomePage() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative md:col-span-7 md:-mr-4 lg:-mr-10 xl:-mr-16"
+              className="relative"
             >
               <img
                 src={kdsKitchenAsset.url}
                 alt="Chef working beside an eatOS Kitchen Display System screen"
                 loading="lazy"
-                className="relative z-10 rounded-3xl w-full h-auto object-cover"
+                className="relative z-10 rounded-3xl w-full aspect-[4/3] object-cover"
               />
             </motion.div>
           </div>
