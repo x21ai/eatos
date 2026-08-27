@@ -228,21 +228,8 @@ export default function Footer() {
               ))}
             </div>
 
-            <div className="mt-4 flex flex-wrap items-center gap-3">
-              {CONTACT_CHANNELS.map(({ label, href, Icon, external }) => (
-                <a
-                  key={label}
-                  href={href}
-                  {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                  aria-label={label}
-                  title={label}
-                  className={socialClass}
-                >
-                  <Icon size={16} />
-                </a>
-              ))}
-            </div>
           </div>
+
 
           <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
             <a href="mailto:cs@eatos.com" className={cardClass}>
