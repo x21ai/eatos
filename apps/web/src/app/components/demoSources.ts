@@ -1,9 +1,9 @@
-import posGif from './assets/pos-demo.gif.asset.json';
-import kdsGif from './assets/kds-demo.gif.asset.json';
-import cfdGif from './assets/cfd3-demo.gif.asset.json';
-import kioskGif from './assets/kiosk-demo.gif.asset.json';
-import dashGif from './assets/dashboard-demo.gif.asset.json';
-import invGif from './assets/inventoryos-demo.gif.asset.json';
+import posGif from './assets/pos-demo.webp.asset.json';
+import kdsGif from './assets/kds-demo.webp.asset.json';
+import cfdGif from './assets/cfd3-demo.webp.asset.json';
+import kioskGif from './assets/kiosk-demo.webp.asset.json';
+import dashGif from './assets/dashboard-demo.webp.asset.json';
+import invGif from './assets/inventoryos-demo.webp.asset.json';
 
 
 export type DemoMedia = {
