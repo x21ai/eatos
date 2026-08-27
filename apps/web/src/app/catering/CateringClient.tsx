@@ -26,7 +26,7 @@ const rise = {
 
 const related = [
   {
-    href: '/products/point-of-sale',
+    href: '/pointofsale',
     title: 'Point of Sale',
     tagline: 'Quote, fire and settle large catering orders in one flow.',
     Icon: CreditCard,

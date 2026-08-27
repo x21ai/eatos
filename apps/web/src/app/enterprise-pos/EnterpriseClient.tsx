@@ -28,7 +28,7 @@ const rise = {
 
 const related = [
   {
-    href: '/products/point-of-sale',
+    href: '/pointofsale',
     title: 'Enterprise Point of Sale',
     tagline: 'One Point of Sale across every property, with central menus, pricing and reporting.',
     Icon: Monitor,
