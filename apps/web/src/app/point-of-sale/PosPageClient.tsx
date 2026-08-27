@@ -97,11 +97,20 @@ export default function PosPageClient() {
         {/* Interactive canvas */}
         <section className="pb-20 md:pb-28">
           <div className="site-container">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              className="mb-8 md:mb-12 text-center text-3xl md:text-5xl font-bold tracking-tighter"
+            >
+              How it Works
+            </motion.h2>
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, ease: 'easeOut' }}
-              className="min-w-0"
+              className="mx-auto min-w-0 max-w-3xl"
             >
               <div className="bg-zinc-900 rounded-[1.5rem] md:rounded-[2rem] shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/10 overflow-hidden relative">
                 <video
