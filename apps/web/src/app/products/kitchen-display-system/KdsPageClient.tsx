@@ -21,7 +21,10 @@ import {
   marquee,
 } from './content';
 import { products } from '../products';
+import { demoSources } from '../../components/demoSources';
 import BrochureButton from '@/components/BrochureButton';
+
+
 
 const hiddenFeatures = ['kitchen-grade-hardware', 'analytics-reporting'];
 const features = allFeatures.filter((f) => !hiddenFeatures.includes(f.id));
@@ -43,6 +46,8 @@ const rise = {
 };
 
 export default function KdsPageClient() {
+  const demo = demoSources.find((d) => d.id === 'kds');
+
   return (
     <div className="min-h-screen bg-black text-white font-montserrat selection:bg-emerald-500/30">
       {/* Hero */}
@@ -159,6 +164,35 @@ export default function KdsPageClient() {
           </div>
         </div>
       </section>
+
+      {/* KDS demo animation */}
+      <section className="pb-20 md:pb-28 border-t border-white/5 pt-16 md:pt-20">
+        <div className="site-container">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="min-w-0 rounded-[1.5rem] md:rounded-[2rem] border border-white/10 bg-zinc-900 shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-hidden"
+          >
+            <video
+              className="w-full h-auto block"
+              poster={demo?.media?.poster}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              {demo?.media?.sources.map((source) => (
+                <source key={source.src} src={source.src} type={source.type} />
+              ))}
+            </video>
+          </motion.div>
+        </div>
+      </section>
+
+
 
       {/* Feature rows */}
       <section className="py-20 md:py-28 border-t border-white/5">
