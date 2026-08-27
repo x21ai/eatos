@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Providers from '@/components/Providers';
 import CookieBanner from '@/components/CookieBanner';
+import BookDemoTracker from '@/components/BookDemoTracker';
 
 export const metadata = {
   metadataBase: new URL('https://eatos.com'),
