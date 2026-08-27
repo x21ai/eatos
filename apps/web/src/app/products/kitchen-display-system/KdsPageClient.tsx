@@ -47,6 +47,8 @@ const rise = {
 };
 
 export default function KdsPageClient() {
+  const demo = demoSources.find((d) => d.id === 'kds');
+
   return (
     <div className="min-h-screen bg-black text-white font-montserrat selection:bg-emerald-500/30">
       {/* Hero */}
