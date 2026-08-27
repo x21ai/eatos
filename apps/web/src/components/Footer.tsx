@@ -91,12 +91,54 @@ const SOCIAL_LINKS = [
   { label: 'Brochures', href: '/brochures', Icon: BrochureIcon, internal: true },
 ];
 
+// Structured office records. Line breaks are never authored by hand: the
+// formatter below turns each record into the same multi-line block so city,
+// state and ZIP always stay together on one line.
 const OFFICES = [
-  { city: 'Cupertino, CA', address: '20289 Stevens Creek Blvd PH 1019,', state: 'Cupertino - California - 95014.' },
-  { city: 'Miami, FL', address: '1111 Brickell Ave FL 10,', state: 'Miami - Florida - 33131.' },
-  { city: 'Los Angeles, CA', address: '750 N. San Vicente Blvd Ste 800', state: 'Los Angeles, California - 90048.' },
-  { city: 'Houston, TX', address: '21755 Interstate 45, Bldg 1 Ste 107', state: 'Spring, Texas - 77388.' },
+  {
+    stateCode: 'CA',
+    street: '20289 Stevens Creek Blvd',
+    suite: 'PH 1019',
+    city: 'Cupertino',
+    state: 'California',
+    zip: '95014',
+  },
+  {
+    stateCode: 'FL',
+    street: '1111 Brickell Ave',
+    suite: 'FL 10',
+    city: 'Miami',
+    state: 'Florida',
+    zip: '33131',
+  },
+  {
+    stateCode: 'CA',
+    street: '750 N. San Vicente Blvd',
+    suite: 'Ste 800',
+    city: 'Los Angeles',
+    state: 'California',
+    zip: '90048',
+  },
+  {
+    stateCode: 'TX',
+    street: '21755 Interstate 45, Bldg 1',
+    suite: 'Ste 107',
+    city: 'Spring',
+    state: 'Texas',
+    zip: '77388',
+  },
 ];
+
+// Single source of truth for address rendering across the site.
+export function formatOfficeAddress(office) {
+  const { stateCode, street, suite, city, state, zip } = office;
+  return {
+    heading: `${city}, ${stateCode}`,
+    streetLine: [street, suite].filter(Boolean).join(' '),
+    localityLine: `${city}, ${state} ${zip}`,
+  };
+}
+
 
 
 const LINK_GROUPS = [
