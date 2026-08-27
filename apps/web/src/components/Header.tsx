@@ -141,8 +141,6 @@ export default function Header() {
         "/get-started",
         "/about",
         "/careers",
-        "/privacy",
-        "/terms",
         "/customers",
       ];
 
