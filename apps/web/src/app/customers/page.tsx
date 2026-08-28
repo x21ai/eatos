@@ -160,7 +160,6 @@ export default function CustomersPage() {
           </div>
         </div>
 
-        </div>
       </section>
 
       {/* Case Studies */}
