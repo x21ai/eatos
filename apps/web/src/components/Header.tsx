@@ -30,6 +30,7 @@ import {
   Network,
   Package,
   Pizza,
+  Mic,
 } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { overallHeaderColor } from "@/app/system-status/systems";
@@ -221,6 +222,13 @@ export default function Header() {
       description: "Automate operations with AI",
       Icon: Cpu,
       iconWrap: "bg-purple-100 text-purple-600",
+    },
+    {
+      href: "/products/ai-enabled-ordering-automation",
+      title: "AI-Enabled Ordering",
+      description: "VoiceOS answers calls and takes orders",
+      Icon: Mic,
+      iconWrap: "bg-indigo-100 text-indigo-600",
     },
     {
 
@@ -909,6 +917,12 @@ export default function Header() {
                   Icon: Cpu,
                   label: "Intelligence",
                   color: "text-purple-500",
+                },
+                {
+                  href: "/products/ai-enabled-ordering-automation",
+                  Icon: Mic,
+                  label: "AI-Enabled Ordering",
+                  color: "text-indigo-500",
                 },
                 {
                   href: "/products/hardware",

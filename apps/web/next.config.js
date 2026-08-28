@@ -114,7 +114,7 @@ const nextConfig = {
       ['/orderattable', '/products/tableside-order-and-pay'],
       ['/workforceos', '/products/workforce-management'],
       ['/products/payment-solutions', '/accept-payments'],
-      ['/products/ai-enabled-ordering-automation', '/ai'],
+      
       ['/maya-ai', '/ai'],
 
       // Live pages with no direct equivalent yet go to the nearest page.
