@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { products } from '@/app/products/products';
 import { posts } from '@/app/blog/content';
+import { newsItems } from '@/app/news/content';
 
 export default async function sitemap() {
   const baseUrl = process.env.APP_URL || 'https://eatos.com';
@@ -27,6 +28,7 @@ export default async function sitemap() {
     '/platform',
     '/customers',
     '/bookademo',
+    '/news',
     '/privacy-policy',
     '/terms-and-conditions',
     '/report-fraud',
@@ -69,5 +71,13 @@ export default async function sitemap() {
     priority: 0.6,
   }));
 
-  return [...routes, ...productRoutes, ...blogRoutes];
+  // Newsroom items keep their original /news/<slug> URLs.
+  const newsRoutes = newsItems.map((item) => ({
+    url: `${baseUrl}/news/${encodeURIComponent(item.slug)}`,
+    lastModified: item.date,
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }));
+
+  return [...routes, ...productRoutes, ...blogRoutes, ...newsRoutes];
 }
