@@ -25,12 +25,12 @@ export const partnerTracks = [
   {
     title: 'Referral Partners',
     body:
-      'Receive generous commissions for each client you refer, plus resources, onboarding support and a dedicated partner manager to help you build a consistent revenue stream.',
+      'Receive generous commissions for each client you refer, onboarding support and a dedicated partner manager to help you build a consistent revenue stream.',
   },
   {
     title: 'Ambassadors',
     body:
-      'Join as an eatOS Ambassador and earn a generous one-time fee for every successful referral. Ideal for partners who support our products and want flexibility.',
+      'Join as an eatOS Ambassador and earn a generous one-time fee for every successful referral. Ideal for partners who support our products & want flexibility.',
   },
   {
     title: 'Resellers',
