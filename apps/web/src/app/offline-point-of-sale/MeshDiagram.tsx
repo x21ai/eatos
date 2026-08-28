@@ -41,7 +41,46 @@ export default function MeshDiagram() {
   links.push({ x1: nodes[0].x, y1: nodes[0].y, x2: nodes[nodes.length - 1].x, y2: nodes[nodes.length - 1].y, key: 'loop', faint: true });
 
   return (
-    <div className="relative w-full overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] p-4 md:p-8">
+    <>
+    {/* Mobile: stacked cloud + device grid */}
+    <div className="md:hidden relative w-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-5">
+      <div className="flex flex-col items-center">
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-sky-400/50 bg-sky-500/15 backdrop-blur"
+        >
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-2xl bg-sky-400/20" />
+          <Cloud size={28} className="relative text-sky-300" />
+        </motion.div>
+        <p className="mt-2 text-center text-[10px] font-semibold tracking-widest text-sky-300">
+          <span className="lowercase">eat</span>OS CLOUD
+        </p>
+        <div className="mt-3 h-6 w-px bg-gradient-to-b from-sky-400/50 to-transparent" />
+      </div>
+      <div className="mt-2 grid grid-cols-2 gap-3">
+        {nodes.map((n, i) => (
+          <motion.div
+            key={`m-${n.label}`}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15 + i * 0.08, duration: 0.35 }}
+            className="flex min-w-0 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-3"
+          >
+            <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl border backdrop-blur ${n.tint}`}>
+              <n.Icon size={18} />
+            </span>
+            <span className="min-w-0 truncate text-[11px] font-medium uppercase tracking-wider text-white/70">
+              {n.label}
+            </span>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+
+    {/* Desktop / tablet: mesh diagram */}
+    <div className="hidden md:block relative w-full overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] p-4 md:p-8">
       <svg
         viewBox="0 0 1000 360"
         className="w-full h-auto"
@@ -133,5 +172,6 @@ export default function MeshDiagram() {
       ))}
 
     </div>
+    </>
   );
 }
