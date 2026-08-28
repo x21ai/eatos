@@ -201,12 +201,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Live Demo Section */}
-      <DemoRailSection
+      {/* Product Showcase Section */}
+      <ProductShowcaseSection
         title="How it Works"
         description="Experience the full eatOS platform in your browser. Switch between products to see every feature in action and explore the complete workflow."
-        showLabel={false}
       />
+
 
       {/* Social Proof / Trust Section */}
       <section className="py-16 md:py-20 bg-black border-t border-white/5 relative overflow-hidden">
