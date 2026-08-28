@@ -60,7 +60,38 @@ const showcaseProducts: ShowcaseProduct[] = [
     image: invPlaceholder.url,
     demoId: 'inventoryos',
   },
+  {
+    name: 'AI Enabled\nPoint of Purchase',
+    href: '/products/point-of-purchase',
+    image: posPlaceholder.url,
+    demoId: 'pos',
+  },
+  {
+    name: 'inventoryOS',
+    href: '/products/simplified-inventory-management',
+    image: invPlaceholder.url,
+    demoId: 'inventoryos',
+  },
+  {
+    name: 'Dashboard',
+    href: '/products/reporting-analytics',
+    image: dashPlaceholder.url,
+    demoId: 'dashboard',
+  },
+  {
+    name: 'Online Ordering',
+    href: '/products/apponlineorderingdelivery',
+    image: kioskPlaceholder.url,
+    demoId: 'kiosk',
+  },
+  {
+    name: 'Workforce Management',
+    href: '/products/workforce-management',
+    image: cfdPlaceholder.url,
+    demoId: 'dashboard',
+  },
 ];
+
 
 function ProductAnimationModal({
   product,
