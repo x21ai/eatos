@@ -1,13 +1,5 @@
 // @ts-nocheck
-import {
-  ArrowRight,
-  Quote,
-  Star,
-  TrendingUp,
-  Clock,
-  Users,
-  Check,
-} from "lucide-react";
+import { ArrowRight, Users } from "lucide-react";
 
 export const metadata = {
   title: "Customers | eatOS | Restaurant Success Stories",
@@ -27,7 +19,7 @@ const caseStudies = [
     person: "James Miller",
     role: "Owner",
     initials: "JM",
-    color: "bg-indigo-100 text-indigo-700",
+    color: "bg-indigo-500/20 text-indigo-200",
     stats: [
       { label: "Revenue increase", value: "+34%" },
       { label: "Table turnover", value: "+20%" },
@@ -45,7 +37,7 @@ const caseStudies = [
     person: "Rachel Martinez",
     role: "General Manager",
     initials: "RM",
-    color: "bg-orange-100 text-orange-700",
+    color: "bg-orange-500/20 text-orange-200",
     stats: [
       { label: "Setup time", value: "2 days" },
       { label: "Order errors", value: "-60%" },
@@ -63,7 +55,7 @@ const caseStudies = [
     person: "David Kim",
     role: "Owner",
     initials: "DK",
-    color: "bg-green-100 text-green-700",
+    color: "bg-green-500/20 text-green-200",
     stats: [
       { label: "Revenue increase", value: "+22%" },
       { label: "Labor cost savings", value: "18%" },
@@ -81,7 +73,7 @@ const caseStudies = [
     person: "Marco Rossi",
     role: "Executive Chef & Co-Owner",
     initials: "MR",
-    color: "bg-rose-100 text-rose-700",
+    color: "bg-rose-500/20 text-rose-200",
     stats: [
       { label: "Time saved per shift", value: "2 hrs" },
       { label: "Ticket accuracy", value: "99.2%" },
@@ -99,7 +91,7 @@ const caseStudies = [
     person: "Sarah Thompson",
     role: "Founder",
     initials: "ST",
-    color: "bg-emerald-100 text-emerald-700",
+    color: "bg-emerald-500/20 text-emerald-200",
     stats: [
       { label: "Avg ticket size", value: "+27%" },
       { label: "Wait time", value: "-40%" },
@@ -117,7 +109,7 @@ const caseStudies = [
     person: "Tom Bradley",
     role: "Operations Manager",
     initials: "TB",
-    color: "bg-sky-100 text-sky-700",
+    color: "bg-sky-500/20 text-sky-200",
     stats: [
       { label: "Labor optimization", value: "+30%" },
       { label: "Peak hour revenue", value: "+18%" },
@@ -128,52 +120,52 @@ const caseStudies = [
 
 export default function CustomersPage() {
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-black text-white min-h-screen">
       {/* Hero */}
       <section className="pt-36 pb-20">
         <div className="site-container text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 bg-gray-50 text-sm font-medium mb-8 text-gray-600">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 bg-white/5 text-sm font-medium mb-8 text-white/70">
             <Users size={14} />
             <span>Customer Stories</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 text-slate-900">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 text-white">
             Real restaurants. <br />
-            <span className="text-gray-400">Real results.</span>
+            <span className="text-white/40">Real results.</span>
           </h1>
-          <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed mb-12">
+          <p className="text-xl text-white/65 max-w-2xl mx-auto leading-relaxed mb-12">
             See how restaurants across the country use <strong>eatOS</strong> to
             streamline operations, increase revenue, and delight their guests.
           </p>
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
-            <div className="bg-gray-50 rounded-2xl p-6">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
               <div className="text-3xl font-bold tracking-tighter mb-1">
                 Any format
               </div>
-              <div className="text-sm text-gray-500">
+              <div className="text-sm text-white/55">
                 QSR, full service & more
               </div>
             </div>
-            <div className="bg-gray-50 rounded-2xl p-6">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
               <div className="text-3xl font-bold tracking-tighter mb-1">
                 One platform
               </div>
-              <div className="text-sm text-gray-500">Point of Sale, payments & AI</div>
+              <div className="text-sm text-white/55">Point of Sale, payments & AI</div>
             </div>
-            <div className="bg-gray-50 rounded-2xl p-6">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
               <div className="text-3xl font-bold tracking-tighter mb-1">
                 Nationwide
               </div>
-              <div className="text-sm text-gray-500">
+              <div className="text-sm text-white/55">
                 Available across the US
               </div>
             </div>
-            <div className="bg-gray-50 rounded-2xl p-6">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
               <div className="text-3xl font-bold tracking-tighter mb-1">
                 99.9%
               </div>
-              <div className="text-sm text-gray-500">Uptime target</div>
+              <div className="text-sm text-white/55">Uptime target</div>
             </div>
           </div>
         </div>
@@ -188,7 +180,7 @@ export default function CustomersPage() {
               return (
                 <div
                   key={idx}
-                  className={`grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-gray-50 rounded-[2rem] overflow-hidden`}
+                  className={`grid grid-cols-1 md:grid-cols-2 gap-8 items-center border border-white/10 bg-white/5 rounded-[2rem] overflow-hidden`}
                 >
                   {/* Image */}
                   <div
@@ -201,7 +193,7 @@ export default function CustomersPage() {
                       loading="lazy"
                     />
                     <div className="absolute top-4 left-4">
-                      <span className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold">
+                      <span className="bg-black/70 text-white border border-white/15 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold">
                         {study.type}
                       </span>
                     </div>
@@ -213,7 +205,7 @@ export default function CustomersPage() {
                   >
                     <div className="mb-4">
                       <h3 className="text-2xl font-bold mb-1">{study.name}</h3>
-                      <p className="text-sm text-gray-500">{study.location}</p>
+                      <p className="text-sm text-white/55">{study.location}</p>
                     </div>
 
                     {/* Stats */}
@@ -221,12 +213,12 @@ export default function CustomersPage() {
                       {study.stats.map((stat, si) => (
                         <div
                           key={si}
-                          className="bg-white rounded-xl p-3 text-center"
+                          className="bg-white/10 border border-white/10 rounded-xl p-3 text-center"
                         >
                           <div className="text-lg font-bold tracking-tighter">
                             {stat.value}
                           </div>
-                          <div className="text-[11px] text-gray-500">
+                          <div className="text-[11px] text-white/55">
                             {stat.label}
                           </div>
                         </div>
@@ -234,7 +226,7 @@ export default function CustomersPage() {
                     </div>
 
                     {/* Quote */}
-                    <blockquote className="text-gray-600 italic leading-relaxed mb-4">
+                    <blockquote className="text-white/70 italic leading-relaxed mb-4">
                       "{study.quote}"
                     </blockquote>
 
@@ -248,7 +240,7 @@ export default function CustomersPage() {
                         <div className="text-sm font-semibold">
                           {study.person}
                         </div>
-                        <div className="text-xs text-gray-400">
+                        <div className="text-xs text-white/50">
                           {study.role}
                         </div>
                       </div>
@@ -262,12 +254,12 @@ export default function CustomersPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 md:py-28 bg-black text-white">
+      <section className="py-20 md:py-28 border-t border-white/10">
         <div className="site-container text-center">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
             Ready to join them?
           </h2>
-          <p className="text-gray-400 text-xl mb-10 max-w-xl mx-auto">
+          <p className="text-white/65 text-xl mb-10 max-w-xl mx-auto">
             See what <strong>eatOS</strong> can do for your restaurant. Get a
             personalized demo in under 30 minutes.
           </p>
