@@ -9,7 +9,7 @@ import { NewsletterSection } from '@/components/NewsletterSection';
 import { blogHero, categories, posts, formatDate } from './content';
 import CategoryFilter, { categoryHref } from './CategoryFilter';
 
-const PAGE_SIZE = 4;
+const PAGE_SIZE = 12;
 
 function initials(name = '') {
   return name
