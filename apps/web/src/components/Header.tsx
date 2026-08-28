@@ -295,7 +295,7 @@ export default function Header() {
     },
     {
       href: "/products/tableside-order-and-pay",
-      title: "Tableside",
+      title: "Order at Table",
       description: "Scan, order, pay",
       Icon: Phone,
       iconWrap: "bg-fuchsia-100 text-fuchsia-700",
@@ -794,7 +794,7 @@ export default function Header() {
                 {
                   href: "/products/tableside-order-and-pay",
                   Icon: Phone,
-                  label: "Tableside",
+                  label: "Order at Table",
                   color: "text-fuchsia-600",
                 },
                 {
