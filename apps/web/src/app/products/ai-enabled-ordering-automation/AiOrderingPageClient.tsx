@@ -215,7 +215,13 @@ export default function AiOrderingPageClient() {
               </div>
 
               <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                <Placeholder label={feature.imageLabel} src={feature.image ?? undefined} />
+                <Placeholder
+                  label={feature.imageLabel}
+                  src={feature.image ?? undefined}
+                  bare
+                  contain
+                  ratio="aspect-square"
+                />
               </div>
             </motion.div>
           ))}
@@ -274,34 +280,6 @@ export default function AiOrderingPageClient() {
         </div>
       </section>
 
-      {/* Spec cards */}
-      <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="site-container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {hardware.specs.map((spec, index) => (
-              <motion.div
-                key={spec.title}
-                {...rise}
-                transition={{ delay: index * 0.08 }}
-                className="rounded-[2rem] border border-white/10 bg-white/5 p-8"
-              >
-                {(() => {
-                  const { Icon, tint } = hardwareIcons[index % hardwareIcons.length];
-                  return (
-                    <div
-                      className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-5 ${tint}`}
-                    >
-                      <Icon size={24} />
-                    </div>
-                  );
-                })()}
-                <h3 className="text-xl font-bold tracking-tighter">{spec.title}</h3>
-                <p className="mt-3 text-white/90 leading-relaxed">{spec.body}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Related */}
       <section className="py-20 md:py-28 border-t border-white/5">

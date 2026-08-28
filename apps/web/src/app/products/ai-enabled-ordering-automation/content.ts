@@ -1,4 +1,8 @@
 // @ts-nocheck
+import streamlinedAsset from '@/assets/ai-ordering/Streamlined-Order-Taking-Process.png.asset.json';
+import engagementAsset from '@/assets/ai-ordering/Enhanced-Customer-Engagement.png.asset.json';
+import efficiencyAsset from '@/assets/ai-ordering/Increased-Efficiency-and-Productivity.png.asset.json';
+import accuracyAsset from '@/assets/ai-ordering/Order-Accuracy-and-Customization.png.asset.json';
 // All copy for the AI-Enabled Ordering Automation product page. Edit here.
 // Images are intentionally null: add a CDN asset URL per feature when artwork is ready.
 
@@ -36,7 +40,7 @@ export const features = [
     more:
       'Every call is captured, confirmed and fired to the kitchen without a team member stepping away from the floor.',
     imageLabel: 'Streamlined order taking process',
-    image: null,
+    image: streamlinedAsset.url,
     metrics: [
       { value: '100%', label: 'AI-Enabled' },
       { value: '10%', label: 'Service Focus' },
@@ -50,7 +54,7 @@ export const features = [
     more:
       'Guests talk the way they always have, and the assistant keeps up with modifiers, allergies and follow-up questions.',
     imageLabel: 'Enhanced customer engagement',
-    image: null,
+    image: engagementAsset.url,
     metrics: [
       { value: '100%', label: 'Interactive' },
       { value: '10x', label: 'More Engagement' },
@@ -64,7 +68,7 @@ export const features = [
     more:
       'Peak-hour call volume no longer competes with the guests standing in front of your team.',
     imageLabel: 'Increased efficiency and productivity',
-    image: null,
+    image: efficiencyAsset.url,
     metrics: [
       { value: '100%', label: 'Productivity Up' },
       { value: '100%', label: 'Staff Empowered' },
@@ -78,7 +82,7 @@ export const features = [
     more:
       'Each order is read back for confirmation before it reaches the kitchen, so remakes and refunds drop.',
     imageLabel: 'Order accuracy and customization',
-    image: null,
+    image: accuracyAsset.url,
     metrics: [
       { value: '100%', label: 'Customizable' },
       { value: '100%', label: 'Accurate Orders' },
