@@ -26,8 +26,8 @@ export const capabilities = [
 ];
 
 export const marquee = [
-  { value: 'Large orders', label: 'Quote, confirm and fire big event orders without slowing service.' },
-  { value: 'Event menus', label: 'Custom menus and pricing per client, saved and reused in seconds.' },
+  { value: 'Large orders', label: 'Quote, confirm and fire big orders without slowing service.' },
+  { value: 'Event menus', label: 'Custom menus, pricing per client, save, reused in seconds.' },
   { value: 'Support 24/7', label: 'Real people on call for every event, any day of the year.' },
   { value: 'No upfront cost', label: 'Hardware included with Pay As You Go, so you start today.' },
 ];
@@ -38,7 +38,7 @@ export const pillars = [
     title: 'Streamlined catering operations',
     body:
       'Manage and track catering orders alongside regular service, with menu customization for every event.',
-    more: 'Coordinate logistics for large-scale catering seamlessly from one screen.',
+    more: 'Coordinate logistics for large-scale catering from one screen.',
     imageLabel: 'Catering manager reviewing an event order on a tablet',
     image: opsImg.url,
   },

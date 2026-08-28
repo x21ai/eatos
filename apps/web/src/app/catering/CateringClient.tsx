@@ -35,7 +35,7 @@ const related = [
   {
     href: '/products/kitchen-display-system',
     title: 'Kitchen Display System',
-    tagline: 'Route event prep to the right station, every time.',
+    tagline: 'Route event prep to the right station, every time during rush hours.',
     Icon: ChefHat,
     iconClass: 'bg-sky-500/15 text-sky-400',
   },
@@ -340,7 +340,7 @@ export default function CateringClient() {
                 Grow your catering business
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-10">
-                Book a demo and we will show you how eatOS handles your events, menus and clients.
+                Book a demo and we will show you how eatOS handles your events.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
