@@ -209,7 +209,7 @@ export default function BrochuresClient() {
             The full library.
           </h2>
           <p className="mt-3 max-w-xl text-base leading-7 text-zinc-400">
-            One brochure for every product in the eatOS restaurant technology cloud.
+            One brochure for every product in eatOS restaurant technology cloud.
           </p>
         </Reveal>
 
