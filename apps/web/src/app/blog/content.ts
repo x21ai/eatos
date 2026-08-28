@@ -23,7 +23,7 @@ export const categories = [
   'Tableside Ordering',
 ];
 
-export const posts = [
+const curatedPosts = [
   {
     slug: 'never-miss-a-beat-how-offline-resilience-keeps-your-sales-rolling',
     title: 'Never Miss a Beat: How Offline Resilience Keeps Your Sales Rolling with edgeOS',
