@@ -100,7 +100,7 @@ function HeroBanner() {
 function Card({ post, index }) {
   return (
     <motion.a
-      href={`/blog/${post.slug}`}
+      href={`/blogs/${post.slug}`}
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
@@ -127,7 +127,7 @@ function SidebarRecent({ items }) {
       <ul className="mt-5 space-y-5">
         {items.map((post) => (
           <li key={post.slug}>
-            <a href={`/blog/${post.slug}`} className="group flex min-w-0 items-start gap-4">
+            <a href={`/blogs/${post.slug}`} className="group flex min-w-0 items-start gap-4">
               <span className="relative h-16 w-20 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-zinc-900">
                 {post.image ? (
                   <img src={post.image} alt="" aria-hidden loading="lazy" className="h-full w-full object-cover" />
