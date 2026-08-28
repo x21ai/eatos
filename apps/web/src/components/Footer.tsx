@@ -135,7 +135,7 @@ export function formatOfficeAddress(office) {
   return {
     heading: `${city}, ${stateCode}`,
     streetLine: [street, suite].filter(Boolean).join(' '),
-    localityLine: `${city}, ${state} ${zip}`,
+    localityLine: `${city}, ${state} - ${zip}.`,
   };
 }
 
