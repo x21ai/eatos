@@ -20,13 +20,14 @@ export default function MeshDiagram() {
   // Node positions in a 1000x360 viewBox
   const center = { x: 500, y: 150 };
   const nodes = [
-    { Icon: Monitor, x: 120, y: 70, label: 'Point of Sale', tint: 'text-sky-400 border-sky-400/40 bg-sky-500/10' },
-    { Icon: ChefHat, x: 170, y: 250, label: 'Kitchen Display', tint: 'text-amber-400 border-amber-400/40 bg-amber-500/10' },
-    { Icon: TabletSmartphone, x: 380, y: 300, label: 'Kiosk', tint: 'text-emerald-400 border-emerald-400/40 bg-emerald-500/10' },
-    { Icon: Smartphone, x: 640, y: 300, label: 'Handheld', tint: 'text-violet-400 border-violet-400/40 bg-violet-500/10' },
-    { Icon: CreditCard, x: 840, y: 240, label: 'Payments', tint: 'text-emerald-400 border-emerald-400/40 bg-emerald-500/10' },
-    { Icon: Monitor, x: 880, y: 70, label: 'Customer Display', tint: 'text-rose-400 border-rose-400/40 bg-rose-500/10' },
+    { Icon: Monitor, x: 120, y: 80, label: 'Point of Sale', labelPos: 'above', tint: 'text-sky-400 border-sky-400/40 bg-sky-500/10' },
+    { Icon: ChefHat, x: 170, y: 250, label: 'Kitchen Display', labelPos: 'below', tint: 'text-amber-400 border-amber-400/40 bg-amber-500/10' },
+    { Icon: TabletSmartphone, x: 380, y: 290, label: 'Kiosk', labelPos: 'below', tint: 'text-emerald-400 border-emerald-400/40 bg-emerald-500/10' },
+    { Icon: Smartphone, x: 640, y: 290, label: 'Handheld', labelPos: 'below', tint: 'text-violet-400 border-violet-400/40 bg-violet-500/10' },
+    { Icon: CreditCard, x: 840, y: 240, label: 'Payments', labelPos: 'below', tint: 'text-emerald-400 border-emerald-400/40 bg-emerald-500/10' },
+    { Icon: Monitor, x: 880, y: 80, label: 'Customer Display', labelPos: 'above', tint: 'text-rose-400 border-rose-400/40 bg-rose-500/10' },
   ];
+
 
   const links = [];
   nodes.forEach((n, i) => {
