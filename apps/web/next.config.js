@@ -119,7 +119,6 @@ const nextConfig = {
 
       // Live pages with no direct equivalent yet go to the nearest page.
       ['/why-eatos', '/platform'],
-      ['/support', '/contact'],
       ['/nameyourprice', '/pricing'],
       ['/newsroom', '/news'],
       ['/newsroom/:slug', '/news/:slug'],
