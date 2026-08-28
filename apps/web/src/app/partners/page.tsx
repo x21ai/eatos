@@ -144,7 +144,7 @@ export default function PartnersPage() {
                 training.
               </p>
               <p className="mt-4 text-sm leading-relaxed text-white/70 md:text-base">
-                Accountants, bookkeepers, consultants and anyone else can earn valuable commissions
+                Accountants, bookkeepers and anyone else can earn valuable commissions
                 without any obligation, simply by connecting restaurants with the right business
                 solutions.
               </p>
@@ -168,7 +168,7 @@ export default function PartnersPage() {
               Meet our integration partners
             </h2>
             <p className="mt-4 text-base text-white/70">
-              eatOS works with the hardware, payments and back-office platforms restaurants already
+               eatOS works with the hardware, back-office platforms restaurants already
               rely on.
             </p>
           </div>
