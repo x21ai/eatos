@@ -118,15 +118,20 @@ export default function MeshDiagram() {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2 + i * 0.1, duration: 0.4 }}
-            className={`flex h-11 w-11 md:h-14 md:w-14 items-center justify-center rounded-2xl border backdrop-blur ${n.tint}`}
+            className={`relative flex h-11 w-11 md:h-14 md:w-14 items-center justify-center rounded-2xl border backdrop-blur ${n.tint}`}
           >
             <n.Icon size={22} />
+            <p
+              className={`absolute left-1/2 -translate-x-1/2 hidden md:block whitespace-nowrap text-center text-[10px] font-medium uppercase tracking-wider text-white/50 ${
+                n.labelPos === 'above' ? 'bottom-full mb-1.5' : 'top-full mt-1.5'
+              }`}
+            >
+              {n.label}
+            </p>
           </motion.div>
-          <p className="mt-1.5 hidden md:block whitespace-nowrap text-center text-[10px] font-medium uppercase tracking-wider text-white/50">
-            {n.label}
-          </p>
         </div>
       ))}
+
     </div>
   );
 }
