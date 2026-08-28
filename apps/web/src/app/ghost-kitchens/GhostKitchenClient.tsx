@@ -99,7 +99,7 @@ export default function GhostKitchenClient() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-xl sm:text-2xl md:text-3xl font-medium mb-6 text-fuchsia-400"
+                className="text-xs font-semibold uppercase tracking-[0.24em] text-fuchsia-400 mb-5"
               >
                 {hero.eyebrow}
               </motion.p>
