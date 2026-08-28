@@ -245,9 +245,11 @@ export function ProductShowcaseSection({
             className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hidden px-2 md:px-14 pb-2"
           >
             {showcaseProducts.map((product) => (
-              <a
+              <button
                 key={product.name}
-                href={product.href}
+                type="button"
+                onClick={() => setActiveProduct(product)}
+                aria-label={`Watch the ${product.name} demo`}
                 data-showcase-card
                 className="group snap-start shrink-0 basis-[66%] sm:basis-[calc((100%-3rem)/3)] lg:basis-[calc((100%-6rem)/5)] flex flex-col items-center text-center"
               >
@@ -263,11 +265,16 @@ export function ProductShowcaseSection({
                 <h3 className="mt-6 text-base md:text-lg font-semibold tracking-tight text-white/90 group-hover:text-white transition-colors max-w-[14rem] leading-snug">
                   {product.name}
                 </h3>
-              </a>
+              </button>
             ))}
           </div>
         </div>
       </div>
+
+      {activeProduct ? (
+        <ProductAnimationModal product={activeProduct} onClose={closeModal} />
+      ) : null}
     </section>
   );
+
 }
