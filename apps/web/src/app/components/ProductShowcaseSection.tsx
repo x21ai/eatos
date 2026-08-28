@@ -313,7 +313,7 @@ export function ProductShowcaseSection({
           <div
             ref={trackRef}
             onScroll={updateArrows}
-            className="flex gap-16 md:gap-24 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hidden px-2 md:px-14 pb-2"
+            className="flex gap-16 md:gap-24 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hidden px-10 md:px-20 pb-2 [scroll-padding-left:2.5rem]"
           >
             {showcaseProducts.map((product) => (
               <button
