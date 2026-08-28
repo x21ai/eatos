@@ -43,6 +43,18 @@ const showcaseProducts: ShowcaseProduct[] = [
     demoId: 'cfd',
   },
   {
+    name: 'Dashboard',
+    href: '/products/reporting-analytics',
+    image: dashPlaceholder.url,
+    demoId: 'dashboard',
+  },
+  {
+    name: 'inventoryOS',
+    href: '/products/simplified-inventory-management',
+    image: invPlaceholder.url,
+    demoId: 'inventoryos',
+  },
+  {
     name: 'Table Side\nOrder & Pay',
     href: '/products/tableside-order-and-pay',
     image: invPlaceholder.url,
@@ -66,18 +78,7 @@ const showcaseProducts: ShowcaseProduct[] = [
     image: posPlaceholder.url,
     demoId: 'pos',
   },
-  {
-    name: 'inventoryOS',
-    href: '/products/simplified-inventory-management',
-    image: invPlaceholder.url,
-    demoId: 'inventoryos',
-  },
-  {
-    name: 'Dashboard',
-    href: '/products/reporting-analytics',
-    image: dashPlaceholder.url,
-    demoId: 'dashboard',
-  },
+
   {
     name: 'Online Ordering',
     href: '/products/apponlineorderingdelivery',
