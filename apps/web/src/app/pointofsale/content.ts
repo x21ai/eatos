@@ -45,7 +45,7 @@ export const features = [
     id: 'table-management',
     title: 'Table Management',
     body:
-      'Elevate service with customizable floor plans, table turnover tracking and mobile ordering for a smoother dining experience.',
+      'Elevate service across the whole dining room with customizable floor plans, live table turnover tracking and mobile ordering for a smoother, faster dining experience.',
     more:
       'Optimize efficiency through tailored layouts and dedicated service sections, while gaining insight from turnover data across the whole room.',
     imageLabel: 'Terminal showing a restaurant floor plan',
@@ -59,7 +59,7 @@ export const features = [
     id: 'online-ordering',
     title: 'Built-in Online Ordering',
     body:
-      'Automate order tracking with integrated accounting and get rid of inconvenience of manually monitoring 3rd party ordering app.',
+      'Automate order tracking with fully integrated accounting and get rid of the daily inconvenience of manually monitoring every 3rd party ordering app.',
     more:
       'Orders flow straight into the Point of Sale and Kitchen Display System, so data sharing stays smooth and updates land instantly.',
     imageLabel: 'Phone showing a white labeled ordering app',
