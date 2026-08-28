@@ -93,14 +93,18 @@ export default function CareersPage() {
   const benefits = [
     {
       title: "Flexible location",
-      desc: "Remote-friendly teams with optional hubs.",
+      desc: "Remote-friendly teams.",
     },
     { title: "Competitive pay", desc: "Market comp plus meaningful equity." },
     {
       title: "Health coverage",
-      desc: "Medical, dental, and vision (where applicable).",
+      desc: "Medical, dental, and vision        
+(where applicable).",
     },
-    { title: "Time off", desc: "We take rest seriously so we can stay sharp." },
+    {
+      title: "Time off",
+      desc: "We take rest seriously so we can stay sharp and active.",
+    },
     { title: "Gear", desc: "Tools that let you do your best work." },
     {
       title: "Real impact",
@@ -127,7 +131,7 @@ export default function CareersPage() {
             <p className="text-lg md:text-xl text-white/70 leading-relaxed">
               We’re building software, payments, and hardware that work together
               like one machine, along with an intelligence layer that helps
-              operators act faster and smarter.
+              operators act smarter.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-3">
@@ -166,7 +170,7 @@ export default function CareersPage() {
             </h2>
             <p className="text-white/70 text-lg leading-relaxed">
               We move quickly, but we don’t break trust. We aim for the kind of
-              quality you can feel.
+              quality you can feel and depend on.
             </p>
           </div>
 
@@ -198,7 +202,7 @@ export default function CareersPage() {
               Support the team.
             </h2>
             <p className="text-white/70 text-lg leading-relaxed">
-              We keep this simple: take care of people, and they’ll do the best
+              We keep it simple: take care of people, they’ll do the best
               work of their careers.
             </p>
           </div>
@@ -292,7 +296,7 @@ export default function CareersPage() {
             <Step
               number="01"
               title="Intro"
-              desc="A quick call to align on role and goals."
+                desc="A quick call to align on role and goals easily."
             />
             <Step
               number="02"
