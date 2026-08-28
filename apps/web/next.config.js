@@ -68,6 +68,15 @@ const nextConfig = {
       pairs.map(([source, destination]) => ({ source, destination, permanent: true }));
 
     return permanent([
+      // Legacy support.eatos.com URLs now resolve inside the main site.
+      ['/en-us', '/support'],
+      ['/en-us/article/:slug', '/support/article/:slug'],
+      ['/en-us/category/:slug', '/support/category/:slug'],
+      ['/support/en-us', '/support'],
+      ['/support/en-us/article/:slug', '/support/article/:slug'],
+      ['/support/en-us/category/:slug', '/support/category/:slug'],
+      ['/help', '/support'],
+
       // Slugs used during the rebuild now point at the live canonical URLs.
       ['/about', '/about-eatos'],
       ['/contact-sales', '/contact'],
