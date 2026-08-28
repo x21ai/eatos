@@ -290,7 +290,7 @@ export default function TapToPayClient() {
       <section className="py-16 md:py-20 border-t border-white/5">
         <div className="site-container">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tighter">
+            <h2 className="whitespace-nowrap text-2xl md:text-3xl font-bold tracking-tighter">
               What you need to start
             </h2>
             <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:flex md:flex-wrap md:justify-end md:gap-8">
