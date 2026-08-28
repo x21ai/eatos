@@ -28,7 +28,7 @@ const related = [
   {
     href: '/products/self-service-kiosk',
     title: 'Self-Service Kiosk',
-    tagline: 'Let guests order and pay on their own, with upsells built into every screen.',
+    tagline: 'Let guests order and pay on their own, with upsells built in every screen.',
     Icon: MonitorSmartphone,
     iconClass: 'bg-orange-500/15 text-orange-400',
   },
@@ -42,7 +42,7 @@ const related = [
   {
     href: '/tap-to-pay',
     title: 'Tap to Pay',
-    tagline: 'Take contactless payment anywhere in the dining room, with no extra hardware.',
+    tagline: 'Take contactless payment anywhere in the dining room.',
     Icon: CreditCard,
     iconClass: 'bg-sky-500/15 text-sky-400',
   },
