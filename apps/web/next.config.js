@@ -119,7 +119,6 @@ const nextConfig = {
       ['/event-list', '/blog'],
       ['/event-pages/:path+', '/blog'],
       ['/blogs', '/blog'],
-      ['/blogs/:slug', '/blog'],
       ['/blog/categories/:category', '/blog'],
       ['/legal', '/terms-and-conditions'],
       ['/legal-terms', '/terms-and-conditions'],
