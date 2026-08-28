@@ -98,8 +98,7 @@ export default function CareersPage() {
     { title: "Competitive pay", desc: "Market comp plus meaningful equity." },
     {
       title: "Health coverage",
-      desc: "Medical, dental, and vision        
-(where applicable).",
+      desc: "Medical, dental, and vision (where applicable).",
     },
     {
       title: "Time off",
