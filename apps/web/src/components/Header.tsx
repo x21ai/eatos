@@ -223,6 +223,13 @@ export default function Header() {
       iconWrap: "bg-purple-100 text-purple-600",
     },
     {
+      href: "/products/ai-enabled-ordering-automation",
+      title: "AI-Enabled Ordering",
+      description: "VoiceOS answers calls and takes orders",
+      Icon: Mic,
+      iconWrap: "bg-indigo-100 text-indigo-600",
+    },
+    {
 
       href: "/products/kitchen-display-system",
       title: "Kitchen Display",
