@@ -26,17 +26,17 @@ export const marquee = [
   {
     value: 'Always on',
     label:
-      'Service keeps moving online or offline, with no lost. Tickets and totals sync automatically the moment connectivity returns.',
+      'Service keeps moving online or offline, with no lost. Tickets, totals sync automatically the moment connectivity returns.',
   },
   {
     value: 'Support 24/7',
     label:
-      'Real people on call through every dinner rush. Our support team knows restaurants and answers fast, so service never stalls.',
+      'Real people on call through every dinner rush. Our support team knows restaurants and answers fast.',
   },
   {
     value: 'No upfront cost',
     label:
-      'Hardware included, So you start fast and scale easily. Add terminals, handhelds, and kitchen displays as your dining room grows.',
+      'Hardware included, So you start fast and scale easily. Add terminals, handhelds, and KDS as your dining room grows.',
   },
 ];
 
