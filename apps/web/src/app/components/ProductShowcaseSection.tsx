@@ -6,14 +6,21 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { motion } from 'motion/react';
 import { demoSources } from './demoSources';
 
-// TODO: replace these placeholder mockups with the final product renders.
-// Swap only the `image` value (a .asset.json pointer url) for each product.
+// TODO: Dashboard and inventoryOS still use placeholder mockups.
 import posPlaceholder from './assets/pos-demo-poster.jpg.asset.json';
-import kdsPlaceholder from './assets/kds-demo-poster.jpg.asset.json';
-import kioskPlaceholder from './assets/kiosk-demo-poster.jpg.asset.json';
-import cfdPlaceholder from './assets/cfd3-demo-poster.jpg.asset.json';
 import dashPlaceholder from './assets/dashboard-demo-poster.jpg.asset.json';
 import invPlaceholder from './assets/inventoryos-demo-poster.jpg.asset.json';
+
+import posShot from './assets/showcase-pos.png.asset.json';
+import kdsShot from './assets/showcase-kds.png.asset.json';
+import kioskShot from './assets/showcase-kiosk.png.asset.json';
+import cfdShot from './assets/showcase-CFD.png.asset.json';
+import tablesideShot from './assets/showcase-Tableside_Ordering.png.asset.json';
+import analyticsShot from './assets/showcase-Analytics.png.asset.json';
+import deliveryShot from './assets/showcase-Servebot.png.asset.json';
+import popShot from './assets/showcase-POP_edited.png.asset.json';
+import onlineShot from './assets/showcase-OrderOS.png.asset.json';
+import workforceShot from './assets/showcase-Workforce.png.asset.json';
 
 type ShowcaseProduct = {
   name: string;
@@ -23,23 +30,23 @@ type ShowcaseProduct = {
 };
 
 const showcaseProducts: ShowcaseProduct[] = [
-  { name: 'AI Enabled\nPoint of Sale', href: '/pointofsale', image: posPlaceholder.url, demoId: 'pos' },
+  { name: 'AI Enabled\nPoint of Sale', href: '/pointofsale', image: posShot.url, demoId: 'pos' },
   {
     name: 'AI Enabled\nKitchen Display System',
     href: '/products/kitchen-display-system',
-    image: kdsPlaceholder.url,
+    image: kdsShot.url,
     demoId: 'kds',
   },
   {
     name: 'Self Service Kiosk',
     href: '/products/self-service-kiosk',
-    image: kioskPlaceholder.url,
+    image: kioskShot.url,
     demoId: 'kiosk',
   },
   {
     name: 'Customer Facing Display',
     href: '/products/customer-facing-display',
-    image: cfdPlaceholder.url,
+    image: cfdShot.url,
     demoId: 'cfd',
   },
   {
@@ -57,41 +64,42 @@ const showcaseProducts: ShowcaseProduct[] = [
   {
     name: 'Table Side\nOrder & Pay',
     href: '/products/tableside-order-and-pay',
-    image: invPlaceholder.url,
+    image: tablesideShot.url,
     demoId: 'pos',
   },
   {
     name: 'Analytics & Reporting',
     href: '/products/reporting-analytics',
-    image: dashPlaceholder.url,
+    image: analyticsShot.url,
     demoId: 'dashboard',
   },
   {
     name: 'Autonomous & Automated Delivery',
     href: '/products/autonomous-and-automated-delivery',
-    image: invPlaceholder.url,
+    image: deliveryShot.url,
     demoId: 'inventoryos',
   },
   {
     name: 'AI Enabled\nPoint of Purchase',
     href: '/products/point-of-purchase',
-    image: posPlaceholder.url,
+    image: popShot.url,
     demoId: 'pos',
   },
 
   {
     name: 'Online Ordering',
     href: '/products/apponlineorderingdelivery',
-    image: kioskPlaceholder.url,
+    image: onlineShot.url,
     demoId: 'kiosk',
   },
   {
     name: 'Workforce Management',
     href: '/products/workforce-management',
-    image: cfdPlaceholder.url,
+    image: workforceShot.url,
     demoId: 'dashboard',
   },
 ];
+
 
 
 function ProductAnimationModal({
