@@ -236,6 +236,16 @@ const curatedPosts = [
   },
 ];
 
+// Posts migrated from the previous eatos.com blog, keyed by their original
+// slugs so every existing /blogs/<slug> URL keeps resolving.
+const importedPosts = generatedPosts.filter(
+  (p) => !curatedPosts.some((c) => c.slug === p.slug),
+);
+
+export const posts = [...curatedPosts, ...importedPosts].sort((a, b) =>
+  a.date < b.date ? 1 : a.date > b.date ? -1 : 0,
+);
+
 export function getPost(slug) {
   return posts.find((p) => p.slug === slug) ?? null;
 }
