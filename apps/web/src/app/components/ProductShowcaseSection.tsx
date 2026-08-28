@@ -171,6 +171,9 @@ export function ProductShowcaseSection({
   const trackRef = useRef<HTMLDivElement | null>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
+  const [activeProduct, setActiveProduct] = useState<ShowcaseProduct | null>(null);
+  const closeModal = useCallback(() => setActiveProduct(null), []);
+
 
   const updateArrows = useCallback(() => {
     const el = trackRef.current;
