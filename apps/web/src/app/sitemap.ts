@@ -28,6 +28,7 @@ export default async function sitemap() {
     '/platform',
     '/customers',
     '/bookademo',
+    '/news',
     '/privacy-policy',
     '/terms-and-conditions',
     '/report-fraud',
