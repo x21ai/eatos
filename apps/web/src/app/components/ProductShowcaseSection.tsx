@@ -320,12 +320,20 @@ export function ProductShowcaseSection({
               >
                 <div className="relative w-full aspect-[5/5] flex items-center justify-center">
                   <div className="absolute bottom-6 h-16 w-3/5 rounded-[100%] bg-white/10 blur-2xl" />
-                  <img
-                    src={product.image}
-                    alt={`${product.name} shown on an eatOS device`}
-                    loading="lazy"
-                    className="relative z-10 max-h-full w-auto max-w-full scale-110 object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.65)] transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-[1.14]"
-                  />
+                  {product.frame === 'tablet' ? (
+                    <TabletFrame
+                      src={product.image}
+                      alt={`${product.name} shown on an eatOS tablet`}
+                      className="relative z-10 transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-[1.04]"
+                    />
+                  ) : (
+                    <img
+                      src={product.image}
+                      alt={`${product.name} shown on an eatOS device`}
+                      loading="lazy"
+                      className="relative z-10 max-h-full w-auto max-w-full scale-110 object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.65)] transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-[1.14]"
+                    />
+                  )}
                 </div>
                 <h3 className="mt-5 whitespace-pre-line text-xs md:text-sm font-semibold tracking-tight text-white/90 group-hover:text-white transition-colors max-w-[12rem] leading-snug">
                   {product.name}
