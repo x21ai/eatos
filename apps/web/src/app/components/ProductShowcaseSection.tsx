@@ -208,6 +208,12 @@ function ProductAnimationModal({
               </video>
               <p className="mt-3 text-center text-sm text-white/70">{demo.media.caption}</p>
             </>
+          ) : product.frame === 'tablet' ? (
+            <TabletFrame
+              src={product.image}
+              alt={`${product.name} on an eatOS tablet`}
+              className="max-w-[900px]"
+            />
           ) : (
             <img
               src={product.image}
