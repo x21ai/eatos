@@ -27,7 +27,7 @@ function Reveal({ children, delay = 0, className = '' }) {
 function Eyebrow({ children, className = '' }) {
   return (
     <p
-      className={`text-[11px] font-semibold uppercase tracking-[0.24em] text-emerald-500 sm:text-xs ${className}`}
+      className={`text-[11px] font-semibold uppercase tracking-[0.24em] text-brand sm:text-xs ${className}`}
     >
       {children}
     </p>
@@ -41,14 +41,14 @@ function Hero() {
     <section className="relative overflow-hidden bg-black text-white">
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-emerald-500/15 blur-[140px]"
+        className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-brand-soft blur-[140px]"
       />
       <div className="site-container relative pt-28 pb-4 md:pt-36 md:pb-8">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           <Reveal>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5">
-              <ShieldCheck size={14} className="text-emerald-400" />
-              <Eyebrow className="!text-emerald-400">{hero.eyebrow}</Eyebrow>
+              <ShieldCheck size={14} className="text-brand-on-dark" />
+              <Eyebrow className="!text-brand-on-dark">{hero.eyebrow}</Eyebrow>
             </div>
             <h1 className="mt-6 max-w-[20ch] font-bold leading-[1.06] tracking-tighter text-4xl sm:text-5xl md:text-6xl">
               {hero.title}
@@ -90,7 +90,7 @@ function Hero() {
           {safetyRules.map((rule, i) => (
             <Reveal key={rule.title} delay={i * 0.06}>
               <div className="h-full rounded-[24px] border border-white/10 bg-white/[0.03] p-7">
-                <ShieldCheck size={20} className="text-emerald-400" />
+                <ShieldCheck size={20} className="text-brand-on-dark" />
                 <h3 className="mt-5 text-lg font-bold tracking-tighter">{rule.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-zinc-400">{rule.body}</p>
               </div>
@@ -197,8 +197,8 @@ function ReportForm() {
   if (status === 'done') {
     return (
       <div className="rounded-[28px] border border-white/10 bg-white/[0.03] p-8 text-center sm:p-10">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/10">
-          <CheckCircle2 size={26} className="text-emerald-400" />
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-brand-soft">
+          <CheckCircle2 size={26} className="text-brand-on-dark" />
         </div>
         <h3 className="mt-6 text-xl font-bold tracking-tighter text-white">
           Report received
@@ -219,7 +219,7 @@ function ReportForm() {
   }
 
   const fieldClass = (name) =>
-    `w-full rounded-2xl border bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-500 focus:border-emerald-500/60 ${
+    `w-full rounded-2xl border bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-500 focus:border-brand/60 ${
       errors[name] ? 'border-red-500/60' : 'border-white/10'
     }`;
 
@@ -329,7 +329,7 @@ function ReportSection() {
             <ol className="mt-8 space-y-4">
               {report.steps.map((step, i) => (
                 <li key={step} className="flex gap-4">
-                  <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-emerald-500/15 text-[11px] font-semibold text-emerald-400">
+                  <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-brand-soft text-[11px] font-semibold text-brand-on-dark">
                     {i + 1}
                   </span>
                   <span className="text-sm leading-6 text-zinc-400">{step}</span>
@@ -367,7 +367,7 @@ function Help() {
                 <p className="mt-3 text-sm leading-6 text-zinc-400">{channel.body}</p>
                 <a
                   href={channel.href}
-                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-400 hover:underline"
+                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-on-dark hover:underline"
                 >
                   {channel.linkLabel}
                   <ArrowRight size={15} />
