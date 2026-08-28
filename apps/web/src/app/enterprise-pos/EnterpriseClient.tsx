@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
-import { bundle, capabilities, ecosystem, hero, marquee, pillars } from './content';
+import { capabilities, ecosystem, hero, marquee, pillars } from './content';
 
 const rise = {
   initial: { opacity: 0, y: 30 },
