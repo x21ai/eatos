@@ -8,6 +8,7 @@ import { Placeholder } from '@/components/marketing/Placeholder';
 import { NewsletterSection } from '@/components/NewsletterSection';
 import { blogHero, categories, posts, formatDate } from './content';
 import CategoryFilter, { categoryHref } from './CategoryFilter';
+import blogHeroImage from './assets/blog-hero.jpg.asset.json';
 
 const PAGE_SIZE = 12;
 
