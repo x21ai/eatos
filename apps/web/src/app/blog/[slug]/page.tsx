@@ -12,11 +12,24 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return { title: 'Article not found | eatOS Blog' };
+  const canonical = `/blogs/${post.slug}`;
   return {
     title: `${post.title} | eatOS Blog`,
     description: post.excerpt,
-    openGraph: { title: post.title, description: post.excerpt, type: 'article' },
-    twitter: { card: 'summary_large_image' },
+    alternates: { canonical },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: 'article',
+      url: canonical,
+      images: post.image ? [post.image] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: post.image ? [post.image] : undefined,
+    },
   };
 }
 
