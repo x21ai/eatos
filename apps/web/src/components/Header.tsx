@@ -919,6 +919,12 @@ export default function Header() {
                   color: "text-purple-500",
                 },
                 {
+                  href: "/products/ai-enabled-ordering-automation",
+                  Icon: Mic,
+                  label: "AI-Enabled Ordering",
+                  color: "text-indigo-500",
+                },
+                {
                   href: "/products/hardware",
                   Icon: ShoppingBag,
                   label: "Hardware",
