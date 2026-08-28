@@ -157,9 +157,9 @@ export default function CustomersPage() {
                 </div>
               </div>
             ))}
-
-            </div>
           </div>
+        </div>
+
         </div>
       </section>
 
