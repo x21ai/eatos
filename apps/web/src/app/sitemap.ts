@@ -71,5 +71,13 @@ export default async function sitemap() {
     priority: 0.6,
   }));
 
-  return [...routes, ...productRoutes, ...blogRoutes];
+  // Newsroom items keep their original /news/<slug> URLs.
+  const newsRoutes = newsItems.map((item) => ({
+    url: `${baseUrl}/news/${encodeURIComponent(item.slug)}`,
+    lastModified: item.date,
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }));
+
+  return [...routes, ...productRoutes, ...blogRoutes, ...newsRoutes];
 }
