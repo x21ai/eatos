@@ -9,7 +9,7 @@ import { NewsletterSection } from '@/components/NewsletterSection';
 import { blogHero, categories, posts, formatDate } from './content';
 import CategoryFilter, { categoryHref } from './CategoryFilter';
 
-const PAGE_SIZE = 4;
+const PAGE_SIZE = 12;
 
 function initials(name = '') {
   return name
@@ -46,7 +46,6 @@ function AuthorRow({ post }) {
 }
 
 function HeroBanner() {
-  const cover = posts[0]?.image;
   return (
     <section className="bg-black pt-28 pb-10 md:pt-36 md:pb-14">
       <div className="site-container">
@@ -54,17 +53,16 @@ function HeroBanner() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
-          className="relative overflow-hidden rounded-[24px] border border-white/10 md:rounded-[32px]"
+          className="relative overflow-hidden rounded-[24px] border border-white/10 bg-zinc-950 md:rounded-[32px]"
         >
-          {cover ? (
-            <img
-              src={cover}
-              alt=""
-              aria-hidden
-              className="absolute inset-0 h-full w-full object-cover opacity-40"
-            />
-          ) : null}
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/40" />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                'radial-gradient(120% 90% at 12% 0%, var(--brand-soft) 0%, transparent 60%)',
+            }}
+          />
           <div className="relative px-6 py-14 sm:px-10 sm:py-16 md:px-14 md:py-20">
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-on-dark">
               {blogHero.eyebrow}
@@ -200,9 +198,23 @@ function SubscribeCard() {
   );
 }
 
+function pageWindow(page, pageCount) {
+  // Always show first and last page, with a short window around the current page.
+  const span = 1;
+  const items = [];
+  for (let p = 1; p <= pageCount; p += 1) {
+    const inWindow = p === 1 || p === pageCount || Math.abs(p - page) <= span;
+    if (inWindow) {
+      if (items.length > 0 && p - items[items.length - 1] > 1) items.push('gap');
+      items.push(p);
+    }
+  }
+  return items;
+}
+
 function Pagination({ page, pageCount, onChange }) {
   if (pageCount <= 1) return null;
-  const pages = Array.from({ length: pageCount }, (_, i) => i + 1);
+  const items = pageWindow(page, pageCount);
   const navClass =
     'grid h-10 w-10 place-items-center rounded-full border border-white/15 text-zinc-300 transition-colors hover:border-white/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-40';
 
@@ -217,21 +229,37 @@ function Pagination({ page, pageCount, onChange }) {
       >
         <ChevronLeft size={16} />
       </button>
-      {pages.map((p) => (
-        <button
-          key={p}
-          type="button"
-          onClick={() => onChange(p)}
-          aria-current={p === page ? 'page' : undefined}
-          className={`grid h-10 w-10 place-items-center rounded-full border text-sm font-semibold transition-colors ${
-            p === page
-              ? 'border-white bg-white text-black'
-              : 'border-white/15 text-zinc-300 hover:border-white/40 hover:text-white'
-          }`}
-        >
-          {p}
-        </button>
-      ))}
+
+      {/* Mobile: a single readable position indicator instead of number buttons. */}
+      <span className="px-3 text-sm font-semibold text-zinc-300 sm:hidden">
+        Page {page} of {pageCount}
+      </span>
+
+      <span className="hidden items-center gap-2 sm:flex">
+        {items.map((item, i) =>
+          item === 'gap' ? (
+            <span key={`gap-${i}`} aria-hidden className="px-1 text-sm text-zinc-600">
+              ...
+            </span>
+          ) : (
+            <button
+              key={item}
+              type="button"
+              onClick={() => onChange(item)}
+              aria-label={`Page ${item}`}
+              aria-current={item === page ? 'page' : undefined}
+              className={`grid h-10 w-10 place-items-center rounded-full border text-sm font-semibold transition-colors ${
+                item === page
+                  ? 'border-white bg-white text-black'
+                  : 'border-white/15 text-zinc-300 hover:border-white/40 hover:text-white'
+              }`}
+            >
+              {item}
+            </button>
+          ),
+        )}
+      </span>
+
       <button
         type="button"
         onClick={() => onChange(page + 1)}
@@ -274,7 +302,18 @@ export default function BlogIndexClient() {
   const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const currentPage = Math.min(page, pageCount);
   const shown = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+  const rangeStart = filtered.length === 0 ? 0 : (currentPage - 1) * PAGE_SIZE + 1;
+  const rangeEnd = Math.min(currentPage * PAGE_SIZE, filtered.length);
   const recent = sorted.slice(0, 3);
+
+  const goToPage = (next) => {
+    setPage(next);
+    const anchor = document.getElementById('blog-posts');
+    if (anchor) {
+      const top = anchor.getBoundingClientRect().top + window.scrollY - 120;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  };
 
   const available = categories.filter(
     (c) => c === 'All Posts' || posts.some((p) => p.category === c),
@@ -302,7 +341,13 @@ export default function BlogIndexClient() {
           </div>
 
           <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-12">
-            <div className="min-w-0">
+            <div className="min-w-0" id="blog-posts">
+              {filtered.length > 0 && (
+                <p className="mb-8 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">
+                  Showing {rangeStart} to {rangeEnd} of {filtered.length} posts
+                </p>
+              )}
+
               <div className="grid gap-8 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10">
                 {shown.map((post, i) => (
                   <Card key={post.slug} post={post} index={i} />
@@ -313,7 +358,7 @@ export default function BlogIndexClient() {
                 <p className="text-sm text-zinc-500">No posts in this category yet.</p>
               )}
 
-              <Pagination page={currentPage} pageCount={pageCount} onChange={setPage} />
+              <Pagination page={currentPage} pageCount={pageCount} onChange={goToPage} />
             </div>
 
             <aside className="min-w-0 space-y-6 lg:sticky lg:top-28 lg:h-fit">
