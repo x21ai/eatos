@@ -27,21 +27,21 @@ const related = [
   {
     href: '/products/self-service-kiosk',
     title: 'Self-Service Kiosk',
-    tagline: 'Guests order and pay without waiting in line.',
+    tagline: 'Guests order without waiting in line.',
     Icon: Monitor,
     iconClass: 'bg-violet-500/15 text-violet-400',
   },
   {
     href: '/pointofsale',
     title: 'Point of Sale',
-    tagline: 'Fast order entry built for the morning rush.',
+    tagline: 'Fast order entry built for rush hours.',
     Icon: CreditCard,
     iconClass: 'bg-sky-500/15 text-sky-400',
   },
   {
     href: '/products/workforce-management',
     title: 'Workforce Management',
-    tagline: 'Scheduling, clock-ins and labor in one place.',
+    tagline: 'Scheduling, clock-ins at one place.',
     Icon: Users,
     iconClass: 'bg-teal-500/15 text-teal-400',
   },
@@ -240,7 +240,7 @@ export default function CafeClient() {
               {
                 Icon: Package,
                 title: 'Inventory under control',
-                body: 'Track beans, milk, syrups and pastries as they sell, and see what needs reordering before you run out.',
+                body: 'Track beans, syrups and pastries as they sell, and see what needs reordering before you run out.',
                 iconClass: 'bg-emerald-500/15 text-emerald-400',
               },
               {

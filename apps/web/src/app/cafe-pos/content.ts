@@ -8,7 +8,7 @@ import kioskImg from './assets/cafe-kiosk-2.png.asset.json';
 
 export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
-  title: 'Point of Sale System for Cafes',
+  title: 'Point of Sale for Cafes',
   description:
     'Easy to learn and built for bustling cafes. Menu and inventory control keep complex orders fast, while reporting and loyalty bring guests back every morning.',
   primaryCta: { label: 'Book a Demo', href: '/bookademo' },
@@ -53,7 +53,7 @@ export const pillars = [
     body:
       'Schedule shifts, run payroll and track time and attendance in one place, so your team can focus on greeting guests and crafting drinks.',
     more:
-      'Staff clock in, swap shifts and view schedules from their phones, giving managers labor costs and coverage at a glance with no spreadsheets.',
+      'Staff clock in, swap shifts and view schedules from their phones, giving managers labor costs and coverage at a glance.',
     imageLabel: 'Manager reviewing the schedule on a tablet',
     image: teamImg.url,
   },
@@ -63,7 +63,7 @@ export const pillars = [
     body:
       'Add a Kiosk beside the counter and send orders straight from guests to baristas. Guests tap through modifiers and pay without slowing the line.',
     more:
-      'Orders sync to the kitchen display and reporting instantly, so your team stays on the bar and sales and inventory stay accurate all day.',
+      'Orders sync to the kitchen display and reporting instantly, so your team stays on the bar, sales and inventory stay accurate all day.',
     imageLabel: 'Guest ordering at a self-service kiosk',
     image: kioskImg.url,
   },
