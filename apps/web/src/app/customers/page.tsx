@@ -138,37 +138,28 @@ export default function CustomersPage() {
           </p>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-              <div className="text-3xl font-bold tracking-tighter mb-1">
-                Any format
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 max-w-5xl mx-auto">
+            {[
+              { value: 'Any format', label: 'QSR, full service & more' },
+              { value: 'One platform', label: 'Point of Sale, payments & AI' },
+              { value: 'Nationwide', label: 'Available across the US' },
+              { value: '99.9%', label: 'Uptime target' },
+            ].map((stat) => (
+              <div
+                key={stat.value}
+                className="flex h-full flex-col items-center justify-center text-center bg-white/5 border border-white/10 rounded-2xl px-5 py-7"
+              >
+                <div className="text-lg md:text-xl font-bold tracking-tight leading-snug mb-1.5 text-white">
+                  {stat.value}
+                </div>
+                <div className="text-xs md:text-sm text-white/55 leading-snug">
+                  {stat.label}
+                </div>
               </div>
-              <div className="text-sm text-white/55">
-                QSR, full service & more
-              </div>
-            </div>
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-              <div className="text-3xl font-bold tracking-tighter mb-1">
-                One platform
-              </div>
-              <div className="text-sm text-white/55">Point of Sale, payments & AI</div>
-            </div>
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-              <div className="text-3xl font-bold tracking-tighter mb-1">
-                Nationwide
-              </div>
-              <div className="text-sm text-white/55">
-                Available across the US
-              </div>
-            </div>
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-              <div className="text-3xl font-bold tracking-tighter mb-1">
-                99.9%
-              </div>
-              <div className="text-sm text-white/55">Uptime target</div>
-            </div>
+            ))}
           </div>
         </div>
+
       </section>
 
       {/* Case Studies */}
