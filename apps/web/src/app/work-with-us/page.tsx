@@ -71,17 +71,17 @@ export default function CareersPage() {
     {
       icon: Sparkles,
       title: "Craft",
-      desc: "We sweat details. We ship products people love using at 8pm on a Friday.",
+      desc: "We sweat the details. We ship products people genuinely love using at 8pm on a Friday night.",
     },
     {
       icon: Wrench,
       title: "Ownership",
-      desc: "We own outcomes, not tickets. If it breaks on the floor, it matters.",
+      desc: "We own the final outcomes, not just tickets. If it breaks on the floor, it matters deeply.",
     },
     {
       icon: Shield,
       title: "Trust",
-      desc: "Payments and uptime are serious. We build stable systems and tell the truth.",
+      desc: "Payments and uptime are serious business. We build rock-solid, stable systems and always tell the truth.",
     },
     {
       icon: HeartHandshake,
