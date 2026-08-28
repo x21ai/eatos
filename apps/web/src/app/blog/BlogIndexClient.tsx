@@ -302,7 +302,18 @@ export default function BlogIndexClient() {
   const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const currentPage = Math.min(page, pageCount);
   const shown = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+  const rangeStart = filtered.length === 0 ? 0 : (currentPage - 1) * PAGE_SIZE + 1;
+  const rangeEnd = Math.min(currentPage * PAGE_SIZE, filtered.length);
   const recent = sorted.slice(0, 3);
+
+  const goToPage = (next) => {
+    setPage(next);
+    const anchor = document.getElementById('blog-posts');
+    if (anchor) {
+      const top = anchor.getBoundingClientRect().top + window.scrollY - 120;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  };
 
   const available = categories.filter(
     (c) => c === 'All Posts' || posts.some((p) => p.category === c),
