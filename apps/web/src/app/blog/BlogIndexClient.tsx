@@ -46,7 +46,6 @@ function AuthorRow({ post }) {
 }
 
 function HeroBanner() {
-  const cover = posts[0]?.image;
   return (
     <section className="bg-black pt-28 pb-10 md:pt-36 md:pb-14">
       <div className="site-container">
@@ -54,17 +53,16 @@ function HeroBanner() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
-          className="relative overflow-hidden rounded-[24px] border border-white/10 md:rounded-[32px]"
+          className="relative overflow-hidden rounded-[24px] border border-white/10 bg-zinc-950 md:rounded-[32px]"
         >
-          {cover ? (
-            <img
-              src={cover}
-              alt=""
-              aria-hidden
-              className="absolute inset-0 h-full w-full object-cover opacity-40"
-            />
-          ) : null}
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/40" />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                'radial-gradient(120% 90% at 12% 0%, var(--brand-soft) 0%, transparent 60%)',
+            }}
+          />
           <div className="relative px-6 py-14 sm:px-10 sm:py-16 md:px-14 md:py-20">
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-on-dark">
               {blogHero.eyebrow}
