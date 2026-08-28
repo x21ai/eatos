@@ -142,7 +142,7 @@ export function ProductShowcaseSection({
                 data-showcase-card
                 className="group snap-start shrink-0 basis-[66%] sm:basis-[calc((100%-3rem)/3)] lg:basis-[calc((100%-6rem)/5)] flex flex-col items-center text-center"
               >
-                <div className="relative w-full aspect-[3/4] flex items-end justify-center">
+                <div className="relative w-full aspect-[4/5] flex items-center justify-center">
                   <div className="absolute bottom-6 h-16 w-3/5 rounded-[100%] bg-white/10 blur-2xl" />
                   <img
                     src={product.image}
