@@ -43,7 +43,7 @@ const showcaseProducts: ShowcaseProduct[] = [
     demoId: 'cfd',
   },
   {
-    name: 'Table Side Order & Pay',
+    name: 'Table Side\nOrder & Pay',
     href: '/products/tableside-order-and-pay',
     image: invPlaceholder.url,
     demoId: 'pos',
