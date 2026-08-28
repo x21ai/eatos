@@ -1,11 +1,11 @@
 // @ts-nocheck
-import sql from '@/app/api/utils/sql';
 import { products } from '@/app/products/products';
+import { posts } from '@/app/blog/content';
 
 export default async function sitemap() {
   const baseUrl = process.env.APP_URL || 'https://eatos.com';
 
-  // Static routes
+  // Static routes. No lastModified: build time is not a page-specific signal.
   const routes = [
     '',
     '/pricing',
@@ -49,7 +49,6 @@ export default async function sitemap() {
     ),
   ].map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: route === '' ? 1 : 0.8,
   }));
@@ -58,22 +57,14 @@ export default async function sitemap() {
     .filter((p) => p.href && p.href.startsWith('/products/'))
     .map((p) => ({
       url: `${baseUrl}${p.href}`,
-      lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.7,
     }));
 
-  // Blog posts
-  let posts = [];
-  try {
-    posts = await sql`SELECT slug, published_at FROM blog_posts WHERE status = 'published'`;
-  } catch (e) {
-    console.error('Failed to fetch blog posts for sitemap', e);
-  }
-
+  // Blog posts keep their original /blogs/<slug> URLs.
   const blogRoutes = posts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.published_at || new Date(),
+    url: `${baseUrl}/blogs/${post.slug}`,
+    lastModified: post.date,
     changeFrequency: 'monthly',
     priority: 0.6,
   }));

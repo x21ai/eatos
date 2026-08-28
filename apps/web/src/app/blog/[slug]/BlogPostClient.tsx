@@ -144,7 +144,7 @@ export default function BlogPostClient({ slug }) {
             </h2>
             <div className="mt-10 grid gap-10 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-3 lg:gap-x-10">
               {related.map((item) => (
-                <a key={item.slug} href={`/blog/${item.slug}`} className="group flex min-w-0 flex-col">
+                <a key={item.slug} href={`/blogs/${item.slug}`} className="group flex min-w-0 flex-col">
                   <Placeholder label={item.title} src={item.image} tone="dark" ratio="aspect-[16/10]" />
                   <div className="mt-5 min-w-0">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-on-dark">

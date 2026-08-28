@@ -135,7 +135,7 @@ export function formatOfficeAddress(office) {
   return {
     heading: `${city}, ${stateCode}`,
     streetLine: [street, suite].filter(Boolean).join(' '),
-    localityLine: `${city}, ${state} ${zip}`,
+    localityLine: `${city}, ${state} - ${zip}.`,
   };
 }
 
@@ -300,7 +300,7 @@ export default function Footer() {
                   </span>
                 </a>
 
-                <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-white/15 pt-6">
+                <div className="mt-6 flex flex-wrap items-center gap-3 pt-2">
                   {CONTACT_CHANNELS.map(({ label, href, Icon, external }) => (
                     <a
                       key={label}

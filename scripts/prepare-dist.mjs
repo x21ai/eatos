@@ -95,6 +95,22 @@ for (const { source, route } of found) {
   pages += 1;
 }
 
+// Blog posts are published at the original /blogs/<slug> URLs (the Next config
+// rewrites them onto /blog/<slug>). Static hosting resolves exact paths only,
+// so mirror each post page to its /blogs/ path as well.
+for (const { source, route } of found) {
+  const match = /^blog\/(.+)$/.exec(route);
+  if (!match || isParent(route)) continue;
+  const alias = `blogs/${match[1]}`;
+  const flat = path.join("dist", `${alias}.html`);
+  mkdirSync(path.dirname(flat), { recursive: true });
+  cpSync(source, flat);
+  const bare = path.join("dist", alias);
+  cpSync(source, bare);
+  routes.push(`/${alias}`);
+  pages += 1;
+}
+
 if (!existsSync("dist/index.html")) {
   console.error("dist/index.html missing - no prerendered home page found.");
   process.exit(1);

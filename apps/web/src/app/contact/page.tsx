@@ -114,7 +114,7 @@ export default function ContactSalesPage() {
                   <p className="text-white/70">
                     20289 Stevens Creek Blvd PH 1019
                     <br />
-                    Cupertino, California 95014
+                    Cupertino, California - 95014.
                   </p>
                 </div>
               </div>

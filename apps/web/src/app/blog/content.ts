@@ -7,6 +7,7 @@ import workforceImg from './assets/blog/blog-workforce.avif.asset.json';
 import analyticsImg from './assets/blog/blog-analytics.avif.asset.json';
 import tablesideImg from './assets/blog/blog-tableside.avif.asset.json';
 import inventoryImg from './assets/blog/blog-inventory.avif.asset.json';
+import generatedPosts from './posts.generated.json';
 
 export const blogHero = {
   eyebrow: 'Newsroom',
@@ -18,12 +19,19 @@ export const blogHero = {
 export const categories = [
   'All Posts',
   'Point of Sale',
+  'Kitchen Operations',
   'Workforce Management',
   'Inventory Management',
+  'Online Ordering',
+  'Self-Service Kiosk',
+  'Marketing & Loyalty',
+  'Analytics & Reporting',
+  'Restaurant Growth',
   'Tableside Ordering',
+  'Restaurant Insights',
 ];
 
-export const posts = [
+const curatedPosts = [
   {
     slug: 'never-miss-a-beat-how-offline-resilience-keeps-your-sales-rolling',
     title: 'Never Miss a Beat: How Offline Resilience Keeps Your Sales Rolling with edgeOS',
@@ -235,6 +243,16 @@ export const posts = [
     ],
   },
 ];
+
+// Posts migrated from the previous eatos.com blog, keyed by their original
+// slugs so every existing /blogs/<slug> URL keeps resolving.
+const importedPosts = generatedPosts.filter(
+  (p) => !curatedPosts.some((c) => c.slug === p.slug),
+);
+
+export const posts = [...curatedPosts, ...importedPosts].sort((a, b) =>
+  a.date < b.date ? 1 : a.date > b.date ? -1 : 0,
+);
 
 export function getPost(slug) {
   return posts.find((p) => p.slug === slug) ?? null;
