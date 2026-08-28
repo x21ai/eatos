@@ -18,7 +18,67 @@ body{font-family:'Mont',sans-serif;color:#111827;-webkit-font-smoothing:antialia
 #pw{position:absolute;right:22px;bottom:16px;background:rgba(24,24,27,.86);color:#fff;border-radius:8px;padding:7px 13px;display:flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.18em;z-index:50;}
 #pw img{height:14px;width:auto;filter:invert(1);}
 
+/* K0 SIGN IN (matches eatOS Point of Sale sign in) */
+#signin{background:#f2f2f3;}
+#signin .photo{position:absolute;left:0;top:0;width:880px;height:868px;overflow:hidden;}
+#signin .photo img{width:100%;height:100%;object-fit:cover;}
+#signin .cap{position:absolute;left:0;bottom:120px;width:880px;text-align:center;color:#fff;font-size:42px;font-weight:800;letter-spacing:-.01em;text-shadow:0 2px 24px rgba(0,0,0,.5);}
+#signin .dots{position:absolute;left:0;bottom:78px;width:880px;display:flex;justify-content:center;gap:16px;}
+#signin .dots i{width:11px;height:11px;border-radius:50%;background:rgba(255,255,255,.45);}
+#signin .dots i.on{background:#fff;}
+#signin .panel{position:absolute;left:880px;top:0;width:720px;height:868px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 96px;}
+#signin .logo{display:flex;flex-direction:column;align-items:center;margin-bottom:18px;}
+#signin .logo img{width:250px;height:auto;display:block;}
+#signin .logo s{text-decoration:none;font-size:13px;font-weight:700;margin-top:9px;color:#111;}
+#signin h1{font-size:44px;font-weight:800;letter-spacing:-.02em;margin-bottom:34px;}
+#signin .flabel{align-self:flex-start;font-size:19px;font-weight:600;margin-bottom:9px;color:#3f3f46;}
+#signin .field{width:100%;height:66px;border-radius:12px;background:#fff;border:1.5px solid #d4d4d8;display:flex;align-items:center;padding:0 22px;font-size:22px;font-weight:500;color:#111;margin-bottom:22px;}
+#signin .field.focus{border-color:#E6007E;}
+#signin .field .ph{color:#a1a1aa;}
+#signin .field .eye{margin-left:auto;font-size:20px;color:#71717a;}
+#signbtn{width:100%;height:70px;border-radius:12px;background:#E6007E;color:#fff;font-size:23px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+#signin .forgot{margin-top:26px;font-size:21px;font-weight:700;}
+#signin .create{margin-top:24px;width:100%;height:66px;border-radius:12px;border:1.5px solid #d4d4d8;background:#fff;display:flex;align-items:center;justify-content:center;font-size:21px;font-weight:700;}
+#signin .ver{margin-top:22px;font-size:15px;color:#71717a;font-weight:600;}
+
+/* K1 SETTINGS */
+#settings{background:#fbfbfc;}
+#settings .side{position:absolute;left:0;top:0;width:340px;height:868px;background:#f2f3f5;padding:28px 22px;}
+#settings .side h2{font-size:34px;font-weight:800;margin-bottom:22px;}
+#settings .side .si{height:64px;border-radius:16px;display:flex;align-items:center;gap:14px;padding:0 14px;font-size:22px;font-weight:700;color:#4b5563;margin-bottom:8px;}
+#settings .side .si em{font-style:normal;width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;}
+#settings .side .si.on{background:#111827;color:#fff;}
+#settings .search{position:absolute;left:22px;bottom:24px;width:296px;height:56px;border-radius:14px;background:#fff;display:flex;align-items:center;padding:0 18px;gap:12px;font-size:19px;color:#9ca3af;font-weight:600;}
+#settings .pane{position:absolute;left:372px;top:28px;width:1196px;}
+#settings .pane>div{display:none;}
+#settings .pane>div.on{display:block;}
+#settings .hero{border-radius:20px;background:#f2f3f5;padding:26px 30px;}
+#settings .hero em{font-style:normal;display:flex;width:68px;height:68px;border-radius:19px;align-items:center;justify-content:center;font-size:30px;color:#fff;}
+#settings .hero b{display:block;margin-top:18px;font-size:32px;font-weight:800;}
+#settings .hero s{text-decoration:none;display:block;margin-top:8px;font-size:21px;color:#6b7280;font-weight:600;}
+#settings .body{position:absolute;left:372px;top:266px;width:1196px;}
+#settings .body>div{display:none;}
+#settings .body>div.on{display:block;}
+#settings .row{height:76px;border-radius:16px;background:#f2f3f5;display:flex;align-items:center;padding:0 26px;font-size:24px;font-weight:700;margin-top:10px;}
+#settings .row u{text-decoration:none;margin-left:auto;font-size:21px;color:#9ca3af;font-weight:600;}
+#settings .row .tg{margin-left:auto;width:66px;height:36px;border-radius:20px;background:#d6d8dd;position:relative;}
+#settings .row .tg.on{background:#111827;}
+#settings .row .tg i{position:absolute;top:5px;left:5px;width:26px;height:26px;border-radius:50%;background:#fff;}
+#settings .row .tg.on i{left:35px;}
+#settings .row .unit{margin-left:auto;display:flex;gap:6px;}
+#settings .row .unit b{width:52px;height:40px;border-radius:10px;background:#e5e7eb;color:#6b7280;display:flex;align-items:center;justify-content:center;font-size:19px;}
+#settings .row .unit b.on{background:#fff;color:#111827;box-shadow:0 2px 8px -4px rgba(0,0,0,.4);}
+#settings .cap2{margin:8px 0 4px 10px;font-size:19px;color:#6b7280;font-weight:600;}
+#settings .lab{margin-top:24px;font-size:17px;font-weight:800;letter-spacing:.16em;color:#6b7280;}
+#settings .pills{margin-top:14px;display:flex;gap:14px;}
+#settings .pills i{font-style:normal;height:52px;padding:0 26px;border-radius:12px;display:flex;align-items:center;font-size:19px;font-weight:800;letter-spacing:.08em;color:#fff;background:#ef4444;}
+#settings .pills i.dark{background:#27272a;}
+#settings .row .ok{margin-left:auto;font-size:18px;font-weight:800;letter-spacing:.1em;color:#16a34a;}
+#settings .ver2{margin-top:26px;text-align:center;font-size:19px;color:#9ca3af;font-weight:600;}
+#stdone{position:absolute;right:34px;bottom:96px;height:58px;padding:0 36px;border-radius:32px;background:#18181b;color:#fff;display:flex;align-items:center;font-size:20px;font-weight:800;letter-spacing:.1em;}
+
 /* 0 TOUCH TO START */
+
 #start{background:#120c08;}
 #start img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 #start .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.18) 40%,rgba(0,0,0,.62) 100%);}
@@ -29,7 +89,9 @@ body{font-family:'Mont',sans-serif;color:#111827;-webkit-font-smoothing:antialia
 #start .wel{position:absolute;left:50%;top:174px;transform:translateX(-50%);padding:9px 26px;border-radius:40px;background:rgba(255,255,255,.16);color:#fff;font-size:15px;font-weight:800;letter-spacing:.34em;}
 #start h1{position:absolute;left:0;top:230px;width:1600px;text-align:center;color:#fff;font-family:'Script';font-size:74px;font-weight:400;text-shadow:0 6px 30px rgba(0,0,0,.5);}
 #start .sub{position:absolute;left:0;top:340px;width:1600px;text-align:center;color:rgba(255,255,255,.9);font-size:26px;font-weight:600;}
-#start .cta{position:absolute;left:0;top:400px;width:1600px;text-align:center;color:#fff;font-family:'Script';font-size:150px;line-height:1.05;font-weight:400;text-shadow:0 14px 46px rgba(0,0,0,.55);}
+#start .cta{position:absolute;left:0;top:398px;width:1600px;display:flex;justify-content:center;}
+#start .cta img{position:static;width:540px;height:auto;object-fit:contain;filter:drop-shadow(0 14px 46px rgba(0,0,0,.55));}
+
 #start .cards{position:absolute;left:0;bottom:52px;width:1600px;display:flex;justify-content:center;gap:22px;}
 #start .cards i{width:110px;height:66px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:19px;font-weight:900;color:#1f2937;letter-spacing:.02em;box-shadow:0 10px 26px -12px rgba(0,0,0,.6);}
 #start .cards i.mc{color:#eb5b26;}
@@ -73,9 +135,9 @@ body{font-family:'Mont',sans-serif;color:#111827;-webkit-font-smoothing:antialia
 #menu .sec span{margin-left:12px;font-size:17px;color:#9ca3af;font-weight:600;}
 #grid{position:absolute;left:224px;top:214px;width:1348px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .cardit{border:1px solid #ececf0;border-radius:14px;overflow:hidden;background:#fff;}
-.cardit .ph{position:relative;height:112px;background:#f6f6f8;display:flex;align-items:center;justify-content:flex-end;padding-right:26px;}
-.cardit .ph .disc{width:92px;height:62px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff 0%,#efe7d8 42%,#d9c9a8 100%);box-shadow:0 6px 14px -8px rgba(0,0,0,.4);}
-.cardit .ph .disc b{display:block;width:60px;height:34px;margin:14px auto 0;border-radius:40px;}
+.cardit .ph{position:relative;height:130px;background:#f6f6f8;display:flex;align-items:center;justify-content:flex-end;padding-right:18px;overflow:hidden;}
+.cardit .ph img{width:210px;height:118px;object-fit:contain;filter:drop-shadow(0 8px 16px rgba(0,0,0,.18));}
+
 .cardit .tag{position:absolute;left:14px;top:12px;padding:6px 12px;border-radius:8px;font-size:14px;font-weight:800;color:#fff;}
 .cardit .tag.pop{background:#f0910b;}
 .cardit .tag.new{background:#0f9d76;}
@@ -87,7 +149,9 @@ body{font-family:'Mont',sans-serif;color:#111827;-webkit-font-smoothing:antialia
 
 /* 3 ITEM */
 #item .l{position:absolute;left:0;top:74px;width:640px;height:700px;padding:36px 46px;}
-#item .l .hero{height:220px;border-radius:16px;background:radial-gradient(circle at 46% 40%,#fff 0%,#f0e6d3 40%,#cbb489 100%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.05);}
+#item .l .hero{height:220px;border-radius:16px;background:#f6f6f8;box-shadow:inset 0 0 0 1px rgba(0,0,0,.05);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+#item .l .hero img{width:100%;height:200px;object-fit:contain;filter:drop-shadow(0 12px 22px rgba(0,0,0,.2));}
+
 #item .l .cal{margin-top:20px;display:inline-block;padding:6px 12px;border-radius:8px;background:#e9eaee;font-size:15px;font-weight:700;color:#4b5563;}
 #item .l .nm{margin-top:14px;display:flex;justify-content:space-between;align-items:baseline;}
 #item .l .nm b{font-size:38px;font-weight:800;letter-spacing:-.02em;}
@@ -126,20 +190,26 @@ body{font-family:'Mont',sans-serif;color:#111827;-webkit-font-smoothing:antialia
 #ups .ai{display:inline-block;padding:8px 16px;border-radius:40px;background:#f3f4f6;font-size:16px;font-weight:800;letter-spacing:.02em;color:#374151;}
 #ups .bd h3{margin-top:16px;font-size:32px;font-weight:800;letter-spacing:-.02em;}
 #ups .slot{margin-top:22px;height:96px;border-radius:14px;border:2px solid #111827;background:#f6f6f8;display:flex;align-items:center;padding:0 22px;gap:18px;}
-#ups .slot .d{width:62px;height:62px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff,#e7d8bd 60%,#caa96f);}
+#ups .slot .d{width:78px;height:70px;display:flex;align-items:center;justify-content:center;}
+#ups .slot .d img{width:100%;height:100%;object-fit:contain;}
+
 #ups .slot b{font-size:22px;font-weight:800;}
 #ups .slot s{text-decoration:none;display:block;margin-top:4px;font-size:18px;color:#6b7280;font-weight:700;}
 #ups .also{margin-top:22px;font-size:14px;font-weight:800;letter-spacing:.2em;color:#9ca3af;}
 #ups .row3{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 #ups .row3 div{text-align:center;}
-#ups .row3 div i{display:block;margin:0 auto;width:72px;height:72px;border-radius:50%;background:#f1f2f4;}
+#ups .row3 div i{display:flex;align-items:center;justify-content:center;margin:0 auto;width:96px;height:96px;border-radius:16px;background:#f6f6f8;overflow:hidden;}
+#ups .row3 div i img{width:88px;height:88px;object-fit:contain;}
+
 #ups .row3 div u{text-decoration:none;display:block;margin-top:12px;height:12px;border-radius:8px;background:#f1f2f4;}
 #ups .back{margin-top:26px;height:76px;border-radius:44px;background:#18181b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;}
 
 /* 5 REVIEW */
 #rev h2{position:absolute;left:0;top:26px;width:1600px;text-align:center;font-size:34px;font-weight:800;letter-spacing:-.02em;}
 #rev .line{position:absolute;left:40px;top:96px;width:1000px;border:1px solid #ececf0;border-radius:14px;padding:22px 24px;display:flex;gap:20px;align-items:flex-start;}
-#rev .line .d{width:56px;height:56px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff,#e7d8bd 60%,#caa96f);}
+#rev .line .d{width:78px;height:70px;display:flex;align-items:center;justify-content:center;}
+#rev .line .d img{width:100%;height:100%;object-fit:contain;}
+
 #rev .line b{font-size:26px;font-weight:800;}
 #rev .line s{text-decoration:none;display:block;margin-top:6px;font-size:19px;color:#6b7280;font-weight:600;}
 #rev .line u{text-decoration:underline;display:inline-block;margin-top:10px;margin-right:16px;font-size:17px;color:#374151;font-weight:600;}
@@ -157,7 +227,9 @@ body{font-family:'Mont',sans-serif;color:#111827;-webkit-font-smoothing:antialia
 #rev .sum .box div.tot{margin-top:10px;padding-top:16px;border-top:1px solid #ececf0;font-size:28px;font-weight:800;color:#111827;}
 #rev .sum .adds{margin-top:26px;}
 #rev .sum .adds .a{margin-top:12px;border:1px solid #ececf0;border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:14px;}
-#rev .sum .adds .a .d{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff,#eadfc9 60%,#cdb282);}
+#rev .sum .adds .a .d{width:56px;height:50px;display:flex;align-items:center;justify-content:center;}
+#rev .sum .adds .a .d img{width:100%;height:100%;object-fit:contain;}
+
 #rev .sum .adds .a b{font-size:18px;font-weight:700;}
 #rev .sum .adds .a s{text-decoration:none;display:block;margin-top:2px;font-size:16px;color:#6b7280;font-weight:700;}
 #rev .sum .adds .a em{margin-left:auto;font-style:normal;width:38px;height:38px;border-radius:50%;background:#111827;color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;}
@@ -195,6 +267,10 @@ body{font-family:'Mont',sans-serif;color:#111827;-webkit-font-smoothing:antialia
 #pay .row .c{height:118px;border:1px solid #ececf0;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;font-size:20px;font-weight:700;color:#374151;}
 #pay .row .c em{font-style:normal;width:52px;height:52px;border-radius:12px;background:#f3f4f6;display:flex;align-items:center;justify-content:center;font-size:24px;}
 #pay .row .c.on{border-color:#111827;box-shadow:0 0 0 2px #111827,0 22px 40px -26px rgba(17,24,39,.9);}
+#pay .lbl{position:absolute;left:34px;top:376px;font-size:15px;font-weight:800;letter-spacing:.2em;color:#9ca3af;text-transform:uppercase;}
+#pay .grid{position:absolute;left:34px;top:408px;width:1532px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+#pay .grid .c{height:112px;border:1px solid #ececf0;border-radius:14px;background:#fafafb;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;font-size:20px;font-weight:700;color:#374151;}
+#pay .grid .c em{font-style:normal;width:52px;height:52px;border-radius:12px;background:#f3f4f6;display:flex;align-items:center;justify-content:center;font-size:24px;}
 
 /* 8 DONE */
 #done{padding-top:40px;text-align:center;}
@@ -223,6 +299,87 @@ body{font-family:'Mont',sans-serif;color:#111827;-webkit-font-smoothing:antialia
 <body>
 <div id="stage">
 
+  <!-- K0 SIGN IN -->
+  <div class="screen" id="signin">
+    <div class="photo">
+      <img src="hero.jpg" alt=""/>
+      <div class="cap">Self-service ordering,<br/>made simple</div>
+      <div class="dots"><i class="on"></i><i></i><i></i></div>
+    </div>
+    <div class="panel">
+      <div class="logo"><img src="logo.png" alt="eatOS"/><s>SELF-SERVICE KIOSK</s></div>
+      <h1>Sign in</h1>
+      <div class="flabel">Email</div>
+      <div class="field" id="kemailf"><span id="kemailv" class="ph">Enter Email</span></div>
+      <div class="flabel">Password</div>
+      <div class="field" id="kpassf"><span id="kpassv" class="ph">Enter Password</span><span class="eye">&#128065;</span></div>
+      <div id="signbtn">Sign in</div>
+      <div class="forgot">Forgot password?</div>
+      <div class="create">Create an account</div>
+      <div class="ver">Version 4.2.1</div>
+    </div>
+  </div>
+
+  <!-- K1 SETTINGS -->
+  <div class="screen" id="settings">
+    <div class="side">
+      <h2>Settings</h2>
+      <div class="si on" id="st0"><em style="background:#3b82f6">&#9636;</em>Menu</div>
+      <div class="si" id="st1"><em style="background:#10b981">&#9881;</em>General</div>
+      <div class="si" id="st2"><em style="background:#f59e0b">&#36;</em>Gratuity</div>
+      <div class="si" id="st3"><em style="background:#8b5cf6">&#9113;</em>Printer</div>
+      <div class="si" id="st4"><em style="background:#ef4444">&#9881;</em>Advance</div>
+      <div class="search"><span>&#9906;</span><span>Search settings</span></div>
+    </div>
+    <div class="pane">
+      <div class="hero on" id="sh0"><em style="background:#3b82f6">&#9636;</em><b>Menu</b><s>Choose the categories and add-ons guests see on this kiosk.</s></div>
+      <div class="hero" id="sh1"><em style="background:#10b981">&#9881;</em><b>General</b><s>Control how the kiosk behaves during an order.</s></div>
+      <div class="hero" id="sh2"><em style="background:#f59e0b">&#36;</em><b>Gratuity</b><s>Set tip prompts and suggested amounts.</s></div>
+      <div class="hero" id="sh3"><em style="background:#8b5cf6">&#9113;</em><b>Printer</b><s>Assign receipt and kitchen ticket printers.</s></div>
+      <div class="hero" id="sh4"><em style="background:#ef4444">&#9881;</em><b>Advance</b><s>Server connection and device identity.</s></div>
+    </div>
+    <div class="body">
+      <div class="on" id="sb0">
+        <div class="row">Categories<u>10 of 10 visible</u></div>
+        <div class="cap2">Categories shown on the kiosk home screen</div>
+        <div class="row">Add-Ons<u>24 active</u></div>
+        <div class="cap2">Modifier groups guests can choose from</div>
+        <div class="row">Item photos<div class="tg on"><i></i></div></div>
+      </div>
+      <div id="sb1">
+        <div class="row">Pay at counter<div class="tg on"><i></i></div></div>
+        <div class="row">Close order automatically<div class="tg"><i></i></div></div>
+        <div class="row">Prompt for mobile number<div class="tg on"><i></i></div></div>
+        <div class="row">Allow product notes<div class="tg"><i></i></div></div>
+        <div class="row">Allergen filter<div class="tg on"><i></i></div></div>
+      </div>
+      <div id="sb2">
+        <div class="row">Enable gratuity<div class="tg on"><i></i></div></div>
+        <div class="row">Allow custom amount<div class="tg on"><i></i></div></div>
+        <div class="row">Tip unit<div class="unit"><b>$</b><b class="on">%</b></div></div>
+        <div class="lab">SUGGESTED AMOUNTS</div>
+        <div class="row">8.0%&nbsp;&nbsp;&middot;&nbsp;&nbsp;12.0%&nbsp;&nbsp;&middot;&nbsp;&nbsp;15.0%&nbsp;&nbsp;&middot;&nbsp;&nbsp;24.0%<u>Edit</u></div>
+      </div>
+      <div id="sb3">
+        <div class="lab">SELECT PRINTERS</div>
+        <div class="row">Receipt bill printer<u>Star TSP100 &middot; Front</u></div>
+        <div class="row">Kitchen order ticket printer<u>Epson TM-U220 &middot; Line</u></div>
+        <div class="lab">BILL SETTINGS</div>
+        <div class="row">Auto print bill<div class="tg on"><i></i></div></div>
+        <div class="row">Display one item per line<div class="tg on"><i></i></div></div>
+      </div>
+      <div id="sb4">
+        <div class="lab">SERVER CONNECTION</div>
+        <div class="row">ws.eatos.net<span class="ok">CONNECTED</span></div>
+        <div class="pills"><i>DISCONNECT</i><i class="dark">MANUAL FETCH</i></div>
+        <div class="lab">DEVICE</div>
+        <div class="row">Device name<u>Kiosk 01 &middot; Lobby</u></div>
+        <div class="ver2">eatOS Self-Service Kiosk &middot; Version 4.2.1</div>
+      </div>
+    </div>
+    <div id="stdone">DONE</div>
+  </div>
+
   <!-- 0 TOUCH TO START -->
   <div class="screen" id="start">
     <img src="hero.jpg" alt=""/>
@@ -231,7 +388,7 @@ body{font-family:'Mont',sans-serif;color:#111827;-webkit-font-smoothing:antialia
     <div class="wel">WELCOME</div>
     <h1>Taste, crafted daily</h1>
     <div class="sub">Order in under 2 minutes</div>
-    <div class="cta" id="cta">Touch to<br/>Start</div>
+    <div class="cta" id="cta"><img src="products/touch.png" alt="Touch to Start"/></div>
     <div class="cards"><i>VISA</i><i class="mc">MC</i><i class="ax">AMEX</i><i>DISC</i><i>&#8776;</i></div>
   </div>
 
@@ -268,7 +425,7 @@ body{font-family:'Mont',sans-serif;color:#111827;-webkit-font-smoothing:antialia
   <div class="screen" id="item">
     <div class="topbar"><div class="back">&#8249;</div><div class="ttl" style="font-family:'Script';font-size:22px">Memories</div><div class="skip" style="opacity:0">.</div></div>
     <div class="l">
-      <div class="hero"></div>
+      <div class="hero"><img src="products/wiener_schnitzel.png" alt=""/></div>
       <div class="cal">587 cal</div>
       <div class="nm"><b>Classic Cheeseburger</b><i>$16.00</i></div>
       <p>Flame-grilled beef patty with melted cheddar, lettuce, tomato and house sauce on a toasted brioche bun.</p>
@@ -306,9 +463,9 @@ body{font-family:'Mont',sans-serif;color:#111827;-webkit-font-smoothing:antialia
       <div class="bd">
         <div class="ai">&#10022; AI SUGGESTED</div>
         <h3>Complete your meal</h3>
-        <div class="slot"><div class="d"></div><div><b>Truffle Parmesan Fries</b><s>Adds $7.00</s></div></div>
+        <div class="slot"><div class="d"><img src="products/spaghetti_meatballs.png" alt=""/></div><div><b>Green Fettuccine</b><s>Adds $19.00</s></div></div>
         <div class="also">ALSO TRY</div>
-        <div class="row3"><div><i></i><u></u></div><div><i></i><u></u></div><div><i></i><u></u></div></div>
+        <div class="row3"><div><i><img src="products/drink1_nologo.png" alt=""/></i><u></u></div><div><i><img src="products/drink2_nologo.png" alt=""/></i><u></u></div><div><i><img src="products/drink3_nologo.png" alt=""/></i><u></u></div></div>
         <div class="back" id="backmenu">Back to menu &middot; $16.00</div>
       </div>
     </div>
@@ -318,7 +475,7 @@ body{font-family:'Mont',sans-serif;color:#111827;-webkit-font-smoothing:antialia
   <div class="screen" id="rev">
     <h2>Order Review</h2>
     <div class="line">
-      <div class="d"></div>
+      <div class="d"><img src="products/wiener_schnitzel.png" alt=""/></div>
       <div><b>Classic Cheeseburger</b><s>Medium Rare</s><div><u>Edit</u><u>Remove</u></div></div>
       <div class="rt"><i>$16.00</i><div class="qt"><em>&#8722;</em><span>1</span><em class="dark">+</em></div></div>
     </div>
@@ -332,10 +489,10 @@ body{font-family:'Mont',sans-serif;color:#111827;-webkit-font-smoothing:antialia
       </div>
       <div class="adds">
         <div class="tiny">ADD SOMETHING?</div>
-        <div class="a"><div class="d"></div><div><b>Peruvian Chicken Sandwich</b><s>$14.50</s></div><em>+</em></div>
-        <div class="a"><div class="d"></div><div><b>Spaghetti &amp; Meatballs</b><s>$18.00</s></div><em>+</em></div>
-        <div class="a"><div class="d"></div><div><b>Rigatoni Pork &amp; Beef Ragu</b><s>$22.00</s></div><em>+</em></div>
-        <div class="a"><div class="d"></div><div><b>Wiener Schnitzel</b><s>$28.00</s></div><em>+</em></div>
+        <div class="a"><div class="d"><img src="products/rigatoni_ragu.png" alt=""/></div><div><b>Grilled Chicken Panini</b><s>$14.50</s></div><em>+</em></div>
+        <div class="a"><div class="d"><img src="products/spicy_linguine.png" alt=""/></div><div><b>Chicken Parmesan</b><s>$18.00</s></div><em>+</em></div>
+        <div class="a"><div class="d"><img src="products/cheeseburger.png" alt=""/></div><div><b>Baked Mac and Cheese</b><s>$22.00</s></div><em>+</em></div>
+        <div class="a"><div class="d"><img src="products/peruvian_sandwich.png" alt=""/></div><div><b>Herb Crusted Salmon</b><s>$28.00</s></div><em>+</em></div>
       </div>
     </div>
     <div class="bar"><div class="cn">Cancel</div><div class="go" id="placebtn">Place Order &middot; $17.36</div></div>

@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "asset_id": "5b293eb4-c2e7-4398-afa7-1d84ea82e23b",
+  "asset_id": "2629cf23-0e99-4ce3-8848-3ab4a598708e",
   "project_id": "b675eaf0-f678-4036-aa59-3142eda6c8f6",
-  "url": "/__l5e/assets-v1/5b293eb4-c2e7-4398-afa7-1d84ea82e23b/kiosk-demo.mp4",
-  "r2_key": "a/v1/b675eaf0-f678-4036-aa59-3142eda6c8f6/5b293eb4-c2e7-4398-afa7-1d84ea82e23b/kiosk-demo.mp4",
+  "url": "/__l5e/assets-v1/2629cf23-0e99-4ce3-8848-3ab4a598708e/kiosk-demo.mp4",
+  "r2_key": "a/v1/b675eaf0-f678-4036-aa59-3142eda6c8f6/2629cf23-0e99-4ce3-8848-3ab4a598708e/kiosk-demo.mp4",
   "original_filename": "kiosk-demo.mp4",
-  "size": 2825153,
+  "size": 2473728,
   "content_type": "video/mp4",
-  "created_at": "2026-08-27T17:25:39Z"
+  "created_at": "2026-08-28T14:49:55Z"
 }
