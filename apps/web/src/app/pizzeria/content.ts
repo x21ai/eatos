@@ -57,7 +57,7 @@ export const pillars = [
     id: 'cost',
     title: 'Control food cost per pie',
     body:
-      'Recipe-level inventory tracks dough, cheese and toppings as they sell, so you see true cost per pizza instead of guessing at month end.',
+      'Recipe-level inventory tracks dough, cheese and toppings as they sell, so you see true cost per pizza instead of guessing.',
     more:
       'Low-stock alerts, waste logging and vendor ordering keep prep tight on your highest volume items.',
     imageLabel: 'Recipe-level inventory reporting',
