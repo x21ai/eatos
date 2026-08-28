@@ -7,6 +7,7 @@ import workforceImg from './assets/blog/blog-workforce.avif.asset.json';
 import analyticsImg from './assets/blog/blog-analytics.avif.asset.json';
 import tablesideImg from './assets/blog/blog-tableside.avif.asset.json';
 import inventoryImg from './assets/blog/blog-inventory.avif.asset.json';
+import generatedPosts from './posts.generated.json';
 
 export const blogHero = {
   eyebrow: 'Newsroom',
