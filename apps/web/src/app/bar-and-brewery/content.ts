@@ -8,7 +8,7 @@ import handheldImg from './assets/bar-handheld-new.png.asset.json';
 
 export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
-  title: 'Bar & Nightclub Point of Sale',
+  title: 'Bar Point of Sale',
   description:
     'A powerful Point of Sale system for bars and nightclubs. Built to keep tabs moving, drinks pouring, and payments clearing from the first round to last call.',
   primaryCta: { label: 'Book a Demo', href: '/bookademo' },
@@ -59,7 +59,7 @@ export const pillars = [
   },
   {
     id: 'handheld',
-    title: 'Handheld ordering and payment at the rail',
+    title: 'Handheld ordering and payment',
     body:
       'Take orders, open tabs and accept payments without leaving the rail. A handheld terminal keeps bartenders face-to-face with guests, so service stays personal and the line never stalls.',
     more:
