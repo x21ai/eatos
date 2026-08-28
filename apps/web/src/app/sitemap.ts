@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { products } from '@/app/products/products';
 import { posts } from '@/app/blog/content';
+import { newsItems } from '@/app/news/content';
 
 export default async function sitemap() {
   const baseUrl = process.env.APP_URL || 'https://eatos.com';
