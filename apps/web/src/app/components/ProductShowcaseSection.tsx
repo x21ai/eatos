@@ -27,7 +27,30 @@ type ShowcaseProduct = {
   href: string;
   image: string;
   demoId?: string;
+  frame?: 'tablet';
 };
+
+function TabletFrame({
+  src,
+  alt,
+  className = '',
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`relative w-[94%] rounded-[1.4rem] border border-white/15 bg-zinc-900 p-[2.5%] shadow-[0_25px_45px_rgba(0,0,0,0.65)] ${className}`}
+    >
+      <div className="absolute left-1/2 top-[1.1%] h-1 w-1 -translate-x-1/2 rounded-full bg-white/30" />
+      <div className="overflow-hidden rounded-[0.7rem] bg-black">
+        <img src={src} alt={alt} loading="lazy" className="block w-full object-cover" />
+      </div>
+    </div>
+  );
+}
+
 
 const showcaseProducts: ShowcaseProduct[] = [
   { name: 'AI Enabled\nPoint of Sale', href: '/pointofsale', image: posShot.url, demoId: 'pos' },
