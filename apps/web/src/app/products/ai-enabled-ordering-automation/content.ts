@@ -4,7 +4,7 @@
 
 export const hero = {
   eyebrow: 'AI-Enabled Ordering Automation',
-  title: 'VoiceOS: Let AI Handle Your',
+  title: 'Let AI Handle Your',
   titleAccent: 'Voice Ordering Process',
   description:
     'Automate the process of taking orders over the phone. Let AI interact with your customers, confirm every item and send the order straight to the kitchen.',
@@ -32,7 +32,7 @@ export const features = [
     id: 'streamlined-order-taking-process',
     title: 'Streamlined Order Taking Process',
     body:
-      'VoiceOS transforms manual order taking with AI, allowing staff to focus on service. By removing pen-and-paper methods, orders are processed quickly, ensuring a smooth experience for customers.',
+      'VoiceOS transforms manual order taking with AI, allowing staff to focus on service. By removing pen-and-paper methods, orders are processed quickly, ensuring a smooth experience.',
     more:
       'Every call is captured, confirmed and fired to the kitchen without a team member stepping away from the floor.',
     imageLabel: 'Streamlined order taking process',
@@ -46,7 +46,7 @@ export const features = [
     id: 'enhanced-customer-engagement',
     title: 'Enhanced Customer Engagement',
     body:
-      'VoiceOS improves customer engagement by accepting orders via natural voice commands. This interactive experience increases satisfaction, letting customers share preferences, ask questions and get personalized recommendations, which builds loyalty.',
+      'VoiceOS improves customer engagement by accepting orders via natural voice commands. This interactive experience increases satisfaction, letting customers share preferences, ask questions, which builds loyalty.',
     more:
       'Guests talk the way they always have, and the assistant keeps up with modifiers, allergies and follow-up questions.',
     imageLabel: 'Enhanced customer engagement',
@@ -74,7 +74,7 @@ export const features = [
     id: 'order-accuracy-and-customization',
     title: 'Order Accuracy and Customization',
     body:
-      'VoiceOS captures accurate orders using advanced voice recognition, minimizing errors. Customers can effortlessly customize orders to fit dietary needs, allergies or special requests.',
+      'VoiceOS captures accurate orders using advanced voice recognition, minimizing errors. Customers can effortlessly customize orders to fit dietary needs, special requests.',
     more:
       'Each order is read back for confirmation before it reaches the kitchen, so remakes and refunds drop.',
     imageLabel: 'Order accuracy and customization',
