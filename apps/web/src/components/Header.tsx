@@ -136,14 +136,8 @@ export default function Header() {
     const checkTheme = () => {
       const path = window.location.pathname;
       setCurrentPath(path);
-      const lightPages = [
-        "/shop",
-        "/partners",
-        "/login",
-        "/about-eatos",
-        "/work-with-us",
-        "/customers",
-      ];
+      const lightPages = ["/shop", "/login"];
+
 
       const isLight = lightPages.some(
         (p) => path === p || path.startsWith(p + "/"),
