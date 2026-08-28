@@ -32,7 +32,7 @@ export const pillars = [
     body:
       'However your guests order, at the counter or on the go, eatOS gets you payment-ready. A cloud-based ecosystem built for the pace of quick-service restaurants.',
     more:
-      'Counter, kiosk, handheld, web and delivery orders land in one queue, so a single team runs every channel without switching systems.',
+      'Counter, kiosk, handheld, delivery orders land in one queue, so a single team runs every channel without switching systems.',
     imageLabel: 'Counter ordering flow',
     image: versatileImg.url,
     metrics: [
@@ -42,7 +42,7 @@ export const pillars = [
   },
   {
     id: 'offline',
-    title: "Don't refuse service if your Wi-Fi is down",
+    title: "Don't refuse service if Wi-Fi is down",
     body:
       'eatOS runs online and offline, so you never lose a sale when the connection drops. Multi-user, multi-device environments stay in sync the moment you are back.',
     more:
@@ -58,7 +58,7 @@ export const pillars = [
     id: 'repeat',
     title: 'Keep them coming back for more',
     body:
-      'Menu management, streamlined kitchen communication and loyalty keep orders accurate and fast, correct the first time, every time.',
+      'Menu management, streamlined kitchen communication and loyalty keep orders accurate and fast, correct the every time.',
     more:
       'Update an item once and it changes across every register, kiosk and online menu instantly, so pricing and availability never drift.',
     imageLabel: 'Loyalty and menu management',
