@@ -51,7 +51,7 @@ function FlipbookModal({ item, onClose }) {
       >
         <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-3 sm:px-6">
           <div className="min-w-0">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-emerald-500">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-brand-on-dark">
               Brochure
             </p>
             <h2 className="truncate text-sm font-bold text-white sm:text-base">{item.title}</h2>
@@ -115,11 +115,11 @@ function Cover({ title, index, large = false, src }) {
         />
       ) : (
         <>
-      <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-emerald-500/15 blur-3xl" />
+      <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-soft blur-3xl" />
       <div className="pointer-events-none absolute -bottom-20 -left-16 h-56 w-56 rounded-full bg-white/[0.06] blur-3xl" />
       <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-8">
         <div className="flex items-center justify-between">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.32em] text-zinc-500">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.32em] text-zinc-400">
             eatOS
           </span>
           <span className="text-[10px] font-medium tabular-nums tracking-[0.2em] text-zinc-600">
@@ -146,12 +146,12 @@ export default function BrochuresClient() {
   const [featured, ...rest] = brochures;
 
   return (
-    <main className="bg-white">
+    <main className="bg-black text-white">
       {/* Hero */}
       <section className="bg-black text-white">
         <div className="site-container pb-16 pt-28 text-center md:pb-20 md:pt-36">
           <Reveal>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-emerald-500 sm:text-xs">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-brand-on-dark sm:text-xs">
               {hero.eyebrow}
             </p>
             <h1 className="mx-auto mt-5 max-w-[20ch] font-bold leading-[1.1] tracking-tighter text-4xl md:text-6xl">
@@ -169,7 +169,7 @@ export default function BrochuresClient() {
             <div className="grid items-center gap-8 md:grid-cols-2 md:gap-14">
               <Cover title={featured.title} index={0} large src={featured.cover} />
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-emerald-500">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-brand-on-dark">
                   Start here
                 </p>
                 <h2 className="mt-4 font-bold leading-[1.1] tracking-tighter text-3xl md:text-4xl">
@@ -190,7 +190,7 @@ export default function BrochuresClient() {
                     href={featured.download}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full px-5 py-3.5 text-sm font-semibold text-emerald-400 transition-colors hover:text-emerald-300"
+                    className="inline-flex items-center gap-2 rounded-full px-5 py-3.5 text-sm font-semibold text-brand-on-dark transition-colors hover:text-white"
                   >
                     <Download size={15} />
                     Download PDF
@@ -205,10 +205,10 @@ export default function BrochuresClient() {
       {/* Grid */}
       <section className="site-container py-20 md:py-28">
         <Reveal className="mb-12 md:mb-16">
-          <h2 className="font-bold leading-[1.1] tracking-tighter text-zinc-900 text-3xl md:text-4xl">
+          <h2 className="font-bold leading-[1.1] tracking-tighter text-white text-3xl md:text-4xl">
             The full library.
           </h2>
-          <p className="mt-3 max-w-xl text-base leading-7 text-zinc-500">
+          <p className="mt-3 max-w-xl text-base leading-7 text-zinc-400">
             One brochure for every product in the eatOS restaurant technology cloud.
           </p>
         </Reveal>
@@ -220,17 +220,17 @@ export default function BrochuresClient() {
                 <div className="transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
                   <Cover title={item.title} index={i + 1} src={item.cover} />
                 </div>
-                <h3 className="mt-6 text-[19px] font-bold tracking-tighter text-zinc-900">
+                <h3 className="mt-6 text-[19px] font-bold tracking-tighter text-white">
                   {item.title}
                 </h3>
-                <p className="mt-2.5 flex-1 text-[15px] leading-7 text-zinc-500">
+                <p className="mt-2.5 flex-1 text-[15px] leading-7 text-zinc-400">
                   {item.description}
                 </p>
                 <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2">
                   <button
                     type="button"
                     onClick={() => setActive(item)}
-                    className="inline-flex items-center gap-1.5 text-[15px] font-medium text-emerald-600 transition-colors hover:text-emerald-700"
+                    className="inline-flex items-center gap-1.5 text-[15px] font-medium text-brand-on-dark transition-colors hover:text-white"
                   >
                     Read brochure
                     <ArrowUpRight size={15} />
@@ -239,7 +239,7 @@ export default function BrochuresClient() {
                     href={item.download}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[15px] font-medium text-zinc-500 transition-colors hover:text-zinc-900"
+                    className="inline-flex items-center gap-1.5 text-[15px] font-medium text-zinc-400 transition-colors hover:text-white"
                   >
                     <Download size={15} />
                     Download
