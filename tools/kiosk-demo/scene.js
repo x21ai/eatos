@@ -61,31 +61,33 @@ const CATS = [
 
 /* ---------- menu grid ---------- */
 const ITEMS = [
-  ['Classic Cheeseburger', '$16.00', '445 Cal', 'pop', '#c98a4b'],
-  ['Peruvian Chicken Sandwich', '$14.50', '397 Cal', 'new', '#d9a86c'],
-  ['Spaghetti & Meatballs', '$18.00', '486 Cal', 'pop', '#c05a3a'],
-  ['Rigatoni Pork & Beef Ragu', '$22.00', '192 Cal', '', '#b9713f'],
-  ['Spicy Sausage Linguine', '$19.00', '209 Cal', '', '#c9603c'],
-  ['Wiener Schnitzel', '$28.00', '218 Cal', '', '#cf9c56'],
-  ['Grilled Skirt Steak with Mojo', '$32.00', '417 Cal', 'pop', '#8f5233'],
-  ['Grilled Branzino', '$34.00', '194 Cal', 'new', '#d8c184'],
-  ['Jidori Roast Chicken', '$26.00', '440 Cal', '', '#c88f4e'],
+  ['Classic Cheeseburger', '$16.00', '445 Cal', 'pop', 'wiener_schnitzel.png'],
+  ['Grilled Chicken Panini', '$14.50', '397 Cal', 'new', 'rigatoni_ragu.png'],
+  ['Chicken Parmesan', '$18.00', '486 Cal', 'pop', 'spicy_linguine.png'],
+  ['Baked Mac and Cheese', '$22.00', '192 Cal', '', 'cheeseburger.png'],
+  ['Green Fettuccine', '$19.00', '209 Cal', '', 'spaghetti_meatballs.png'],
+  ['Herb Crusted Salmon', '$28.00', '218 Cal', '', 'peruvian_sandwich.png'],
+  ['Grilled Chicken Breast', '$32.00', '417 Cal', 'pop', 'grilled_chicken_breast.png'],
+  ['Truffle Gnocchi', '$34.00', '194 Cal', 'new', 'jidori_chicken.png'],
+  ['Grilled Asparagus', '$26.00', '440 Cal', '', 'skirt_steak.png'],
 ];
+
 (function () {
   const g = $('grid');
-  ITEMS.forEach(([nm, pr, cal, tag, col], i) => {
+  ITEMS.forEach(([nm, pr, cal, tag, img], i) => {
     const d = document.createElement('div');
     d.className = 'cardit';
     d.innerHTML =
       '<div class="ph">' +
       (tag ? '<div class="tag ' + tag + '">' + (tag === 'pop' ? '\u2726 Popular' : 'NEW') + '</div>' : '') +
       '<div class="cal">' + cal + '</div>' +
-      '<div class="disc"><b style="background:' + col + '"></b></div></div>' +
+      '<img src="products/' + img + '" alt=""/></div>' +
       '<div class="bd"><b>' + nm + '</b><i>' + pr + '</i></div>' +
       '<div class="add" id="add' + i + '">+</div>';
     g.appendChild(d);
   });
 })();
+
 
 /* ---------- number keypads ---------- */
 const KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'C', '0', '\u232B'];
@@ -110,37 +112,58 @@ const DIGITS = '5551234567'.split('');
 const keyOf = (ch) => KEYS.indexOf(ch);
 
 /* ---------- timeline ---------- */
+/* the ordering flow keeps its exact original pacing, shifted by OFF so the
+   sign in and settings stages can play first. */
+const OFF = 15.8;
+const w = (a, b) => [a + OFF, b + OFF];
 const S = {
-  start: [0.0, 4.4],
-  phone: [4.4, 10.0],
-  menu: [10.0, 13.8],
-  item: [13.8, 18.9],
-  ups: [18.9, 21.4],
-  rev: [21.4, 24.7],
-  tip: [24.7, 28.2],
-  pay: [28.2, 30.6],
-  done: [30.6, 33.4],
+  signin: [0.0, 6.6],
+  settings: [6.6, 15.8],
+  start: w(0.0, 4.4),
+  phone: w(4.4, 10.0),
+  menu: w(10.0, 13.8),
+  item: w(13.8, 18.9),
+  ups: w(18.9, 21.4),
+  rev: w(21.4, 24.7),
+  tip: w(24.7, 28.2),
+  pay: w(28.2, 30.6),
+  done: w(30.6, 33.4),
 };
-const DUR = 33.4;
+const DUR = 33.4 + OFF;
 window.__meta = { fps: FPS, frames: Math.round(FPS * DUR) };
 
-const T0 = 5.3, STEP = 0.24;
+const T0 = 5.3 + OFF, STEP = 0.24;
 const typeAt = (n) => T0 + n * STEP;
 const TYPE_END = typeAt(DIGITS.length - 1);
 
-const A = {
-  touch: 3.3,
-  cont: TYPE_END + 0.7,
-  plus: 12.3,
-  temp: 15.3,
-  add: 17.6,
-  back: 20.4,
-  place: 23.6,
-  tip15: 26.1,
-  tipgo: 27.4,
-  card: 29.6,
+/* sign in + settings actions */
+const EMAIL = 'johndoe@eatos.com';
+const K = {
+  email: [0.9, 2.7],
+  pass: [3.0, 4.0],
+  signin: 4.7,
+  tabs: [7.9, 9.4, 10.9, 12.4],
+  done: 14.2,
 };
-const TAPS = Object.keys(A).map((k) => A[k]).concat(DIGITS.map((_, i) => typeAt(i)));
+
+const A = {
+  touch: 3.3 + OFF,
+  cont: TYPE_END + 0.7,
+  plus: 12.3 + OFF,
+  temp: 15.3 + OFF,
+  add: 17.6 + OFF,
+  back: 20.4 + OFF,
+  place: 23.6 + OFF,
+  tip15: 26.1 + OFF,
+  tipgo: 27.4 + OFF,
+  card: 29.6 + OFF,
+};
+const TAPS = Object.keys(A)
+  .map((k) => A[k])
+  .concat(DIGITS.map((_, i) => typeAt(i)))
+  .concat([K.signin, K.done])
+  .concat(K.tabs);
+
 
 /* ---------- cursor waypoints from real DOM geometry ---------- */
 const C = (id, dx, dy) => {
@@ -150,7 +173,18 @@ const C = (id, dx, dy) => {
 const WP = [];
 const at = (t, p) => WP.push([t, p[0], p[1]]);
 
-at(0.0, [880, 780]);
+at(0.0, [1180, 300]);
+at(K.email[0] - 0.1, C('kemailf'));
+at(K.pass[0] - 0.1, C('kpassf'));
+at(K.signin - 0.3, C('signbtn'));
+at(K.signin + 0.3, C('signbtn'));
+K.tabs.forEach((tp, i) => {
+  const p = C('st' + (i + 1));
+  at(tp - 0.3, p);
+  at(tp + 0.25, p);
+});
+at(K.done - 0.3, C('stdone'));
+at(K.done + 0.3, C('stdone'));
 at(A.touch - 0.4, C('cta'));
 at(A.touch + 0.4, C('cta'));
 DIGITS.forEach((d, i) => {
@@ -217,6 +251,32 @@ window.__render = function (t) {
     const el = $(k);
     el.style.opacity = opacityOf(S[k], t);
   }
+
+  /* K0 sign in */
+  const en = Math.round(seg(t, K.email[0], K.email[1]) * EMAIL.length);
+  const ev = $('kemailv');
+  if (en === 0) { ev.textContent = 'Enter Email'; ev.className = 'ph'; }
+  else { ev.textContent = EMAIL.slice(0, en); ev.className = ''; }
+  cls($('kemailf'), 'focus', t >= K.email[0] - 0.2 && t < K.pass[0]);
+
+  const pn = Math.round(seg(t, K.pass[0], K.pass[1]) * 10);
+  const pv = $('kpassv');
+  if (pn === 0) { pv.textContent = 'Enter Password'; pv.className = 'ph'; }
+  else { pv.textContent = '\u2022'.repeat(pn); pv.className = ''; }
+  cls($('kpassf'), 'focus', t >= K.pass[0] - 0.2 && t < K.signin + 0.2);
+  $('signbtn').style.transform = scaleOn(t, K.signin, 0.975);
+
+  /* K1 settings: walk every tab, then DONE */
+  let tab = 0;
+  K.tabs.forEach((tp, i) => { if (t >= tp + 0.05) tab = i + 1; });
+  for (let i = 0; i < 5; i++) {
+    cls($('st' + i), 'on', i === tab);
+    cls($('sh' + i), 'on', i === tab);
+    cls($('sb' + i), 'on', i === tab);
+    $('st' + i).style.transform = i > 0 ? scaleOn(t, K.tabs[i - 1], 0.98) : 'scale(1)';
+  }
+  $('stdone').style.transform = scaleOn(t, K.done, 0.96);
+
 
   /* 0 touch to start: slow breathing on the call to action */
   const br = 1 + 0.018 * Math.sin(t * 1.7);
