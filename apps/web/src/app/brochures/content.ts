@@ -54,7 +54,7 @@ export const brochures = [
     id: 'tableside-order-and-pay',
     title: 'Tableside Order and Pay',
     description:
-      'Let guests place orders, divide bills and make payments directly from their own smartphones.',
+      'Let guests place orders, divide bills and make payments directly from their smartphones.',
     flipbook: 'https://go.fliplink.me/view/A75F6768-668B-4462-B3C8-0BDD3A56E293',
     cover: coverTop.url,
     download:
@@ -74,7 +74,7 @@ export const brochures = [
     id: 'online-ordering-and-delivery',
     title: 'Online Ordering and Delivery',
     description:
-      'Commission-free, white-labeled ordering app and website with in-house or third-party delivery.',
+      'Commission-free, white-labeled ordering app & website with in-house or 3rd-party delivery.',
     flipbook: 'https://go.fliplink.me/view/E437A490-B457-4799-B3CB-03FB5208D1EC',
     cover: coverOrderOs.url,
     download:
