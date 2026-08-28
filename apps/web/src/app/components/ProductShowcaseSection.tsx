@@ -48,7 +48,7 @@ const showcaseProducts: ShowcaseProduct[] = [
   },
   {
     name: 'Autonomous & Automated Delivery',
-    href: '/products/autonomous-delivery',
+    href: '/products/autonomous-and-automated-delivery',
     image: invPlaceholder.url,
   },
 ];
