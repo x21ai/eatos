@@ -69,7 +69,7 @@ export default function MeshDiagram() {
         </svg>
 
         {/* center cloud */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -79,10 +79,11 @@ export default function MeshDiagram() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-2xl bg-sky-400/20" />
             <Cloud size={26} className="relative text-sky-300" />
           </motion.div>
-          <p className="mt-1.5 text-center text-[9px] font-semibold tracking-widest text-sky-300">
+          <p className="absolute left-1/2 top-full w-max -translate-x-1/2 pt-1.5 text-center text-[9px] font-semibold tracking-widest text-sky-300">
             <span className="lowercase">eat</span>OS CLOUD
           </p>
         </div>
+
 
         {/* device nodes around the ring */}
         {nodes.map((n, i) => {
