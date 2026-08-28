@@ -42,42 +42,81 @@ export default function MeshDiagram() {
 
   return (
     <>
-    {/* Mobile: stacked cloud + device grid */}
-    <div className="md:hidden relative w-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-5">
-      <div className="flex flex-col items-center">
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-sky-400/50 bg-sky-500/15 backdrop-blur"
-        >
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-2xl bg-sky-400/20" />
-          <Cloud size={28} className="relative text-sky-300" />
-        </motion.div>
-        <p className="mt-2 text-center text-[10px] font-semibold tracking-widest text-sky-300">
-          <span className="lowercase">eat</span>OS CLOUD
-        </p>
-        <div className="mt-3 h-6 w-px bg-gradient-to-b from-sky-400/50 to-transparent" />
-      </div>
-      <div className="mt-2 grid grid-cols-2 gap-3">
-        {nodes.map((n, i) => (
+    {/* Mobile: radial star, cloud in the center */}
+    <div className="md:hidden relative w-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-3">
+      <div className="relative mx-auto aspect-square w-full max-w-[340px]">
+        {/* spokes */}
+        <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden="true">
+          {nodes.map((n, i) => {
+            const a = (-90 + i * 60) * (Math.PI / 180);
+            const x = 50 + 34 * Math.cos(a);
+            const y = 50 + 34 * Math.sin(a);
+            return (
+              <g key={`ms-${i}`}>
+                <line x1="50" y1="50" x2={x} y2={y} stroke="rgba(96,165,250,0.35)" strokeWidth="0.6" />
+                <circle r="1.4" fill="#60a5fa">
+                  <animateMotion
+                    dur={`${2.4 + i * 0.3}s`}
+                    repeatCount="indefinite"
+                    path={`M 50 50 L ${x} ${y}`}
+                  />
+                  <animate attributeName="opacity" values="0;1;1;0" dur={`${2.4 + i * 0.3}s`} repeatCount="indefinite" />
+                </circle>
+              </g>
+            );
+          })}
+          <circle cx="50" cy="50" r="34" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="0.5" strokeDasharray="2 3" />
+        </svg>
+
+        {/* center cloud */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <motion.div
-            key={`m-${n.label}`}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15 + i * 0.08, duration: 0.35 }}
-            className="flex min-w-0 items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-3"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-sky-400/50 bg-sky-500/15 backdrop-blur"
           >
-            <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl border backdrop-blur ${n.tint}`}>
-              <n.Icon size={18} />
-            </span>
-            <span className="min-w-0 truncate text-[11px] font-medium uppercase tracking-wider text-white/70">
-              {n.label}
-            </span>
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-2xl bg-sky-400/20" />
+            <Cloud size={26} className="relative text-sky-300" />
           </motion.div>
-        ))}
+          <p className="mt-1.5 text-center text-[9px] font-semibold tracking-widest text-sky-300">
+            <span className="lowercase">eat</span>OS CLOUD
+          </p>
+        </div>
+
+        {/* device nodes around the ring */}
+        {nodes.map((n, i) => {
+          const a = (-90 + i * 60) * (Math.PI / 180);
+          const x = 50 + 34 * Math.cos(a);
+          const y = 50 + 34 * Math.sin(a);
+          const above = y < 50;
+          return (
+            <div
+              key={`m-${n.label}`}
+              className="absolute -translate-x-1/2 -translate-y-1/2"
+              style={{ left: `${x}%`, top: `${y}%` }}
+            >
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.15 + i * 0.08, duration: 0.35 }}
+                className={`relative grid h-10 w-10 place-items-center rounded-xl border backdrop-blur ${n.tint}`}
+              >
+                <n.Icon size={18} />
+                <span
+                  className={`absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-center text-[8px] font-medium uppercase tracking-wider text-white/60 ${
+                    above ? 'bottom-full mb-1' : 'top-full mt-1'
+                  }`}
+                >
+                  {n.label}
+                </span>
+              </motion.div>
+            </div>
+          );
+        })}
       </div>
     </div>
+
 
     {/* Desktop / tablet: mesh diagram */}
     <div className="hidden md:block relative w-full overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] p-4 md:p-8">
