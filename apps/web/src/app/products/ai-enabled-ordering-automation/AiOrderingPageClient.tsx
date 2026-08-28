@@ -215,7 +215,13 @@ export default function AiOrderingPageClient() {
               </div>
 
               <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                <Placeholder label={feature.imageLabel} src={feature.image ?? undefined} />
+                <Placeholder
+                  label={feature.imageLabel}
+                  src={feature.image ?? undefined}
+                  bare
+                  contain
+                  ratio="aspect-square"
+                />
               </div>
             </motion.div>
           ))}
