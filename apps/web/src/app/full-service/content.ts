@@ -43,11 +43,11 @@ export const marquee = [
 export const pillars = [
   {
     id: 'platform',
-    title: 'A new way to think about Point of Sale',
+    title: 'Way to think about Point of Sale',
     body:
       'Our all-in-one food-service and restaurant management suite is designed to make it easier to manage guests, staff, marketing, finances, and the menu.',
     more:
-      'Everything runs on one cloud platform, so operators thrive no matter their size, from a single dining room to a growing group of restaurants.',
+      'Everything runs on one cloud platform, so operators thrive no matter their size, from single dining room to group of restaurants.',
     imageLabel: 'Table management on a tablet',
     image: tablesImg.url,
   },
