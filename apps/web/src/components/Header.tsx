@@ -30,6 +30,7 @@ import {
   Network,
   Package,
   Pizza,
+  Mic,
 } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { overallHeaderColor } from "@/app/system-status/systems";
