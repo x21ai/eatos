@@ -23,7 +23,7 @@ export const syncPoints = [
   },
   {
     title: 'Syncs the moment you are back online',
-    body: 'The second any device regains internet access, all data from every device syncs instantly to the eatOS cloud. Nothing is lost, nothing is duplicated.',
+    body: 'The second any device regains internet access, all data from every device syncs instantly to the eatOS cloud. Nothing is lost.',
   },
 ];
 
@@ -38,7 +38,7 @@ export const capabilities = [
   },
   {
     title: 'Instant Cloud Sync',
-    body: 'The moment any device gains internet access, all data from every device syncs instantly to the eatOS cloud.',
+    body: 'The moment any device gains internet access, all data from every device syncs to eatOS cloud.',
   },
 ];
 
