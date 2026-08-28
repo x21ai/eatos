@@ -10,7 +10,7 @@ import inventoryImg from './assets/blog/blog-inventory.avif.asset.json';
 import generatedPosts from './posts.generated.json';
 
 export const blogHero = {
-  eyebrow: 'Newsroom',
+  eyebrow: 'BLOG POSTS',
   title: 'Ideas for the modern restaurant.',
   intro:
     'Product news, operating playbooks and practical guidance from the team building the eatOS restaurant technology cloud.',
