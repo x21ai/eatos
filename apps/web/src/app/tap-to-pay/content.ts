@@ -25,23 +25,23 @@ export const steps = [
   {
     step: '01',
     title: 'Ring it up where you stand',
-    body: 'Fire the order from the handheld while you are still at the table. Items hit the kitchen the moment you confirm them.',
+    body: 'Fire the order from the handheld while you are still at the table. Items hit the kitchen same time.',
   },
   {
     step: '02',
     title: 'Turn the phone to the guest',
-    body: 'The check, the tip prompt and the total appear on one clean screen. No wallet run, no folder, no waiting for the terminal.',
+    body: 'The check, the tip prompt and the total appear on one clean screen.  no waiting for the terminal.',
   },
   {
     step: '03',
     title: 'They tap. You are done.',
-    body: 'Card, phone or watch: one tap approves it. The receipt goes out by text or email and the ticket closes itself.',
+    body: 'Card, phone or watch: one tap approves it. The receipt goes out by text or email, the ticket closes itself.',
   },
 ];
 
 export const features = [
   {
-    title: 'Every contactless card and wallet',
+    title: 'Every contactless card',
     body: 'Tap-enabled credit and debit cards, phone wallets and smartwatches all clear through the same flow.',
     icon: 'CreditCard',
     iconColor: 'text-blue-400',
@@ -65,7 +65,7 @@ export const features = [
     iconBorder: 'border-amber-400/20',
   },
   {
-    title: 'Keeps going when Wi-Fi drops',
+    title: 'Keeps going if Wi-Fi drops',
     body: 'Orders and payment intents queue locally and sync the second the connection returns.',
     icon: 'WifiOff',
     iconColor: 'text-violet-400',
@@ -81,7 +81,7 @@ export const features = [
     iconBorder: 'border-sky-400/20',
   },
   {
-    title: 'One ledger with your Point of Sale',
+    title: 'Sync with Point of Sale',
     body: 'Tap payments land in the same reporting, payouts and reconciliation as every other tender.',
     icon: 'Layers',
     iconColor: 'text-rose-400',
