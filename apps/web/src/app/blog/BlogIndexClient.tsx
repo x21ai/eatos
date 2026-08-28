@@ -330,7 +330,13 @@ export default function BlogIndexClient() {
           </div>
 
           <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-12">
-            <div className="min-w-0">
+            <div className="min-w-0" id="blog-posts">
+              {filtered.length > 0 && (
+                <p className="mb-8 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">
+                  Showing {rangeStart} to {rangeEnd} of {filtered.length} posts
+                </p>
+              )}
+
               <div className="grid gap-8 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10">
                 {shown.map((post, i) => (
                   <Card key={post.slug} post={post} index={i} />
@@ -341,7 +347,7 @@ export default function BlogIndexClient() {
                 <p className="text-sm text-zinc-500">No posts in this category yet.</p>
               )}
 
-              <Pagination page={currentPage} pageCount={pageCount} onChange={setPage} />
+              <Pagination page={currentPage} pageCount={pageCount} onChange={goToPage} />
             </div>
 
             <aside className="min-w-0 space-y-6 lg:sticky lg:top-28 lg:h-fit">
