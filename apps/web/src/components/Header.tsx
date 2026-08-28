@@ -140,7 +140,6 @@ export default function Header() {
         "/shop",
         "/partners",
         "/login",
-        "/bookademo",
         "/about-eatos",
         "/work-with-us",
         "/customers",
