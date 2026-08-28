@@ -19,9 +19,16 @@ export const blogHero = {
 export const categories = [
   'All Posts',
   'Point of Sale',
+  'Kitchen Operations',
   'Workforce Management',
   'Inventory Management',
+  'Online Ordering',
+  'Self-Service Kiosk',
+  'Marketing & Loyalty',
+  'Analytics & Reporting',
+  'Restaurant Growth',
   'Tableside Ordering',
+  'Restaurant Insights',
 ];
 
 const curatedPosts = [
