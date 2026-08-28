@@ -242,7 +242,7 @@ export function ProductShowcaseSection({
           <div
             ref={trackRef}
             onScroll={updateArrows}
-            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hidden px-2 md:px-14 pb-2"
+            className="flex gap-10 md:gap-12 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hidden px-2 md:px-14 pb-2"
           >
             {showcaseProducts.map((product) => (
               <button
@@ -251,20 +251,21 @@ export function ProductShowcaseSection({
                 onClick={() => setActiveProduct(product)}
                 aria-label={`Watch the ${product.name} demo`}
                 data-showcase-card
-                className="group snap-start shrink-0 basis-[66%] sm:basis-[calc((100%-3rem)/3)] lg:basis-[calc((100%-6rem)/5)] flex flex-col items-center text-center"
+                className="group snap-start shrink-0 basis-[72%] sm:basis-[calc((100%-6rem)/3)] lg:basis-[calc((100%-12rem)/5)] flex flex-col items-center text-center"
               >
-                <div className="relative w-full aspect-[4/5] flex items-center justify-center">
+                <div className="relative w-full aspect-[5/5] flex items-center justify-center">
                   <div className="absolute bottom-6 h-16 w-3/5 rounded-[100%] bg-white/10 blur-2xl" />
                   <img
                     src={product.image}
                     alt={`${product.name} shown on an eatOS device`}
                     loading="lazy"
-                    className="relative z-10 max-h-full w-auto max-w-full object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.65)] transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-[1.03]"
+                    className="relative z-10 max-h-full w-auto max-w-full scale-110 object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.65)] transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-[1.14]"
                   />
                 </div>
-                <h3 className="mt-6 whitespace-pre-line text-base md:text-lg font-semibold tracking-tight text-white/90 group-hover:text-white transition-colors max-w-[14rem] leading-snug">
+                <h3 className="mt-5 whitespace-pre-line text-xs md:text-sm font-semibold tracking-tight text-white/90 group-hover:text-white transition-colors max-w-[12rem] leading-snug">
                   {product.name}
                 </h3>
+
               </button>
             ))}
           </div>
