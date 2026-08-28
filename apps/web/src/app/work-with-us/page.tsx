@@ -109,13 +109,13 @@ export default function CareersPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-black font-sans">
+    <div className="min-h-screen bg-black text-white font-sans">
       {/* Hero */}
-      <section className="pt-32 md:pt-44 pb-16 md:pb-20 bg-gray-50 border-b border-gray-100">
+      <section className="pt-32 md:pt-44 pb-16 md:pb-20 border-b border-white/10">
         <div className="site-container">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-black/10 bg-white text-xs font-bold uppercase tracking-widest text-gray-700 mb-6">
-              <span className="text-purple-600">✦</span> Careers
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/15 bg-white/5 text-xs font-bold uppercase tracking-widest text-white/70 mb-6">
+              <span className="text-brand-on-dark">✦</span> Careers
             </div>
 
             <h1 className="text-5xl md:text-6xl font-bold tracking-tighter leading-[1.05] mb-6">
@@ -124,7 +124,7 @@ export default function CareersPage() {
               restaurants run on.
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+            <p className="text-lg md:text-xl text-white/70 leading-relaxed">
               We’re building software, payments, and hardware that work together
               like one machine, along with an intelligence layer that helps
               operators act faster and smarter.
@@ -133,13 +133,13 @@ export default function CareersPage() {
             <div className="mt-10 flex flex-col sm:flex-row gap-3">
               <a
                 href="#open-roles"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-black text-white font-semibold hover:bg-gray-900 transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-white/90 transition-colors"
               >
                 View open roles <ArrowRight size={18} />
               </a>
               <a
                 href="mailto:careers@eatos.com"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-gray-200 bg-white font-semibold hover:bg-gray-50 transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-white/20 bg-white/5 font-semibold text-white hover:bg-white/10 transition-colors"
               >
                 Email us <ArrowRight size={18} />
               </a>
@@ -158,13 +158,13 @@ export default function CareersPage() {
       <section className="py-16 md:py-24">
         <div className="site-container">
           <div className="max-w-2xl">
-            <div className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-3">
+            <div className="text-sm font-bold uppercase tracking-widest text-white/50 mb-3">
               How we operate
             </div>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4">
               Calm. Fast. Honest.
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed">
+            <p className="text-white/70 text-lg leading-relaxed">
               We move quickly, but we don’t break trust. We aim for the kind of
               quality you can feel.
             </p>
@@ -174,13 +174,13 @@ export default function CareersPage() {
             {values.map((v) => (
               <div
                 key={v.title}
-                className="rounded-3xl border border-gray-200 bg-white p-8 hover:bg-gray-50 transition-colors"
+                className="rounded-3xl border border-white/10 bg-white/5 p-8 hover:bg-white/10 transition-colors"
               >
-                <div className="w-11 h-11 rounded-2xl bg-black/5 flex items-center justify-center mb-5">
-                  <v.icon size={22} className="text-black" />
+                <div className="w-11 h-11 rounded-2xl bg-white/10 flex items-center justify-center mb-5">
+                  <v.icon size={22} className="text-white" />
                 </div>
                 <div className="text-xl font-bold mb-2">{v.title}</div>
-                <p className="text-gray-600 leading-relaxed">{v.desc}</p>
+                <p className="text-white/70 leading-relaxed">{v.desc}</p>
               </div>
             ))}
           </div>
@@ -188,16 +188,16 @@ export default function CareersPage() {
       </section>
 
       {/* Benefits */}
-      <section className="py-16 md:py-24 bg-gray-50 border-t border-gray-100">
+      <section className="py-16 md:py-24 border-t border-white/10">
         <div className="site-container">
           <div className="max-w-2xl">
-            <div className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-3">
+            <div className="text-sm font-bold uppercase tracking-widest text-white/50 mb-3">
               Benefits
             </div>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4">
               Support the team.
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed">
+            <p className="text-white/70 text-lg leading-relaxed">
               We keep this simple: take care of people, and they’ll do the best
               work of their careers.
             </p>
@@ -207,10 +207,10 @@ export default function CareersPage() {
             {benefits.map((b) => (
               <div
                 key={b.title}
-                className="rounded-3xl border border-gray-200 bg-white p-8"
+                className="rounded-3xl border border-white/10 bg-white/5 p-8"
               >
                 <div className="text-lg font-bold mb-2">{b.title}</div>
-                <p className="text-gray-600 leading-relaxed">{b.desc}</p>
+                <p className="text-white/70 leading-relaxed">{b.desc}</p>
               </div>
             ))}
           </div>
@@ -218,24 +218,24 @@ export default function CareersPage() {
       </section>
 
       {/* Open Roles */}
-      <section id="open-roles" className="py-16 md:py-24 bg-white">
+      <section id="open-roles" className="py-16 md:py-24 border-t border-white/10">
         <div className="site-container">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div className="max-w-2xl">
-              <div className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-3">
+              <div className="text-sm font-bold uppercase tracking-widest text-white/50 mb-3">
                 Open roles
               </div>
               <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-2">
                 Join <strong>eatOS</strong>.
               </h2>
-              <p className="text-gray-600 text-lg leading-relaxed">
+              <p className="text-white/70 text-lg leading-relaxed">
                 Don’t see the perfect role? Email us anyway. We’ll read it.
               </p>
             </div>
 
             <a
               href="mailto:careers@eatos.com"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-gray-200 bg-white font-semibold hover:bg-gray-50 transition-colors whitespace-nowrap"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-white/20 bg-white/5 font-semibold text-white hover:bg-white/10 transition-colors whitespace-nowrap"
             >
               Send your resume <ArrowRight size={18} />
             </a>
@@ -246,14 +246,14 @@ export default function CareersPage() {
               <a
                 key={r.slug}
                 href={`/work-with-us/${r.slug}`}
-                className="block rounded-3xl border border-gray-200 bg-white p-6 md:p-8 hover:bg-gray-50 transition-colors"
+                className="block rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8 hover:bg-white/10 transition-colors"
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
                     <div className="text-xl font-bold tracking-tighter">
                       {r.title}
                     </div>
-                    <div className="text-gray-600 mt-1">{r.blurb}</div>
+                    <div className="text-white/70 mt-1">{r.blurb}</div>
 
                     <div className="flex flex-wrap gap-2 mt-4">
                       <Pill text={r.team} />
@@ -262,7 +262,7 @@ export default function CareersPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 text-black font-semibold">
+                  <div className="flex items-center gap-2 text-white font-semibold">
                     View <ArrowRight size={18} />
                   </div>
                 </div>
@@ -273,16 +273,16 @@ export default function CareersPage() {
       </section>
 
       {/* Hiring Process */}
-      <section className="py-16 md:py-24 bg-gray-50 border-t border-gray-100">
+      <section className="py-16 md:py-24 border-t border-white/10">
         <div className="site-container">
           <div className="max-w-2xl">
-            <div className="text-sm font-bold uppercase tracking-widest text-gray-500 mb-3">
+            <div className="text-sm font-bold uppercase tracking-widest text-white/50 mb-3">
               Process
             </div>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tighter mb-4">
               Clear steps.
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed">
+            <p className="text-white/70 text-lg leading-relaxed">
               No puzzles, no gotchas. We want to see how you think and how you
               work.
             </p>
@@ -314,29 +314,29 @@ export default function CareersPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-white border-t border-gray-100">
+      <section className="py-16 md:py-24 border-t border-white/10">
         <div className="site-container">
-          <div className="rounded-[2.5rem] bg-black text-white p-10 md:p-14 overflow-hidden relative">
-            <div className="absolute -top-24 -right-24 w-72 h-72 bg-purple-500/20 blur-3xl rounded-full" />
+          <div className="rounded-[2.5rem] border border-white/10 bg-white/5 text-white p-10 md:p-14 overflow-hidden relative">
+            <div className="absolute -top-24 -right-24 w-72 h-72 bg-brand/25 blur-3xl rounded-full" />
             <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
               <div>
                 <h3 className="text-3xl md:text-4xl font-bold tracking-tighter mb-3">
                   Ready to apply?
                 </h3>
-                <p className="text-gray-300 text-lg max-w-2xl">
+                <p className="text-white/70 text-lg max-w-2xl">
                   Send your resume, a quick note, and links to work you’re proud
                   of.
                 </p>
               </div>
               <a
                 href="mailto:careers@eatos.com"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-colors whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-white text-black font-semibold hover:bg-white/90 transition-colors whitespace-nowrap"
               >
                 Apply via email <ArrowRight size={18} />
               </a>
             </div>
 
-            <div className="relative z-10 mt-8 text-gray-400 text-sm">
+            <div className="relative z-10 mt-8 text-white/55 text-sm">
               Or browse roles above. We respond as quickly as we can.
             </div>
           </div>
@@ -348,7 +348,7 @@ export default function CareersPage() {
 
 function Pill({ text }) {
   return (
-    <span className="inline-flex items-center px-3 py-1 rounded-full bg-black/5 border border-black/10 text-xs font-semibold text-gray-700">
+    <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-white/80">
       {text}
     </span>
   );
@@ -356,8 +356,8 @@ function Pill({ text }) {
 
 function MiniStat({ icon: Icon, label, value }) {
   return (
-    <div className="rounded-3xl border border-gray-200 bg-white p-4">
-      <div className="flex items-center gap-2 text-gray-500 text-sm font-semibold">
+    <div className="rounded-3xl border border-white/10 bg-white/5 p-4">
+      <div className="flex items-center gap-2 text-white/60 text-sm font-semibold">
         <Icon size={16} /> {label}
       </div>
       <div className="text-xl font-bold mt-2 tracking-tighter">{value}</div>
@@ -367,12 +367,12 @@ function MiniStat({ icon: Icon, label, value }) {
 
 function Step({ number, title, desc }) {
   return (
-    <div className="rounded-3xl border border-gray-200 bg-white p-6">
-      <div className="text-sm font-bold tracking-widest text-gray-400">
+    <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+      <div className="text-sm font-bold tracking-widest text-white/45">
         {number}
       </div>
       <div className="text-lg font-bold mt-2">{title}</div>
-      <p className="text-gray-600 mt-2 leading-relaxed">{desc}</p>
+      <p className="text-white/70 mt-2 leading-relaxed">{desc}</p>
     </div>
   );
 }

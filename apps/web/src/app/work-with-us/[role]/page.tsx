@@ -94,11 +94,11 @@ export default async function CareerRolePage({ params }) {
 
   if (!role) {
     return (
-      <div className="min-h-screen bg-white text-black font-sans">
+      <div className="min-h-screen bg-black text-white font-sans">
         <div className="site-container pt-32 md:pt-44 pb-24">
           <a
             href="/work-with-us"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-black"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-white/70 hover:text-white"
           >
             <ArrowLeft size={16} /> Back to Careers
           </a>
@@ -107,7 +107,7 @@ export default async function CareerRolePage({ params }) {
             <h1 className="text-4xl md:text-5xl font-bold tracking-tighter">
               Role not found
             </h1>
-            <p className="text-gray-600 text-lg mt-4">
+            <p className="text-white/65 text-lg mt-4">
               This opening may have been filled or moved.
             </p>
           </div>
@@ -123,25 +123,25 @@ export default async function CareerRolePage({ params }) {
   const applyHref = `mailto:careers@eatos.com?subject=${applySubject}&body=${applyBody}`;
 
   return (
-    <div className="min-h-screen bg-white text-black font-sans">
-      <section className="pt-32 md:pt-44 pb-16 bg-gray-50 border-b border-gray-100">
+    <div className="min-h-screen bg-black text-white font-sans">
+      <section className="pt-32 md:pt-44 pb-16 border-b border-white/10">
         <div className="site-container">
           <a
             href="/work-with-us"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-black"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-white/70 hover:text-white"
           >
             <ArrowLeft size={16} /> Back to Careers
           </a>
 
           <div className="mt-10 max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-black/10 bg-white text-xs font-bold uppercase tracking-widest text-gray-700 mb-6">
-              <span className="text-purple-600">✦</span> {role.team}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/15 bg-white/5 text-xs font-bold uppercase tracking-widest text-white/70 mb-6">
+              <span className="text-brand-on-dark">✦</span> {role.team}
             </div>
 
             <h1 className="text-5xl md:text-6xl font-bold tracking-tighter leading-[1.05]">
               {role.title}
             </h1>
-            <p className="text-gray-600 text-lg md:text-xl mt-5 leading-relaxed">
+            <p className="text-white/65 text-lg md:text-xl mt-5 leading-relaxed">
               {role.intro}
             </p>
 
@@ -153,13 +153,13 @@ export default async function CareerRolePage({ params }) {
             <div className="mt-10 flex flex-col sm:flex-row gap-3">
               <a
                 href={applyHref}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-black text-white font-semibold hover:bg-gray-900 transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-white/90 transition-colors"
               >
                 Apply via email <ArrowRight size={18} />
               </a>
               <a
                 href="/work-with-us#open-roles"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-gray-200 bg-white font-semibold hover:bg-gray-50 transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-white/20 bg-white/5 font-semibold hover:bg-white/10 transition-colors"
               >
                 Browse roles <ArrowRight size={18} />
               </a>
@@ -171,28 +171,28 @@ export default async function CareerRolePage({ params }) {
       <section className="py-16 md:py-24">
         <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
-            <div className="rounded-3xl border border-gray-200 bg-white p-8">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
               <h2 className="text-2xl font-bold tracking-tighter">
                 What you’ll do
               </h2>
-              <ul className="mt-6 space-y-3 text-gray-700">
+              <ul className="mt-6 space-y-3 text-white/70">
                 {role.whatYoullDo.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-black" />
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-brand-on-dark" />
                     <span className="leading-relaxed">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="rounded-3xl border border-gray-200 bg-white p-8">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
               <h2 className="text-2xl font-bold tracking-tighter">
                 What we’re looking for
               </h2>
-              <ul className="mt-6 space-y-3 text-gray-700">
+              <ul className="mt-6 space-y-3 text-white/70">
                 {role.whatWereLookingFor.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-black" />
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-brand-on-dark" />
                     <span className="leading-relaxed">{item}</span>
                   </li>
                 ))}
@@ -200,21 +200,21 @@ export default async function CareerRolePage({ params }) {
             </div>
           </div>
 
-          <div className="mt-10 rounded-[2.5rem] bg-black text-white p-10 md:p-14 overflow-hidden relative">
-            <div className="absolute -top-24 -right-24 w-72 h-72 bg-purple-500/20 blur-3xl rounded-full" />
+          <div className="mt-10 rounded-[2.5rem] border border-white/10 bg-white/5 text-white p-10 md:p-14 overflow-hidden relative">
+            <div className="absolute -top-24 -right-24 w-72 h-72 bg-brand/20 blur-3xl rounded-full" />
             <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
               <div>
                 <h3 className="text-3xl md:text-4xl font-bold tracking-tighter mb-3">
                   Apply in 2 minutes.
                 </h3>
-                <p className="text-gray-300 text-lg max-w-2xl">
+                <p className="text-white/70 text-lg max-w-2xl">
                   Email your resume and a short note. Links help (LinkedIn,
                   portfolio, GitHub).
                 </p>
               </div>
               <a
                 href={applyHref}
-                className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-colors whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-white text-black font-semibold hover:bg-white/90 transition-colors whitespace-nowrap"
               >
                 Apply now <ArrowRight size={18} />
               </a>
@@ -228,8 +228,9 @@ export default async function CareerRolePage({ params }) {
 
 function Pill({ text }) {
   return (
-    <span className="inline-flex items-center px-3 py-1 rounded-full bg-black/5 border border-black/10 text-xs font-semibold text-gray-700">
+    <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-white/70">
       {text}
     </span>
   );
 }
+
