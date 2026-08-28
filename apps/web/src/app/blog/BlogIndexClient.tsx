@@ -8,6 +8,7 @@ import { Placeholder } from '@/components/marketing/Placeholder';
 import { NewsletterSection } from '@/components/NewsletterSection';
 import { blogHero, categories, posts, formatDate } from './content';
 import CategoryFilter, { categoryHref } from './CategoryFilter';
+import blogHeroImage from './assets/blog-hero.jpg.asset.json';
 
 const PAGE_SIZE = 12;
 
@@ -55,6 +56,13 @@ function HeroBanner() {
           transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
           className="relative overflow-hidden rounded-[24px] border border-white/10 bg-zinc-950 md:rounded-[32px]"
         >
+          <img
+            src={blogHeroImage.url}
+            alt="Restaurant owner working on a laptop at a cafe counter"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+            loading="eager"
+          />
+          <div aria-hidden className="pointer-events-none absolute inset-0 bg-black/70" />
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0"
