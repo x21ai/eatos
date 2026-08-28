@@ -1,8 +1,10 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { createPortal } from 'react-dom';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { motion } from 'motion/react';
+import { demoSources } from './demoSources';
 
 // TODO: replace these placeholder mockups with the final product renders.
 // Swap only the `image` value (a .asset.json pointer url) for each product.
@@ -17,41 +19,145 @@ type ShowcaseProduct = {
   name: string;
   href: string;
   image: string;
+  demoId?: string;
 };
 
 const showcaseProducts: ShowcaseProduct[] = [
-  { name: 'Point of Sale', href: '/pointofsale', image: posPlaceholder.url },
+  { name: 'Point of Sale', href: '/pointofsale', image: posPlaceholder.url, demoId: 'pos' },
   {
     name: 'Kitchen Display System',
     href: '/products/kitchen-display-system',
     image: kdsPlaceholder.url,
+    demoId: 'kds',
   },
   {
     name: 'Self Service Kiosk',
     href: '/products/self-service-kiosk',
     image: kioskPlaceholder.url,
+    demoId: 'kiosk',
   },
   {
     name: 'Customer Facing Display',
     href: '/products/customer-facing-display',
     image: cfdPlaceholder.url,
+    demoId: 'cfd',
   },
   {
     name: 'Table Side Order & Pay',
     href: '/products/tableside-order-and-pay',
     image: invPlaceholder.url,
+    demoId: 'pos',
   },
   {
     name: 'Analytics & Reporting',
     href: '/products/reporting-analytics',
     image: dashPlaceholder.url,
+    demoId: 'dashboard',
   },
   {
     name: 'Autonomous & Automated Delivery',
     href: '/products/autonomous-and-automated-delivery',
     image: invPlaceholder.url,
+    demoId: 'inventoryos',
   },
 ];
+
+function ProductAnimationModal({
+  product,
+  onClose,
+}: {
+  product: ShowcaseProduct;
+  onClose: () => void;
+}) {
+  const demo = demoSources.find((d) => d.id === product.demoId);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [onClose]);
+
+  if (typeof document === 'undefined') return null;
+
+  const overlay = (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${product.name} demo`}
+      style={{ zIndex: 2147483000 }}
+      className="fixed inset-0 flex items-center justify-center bg-black/85 p-0 backdrop-blur-sm sm:p-6"
+      onClick={onClose}
+    >
+      <div
+        className="flex h-full w-full max-w-[1100px] flex-col overflow-hidden bg-zinc-950 shadow-2xl sm:h-auto sm:rounded-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-3 sm:px-6">
+          <div className="min-w-0">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-brand-on-dark">
+              How it Works
+            </p>
+            <h2 className="truncate text-sm font-bold text-white sm:text-base">{product.name}</h2>
+          </div>
+          <div className="flex shrink-0 items-center gap-2">
+            <a
+              href={product.href}
+              className="hidden rounded-full border border-white/15 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-white/10 sm:inline-flex"
+            >
+              Learn more
+            </a>
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Close demo"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:bg-white/10"
+            >
+              <X size={16} />
+            </button>
+          </div>
+        </div>
+
+        <div className="flex flex-1 flex-col items-center justify-center bg-black p-3 sm:p-6">
+          {demo?.media ? (
+            <>
+              <video
+                key={demo.id}
+                className="w-full rounded-xl bg-black"
+                poster={demo.media.poster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+              >
+                {demo.media.sources.map((s) => (
+                  <source key={s.src} src={s.src} type={s.type} />
+                ))}
+              </video>
+              <p className="mt-3 text-center text-sm text-white/70">{demo.media.caption}</p>
+            </>
+          ) : (
+            <img
+              src={product.image}
+              alt={`${product.name} on an eatOS device`}
+              className="max-h-[70vh] w-auto max-w-full object-contain"
+            />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+
+  return createPortal(overlay, document.body);
+}
+
 
 interface ProductShowcaseSectionProps {
   title?: string;
