@@ -28,21 +28,21 @@ const related = [
   {
     href: '/products/online-ordering',
     title: 'Online Ordering and Delivery',
-    tagline: 'Commission free ordering on your own app and website.',
+    tagline: 'Commission free ordering.',
     Icon: CreditCard,
     iconClass: 'bg-violet-500/15 text-violet-400',
   },
   {
     href: '/products/kitchen-display-system',
     title: 'Kitchen Display System',
-    tagline: 'Route tickets to the right station, every time.',
+    tagline: 'Route tickets to the right station.',
     Icon: Zap,
     iconClass: 'bg-sky-500/15 text-sky-400',
   },
   {
     href: '/products/workforce-management',
     title: 'Workforce Management',
-    tagline: 'Scheduling, clock-ins and labor in one place.',
+    tagline: 'Scheduling, clock-ins one place.',
     Icon: Users,
     iconClass: 'bg-teal-500/15 text-teal-400',
   },
@@ -233,19 +233,19 @@ export default function GhostKitchenClient() {
               {
                 Icon: Zap,
                 title: 'Every order in one queue',
-                body: 'Your own app, website and marketplace orders arrive together, so one team runs every brand without switching systems.',
+                body: 'Your app, marketplace orders arrive together, so one team runs every brand without switching systems.',
                 iconClass: 'bg-fuchsia-500/15 text-fuchsia-400',
               },
               {
                 Icon: ShieldCheck,
                 title: 'Reliable through the rush',
-                body: 'Online or offline, tickets keep printing and payments keep clearing through the busiest delivery windows.',
+                body: 'Online or offline, tickets and payments keep clearing through the busiest delivery windows.',
                 iconClass: 'bg-violet-500/15 text-violet-400',
               },
               {
                 Icon: Clock,
                 title: '24/7 support',
-                body: 'Real people, real help, any time. We are here on every shift your kitchen runs.',
+                body: 'Real people, real help, any time. We are here on every shift your kitchen.',
                 iconClass: 'bg-emerald-500/15 text-emerald-400',
               },
             ].map(({ Icon, title, body, iconClass }, index) => (

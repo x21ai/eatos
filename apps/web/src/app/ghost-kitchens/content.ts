@@ -20,7 +20,7 @@ export const hero = {
 export const marquee = [
   {
     value: 'Every channel',
-    label: 'Your own app, website and marketplace orders land in one queue.',
+    label: 'Your own app, marketplace orders land in one queue.',
   },
   {
     value: 'No commissions',
@@ -61,7 +61,7 @@ export const pillars = [
     id: 'brands',
     title: 'Run every virtual brand',
     body:
-      'Manage multiple virtual brands from one kitchen, with menus, pricing and reporting separated exactly the way you need them.',
+      'Manage multiple virtual brands from one kitchen, with menus, pricing and reporting separated exactly the way you need.',
     more:
       'Delivery analytics by platform, brand and hour show what to promote and what to retire.',
     imageLabel: 'Analytics dashboard beside branded takeout packaging',
