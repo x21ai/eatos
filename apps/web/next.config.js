@@ -58,6 +58,9 @@ const nextConfig = {
       // /comparison routes underneath.
       { source: '/eatos-vs-other-pos-software', destination: '/comparison' },
       { source: '/eatos-vs-:competitor', destination: '/comparison/:competitor' },
+      // Migrated live blog URLs keep their exact /blogs/<slug> paths and are
+      // served by the /blog routes underneath.
+      { source: '/blogs/:slug', destination: '/blog/:slug' },
     ];
   },
   redirects() {
