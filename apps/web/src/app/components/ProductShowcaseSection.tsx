@@ -77,12 +77,14 @@ const showcaseProducts: ShowcaseProduct[] = [
     href: '/products/reporting-analytics',
     image: dashPlaceholder.url,
     demoId: 'dashboard',
+    frame: 'tablet',
   },
   {
     name: 'inventoryOS',
     href: '/products/simplified-inventory-management',
     image: invPlaceholder.url,
     demoId: 'inventoryos',
+    frame: 'tablet',
   },
   {
     name: 'Table Side\nOrder & Pay',
