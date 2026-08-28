@@ -20,7 +20,7 @@ export const hero = {
 export const marquee = [
   {
     value: 'Park anywhere',
-    label: 'Compact hardware and cellular ready setup travel with your truck.',
+    label: 'Compact hardware and cellular ready setup.',
   },
   {
     value: 'Queues moving',
@@ -41,7 +41,7 @@ export const pillars = [
     id: 'speed',
     title: 'Lightning-fast transactions',
     body:
-      'Order processing that keeps up with the rush, minimizes wait times, and makes every guest experience as swift as it is satisfying.',
+      'Order processing that keeps up with the rush, minimizes wait times, makes every guest experience as swift as it is satisfying.',
     more:
       'Quick keys, saved modifiers and tap payments cut taps at the window so the line never stalls.',
     imageLabel: 'Staff taking an order at a food truck window',
