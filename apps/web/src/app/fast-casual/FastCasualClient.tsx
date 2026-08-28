@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
-import { bundle, capabilities, hero, marquee, pillars } from './content';
+import { capabilities, hero, marquee, pillars } from './content';
 
 const rise = {
   initial: { opacity: 0, y: 30 },
@@ -278,56 +278,6 @@ export default function FastCasualClient() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Bundle */}
-      <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="site-container">
-          <motion.div {...rise} className="text-center max-w-2xl mx-auto">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-orange-400">
-              {bundle.eyebrow}
-            </p>
-            <h2 className="mt-4 text-4xl md:text-5xl font-bold tracking-tighter">
-              Get the{" "}<br className="sm:hidden" />Fast-Casual Bundle
-            </h2>
-            <p className="mt-5 text-[13px] sm:text-lg text-white/90 leading-relaxed">
-              $0 hardware upfront cost with Pay As You Go.
-
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href={bundle.primaryCta.href}
-                className="px-8 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform text-center"
-              >
-                {bundle.primaryCta.label}
-              </a>
-              <a
-                href={bundle.secondaryCta.href}
-                className="px-8 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors text-center"
-              >
-                {bundle.secondaryCta.label}
-              </a>
-            </div>
-          </motion.div>
-
-          <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {bundle.specs.map((spec, index) => (
-              <motion.div
-                key={spec.title}
-                {...rise}
-                transition={{ delay: index * 0.1 }}
-                className="rounded-[2rem] border border-white/10 bg-white/5 p-8"
-              >
-                <h3 className="text-xl font-bold tracking-tighter mb-3">{spec.title}</h3>
-                <p className="text-white/90 leading-relaxed">{spec.body}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <p className="mt-10 text-center text-xs leading-relaxed text-gray-600 max-w-3xl mx-auto">
-            {bundle.note}
-          </p>
         </div>
       </section>
 
