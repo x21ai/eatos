@@ -41,7 +41,7 @@ export const marquee = [
 export const pillars = [
   {
     id: 'platform',
-    title: 'Get everything your enterprise needs with eatOS',
+    title: 'Get everything your enterprise needs',
     body:
       'Our all-in-one food-service and restaurant management suite makes it easier to manage guests, staff, marketing, finances and the menu.',
     more:
@@ -51,7 +51,7 @@ export const pillars = [
   },
   {
     id: 'workforce',
-    title: 'Manage employees and their attendance',
+    title: 'Manage workforce',
     body:
       'Streamline the clock-in process, schedule shifts and manage payroll all in one place with eatOS.',
     more:
@@ -61,7 +61,7 @@ export const pillars = [
   },
   {
     id: 'always-on',
-    title: 'Keep business running no matter what',
+    title: 'Keep business running',
     body:
       'No Wi-Fi? No problem. Never take a break from service with software that runs on all your devices, online or offline.',
     more:
@@ -84,22 +84,22 @@ export const ecosystem = [
   {
     title: 'Operations',
     body:
-      'An intelligent technology system that lets you manage bookings, revenue, front and back-office tasks, and the kitchen.',
+      'An intelligent technology system that lets you manage revenue, front and back-office tasks, and kitchens.',
   },
   {
     title: 'Guest Journey',
     body:
-      'Give guests an experience that is both tailored and contemporary, enhancing engagement using timely automation.',
+      'Give guests an experience that is both tailored and contemporary, lift engagement using automation.',
   },
   {
     title: 'Payments',
     body:
-      'A fully integrated payment gateway that uses automation to instantly process transactions with a single click.',
+      'A fully integrated payment gateway that uses automation to instantly process transactions with a click.',
   },
   {
     title: 'Business Intelligence',
     body:
-      'Better understand your business with flexible reporting and powerful analytics that show how you are performing.',
+      'Better understand your business with reporting and powerful analytics that show how you are performing.',
   },
   {
     title: 'Open API + Marketplace',
@@ -109,7 +109,7 @@ export const ecosystem = [
   {
     title: 'Point Of Sale',
     body:
-      'Create a full-service frictionless guest journey and run your restaurant operations in every space of your properties.',
+      'Create a full-service frictionless guest journey and run your restaurant in every space of your properties.',
   },
 ];
 

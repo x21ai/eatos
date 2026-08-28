@@ -30,7 +30,7 @@ const related = [
   {
     href: '/pointofsale',
     title: 'Enterprise Point of Sale',
-    tagline: 'One Point of Sale across every property, with central menus, pricing and reporting.',
+    tagline: 'One Point of Sale across every property, with central menus, pricing.',
     Icon: Monitor,
     iconClass: 'bg-fuchsia-500/15 text-fuchsia-400',
   },
@@ -44,7 +44,7 @@ const related = [
   {
     href: '/platform',
     title: 'Open API and Marketplace',
-    tagline: 'Connect the systems your enterprise already runs on, with over 600 integrations.',
+    tagline: 'Connect the systems your enterprise already runs on, over 600 integrations.',
     Icon: Code2,
     iconClass: 'bg-sky-500/15 text-sky-400',
   },
@@ -432,8 +432,7 @@ export default function EnterpriseClient() {
                 Run your enterprise on eatOS
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-10">
-                Book a demo and we will show you how eatOS scales across your brands, properties and
-                teams.
+                Book a demo and we will show you how eatOS scales across your brands
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
