@@ -198,9 +198,23 @@ function SubscribeCard() {
   );
 }
 
+function pageWindow(page, pageCount) {
+  // Always show first and last page, with a short window around the current page.
+  const span = 1;
+  const items = [];
+  for (let p = 1; p <= pageCount; p += 1) {
+    const inWindow = p === 1 || p === pageCount || Math.abs(p - page) <= span;
+    if (inWindow) {
+      if (items.length > 0 && p - items[items.length - 1] > 1) items.push('gap');
+      items.push(p);
+    }
+  }
+  return items;
+}
+
 function Pagination({ page, pageCount, onChange }) {
   if (pageCount <= 1) return null;
-  const pages = Array.from({ length: pageCount }, (_, i) => i + 1);
+  const items = pageWindow(page, pageCount);
   const navClass =
     'grid h-10 w-10 place-items-center rounded-full border border-white/15 text-zinc-300 transition-colors hover:border-white/40 hover:text-white disabled:cursor-not-allowed disabled:opacity-40';
 
@@ -215,21 +229,37 @@ function Pagination({ page, pageCount, onChange }) {
       >
         <ChevronLeft size={16} />
       </button>
-      {pages.map((p) => (
-        <button
-          key={p}
-          type="button"
-          onClick={() => onChange(p)}
-          aria-current={p === page ? 'page' : undefined}
-          className={`grid h-10 w-10 place-items-center rounded-full border text-sm font-semibold transition-colors ${
-            p === page
-              ? 'border-white bg-white text-black'
-              : 'border-white/15 text-zinc-300 hover:border-white/40 hover:text-white'
-          }`}
-        >
-          {p}
-        </button>
-      ))}
+
+      {/* Mobile: a single readable position indicator instead of number buttons. */}
+      <span className="px-3 text-sm font-semibold text-zinc-300 sm:hidden">
+        Page {page} of {pageCount}
+      </span>
+
+      <span className="hidden items-center gap-2 sm:flex">
+        {items.map((item, i) =>
+          item === 'gap' ? (
+            <span key={`gap-${i}`} aria-hidden className="px-1 text-sm text-zinc-600">
+              ...
+            </span>
+          ) : (
+            <button
+              key={item}
+              type="button"
+              onClick={() => onChange(item)}
+              aria-label={`Page ${item}`}
+              aria-current={item === page ? 'page' : undefined}
+              className={`grid h-10 w-10 place-items-center rounded-full border text-sm font-semibold transition-colors ${
+                item === page
+                  ? 'border-white bg-white text-black'
+                  : 'border-white/15 text-zinc-300 hover:border-white/40 hover:text-white'
+              }`}
+            >
+              {item}
+            </button>
+          ),
+        )}
+      </span>
+
       <button
         type="button"
         onClick={() => onChange(page + 1)}
