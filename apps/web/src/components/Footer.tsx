@@ -211,7 +211,7 @@ const LINK_GROUPS = [
       { label: 'Blog', href: '/blog' },
       { label: 'Brochures', href: '/brochures' },
       { label: 'Book a Demo', href: '/bookademo' },
-      { label: 'Help Center', href: 'https://support.eatos.com/en-us/', external: true },
+      { label: 'Help Center', href: '/support' },
       { label: 'Status', href: '/system-status' },
       { label: 'Dashboard', href: 'https://dashboard.eatos.com/', external: true },
     ],

@@ -598,7 +598,7 @@ export default function Header() {
               label="Dashboard"
             />
             <NavIcon
-              href="https://support.eatos.com/en-us/"
+              href="/support"
               icon={LifeBuoy}
               label="Support"
             />
@@ -1001,10 +1001,9 @@ export default function Header() {
                   external: true,
                 },
                 {
-                  href: "https://support.eatos.com/en-us/",
+                  href: "/support",
                   Icon: LifeBuoy,
                   label: "Support",
-                  external: true,
                 },
                 {
                   href: "/system-status",

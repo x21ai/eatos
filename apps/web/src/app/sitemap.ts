@@ -2,6 +2,7 @@
 import { products } from '@/app/products/products';
 import { posts } from '@/app/blog/content';
 import { newsItems } from '@/app/news/content';
+import { articles as supportArticles, categories as supportCategories } from '@/app/support/content';
 
 export default async function sitemap() {
   const baseUrl = process.env.APP_URL || 'https://eatos.com';
@@ -45,6 +46,7 @@ export default async function sitemap() {
     '/catering',
     '/pizzeria',
     '/brochures',
+    '/support',
     '/eatos-vs-other-pos-software',
     ...['square', 'toast', 'lightspeed', 'spoton', 'touchbistro', 'revel', 'micros'].map(
       (competitor) => `/eatos-vs-${competitor}`
@@ -79,5 +81,19 @@ export default async function sitemap() {
     priority: 0.6,
   }));
 
-  return [...routes, ...productRoutes, ...blogRoutes, ...newsRoutes];
+  // Help center categories and articles keep their original slugs.
+  const supportRoutes = [
+    ...supportCategories.map((category) => ({
+      url: `${baseUrl}/support/category/${category.slug}`,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    })),
+    ...supportArticles.map((article) => ({
+      url: `${baseUrl}/support/article/${article.slug}`,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    })),
+  ];
+
+  return [...routes, ...productRoutes, ...blogRoutes, ...newsRoutes, ...supportRoutes];
 }
