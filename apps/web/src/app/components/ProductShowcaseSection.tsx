@@ -23,9 +23,9 @@ type ShowcaseProduct = {
 };
 
 const showcaseProducts: ShowcaseProduct[] = [
-  { name: 'Point of Sale', href: '/pointofsale', image: posPlaceholder.url, demoId: 'pos' },
+  { name: 'AI Enabled\nPoint of Sale', href: '/pointofsale', image: posPlaceholder.url, demoId: 'pos' },
   {
-    name: 'Kitchen Display System',
+    name: 'AI Enabled\nKitchen Display System',
     href: '/products/kitchen-display-system',
     image: kdsPlaceholder.url,
     demoId: 'kds',
@@ -262,7 +262,7 @@ export function ProductShowcaseSection({
                     className="relative z-10 max-h-full w-auto max-w-full object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.65)] transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-[1.03]"
                   />
                 </div>
-                <h3 className="mt-6 text-base md:text-lg font-semibold tracking-tight text-white/90 group-hover:text-white transition-colors max-w-[14rem] leading-snug">
+                <h3 className="mt-6 whitespace-pre-line text-base md:text-lg font-semibold tracking-tight text-white/90 group-hover:text-white transition-colors max-w-[14rem] leading-snug">
                   {product.name}
                 </h3>
               </button>
