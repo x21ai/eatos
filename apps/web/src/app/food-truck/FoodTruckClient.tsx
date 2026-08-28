@@ -27,21 +27,21 @@ const related = [
   {
     href: '/tap-to-pay',
     title: 'Table Side Order and Pay',
-    tagline: 'Take the order and the payment at the window.',
+    tagline: 'Take order and payment at window.',
     Icon: CreditCard,
     iconClass: 'bg-violet-500/15 text-violet-400',
   },
   {
     href: '/pointofsale',
     title: 'Point of Sale',
-    tagline: 'Fast order entry built for a busy service window.',
+    tagline: 'Fast order entry built for a rush times.',
     Icon: Zap,
     iconClass: 'bg-sky-500/15 text-sky-400',
   },
   {
     href: '/products/workforce-management',
     title: 'Workforce Management',
-    tagline: 'Scheduling, clock-ins and labor in one place.',
+    tagline: 'Scheduling, clock-ins one place.',
     Icon: Users,
     iconClass: 'bg-teal-500/15 text-teal-400',
   },
@@ -244,7 +244,7 @@ export default function FoodTruckClient() {
               {
                 Icon: Clock,
                 title: '24/7 support',
-                body: 'Real people, real help, any time. We are here wherever you park, on any shift.',
+                body: 'Real people, real help, any time. We are here wherever you park.',
                 iconClass: 'bg-emerald-500/15 text-emerald-400',
               },
             ].map(({ Icon, title, body, iconClass }, index) => (
