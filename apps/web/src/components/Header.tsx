@@ -37,57 +37,91 @@ import { overallHeaderColor } from "@/app/system-status/systems";
 import UtilityBar from "./UtilityBar";
 
 
-// Shared style for the Platform and Concepts desktop dropdowns so the two
-// panels stay visually identical. No max-height / overflow here on purpose:
-// the panels must never show an inner scrollbar at any viewport size.
-const MEGA_PANEL_WIDTH = 860;
-
-function MegaMenuPanel({ open, shift, items, footerLabel, footerHref, footerCta }) {
+// Apple-style mega menu: one full-bleed sheet docked under the header bar.
+// The sheet always spans the viewport and centers its content inside the site
+// container, so it can never drift right into the logo or the Book a Demo CTA.
+// No max-height / overflow here on purpose: the panels must never show an inner
+// scrollbar at any viewport size.
+function MegaMenuPanel({
+  open,
+  label,
+  items,
+  footerLabel,
+  footerHref,
+  footerCta,
+  onMouseEnter,
+}: {
+  open: boolean;
+  label: string;
+  items: Array<{
+    href: string;
+    title: string;
+    description: string;
+    Icon: React.ComponentType<{ size?: number }>;
+    iconWrap: string;
+  }>;
+  footerLabel: string;
+  footerHref: string;
+  footerCta: string;
+  onMouseEnter?: () => void;
+}) {
   return (
     <div
-      style={{ left: `${shift}px` }}
-      className={`absolute top-full pt-2 w-[860px] max-w-[calc(100vw-2rem)] transition-all duration-200 ${
+      onMouseEnter={onMouseEnter}
+      className={`hidden lg:block absolute top-full left-0 right-0 origin-top transition-all duration-300 ease-out ${
         open
           ? "opacity-100 translate-y-0 pointer-events-auto"
-          : "opacity-0 translate-y-2 pointer-events-none"
+          : "opacity-0 -translate-y-3 pointer-events-none"
       }`}
     >
-      <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-4 text-black normal-case tracking-normal">
-        <div className="grid grid-cols-3 gap-x-3 gap-y-1">
-          {items.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="flex items-center gap-2.5 px-2 py-2 rounded-lg hover:bg-gray-50 transition-colors"
-            >
-              <div className={`${item.iconWrap} p-1.5 rounded-lg flex-shrink-0`}>
-                <item.Icon size={16} />
-              </div>
-              <div className="min-w-0">
-                <div className="font-semibold text-[14px] leading-snug [text-shadow:none]">
-                  {item.title}
-                </div>
-                <p className="text-[12px] text-gray-500 leading-snug truncate [text-shadow:none]">
-                  {item.description}
-                </p>
-              </div>
-            </a>
-          ))}
-        </div>
+      <div className="bg-white border-t border-gray-200 rounded-b-3xl shadow-[0_24px_60px_-20px_rgba(0,0,0,0.45)] text-black normal-case tracking-normal">
+        <div className="site-container py-8">
+          <div className="grid grid-cols-[7.5rem_minmax(0,1fr)] gap-8">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-400 pt-2 [text-shadow:none]">
+              {label}
+            </div>
 
-        <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
-          <div className="text-xs text-gray-500 [text-shadow:none]">{footerLabel}</div>
-          <a
-            href={footerHref}
-            className="text-sm font-semibold text-black hover:opacity-70 transition-opacity [text-shadow:none]"
-          >
-            {footerCta}
-          </a>
+            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-1">
+              {items.map((item, i) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  style={{ transitionDelay: open ? `${60 + i * 12}ms` : "0ms" }}
+                  className={`flex items-center gap-3 px-2 py-2.5 rounded-xl hover:bg-gray-50 transition-all duration-300 ${
+                    open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
+                  }`}
+                >
+                  <div className={`${item.iconWrap} p-1.5 rounded-lg flex-shrink-0`}>
+                    <item.Icon size={16} />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="font-semibold text-[14px] leading-snug [text-shadow:none]">
+                      {item.title}
+                    </div>
+                    <p className="text-[12px] text-gray-500 leading-snug truncate [text-shadow:none]">
+                      {item.description}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6 pt-5 border-t border-gray-100 flex items-center justify-between">
+            <div className="text-xs text-gray-500 [text-shadow:none]">{footerLabel}</div>
+            <a
+              href={footerHref}
+              className="text-sm font-semibold text-black hover:opacity-70 transition-opacity [text-shadow:none]"
+            >
+              {footerCta}
+            </a>
+          </div>
         </div>
       </div>
     </div>
   );
 }
+
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
