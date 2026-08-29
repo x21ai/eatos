@@ -605,30 +605,8 @@ export default function Header() {
         <div
           className={`hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-4 flex-shrink-0 ${isDarkPage ? "text-white" : "text-black"}`}
         >
-          {/* Icon group */}
-          <div className="flex items-center gap-4 2xl:gap-5">
-            <NavIcon
-              href="https://dashboard.eatos.com/#/account/login"
-              icon={LayoutGrid}
-              label="Dashboard"
-            />
-            <NavIcon
-              href="/support"
-              icon={LifeBuoy}
-              label="Support"
-            />
-            <NavIcon
-              href="/system-status"
-              icon={Activity}
-              label="System Status"
-              colorClass={statusColor}
-            />
-          </div>
+          {/* Dashboard, Support and Status now live in the top utility bar */}
 
-          {/* Divider */}
-          <div
-            className={`h-4 w-px ${isDarkPage ? "bg-white/20" : "bg-black/10"}`}
-          />
 
           {/* CTA Buttons */}
           <div className="flex items-center gap-2">
