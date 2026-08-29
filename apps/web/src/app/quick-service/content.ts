@@ -86,7 +86,7 @@ export const bundle = {
   imageLabel: 'Quick service hardware bundle',
   image: bundleImg.url,
   primaryCta: { label: 'Book a Demo', href: '/bookademo' },
-  secondaryCta: { label: 'Shop Now', href: 'https://shop.eatos.com', external: true },
+  secondaryCta: { label: 'Shop Now', href: '/shop' },
   note:
     'Terms and conditions, and restaurant qualification criteria apply. Pricing is per location per Point of Sale, excluding accessories.',
   specs: [
