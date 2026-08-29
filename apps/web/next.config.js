@@ -168,6 +168,14 @@ const nextConfig = {
       ['/restaurant/enterprises', '/enterprise-pos'],
       ['/restaurant/:path+', '/solutions'],
 
+      // Legacy shop.eatos.com URLs now resolve inside the main site.
+      ['/collections/:slug', '/shop/collections/:slug'],
+      ['/products/:slug/:path*', '/shop/products/:slug'],
+      ['/pages/:slug', '/shop/:slug'],
+      ['/shop/pages/:slug', '/shop/:slug'],
+      ['/shop/collections/all', '/shop'],
+      ['/cart', '/shop'],
+
       // Store collection pages.
       ['/product-page/:slug', '/shop'],
       ['/category/:slug', '/shop'],
