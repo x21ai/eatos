@@ -54,7 +54,7 @@ export default function AnalyticsPageClient() {
   return (
     <div className="min-h-screen bg-black text-white font-montserrat selection:bg-cyan-500/30">
       {/* Hero */}
-      <section className="relative page-hero-top pb-16 md:pb-20 overflow-hidden">
+      <section className="relative pt-32 md:pt-44 pb-16 md:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/20 via-cyan-600/10 to-transparent pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-cyan-500/10 rounded-full blur-[150px] pointer-events-none opacity-50" />
 

@@ -34,7 +34,7 @@ export default function NewsIndexClient({ initialCategory = 'All News' }) {
 
   return (
     <div className="bg-black text-zinc-200">
-      <section className="page-hero-top pb-10 md:pb-14">
+      <section className="pt-32 md:pt-44 pb-10 md:pb-14">
         <div className="site-container">
           <motion.div
             initial={{ opacity: 0, y: 16 }}

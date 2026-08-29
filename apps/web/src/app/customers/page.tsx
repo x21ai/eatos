@@ -122,7 +122,7 @@ export default function CustomersPage() {
   return (
     <div className="bg-black text-white min-h-screen">
       {/* Hero */}
-      <section className="page-hero-top pb-20">
+      <section className="pt-32 md:pt-44 pb-20">
         <div className="site-container text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 bg-white/5 text-sm font-medium mb-8 text-white/70">
             <Users size={14} />

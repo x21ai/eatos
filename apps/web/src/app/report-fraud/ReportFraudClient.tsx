@@ -43,7 +43,7 @@ function Hero() {
         aria-hidden
         className="pointer-events-none absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-brand-soft blur-[140px]"
       />
-      <div className="site-container relative page-hero-top pb-4 md:pb-8">
+      <div className="site-container relative pt-32 md:pt-44 pb-4 md:pb-8">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           <Reveal>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5">

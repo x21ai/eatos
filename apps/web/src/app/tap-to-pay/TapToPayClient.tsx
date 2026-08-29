@@ -81,7 +81,7 @@ export default function TapToPayClient() {
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-blue-500/30">
       {/* Hero */}
-      <section className="relative page-hero-top pb-20 overflow-hidden">
+      <section className="relative pt-32 md:pt-44 pb-20 overflow-hidden">
         <div
           className={`absolute inset-0 bg-gradient-to-b ${colors.gradient} pointer-events-none`}
         />
