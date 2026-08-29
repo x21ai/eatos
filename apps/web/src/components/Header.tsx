@@ -471,7 +471,7 @@ export default function Header() {
 
         {/* Desktop Nav (visible at xl / 1280px and wider) */}
         <nav
-          className={`hidden lg:flex items-center gap-5 xl:gap-8 2xl:gap-10 justify-self-center justify-center ${isDarkPage ? "text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]" : "text-black"}`}
+          className={`hidden lg:flex items-center gap-5 xl:gap-8 2xl:gap-10 absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 justify-center whitespace-nowrap ${isDarkPage ? "text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]" : "text-black"}`}
           aria-label="Primary"
         >
           {/* Platform Dropdown */}
