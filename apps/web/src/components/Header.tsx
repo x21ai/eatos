@@ -136,7 +136,7 @@ export default function Header() {
     const checkTheme = () => {
       const path = window.location.pathname;
       setCurrentPath(path);
-      const lightPages = ["/shop", "/login"];
+      const lightPages = ["/login"];
 
 
       const isLight = lightPages.some(
@@ -619,9 +619,8 @@ export default function Header() {
           {/* CTA Buttons */}
           <div className="flex items-center gap-2">
             <a
-              href="https://shop.eatos.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/shop"
+
               className={`px-4 py-1.5 rounded-full text-[13px] xl:text-[14px] font-semibold hover:scale-105 transition-all whitespace-nowrap
                 ${
                   isDarkPage
@@ -1037,9 +1036,8 @@ export default function Header() {
             {/* CTA */}
             <div className="mt-2 grid grid-cols-2 gap-2">
               <a
-                href="https://shop.eatos.com"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/shop"
+
                 className="bg-gray-100 text-black text-center py-3 rounded-full font-semibold text-[15px] hover:bg-gray-200 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
