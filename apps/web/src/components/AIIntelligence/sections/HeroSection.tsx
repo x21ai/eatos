@@ -6,8 +6,8 @@ import { Reveal } from "../Reveal";
 export function HeroSection() {
   return (
     <>
-      <div className="pt-24" />
-      <section className="py-20">
+      
+      <section className="pt-[128px] md:pt-[176px] pb-20">
         <div className="site-container">
           <Reveal id="top">
             <div className="max-w-4xl">
