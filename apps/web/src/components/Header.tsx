@@ -626,7 +626,7 @@ export default function Header() {
 
         {/* Hamburger (visible below xl, under 1280px) */}
         <button
-          className={`lg:hidden flex-shrink-0 ${mobileMenuOpen ? "text-black" : isDarkPage ? "text-white" : "text-black"} relative z-10 p-1`}
+          className={`lg:hidden justify-self-end flex-shrink-0 ${mobileMenuOpen ? "text-black" : isDarkPage ? "text-white" : "text-black"} relative z-10 p-1`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
         >
