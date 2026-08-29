@@ -156,7 +156,8 @@ const LINK_GROUPS = [
     ],
   },
   {
-    title: 'RESTAURANT TYPE',
+    title: 'Products',
+    href: '/products',
     links: [
       { label: 'Point of Sale', href: '/pointofsale' },
       { label: 'Kitchen Display', href: '/products/kitchen-display-system' },
@@ -170,6 +171,7 @@ const LINK_GROUPS = [
   },
   {
     title: 'Grow',
+    href: '/platform',
     links: [
       { label: 'Analytics', href: '/products/reporting-analytics' },
       { label: 'Loyalty', href: '/products/loyalty' },
@@ -179,8 +181,10 @@ const LINK_GROUPS = [
     ],
   },
   {
-    title: 'Solutions',
+    title: 'Concepts',
+    href: '/solutions',
     links: [
+
       { label: 'Quick Service', href: '/quick-service' },
       { label: 'Full Service', href: '/full-service' },
       { label: 'Fast Casual', href: '/fast-casual' },
