@@ -34,6 +34,8 @@ import {
 } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { overallHeaderColor } from "@/app/system-status/systems";
+import UtilityBar from "./UtilityBar";
+
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
