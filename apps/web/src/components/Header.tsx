@@ -135,36 +135,23 @@ export default function Header() {
   const [openGroup, setOpenGroup] = useState("Operations");
   const [currentPath, setCurrentPath] = useState("/");
 
-  // Keep desktop dropdown panels inside the page content area.
-  const productsTriggerRef = useRef<HTMLDivElement | null>(null);
-  const solutionsTriggerRef = useRef<HTMLDivElement | null>(null);
-  const [productsShift, setProductsShift] = useState(0);
-  const [solutionsShift, setSolutionsShift] = useState(0);
-
-  const computeShift = useCallback(
-    (el: HTMLDivElement | null, panelWidth: number) => {
-      if (!el || typeof window === "undefined") return 0;
-      const gutter = 16;
-      const left = el.getBoundingClientRect().left;
-      const available = window.innerWidth - gutter;
-      const width = Math.min(panelWidth, window.innerWidth - gutter * 2);
-      const overflow = left + width - available;
-      if (overflow <= 0) return 0;
-      // Never push the panel past the left gutter.
-      return -Math.min(overflow, Math.max(0, left - gutter));
-    },
-    [],
-  );
-
+  // Close the desktop mega menus on Escape.
   useEffect(() => {
-    const update = () => {
-      setProductsShift(computeShift(productsTriggerRef.current, MEGA_PANEL_WIDTH));
-      setSolutionsShift(computeShift(solutionsTriggerRef.current, MEGA_PANEL_WIDTH));
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setProductsOpen(false);
+      setSolutionsOpen(false);
     };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, [computeShift, productsOpen, solutionsOpen]);
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
+  const closeMegaMenus = useCallback(() => {
+    setProductsOpen(false);
+    setSolutionsOpen(false);
+  }, []);
+
+
 
 
   const groupForPath = (path: string) => {
