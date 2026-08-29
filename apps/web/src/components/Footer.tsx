@@ -342,9 +342,9 @@ export default function Footer() {
 
 
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 lg:gap-x-12 py-16 items-start">
+        <div className="flex flex-wrap justify-center items-start gap-10 py-16 lg:flex-nowrap lg:justify-between lg:gap-x-12">
           {LINK_GROUPS.map(({ title, href: groupHref, links }) => (
-            <div key={title}>
+            <div key={title} className="w-[calc(50%-1.25rem)] min-w-0 md:w-[calc(33.333%-1.667rem)] lg:w-auto lg:flex-1">
               <h4 className={`${headingClass} mb-6`}>
                 {groupHref ? (
                   <a href={groupHref} className="transition-opacity hover:opacity-70">
