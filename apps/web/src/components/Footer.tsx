@@ -214,7 +214,9 @@ const LINK_GROUPS = [
   },
   {
     title: 'Resources',
+    href: '/support',
     links: [
+
       { label: 'Pricing', href: '/pricing' },
       { label: 'Blog', href: '/blog' },
       { label: 'Brochures', href: '/brochures' },
