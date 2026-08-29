@@ -422,15 +422,25 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         mobileMenuOpen
-          ? "bg-white border-b border-gray-100 py-3"
+          ? "bg-white border-b border-gray-100 pb-3"
           : isScrolled
             ? isDarkPage
-              ? "bg-black/50 backdrop-blur-xl border-b border-white/5 py-3"
-              : "bg-white/80 backdrop-blur-xl border-b border-black/5 py-3"
-            : "bg-transparent py-5"
+              ? "bg-black/50 backdrop-blur-xl border-b border-white/5 pb-3"
+              : "bg-white/80 backdrop-blur-xl border-b border-black/5 pb-3"
+            : "bg-transparent pb-5"
       }`}
     >
-      <div className="site-container flex items-center justify-between gap-4">
+      {/* Secondary utility navigation */}
+      {!mobileMenuOpen && !isScrolled && (
+        <UtilityBar statusColor={statusColor} />
+      )}
+
+      <div
+        className={`site-container flex items-center justify-between gap-4 ${
+          isScrolled || mobileMenuOpen ? "pt-3" : "pt-5"
+        }`}
+      >
+
         {/* Logo */}
         <a
           href="/"
