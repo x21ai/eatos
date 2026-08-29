@@ -542,47 +542,14 @@ export default function Header() {
               />
             </a>
 
-            <div
-              style={{ left: `${productsShift}px` }}
-              className={`absolute top-full pt-2 w-[860px] max-w-[calc(100vw-2rem)] transition-all duration-200 ${productsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"}`}
-            >
-
-              <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-4 text-black normal-case tracking-normal">
-                <div className="grid grid-cols-3 gap-x-3 gap-y-1">
-                  {productLinks.map((p) => (
-                    <a
-                      key={p.href}
-                      href={p.href}
-                      className="flex items-center gap-2.5 px-2 py-2 rounded-lg hover:bg-gray-50 transition-colors"
-                    >
-                      <div
-                        className={`${p.iconWrap} p-1.5 rounded-lg flex-shrink-0`}
-                      >
-                        <p.Icon size={16} />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="font-semibold text-[14px] leading-snug [text-shadow:none]">{p.title}</div>
-                        <p className="text-[12px] text-gray-500 leading-snug truncate [text-shadow:none]">
-                          {p.description}
-                        </p>
-                      </div>
-                    </a>
-                  ))}
-                </div>
-
-                <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
-                  <div className="text-xs text-gray-500 [text-shadow:none]">
-                    Looking for the full suite?
-                  </div>
-                  <a
-                    href="/products"
-                    className="text-sm font-semibold text-black hover:opacity-70 transition-opacity [text-shadow:none]"
-                  >
-                    View all products →
-                  </a>
-                </div>
-              </div>
-            </div>
+            <MegaMenuPanel
+              open={productsOpen}
+              shift={productsShift}
+              items={productLinks}
+              footerLabel="Looking for the full suite?"
+              footerHref="/products"
+              footerCta="View all products →"
+            />
           </div>
 
           {/* Concepts Dropdown */}
