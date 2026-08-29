@@ -27,6 +27,8 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { products } from '@/app/products/products';
+import popTerminalsAsset from '../../assets/point-of-purchase-terminals-v2.png.asset.json';
+
 
 const iconMap = {
   Monitor,
