@@ -40,7 +40,7 @@ const related = [
     iconClass: 'bg-amber-500/15 text-amber-400',
   },
   {
-    href: '/tap-to-pay',
+    href: '/accept-payments#tap-to-pay',
     title: 'Tap to Pay',
     tagline: 'Take contactless payment anywhere in the dining room.',
     Icon: CreditCard,

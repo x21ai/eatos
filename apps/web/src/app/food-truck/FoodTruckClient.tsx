@@ -25,7 +25,7 @@ const rise = {
 
 const related = [
   {
-    href: '/tap-to-pay',
+    href: '/accept-payments#tap-to-pay',
     title: 'Table Side Order and Pay',
     tagline: 'Take order and payment at window.',
     Icon: CreditCard,
