@@ -122,8 +122,8 @@ export default function Header() {
 
   useEffect(() => {
     const update = () => {
-      setProductsShift(computeShift(productsTriggerRef.current, 860));
-      setSolutionsShift(computeShift(solutionsTriggerRef.current, 460));
+      setProductsShift(computeShift(productsTriggerRef.current, MEGA_PANEL_WIDTH));
+      setSolutionsShift(computeShift(solutionsTriggerRef.current, MEGA_PANEL_WIDTH));
     };
     update();
     window.addEventListener("resize", update);
