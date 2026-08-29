@@ -18,6 +18,7 @@ import {
 import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
 import BrochureButton from '@/components/BrochureButton';
+import TapToPaySection from './TapToPaySection';
 import { features, hardware, hero, keyFeatures } from './content';
 import { products } from '../products/products';
 
