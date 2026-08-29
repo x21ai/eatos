@@ -39,7 +39,13 @@ export default function ProductCard({ product }) {
           {product.title}
         </h3>
         <div className="mt-auto flex items-baseline gap-2 pt-4">
-          {price ? <span className="text-sm font-semibold text-white">{price}</span> : null}
+          {price ? (
+            <span className="text-sm font-semibold text-white">{price}</span>
+          ) : (
+            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-zinc-400">
+              Price on request
+            </span>
+          )}
           {compare && compare !== price ? (
             <span className="text-xs text-zinc-500 line-through">{compare}</span>
           ) : null}

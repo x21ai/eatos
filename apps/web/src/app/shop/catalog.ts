@@ -53,7 +53,8 @@ export function getRelatedProducts(slug, count = 4) {
 }
 
 export function formatMoney(money) {
-  if (!money || typeof money.amount !== 'number') return null;
+  // A zero price in the source catalog means quote on request, not free.
+  if (!money || typeof money.amount !== 'number' || money.amount <= 0) return null;
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: money.currency || 'USD',

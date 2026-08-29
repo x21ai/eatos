@@ -114,7 +114,11 @@ export default function ProductClient({ slug }) {
                 {product.title}
               </h1>
               <div className="mt-5 flex items-baseline gap-3">
-                {price ? <span className="text-2xl font-semibold text-white">{price}</span> : null}
+                {price ? (
+                  <span className="text-2xl font-semibold text-white">{price}</span>
+                ) : (
+                  <span className="text-lg font-semibold text-white">Price on request</span>
+                )}
                 {compare && compare !== price ? (
                   <span className="text-sm text-zinc-500 line-through">{compare}</span>
                 ) : null}
