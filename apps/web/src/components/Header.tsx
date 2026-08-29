@@ -438,7 +438,7 @@ export default function Header() {
       )}
 
       <div
-        className={`site-container grid grid-cols-[auto_minmax(0,1fr)] lg:grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 ${
+        className={`site-container relative grid grid-cols-[auto_auto] justify-between lg:grid-cols-[auto_auto] items-center gap-4 ${
           isScrolled || mobileMenuOpen ? "pt-3" : "pt-5"
         }`}
       >
