@@ -37,57 +37,91 @@ import { overallHeaderColor } from "@/app/system-status/systems";
 import UtilityBar from "./UtilityBar";
 
 
-// Shared style for the Platform and Concepts desktop dropdowns so the two
-// panels stay visually identical. No max-height / overflow here on purpose:
-// the panels must never show an inner scrollbar at any viewport size.
-const MEGA_PANEL_WIDTH = 860;
-
-function MegaMenuPanel({ open, shift, items, footerLabel, footerHref, footerCta }) {
+// Apple-style mega menu: one full-bleed sheet docked under the header bar.
+// The sheet always spans the viewport and centers its content inside the site
+// container, so it can never drift right into the logo or the Book a Demo CTA.
+// No max-height / overflow here on purpose: the panels must never show an inner
+// scrollbar at any viewport size.
+function MegaMenuPanel({
+  open,
+  label,
+  items,
+  footerLabel,
+  footerHref,
+  footerCta,
+  onMouseEnter,
+}: {
+  open: boolean;
+  label: string;
+  items: Array<{
+    href: string;
+    title: string;
+    description: string;
+    Icon: React.ComponentType<{ size?: number }>;
+    iconWrap: string;
+  }>;
+  footerLabel: string;
+  footerHref: string;
+  footerCta: string;
+  onMouseEnter?: () => void;
+}) {
   return (
     <div
-      style={{ left: `${shift}px` }}
-      className={`absolute top-full pt-2 w-[860px] max-w-[calc(100vw-2rem)] transition-all duration-200 ${
+      onMouseEnter={onMouseEnter}
+      className={`hidden lg:block absolute top-full left-0 right-0 origin-top transition-all duration-300 ease-out ${
         open
           ? "opacity-100 translate-y-0 pointer-events-auto"
-          : "opacity-0 translate-y-2 pointer-events-none"
+          : "opacity-0 -translate-y-3 pointer-events-none"
       }`}
     >
-      <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-4 text-black normal-case tracking-normal">
-        <div className="grid grid-cols-3 gap-x-3 gap-y-1">
-          {items.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="flex items-center gap-2.5 px-2 py-2 rounded-lg hover:bg-gray-50 transition-colors"
-            >
-              <div className={`${item.iconWrap} p-1.5 rounded-lg flex-shrink-0`}>
-                <item.Icon size={16} />
-              </div>
-              <div className="min-w-0">
-                <div className="font-semibold text-[14px] leading-snug [text-shadow:none]">
-                  {item.title}
-                </div>
-                <p className="text-[12px] text-gray-500 leading-snug truncate [text-shadow:none]">
-                  {item.description}
-                </p>
-              </div>
-            </a>
-          ))}
-        </div>
+      <div className="bg-white border-t border-gray-200 rounded-b-3xl shadow-[0_24px_60px_-20px_rgba(0,0,0,0.45)] text-black normal-case tracking-normal">
+        <div className="site-container py-8">
+          <div className="grid grid-cols-[7.5rem_minmax(0,1fr)] gap-8">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-400 pt-2 [text-shadow:none]">
+              {label}
+            </div>
 
-        <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
-          <div className="text-xs text-gray-500 [text-shadow:none]">{footerLabel}</div>
-          <a
-            href={footerHref}
-            className="text-sm font-semibold text-black hover:opacity-70 transition-opacity [text-shadow:none]"
-          >
-            {footerCta}
-          </a>
+            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-1">
+              {items.map((item, i) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  style={{ transitionDelay: open ? `${60 + i * 12}ms` : "0ms" }}
+                  className={`flex items-center gap-3 px-2 py-2.5 rounded-xl hover:bg-gray-50 transition-all duration-300 ${
+                    open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
+                  }`}
+                >
+                  <div className={`${item.iconWrap} p-1.5 rounded-lg flex-shrink-0`}>
+                    <item.Icon size={16} />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="font-semibold text-[14px] leading-snug [text-shadow:none]">
+                      {item.title}
+                    </div>
+                    <p className="text-[12px] text-gray-500 leading-snug truncate [text-shadow:none]">
+                      {item.description}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6 pt-5 border-t border-gray-100 flex items-center justify-between">
+            <div className="text-xs text-gray-500 [text-shadow:none]">{footerLabel}</div>
+            <a
+              href={footerHref}
+              className="text-sm font-semibold text-black hover:opacity-70 transition-opacity [text-shadow:none]"
+            >
+              {footerCta}
+            </a>
+          </div>
         </div>
       </div>
     </div>
   );
 }
+
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -101,36 +135,23 @@ export default function Header() {
   const [openGroup, setOpenGroup] = useState("Operations");
   const [currentPath, setCurrentPath] = useState("/");
 
-  // Keep desktop dropdown panels inside the page content area.
-  const productsTriggerRef = useRef<HTMLDivElement | null>(null);
-  const solutionsTriggerRef = useRef<HTMLDivElement | null>(null);
-  const [productsShift, setProductsShift] = useState(0);
-  const [solutionsShift, setSolutionsShift] = useState(0);
-
-  const computeShift = useCallback(
-    (el: HTMLDivElement | null, panelWidth: number) => {
-      if (!el || typeof window === "undefined") return 0;
-      const gutter = 16;
-      const left = el.getBoundingClientRect().left;
-      const available = window.innerWidth - gutter;
-      const width = Math.min(panelWidth, window.innerWidth - gutter * 2);
-      const overflow = left + width - available;
-      if (overflow <= 0) return 0;
-      // Never push the panel past the left gutter.
-      return -Math.min(overflow, Math.max(0, left - gutter));
-    },
-    [],
-  );
-
+  // Close the desktop mega menus on Escape.
   useEffect(() => {
-    const update = () => {
-      setProductsShift(computeShift(productsTriggerRef.current, MEGA_PANEL_WIDTH));
-      setSolutionsShift(computeShift(solutionsTriggerRef.current, MEGA_PANEL_WIDTH));
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setProductsOpen(false);
+      setSolutionsOpen(false);
     };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, [computeShift, productsOpen, solutionsOpen]);
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
+  const closeMegaMenus = useCallback(() => {
+    setProductsOpen(false);
+    setSolutionsOpen(false);
+  }, []);
+
+
 
 
   const groupForPath = (path: string) => {
@@ -474,6 +495,8 @@ export default function Header() {
 
   return (
     <header
+      onMouseLeave={closeMegaMenus}
+
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         mobileMenuOpen
           ? "bg-white border-b border-gray-100 pb-3"
@@ -526,15 +549,17 @@ export default function Header() {
           className={`hidden lg:flex items-center gap-5 xl:gap-8 2xl:gap-10 absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 justify-center whitespace-nowrap ${isDarkPage ? "text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]" : "text-black"}`}
           aria-label="Primary"
         >
-          {/* Platform Dropdown */}
+          {/* Platform trigger */}
           <div
             className="relative"
-            ref={productsTriggerRef}
-            onMouseEnter={() => setProductsOpen(true)}
-            onMouseLeave={() => setProductsOpen(false)}
+            onMouseEnter={() => {
+              setProductsOpen(true);
+              setSolutionsOpen(false);
+            }}
           >
             <a
               href="/platform"
+              aria-expanded={productsOpen}
               className={`flex items-center gap-1 py-2 hover:opacity-70 transition-opacity ${navTextClass}`}
             >
               Platform
@@ -543,26 +568,19 @@ export default function Header() {
                 className={`transition-transform duration-200 ${productsOpen ? "rotate-180" : ""}`}
               />
             </a>
-
-            <MegaMenuPanel
-              open={productsOpen}
-              shift={productsShift}
-              items={productLinks}
-              footerLabel="Looking for the full suite?"
-              footerHref="/products"
-              footerCta="View all products →"
-            />
           </div>
 
-          {/* Concepts Dropdown */}
+          {/* Concepts trigger */}
           <div
             className="relative"
-            ref={solutionsTriggerRef}
-            onMouseEnter={() => setSolutionsOpen(true)}
-            onMouseLeave={() => setSolutionsOpen(false)}
+            onMouseEnter={() => {
+              setSolutionsOpen(true);
+              setProductsOpen(false);
+            }}
           >
             <a
               href="/solutions"
+              aria-expanded={solutionsOpen}
               className={`flex items-center gap-1 py-2 hover:opacity-70 transition-opacity ${navTextClass}`}
             >
               Concepts
@@ -571,16 +589,8 @@ export default function Header() {
                 className={`transition-transform duration-200 ${solutionsOpen ? "rotate-180" : ""}`}
               />
             </a>
-
-            <MegaMenuPanel
-              open={solutionsOpen}
-              shift={solutionsShift}
-              items={solutionLinks}
-              footerLabel="Find your concept"
-              footerHref="/solutions"
-              footerCta="View all concepts →"
-            />
           </div>
+
 
 
           <a href="/pricing" className={navLinkClass}>
@@ -620,6 +630,39 @@ export default function Header() {
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
+
+      {/* Dim the page while a mega menu is open */}
+      <div
+        aria-hidden="true"
+        onMouseEnter={closeMegaMenus}
+        className={`hidden lg:block absolute top-full left-0 right-0 h-screen bg-black/50 transition-opacity duration-300 ${
+          (productsOpen || solutionsOpen) && !mobileMenuOpen
+            ? "opacity-100"
+            : "opacity-0 pointer-events-none"
+        }`}
+      />
+
+      {/* Desktop mega menu sheets: full-bleed, docked under the header bar */}
+      <MegaMenuPanel
+        open={productsOpen && !mobileMenuOpen}
+        label="Platform"
+        items={productLinks}
+        footerLabel="Looking for the full suite?"
+        footerHref="/products"
+        footerCta="View all products →"
+        onMouseEnter={() => setProductsOpen(true)}
+      />
+      <MegaMenuPanel
+        open={solutionsOpen && !mobileMenuOpen}
+        label="Concepts"
+        items={solutionLinks}
+        footerLabel="Find your concept"
+        footerHref="/solutions"
+        footerCta="View all concepts →"
+        onMouseEnter={() => setSolutionsOpen(true)}
+      />
+
+
 
       {/* Mobile and Tablet Menu: slides down below xl */}
       {mobileMenuOpen && (

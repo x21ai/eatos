@@ -27,6 +27,8 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { products } from '@/app/products/products';
+import popTerminalsAsset from '../../assets/point-of-purchase-terminals-v2.png.asset.json';
+
 
 const iconMap = {
   Monitor,
@@ -406,8 +408,100 @@ export default function PlatformPage() {
         </div>
       </section>
 
+      {/* Hardware Section */}
+      <section className="py-20 md:py-28 border-t border-white/5">
+        <div className="site-container">
+          <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 md:mb-16 gap-6 md:gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="min-w-0 md:max-w-[30rem] lg:max-w-none"
+            >
+              <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter mb-4">
+                Hardware that <br className="md:hidden lg:block" />
+                turns heads.
+              </h2>
+              <p className="text-gray-400 text-base sm:text-lg md:text-xl max-w-xl">
+                Milled aluminum, tempered glass, and all-day battery. Designed to survive the
+                kitchen and look good on the counter.
+              </p>
+            </motion.div>
+            <motion.a
+              href="/products/hardware"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-white border-b border-white pb-1 hover:opacity-70 transition-opacity whitespace-nowrap shrink-0"
+            >
+              Shop all hardware
+            </motion.a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            {/* Point of Sale */}
+            <motion.a
+              href="/pointofsale"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-zinc-900 rounded-3xl md:rounded-[2.5rem] flex flex-col text-center border border-white/5 relative overflow-hidden group"
+            >
+              <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-indigo-500/10 to-transparent z-10" />
+              <div className="relative z-10 pt-8 px-6 sm:pt-12 sm:px-12">
+                <h3 className="text-2xl sm:text-3xl font-bold tracking-tighter mb-2">
+                  Point of Sale
+                </h3>
+                <p className="text-gray-400 text-sm sm:text-base mb-5 sm:mb-6">
+                  The ultimate restaurant terminal.
+                </p>
+                <div className="flex items-center justify-center gap-2 text-sm font-medium bg-white/10 px-4 py-2 rounded-full w-fit mx-auto mb-6 sm:mb-8">
+                  <span>From $99</span>
+                </div>
+              </div>
+              <img
+                src="https://ucarecdn.com/894a0c84-afe1-429a-9cb7-9b9c3bd6929e/-/format/auto/"
+                alt="eatOS Pro"
+                loading="lazy"
+                className="w-full object-cover mt-auto rounded-b-3xl md:rounded-b-[2.5rem]"
+              />
+            </motion.a>
+
+            {/* Point of Purchase */}
+            <motion.a
+              href="/products/point-of-purchase"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-zinc-900 rounded-3xl md:rounded-[2.5rem] flex flex-col text-center border border-white/5 relative overflow-hidden group"
+            >
+              <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-orange-500/10 to-transparent z-10" />
+              <div className="relative z-10 pt-8 px-6 sm:pt-12 sm:px-12">
+                <h3 className="text-2xl sm:text-3xl font-bold tracking-tighter mb-2">
+                  Point of Purchase
+                </h3>
+                <p className="text-gray-400 text-sm sm:text-base mb-5 sm:mb-6">
+                  Power in your pocket.
+                </p>
+                <div className="flex items-center justify-center gap-2 text-sm font-medium bg-white/10 px-4 py-2 rounded-full w-fit mx-auto mb-6 sm:mb-8">
+                  <span>From $49</span>
+                </div>
+              </div>
+              <img
+                src={popTerminalsAsset.url}
+                alt="eatOS Point of Purchase handheld terminals"
+                loading="lazy"
+                className="w-full object-contain mt-auto rounded-b-3xl md:rounded-b-[2.5rem]"
+              />
+            </motion.a>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 md:py-28">
+
         <div className="site-container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

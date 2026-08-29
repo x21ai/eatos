@@ -7,7 +7,6 @@ import {
   Star,
   Command,
   CreditCard,
-  Box,
   Sparkles,
   ChefHat,
   Utensils,
@@ -34,7 +33,6 @@ import svcBar from '../assets/svc-bar.jpg.asset.json';
 import svcFoodTruck from '../assets/svc-food-truck.jpg.asset.json';
 import svcGhostKitchen from '../assets/svc-ghost-kitchen.jpg.asset.json';
 import svcFranchise from '../assets/svc-franchise.jpg.asset.json';
-import popTerminalsAsset from '../assets/point-of-purchase-terminals-v2.png.asset.json';
 import kdsKitchenAsset from '../assets/kds-kitchen-desk.jpg.asset.json';
 
 
@@ -373,26 +371,36 @@ export default function HomePage() {
               </div>
             </motion.a>
 
-            {/* Card 4: Hardware (Wide) */}
+            {/* Card 4: Intelligence, wide */}
             <motion.a
-              href="/products/hardware"
+              href="/ai"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
               whileHover={{ scale: 1.02 }}
-              className="md:col-span-2 lg:col-span-2 bg-zinc-800 rounded-3xl md:rounded-[2rem] lg:rounded-[2.5rem] p-6 md:p-5 lg:p-8 relative overflow-hidden group border border-white/5"
+              className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-zinc-900 via-indigo-950 to-black rounded-3xl md:rounded-[2rem] lg:rounded-[2.5rem] p-6 md:p-5 lg:p-8 relative overflow-hidden group border border-white/10"
             >
-              <div className="flex flex-row items-center justify-between gap-4 h-full">
-                <div className="min-w-0 sm:max-w-[50%]">
-                  <h3 className="text-2xl md:text-2xl lg:text-3xl font-bold tracking-tighter mb-2">Hardware</h3>
-                  <p className="text-gray-400 text-sm md:text-sm lg:text-base">Milled aluminum. Built to last.</p>
+              <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-indigo-500/20 blur-3xl" />
+              <div className="relative z-10 flex flex-row items-center justify-between gap-4 h-full">
+                <div className="min-w-0 sm:max-w-[60%]">
+                  <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-indigo-300 mb-2">
+                    eatOS AI
+                  </div>
+                  <h3 className="text-2xl md:text-2xl lg:text-3xl font-bold tracking-tighter mb-2">
+                    Intelligence everywhere
+                  </h3>
+                  <p className="text-gray-400 text-sm md:text-sm lg:text-base">
+                    VoiceOS answers every call and demand forecasting tells you what to prep
+                    before the rush.
+                  </p>
                 </div>
                 <div className="w-20 h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 shrink-0 bg-black rounded-full flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform duration-500">
-                  <Box className="text-white w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10" />
+                  <Sparkles className="text-indigo-300 w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10" />
                 </div>
               </div>
             </motion.a>
+
           </div>
         </div>
       </section>
@@ -461,93 +469,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Hardware Section */}
-      <section className="py-16 md:py-28 bg-black relative">
-        <div className="site-container">
-          <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 md:mb-20 gap-6 md:gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="min-w-0 md:max-w-[30rem] lg:max-w-none"
-            >
-              <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter mb-4">
-                Hardware that <br className="md:hidden lg:block" />
-                turns heads.
-              </h2>
-              <p className="text-gray-400 text-base sm:text-lg md:text-xl max-w-xl">
-                Milled aluminum, tempered glass, and all-day battery. Designed to survive the
-                kitchen and look good on the counter.
-              </p>
-            </motion.div>
-            <motion.a
-              href="/products/hardware"
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-white border-b border-white pb-1 hover:opacity-70 transition-opacity whitespace-nowrap shrink-0"
-            >
-              Shop all hardware
-            </motion.a>
-          </div>
+      {/* Hardware now lives on the Platform page */}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            {/* Terminal Pro */}
-            <motion.a
-              href="/pointofsale"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-zinc-900 rounded-3xl md:rounded-[2.5rem] flex flex-col text-center border border-white/5 relative overflow-hidden group"
-            >
-              <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-indigo-500/10 to-transparent z-10" />
-              <div className="relative z-10 pt-8 px-6 sm:pt-12 sm:px-12">
-                <h3 className="text-2xl sm:text-3xl font-bold tracking-tighter mb-2">
-                  Point of Sale
-                </h3>
-                <p className="text-gray-400 text-sm sm:text-base mb-5 sm:mb-6">The ultimate restaurant terminal.</p>
-                <div className="flex items-center justify-center gap-2 text-sm font-medium bg-white/10 px-4 py-2 rounded-full w-fit mx-auto mb-6 sm:mb-8">
-                  <span>From $99</span>
-                </div>
-              </div>
-              <img
-                src="https://ucarecdn.com/894a0c84-afe1-429a-9cb7-9b9c3bd6929e/-/format/auto/"
-                alt="eatOS Pro"
-                loading="lazy"
-                className="w-full object-cover mt-auto rounded-b-3xl md:rounded-b-[2.5rem]"
-              />
-            </motion.a>
 
-            {/* Terminal Mini */}
-            <motion.a
-              href="/products/point-of-purchase"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="bg-zinc-900 rounded-3xl md:rounded-[2.5rem] flex flex-col text-center border border-white/5 relative overflow-hidden group"
-            >
-              <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-orange-500/10 to-transparent z-10" />
-              <div className="relative z-10 pt-8 px-6 sm:pt-12 sm:px-12">
-                <h3 className="text-2xl sm:text-3xl font-bold tracking-tighter mb-2">
-                  Point of Purchase
-                </h3>
-                <p className="text-gray-400 text-sm sm:text-base mb-5 sm:mb-6">Power in your pocket.</p>
-                <div className="flex items-center justify-center gap-2 text-sm font-medium bg-white/10 px-4 py-2 rounded-full w-fit mx-auto mb-6 sm:mb-8">
-                  <span>From $49</span>
-                </div>
-              </div>
-              <img
-                src={popTerminalsAsset.url}
-                alt="eatOS Point of Purchase handheld terminals"
-                loading="lazy"
-                className="w-full object-contain mt-auto rounded-b-3xl md:rounded-b-[2.5rem]"
-              />
-
-            </motion.a>
-          </div>
-        </div>
-      </section>
 
       {/* Reports & Analytics Section */}
       <section className="py-16 md:py-28 bg-zinc-950 relative overflow-hidden">
