@@ -144,6 +144,8 @@ export function formatOfficeAddress(office) {
 const LINK_GROUPS = [
   {
     title: 'Platform',
+    href: '/platform',
+
     links: [
       { label: 'Payments', href: '/accept-payments' },
       { label: 'Intelligence', href: '/ai' },
