@@ -341,9 +341,18 @@ export default function Footer() {
 
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 py-16 items-start">
-          {LINK_GROUPS.map(({ title, links }) => (
+          {LINK_GROUPS.map(({ title, href: groupHref, links }) => (
             <div key={title}>
-              <h4 className={`${headingClass} mb-6`}>{title}</h4>
+              <h4 className={`${headingClass} mb-6`}>
+                {groupHref ? (
+                  <a href={groupHref} className="transition-opacity hover:opacity-70">
+                    {title}
+                  </a>
+                ) : (
+                  title
+                )}
+              </h4>
+
               <ul className="space-y-3.5">
                 {links.map(({ label, href, external }) => (
                   <li key={`${title}-${label}`}>
