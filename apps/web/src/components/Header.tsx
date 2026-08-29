@@ -34,6 +34,8 @@ import {
 } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { overallHeaderColor } from "@/app/system-status/systems";
+import UtilityBar from "./UtilityBar";
+
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -422,15 +424,25 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         mobileMenuOpen
-          ? "bg-white border-b border-gray-100 py-3"
+          ? "bg-white border-b border-gray-100 pb-3"
           : isScrolled
             ? isDarkPage
-              ? "bg-black/50 backdrop-blur-xl border-b border-white/5 py-3"
-              : "bg-white/80 backdrop-blur-xl border-b border-black/5 py-3"
-            : "bg-transparent py-5"
+              ? "bg-black/50 backdrop-blur-xl border-b border-white/5 pb-3"
+              : "bg-white/80 backdrop-blur-xl border-b border-black/5 pb-3"
+            : "bg-transparent pb-5"
       }`}
     >
-      <div className="site-container flex items-center justify-between gap-4">
+      {/* Secondary utility navigation */}
+      {!mobileMenuOpen && !isScrolled && (
+        <UtilityBar statusColor={statusColor} />
+      )}
+
+      <div
+        className={`site-container flex items-center justify-between gap-4 ${
+          isScrolled || mobileMenuOpen ? "pt-3" : "pt-5"
+        }`}
+      >
+
         {/* Logo */}
         <a
           href="/"
@@ -593,30 +605,8 @@ export default function Header() {
         <div
           className={`hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-4 flex-shrink-0 ${isDarkPage ? "text-white" : "text-black"}`}
         >
-          {/* Icon group */}
-          <div className="flex items-center gap-4 2xl:gap-5">
-            <NavIcon
-              href="https://dashboard.eatos.com/#/account/login"
-              icon={LayoutGrid}
-              label="Dashboard"
-            />
-            <NavIcon
-              href="/support"
-              icon={LifeBuoy}
-              label="Support"
-            />
-            <NavIcon
-              href="/system-status"
-              icon={Activity}
-              label="System Status"
-              colorClass={statusColor}
-            />
-          </div>
+          {/* Dashboard, Support and Status now live in the top utility bar */}
 
-          {/* Divider */}
-          <div
-            className={`h-4 w-px ${isDarkPage ? "bg-white/20" : "bg-black/10"}`}
-          />
 
           {/* CTA Buttons */}
           <div className="flex items-center gap-2">
