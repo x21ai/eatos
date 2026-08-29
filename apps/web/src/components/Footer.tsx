@@ -171,7 +171,7 @@ const LINK_GROUPS = [
   },
   {
     title: 'Grow',
-    href: '/platform',
+    href: '/grow',
     links: [
       { label: 'Analytics', href: '/products/reporting-analytics' },
       { label: 'Loyalty', href: '/products/loyalty' },
@@ -199,7 +199,7 @@ const LINK_GROUPS = [
   },
   {
     title: 'Company',
-    href: '/about-eatos',
+    href: '/company',
     links: [
 
       { label: 'About Us', href: '/about-eatos' },
@@ -214,7 +214,7 @@ const LINK_GROUPS = [
   },
   {
     title: 'Resources',
-    href: '/support',
+    href: '/resources',
     links: [
 
       { label: 'Pricing', href: '/pricing' },

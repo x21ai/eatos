@@ -438,7 +438,7 @@ export default function Header() {
       )}
 
       <div
-        className={`site-container flex items-center justify-between gap-4 ${
+        className={`site-container relative grid grid-cols-[auto_auto] justify-between lg:grid-cols-[auto_auto] items-center gap-4 ${
           isScrolled || mobileMenuOpen ? "pt-3" : "pt-5"
         }`}
       >
@@ -446,7 +446,7 @@ export default function Header() {
         {/* Logo */}
         <a
           href="/"
-          className={`flex-shrink-0 flex items-center gap-2 ${mobileMenuOpen ? "text-black" : isDarkPage ? "text-white" : "text-black"} relative z-10`}
+          className={`justify-self-start flex-shrink-0 flex items-center gap-2 ${mobileMenuOpen ? "text-black" : isDarkPage ? "text-white" : "text-black"} relative z-10`}
         >
           <img
             src={
@@ -471,7 +471,7 @@ export default function Header() {
 
         {/* Desktop Nav (visible at xl / 1280px and wider) */}
         <nav
-          className={`hidden lg:flex items-center gap-5 xl:gap-8 2xl:gap-10 flex-1 justify-center ${isDarkPage ? "text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]" : "text-black"}`}
+          className={`hidden lg:flex items-center gap-5 xl:gap-8 2xl:gap-10 absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 justify-center whitespace-nowrap ${isDarkPage ? "text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]" : "text-black"}`}
           aria-label="Primary"
         >
           {/* Platform Dropdown */}
@@ -603,7 +603,7 @@ export default function Header() {
 
         {/* Right Side (visible at xl and wider) */}
         <div
-          className={`hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-4 flex-shrink-0 ${isDarkPage ? "text-white" : "text-black"}`}
+          className={`hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-4 justify-self-end flex-shrink-0 ${isDarkPage ? "text-white" : "text-black"}`}
         >
           {/* Dashboard, Support and Status now live in the top utility bar */}
 
@@ -626,7 +626,7 @@ export default function Header() {
 
         {/* Hamburger (visible below xl, under 1280px) */}
         <button
-          className={`lg:hidden flex-shrink-0 ${mobileMenuOpen ? "text-black" : isDarkPage ? "text-white" : "text-black"} relative z-10 p-1`}
+          className={`lg:hidden justify-self-end flex-shrink-0 ${mobileMenuOpen ? "text-black" : isDarkPage ? "text-white" : "text-black"} relative z-10 p-1`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
         >
