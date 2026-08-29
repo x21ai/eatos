@@ -199,7 +199,9 @@ const LINK_GROUPS = [
   },
   {
     title: 'Company',
+    href: '/about-eatos',
     links: [
+
       { label: 'About Us', href: '/about-eatos' },
       { label: 'Careers', href: '/work-with-us' },
       { label: 'Partners', href: '/partners' },
