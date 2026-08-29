@@ -631,6 +631,17 @@ export default function Header() {
         </button>
       </div>
 
+      {/* Dim the page while a mega menu is open */}
+      <div
+        aria-hidden="true"
+        onMouseEnter={closeMegaMenus}
+        className={`hidden lg:block absolute top-full left-0 right-0 h-screen bg-black/50 transition-opacity duration-300 ${
+          (productsOpen || solutionsOpen) && !mobileMenuOpen
+            ? "opacity-100"
+            : "opacity-0 pointer-events-none"
+        }`}
+      />
+
       {/* Desktop mega menu sheets: full-bleed, docked under the header bar */}
       <MegaMenuPanel
         open={productsOpen && !mobileMenuOpen}
@@ -651,15 +662,6 @@ export default function Header() {
         onMouseEnter={() => setSolutionsOpen(true)}
       />
 
-      {/* Dim the page while a mega menu is open */}
-      <div
-        aria-hidden="true"
-        className={`hidden lg:block fixed inset-0 top-full -z-10 bg-black/40 transition-opacity duration-300 ${
-          (productsOpen || solutionsOpen) && !mobileMenuOpen
-            ? "opacity-100"
-            : "opacity-0 pointer-events-none"
-        }`}
-      />
 
 
       {/* Mobile and Tablet Menu: slides down below xl */}
