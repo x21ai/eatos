@@ -629,6 +629,37 @@ export default function Header() {
         </button>
       </div>
 
+      {/* Desktop mega menu sheets: full-bleed, docked under the header bar */}
+      <MegaMenuPanel
+        open={productsOpen && !mobileMenuOpen}
+        label="Platform"
+        items={productLinks}
+        footerLabel="Looking for the full suite?"
+        footerHref="/products"
+        footerCta="View all products →"
+        onMouseEnter={() => setProductsOpen(true)}
+      />
+      <MegaMenuPanel
+        open={solutionsOpen && !mobileMenuOpen}
+        label="Concepts"
+        items={solutionLinks}
+        footerLabel="Find your concept"
+        footerHref="/solutions"
+        footerCta="View all concepts →"
+        onMouseEnter={() => setSolutionsOpen(true)}
+      />
+
+      {/* Dim the page while a mega menu is open */}
+      <div
+        aria-hidden="true"
+        className={`hidden lg:block fixed inset-0 top-full -z-10 bg-black/40 transition-opacity duration-300 ${
+          (productsOpen || solutionsOpen) && !mobileMenuOpen
+            ? "opacity-100"
+            : "opacity-0 pointer-events-none"
+        }`}
+      />
+
+
       {/* Mobile and Tablet Menu: slides down below xl */}
       {mobileMenuOpen && (
         <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-xl flex flex-col h-[calc(100vh-70px)] text-black">
