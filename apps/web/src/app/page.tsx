@@ -348,28 +348,33 @@ export default function HomePage() {
               </div>
             </motion.a>
 
-            {/* Card 3: AI (Darker) */}
+            {/* Card 3: Loyalty */}
             <motion.a
-              href="/ai"
+              href="/products/loyalty"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
               whileHover={{ scale: 1.02 }}
-              className="md:col-span-1 lg:col-span-1 bg-gradient-to-b from-indigo-900 to-black rounded-3xl md:rounded-[2rem] lg:rounded-[2.5rem] p-6 md:p-5 lg:p-8 relative overflow-hidden group border border-white/10 flex flex-col"
+              className="md:col-span-1 lg:col-span-1 bg-gradient-to-b from-rose-900 to-black rounded-3xl md:rounded-[2rem] lg:rounded-[2.5rem] p-6 md:p-5 lg:p-8 relative overflow-hidden group border border-white/10 flex flex-col"
             >
               <div className="absolute top-0 right-0 p-4 md:p-5 lg:p-8 opacity-30">
-                <Star className="w-12 h-12 md:w-14 md:h-14 lg:w-20 lg:h-20" />
+                <Gift className="w-12 h-12 md:w-14 md:h-14 lg:w-20 lg:h-20" />
               </div>
               <div className="flex flex-col h-full relative z-10">
                 <div className="flex justify-between items-start">
-                  <h3 className="text-xl md:text-lg lg:text-2xl font-bold tracking-tighter">Intelligence</h3>
+                  <h3 className="text-xl md:text-lg lg:text-2xl font-bold tracking-tighter">Loyalty</h3>
                 </div>
-                <p className="text-indigo-200 text-xs md:text-sm lg:text-sm leading-relaxed mt-6 md:mt-auto pr-8 md:pr-10 lg:pr-16">
-                  Staffing predictions and inventory automation powered by eatOS AI.
-                </p>
+                <div className="mt-6 md:mt-auto">
+                  <div className="text-3xl md:text-3xl lg:text-4xl font-bold tracking-tighter mb-1">10x</div>
+                  <div className="text-rose-200 text-xs md:text-sm lg:text-sm leading-relaxed pr-8 md:pr-10 lg:pr-16">
+                    More repeat visits. Points, rewards and personal offers that turn first-time
+                    guests into regulars.
+                  </div>
+                </div>
               </div>
             </motion.a>
+
 
             {/* Card 4: Intelligence, wide */}
             <motion.a
