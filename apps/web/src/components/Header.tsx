@@ -1014,15 +1014,8 @@ export default function Header() {
             </div>
 
             {/* CTA */}
-            <div className="mt-2 grid grid-cols-2 gap-2">
-              <a
-                href="/shop"
+            <div className="mt-2">
 
-                className="bg-gray-100 text-black text-center py-3 rounded-full font-semibold text-[15px] hover:bg-gray-200 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Shop
-              </a>
               <a
                 href="/bookademo"
                 className="bg-black text-white text-center py-3 rounded-full font-semibold text-[15px]"
