@@ -34,8 +34,58 @@ import {
 } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { overallHeaderColor } from "@/app/system-status/systems";
-import UtilityBar from "./UtilityBar";
 
+// Shared style for the Platform and Concepts desktop dropdowns so the two
+// panels stay visually identical. No max-height / overflow here on purpose:
+// the panels must never show an inner scrollbar at any viewport size.
+const MEGA_PANEL_WIDTH = 860;
+
+function MegaMenuPanel({ open, shift, items, footerLabel, footerHref, footerCta }) {
+  return (
+    <div
+      style={{ left: `${shift}px` }}
+      className={`absolute top-full pt-2 w-[860px] max-w-[calc(100vw-2rem)] transition-all duration-200 ${
+        open
+          ? "opacity-100 translate-y-0 pointer-events-auto"
+          : "opacity-0 translate-y-2 pointer-events-none"
+      }`}
+    >
+      <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-4 text-black normal-case tracking-normal">
+        <div className="grid grid-cols-3 gap-x-3 gap-y-1">
+          {items.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="flex items-center gap-2.5 px-2 py-2 rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              <div className={`${item.iconWrap} p-1.5 rounded-lg flex-shrink-0`}>
+                <item.Icon size={16} />
+              </div>
+              <div className="min-w-0">
+                <div className="font-semibold text-[14px] leading-snug [text-shadow:none]">
+                  {item.title}
+                </div>
+                <p className="text-[12px] text-gray-500 leading-snug truncate [text-shadow:none]">
+                  {item.description}
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
+          <div className="text-xs text-gray-500 [text-shadow:none]">{footerLabel}</div>
+          <a
+            href={footerHref}
+            className="text-sm font-semibold text-black hover:opacity-70 transition-opacity [text-shadow:none]"
+          >
+            {footerCta}
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
