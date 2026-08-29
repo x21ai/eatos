@@ -312,6 +312,8 @@ export default function PaymentsPageClient() {
         </div>
       </section>
 
+      <TapToPaySection />
+
       {/* Related */}
       <section className="py-20 md:py-28 border-t border-white/5">
         <div className="site-container">
