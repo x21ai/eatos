@@ -7,7 +7,6 @@ import {
   Star,
   Command,
   CreditCard,
-  Box,
   Sparkles,
   ChefHat,
   Utensils,
@@ -34,7 +33,6 @@ import svcBar from '../assets/svc-bar.jpg.asset.json';
 import svcFoodTruck from '../assets/svc-food-truck.jpg.asset.json';
 import svcGhostKitchen from '../assets/svc-ghost-kitchen.jpg.asset.json';
 import svcFranchise from '../assets/svc-franchise.jpg.asset.json';
-import popTerminalsAsset from '../assets/point-of-purchase-terminals-v2.png.asset.json';
 import kdsKitchenAsset from '../assets/kds-kitchen-desk.jpg.asset.json';
 
 
