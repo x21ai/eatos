@@ -171,7 +171,7 @@ const LINK_GROUPS = [
   },
   {
     title: 'Grow',
-    href: '/platform',
+    href: '/grow',
     links: [
       { label: 'Analytics', href: '/products/reporting-analytics' },
       { label: 'Loyalty', href: '/products/loyalty' },
