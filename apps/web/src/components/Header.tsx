@@ -1036,9 +1036,8 @@ export default function Header() {
             {/* CTA */}
             <div className="mt-2 grid grid-cols-2 gap-2">
               <a
-                href="https://shop.eatos.com"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/shop"
+
                 className="bg-gray-100 text-black text-center py-3 rounded-full font-semibold text-[15px] hover:bg-gray-200 transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
