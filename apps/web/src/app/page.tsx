@@ -5,6 +5,8 @@ import {
   Check,
   ChevronRight,
   Star,
+  Gift,
+
   Command,
   CreditCard,
   Sparkles,
