@@ -3,6 +3,11 @@ import { products } from '@/app/products/products';
 import { posts } from '@/app/blog/content';
 import { newsItems } from '@/app/news/content';
 import { articles as supportArticles, categories as supportCategories } from '@/app/support/content';
+import {
+  collections as shopCollections,
+  contentPages as shopPages,
+  products as shopProducts,
+} from '@/app/shop/catalog';
 
 export default async function sitemap() {
   const baseUrl = process.env.APP_URL || 'https://eatos.com';
@@ -95,5 +100,32 @@ export default async function sitemap() {
     })),
   ];
 
-  return [...routes, ...productRoutes, ...blogRoutes, ...newsRoutes, ...supportRoutes];
+  // Shop collections, products and content pages.
+  const shopRoutes = [
+    ...shopCollections.map((collection) => ({
+      url: `${baseUrl}/shop/collections/${collection.slug}`,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    })),
+    ...shopProducts.map((product) => ({
+      url: `${baseUrl}/shop/products/${product.slug}`,
+      lastModified: product.updatedAt || undefined,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    })),
+    ...shopPages.map((page) => ({
+      url: `${baseUrl}/shop/${page.slug}`,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    })),
+  ];
+
+  return [
+    ...routes,
+    ...productRoutes,
+    ...blogRoutes,
+    ...newsRoutes,
+    ...supportRoutes,
+    ...shopRoutes,
+  ];
 }

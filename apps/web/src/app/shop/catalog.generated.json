@@ -1,0 +1,4318 @@
+{
+ "source": "shop.eatos.com",
+ "importedAt": "2026-08-29T11:44:01.420Z",
+ "collections": [
+  {
+   "slug": "other-accessories",
+   "title": "Accessories",
+   "descriptionHtml": "",
+   "image": "https://cdn.shopify.com/s/files/1/0461/6821/1605/collections/Printers.png?v=1735305783",
+   "productSlugs": [
+    "hd-persona-fingerprint-reader",
+    "wall-mount-for-15-kitchen-display-system",
+    "star-thermal-143-iv",
+    "magnetic-stripe-reader-gift-cards",
+    "epson-tm-m30ii-nt-thermal-usb-lan",
+    "epson-tm-u220b-dot-matrix-lan",
+    "etos-star-micronics-sp742-lan",
+    "printer-ribbon-epson",
+    "printer-ribbon-star",
+    "epson-tm-t20iii-thermal-usb",
+    "eatos-star-micronics-tsp654ii-sticky-printer-lan",
+    "star-micronics-tsp654-lan",
+    "star-micronics-tsp654-usb",
+    "ubiquity-lte-failover-data-plan-sold-separately",
+    "ubiquiti-access-point-pro",
+    "ubiquity-8-port-poe-60w-switch",
+    "apg-cash-drawer-heavy-duty"
+   ]
+  },
+  {
+   "slug": "applications",
+   "title": "Apps",
+   "descriptionHtml": "",
+   "image": "https://cdn.shopify.com/s/files/1/0461/6821/1605/collections/Applications.png?v=1648459640",
+   "productSlugs": [
+    "eatos-bundle-monthly-software",
+    "online-ordering-license",
+    "kds-license",
+    "kiosk-license",
+    "monthly-subscription-gift-card",
+    "point-of-purchase-license",
+    "loyalty-program-license",
+    "workforceos-license",
+    "inventoryos-license"
+   ]
+  },
+  {
+   "slug": "bundles",
+   "title": "Bundles",
+   "descriptionHtml": "",
+   "image": "https://cdn.shopify.com/s/files/1/0461/6821/1605/collections/probundle.png?v=1735306163",
+   "productSlugs": [
+    "quick-service-bundle",
+    "fine-dining-bundle",
+    "food-truck-bundle",
+    "custom-bundle"
+   ]
+  },
+  {
+   "slug": "customer-facing-display",
+   "title": "Customer Facing Display",
+   "descriptionHtml": "",
+   "image": "https://cdn.shopify.com/s/files/1/0461/6821/1605/collections/CFD.png?v=1735305757",
+   "productSlugs": [
+    "customer-facing-display-t2"
+   ]
+  },
+  {
+   "slug": "kitchen-display-systems",
+   "title": "Kitchen Display Systems",
+   "descriptionHtml": "",
+   "image": "https://cdn.shopify.com/s/files/1/0461/6821/1605/collections/kds.png?v=1723104360",
+   "productSlugs": [
+    "customer-facing-display-t2"
+   ]
+  },
+  {
+   "slug": "point-of-purchase",
+   "title": "Point of Purchase",
+   "descriptionHtml": "",
+   "image": "https://cdn.shopify.com/s/files/1/0461/6821/1605/collections/Point_of_Purchase.png?v=1738243831",
+   "productSlugs": [
+    "poynt-newland-n910",
+    "smart-terminal-7-4",
+    "adyen-s1f2"
+   ]
+  },
+  {
+   "slug": "point-of-sale",
+   "title": "Point of Sale",
+   "descriptionHtml": "",
+   "image": "https://cdn.shopify.com/s/files/1/0461/6821/1605/collections/POS.png?v=1735306421",
+   "productSlugs": [
+    "sunmi-t2-15-10-point-of-sale",
+    "sunmi-t2s-lite"
+   ]
+  },
+  {
+   "slug": "self-service-kiosk",
+   "title": "Self Service Kiosk",
+   "descriptionHtml": "",
+   "image": "https://cdn.shopify.com/s/files/1/0461/6821/1605/collections/Self_Service_Kiosk.png?v=1735306286",
+   "productSlugs": [
+    "sunmi-k2-mini-kiosk-with-card-reader"
+   ]
+  }
+ ],
+ "products": [
+  {
+   "id": "7056334782613",
+   "slug": "magnetic-stripe-reader-gift-cards",
+   "title": "Magnetic Stripe Reader (Gift Cards)",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/msr.png?v=1738591539",
+     "alt": "Magnetic Stripe Reader (Gift Cards)",
+     "width": 800,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40919538172053",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 59,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 59,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "other-accessories"
+   ],
+   "publishedAt": "2025-02-03T09:07:25-05:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8702801641621",
+   "slug": "star-thermal-143-iv",
+   "title": "Star Thermal 143 IV",
+   "vendor": "eatOS - Restaurants Made Simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/tsp100.png?v=1738590764",
+     "alt": "Star Thermal 143 IV",
+     "width": 800,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45746903089301",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 329,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 329,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "other-accessories"
+   ],
+   "publishedAt": "2025-02-03T08:55:40-05:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8702799544469",
+   "slug": "wall-mount-for-15-kitchen-display-system",
+   "title": "Wall Mount for 15” Kitchen Display System",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/wallmount.png?v=1738589350",
+     "alt": "Wall Mount for 15” Kitchen Display System",
+     "width": 800,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45746885755029",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 99,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 99,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "other-accessories"
+   ],
+   "publishedAt": "2025-02-03T08:29:47-05:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "6931494731925",
+   "slug": "hd-persona-fingerprint-reader",
+   "title": "HD Persona Fingerprint Reader",
+   "vendor": "myeatOS",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p>HP Persona Fingerprint Reader *Non Returnable*</p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/fingerprintreader.png?v=1738588580",
+     "alt": "HD Persona Fingerprint Reader",
+     "width": 800,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40407408509077",
+     "title": "Default Title",
+     "sku": "eOS257",
+     "price": {
+      "amount": 99,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 99,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "other-accessories"
+   ],
+   "publishedAt": "2025-02-03T08:16:01-05:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8699782234261",
+   "slug": "smart-terminal-7-4",
+   "title": "Smart Terminal 7”+4”",
+   "vendor": "eatOS - Restaurants Made Simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p><meta charset=\"utf-8\"><meta charset=\"utf-8\">Built In Printer, Customer Facing Display WiFi. Cellular Data Plan Sold Separately<br></p>",
+   "images": [],
+   "options": [
+    {
+     "name": "Payment Options",
+     "values": [
+      "Buy Now",
+      "Pay As You Go"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45737831661717",
+     "title": "Buy Now",
+     "sku": null,
+     "price": {
+      "amount": 49,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45737931309205",
+     "title": "Pay As You Go",
+     "sku": null,
+     "price": {
+      "amount": 39,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 39,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "point-of-purchase"
+   ],
+   "publishedAt": "2025-01-30T09:38:12-05:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8699780726933",
+   "slug": "adyen-s1f2",
+   "title": "Adyen S1F2",
+   "vendor": "eatOS - Restaurants Made Simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p><meta charset=\"utf-8\">Built In Printer, Customer Facing Display WiFi. Cellular Data Plan Included</p>",
+   "images": [],
+   "options": [
+    {
+     "name": "Payment Options",
+     "values": [
+      "Buy Now"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45737828941973",
+     "title": "Buy Now",
+     "sku": null,
+     "price": {
+      "amount": 399,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 399,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "point-of-purchase"
+   ],
+   "publishedAt": "2025-01-30T08:37:33-05:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8695396466837",
+   "slug": "epson-thermal-kitchen-printer",
+   "title": "Epson Thermal Kitchen Printer",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/printer70_a9e8cfd1-c01a-479a-bdbb-b89cb2b24d29.png?v=1737734321",
+     "alt": "Epson Thermal Kitchen Printer",
+     "width": 172,
+     "height": 150
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45714467815573",
+     "title": "Default Title",
+     "sku": "C31CJ95022",
+     "price": {
+      "amount": 299,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 299,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [],
+   "publishedAt": "2025-01-24T11:01:43-05:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8695174234261",
+   "slug": "workforceos-license",
+   "title": "WorkforceOS License",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p><meta charset=\"utf-8\">20 EE included</p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Workforce_OS.jpg?v=1737726823",
+     "alt": "WorkforceOS License",
+     "width": 800,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45713965482133",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 20,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": false,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 20,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "applications"
+   ],
+   "publishedAt": "2025-01-24T05:46:43-05:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8695170400405",
+   "slug": "inventoryos-license",
+   "title": "InventoryOS  License",
+   "vendor": "myeatOS",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p><meta charset=\"utf-8\">InventoryOS License - Monthly</p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Inventory_OS.jpg?v=1737726537",
+     "alt": "InventoryOS  License",
+     "width": 800,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45713951359125",
+     "title": "Default Title",
+     "sku": "eOS125",
+     "price": {
+      "amount": 99,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": false,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 99,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "applications"
+   ],
+   "publishedAt": "2025-01-24T05:15:46-05:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8695170203797",
+   "slug": "loyalty-program-license",
+   "title": "Loyalty Program License",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "eatOS Monthly Software License",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Loyalty_Program.jpg?v=1737726625",
+     "alt": "Loyalty Program License",
+     "width": 800,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45713949917333",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 50,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": false,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 50,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "applications"
+   ],
+   "publishedAt": "2025-01-24T05:13:18-05:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8695170039957",
+   "slug": "point-of-purchase-license",
+   "title": "Point of Purchase License",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p>eatOS Monthly Software License</p>\n<p>Hardware Required : <meta charset=\"utf-8\">Choose Poynt 950 Flex, Poynt Smart Terminal or Adyen S1F2</p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/POP.jpg?v=1737726790",
+     "alt": "Point of Purchase License",
+     "width": 800,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45713947394197",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 50,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": false,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 50,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "applications"
+   ],
+   "publishedAt": "2025-01-24T05:11:01-05:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8680109768853",
+   "slug": "custom-bundle",
+   "title": "Custom Bundle",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<div>\n<meta charset=\"utf-8\">\n<p dir=\"ltr\"><span>All in One Point-of-Sale with CFD<br>(15” + 10” with Built in Printer - Sunmi T2)</span></p>\n<p dir=\"ltr\"><span>Card Reader (Ingenico Lane 3000)</span></p>\n<p dir=\"ltr\"><span>Menu Build (Remote)</span></p>\n<p dir=\"ltr\"><span>Menu Review (Remote)</span></p>\n<p dir=\"ltr\"><span>Remote Installation and Training (8hrs)</span></p>\n<p dir=\"ltr\"><span>Point-of-Sale Software License</span></p>\n<b id=\"docs-internal-guid-1e3c5219-7fff-5457-0d52-0cffd0be9adf\"></b>\n</div>\n<ul></ul>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/cusbun.png?v=1736173124",
+     "alt": "Custom Bundle",
+     "width": 800,
+     "height": 600
+    },
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/QuickService_1_1.png?v=1736173124",
+     "alt": "Custom Bundle",
+     "width": 800,
+     "height": 600
+    },
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/qs2.png?v=1736173124",
+     "alt": "Custom Bundle",
+     "width": 800,
+     "height": 600
+    },
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/qs3.png?v=1736173124",
+     "alt": "Custom Bundle",
+     "width": 800,
+     "height": 600
+    },
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Printer_2_2706503d-e626-4b91-ab92-d728d047462a.png?v=1736173124",
+     "alt": "Custom Bundle",
+     "width": 800,
+     "height": 600
+    },
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/add.png?v=1736173124",
+     "alt": "Custom Bundle",
+     "width": 800,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Payment Options",
+     "values": [
+      "Buy Now",
+      "Pay As You Go"
+     ]
+    },
+    {
+     "name": "Custom Bundle Choice ",
+     "values": [
+      "Point of Sale (Sunmi T2) + Point of Purchase",
+      "Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Point of Sale (Sunmi T3) + Point of Purchase",
+      "Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)"
+     ]
+    },
+    {
+     "name": "Advanced Add-Ons",
+     "values": [
+      "Kitchen Display System (Sunmi T2 Lite)",
+      "Self Service Kiosk (Sunmi K2 Mini)",
+      "Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)",
+      "None"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45660475916437",
+     "title": "Buy Now / Point of Sale (Sunmi T2) + Point of Purchase / Kitchen Display System (Sunmi T2 Lite)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Point of Sale (Sunmi T2) + Point of Purchase",
+      "Kitchen Display System (Sunmi T2 Lite)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660480536725",
+     "title": "Buy Now / Point of Sale (Sunmi T2) + Point of Purchase / Self Service Kiosk (Sunmi K2 Mini)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Point of Sale (Sunmi T2) + Point of Purchase",
+      "Self Service Kiosk (Sunmi K2 Mini)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660480569493",
+     "title": "Buy Now / Point of Sale (Sunmi T2) + Point of Purchase / Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Point of Sale (Sunmi T2) + Point of Purchase",
+      "Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660480602261",
+     "title": "Buy Now / Point of Sale (Sunmi T2) + Point of Purchase / None",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Point of Sale (Sunmi T2) + Point of Purchase",
+      "None"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660475949205",
+     "title": "Buy Now / Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Kitchen Display System (Sunmi T2 Lite)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660480635029",
+     "title": "Buy Now / Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Self Service Kiosk (Sunmi K2 Mini)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Self Service Kiosk (Sunmi K2 Mini)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660480667797",
+     "title": "Buy Now / Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660480700565",
+     "title": "Buy Now / Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / None",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "None"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660475981973",
+     "title": "Buy Now / Point of Sale (Sunmi T3) + Point of Purchase / Kitchen Display System (Sunmi T2 Lite)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Point of Sale (Sunmi T3) + Point of Purchase",
+      "Kitchen Display System (Sunmi T2 Lite)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660480733333",
+     "title": "Buy Now / Point of Sale (Sunmi T3) + Point of Purchase / Self Service Kiosk (Sunmi K2 Mini)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Point of Sale (Sunmi T3) + Point of Purchase",
+      "Self Service Kiosk (Sunmi K2 Mini)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660480766101",
+     "title": "Buy Now / Point of Sale (Sunmi T3) + Point of Purchase / Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Point of Sale (Sunmi T3) + Point of Purchase",
+      "Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660480798869",
+     "title": "Buy Now / Point of Sale (Sunmi T3) + Point of Purchase / None",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Point of Sale (Sunmi T3) + Point of Purchase",
+      "None"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660476014741",
+     "title": "Buy Now / Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Kitchen Display System (Sunmi T2 Lite)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660480831637",
+     "title": "Buy Now / Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Self Service Kiosk (Sunmi K2 Mini)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Self Service Kiosk (Sunmi K2 Mini)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660480864405",
+     "title": "Buy Now / Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660480897173",
+     "title": "Buy Now / Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / None",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "None"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660476047509",
+     "title": "Pay As You Go / Point of Sale (Sunmi T2) + Point of Purchase / Kitchen Display System (Sunmi T2 Lite)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Point of Sale (Sunmi T2) + Point of Purchase",
+      "Kitchen Display System (Sunmi T2 Lite)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660480929941",
+     "title": "Pay As You Go / Point of Sale (Sunmi T2) + Point of Purchase / Self Service Kiosk (Sunmi K2 Mini)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Point of Sale (Sunmi T2) + Point of Purchase",
+      "Self Service Kiosk (Sunmi K2 Mini)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660480962709",
+     "title": "Pay As You Go / Point of Sale (Sunmi T2) + Point of Purchase / Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Point of Sale (Sunmi T2) + Point of Purchase",
+      "Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660480995477",
+     "title": "Pay As You Go / Point of Sale (Sunmi T2) + Point of Purchase / None",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Point of Sale (Sunmi T2) + Point of Purchase",
+      "None"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660476080277",
+     "title": "Pay As You Go / Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Kitchen Display System (Sunmi T2 Lite)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660481028245",
+     "title": "Pay As You Go / Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Self Service Kiosk (Sunmi K2 Mini)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Self Service Kiosk (Sunmi K2 Mini)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660481061013",
+     "title": "Pay As You Go / Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660481093781",
+     "title": "Pay As You Go / Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / None",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "None"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660476113045",
+     "title": "Pay As You Go / Point of Sale (Sunmi T3) + Point of Purchase / Kitchen Display System (Sunmi T2 Lite)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Point of Sale (Sunmi T3) + Point of Purchase",
+      "Kitchen Display System (Sunmi T2 Lite)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660481126549",
+     "title": "Pay As You Go / Point of Sale (Sunmi T3) + Point of Purchase / Self Service Kiosk (Sunmi K2 Mini)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Point of Sale (Sunmi T3) + Point of Purchase",
+      "Self Service Kiosk (Sunmi K2 Mini)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660481159317",
+     "title": "Pay As You Go / Point of Sale (Sunmi T3) + Point of Purchase / Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Point of Sale (Sunmi T3) + Point of Purchase",
+      "Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660481192085",
+     "title": "Pay As You Go / Point of Sale (Sunmi T3) + Point of Purchase / None",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Point of Sale (Sunmi T3) + Point of Purchase",
+      "None"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660476145813",
+     "title": "Pay As You Go / Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Kitchen Display System (Sunmi T2 Lite)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660481224853",
+     "title": "Pay As You Go / Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Self Service Kiosk (Sunmi K2 Mini)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Self Service Kiosk (Sunmi K2 Mini)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660481257621",
+     "title": "Pay As You Go / Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45660481290389",
+     "title": "Pay As You Go / Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / None",
+     "sku": null,
+     "price": {
+      "amount": 569,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "None"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 569,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "bundles"
+   ],
+   "publishedAt": "2025-01-03T09:01:19-05:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8676006166677",
+   "slug": "product-customizer-item-customizations",
+   "title": "Item Customizations",
+   "vendor": "eatOS - Restaurants Made Simple",
+   "productType": "SHOPSTORM_HIDDEN_PRODUCT",
+   "tags": [],
+   "descriptionHtml": "<p>*** This is a hidden product used by Product Customizer. Please do not modify or delete! ***</p>\n      <p>In order to add priced options to the cart, this product must be <strong>Visible </strong>in the\n      Online Store and set to <strong>Don't Track Inventory</strong>.\n      <span style=\"color: #ff0000;\">Modifying these settings may prevent your shoppers from checking out.</span></p>\n      <p>You may safely update the default <em>Title</em> and <em>Image</em> to better suit your shop.</p>\n      <p>For questions, please <span style=\"color: #0000ff;\">\n      <a href=\"https://intercom.help/product-customizer/\" target=\"_blank\" style=\"color: #0000ff;\">contact us</a>\n      </span>.</p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/dashboard-logo-f9d0b2ed304842f26af30d4440dc9be4695dee70d2c77732fea5ce97c143337e.png?v=1735550460",
+     "alt": "Item Customizations",
+     "width": 158,
+     "height": 158
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45647468658837",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 0.01,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": false,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 0.01,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [],
+   "publishedAt": "2024-12-30T04:20:56-05:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8577393524885",
+   "slug": "sunmi-k2-mini-kiosk-with-card-reader",
+   "title": "Sunmi - K2 Mini - Self Service Kiosk",
+   "vendor": "eatOS - Restaurants Made Simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Sunmi-K2mini-Kiosk.png?v=1723134812",
+     "alt": "Sunmi - K2 Mini - Self Service Kiosk",
+     "width": 1570,
+     "height": 2798
+    },
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Sunmi_-_K2_Mini_-_Self_Service_Kiosk_7c4083a3-e8aa-403b-ab8f-58a8407ca7ea.png?v=1723221992",
+     "alt": "Sunmi - K2 Mini - Self Service Kiosk",
+     "width": 1200,
+     "height": 1200
+    }
+   ],
+   "options": [
+    {
+     "name": "Payment Options",
+     "values": [
+      "Full Standing Kiosk",
+      "Counter Top Kiosk"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45310984978581",
+     "title": "Full Standing Kiosk",
+     "sku": null,
+     "price": {
+      "amount": 2099,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Full Standing Kiosk"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45310985011349",
+     "title": "Counter Top Kiosk",
+     "sku": null,
+     "price": {
+      "amount": 1899,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Counter Top Kiosk"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 1899,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "self-service-kiosk"
+   ],
+   "publishedAt": "2024-08-09T09:43:44-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8577363574933",
+   "slug": "sunmi-t2s-lite",
+   "title": "Sunmi-T2 Lite: 15\" Point of Sale",
+   "vendor": "eatOS - Restaurants Made Simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p><meta charset=\"utf-8\">15” Countertop Station No Guest Display Starting from $0.00</p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/T2SLite-Standalone.png?v=1723134584",
+     "alt": "Sunmi-T2 Lite: 15\" Point of Sale",
+     "width": 1779,
+     "height": 2107
+    }
+   ],
+   "options": [
+    {
+     "name": "Payment Options",
+     "values": [
+      "Buy Now",
+      "Pay As You Go"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45310983798933",
+     "title": "Buy Now",
+     "sku": null,
+     "price": {
+      "amount": 799,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now"
+     ],
+     "imageUrl": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/T2SLite-Standalone.png?v=1723134584"
+    },
+    {
+     "id": "45310983831701",
+     "title": "Pay As You Go",
+     "sku": null,
+     "price": {
+      "amount": 0,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go"
+     ],
+     "imageUrl": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/T2SLite-Standalone.png?v=1723134584"
+    }
+   ],
+   "priceFrom": {
+    "amount": 0,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "point-of-sale"
+   ],
+   "publishedAt": "2024-08-09T09:41:41-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8577356726421",
+   "slug": "sunmi-t2-15-10-point-of-sale",
+   "title": "Sunmi-T2: 15\" Point of Sale with 10\" Customer Facing Display",
+   "vendor": "eatOS - Restaurants Made Simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p><meta charset=\"utf-8\">All In One Stand Alone Point of Sale - Starting from $0.00</p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Sunmi_-_T2S_-_15Point_of_Sale_with_10Customer_Facing_Display_1.png?v=1723219915",
+     "alt": "Sunmi-T2: 15\" Point of Sale with 10\" Customer Facing Display",
+     "width": 1200,
+     "height": 1200
+    }
+   ],
+   "options": [
+    {
+     "name": "Payment Options",
+     "values": [
+      "Buy Now",
+      "Pay As You Go"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45310983405717",
+     "title": "Buy Now",
+     "sku": null,
+     "price": {
+      "amount": 999,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45310983438485",
+     "title": "Pay As You Go",
+     "sku": null,
+     "price": {
+      "amount": 200,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 200,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "point-of-sale"
+   ],
+   "publishedAt": "2024-08-09T09:40:50-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8577337229461",
+   "slug": "poynt-newland-n910",
+   "title": "Poynt - Newland N910 - Handheld",
+   "vendor": "eatOS - Restaurants Made Simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/poynt_n910_front.png?v=1723217704",
+     "alt": "Poynt - Newland N910 - Handheld",
+     "width": 600,
+     "height": 600
+    },
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/poynt_n910_angle.png?v=1723217704",
+     "alt": "Poynt - Newland N910 - Handheld",
+     "width": 600,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Payment Options",
+     "values": [
+      "Buy Now",
+      "Pay As You Go"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45310977507477",
+     "title": "Buy Now",
+     "sku": null,
+     "price": {
+      "amount": 29,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45310977540245",
+     "title": "Pay As You Go",
+     "sku": null,
+     "price": {
+      "amount": 0,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 0,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "point-of-purchase"
+   ],
+   "publishedAt": "2024-08-09T09:30:01-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8577334575253",
+   "slug": "customer-facing-display-t2",
+   "title": "Sunmi T2 Lite 15\"",
+   "vendor": "eatOS - Restaurants Made Simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p><meta charset=\"utf-8\">The Kitchen Display System is the perfect way to bring your kitchen team into a new era of front-of-house systems.</p>\n<!---->",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Sunmi_-_T2S_Lite_Standalone_-_Point_of_Sale_1.png?v=1723220997",
+     "alt": "Sunmi T2 Lite 15\"",
+     "width": 1200,
+     "height": 1200
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45310975180949",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 799,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 799,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "customer-facing-display",
+    "kitchen-display-systems"
+   ],
+   "publishedAt": "2024-08-09T09:25:48-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "7413451849877",
+   "slug": "monthly-subscription-gift-card",
+   "title": "Gift Card Program License",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p>License for eatOS' Gift card generating program <meta charset=\"utf-8\">(Physical Cards Sold Separately).</p>\n<p><meta charset=\"utf-8\">Hardware Required : Point of Sale ( Sunmi T2 Lite 15”) + Point of Sale License. Gift Card is not sold as a stand alone. </p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/products/GiftCard.png?v=1648045434",
+     "alt": "Gift Card Program License",
+     "width": 2000,
+     "height": 2000
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "42050993651861",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 25,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": false,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 25,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "applications"
+   ],
+   "publishedAt": "2024-08-07T09:22:49-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8575148228757",
+   "slug": "food-truck-bundle",
+   "title": "Food Truck & Caterer Bundle",
+   "vendor": "eatOS - Restaurants Made Simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p dir=\"ltr\"><meta charset=\"utf-8\">Choice of the following Device:</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">1. Poynt N950, <br>2. Poynt Smart Terminal, <br>3. Adyen S1F2</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Built-In Printer</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Free Remote Assistance</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Free Menu Build</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Wi-Fi and Optional Cellular Data Plan Available</p>\n<!---->",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/pop_1200x1200_6b3be40a-851c-4eac-b717-a1e1f3447b4e.png?v=1723547864",
+     "alt": "Food Truck & Caterer Bundle",
+     "width": 1200,
+     "height": 1200
+    },
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/pop_1.png?v=1723041332",
+     "alt": "Food Truck & Caterer Bundle",
+     "width": 718,
+     "height": 718
+    },
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/poynt_smart_terminal_1200x1200_4849f035-233c-47a2-a802-05097c485b36.png?v=1723547864",
+     "alt": "Food Truck & Caterer Bundle",
+     "width": 1200,
+     "height": 1200
+    }
+   ],
+   "options": [
+    {
+     "name": "Payment Options",
+     "values": [
+      "Pay As You Go",
+      "Buy Now"
+     ]
+    },
+    {
+     "name": "Bundle Options",
+     "values": [
+      "Poynt N950 Flex Handheld",
+      "Smart Terminal Dual Screen 7\" + 4\"",
+      "Adyen S1F2"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45304564285589",
+     "title": "Pay As You Go / Poynt N950 Flex Handheld",
+     "sku": null,
+     "price": {
+      "amount": 0,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Poynt N950 Flex Handheld"
+     ],
+     "imageUrl": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/pop_1.png?v=1723041332"
+    },
+    {
+     "id": "45304564318357",
+     "title": "Pay As You Go / Smart Terminal Dual Screen 7\" + 4\"",
+     "sku": null,
+     "price": {
+      "amount": 39,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Smart Terminal Dual Screen 7\" + 4\""
+     ],
+     "imageUrl": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/poynt_smart_terminal_1200x1200_4849f035-233c-47a2-a802-05097c485b36.png?v=1723547864"
+    },
+    {
+     "id": "45737730932885",
+     "title": "Buy Now / Adyen S1F2",
+     "sku": null,
+     "price": {
+      "amount": 499,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Adyen S1F2"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 0,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "bundles"
+   ],
+   "publishedAt": "2024-08-07T04:19:19-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8574038376597",
+   "slug": "quick-service-bundle",
+   "title": "Quick Service Bundle",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<div>\n<meta charset=\"utf-8\">\n<p dir=\"ltr\"><meta charset=\"utf-8\">15” Station with 10” Customer Facing Display <br>with Built-In Printer</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Credit Card Reader</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Free Remote Assistance</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Free Menu Build</p>\n</div>\n<ul></ul>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/QuickService_1_1.png?v=1736173124",
+     "alt": "Quick Service Bundle",
+     "width": 800,
+     "height": 600
+    },
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/qs2.png?v=1736173124",
+     "alt": "Quick Service Bundle",
+     "width": 800,
+     "height": 600
+    },
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/qs3.png?v=1736173124",
+     "alt": "Quick Service Bundle",
+     "width": 800,
+     "height": 600
+    },
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Printer_2_2706503d-e626-4b91-ab92-d728d047462a.png?v=1736173124",
+     "alt": "Quick Service Bundle",
+     "width": 800,
+     "height": 600
+    },
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Casu_drawer.png?v=1736342416",
+     "alt": "Quick Service Bundle",
+     "width": 800,
+     "height": 600
+    },
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Add-on.png?v=1736342452",
+     "alt": "Quick Service Bundle",
+     "width": 800,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Payment Options",
+     "values": [
+      "Buy Now",
+      "Pay As You Go"
+     ]
+    },
+    {
+     "name": "Optional Add-Ons",
+     "values": [
+      "No thanks",
+      "Cash Drawer (+$139)",
+      "Kitchen Thermal Printer (+$299)",
+      "Add Both (+$438)"
+     ]
+    },
+    {
+     "name": "Do You Need Online Ordering ?",
+     "values": [
+      "I need Online Ordering (+$50/mo)",
+      "I don’t need Online Ordering"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45303281057941",
+     "title": "Buy Now / No thanks / I need Online Ordering (+$50/mo)",
+     "sku": null,
+     "price": {
+      "amount": 1049,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "No thanks",
+      "I need Online Ordering (+$50/mo)"
+     ],
+     "imageUrl": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/QuickService_1_1.png?v=1736173124"
+    },
+    {
+     "id": "45737626566805",
+     "title": "Buy Now / No thanks / I don’t need Online Ordering",
+     "sku": null,
+     "price": {
+      "amount": 999,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "No thanks",
+      "I don’t need Online Ordering"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45303281090709",
+     "title": "Buy Now / Cash Drawer (+$139) / I need Online Ordering (+$50/mo)",
+     "sku": null,
+     "price": {
+      "amount": 1188,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Cash Drawer (+$139)",
+      "I need Online Ordering (+$50/mo)"
+     ],
+     "imageUrl": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Casu_drawer.png?v=1736342416"
+    },
+    {
+     "id": "45737626599573",
+     "title": "Buy Now / Cash Drawer (+$139) / I don’t need Online Ordering",
+     "sku": null,
+     "price": {
+      "amount": 1138,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Cash Drawer (+$139)",
+      "I don’t need Online Ordering"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45303281123477",
+     "title": "Buy Now / Kitchen Thermal Printer (+$299) / I need Online Ordering (+$50/mo)",
+     "sku": null,
+     "price": {
+      "amount": 1348,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Kitchen Thermal Printer (+$299)",
+      "I need Online Ordering (+$50/mo)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45737626632341",
+     "title": "Buy Now / Kitchen Thermal Printer (+$299) / I don’t need Online Ordering",
+     "sku": null,
+     "price": {
+      "amount": 1298,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Kitchen Thermal Printer (+$299)",
+      "I don’t need Online Ordering"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45303281156245",
+     "title": "Buy Now / Add Both (+$438) / I need Online Ordering (+$50/mo)",
+     "sku": null,
+     "price": {
+      "amount": 1487,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Add Both (+$438)",
+      "I need Online Ordering (+$50/mo)"
+     ],
+     "imageUrl": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Add-on.png?v=1736342452"
+    },
+    {
+     "id": "45737626665109",
+     "title": "Buy Now / Add Both (+$438) / I don’t need Online Ordering",
+     "sku": null,
+     "price": {
+      "amount": 1437,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Add Both (+$438)",
+      "I don’t need Online Ordering"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45302353985685",
+     "title": "Pay As You Go / No thanks / I need Online Ordering (+$50/mo)",
+     "sku": null,
+     "price": {
+      "amount": 50,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "No thanks",
+      "I need Online Ordering (+$50/mo)"
+     ],
+     "imageUrl": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/QuickService_1_1.png?v=1736173124"
+    },
+    {
+     "id": "45737626697877",
+     "title": "Pay As You Go / No thanks / I don’t need Online Ordering",
+     "sku": null,
+     "price": {
+      "amount": 0,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "No thanks",
+      "I don’t need Online Ordering"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45302354018453",
+     "title": "Pay As You Go / Cash Drawer (+$139) / I need Online Ordering (+$50/mo)",
+     "sku": null,
+     "price": {
+      "amount": 189,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Cash Drawer (+$139)",
+      "I need Online Ordering (+$50/mo)"
+     ],
+     "imageUrl": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Casu_drawer.png?v=1736342416"
+    },
+    {
+     "id": "45737626730645",
+     "title": "Pay As You Go / Cash Drawer (+$139) / I don’t need Online Ordering",
+     "sku": null,
+     "price": {
+      "amount": 139,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Cash Drawer (+$139)",
+      "I don’t need Online Ordering"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45302354051221",
+     "title": "Pay As You Go / Kitchen Thermal Printer (+$299) / I need Online Ordering (+$50/mo)",
+     "sku": null,
+     "price": {
+      "amount": 349,
+      "currency": "USD"
+     },
+     "compareAtPrice": {
+      "amount": 0,
+      "currency": "USD"
+     },
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Kitchen Thermal Printer (+$299)",
+      "I need Online Ordering (+$50/mo)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45737626763413",
+     "title": "Pay As You Go / Kitchen Thermal Printer (+$299) / I don’t need Online Ordering",
+     "sku": null,
+     "price": {
+      "amount": 299,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Kitchen Thermal Printer (+$299)",
+      "I don’t need Online Ordering"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45302354116757",
+     "title": "Pay As You Go / Add Both (+$438) / I need Online Ordering (+$50/mo)",
+     "sku": null,
+     "price": {
+      "amount": 488,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Add Both (+$438)",
+      "I need Online Ordering (+$50/mo)"
+     ],
+     "imageUrl": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Add-on.png?v=1736342452"
+    },
+    {
+     "id": "45737626796181",
+     "title": "Pay As You Go / Add Both (+$438) / I don’t need Online Ordering",
+     "sku": null,
+     "price": {
+      "amount": 438,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Add Both (+$438)",
+      "I don’t need Online Ordering"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 0,
+    "currency": "USD"
+   },
+   "compareAtPrice": {
+    "amount": 0,
+    "currency": "USD"
+   },
+   "available": true,
+   "collectionSlugs": [
+    "bundles"
+   ],
+   "publishedAt": "2024-08-06T12:06:16-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "8573316104341",
+   "slug": "fine-dining-bundle",
+   "title": "Full Service Bundle",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<div>\n<meta charset=\"utf-8\">\n<p dir=\"ltr\"><meta charset=\"utf-8\">15” Station with 10” Customer Facing Display <br>with Built-In Printer</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">15” Kitchen Display with Stand</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Credit Card Reader</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Free Menu Build</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Free Remote Assistance</p>\n</div>\n<ul></ul>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/fs1.png?v=1738150113",
+     "alt": "Full Service Bundle",
+     "width": 800,
+     "height": 600
+    },
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/full2.png?v=1738150113",
+     "alt": "Full Service Bundle",
+     "width": 800,
+     "height": 600
+    },
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/qs3_0209e1a1-2177-4fef-ae1e-77670973e8bb.png?v=1738150113",
+     "alt": "Full Service Bundle",
+     "width": 800,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Payment Options",
+     "values": [
+      "Buy Now",
+      "Pay As You Go"
+     ]
+    },
+    {
+     "name": "Optional Add-Ons",
+     "values": [
+      "No thanks",
+      "Cash Drawer (+$139)",
+      "Kitchen Thermal Printer (+$299)",
+      "Add Both (+$438)"
+     ]
+    },
+    {
+     "name": "Do You Need Online Ordering ?",
+     "values": [
+      "I need Online Ordering (+$50/mo)",
+      "I don’t need Online Ordering"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "45300830994581",
+     "title": "Buy Now / No thanks / I need Online Ordering (+$50/mo)",
+     "sku": null,
+     "price": {
+      "amount": 1549,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "No thanks",
+      "I need Online Ordering (+$50/mo)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45737679519893",
+     "title": "Buy Now / No thanks / I don’t need Online Ordering",
+     "sku": null,
+     "price": {
+      "amount": 1499,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "No thanks",
+      "I don’t need Online Ordering"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45300811792533",
+     "title": "Buy Now / Cash Drawer (+$139) / I need Online Ordering (+$50/mo)",
+     "sku": null,
+     "price": {
+      "amount": 1688,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Cash Drawer (+$139)",
+      "I need Online Ordering (+$50/mo)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45737679552661",
+     "title": "Buy Now / Cash Drawer (+$139) / I don’t need Online Ordering",
+     "sku": null,
+     "price": {
+      "amount": 1638,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Cash Drawer (+$139)",
+      "I don’t need Online Ordering"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45300811759765",
+     "title": "Buy Now / Kitchen Thermal Printer (+$299) / I need Online Ordering (+$50/mo)",
+     "sku": null,
+     "price": {
+      "amount": 1848,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Kitchen Thermal Printer (+$299)",
+      "I need Online Ordering (+$50/mo)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45737679585429",
+     "title": "Buy Now / Kitchen Thermal Printer (+$299) / I don’t need Online Ordering",
+     "sku": null,
+     "price": {
+      "amount": 1798,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Kitchen Thermal Printer (+$299)",
+      "I don’t need Online Ordering"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45300847968405",
+     "title": "Buy Now / Add Both (+$438) / I need Online Ordering (+$50/mo)",
+     "sku": null,
+     "price": {
+      "amount": 1987,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Add Both (+$438)",
+      "I need Online Ordering (+$50/mo)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45737679618197",
+     "title": "Buy Now / Add Both (+$438) / I don’t need Online Ordering",
+     "sku": null,
+     "price": {
+      "amount": 1937,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Buy Now",
+      "Add Both (+$438)",
+      "I don’t need Online Ordering"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45300831027349",
+     "title": "Pay As You Go / No thanks / I need Online Ordering (+$50/mo)",
+     "sku": null,
+     "price": {
+      "amount": 598,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "No thanks",
+      "I need Online Ordering (+$50/mo)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45737679650965",
+     "title": "Pay As You Go / No thanks / I don’t need Online Ordering",
+     "sku": null,
+     "price": {
+      "amount": 548,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "No thanks",
+      "I don’t need Online Ordering"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45300811858069",
+     "title": "Pay As You Go / Cash Drawer (+$139) / I need Online Ordering (+$50/mo)",
+     "sku": null,
+     "price": {
+      "amount": 737,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Cash Drawer (+$139)",
+      "I need Online Ordering (+$50/mo)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45737679683733",
+     "title": "Pay As You Go / Cash Drawer (+$139) / I don’t need Online Ordering",
+     "sku": null,
+     "price": {
+      "amount": 687,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Cash Drawer (+$139)",
+      "I don’t need Online Ordering"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45300811825301",
+     "title": "Pay As You Go / Kitchen Thermal Printer (+$299) / I need Online Ordering (+$50/mo)",
+     "sku": null,
+     "price": {
+      "amount": 897,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Kitchen Thermal Printer (+$299)",
+      "I need Online Ordering (+$50/mo)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45737679716501",
+     "title": "Pay As You Go / Kitchen Thermal Printer (+$299) / I don’t need Online Ordering",
+     "sku": null,
+     "price": {
+      "amount": 847,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Kitchen Thermal Printer (+$299)",
+      "I don’t need Online Ordering"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45300848001173",
+     "title": "Pay As You Go / Add Both (+$438) / I need Online Ordering (+$50/mo)",
+     "sku": null,
+     "price": {
+      "amount": 1036,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Add Both (+$438)",
+      "I need Online Ordering (+$50/mo)"
+     ],
+     "imageUrl": null
+    },
+    {
+     "id": "45737679749269",
+     "title": "Pay As You Go / Add Both (+$438) / I don’t need Online Ordering",
+     "sku": null,
+     "price": {
+      "amount": 986,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Pay As You Go",
+      "Add Both (+$438)",
+      "I don’t need Online Ordering"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 548,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "bundles"
+   ],
+   "publishedAt": "2024-08-06T09:24:05-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "7492992598165",
+   "slug": "menu-setup-2",
+   "title": "Menu Setup",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/products/eOShopIconsver1.0_p_03Jan22ph-03_18d16ebd-6cf7-4235-9970-4e31cb9acbb0.png?v=1652289918",
+     "alt": "Menu Setup",
+     "width": 4167,
+     "height": 4167
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "42285395542165",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 250,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 250,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [],
+   "publishedAt": "2022-05-11T13:23:59-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "7492992565397",
+   "slug": "remote-network-setup",
+   "title": "Remote Network Setup",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/products/eOShopIconsver1.0_p_03Jan22ph-02_96b0997a-2d7e-41f5-b148-8d98c8473bbe.png?v=1652289905",
+     "alt": "Remote Network Setup",
+     "width": 4167,
+     "height": 4167
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "42285395509397",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 500,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 500,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [],
+   "publishedAt": "2022-05-11T13:23:57-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "7432022753429",
+   "slug": "online-ordering-license",
+   "title": "Online Ordering License",
+   "vendor": "myeatOS",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p>Online Ordering License - Monthly Subscription</p>\n<p><meta charset=\"utf-8\">Order OS (No Commission Online Ordering includes QR pay at table) <br></p>\n<p>Hardware Required : Point of Sale (T2 Lite 15”) + Point of Sale License. Online Ordering is not sold as a stand alone. </p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/OnlineOrdering.png?v=1724410628",
+     "alt": "Online Ordering License",
+     "width": 1999,
+     "height": 2000
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "42105463832725",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 50,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": false,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 50,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "applications"
+   ],
+   "publishedAt": "2022-03-31T07:58:24-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "7130281410709",
+   "slug": "call-for-demo-quote",
+   "title": "Team Essentials",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<br>",
+   "images": [],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "41168982114453",
+     "title": "Default Title",
+     "sku": "eOSTE",
+     "price": {
+      "amount": 0,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 0,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [],
+   "publishedAt": "2021-09-23T09:28:41-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "7085262340245",
+   "slug": "eatos-bundle-monthly-software",
+   "title": "Point of Sale License",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p>eatOS Monthly Software License<br></p>\n<p>Hardware Required : Point of Sale (Sunmi <meta charset=\"utf-8\">T2 Lite 15”)</p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/POS-1000x1000.png?v=1723472690",
+     "alt": "Point of Sale License",
+     "width": 1000,
+     "height": 1000
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "41014554820757",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 59,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": false,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 59,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "applications"
+   ],
+   "publishedAt": "2021-09-01T22:22:46-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "6931502596245",
+   "slug": "star-2-yr-std-swap-a-star-warranty-ext-impact",
+   "title": "Star 2 YR Std - Swap a Star Warranty Ext. - Impact  (US Only)",
+   "vendor": "myeatOS",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p>Star Standard 2 Year Warranty Ext. for Impact Printer Next Business Day Replacement Device - Total of 2 Years (Standard)</p>",
+   "images": [],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40407426007189",
+     "title": "Default Title",
+     "sku": "37967050",
+     "price": {
+      "amount": 52.5,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 52.5,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [],
+   "publishedAt": "2021-08-31T06:48:45-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "6931501056149",
+   "slug": "ubiquiti-access-point-pro",
+   "title": "Ubiquiti Long Range Access Point",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<style type=\"text/css\"><!--\ntd {border: 1px solid #ccc;}br {mso-data-placement:same-cell;}\n--></style>\n<p><span data-sheets-userformat='{\"2\":4482,\"4\":{\"1\":2,\"2\":16773836},\"10\":2,\"11\":4,\"15\":\"Arial\"}' data-sheets-value='{\"1\":2,\"2\":\"Ubiquiti Access Point Pro\"}'>Ubiquiti Access Point Pro</span><br></p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/products/UbiquitiAccessPointPro.png?v=1624949633",
+     "alt": "Ubiquiti Long Range Access Point",
+     "width": 400,
+     "height": 400
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40407422763157",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 159,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 159,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "other-accessories"
+   ],
+   "publishedAt": "2021-08-25T05:03:09-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "6931502956693",
+   "slug": "star-micronics-tsp654-usb",
+   "title": "Star Micronics TSP654 USB",
+   "vendor": "myeatOS",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<style type=\"text/css\"><!--\ntd {border: 1px solid #ccc;}br {mso-data-placement:same-cell;}\n--></style>\n<p><span>Always leading, and always innovating, Star Micronics' TSP654II high-speed thermal receipt printer is offered with a variety of interface options. Updated to further enhance one of Star's most popular printers, the TSP654II boasts a lightning-fast print speed of 60 RPM (receipts per minute) and features an improved guillotine auto-cutter, and easy \"Drop-In and Print\" paper loading.</span></p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Star_Micronics_TSP654_USB.png?v=1723443476",
+     "alt": "Star Micronics TSP654 USB",
+     "width": 600,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40407427711125",
+     "title": "Default Title",
+     "sku": "eOSTS654U",
+     "price": {
+      "amount": 269,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 269,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "other-accessories"
+   ],
+   "publishedAt": "2021-08-25T04:42:00-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "6931502923925",
+   "slug": "star-micronics-tsp654-lan",
+   "title": "Star Micronics TSP654 LAN",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<style type=\"text/css\"><!--\ntd {border: 1px solid #ccc;}br {mso-data-placement:same-cell;}\n--></style>\n<p><span>Always leading, and always innovating, Star Micronics' TSP654II high-speed thermal receipt printer is offered with a variety of interface options. Updated to further enhance one of Star's most popular printers, the TSP654II boasts a lightning-fast print speed of 60 RPM (receipts per minute) and features an improved guillotine auto-cutter, and easy \"Drop-In and Print\" paper loading.</span></p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Star_Micronics_TSP654_LAN.png?v=1723443535",
+     "alt": "Star Micronics TSP654 LAN",
+     "width": 600,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40407427645589",
+     "title": "Default Title",
+     "sku": "eOSTS654L",
+     "price": {
+      "amount": 289,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 289,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "other-accessories"
+   ],
+   "publishedAt": "2021-08-25T04:40:37-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "6931501842581",
+   "slug": "apg-cash-drawer-heavy-duty",
+   "title": "Cash Drawer - Heavy Duty",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p><span>Cash Drawer - Heavy Duty</span></p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/qs4.png?v=1736954707",
+     "alt": "Cash Drawer - Heavy Duty",
+     "width": 800,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40407424467093",
+     "title": "Default Title",
+     "sku": "eOSCD1HD",
+     "price": {
+      "amount": 139,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 139,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "other-accessories"
+   ],
+   "publishedAt": "2021-08-25T04:09:43-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "6931502334101",
+   "slug": "epson-tm-m30ii-nt-thermal-usb-lan",
+   "title": "Epson TM-M30II-NT Thermal - USB/LAN",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p><meta charset=\"utf-8\">Epson C31CE95022 Series TM-M30 Thermal Receipt Printer, Autocutter, USB, Ethernet, Energy Star, Black</p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/products/eOEPSON_TM-M30IINT_01ThermalUSB-LAN.png?v=1639493015",
+     "alt": "Epson TM-M30II-NT Thermal - USB/LAN",
+     "width": 600,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40407425515669",
+     "title": "Default Title",
+     "sku": "C31CJ95022",
+     "price": {
+      "amount": 299,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 299,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "other-accessories"
+   ],
+   "publishedAt": "2021-08-25T04:04:36-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "6931502301333",
+   "slug": "epson-tm-t20iii-thermal-usb",
+   "title": "Epson TM-T20III Thermal - USB",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p><span>The TM-T20II is an affordable POS receipt printer with fast print speeds and economical features. The combination of its fast print speeds, high reliability and economical operation, make this Energy Star-qualified printer a must-have for small retail and specialty stores, hospitality venues and grocery stores.</span></p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Epson_TM-T20III_Thermal_-_USB.png?v=1723443719",
+     "alt": "Epson TM-T20III Thermal - USB",
+     "width": 600,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40407425450133",
+     "title": "Default Title",
+     "sku": "C31CH51001",
+     "price": {
+      "amount": 169,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 169,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "other-accessories"
+   ],
+   "publishedAt": "2021-08-25T04:02:07-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "6931502268565",
+   "slug": "epson-tm-u220b-dot-matrix-lan",
+   "title": "Epson TM-U220B - DOT Matrix - LAN",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p><span>The TM-U220 printers are designed to be compatible with existing systems built around a TM-U210. These systems can be upgraded simply by dropping in a TM-U220. Moreover, since the external dimensions are nearly identical, there is no need to change the installation environment. The transition to the new model is as smooth as can be.</span></p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Epson_TM-U220B_-_DOT_Matrix_-_LAN.png?v=1723443587",
+     "alt": "Epson TM-U220B - DOT Matrix - LAN",
+     "width": 600,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40407425417365",
+     "title": "Default Title",
+     "sku": "eOSEP220BN",
+     "price": {
+      "amount": 289,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 289,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "other-accessories"
+   ],
+   "publishedAt": "2021-08-25T04:00:33-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "7056408969365",
+   "slug": "printer-ribbon-epson",
+   "title": "Epson Replacement Ribbon TMU220 (Black and Red 12-Pack)",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "12 Pack Black Red Ribbon Ink Cartridge",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/products/12PackBlackRedRibbonInkCartridgeepson.jpg?v=1629873054",
+     "alt": "Epson Replacement Ribbon TMU220 (Black and Red 12-Pack)",
+     "width": 2000,
+     "height": 2000
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40919834165397",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 19.99,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 19.99,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "other-accessories"
+   ],
+   "publishedAt": "2021-08-25T02:31:14-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "7063466836117",
+   "slug": "register-rolls-impact-printer-1",
+   "title": "Register Rolls - Impact Printer",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<style type=\"text/css\"><!--\ntd {border: 1px solid #ccc;}br {mso-data-placement:same-cell;}\n--></style>\n<span data-sheets-userformat='{\"2\":4480,\"10\":2,\"11\":4,\"15\":\"Arial\"}' data-sheets-value=\"{&quot;1&quot;:2,&quot;2&quot;:&quot;2- Ply Bond  Carbonless 3\\&quot;X90' 50ct&quot;}\">2- Ply Bond Carbonless 3\"X90' 50ct</span>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/products/3-1-4-x-90-83mm-x-27m-2-ply-carbonless-paper.jpg?v=1629872266",
+     "alt": "Register Rolls - Impact Printer",
+     "width": 460,
+     "height": 360
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40943072280725",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 59,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 59,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [],
+   "publishedAt": "2021-08-23T10:20:52-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "7056397074581",
+   "slug": "register-rolls-for-thermal-printer",
+   "title": "Register Rolls - for Thermal Printer",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "Thermal Paper 3 1/8\" x 230' 44MM 50ct",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/products/RegisterRolls3-18x230.jpg?v=1629871959",
+     "alt": "Register Rolls - for Thermal Printer",
+     "width": 1399,
+     "height": 1500
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40919780458645",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 99,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 99,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [],
+   "publishedAt": "2021-08-23T10:09:03-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "7056404742293",
+   "slug": "printer-ribbon-star",
+   "title": "Star Replacement Ribbon SP700 (Black and Red, 12-Pack)",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "12 Pack Black Red Ribbon Ink Cartridge",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/products/12PackBlackRedRibbonInkCartridge.jpg?v=1629872836",
+     "alt": "Star Replacement Ribbon SP700 (Black and Red, 12-Pack)",
+     "width": 1500,
+     "height": 957
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40919813259413",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 19.99,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 19.99,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "other-accessories"
+   ],
+   "publishedAt": "2021-08-20T09:39:13-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "7056400547989",
+   "slug": "register-rolls-impact-printer",
+   "title": "Register Rolls - Impact Printer",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "1- Ply Bond 3\"x165' 50ct",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/products/1-PlyBond3x165.jpg?v=1629872338",
+     "alt": "Register Rolls - Impact Printer",
+     "width": 1500,
+     "height": 1500
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40919793107093",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 59,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 59,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [],
+   "publishedAt": "2021-08-20T09:38:10-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "7056382460053",
+   "slug": "networking-1",
+   "title": "Networking",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p>Networking Configuration - Remote</p>\n<p><span style=\"font-size: 12px;\">Disclaimer: Additional fees for larger deployments requiring added time or services may be applicable as necessary.</span></p>",
+   "images": [],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40919729537173",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 700,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 700,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [],
+   "publishedAt": "2021-08-20T09:31:28-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "7056356507797",
+   "slug": "hardware-installation-1",
+   "title": "Hardware Installation",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "On-Site Hardware Installation",
+   "images": [],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40919626678421",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 0,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 0,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [],
+   "publishedAt": "2021-08-20T09:21:40-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "7056318103701",
+   "slug": "ubiquity-lte-failover-data-plan-sold-separately",
+   "title": "Ubiquiti LTE Failover (Data Plan Sold Separately)",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "Unifi Redundant WAN over LTE Failover/Backup",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/products/UbiquityLTEFailover.png?v=1629877524",
+     "alt": "Ubiquiti LTE Failover (Data Plan Sold Separately)",
+     "width": 600,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40919453171861",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 229,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 229,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "other-accessories"
+   ],
+   "publishedAt": "2021-08-20T09:07:05-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "7056303358101",
+   "slug": "ubiquity-8-port-poe-60w-switch",
+   "title": "Ubiquiti 8 port POE 60w Switch",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "Ubiquiti 8 Port w/ PoE - 60W",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/products/Ubiquity8portPOE60wSwitch.png?v=1629872669",
+     "alt": "Ubiquiti 8 port POE 60w Switch",
+     "width": 600,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40919385276565",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 129,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 129,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "other-accessories"
+   ],
+   "publishedAt": "2021-08-20T09:00:30-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "7056264102037",
+   "slug": "etos-star-micronics-sp742-lan",
+   "title": "Star Micronics SP742 LAN",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p>Impact Kitchen Printer</p>\n<p><span>Built specifically to work in environments where heat and humidity can erode the type on the kitchen order, the SP742 is an ideal </span>kitchen printing solution<span>. This fast, two-color printer offers crisp, easy to read type for quick viewing, clamshell design for easy paper loading and an embedded power supply for space efficiency.</span></p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/products/eOSP742ImpactPrinter.png?v=1639493046",
+     "alt": "Star Micronics SP742 LAN",
+     "width": 477,
+     "height": 477
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40919262953621",
+     "title": "Default Title",
+     "sku": "39336532",
+     "price": {
+      "amount": 349,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 349,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "other-accessories"
+   ],
+   "publishedAt": "2021-08-20T08:42:35-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "7056233463957",
+   "slug": "eatos-star-micronics-tsp654ii-sticky-printer-lan",
+   "title": "Star Micronics TSP654II Sticky Printer LAN",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<span>The TSP654IISK liner-free label printer is designed to work with liner-free labeling applications and is ideal for creating food labels and more. Repositionable thermal labels can stick to virtually any surface, and can be removed easily and reapplied leaving behind no residue. The liner-free labels are an alternative to using silicone-lined labels or tape. New to the TSP654IISK is the addition of the Taken Sensor, which enables the printer to hold print jobs until the first print job is taken. </span>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Star_Micronics_TSP654II_Sticky_Printer_LAN.png?v=1723443376",
+     "alt": "Star Micronics TSP654II Sticky Printer LAN",
+     "width": 600,
+     "height": 600
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40919167697045",
+     "title": "Default Title",
+     "sku": "37967760",
+     "price": {
+      "amount": 339,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 339,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "other-accessories"
+   ],
+   "publishedAt": "2021-08-20T08:23:32-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "6931499876501",
+   "slug": "kds-license",
+   "title": "Kitchen Display System License",
+   "vendor": "myeatOS",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p>Kitchen Display System Single License - Monthly Subscription</p>\n<p>Hardware Required : Point of Sale (Sunmi T2 Lite 15”) + Point of Sale License. Kitchen Display System is not sold as a stand alone.</p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/KDS_85fe83aa-8171-4aca-a9eb-3f711f93d88f.png?v=1724410891",
+     "alt": "Kitchen Display System License",
+     "width": 1999,
+     "height": 2000
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40407420010645",
+     "title": "Default Title",
+     "sku": "eOS123",
+     "price": {
+      "amount": 25,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 25,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "applications"
+   ],
+   "publishedAt": "2021-06-21T06:03:54-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "6931499810965",
+   "slug": "kiosk-license",
+   "title": "Self Service Kiosk License",
+   "vendor": "myeatOS",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p>Self Service Kiosk Single License - Monthly</p>\n<p>Hardware Required : K2 Android 13 Countertops Sunmi Kiosk </p>",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/KIOSK.png?v=1724411339",
+     "alt": "Self Service Kiosk License",
+     "width": 1999,
+     "height": 2000
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40407419912341",
+     "title": "Default Title",
+     "sku": "eOS125",
+     "price": {
+      "amount": 99,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": false,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 99,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [
+    "applications"
+   ],
+   "publishedAt": "2021-06-21T06:03:53-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "6931499679893",
+   "slug": "edge-server-monthly",
+   "title": "Edge Server - Monthly",
+   "vendor": "myeatOS",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p>Local Raspberry Pi Edge Server </p>",
+   "images": [],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "40407419715733",
+     "title": "Default Title",
+     "sku": "eOS129",
+     "price": {
+      "amount": 50,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 50,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [],
+   "publishedAt": "2021-06-21T06:03:51-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "6388135559317",
+   "slug": "eatos-custom-gift-cards",
+   "title": "eatOS: Custom Gift Cards",
+   "vendor": "eatOS - Restaurant management made simple",
+   "productType": "Giftcard",
+   "tags": [],
+   "descriptionHtml": "",
+   "images": [
+    {
+     "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/products/eatos.jpg?v=1611123193",
+     "alt": "eatOS: Custom Gift Cards",
+     "width": 1162,
+     "height": 494
+    }
+   ],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "44007217889429",
+     "title": "Default Title",
+     "sku": null,
+     "price": {
+      "amount": 0.79,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 0.79,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [],
+   "publishedAt": "2021-01-15T00:45:33-05:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "5618870386837",
+   "slug": "firewall",
+   "title": "Firewall",
+   "vendor": "myeatOS",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p>eatOS Firewall Setup</p>",
+   "images": [],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "35805434183829",
+     "title": "Default Title",
+     "sku": "eOFIR",
+     "price": {
+      "amount": 800,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 800,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [],
+   "publishedAt": "2020-08-18T16:18:33-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  },
+  {
+   "id": "5618870321301",
+   "slug": "hardware-install",
+   "title": "Hardware Install",
+   "vendor": "myeatOS",
+   "productType": null,
+   "tags": [],
+   "descriptionHtml": "<p>eatOS On-Site Hardware Install and Setup</p>",
+   "images": [],
+   "options": [
+    {
+     "name": "Title",
+     "values": [
+      "Default Title"
+     ]
+    }
+   ],
+   "variants": [
+    {
+     "id": "35805434118293",
+     "title": "Default Title",
+     "sku": "eOHRDINST",
+     "price": {
+      "amount": 500,
+      "currency": "USD"
+     },
+     "compareAtPrice": null,
+     "available": true,
+     "requiresShipping": true,
+     "options": [
+      "Default Title"
+     ],
+     "imageUrl": null
+    }
+   ],
+   "priceFrom": {
+    "amount": 500,
+    "currency": "USD"
+   },
+   "compareAtPrice": null,
+   "available": true,
+   "collectionSlugs": [],
+   "publishedAt": "2020-08-18T16:18:32-04:00",
+   "updatedAt": "2026-08-29T07:43:11-04:00"
+  }
+ ],
+ "pages": [
+  {
+   "slug": "business-types",
+   "title": "Business Types",
+   "bodyHtml": "",
+   "hasBody": false
+  },
+  {
+   "slug": "why-eatos",
+   "title": "Why eatOS",
+   "bodyHtml": "",
+   "hasBody": false
+  },
+  {
+   "slug": "resources",
+   "title": "Resources",
+   "bodyHtml": "",
+   "hasBody": false
+  },
+  {
+   "slug": "pricing",
+   "title": "eatOS Pricing and Packages",
+   "bodyHtml": "<div>Build your own plan and choose the hardware bundle that is most cost-effective and feature-rich for your business.</div>\n<p> </p>\n<table>\n<thead>\n<tr>\n<td>\n<h4>One partner, less complexity. A single platform to run your entire restaurant.</h4>\n</td>\n<td>\n<h3>Starter</h3>\n<p>From <span>$0</span>/mo<a href=\"#toast-now-disclaimer\">*</a><br><span>Flexible payment options available.</span></p>\n<p>Ideal for small restaurants to get up and running on Toast.</p>\n<a href=\"https://shop.eatos.com/pages/starter-kit\" title=\"Shop Now\">Shop Now </a>\n</td>\n<td>\n<h3>Essentials</h3>\n<p>From <span>$165</span>/mo<a href=\"#toast-now-disclaimer\">*</a><br><span>3 months free on Digital Ordering</span></p>\n<p>Ideal for restaurants looking to expand into off-premise channels.</p>\n<a href=\"https://shop.eatos.com/pages/essentials\" title=\"View Package\">View Package</a>\n</td>\n<td>\n<h3>Growth</h3>\n<p>From <span>$272 </span>/mo<a href=\"#toast-now-disclaimer\">*</a><br><span>$340/mo</span></p>\n<p>Ideal for using your data to attract new guests and drive repeat visits.</p>\n<a href=\"https://shop.eatos.com/pages/growth-package\">View Package</a>\n</td>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>Cloud Based Point of Sale <span><span>Manage all your orders, sales, and payments in one place and keep tabs on how your business is performing in real-time.</span><i></i></span>\n</td>\n<td><i></i></td>\n<td><i></i></td>\n<td><i></i></td>\n</tr>\n<tr>\n<td>Payment Processing <span><span>Accept payments seamlessly and securely to power your restaurant with insights. Learn more about payment processing fees <a href=\"/payments/payment-processing-fees\">here</a>.</span><i></i></span>\n</td>\n<td><i></i></td>\n<td><i></i></td>\n<td><i></i></td>\n</tr>\n<tr>\n<td>Customer Care <span><span>A team of award-winning restaurant support experts equipped to get you set up and resolve issues fast.</span><i></i></span>\n</td>\n<td><i></i></td>\n<td><i></i></td>\n<td><i></i></td>\n</tr>\n<tr>\n<td>Real-time Fraud Monitoring <span><span>Our systems help detect and block suspicious online ordering transactions in real-time and prevent resulting chargebacks.</span><i></i></span>\n</td>\n<td><i></i></td>\n<td><i></i></td>\n<td><i></i></td>\n</tr>\n<tr>\n<td>Online Ordering &amp; Delivery <span><span>A custom-branded online ordering site where guests order directly from you,100% commission-free. Offer pickup and delivery, accommodate special requests, and send orders straight to your kitchen.</span><i></i></span>\n</td>\n<td>Optional Add On</td>\n<td><i></i></td>\n<td><i></i></td>\n</tr>\n<tr>\n<td>Toast Takeout App <span><span>A diner-facing mobile app that puts your restaurant in front of thousands of potential new guests and gives your customers easy reodering at their fingertips.</span><i></i></span>\n</td>\n<td>Optional Add On</td>\n<td><i></i></td>\n<td><i></i></td>\n</tr>\n<tr>\n<td>Gift Cards <span><span>An easy to sell, use, and track gift card suite with SMS, email, and physical cards.</span><i></i></span>\n</td>\n<td>Optional Add On</td>\n<td>Optional Add On</td>\n<td><i></i></td>\n</tr>\n<tr>\n<td>Loyalty <span><span>Guests automatically accrue points whether they order online or in-store. Customize sign-up bonuses, birthday rewards, dollar to points exchanges, and more.</span><i></i></span>\n</td>\n<td>Optional Add On</td>\n<td>Optional Add On</td>\n<td><i></i></td>\n</tr>\n<tr>\n<td>Marketing <span><span>Email marketing built directly into your POS. Entice guests back with targeted offers based on purchase history and pair with Loyalty to build your database and reward regulars.</span><i></i></span>\n</td>\n<td>Optional Add On</td>\n<td>Optional Add On</td>\n<td><i></i></td>\n</tr>\n<tr>\n<td>Restaurant Grade Hardware <span><span>A suite of IP54 spill-proof rated hardware designed to accept all payment types including swipe, dip, and tap.</span><i></i></span>\n</td>\n<td>Starting at $0*<br>\n<p><small>*Taxes and shipping charges apply</small></p>\n</td>\n<td>Custom Configuration</td>\n<td>Custom Configuration</td>\n</tr>\n<tr>\n<td>Payroll and Team Management <span><span>Payroll that syncs directly with your POS to save hours on employee management each week.</span><i></i></span>\n</td>\n<td><i></i></td>\n<td>Optional Add On</td>\n<td>Optional Add On</td>\n</tr>\n<tr>\n<td></td>\n<td data-toggle=\"modal\" data-target=\"#top-features-pos\"><a href=\"#\" target=\"\"> See features <i></i> </a></td>\n<td data-toggle=\"modal\" data-target=\"#top-features-pos\"><a href=\"#\" target=\"\"> See features <i></i> </a></td>\n<td data-toggle=\"modal\" data-target=\"#top-features-pos\"><a href=\"#\" target=\"\"> See features <i></i> </a></td>\n</tr>\n</tbody>\n</table>",
+   "hasBody": true
+  },
+  {
+   "slug": "shop",
+   "title": "Shop",
+   "bodyHtml": "",
+   "hasBody": false
+  },
+  {
+   "slug": "request-a-quote",
+   "title": "Request a Quote",
+   "bodyHtml": "",
+   "hasBody": false
+  },
+  {
+   "slug": "contact-us",
+   "title": "Contact Us",
+   "bodyHtml": "Get in touch and let us know how we can help.",
+   "hasBody": true
+  },
+  {
+   "slug": "subscriptions",
+   "title": "Subscriptions",
+   "bodyHtml": "",
+   "hasBody": false
+  },
+  {
+   "slug": "get-a-quote",
+   "title": "Get a Quote",
+   "bodyHtml": "<div><img src=\"https://cdn.shopify.com/s/files/1/0461/6821/1605/files/eO_book_a_demo_ver_1.1_p_17_jan_22_ph_480x480.jpg?v=1642464557\" alt=\"\"></div>\n<div></div>\n<p>Our team’s collective experience in the restaurant industry helps us understand the complexity of running restaurants, which has allowed us to build a customizable solution to help restaurants react and adapt to the industry’s needs.</p>\n<ul>\n<li>Fill out the form and someone from our team will reach out to you within one business day to schedule a virtual demo.</li>\n<li>Your demo will include a customized consultation to help best determine your restaurant's needs.</li>\n<li>We will provide a quote with products recommended for your restaurant.</li>\n</ul>",
+   "hasBody": true
+  },
+  {
+   "slug": "privacy-policy",
+   "title": "Privacy Policy",
+   "bodyHtml": "<div>\n<h3 id=\"general-terms-of-service\">Welcome to eatOS – Future of Food Services Technology.</h3>\n<div> Privacy Notice for Users Who Apply or Sign Up for an eatOS Account or Other Services To access the Privacy Notice effective through Apr 29, 2020, <u><a href=\"https://www.eatos.co/privacy-policy/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">click here</a></u>. For users who DO NOT apply or sign up for a eatOS Account, <u><a href=\"https://www.eatos.co/privacy-policy/\" target=\"_blank\" rel=\"nofollow noopener noreferrer\">click here</a></u>. Posted on: Apr 29, 2020 Effective Date: Apr 29, 2020 This Privacy Notice describes how eatOS by POSLABS Inc. and our affiliates (collectively, “eatOS,” “we,” and “us”) collect, use, disclose, transfer, store, retain or otherwise process your information when you (whether you are a person or business) apply or sign up for a eatOS account or other services through eatOS’s website or applications (collectively, “Services”).</div>\n<div></div>\n<p>This Privacy Notice applies to your use of our services and software, and covers information collected in connection with your access to and use of our services and software.</p>\n<p> Please read this Privacy Notice carefully. By continuing to interact with our Services, you are consenting to the practices described in this Privacy Notice.</p>\n<p>Our Privacy Notice explains:</p>\n<ul>\n<li> <a href=\"#info\"><u>What information we collect about you</u></a>\n</li>\n<li><a href=\"#how\"><u>How we use your information</u></a></li>\n<li><a href=\"#when\"><u>When and with whom we share your information</u></a></li>\n<li><a href=\"#howlong\"><u>How long we retain your information</u></a></li>\n<li><a href=\"#cookies\"><u>Cookies and other similar technologies</u></a></li>\n<li><a href=\"#thirdparty\"><u>Third party advertising and analytics</u></a></li>\n<li><a href=\"#choices\"><u>Your choices</u></a></li>\n<li><a href=\"#security\"><u>Security</u></a></li>\n<li><a href=\"#storage\"><u>Storage and processing</u></a></li>\n<li><a href=\"#changes\"><u>Changes to this privacy notice</u></a></li>\n<li><u><a href=\"#contact\">Contact</a></u></li>\n</ul>\n<p>INFORMATION WE COLLECT ABOUT YOU We need to collect information about you to provide you with the Services or the support you request. The type of information we collect can vary depending on the country from which you access our Services.</p>\n<p>Additionally, you can choose to voluntarily provide information to us. Information You Provide We collect information you provide when you apply or sign up for a eatOS account or other Services, go through our identity or account verification process, authenticate into your account, communicate with us, answer our surveys, upload content, or otherwise use the Services.</p>\n<p><b>We collect information about you when you use our Services, including:</b></p>\n<ul>\n<li>Identification Information.Your name; email address; mailing address; phone number; photograph; birthdate; passport, driver’s license, Aadhar, Taxpayer Identification, or other government-issued identification; or other historical, contact, and demographic information when you apply or sign up for a eatOS account or other Services, signature, and authentication credentials (for example, information you use to login to your account), including IP address.</li>\n<li>Financial Information.Information such as bank account, payment card numbers, credit reports, and other publicly available information.</li>\n<li>Tax information.Withholding allowances and tax filing status.</li>\n<li>Transaction Information.When you use our Services to make, accept, request, or record payments, we collect information about when and where the transactions occur, the names of the transacting parties, a description of the transactions, the payment or transfer amounts, billing and shipping information, and the devices and payment methods used to complete the transactions.</li>\n<li>Other Information You Provide.Information that you voluntarily provide to us, including your survey responses; participation in contests, promotions, or other prospective seller marketing forms or devices; suggestions for improvements; referrals; or any other actions performed on the Services.</li>\n</ul>\n<p>Information We Collect From Your Use of our Services We collect information about you and the devices you use to access the Services, such as your computer, mobile phone, or tablet.</p>\n<h5 id=\"info\"><strong>The information that we collect includes:</strong></h5>\n<ul>\n<li>Precise Geolocation Information.The location of your device. For more information and to learn how to disable collection of location information.</li>\n<li>Device Information.Information about your device, including your hardware model, operating system and version, device name, unique device identifier, mobile network information, and information about the device’s interaction with our Services.</li>\n<li>Use Information.Information about how you use our Services, including your access time, “log-in” and “log-out” information, browser type and language, country and language setting on your device, Internet Protocol (“IP”) address, the domain name of your Internet service provider, other attributes about your browser, mobile device and operating system, any specific page you visit on our platform, content you view, features you use, the date and time of your visit to or use of the Services, your search terms, the website you visited before you visited or used the Services, data about how you interact with our Services, and other clickstream data.</li>\n<li>Business Information.Information about products and services you sell (including inventory, pricing and other data) and other information you provide about you or your business (including appointment, staffing availability, employee, payroll and contact data).</li>\n<li>Employee Information.Information provided to a Seller using our Services, for example information about employees whose employers using eatOS (including hours worked and other timecard data).</li>\n<li>Customer Information.Information you collect from your customers, including email address, phone number, payment information, or other information.</li>\n</ul>\n<p><strong>Information We Collect From Other Sources, We also collect information about you from third parties, including:</strong></p>\n<ul>\n<li>\n<strong>Identity Verification</strong><br>Information from third-party verification services, credit bureaus, financial institutions, mailing list providers, and publicly available sources. In some circumstances, where lawful, this information may include your government-issued identification number.</li>\n<li>\n<strong>Background Information</strong><br>To the extent permitted by applicable laws, we may obtain background check reports from public records of criminal convictions and arrest records. We may use your information, including your full name, government-issued identification number, and date of birth, to obtain such reports.</li>\n<li>\n<strong>Credit, Compliance and Fraud</strong><br>Information about you from third parties in connection with any credit investigation, credit eligibility, identity or account verification process, fraud detection process, or collection procedure, or as may otherwise be required by applicable law. This includes, without limitation, the receipt and exchange of account or credit-related information with any credit reporting agency or credit bureau, where lawful, and any person or corporation with whom you have had, currently have, or may have a financial relationship, including without limitation past, present, and future places of employment, financial institutions, and personal reporting agencies.</li>\n</ul>\n<p>Children’s Information Our Services are general audience services not directed at children under the age of 13. If we obtain actual knowledge that any information we collect has been provided by a child under the age of 13, we will promptly delete that information</p>\n<p> </p>\n<h5 id=\"howweuse\"><strong>HOW WE USE YOUR INFORMATION</strong></h5>\n<p>We may use information about you for a number of purposes, including: Providing, Improving, and Developing our Services</p>\n<ul>\n<li>Determining whether the Services are available in your country;</li>\n<li>Processing or recording payment transactions or money transfers;</li>\n<li>Otherwise providing you with the Square products and features you choose to use;</li>\n<li>Displaying your historical transaction or appointment information;</li>\n<li>Providing, maintaining and improving our Services;</li>\n<li>Developing new products and services;</li>\n<li>Delivering the information and support you request, including technical notices, security alerts, and support and administrative messages including to resolve disputes, collect fees, and provide assistance for problems with our Services or your Square account;</li>\n<li>Improving, personalizing, and facilitating your use of our Services;</li>\n<li>Measuring, tracking, and analyzing trends and usage in connection with your use or the performance of our Services.</li>\n</ul>\n<p><strong>Communicating with You About our Services</strong></p>\n<ul>\n<li>Sending you information we think you may find useful or which you have requested from us about our products and services;</li>\n<li>Conducting surveys and collecting feedback about our Services.</li>\n</ul>\n<p><strong>Protecting our Services and Maintaining a Trusted Environment</strong></p>\n<ul>\n<li>Investigating, detecting, preventing, or reporting fraud, misrepresentations, security breaches or incidents, other potentially prohibited or illegal activities, or to otherwise help protect your account, including to dispute chargebacks on your behalf;</li>\n<li>Protecting our, our customers’, or your customers’ rights or property, or the security or integrity of our Services;</li>\n<li>Enforcing our Terms pf Service or other applicable agreements or policies;</li>\n<li>Verifying your identity (e.g., through government-issued identification numbers);</li>\n<li>Complying with any applicable laws or regulations, or in response to lawful requests for information from the government or through legal process;</li>\n<li>Fulfilling any other purpose disclosed to you in connection with our Services;</li>\n<li>Contacting you to resolve disputes, collect fees, and provide assistance with our Services.</li>\n</ul>\n<p><strong>Advertising and Marketing</strong></p>\n<ul>\n<li>Marketing of our Services;</li>\n<li>Communicating with you about opportunities, products, services, contests, promotions, discounts, incentives, surveys, and rewards offered by us and select partners;</li>\n<li>If we send you marketing emails, each email will contain instructions permitting you to “opt out” of receiving future marketing or other communications.</li>\n</ul>\n<p><strong>To learn about your choices regarding interest-based advertising and cross-device tracking, please <u>see below</u>.</strong></p>\n<p><strong>Other Uses</strong></p>\n<ul>\n<li>For any other purpose disclosed to you in connection with our Services from time to time.</li>\n</ul>\n<p><strong>HOW WE SHARE YOUR INFORMATION We may share information about you as follows:</strong></p>\n<ul>\n<li>With Other Users of our Services with Whom You Interact</li>\n<li>With other users of our Services with whom you interact through your own use of our Services. For example, we may share information when you make or accept a payment, appointment, or money transfer using our Services.</li>\n</ul>\n<p><strong>With our Affiliates</strong></p>\n<ul>\n<li>With our group companies and corporate affiliates, for the purposes outlined above.</li>\n</ul>\n<p><strong>With Third Parties</strong></p>\n<ul>\n<li>With third parties to provide, maintain, and improve our Services, including service providers who access information about you to perform services on our behalf (e.g., fraud prevention, identity verification, and fee collection services), as well as financial institutions, payment networks, payment card associations, credit bureaus, partners providing services on eatOS’s behalf, and other entities in connection with the Services;</li>\n<li>With third parties that run advertising campaigns, contests, special offers, or other events or activities on our behalf or in connection with our Services.</li>\n</ul>\n<p><strong>Business Transfers and Corporate Changes</strong></p>\n<ul>\n<li>To a subsequent owner, co-owner, or operator of one or more of the Services; or</li>\n<li>In connection with (including, without limitation, during the negotiation or due diligence process of) a corporate merger, consolidation, or restructuring; the sale of substantially all of our stock and/or assets; financing, acquisition, divestiture, or dissolution of all or a portion of our business; or other corporate change.</li>\n</ul>\n<p><strong>Safety and Compliance with Law</strong></p>\n<ul>\n<li>If we believe that disclosure is reasonably necessary</li>\n<li>(i) to comply with any applicable law, regulation, legal process or governmental request (e.g., from tax authorities, law enforcement agencies, etc.);</li>\n<li>(ii) to enforce or comply with our General terms or other applicable agreements or policies;</li>\n<li>(iii) to protect our or our customers’ rights or property, or the security or integrity of our Services; or</li>\n<li>(iv) to protect us, users of our Services or the public from harm, fraud, or potentially prohibited or illegal activities.</li>\n</ul>\n<p><strong>With Your Consent</strong></p>\n<ul>\n<li>With your consent. For example:</li>\n<li>At your direction or as described at the time you agree to share;</li>\n<li>When you authorize a third party application or website to access your information.</li>\n</ul>\n<p><strong>Aggregated and Anonymized Information</strong></p>\n<ul>\n<li>We also may share (within our group of companies or with third parties) aggregated and anonymized information that does not specifically identify you or any individual user of our Services.</li>\n</ul>\n<h5 id=\"howlong\"><strong>HOW LONG WE RETAIN YOUR INFORMATION</strong></h5>\n<ul>\n<li>We generally retain your information as long as reasonably necessary to provide you the Services or to comply with applicable law.</li>\n<li>However, even after you deactivate your account, we can retain copies of information about you and any transactions or Services in which you may have participated for a period of time that is consistent with applicable law, applicable statute of limitations or as we believe is reasonably necessary to comply with applicable law, regulation, legal process, or governmental request, to detect or prevent fraud, to collect fees owed, to resolve disputes, to address problems with our Services, to assist with investigations, to enforce our General Terms or other applicable agreements or policies, or to take any other actions consistent with applicable law.</li>\n</ul>\n<h5 id=\"cookies\"><strong>COOKIES AND OTHER SIMILAR TECHNOLOGIES</strong></h5>\n<ul>\n<li>We use various technologies to collect information when you access or use our Services, including placing a piece of code, commonly referred to as a “cookie,” or similar technology on your device and using web beacons.</li>\n<li>Cookies are small data files that are stored on your hard drive or in your device memory when you visit a website or view a message. Among other things, cookies support the integrity of our registration process, retain your preferences and account settings, and help evaluate and compile aggregated statistics about user activity. We will begin collecting information about you or from activity on devices you use as soon as you use our Services.</li>\n<li>By using our Services, you permit us to collect and use your information from activity on devices you use in accordance with this Privacy Notice. For more information and to learn how to block or delete cookies used in the Services, please .</li>\n<li>Certain cookies we use last only for the duration of your web or application session and expire when you close your browser or exit the application. Other cookies are used to remember you when you return to use the Services and, as such, will last longer.</li>\n</ul>\n<p><strong>We may use cookies to:</strong> </p>\n<ul>\n<li>Remember that you have visited us or used the Services before. This allows us to identify the number of unique visitors we receive, so that we can provide enough capacity to accommodate all of our users.</li>\n<li>Customize elements of the promotional layout and/or content of our Services.</li>\n<li>Collect data about the way you interact with our Services (e.g., when you use certain features).</li>\n<li>Collect data to assess and improve our advertising campaigns, including sending information to our business partners.</li>\n<li>Allow our business partners (including third parties) to use these tracking technologies to track your behavior on our behalf on our Platform (including when you use multiple devices) and on partner websites.</li>\n<li>Enable third parties to collect data about the way you interact across sites outside of our Services.</li>\n<li>Collect anonymous statistical information about how you use the Services (including the length of your web or application session) and the location from which you access the Services, so that we can improve the Services and learn which elements and functions of the Services are most popular with our users.</li>\n</ul>\n<p>Some of the cookies used in the Services are set by us, and others are set by third parties who deliver services on our behalf. Most web and mobile device browsers are set to automatically accept cookies by default. However, you can change your browser settings to prevent automatic acceptance of cookies, or to notify you each time a cookie is set. You also can learn more about cookies by visiting <u><a href=\"http://www.allaboutcookies.org/\" target=\"_blank\" rel=\"noopener noreferrer\">http://www.allaboutcookies.org</a></u>, which includes additional useful information on cookies and how to block cookies on different types of browsers and mobile devices.</p>\n<p>Please note, however, that by blocking or deleting cookies used in the Services, you may not be able to take full advantage of the Services. We also may collect information using web beacons. Web beacons are electronic images that may be used in our Services or emails. We use web beacons to deliver cookies, track the number of visits to our website and apps, understand usage and campaign effectiveness, and determine whether an email has been opened and acted upon.</p>\n<h5 id=\"thirdparty\"><strong>THIRD-PARTY ADVERTISING AND ANALYTICS</strong></h5>\n<p>We can use third-party service providers to provide site metrics and other analytics services. These third parties can use cookies, web beacons, and other technologies to collect information, such as your IP address, identifiers associated with your device, other applications on your device, the browsers you use to access our Services, web pages viewed, time spent on webpages, links clicked, and conversion information (e.g., transactions entered into).</p>\n<p>This information can be used by eatOS and third-party service providers on behalf of eatOS to analyze and track usage of our Services, determine the popularity of certain content, and better understand how you use our Services. The third-party service providers that we engage are bound by confidentiality obligations and other restrictions with respect to their use and collection of your information.</p>\n<p>This Privacy Notice does not apply to, and we are not responsible for, third-party cookies, web beacons, or other tracking technologies, which are covered by such third parties’ privacy policies. For more information, we encourage you to check the privacy policies of these third parties to learn about their privacy practices.</p>\n<p><strong>For more information about targeted advertising specifically, please visit <u><a href=\"http://www.aboutads.info/choices\" target=\"_blank\" rel=\"noopener noreferrer\">http://www.aboutads.info/choices</a></u>. Examples of our third-party service providers to help deliver our Services or to connect to our Services include:</strong></p>\n<ul>\n<li>Google Analytics: We use Google Analytics to understand how our Services perform and how you use them. To learn more about how Google processes your data, please visit <u><a href=\"https://www.google.com/policies/privacy/\" target=\"_blank\" rel=\"noopener noreferrer\">https://www.google.com/policies/privacy/</a></u>. To opt out of Google Analytics please visit <u><a href=\"https://tools.google.com/dlpage/gaoptout\" target=\"_blank\" rel=\"noopener noreferrer\">https://tools.google.com/dlpage/gaoptout</a></u>.</li>\n<li>Instabug, Pipedrive, Realtime, Teamviewer, Mixpanel and UXcam: We use Instabug, Realtime, Mixpanel and Uxcam monitoring apps to monitor errors that impact customers and report diagnostic data to us so we can improve our Service and help to make sure they work when you need to use them. Please visit <a href=\"https://instabug.com/privacy\" target=\"_blank\" rel=\"noopener noreferrer\">https://instabug.com/privacy</a> to learn more about how Insta processes your data and <a href=\"https://mixpanel.com/legal/privacy-overview/\" target=\"_blank\" rel=\"noopener noreferrer\">https://mixpanel.com/legal/privacy-overview/</a> to learn more about how Mixpanel processes your data.</li>\n</ul>\n<p>These third party service providers make use of cookies to implement their services.</p>\n<h5 id=\"choices\"><strong>YOUR CHOICES</strong></h5>\n<p><strong>Personal Information</strong></p>\n<ul>\n<li>You may access, change, or correct information that you have provided by logging into your eatOS account at any time or by making a request to us using the contact details below, in which case we may need to verify your identity before granting access or otherwise changing or correcting your information.</li>\n</ul>\n<p><strong>Deactivating Your Account</strong></p>\n<ul>\n<li>If you wish to deactivate your account, you can do so by emailing us using the contact details provided below.</li>\n<li>Location Information In order to provide certain Services, we may require access to location information, including precise geolocation information collected from your device.</li>\n<li>If you do not consent to collection of this information, certain Services will not function properly and you will not be able to use those Services. You can stop our collection of location information at any time by changing the preferences on your mobile device.</li>\n</ul>\n<p>If you do so, some of our mobile applications will no longer function. You also may stop our collection of location information via mobile application by following the standard uninstall process to remove all eatOS mobile applications from your device.</p>\n<h5 id=\"security\"><strong>SECURITY</strong></h5>\n<p>We take reasonable measures, including administrative, technical, and physical safeguards, to protect your information from loss, theft, misuse, and unauthorized access, disclosure, alteration, and destruction. Nevertheless, the internet is not a 100% secure environment, and we cannot guarantee absolute security of the transmission or storage of your information. We hold information about you both at our own premises and with the assistance of third-party service providers.</p>\n<h5 id=\"storage\"><strong>STORAGE AND PROCESSING</strong></h5>\n<p>We may, and we may use third-party service providers to, process and store your information in United States and other countries.</p>\n<h5 id=\"changes\"><strong>CHANGES TO THIS PRIVACY NOTICE</strong></h5>\n<p>We may amend this Privacy Notice from time to time by posting a revised version and updating the “Effective Date” above. The revised version will be effective on the “Effective Date” listed. We will provide you with reasonable prior notice of material changes in how we use your information, including by email, if you have provided an email address. If you disagree with these changes, you may cancel your account at any time. Your continued use of our Services constitutes your consent to any amendment of this Privacy Notice.</p>\n<h5 id=\"contact\"><b>CONTACT</b></h5>\n<p>Please contact our Privacy Department with any questions or concerns regarding this Privacy Notice.</p>\n<p><strong>eatOS by POSLABS Inc.</strong><br><strong>269  S Beverly Dr.,</strong><br><strong>PH 1432</strong><br><strong>Beverly Hills – CA 90212</strong><br><strong>United States</strong><br><strong>email: </strong><a href=\"mailto:privacy@eatOS.com\" target=\"_blank\" rel=\"noopener noreferrer\"><strong>privacy@</strong>eatOS.co</a></p>\n<p>If you have any questions or concerns regarding our notice, or if you believe our notice or applicable laws relating to the protection of your personal information have not been respected, you may file a complaint with our Privacy Department listed above, and we will respond to let you know who will be handling your matter and when you can expect a further response.</p>\n<p>We may request additional details from you regarding your concerns and may need to engage or consult with other parties in order to investigate and address your issue.</p>\n<p>We may keep records of your request and any resolution.</p>\n</div>",
+   "hasBody": true
+  },
+  {
+   "slug": "starter-kit",
+   "title": "Starter Kit",
+   "bodyHtml": "",
+   "hasBody": false
+  },
+  {
+   "slug": "essentials",
+   "title": "Essentials Package",
+   "bodyHtml": "",
+   "hasBody": false
+  },
+  {
+   "slug": "growth-package",
+   "title": "Growth Package",
+   "bodyHtml": "",
+   "hasBody": false
+  },
+  {
+   "slug": "bundles",
+   "title": "Bundles",
+   "bodyHtml": "",
+   "hasBody": false
+  },
+  {
+   "slug": "fastbundles",
+   "title": "Bundles",
+   "bodyHtml": "",
+   "hasBody": false
+  },
+  {
+   "slug": "collection-bundle",
+   "title": "Mix and Match",
+   "bodyHtml": "",
+   "hasBody": false
+  },
+  {
+   "slug": "ccpa-opt-out",
+   "title": "Do not sell my personal information",
+   "bodyHtml": "<link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdn.shopify.com/shopifycloud/privacy-banner/data-sale-opt-out.css\">\n<meta charset=\"utf-8\"> <p>As described in our Privacy Policy, we collect personal information from your interactions with us and our website, including through cookies and similar technologies. We may also share this personal information with third parties, including advertising partners. We do this in order to show you ads on other websites that are more relevant to your interests and for other reasons outlined in our privacy policy.</p> <p>Sharing of personal information for targeted advertising based on your interaction on different websites may be considered \"sales\", \"sharing\", or \"targeted advertising\" under certain U.S. state privacy laws. Depending on where you live, you may have the right to opt out of these activities. If you would like to exercise this opt-out right, please follow the instructions below.</p> <p>If you visit our website with the Global Privacy Control opt-out preference signal enabled, depending on where you are, we will treat this as a request to opt-out of activity that may be considered a “sale” or “sharing” of personal information or other uses that may be considered targeted advertising for the device and browser you used to visit our website.</p>\n<div id=\"pc--optOutFormContainer\" data-not-applicable='To opt out of the \"sale\" or \"sharing\" of your personal information collected using cookies and other device-based identifiers as described above, you must be browsing from one of the applicable US states referred to above.' data-form-description='If you would like to opt out of activity that may be considered a \"sale\" or \"share,\" or \"targeted advertising\", please submit your email.' data-email-label=\"Email\" data-success=\"Opted-out successfully\" data-error=\"A problem occurred, try submitting your email again&gt;\"></div>",
+   "hasBody": true
+  }
+ ]
+}

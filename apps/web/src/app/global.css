@@ -238,3 +238,20 @@
         @apply scrollbar-hidden;
     }
 }
+
+/* Rich text imported from the shop catalog, rendered on the black theme. */
+.shop-rte :where(h2, h3, h4) {
+    @apply mt-8 mb-3 font-bold tracking-tight text-white;
+}
+.shop-rte :where(h2) { @apply text-xl; }
+.shop-rte :where(h3) { @apply text-lg; }
+.shop-rte :where(p) { @apply mb-4 leading-7 text-zinc-400; }
+.shop-rte :where(ul, ol) { @apply mb-4 ml-5 list-outside space-y-2 text-zinc-400; }
+.shop-rte :where(ul) { @apply list-disc; }
+.shop-rte :where(ol) { @apply list-decimal; }
+.shop-rte :where(strong, b) { @apply font-semibold text-white; }
+.shop-rte :where(a) { @apply text-brand-on-dark underline underline-offset-4; }
+.shop-rte :where(img) { @apply my-6 max-w-full rounded-2xl; }
+.shop-rte :where(table) { @apply my-6 w-full border-collapse text-left text-sm text-zinc-400; }
+.shop-rte :where(th, td) { @apply border border-white/10 px-3 py-2; }
+.shop-rte :where(th) { @apply font-semibold text-white; }
