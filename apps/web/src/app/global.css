@@ -232,6 +232,16 @@
     }
 }
 
+/* Canonical top offset for the first section of every page, so the gap
+   between the header and the first heading is identical site-wide. */
+@utility page-hero-top {
+    padding-top: 8rem; /* pt-32 */
+    @media (width >= 48rem) {
+        padding-top: 11rem; /* md:pt-44 */
+    }
+}
+
+
 @media (max-width: 1279px) {
     html,
     body {
