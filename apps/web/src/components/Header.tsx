@@ -462,22 +462,24 @@ export default function Header() {
           className={`hidden lg:flex items-center gap-5 xl:gap-8 2xl:gap-10 flex-1 justify-center ${isDarkPage ? "text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]" : "text-black"}`}
           aria-label="Primary"
         >
-          {/* Restaurant Type Dropdown */}
+          {/* Platform Dropdown */}
           <div
             className="relative"
             ref={productsTriggerRef}
             onMouseEnter={() => setProductsOpen(true)}
             onMouseLeave={() => setProductsOpen(false)}
           >
-            <button
+            <a
+              href="/platform"
               className={`flex items-center gap-1 py-2 hover:opacity-70 transition-opacity ${navTextClass}`}
             >
-              Solutions
+              Platform
               <ChevronDown
                 size={13}
                 className={`transition-transform duration-200 ${productsOpen ? "rotate-180" : ""}`}
               />
-            </button>
+            </a>
+
             <div
               style={{ left: `${productsShift}px` }}
               className={`absolute top-full pt-2 w-[860px] max-w-[calc(100vw-2rem)] transition-all duration-200 ${productsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"}`}
