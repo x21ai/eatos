@@ -143,21 +143,8 @@ export function formatOfficeAddress(office) {
 
 const LINK_GROUPS = [
   {
-    title: 'Platform',
-    href: '/platform',
-
-    links: [
-      { label: 'Payments', href: '/accept-payments' },
-      { label: 'Intelligence', href: '/ai' },
-      { label: 'Hardware', href: '/products/hardware' },
-      { label: 'Tap to Pay', href: '/tap-to-pay' },
-      { label: 'edgeOS', href: '/offline-point-of-sale' },
-      { label: 'Platform', href: '/platform' },
-    ],
-  },
-  {
     title: 'Products',
-    href: '/products',
+    href: '/platform',
     links: [
       { label: 'Point of Sale', href: '/pointofsale' },
       { label: 'Kitchen Display', href: '/products/kitchen-display-system' },
@@ -167,8 +154,14 @@ const LINK_GROUPS = [
       { label: 'Online Ordering', href: '/products/apponlineorderingdelivery' },
       { label: 'Inventory', href: '/products/simplified-inventory-management' },
       { label: 'Workforce', href: '/products/workforce-management' },
+      { label: 'Payments', href: '/accept-payments' },
+      { label: 'Intelligence', href: '/ai' },
+      { label: 'Hardware', href: '/products/hardware' },
+      { label: 'Tap to Pay', href: '/tap-to-pay' },
+      { label: 'edgeOS', href: '/offline-point-of-sale' },
     ],
   },
+
   {
     title: 'Grow',
     href: '/grow',
