@@ -446,7 +446,7 @@ export default function Header() {
         {/* Logo */}
         <a
           href="/"
-          className={`flex-shrink-0 flex items-center gap-2 ${mobileMenuOpen ? "text-black" : isDarkPage ? "text-white" : "text-black"} relative z-10`}
+          className={`justify-self-start flex-shrink-0 flex items-center gap-2 ${mobileMenuOpen ? "text-black" : isDarkPage ? "text-white" : "text-black"} relative z-10`}
         >
           <img
             src={
