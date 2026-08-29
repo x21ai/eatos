@@ -373,26 +373,36 @@ export default function HomePage() {
               </div>
             </motion.a>
 
-            {/* Card 4: Hardware (Wide) */}
+            {/* Card 4: Intelligence, wide */}
             <motion.a
-              href="/products/hardware"
+              href="/ai"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
               whileHover={{ scale: 1.02 }}
-              className="md:col-span-2 lg:col-span-2 bg-zinc-800 rounded-3xl md:rounded-[2rem] lg:rounded-[2.5rem] p-6 md:p-5 lg:p-8 relative overflow-hidden group border border-white/5"
+              className="md:col-span-2 lg:col-span-2 bg-gradient-to-br from-zinc-900 via-indigo-950 to-black rounded-3xl md:rounded-[2rem] lg:rounded-[2.5rem] p-6 md:p-5 lg:p-8 relative overflow-hidden group border border-white/10"
             >
-              <div className="flex flex-row items-center justify-between gap-4 h-full">
-                <div className="min-w-0 sm:max-w-[50%]">
-                  <h3 className="text-2xl md:text-2xl lg:text-3xl font-bold tracking-tighter mb-2">Hardware</h3>
-                  <p className="text-gray-400 text-sm md:text-sm lg:text-base">Milled aluminum. Built to last.</p>
+              <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-indigo-500/20 blur-3xl" />
+              <div className="relative z-10 flex flex-row items-center justify-between gap-4 h-full">
+                <div className="min-w-0 sm:max-w-[60%]">
+                  <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-indigo-300 mb-2">
+                    eatOS AI
+                  </div>
+                  <h3 className="text-2xl md:text-2xl lg:text-3xl font-bold tracking-tighter mb-2">
+                    Intelligence everywhere
+                  </h3>
+                  <p className="text-gray-400 text-sm md:text-sm lg:text-base">
+                    VoiceOS answers every call and demand forecasting tells you what to prep
+                    before the rush.
+                  </p>
                 </div>
                 <div className="w-20 h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 shrink-0 bg-black rounded-full flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform duration-500">
-                  <Box className="text-white w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10" />
+                  <Sparkles className="text-indigo-300 w-7 h-7 md:w-8 md:h-8 lg:w-10 lg:h-10" />
                 </div>
               </div>
             </motion.a>
+
           </div>
         </div>
       </section>
