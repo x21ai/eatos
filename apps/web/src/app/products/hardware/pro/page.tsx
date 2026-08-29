@@ -31,7 +31,7 @@ export default function ProPage() {
   return (
     <div className="bg-black min-h-screen text-white font-sans selection:bg-white/20">
       {/* Sticky Sub-nav */}
-      <div className="fixed top-0 left-0 right-0 h-16 bg-black/80 backdrop-blur-md z-40 flex items-center border-b border-white/10 mt-[60px] md:mt-[80px]">
+      <div className="fixed top-0 left-0 right-0 h-16 bg-black/80 backdrop-blur-md z-40 flex items-center border-b border-white/10 mt-[96px] md:mt-[106px]">
         <div className="site-container flex justify-between items-center">
           <div className="font-bold text-lg">
             <strong>eatOS</strong> Pro
@@ -57,7 +57,7 @@ export default function ProPage() {
       </div>
 
       {/* Hero */}
-      <section className="pt-32 md:pt-44 pb-32 relative overflow-hidden">
+      <section className="pt-[192px] md:pt-[240px] pb-32 relative overflow-hidden">
         <div className="site-container text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 text-xs font-medium mb-8 text-white/90">
             New Generation

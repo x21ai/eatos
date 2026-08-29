@@ -95,7 +95,7 @@ export default async function CareerRolePage({ params }) {
   if (!role) {
     return (
       <div className="min-h-screen bg-black text-white font-sans">
-        <div className="site-container pt-32 md:pt-44 pb-24">
+        <div className="site-container pt-[128px] md:pt-[176px] pb-24">
           <a
             href="/work-with-us"
             className="inline-flex items-center gap-2 text-sm font-semibold text-white/70 hover:text-white"
@@ -124,7 +124,7 @@ export default async function CareerRolePage({ params }) {
 
   return (
     <div className="min-h-screen bg-black text-white font-sans">
-      <section className="pt-32 md:pt-44 pb-16 border-b border-white/10">
+      <section className="pt-[128px] md:pt-[176px] pb-16 border-b border-white/10">
         <div className="site-container">
           <a
             href="/work-with-us"

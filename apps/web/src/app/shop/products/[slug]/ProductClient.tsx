@@ -29,7 +29,7 @@ export default function ProductClient({ slug }) {
   if (!product) {
     return (
       <div className="bg-black text-zinc-200">
-        <section className="site-container pt-32 md:pt-44 pb-24">
+        <section className="site-container pt-[128px] md:pt-[176px] pb-24">
           <h1 className="text-3xl font-bold tracking-tighter text-white">Product not found</h1>
           <p className="mt-4 text-sm text-zinc-400">
             This product is no longer available.{' '}
@@ -50,7 +50,7 @@ export default function ProductClient({ slug }) {
 
   return (
     <div className="bg-black text-zinc-200">
-      <section className="pt-32 md:pt-44 pb-12 md:pb-16">
+      <section className="pt-[128px] md:pt-[176px] pb-12 md:pb-16">
         <div className="site-container">
           <nav className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
             <a href="/shop" className="hover:text-white">

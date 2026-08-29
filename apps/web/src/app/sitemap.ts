@@ -28,7 +28,6 @@ export default async function sitemap() {
     '/about-eatos',
     '/partners',
     '/work-with-us',
-    '/tap-to-pay',
     '/blog',
     '/products',
     '/platform',

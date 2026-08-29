@@ -84,6 +84,7 @@ const nextConfig = {
       ['/terms', '/terms-and-conditions'],
       ['/book-demo', '/bookademo'],
       ['/get-started', '/bookademo'],
+      ['/tap-to-pay', '/accept-payments#tap-to-pay'],
       ['/point-of-sale', '/pointofsale'],
       ['/careers', '/work-with-us'],
       ['/careers/:role', '/work-with-us/:role'],

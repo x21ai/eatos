@@ -10,7 +10,7 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="min-h-screen bg-black text-white font-montserrat">
       {/* Hero */}
-      <section className="pt-32 md:pt-44 pb-12 md:pb-16 bg-black border-b border-white/15">
+      <section className="pt-[128px] md:pt-[176px] pb-12 md:pb-16 bg-black border-b border-white/15">
         <div className="site-container">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/15 bg-white/5 text-xs font-bold uppercase tracking-widest text-gray-300 mb-6">

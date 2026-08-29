@@ -51,7 +51,7 @@ export default function PosPageClient() {
 
       <div className="relative z-10">
         {/* Hero */}
-        <section className="pt-32 md:pt-44 pb-10 md:pb-14">
+        <section className="pt-[128px] md:pt-[176px] pb-10 md:pb-14">
           <div className="site-container text-center">
             <motion.h1
               initial={{ opacity: 0, y: 50 }}

@@ -44,7 +44,7 @@ export default function OfflinePosClient() {
   return (
     <main className="min-h-screen bg-black text-white font-montserrat selection:bg-sky-500/30">
       {/* Hero */}
-      <section className="relative pt-32 md:pt-44 pb-14 md:pb-20 overflow-hidden">
+      <section className="relative pt-[128px] md:pt-[176px] pb-14 md:pb-20 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-sky-500/10 rounded-full blur-[150px] pointer-events-none opacity-60" />
         <div className="site-container relative z-10 text-center">
           <motion.h1

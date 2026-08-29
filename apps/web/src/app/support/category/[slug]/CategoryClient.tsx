@@ -27,7 +27,7 @@ export default function CategoryClient({ slug }) {
 
   return (
     <div className="bg-black text-zinc-200">
-      <section className="bg-black pt-32 md:pt-44 pb-12 md:pb-16">
+      <section className="bg-black pt-[128px] md:pt-[176px] pb-12 md:pb-16">
         <div className="site-container">
           <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs text-zinc-500">
             <a href="/support" className="transition-colors hover:text-white">

@@ -41,7 +41,7 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/20 via-emerald-600/10 to-transparent pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-emerald-500/10 rounded-full blur-[150px] pointer-events-none opacity-50" />
 
-      <div className="site-container relative z-10 pt-32 md:pt-44 pb-16 md:pb-20">
+      <div className="site-container relative z-10 pt-[128px] md:pt-[176px] pb-16 md:pb-20">
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
