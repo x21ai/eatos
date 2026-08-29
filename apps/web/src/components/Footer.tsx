@@ -342,7 +342,7 @@ export default function Footer() {
 
 
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 py-16 items-start">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 lg:gap-x-12 py-16 items-start">
           {LINK_GROUPS.map(({ title, href: groupHref, links }) => (
             <div key={title}>
               <h4 className={`${headingClass} mb-6`}>
