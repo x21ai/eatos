@@ -92,10 +92,14 @@ export const railCollections = [...collections].sort(
     (railOrder.indexOf(b.slug) === -1 ? 99 : railOrder.indexOf(b.slug)),
 );
 
-export const featuredProducts = railCollections
+const featuredCandidates = railCollections
   .filter((c) => c.slug !== 'bundles')
   .map((c) => getCollectionProducts(c.slug)[0])
-  .filter(Boolean)
+  .filter(Boolean);
+
+// A product can belong to several collections, so dedupe before rendering.
+export const featuredProducts = featuredCandidates
+  .filter((p, i) => featuredCandidates.findIndex((o) => o.slug === p.slug) === i)
   .slice(0, 6);
 
 export const bundleProducts = getCollectionProducts('bundles');
