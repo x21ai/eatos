@@ -570,46 +570,14 @@ export default function Header() {
               />
             </a>
 
-            <div
-              style={{ left: `${solutionsShift}px` }}
-              className={`absolute top-full pt-2 w-[460px] max-w-[calc(100vw-2rem)] transition-all duration-200 ${solutionsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"}`}
-            >
-
-              <div className="bg-white rounded-xl shadow-xl border border-gray-100 p-4 text-black normal-case tracking-normal">
-                <div className="grid grid-cols-2 gap-2">
-                  {solutionLinks.map((s) => (
-                    <a
-                      key={s.href}
-                      href={s.href}
-                      className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
-                    >
-                      <div
-                        className={`${s.iconWrap} p-2 rounded-lg mt-0.5 flex-shrink-0`}
-                      >
-                        <s.Icon size={18} />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-[15px] leading-snug [text-shadow:none]">{s.title}</div>
-                        <p className="text-[13px] text-gray-500 mt-1 leading-snug [text-shadow:none]">
-                          {s.description}
-                        </p>
-                      </div>
-                    </a>
-                  ))}
-                </div>
-                <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
-                  <div className="text-xs text-gray-500 [text-shadow:none]">
-                    Find your concept
-                  </div>
-                  <a
-                    href="/solutions"
-                    className="text-sm font-semibold text-black hover:opacity-70 transition-opacity [text-shadow:none]"
-                  >
-                    View all concepts →
-                  </a>
-                </div>
-              </div>
-            </div>
+            <MegaMenuPanel
+              open={solutionsOpen}
+              shift={solutionsShift}
+              items={solutionLinks}
+              footerLabel="Find your concept"
+              footerHref="/solutions"
+              footerCta="View all concepts →"
+            />
           </div>
 
 
