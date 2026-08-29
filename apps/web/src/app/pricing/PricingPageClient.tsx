@@ -27,7 +27,7 @@ export default function PricingPageClient() {
   return (
     <div className="min-h-screen bg-black text-white font-montserrat selection:bg-orange-500/30">
       {/* Hero */}
-      <section className="relative overflow-hidden pt-32 pb-16 md:pt-44 md:pb-20">
+      <section className="relative overflow-hidden page-hero-top pb-16 md:pb-20">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-orange-500/20 via-orange-600/10 to-transparent" />
         <div className="pointer-events-none absolute left-1/2 top-0 h-[600px] w-[800px] -translate-x-1/2 rounded-full bg-orange-500/10 opacity-50 blur-[150px]" />
 
