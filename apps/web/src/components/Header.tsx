@@ -34,6 +34,8 @@ import {
 } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { overallHeaderColor } from "@/app/system-status/systems";
+import UtilityBar from "./UtilityBar";
+
 
 // Shared style for the Platform and Concepts desktop dropdowns so the two
 // panels stay visually identical. No max-height / overflow here on purpose:
