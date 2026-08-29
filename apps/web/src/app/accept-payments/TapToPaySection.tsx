@@ -17,6 +17,7 @@ import {
   heroVideo,
   places,
   requirements,
+  images,
   stats,
   steps,
 } from '../tap-to-pay/content';
@@ -86,7 +87,8 @@ export default function TapToPaySection() {
           >
             <video
               src={heroVideo}
-              className="w-full h-full object-cover"
+              poster={images.poster}
+              className="aspect-[4/3] w-full object-cover"
               autoPlay
               muted
               loop
