@@ -235,7 +235,7 @@ export default function PlatformPage() {
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-indigo-500/30">
       {/* Hero Section */}
-      <section className="relative pt-32 md:pt-48 pb-20 overflow-hidden">
+      <section className="relative pt-32 md:pt-44 pb-20 overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/50 via-black to-black pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-indigo-500/10 via-purple-500/5 to-transparent rounded-full blur-[100px] pointer-events-none" />

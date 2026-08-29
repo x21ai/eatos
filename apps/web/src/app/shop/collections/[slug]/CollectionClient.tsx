@@ -12,7 +12,7 @@ export default function CollectionClient({ slug }) {
   if (!collection) {
     return (
       <div className="bg-black text-zinc-200">
-        <section className="site-container pt-32 pb-24">
+        <section className="site-container pt-32 md:pt-44 pb-24">
           <h1 className="text-3xl font-bold tracking-tighter text-white">Collection not found</h1>
           <p className="mt-4 text-sm text-zinc-400">
             This collection is no longer available.{' '}
@@ -28,7 +28,7 @@ export default function CollectionClient({ slug }) {
 
   return (
     <div className="bg-black text-zinc-200">
-      <section className="pt-28 pb-10 md:pt-36 md:pb-14">
+      <section className="pt-32 md:pt-44 pb-10 md:pb-14">
         <div className="site-container">
           <nav className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
             <a href="/shop" className="hover:text-white">

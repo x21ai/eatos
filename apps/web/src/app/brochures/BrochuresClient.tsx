@@ -149,7 +149,7 @@ export default function BrochuresClient() {
     <main className="bg-black text-white">
       {/* Hero */}
       <section className="bg-black text-white">
-        <div className="site-container pb-16 pt-28 text-center md:pb-20 md:pt-36">
+        <div className="site-container pt-32 md:pt-44 pb-16 text-center md:pb-20">
           <Reveal>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-brand-on-dark sm:text-xs">
               {hero.eyebrow}

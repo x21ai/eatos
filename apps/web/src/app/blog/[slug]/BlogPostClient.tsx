@@ -47,7 +47,7 @@ export default function BlogPostClient({ slug }) {
 
   return (
     <article className="bg-black text-zinc-200">
-      <div className="bg-black pt-28 md:pt-32">
+      <div className="bg-black pt-32 md:pt-44">
         <div className="site-container">
           <CategoryFilter available={available} active={post.category} asLinks />
         </div>

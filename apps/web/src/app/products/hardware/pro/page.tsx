@@ -57,7 +57,7 @@ export default function ProPage() {
       </div>
 
       {/* Hero */}
-      <section className="pt-48 pb-32 relative overflow-hidden">
+      <section className="pt-32 md:pt-44 pb-32 relative overflow-hidden">
         <div className="site-container text-center relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 text-xs font-medium mb-8 text-white/90">
             New Generation

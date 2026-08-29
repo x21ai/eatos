@@ -232,6 +232,12 @@
     }
 }
 
+/* Canonical page top offset: every page's first section uses
+   `pt-32 md:pt-44` so the gap under the header is identical site-wide. */
+
+
+
+
 @media (max-width: 1279px) {
     html,
     body {

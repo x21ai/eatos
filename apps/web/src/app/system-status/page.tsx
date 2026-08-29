@@ -41,7 +41,7 @@ export default function SystemStatusPage() {
   return (
     <main className="min-h-screen bg-black text-white">
       {/* Hero */}
-      <section className="site-container pt-36 pb-12 md:pt-44 md:pb-16">
+      <section className="site-container pt-32 md:pt-44 pb-12 md:pb-16">
         <p className="text-xs md:text-sm tracking-widest text-gray-500 font-semibold mb-6">
           eatOS SYSTEM STATUS
         </p>

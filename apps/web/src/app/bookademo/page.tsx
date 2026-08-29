@@ -44,7 +44,7 @@ export default function BookDemoPage() {
   return (
     <div className="min-h-screen bg-black text-white font-montserrat">
       {/* Hero Section */}
-      <section className="pt-32 pb-16 relative overflow-hidden">
+      <section className="pt-32 md:pt-44 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/[0.03] to-transparent pointer-events-none" />
         <div className="site-container relative z-10 max-w-4xl text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 text-sm font-medium mb-6 text-white/90">
