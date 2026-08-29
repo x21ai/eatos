@@ -523,22 +523,24 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Solutions Dropdown */}
+          {/* Concepts Dropdown */}
           <div
             className="relative"
             ref={solutionsTriggerRef}
             onMouseEnter={() => setSolutionsOpen(true)}
             onMouseLeave={() => setSolutionsOpen(false)}
           >
-            <button
+            <a
+              href="/solutions"
               className={`flex items-center gap-1 py-2 hover:opacity-70 transition-opacity ${navTextClass}`}
             >
-              Restaurant Type
+              Concepts
               <ChevronDown
                 size={13}
                 className={`transition-transform duration-200 ${solutionsOpen ? "rotate-180" : ""}`}
               />
-            </button>
+            </a>
+
             <div
               style={{ left: `${solutionsShift}px` }}
               className={`absolute top-full pt-2 w-[460px] max-w-[calc(100vw-2rem)] transition-all duration-200 ${solutionsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"}`}
