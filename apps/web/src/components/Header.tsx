@@ -603,7 +603,7 @@ export default function Header() {
 
         {/* Right Side (visible at xl and wider) */}
         <div
-          className={`hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-4 flex-shrink-0 ${isDarkPage ? "text-white" : "text-black"}`}
+          className={`hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-4 justify-self-end flex-shrink-0 ${isDarkPage ? "text-white" : "text-black"}`}
         >
           {/* Dashboard, Support and Status now live in the top utility bar */}
 
