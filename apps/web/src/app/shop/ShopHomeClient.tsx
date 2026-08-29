@@ -19,7 +19,7 @@ import {
 export default function ShopHomeClient() {
   return (
     <div className="bg-black text-zinc-200">
-      <section className="pt-28 pb-14 md:pt-36 md:pb-20">
+      <section className="page-hero-top pb-14 md:pb-20">
         <div className="site-container">
           <motion.div
             initial={{ opacity: 0, y: 16 }}

@@ -46,7 +46,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-black text-white font-sans">
       {/* Hero */}
-      <section className="pt-32 md:pt-44 pb-16 md:pb-20 border-b border-white/10">
+      <section className="page-hero-top pb-16 md:pb-20 border-b border-white/10">
         <div className="site-container">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/15 bg-white/5 text-xs font-bold uppercase tracking-widest text-white/70 mb-6">

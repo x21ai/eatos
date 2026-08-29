@@ -68,7 +68,7 @@ const companyLinks = [
 export default function CompanyPage() {
   return (
     <div className="min-h-screen bg-black text-white font-sans">
-      <section className="relative pt-32 md:pt-44 pb-16 overflow-hidden">
+      <section className="relative page-hero-top pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-soft via-black to-black pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-brand-soft rounded-full blur-[120px] pointer-events-none" />
 

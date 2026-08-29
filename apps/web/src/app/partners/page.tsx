@@ -16,7 +16,7 @@ export default function PartnersPage() {
   return (
     <div className="bg-black text-white">
       {/* Hero */}
-      <section className="pt-28 pb-16 md:pt-40 md:pb-24">
+      <section className="page-hero-top pb-16 md:pb-24">
         <div className="site-container">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <div>

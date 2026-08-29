@@ -48,7 +48,7 @@ function AuthorRow({ post }) {
 
 function HeroBanner() {
   return (
-    <section className="bg-black pt-28 pb-10 md:pt-36 md:pb-14">
+    <section className="bg-black page-hero-top pb-10 md:pb-14">
       <div className="site-container">
         <motion.div
           initial={{ opacity: 0, y: 16 }}

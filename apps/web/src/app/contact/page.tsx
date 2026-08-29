@@ -52,7 +52,7 @@ export default function ContactSalesPage() {
   ];
 
   return (
-    <div className="bg-black text-white font-montserrat min-h-screen pt-44 md:pt-52 pb-0">
+    <div className="bg-black text-white font-montserrat min-h-screen page-hero-top pb-0">
       <div className="site-container">
         <div>
           {/* Intro */}

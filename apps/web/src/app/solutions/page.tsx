@@ -145,7 +145,7 @@ export default function SolutionsPage() {
   return (
     <div className="min-h-screen bg-black text-white font-montserrat selection:bg-indigo-500/30">
       {/* Hero */}
-      <section className="relative pt-36 pb-20 overflow-hidden">
+      <section className="relative page-hero-top pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-zinc-900/40 to-black pointer-events-none" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-to-b from-indigo-500/10 to-transparent rounded-full blur-[120px] pointer-events-none" />
 
