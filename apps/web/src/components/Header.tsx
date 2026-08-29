@@ -1015,10 +1015,9 @@ export default function Header() {
 
             {/* CTA */}
             <div className="mt-2">
-
               <a
                 href="/bookademo"
-                className="bg-black text-white text-center py-3 rounded-full font-semibold text-[15px]"
+                className="block w-full bg-black text-white text-center py-3 rounded-full font-semibold text-[15px]"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Book a Demo
