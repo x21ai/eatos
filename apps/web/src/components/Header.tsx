@@ -611,18 +611,6 @@ export default function Header() {
           {/* CTA Buttons */}
           <div className="flex items-center gap-2">
             <a
-              href="/shop"
-
-              className={`px-4 py-1.5 rounded-full text-[13px] xl:text-[14px] font-semibold hover:scale-105 transition-all whitespace-nowrap
-                ${
-                  isDarkPage
-                    ? "bg-white text-black border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.3)]"
-                    : "bg-black text-white border border-black/10 shadow-[0_0_20px_rgba(0,0,0,0.1)]"
-                }`}
-            >
-              Shop
-            </a>
-            <a
               href="/bookademo"
               className={`px-4 py-1.5 rounded-full text-[13px] xl:text-[14px] font-semibold hover:scale-105 transition-all whitespace-nowrap
                 ${
@@ -1026,18 +1014,10 @@ export default function Header() {
             </div>
 
             {/* CTA */}
-            <div className="mt-2 grid grid-cols-2 gap-2">
-              <a
-                href="/shop"
-
-                className="bg-gray-100 text-black text-center py-3 rounded-full font-semibold text-[15px] hover:bg-gray-200 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Shop
-              </a>
+            <div className="mt-2">
               <a
                 href="/bookademo"
-                className="bg-black text-white text-center py-3 rounded-full font-semibold text-[15px]"
+                className="block w-full bg-black text-white text-center py-3 rounded-full font-semibold text-[15px]"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Book a Demo
