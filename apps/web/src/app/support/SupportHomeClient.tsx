@@ -43,7 +43,7 @@ function CategoryCard({ category, index }) {
 export default function SupportHomeClient() {
   return (
     <div className="bg-black text-zinc-200">
-      <section className="bg-black pt-32 md:pt-44 pb-14 md:pb-20">
+      <section className="bg-black pt-[128px] md:pt-[176px] pb-14 md:pb-20">
         <div className="site-container">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
