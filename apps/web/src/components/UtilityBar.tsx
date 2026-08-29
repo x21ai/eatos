@@ -57,7 +57,7 @@ export default function UtilityBar({ statusColor = "text-green-500" }) {
                 <Icon
                   size={14}
                   strokeWidth={2}
-                  className="shrink-0 text-neutral-500 transition-colors group-hover:text-brand"
+                  className="shrink-0 text-neutral-500 transition-colors group-hover:text-brand-on-dark"
                 />
               )}
               <span className="hidden sm:inline">{label}</span>
