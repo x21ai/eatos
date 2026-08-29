@@ -144,6 +144,8 @@ export function formatOfficeAddress(office) {
 const LINK_GROUPS = [
   {
     title: 'Platform',
+    href: '/platform',
+
     links: [
       { label: 'Payments', href: '/accept-payments' },
       { label: 'Intelligence', href: '/ai' },
@@ -154,7 +156,8 @@ const LINK_GROUPS = [
     ],
   },
   {
-    title: 'RESTAURANT TYPE',
+    title: 'Products',
+    href: '/products',
     links: [
       { label: 'Point of Sale', href: '/pointofsale' },
       { label: 'Kitchen Display', href: '/products/kitchen-display-system' },
@@ -168,6 +171,7 @@ const LINK_GROUPS = [
   },
   {
     title: 'Grow',
+    href: '/platform',
     links: [
       { label: 'Analytics', href: '/products/reporting-analytics' },
       { label: 'Loyalty', href: '/products/loyalty' },
@@ -177,8 +181,10 @@ const LINK_GROUPS = [
     ],
   },
   {
-    title: 'Solutions',
+    title: 'Concepts',
+    href: '/solutions',
     links: [
+
       { label: 'Quick Service', href: '/quick-service' },
       { label: 'Full Service', href: '/full-service' },
       { label: 'Fast Casual', href: '/fast-casual' },
@@ -193,7 +199,9 @@ const LINK_GROUPS = [
   },
   {
     title: 'Company',
+    href: '/about-eatos',
     links: [
+
       { label: 'About Us', href: '/about-eatos' },
       { label: 'Careers', href: '/work-with-us' },
       { label: 'Partners', href: '/partners' },
@@ -206,7 +214,9 @@ const LINK_GROUPS = [
   },
   {
     title: 'Resources',
+    href: '/support',
     links: [
+
       { label: 'Pricing', href: '/pricing' },
       { label: 'Blog', href: '/blog' },
       { label: 'Brochures', href: '/brochures' },
@@ -341,9 +351,18 @@ export default function Footer() {
 
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 py-16 items-start">
-          {LINK_GROUPS.map(({ title, links }) => (
+          {LINK_GROUPS.map(({ title, href: groupHref, links }) => (
             <div key={title}>
-              <h4 className={`${headingClass} mb-6`}>{title}</h4>
+              <h4 className={`${headingClass} mb-6`}>
+                {groupHref ? (
+                  <a href={groupHref} className="transition-opacity hover:opacity-70">
+                    {title}
+                  </a>
+                ) : (
+                  title
+                )}
+              </h4>
+
               <ul className="space-y-3.5">
                 {links.map(({ label, href, external }) => (
                   <li key={`${title}-${label}`}>

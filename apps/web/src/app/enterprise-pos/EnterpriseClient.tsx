@@ -73,7 +73,7 @@ export default function EnterpriseClient() {
             className="flex items-center gap-2 text-sm text-white/70 mb-8"
           >
             <a href="/solutions" className="hover:text-white transition-colors">
-              Solutions
+              Concepts
             </a>
             <ChevronRight size={14} className="shrink-0" />
             <span className="text-white">Enterprise</span>

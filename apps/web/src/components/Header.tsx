@@ -462,22 +462,24 @@ export default function Header() {
           className={`hidden lg:flex items-center gap-5 xl:gap-8 2xl:gap-10 flex-1 justify-center ${isDarkPage ? "text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]" : "text-black"}`}
           aria-label="Primary"
         >
-          {/* Restaurant Type Dropdown */}
+          {/* Platform Dropdown */}
           <div
             className="relative"
             ref={productsTriggerRef}
             onMouseEnter={() => setProductsOpen(true)}
             onMouseLeave={() => setProductsOpen(false)}
           >
-            <button
+            <a
+              href="/platform"
               className={`flex items-center gap-1 py-2 hover:opacity-70 transition-opacity ${navTextClass}`}
             >
-              Solutions
+              Platform
               <ChevronDown
                 size={13}
                 className={`transition-transform duration-200 ${productsOpen ? "rotate-180" : ""}`}
               />
-            </button>
+            </a>
+
             <div
               style={{ left: `${productsShift}px` }}
               className={`absolute top-full pt-2 w-[860px] max-w-[calc(100vw-2rem)] transition-all duration-200 ${productsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"}`}
@@ -521,22 +523,24 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Solutions Dropdown */}
+          {/* Concepts Dropdown */}
           <div
             className="relative"
             ref={solutionsTriggerRef}
             onMouseEnter={() => setSolutionsOpen(true)}
             onMouseLeave={() => setSolutionsOpen(false)}
           >
-            <button
+            <a
+              href="/solutions"
               className={`flex items-center gap-1 py-2 hover:opacity-70 transition-opacity ${navTextClass}`}
             >
-              Restaurant Type
+              Concepts
               <ChevronDown
                 size={13}
                 className={`transition-transform duration-200 ${solutionsOpen ? "rotate-180" : ""}`}
               />
-            </button>
+            </a>
+
             <div
               style={{ left: `${solutionsShift}px` }}
               className={`absolute top-full pt-2 w-[460px] max-w-[calc(100vw-2rem)] transition-all duration-200 ${solutionsOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"}`}
@@ -566,22 +570,20 @@ export default function Header() {
                 </div>
                 <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
                   <div className="text-xs text-gray-500 [text-shadow:none]">
-                    Find your restaurant type
+                    Find your concept
                   </div>
                   <a
                     href="/solutions"
                     className="text-sm font-semibold text-black hover:opacity-70 transition-opacity [text-shadow:none]"
                   >
-                    View all solutions →
+                    View all concepts →
                   </a>
                 </div>
               </div>
             </div>
           </div>
 
-          <a href="/platform" className={navLinkClass}>
-            Platform
-          </a>
+
           <a href="/pricing" className={navLinkClass}>
             Pricing
           </a>
@@ -672,7 +674,7 @@ export default function Header() {
                       : "text-gray-500"
                   }`}
                 >
-                  {t === "products" ? "Restaurant Type" : "Solutions"}
+                  {t === "products" ? "Platform" : "Concepts"}
                 </button>
               ))}
             </div>
@@ -687,7 +689,7 @@ export default function Header() {
               className="flex min-h-11 items-center justify-between rounded-xl px-3 text-[14px] font-semibold hover:bg-gray-50"
               onClick={() => setMobileMenuOpen(false)}
             >
-              All restaurant types <span aria-hidden="true">→</span>
+              All products <span aria-hidden="true">→</span>
             </a>
 
             <div className="space-y-1">
@@ -951,7 +953,7 @@ export default function Header() {
               className="flex min-h-11 items-center justify-between rounded-xl px-3 text-[14px] font-semibold hover:bg-gray-50"
               onClick={() => setMobileMenuOpen(false)}
             >
-              All solutions <span aria-hidden="true">→</span>
+              All concepts <span aria-hidden="true">→</span>
             </a>
 
             <div className="flex flex-col gap-0.5">

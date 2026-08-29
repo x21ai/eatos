@@ -156,7 +156,7 @@ export default function SolutionsPage() {
             transition={{ duration: 0.7 }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-sm font-medium mb-6 text-white/90"
           >
-            Built for every type of restaurant
+            Concepts built for every type of restaurant
           </motion.div>
 
           <motion.h1

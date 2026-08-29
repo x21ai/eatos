@@ -47,9 +47,10 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           className="flex items-center gap-2 text-sm text-white/70 mb-8"
         >
-          <a href="/products" className="hover:text-white transition-colors">
-            Restaurant Type
+          <a href="/platform" className="hover:text-white transition-colors">
+            Platform
           </a>
+
           <ChevronRight size={14} className="shrink-0" />
           <span className="text-white">Comparison</span>
         </motion.div>
