@@ -10,7 +10,6 @@ import {
   Command,
   CreditCard,
   Sparkles,
-  ChefHat,
   Utensils,
   Zap,
   BarChart2,
@@ -20,9 +19,8 @@ import {
   Truck,
   Package,
   Building2,
-  Route,
-  Languages,
-  Clock,
+  Store,
+  TrendingUp,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { NewsletterSection } from '@/components/NewsletterSection';
@@ -656,7 +654,99 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Kitchen Display */}
+      {/* Platform overview */}
+      <section className="py-16 md:py-28 bg-black text-white relative overflow-hidden">
+        <div className="site-container relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10 md:mb-16"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-gray-300 text-sm font-medium mb-6">
+              <Command size={12} />
+              <span>Platform</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tighter mb-6">
+              One platform,
+              <br />
+              <span className="text-gray-500">every part of service.</span>
+            </h2>
+            <p className="text-white font-medium text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
+              eatOS runs front of house, back of house and growth on one
+              connected system.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {[
+              {
+                icon: Store,
+                title: 'Operations',
+                subtitle: 'Run service flawlessly',
+                body:
+                  'Point of Sale, kitchen flow and workforce scheduling that keep front and back of house in sync.',
+              },
+              {
+                icon: Sparkles,
+                title: 'Guest Experience',
+                subtitle: 'Delight every guest',
+                body:
+                  'Let guests order their way: at the table, at the counter or from home. Fast and frictionless.',
+              },
+              {
+                icon: TrendingUp,
+                title: 'Growth',
+                subtitle: 'Bring them back',
+                body:
+                  'Marketing, loyalty and gift cards that turn first-time visitors into regulars.',
+              },
+              {
+                icon: BarChart2,
+                title: 'Intelligence',
+                subtitle: 'See everything clearly',
+                body:
+                  'Real-time analytics and AI-powered ordering that sharpen every decision you make.',
+              },
+            ].map((pillar, i) => {
+              const Icon = pillar.icon;
+              return (
+                <motion.div
+                  key={pillar.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className="bg-zinc-900 border border-white/5 rounded-3xl p-6 md:p-7 hover:border-white/20 transition-all"
+                >
+                  <div className="bg-[#d70480]/10 text-[#d70480] p-2.5 rounded-xl w-fit mb-5">
+                    <Icon size={20} />
+                  </div>
+                  <h3 className="text-lg font-bold tracking-tight mb-1">{pillar.title}</h3>
+                  <p className="text-sm font-semibold text-[#d70480] mb-3">{pillar.subtitle}</p>
+                  <p className="text-sm text-gray-400 leading-relaxed">{pillar.body}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <a
+              href="/platform"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-semibold text-sm hover:bg-gray-200 transition-colors"
+            >
+              Explore the platform <ChevronRight size={14} />
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Intelligence highlight */}
       <section className="py-16 md:py-28 bg-black text-white relative overflow-hidden">
         <div className="site-container relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-10 lg:gap-16 items-center">
@@ -666,25 +756,24 @@ export default function HomePage() {
               viewport={{ once: true }}
             >
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#d70480]/10 text-[#d70480] text-sm font-semibold mb-6">
-                <ChefHat size={14} />
-                <span>Kitchen Display System</span>
+                <Sparkles size={14} />
+                <span>Intelligence</span>
               </div>
 
               <h2 className="text-4xl lg:text-6xl font-bold tracking-tighter mb-6">
-                Chaos, controlled.
+                See everything clearly.
               </h2>
 
               <p className="text-sm lg:text-lg text-gray-400 mb-10 leading-relaxed max-w-lg">
-                The Kitchen Display System that keeps front and back of house in
-                perfect sync. Real-time updates, color-coded alerts, and
-                performance tracking.
+                Every order, shift and payment feeds one intelligence layer, so
+                you get live numbers and clear next steps instead of raw data.
               </p>
 
               <div className="space-y-4 mb-10">
                 {[
-                  { icon: Route, title: "Prep station routing" },
-                  { icon: Languages, title: "Multi-lingual support" },
-                  { icon: Clock, title: "Real-time updates" },
+                  { icon: BarChart2, title: 'Real-time analytics' },
+                  { icon: Zap, title: 'AI-enabled ordering' },
+                  { icon: Command, title: 'Smarter daily decisions' },
                 ].map((item) => {
                   const Icon = item.icon;
                   return (
@@ -699,10 +788,10 @@ export default function HomePage() {
               </div>
 
               <a
-                href="/products/kitchen-display-system"
+                href="/ai/intelligence"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-semibold text-sm hover:bg-gray-200 transition-colors"
               >
-                Explore Kitchen Display <ChevronRight size={14} />
+                Explore Intelligence <ChevronRight size={14} />
               </a>
             </motion.div>
 
@@ -714,7 +803,7 @@ export default function HomePage() {
             >
               <img
                 src={kdsKitchenAsset.url}
-                alt="Chef working beside an eatOS Kitchen Display System screen"
+                alt="eatOS platform running across a working restaurant kitchen"
                 loading="lazy"
                 className="relative z-10 rounded-3xl w-full aspect-[4/3] object-cover"
               />
