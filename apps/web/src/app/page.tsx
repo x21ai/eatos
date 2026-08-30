@@ -10,7 +10,6 @@ import {
   Command,
   CreditCard,
   Sparkles,
-  ChefHat,
   Utensils,
   Zap,
   BarChart2,
@@ -20,9 +19,8 @@ import {
   Truck,
   Package,
   Building2,
-  Route,
-  Languages,
-  Clock,
+  Store,
+  TrendingUp,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { NewsletterSection } from '@/components/NewsletterSection';
