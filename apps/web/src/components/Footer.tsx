@@ -304,48 +304,67 @@ export default function Footer() {
 
           <div className="lg:col-span-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-              <a href="mailto:cs@eatos.com" className={`${cardClass} h-full`}>
+              <a
+                href="mailto:cs@eatos.com"
+                aria-label="Email eatOS support at cs@eatos.com"
+                className={`${cardClass} h-full ${focusRing}`}
+              >
                 <div>
                   <span className={cardLabel}>Support</span>
                   <h3 className={cardTitle}>Dedicated help, whenever service runs</h3>
                 </div>
                 <span className={cardLink}>
-                  sales at eatOS.com
-                  <ArrowRight size={16} />
+                  cs at eatOS.com
+                  <ArrowRight size={16} aria-hidden="true" focusable="false" />
                 </span>
               </a>
 
-              {/* Sales card with its contact channels inside the same surface */}
+              {/* Sales card: demo link, dialable number and contact channels as siblings */}
               <div className={`${cardClass} h-full`}>
-                <a href="/bookademo" className="flex flex-1 flex-col justify-between">
+                <div className="flex flex-1 flex-col justify-between">
                   <div>
                     <span className={cardLabel}>Sales</span>
-                    <h3 className={cardTitle}>Book a personalized demo</h3>
+                    <h3 className={cardTitle}>
+                      <a
+                        href="/bookademo"
+                        className={`rounded-sm transition-colors hover:text-white ${focusRing}`}
+                      >
+                        Book a personalized demo
+                      </a>
+                    </h3>
                   </div>
-                  <span className={cardLink}>
+                  <a
+                    href="tel:+18449732867"
+                    aria-label="Call sales at +1 (844) 563-2867"
+                    className={`${cardLink} rounded-sm ${focusRing}`}
+                  >
                     +1 (844) 563-2867
-                    <ArrowRight size={16} />
-                  </span>
-                </a>
+                    <ArrowRight size={16} aria-hidden="true" focusable="false" />
+                  </a>
+                </div>
 
-                <div className="mt-6 flex flex-wrap items-center gap-3 pt-2">
-                  {CONTACT_CHANNELS.map(({ label, href, Icon, external }) => (
+                <nav
+                  aria-label="Contact eatOS sales"
+                  className="mt-6 flex flex-wrap items-center gap-3 pt-2"
+                >
+                  {CONTACT_CHANNELS.map(({ label, ariaLabel, href, Icon, external }) => (
                     <a
                       key={label}
                       href={href}
                       {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                      aria-label={label}
+                      aria-label={ariaLabel}
                       title={label}
                       className={socialClass}
                     >
-                      <Icon size={16} />
+                      <Icon size={16} aria-hidden="true" focusable="false" />
                     </a>
                   ))}
-                </div>
+                </nav>
               </div>
             </div>
 
           </div>
+
 
         </div>
 
