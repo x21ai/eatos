@@ -256,9 +256,9 @@ const focusRing =
 
 export default function Footer() {
   const headingClass = 'text-[11px] font-semibold uppercase tracking-[0.18em] text-white';
-  const linkClass = 'text-[13px] text-gray-300 transition-colors hover:text-white';
+  const linkClass = `rounded-sm text-[13px] text-gray-300 transition-colors hover:text-white ${focusRing}`;
   const descClass = 'text-[15px] leading-relaxed text-gray-300';
-  const socialClass = 'flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-gray-300 transition-colors hover:border-white/40 hover:text-white';
+  const socialClass = `flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-gray-300 transition-colors hover:border-white/40 hover:text-white ${focusRing}`;
   const cardClass = 'group flex flex-col justify-between rounded-2xl border border-white/25 bg-white/5 p-8 transition-colors hover:border-white/25';
   const cardLabel = 'text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-300';
   const cardTitle = 'text-xl font-medium mt-2 text-white';
