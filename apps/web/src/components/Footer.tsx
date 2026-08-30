@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client';
 
-import { ArrowRight, Globe, MessageCircle, MessageSquareText, MessagesSquare } from 'lucide-react';
+import { ArrowRight, Globe, MessageCircle, MessageSquareText, Phone } from 'lucide-react';
 import mobileLogoWhite from './marketing/assets/brand/logo-mobile-white.png.asset.json';
 
 function XIcon({ size = 24, ...props }) {
@@ -82,13 +82,13 @@ function YoutubeIcon({ size = 24, ...props }) {
 
 // Social channels: handle is @myeatOS across all platforms
 const SOCIAL_LINKS = [
-  { label: 'Facebook', href: 'https://www.facebook.com/myeatos', Icon: FacebookIcon },
-  { label: 'X', href: 'https://x.com/myeatos', Icon: XIcon },
-  { label: 'Instagram', href: 'https://www.instagram.com/myeatos', Icon: InstagramIcon },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/myeatos', Icon: LinkedinIcon },
-  { label: 'Vimeo', href: 'https://vimeo.com/myeatos', Icon: VimeoIcon },
-  { label: 'YouTube', href: 'https://www.youtube.com/@myeatos', Icon: YoutubeIcon },
-  { label: 'Brochures', href: '/brochures', Icon: BrochureIcon, internal: true },
+  { label: 'Facebook', ariaLabel: 'eatOS on Facebook (opens in a new tab)', href: 'https://www.facebook.com/myeatos', Icon: FacebookIcon },
+  { label: 'X', ariaLabel: 'eatOS on X (opens in a new tab)', href: 'https://x.com/myeatos', Icon: XIcon },
+  { label: 'Instagram', ariaLabel: 'eatOS on Instagram (opens in a new tab)', href: 'https://www.instagram.com/myeatos', Icon: InstagramIcon },
+  { label: 'LinkedIn', ariaLabel: 'eatOS on LinkedIn (opens in a new tab)', href: 'https://www.linkedin.com/company/myeatos', Icon: LinkedinIcon },
+  { label: 'Vimeo', ariaLabel: 'eatOS on Vimeo (opens in a new tab)', href: 'https://vimeo.com/myeatos', Icon: VimeoIcon },
+  { label: 'YouTube', ariaLabel: 'eatOS on YouTube (opens in a new tab)', href: 'https://www.youtube.com/@myeatos', Icon: YoutubeIcon },
+  { label: 'Brochures', ariaLabel: 'Download eatOS product brochures', href: '/brochures', Icon: BrochureIcon, internal: true },
 ];
 
 // Structured office records. Line breaks are never authored by hand: the
@@ -221,18 +221,44 @@ const LINK_GROUPS = [
 ];
 
 const CONTACT_CHANNELS = [
-  { label: 'WhatsApp', href: 'https://wa.me/+18449732867', Icon: MessageCircle, external: true },
-  { label: 'Text Message', href: 'sms:+18449732867', Icon: MessageSquareText },
-  { label: 'Facebook Messenger', href: 'https://www.facebook.com/myeatos', Icon: MessengerIcon, external: true },
-  { label: 'Chat', href: 'tel:+18449732867', Icon: MessagesSquare },
+  {
+    label: 'WhatsApp',
+    ariaLabel: 'Message eatOS on WhatsApp (opens in a new tab)',
+    href: 'https://wa.me/18449732867',
+    Icon: MessageCircle,
+    external: true,
+  },
+  {
+    label: 'Text Message',
+    ariaLabel: 'Text eatOS at +1 (844) 563-2867',
+    href: 'sms:+18449732867',
+    Icon: MessageSquareText,
+  },
+  {
+    label: 'Facebook Messenger',
+    ariaLabel: 'Message eatOS on Facebook Messenger (opens in a new tab)',
+    href: 'https://m.me/myeatos',
+    Icon: MessengerIcon,
+    external: true,
+  },
+  {
+    label: 'Call',
+    ariaLabel: 'Call eatOS at +1 (844) 563-2867',
+    href: 'tel:+18449732867',
+    Icon: Phone,
+  },
 ];
+
+// Shared focus treatment so keyboard users always see where they are.
+const focusRing =
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black';
 
 
 export default function Footer() {
   const headingClass = 'text-[11px] font-semibold uppercase tracking-[0.18em] text-white';
-  const linkClass = 'text-[13px] text-gray-300 transition-colors hover:text-white';
+  const linkClass = `rounded-sm text-[13px] text-gray-300 transition-colors hover:text-white ${focusRing}`;
   const descClass = 'text-[15px] leading-relaxed text-gray-300';
-  const socialClass = 'flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-gray-300 transition-colors hover:border-white/40 hover:text-white';
+  const socialClass = `flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-gray-300 transition-colors hover:border-white/40 hover:text-white ${focusRing}`;
   const cardClass = 'group flex flex-col justify-between rounded-2xl border border-white/25 bg-white/5 p-8 transition-colors hover:border-white/25';
   const cardLabel = 'text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-300';
   const cardTitle = 'text-xl font-medium mt-2 text-white';
@@ -251,75 +277,94 @@ export default function Footer() {
         {/* Top band: brand + contact cards */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-white/25">
           <div className="lg:col-span-4">
-            <a href="/" className="inline-block mb-6">
+            <a href="/" aria-label="eatOS home" className={`inline-block mb-6 rounded-sm ${focusRing}`}>
               <img src={mobileLogoWhite.url} alt="eatOS" className="h-9 w-auto" />
             </a>
             <p className={`${descClass} max-w-sm mb-8`}>
               The operating system for the modern restaurant, built for the way hospitality
               actually works.
             </p>
-            <div className="flex flex-wrap items-center gap-3">
-              {SOCIAL_LINKS.map(({ label, href, Icon, internal }) => (
+            <nav aria-label="eatOS social media" className="flex flex-wrap items-center gap-3">
+              {SOCIAL_LINKS.map(({ label, ariaLabel, href, Icon, internal }) => (
                 <a
                   key={label}
                   href={href}
                   {...(internal ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
-                  aria-label={label}
+                  aria-label={ariaLabel}
                   title={label}
                   className={socialClass}
                 >
-                  <Icon size={16} />
+                  <Icon size={16} aria-hidden="true" focusable="false" />
                 </a>
               ))}
-            </div>
+            </nav>
 
           </div>
 
 
           <div className="lg:col-span-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-              <a href="mailto:cs@eatos.com" className={`${cardClass} h-full`}>
+              <a
+                href="mailto:cs@eatos.com"
+                aria-label="Email eatOS support at cs@eatos.com"
+                className={`${cardClass} h-full ${focusRing}`}
+              >
                 <div>
                   <span className={cardLabel}>Support</span>
                   <h3 className={cardTitle}>Dedicated help, whenever service runs</h3>
                 </div>
                 <span className={cardLink}>
-                  sales at eatOS.com
-                  <ArrowRight size={16} />
+                  cs at eatOS.com
+                  <ArrowRight size={16} aria-hidden="true" focusable="false" />
                 </span>
               </a>
 
-              {/* Sales card with its contact channels inside the same surface */}
+              {/* Sales card: demo link, dialable number and contact channels as siblings */}
               <div className={`${cardClass} h-full`}>
-                <a href="/bookademo" className="flex flex-1 flex-col justify-between">
+                <div className="flex flex-1 flex-col justify-between">
                   <div>
                     <span className={cardLabel}>Sales</span>
-                    <h3 className={cardTitle}>Book a personalized demo</h3>
+                    <h3 className={cardTitle}>
+                      <a
+                        href="/bookademo"
+                        className={`rounded-sm transition-colors hover:text-white ${focusRing}`}
+                      >
+                        Book a personalized demo
+                      </a>
+                    </h3>
                   </div>
-                  <span className={cardLink}>
+                  <a
+                    href="tel:+18449732867"
+                    aria-label="Call sales at +1 (844) 563-2867"
+                    className={`${cardLink} rounded-sm ${focusRing}`}
+                  >
                     +1 (844) 563-2867
-                    <ArrowRight size={16} />
-                  </span>
-                </a>
+                    <ArrowRight size={16} aria-hidden="true" focusable="false" />
+                  </a>
+                </div>
 
-                <div className="mt-6 flex flex-wrap items-center gap-3 pt-2">
-                  {CONTACT_CHANNELS.map(({ label, href, Icon, external }) => (
+                <nav
+                  aria-label="Contact eatOS sales"
+                  className="mt-6 flex flex-wrap items-center gap-3 pt-2"
+                >
+                  {CONTACT_CHANNELS.map(({ label, ariaLabel, href, Icon, external }) => (
                     <a
                       key={label}
                       href={href}
                       {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                      aria-label={label}
+                      aria-label={ariaLabel}
                       title={label}
                       className={socialClass}
                     >
-                      <Icon size={16} />
+                      <Icon size={16} aria-hidden="true" focusable="false" />
                     </a>
                   ))}
-                </div>
+                </nav>
               </div>
             </div>
 
           </div>
+
 
         </div>
 
@@ -342,36 +387,43 @@ export default function Footer() {
 
 
 
-        <div className="flex flex-wrap justify-center items-start gap-10 py-16 lg:flex-nowrap lg:justify-between lg:gap-x-12">
-          {LINK_GROUPS.map(({ title, href: groupHref, links }) => (
-            <div key={title} className="w-[calc(50%-1.25rem)] min-w-0 md:w-[calc(33.333%-1.667rem)] lg:w-auto lg:flex-1">
-              <h4 className={`${headingClass} mb-6`}>
-                {groupHref ? (
-                  <a href={groupHref} className="transition-opacity hover:opacity-70">
-                    {title}
-                  </a>
-                ) : (
-                  title
-                )}
-              </h4>
-
-              <ul className="space-y-3.5">
-                {links.map(({ label, href, external }) => (
-                  <li key={`${title}-${label}`}>
-                    <a
-                      href={href}
-                      className={linkClass}
-                      target={external ? '_blank' : undefined}
-                      rel={external ? 'noopener noreferrer' : undefined}
-                    >
-                      {label}
+        <nav
+          aria-label="Footer"
+          className="flex flex-wrap justify-center items-start gap-10 py-16 lg:flex-nowrap lg:justify-between lg:gap-x-12"
+        >
+          {LINK_GROUPS.map(({ title, href: groupHref, links }) => {
+            const groupId = `footer-group-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+            return (
+              <div key={title} className="w-[calc(50%-1.25rem)] min-w-0 md:w-[calc(33.333%-1.667rem)] lg:w-auto lg:flex-1">
+                <h4 id={groupId} className={`${headingClass} mb-6`}>
+                  {groupHref ? (
+                    <a href={groupHref} className={`rounded-sm transition-opacity hover:opacity-70 ${focusRing}`}>
+                      {title}
                     </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+                  ) : (
+                    title
+                  )}
+                </h4>
+
+                <ul className="space-y-3.5" aria-labelledby={groupId}>
+                  {links.map(({ label, href, external }) => (
+                    <li key={`${title}-${label}`}>
+                      <a
+                        href={href}
+                        className={linkClass}
+                        aria-label={external ? `${label} (opens in a new tab)` : undefined}
+                        target={external ? '_blank' : undefined}
+                        rel={external ? 'noopener noreferrer' : undefined}
+                      >
+                        {label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </nav>
 
         <div className="pt-10 border-t border-white/25">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
@@ -381,24 +433,26 @@ export default function Footer() {
               </span>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-              <a href="/privacy-policy" className={bottomLink}>Privacy Policy</a>
-              <a href="/terms-and-conditions" className={bottomLink}>Terms of Service</a>
+            <nav aria-label="Legal and privacy" className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+              <a href="/privacy-policy" className={`${bottomLink} rounded-sm ${focusRing}`}>Privacy Policy</a>
+              <a href="/terms-and-conditions" className={`${bottomLink} rounded-sm ${focusRing}`}>Terms of Service</a>
               <button
+                type="button"
+                aria-label="Open cookie preferences"
                 onClick={() => {
                   if (typeof window !== 'undefined') {
                     window.dispatchEvent(new Event('openCookiePreferences'));
                   }
                 }}
 
-                className={`${bottomLink} bg-transparent border-0 cursor-pointer p-0 text-[12px]`}
+                className={`${bottomLink} rounded-sm bg-transparent border-0 cursor-pointer p-0 text-[12px] ${focusRing}`}
               >
                 Cookie Settings
               </button>
-            </div>
+            </nav>
 
             <span className="flex flex-1 items-center lg:justify-end gap-1.5 text-[12px] text-gray-300">
-              <Globe size={13} /> United States - EN
+              <Globe size={13} aria-hidden="true" focusable="false" /> United States - EN
             </span>
           </div>
         </div>
