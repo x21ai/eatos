@@ -387,36 +387,43 @@ export default function Footer() {
 
 
 
-        <div className="flex flex-wrap justify-center items-start gap-10 py-16 lg:flex-nowrap lg:justify-between lg:gap-x-12">
-          {LINK_GROUPS.map(({ title, href: groupHref, links }) => (
-            <div key={title} className="w-[calc(50%-1.25rem)] min-w-0 md:w-[calc(33.333%-1.667rem)] lg:w-auto lg:flex-1">
-              <h4 className={`${headingClass} mb-6`}>
-                {groupHref ? (
-                  <a href={groupHref} className="transition-opacity hover:opacity-70">
-                    {title}
-                  </a>
-                ) : (
-                  title
-                )}
-              </h4>
-
-              <ul className="space-y-3.5">
-                {links.map(({ label, href, external }) => (
-                  <li key={`${title}-${label}`}>
-                    <a
-                      href={href}
-                      className={linkClass}
-                      target={external ? '_blank' : undefined}
-                      rel={external ? 'noopener noreferrer' : undefined}
-                    >
-                      {label}
+        <nav
+          aria-label="Footer"
+          className="flex flex-wrap justify-center items-start gap-10 py-16 lg:flex-nowrap lg:justify-between lg:gap-x-12"
+        >
+          {LINK_GROUPS.map(({ title, href: groupHref, links }) => {
+            const groupId = `footer-group-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+            return (
+              <div key={title} className="w-[calc(50%-1.25rem)] min-w-0 md:w-[calc(33.333%-1.667rem)] lg:w-auto lg:flex-1">
+                <h4 id={groupId} className={`${headingClass} mb-6`}>
+                  {groupHref ? (
+                    <a href={groupHref} className={`rounded-sm transition-opacity hover:opacity-70 ${focusRing}`}>
+                      {title}
                     </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+                  ) : (
+                    title
+                  )}
+                </h4>
+
+                <ul className="space-y-3.5" aria-labelledby={groupId}>
+                  {links.map(({ label, href, external }) => (
+                    <li key={`${title}-${label}`}>
+                      <a
+                        href={href}
+                        className={linkClass}
+                        aria-label={external ? `${label} (opens in a new tab)` : undefined}
+                        target={external ? '_blank' : undefined}
+                        rel={external ? 'noopener noreferrer' : undefined}
+                      >
+                        {label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </nav>
 
         <div className="pt-10 border-t border-white/25">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
@@ -426,24 +433,26 @@ export default function Footer() {
               </span>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-              <a href="/privacy-policy" className={bottomLink}>Privacy Policy</a>
-              <a href="/terms-and-conditions" className={bottomLink}>Terms of Service</a>
+            <nav aria-label="Legal and privacy" className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+              <a href="/privacy-policy" className={`${bottomLink} rounded-sm ${focusRing}`}>Privacy Policy</a>
+              <a href="/terms-and-conditions" className={`${bottomLink} rounded-sm ${focusRing}`}>Terms of Service</a>
               <button
+                type="button"
+                aria-label="Open cookie preferences"
                 onClick={() => {
                   if (typeof window !== 'undefined') {
                     window.dispatchEvent(new Event('openCookiePreferences'));
                   }
                 }}
 
-                className={`${bottomLink} bg-transparent border-0 cursor-pointer p-0 text-[12px]`}
+                className={`${bottomLink} rounded-sm bg-transparent border-0 cursor-pointer p-0 text-[12px] ${focusRing}`}
               >
                 Cookie Settings
               </button>
-            </div>
+            </nav>
 
             <span className="flex flex-1 items-center lg:justify-end gap-1.5 text-[12px] text-gray-300">
-              <Globe size={13} /> United States - EN
+              <Globe size={13} aria-hidden="true" focusable="false" /> United States - EN
             </span>
           </div>
         </div>
