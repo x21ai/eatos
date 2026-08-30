@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client';
 
-import { ArrowRight, Globe, MessageCircle, MessageSquareText, MessagesSquare } from 'lucide-react';
+import { ArrowRight, Globe, MessageCircle, MessageSquareText, Phone } from 'lucide-react';
 import mobileLogoWhite from './marketing/assets/brand/logo-mobile-white.png.asset.json';
 
 function XIcon({ size = 24, ...props }) {
@@ -82,13 +82,13 @@ function YoutubeIcon({ size = 24, ...props }) {
 
 // Social channels: handle is @myeatOS across all platforms
 const SOCIAL_LINKS = [
-  { label: 'Facebook', href: 'https://www.facebook.com/myeatos', Icon: FacebookIcon },
-  { label: 'X', href: 'https://x.com/myeatos', Icon: XIcon },
-  { label: 'Instagram', href: 'https://www.instagram.com/myeatos', Icon: InstagramIcon },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/myeatos', Icon: LinkedinIcon },
-  { label: 'Vimeo', href: 'https://vimeo.com/myeatos', Icon: VimeoIcon },
-  { label: 'YouTube', href: 'https://www.youtube.com/@myeatos', Icon: YoutubeIcon },
-  { label: 'Brochures', href: '/brochures', Icon: BrochureIcon, internal: true },
+  { label: 'Facebook', ariaLabel: 'eatOS on Facebook (opens in a new tab)', href: 'https://www.facebook.com/myeatos', Icon: FacebookIcon },
+  { label: 'X', ariaLabel: 'eatOS on X (opens in a new tab)', href: 'https://x.com/myeatos', Icon: XIcon },
+  { label: 'Instagram', ariaLabel: 'eatOS on Instagram (opens in a new tab)', href: 'https://www.instagram.com/myeatos', Icon: InstagramIcon },
+  { label: 'LinkedIn', ariaLabel: 'eatOS on LinkedIn (opens in a new tab)', href: 'https://www.linkedin.com/company/myeatos', Icon: LinkedinIcon },
+  { label: 'Vimeo', ariaLabel: 'eatOS on Vimeo (opens in a new tab)', href: 'https://vimeo.com/myeatos', Icon: VimeoIcon },
+  { label: 'YouTube', ariaLabel: 'eatOS on YouTube (opens in a new tab)', href: 'https://www.youtube.com/@myeatos', Icon: YoutubeIcon },
+  { label: 'Brochures', ariaLabel: 'Download eatOS product brochures', href: '/brochures', Icon: BrochureIcon, internal: true },
 ];
 
 // Structured office records. Line breaks are never authored by hand: the
@@ -221,11 +221,37 @@ const LINK_GROUPS = [
 ];
 
 const CONTACT_CHANNELS = [
-  { label: 'WhatsApp', href: 'https://wa.me/+18449732867', Icon: MessageCircle, external: true },
-  { label: 'Text Message', href: 'sms:+18449732867', Icon: MessageSquareText },
-  { label: 'Facebook Messenger', href: 'https://www.facebook.com/myeatos', Icon: MessengerIcon, external: true },
-  { label: 'Chat', href: 'tel:+18449732867', Icon: MessagesSquare },
+  {
+    label: 'WhatsApp',
+    ariaLabel: 'Message eatOS on WhatsApp (opens in a new tab)',
+    href: 'https://wa.me/18449732867',
+    Icon: MessageCircle,
+    external: true,
+  },
+  {
+    label: 'Text Message',
+    ariaLabel: 'Text eatOS at +1 (844) 563-2867',
+    href: 'sms:+18449732867',
+    Icon: MessageSquareText,
+  },
+  {
+    label: 'Facebook Messenger',
+    ariaLabel: 'Message eatOS on Facebook Messenger (opens in a new tab)',
+    href: 'https://m.me/myeatos',
+    Icon: MessengerIcon,
+    external: true,
+  },
+  {
+    label: 'Call',
+    ariaLabel: 'Call eatOS at +1 (844) 563-2867',
+    href: 'tel:+18449732867',
+    Icon: Phone,
+  },
 ];
+
+// Shared focus treatment so keyboard users always see where they are.
+const focusRing =
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black';
 
 
 export default function Footer() {
