@@ -277,27 +277,27 @@ export default function Footer() {
         {/* Top band: brand + contact cards */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-white/25">
           <div className="lg:col-span-4">
-            <a href="/" className="inline-block mb-6">
+            <a href="/" aria-label="eatOS home" className={`inline-block mb-6 rounded-sm ${focusRing}`}>
               <img src={mobileLogoWhite.url} alt="eatOS" className="h-9 w-auto" />
             </a>
             <p className={`${descClass} max-w-sm mb-8`}>
               The operating system for the modern restaurant, built for the way hospitality
               actually works.
             </p>
-            <div className="flex flex-wrap items-center gap-3">
-              {SOCIAL_LINKS.map(({ label, href, Icon, internal }) => (
+            <nav aria-label="eatOS social media" className="flex flex-wrap items-center gap-3">
+              {SOCIAL_LINKS.map(({ label, ariaLabel, href, Icon, internal }) => (
                 <a
                   key={label}
                   href={href}
                   {...(internal ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
-                  aria-label={label}
+                  aria-label={ariaLabel}
                   title={label}
                   className={socialClass}
                 >
-                  <Icon size={16} />
+                  <Icon size={16} aria-hidden="true" focusable="false" />
                 </a>
               ))}
-            </div>
+            </nav>
 
           </div>
 
