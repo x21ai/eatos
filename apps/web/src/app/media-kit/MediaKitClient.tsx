@@ -25,9 +25,9 @@ function Reveal({ children, delay = 0, className = '' }) {
 function Visual({ item, large = false }) {
   return (
     <div
-      className={`relative w-full overflow-hidden rounded-[20px] bg-zinc-950 ${
-        large ? 'aspect-[16/10] md:rounded-[28px]' : 'aspect-[4/3]'
-      }`}
+      className={`relative w-full overflow-hidden rounded-[20px] ${
+        item.light ? 'bg-white' : 'bg-zinc-950'
+      } ${large ? 'aspect-[16/10] md:rounded-[28px]' : 'aspect-[4/3]'}`}
     >
       {item.image ? (
         <img
@@ -43,21 +43,9 @@ function Visual({ item, large = false }) {
           <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-soft blur-3xl" />
           <div className="pointer-events-none absolute -bottom-20 -left-16 h-56 w-56 rounded-full bg-white/[0.06] blur-3xl" />
           <div className="absolute inset-0 flex items-center justify-center">
-            {item.glyph ? (
-              <span
-                className={`flex items-center justify-center font-bold tracking-tighter text-white ${
-                  item.ring
-                    ? 'h-28 w-28 rounded-full border border-white/25 text-4xl'
-                    : 'text-6xl'
-                }`}
-              >
-                {item.glyph}
-              </span>
-            ) : (
-              <span className="max-w-[16ch] px-8 text-center font-bold leading-[1.1] tracking-tighter text-white text-2xl md:text-3xl">
-                {item.title}
-              </span>
-            )}
+            <span className="max-w-[16ch] px-8 text-center font-bold leading-[1.1] tracking-tighter text-white text-2xl md:text-3xl">
+              {item.title}
+            </span>
           </div>
         </>
       )}
@@ -70,6 +58,7 @@ function Action({ item }) {
   return (
     <a
       href={item.href}
+      {...(item.download ? { download: item.download } : {})}
       className="inline-flex items-center gap-1.5 text-[15px] font-medium text-brand-on-dark transition-colors hover:text-white"
     >
       {isDownload ? <Download size={15} /> : null}
