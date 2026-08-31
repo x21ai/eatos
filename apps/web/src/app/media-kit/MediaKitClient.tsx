@@ -276,6 +276,16 @@ export default function MediaKitClient() {
           </Reveal>
         </div>
       </section>
+      {gallery ? (
+        <GalleryModal
+          images={gallery.gallery}
+          index={index}
+          title={gallery.title}
+          onClose={close}
+          onPrev={prev}
+          onNext={next}
+        />
+      ) : null}
     </main>
   );
 }
