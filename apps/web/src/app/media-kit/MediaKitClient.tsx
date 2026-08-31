@@ -1,8 +1,10 @@
 // @ts-nocheck
 'use client';
 
-import { ArrowUpRight, Download } from 'lucide-react';
+import { ArrowUpRight, ChevronLeft, ChevronRight, Download, X } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
+import { useCallback, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { featured, hero, items } from './content';
 
 const rise = {
