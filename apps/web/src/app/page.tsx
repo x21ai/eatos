@@ -831,7 +831,19 @@ export default function HomePage() {
         </div>
       </section>
 
+      <style jsx global>{`
+        @keyframes homeOrbit {
+          from {
+            transform: rotate(0deg) translateX(140px) rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg) translateX(140px) rotate(-360deg);
+          }
+        }
+      `}</style>
+
       <NewsletterSection />
+
     </div>
   );
 }
