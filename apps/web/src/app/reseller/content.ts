@@ -9,7 +9,7 @@ export const glanceBenefits = [
     body: 'Co-sell with eatOS sellers and profit together on every opportunity.',
   },
   {
-    title: 'Participate in eatOS Events',
+    title: 'Participate in\neatOS Events',
     body: 'Expand your reach across the eatOS customer base and community.',
   },
   {
@@ -17,7 +17,7 @@ export const glanceBenefits = [
     body: 'Collaborate on thought leadership and amplify through our social channels.',
   },
   {
-    title: 'Develop Unique Content',
+    title: 'Develop\nUnique Content',
     body: 'Be featured in studies, newsletters and additional partner platforms.',
   },
 ];
