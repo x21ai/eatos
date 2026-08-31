@@ -61,26 +61,22 @@ export default function ResellerPage() {
       {/* Solve it with your solution */}
       <section className="border-y border-white/10 py-16 md:py-24">
         <div className="site-container">
-          <div className="rounded-[28px] border border-white/10 bg-white/5 p-8 text-center md:rounded-[36px] md:p-14">
-            <div className="mx-auto max-w-3xl">
-              <h2 className="text-3xl font-bold leading-[1.08] tracking-tighter md:text-4xl lg:text-5xl">
-                Solve it with your solution.
-              </h2>
-              <p className="mt-5 text-base leading-relaxed text-white/70 md:text-lg">
-                Grow your business by specializing in our products and working one-on-one with
-                eatOS sellers to design &amp; implement all sorts of bespoke experiences. From
-                eCommerce partners to systems integrators, Our solutions partners receive
-                platform access &amp; exclusive benefits.
-              </p>
-              <button
-                type="button"
-                onClick={() => setApplyOpen(true)}
-                className="group mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-white/90"
-              >
-                Apply to be a Reseller Partner
-                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-              </button>
-            </div>
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl font-bold leading-[1.08] tracking-tighter md:text-4xl lg:text-5xl">
+              Solve it with your solution.
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-white/70 md:text-lg">
+              Specialize in our products and work one-on-one with eatOS sellers to design bespoke
+              experiences. Solutions partners get platform access and exclusive benefits.
+            </p>
+            <button
+              type="button"
+              onClick={() => setApplyOpen(true)}
+              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-white/90"
+            >
+              Apply to be a Reseller Partner
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            </button>
           </div>
         </div>
       </section>
@@ -124,23 +120,22 @@ export default function ResellerPage() {
       {/* Brands */}
       <section className="border-y border-white/10 py-16 md:py-20">
         <div className="site-container">
-          <h2 className="mx-auto max-w-3xl text-center text-xl font-bold tracking-tight md:text-2xl">
-            Our restaurant management technology cloud powers the world&rsquo;s best restaurant
-            brands
+          <h2 className="text-center text-base font-bold tracking-tight sm:text-lg md:text-2xl whitespace-nowrap overflow-hidden text-ellipsis">
+            Our technology cloud powers the world&rsquo;s best restaurant brands
           </h2>
-          <div className="mx-auto mt-12 grid max-w-6xl grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-3 lg:grid-cols-5">
-            {showcaseLogos.map((logo) => (
-              <div
-                key={logo.name}
-                className="flex items-center justify-center bg-white px-6 py-10 transition-colors hover:bg-zinc-100"
-              >
-                <img
-                  src={logo.src}
-                  alt={`${logo.name} logo`}
-                  loading="lazy"
-                  className="h-12 w-auto max-w-[170px] object-contain opacity-90 transition-opacity hover:opacity-100 md:h-14"
-                />
-              </div>
+        </div>
+        <div className="group relative mt-10 overflow-hidden">
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-black to-transparent md:w-28" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-black to-transparent md:w-28" />
+          <div className="marquee-track flex w-max items-center gap-14 md:gap-24">
+            {[...showcaseLogos, ...showcaseLogos].map((logo, i) => (
+              <img
+                key={`${logo.name}-${i}`}
+                src={logo.src}
+                alt={`${logo.name} logo`}
+                loading="lazy"
+                className="h-10 w-auto max-w-[150px] shrink-0 object-contain opacity-80 brightness-0 invert transition-opacity hover:opacity-100 md:h-14 md:max-w-[190px]"
+              />
             ))}
           </div>
         </div>
