@@ -146,6 +146,17 @@ export function getCategoryArticles(slug) {
 
 export const featuredArticles = getArticles(featuredSlugs);
 
+// Most-read articles: "Featured" first, then "Popular", then "Some readers".
+const popularityRank = { Featured: 0, Popular: 1, 'Some readers': 2, 'Few readers': 3 };
+export const popularArticles = [...articles]
+  .sort(
+    (a, b) =>
+      (popularityRank[a.popularity] ?? 4) - (popularityRank[b.popularity] ?? 4) ||
+      a.title.localeCompare(b.title),
+  )
+  .slice(0, 8);
+
+
 export function getRelatedArticles(slug, count = 4) {
   const current = getArticle(slug);
   if (!current) return [];
