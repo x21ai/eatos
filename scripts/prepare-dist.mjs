@@ -5,6 +5,7 @@ import {
   cpSync,
   existsSync,
   mkdirSync,
+  readFileSync,
   readdirSync,
   rmSync,
   statSync,
@@ -98,6 +99,66 @@ if (!existsSync("dist/index.html")) {
   console.error("dist/index.html missing - no prerendered home page found.");
   process.exit(1);
 }
+
+// Legacy paths that only existed as framework-level redirects. The static host
+// resolves exact keys only, so each legacy URL is materialised as its own
+// <alias>.html page carrying the destination page's markup.
+const legacyAliases = [
+  ["newsroom", "news"],
+  ["get-started", "bookademo"],
+  ["tap-to-pay", "accept-payments"],
+  ["cart", "shop"],
+  ["collections/all", "shop"],
+];
+
+const sourceByRoute = new Map(found.map(({ source, route }) => [route, source]));
+
+for (const [alias, target] of legacyAliases) {
+  const source = sourceByRoute.get(target);
+  if (!source) continue;
+  emit(source, alias);
+  routes.push(`/${alias}`);
+  pages += 1;
+}
+
+// The host has no "append .html" lookup and no directory index, so a clean
+// internal link such as /pricing resolves to nothing. Rewrite every internal
+// href in the emitted HTML onto the .html target that actually exists, so
+// clicks, crawls and shared links all resolve. Canonical tags and the sitemap
+// deliberately keep the clean URLs for the eventual origin host.
+const htmlFiles = [];
+function collectHtml(dir) {
+  for (const entry of readdirSync(dir)) {
+    const full = path.join(dir, entry);
+    if (statSync(full).isDirectory()) {
+      collectHtml(full);
+      continue;
+    }
+    if (full.endsWith(".html")) htmlFiles.push(full);
+  }
+}
+collectHtml("dist");
+
+const hasHtml = (route) => existsSync(path.join("dist", `${route}.html`));
+let rewritten = 0;
+
+for (const file of htmlFiles) {
+  const original = readFileSync(file, "utf8");
+  const next = original.replace(
+    /href="\/([^"#?]*?)"/g,
+    (match, route) => {
+      if (!route || route.includes(".") || route.startsWith("_next/")) return match;
+      const clean = route.replace(/\/$/, "");
+      if (!clean || !hasHtml(clean)) return match;
+      return `href="/${clean}.html"`;
+    },
+  );
+  if (next !== original) {
+    writeFileSync(file, next);
+    rewritten += 1;
+  }
+}
+
 
 // Clean URLs resolve through a single wildcard rewrite instead of one rule per
 // page: per-page proxy rules are capped at 100 by the host, which silently
