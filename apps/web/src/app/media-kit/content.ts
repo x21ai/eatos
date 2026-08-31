@@ -107,7 +107,7 @@ export const items = [
   {
     id: 'eatos-icons',
     title: 'eatOS Icons',
-    description: 'See the eatOS ecosystem working together across different businesses.',
+    description: 'App icons for every eatOS product, sized and spaced for clean use anywhere.',
     action: 'Download',
     href: iconsZip.url,
     download: 'eatOS_Icons.zip',
@@ -118,7 +118,7 @@ export const items = [
   {
     id: 'eatos-emblem',
     title: 'eatOS Emblem',
-    description: 'See the eatOS ecosystem working together across different businesses.',
+    description: 'The standalone eatOS jewel, approved for small spaces and social profiles.',
     action: 'Download',
     href: emblemsZip.url,
     download: 'eatOS_Emblems.zip',
@@ -129,7 +129,7 @@ export const items = [
   {
     id: 'eatos-products',
     title: 'eatOS Products',
-    description: 'See the eatOS ecosystem working together across different businesses.',
+    description: 'Studio photography of eatOS hardware, from terminals to kiosks and handhelds.',
     action: 'Explore Photos',
     href: '/media-kit',
     image: p1.url,
@@ -140,7 +140,7 @@ export const items = [
   {
     id: 'miscellaneous-images',
     title: 'Miscellaneous Images',
-    description: 'See the eatOS ecosystem working together across different businesses.',
+    description: 'Lifestyle imagery of eatOS in service across cafes, bars and dining rooms.',
     action: 'Explore Photos',
     href: '/media-kit',
     image: lifestyleShot.url,
