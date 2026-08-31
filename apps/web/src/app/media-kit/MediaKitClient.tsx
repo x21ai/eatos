@@ -174,14 +174,9 @@ export default function MediaKitClient() {
     setIndex(0);
   }, []);
   const close = useCallback(() => setGallery(null), []);
-  const prev = useCallback(
-    () => setGallery((g) => (setIndex((i) => (i - 1 + g.gallery.length) % g.gallery.length), g)),
-    [],
-  );
-  const next = useCallback(
-    () => setGallery((g) => (setIndex((i) => (i + 1) % g.gallery.length), g)),
-    [],
-  );
+  const total = gallery ? gallery.gallery.length : 0;
+  const prev = useCallback(() => setIndex((i) => (i - 1 + total) % total), [total]);
+  const next = useCallback(() => setIndex((i) => (i + 1) % total), [total]);
 
   return (
     <main className="bg-black text-white">
