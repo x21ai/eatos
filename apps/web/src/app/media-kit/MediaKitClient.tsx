@@ -142,7 +142,7 @@ function GalleryModal({ images, index, onClose, onPrev, onNext, onSelect, title 
           <p className="mt-4 text-center text-[15px] text-zinc-400">{current.caption}</p>
         ) : null}
 
-        <div className="mt-4 flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+        <div className="mt-4 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {images.map((img, i) => (
             <button
               key={img.url}
