@@ -43,7 +43,7 @@ export const demoSources: DemoSource[] = [
     blurb: 'Ring in orders, split checks, and take payment in seconds anywhere.',
     device: 'tablet',
     media: {
-      sources: videoSources(posWebm, posMp4),
+      sources: [{ src: posMp4.url, type: 'video/mp4' }],
       poster: posPoster.url,
       caption: 'Ring in the order, take payment, close the ticket.',
     },
@@ -55,7 +55,7 @@ export const demoSources: DemoSource[] = [
     blurb: 'Route tickets to the right station and keep orders moving on time.',
     device: 'tablet',
     media: {
-      sources: videoSources(kdsWebm, kdsMp4),
+      sources: [{ src: kdsMp4.url, type: 'video/mp4' }],
       poster: kdsPoster.url,
       caption: 'Clock in, work the board, bump the ticket.',
     },
@@ -81,7 +81,7 @@ export const demoSources: DemoSource[] = [
     blurb: 'A guest facing display for order clarity, tips, and pickup details.',
     device: 'tablet',
     media: {
-      sources: videoSources(cfdWebm, cfdMp4),
+      sources: [{ src: cfdMp4.url, type: 'video/mp4' }],
       poster: cfdPoster.url,
       caption: 'Check in, redeem a reward, tip, pay, and get the receipt.',
     },
