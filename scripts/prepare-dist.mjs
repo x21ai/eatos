@@ -6,7 +6,6 @@ import {
   existsSync,
   mkdirSync,
   readdirSync,
-  readFileSync,
   rmSync,
   statSync,
   writeFileSync,
@@ -54,52 +53,26 @@ walk(appDir);
 const routes = [];
 let pages = 0;
 
-// Every page is written twice, both times with an .html extension so the host
-// always reports "text/html":
+// Every page is written twice, both times with an .html extension:
 //   dist/<route>.html        - the host's "append .html" lookup / rewrite target
 //   dist/<route>/index.html  - directory-index lookup
 // Extensionless copies are deliberately NOT written any more: the host serves
 // them byte for byte as application/octet-stream with X-Content-Type-Options:
 // nosniff, so the browser downloads the page instead of rendering it.
-function publishedHref(href) {
-  if (!href.startsWith("/") || href === "/") return href;
-
-  const [pathAndQuery, hash = ""] = href.split("#", 2);
-  const [pathname, query = ""] = pathAndQuery.split("?", 2);
-  if (
-    pathname.startsWith("/_next/") ||
-    pathname.startsWith("/api/") ||
-    /\.[a-z0-9]{1,8}$/i.test(pathname)
-  ) {
-    return href;
-  }
-
-  const cleanPath = pathname.replace(/\/$/, "");
-  return `${cleanPath}.html${query ? `?${query}` : ""}${hash ? `#${hash}` : ""}`;
-}
-
-function writePublishedPage(source, target) {
-  const html = readFileSync(source, "utf8").replace(
-    /href=(['"])(\/[^'"]*)\1/g,
-    (match, quote, href) => `href=${quote}${publishedHref(href)}${quote}`,
-  );
-  writeFileSync(target, html);
-}
-
 function emit(source, route) {
   const flat = path.join("dist", `${route}.html`);
   mkdirSync(path.dirname(flat), { recursive: true });
-  writePublishedPage(source, flat);
+  cpSync(source, flat);
 
   const indexTarget = path.join("dist", route, "index.html");
   mkdirSync(path.dirname(indexTarget), { recursive: true });
-  writePublishedPage(source, indexTarget);
+  cpSync(source, indexTarget);
 }
 
 for (const { source, route } of found) {
   if (route === "index" || route === "_not-found") {
     const target = route === "index" ? "dist/index.html" : "dist/404.html";
-    writePublishedPage(source, target);
+    cpSync(source, target);
     pages += 1;
     continue;
   }
@@ -139,6 +112,13 @@ const legacyRedirects = [
   "/newsroom/* /news/:splat 301",
   "/get-started /bookademo 301",
   "/tap-to-pay /accept-payments 301",
+  "/collections/* /shop/collections/:splat 301",
+  "/pages/* /shop/:splat 301",
+  "/shop/pages/* /shop/:splat 301",
+  "/shop/collections/all /shop 301",
+  "/cart /shop 301",
+  "/product-page/* /shop 301",
+  "/category/* /shop 301",
 ];
 
 const cleanUrlRewrite = ["/* /:splat.html 200"];
@@ -147,10 +127,6 @@ writeFileSync(
   "dist/_redirects",
   `${[...passthrough, ...legacyRedirects, ...cleanUrlRewrite].join("\n")}\n`,
 );
-
-// Pin the content type for the page copies in case the host honours headers.
-writeFileSync("dist/_headers", "/*\n  X-Content-Type-Options: nosniff\n");
-
 
 console.log(
   `dist/ prepared from apps/web/.next (${pages} pages, ${routes.length} clean URLs, ` +

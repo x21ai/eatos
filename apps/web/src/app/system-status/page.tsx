@@ -36,6 +36,7 @@ export default function SystemStatusPage() {
     hour: 'numeric',
     minute: '2-digit',
     timeZoneName: 'short',
+    timeZone: 'UTC',
   });
 
   return (
