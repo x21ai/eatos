@@ -63,6 +63,12 @@ const companyLinks = [
     Icon: Scale,
     tagline: 'How eatOS lines up against other restaurant platforms.',
   },
+  {
+    title: 'Reseller',
+    href: '/reseller',
+    Icon: Handshake,
+    tagline: 'Resell eatOS and earn recurring revenue with our support.',
+  },
 ];
 
 export default function CompanyPage() {
