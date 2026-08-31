@@ -55,8 +55,103 @@ function Visual({ item, large = false }) {
   );
 }
 
-function Action({ item }) {
+function GalleryModal({ images, index, onClose, onPrev, onNext, title }) {
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowLeft') onPrev();
+      if (e.key === 'ArrowRight') onNext();
+    };
+    window.addEventListener('keydown', onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [onClose, onPrev, onNext]);
+
+  if (typeof document === 'undefined') return null;
+  const current = images[index];
+
+  return createPortal(
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${title} gallery`}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 sm:p-8"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-5xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="mb-4 flex items-center justify-between gap-4">
+          <p className="text-sm font-medium text-white">
+            {title}
+            <span className="ml-3 text-zinc-500">
+              {index + 1} / {images.length}
+            </span>
+          </p>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close gallery"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:bg-white/10"
+          >
+            <X size={18} />
+          </button>
+        </div>
+
+        <div className="relative overflow-hidden rounded-[20px] border border-white/10 bg-zinc-950">
+          <img
+            src={current.url}
+            alt={current.caption || `${title} ${index + 1}`}
+            className="max-h-[70vh] w-full object-contain"
+          />
+          <button
+            type="button"
+            onClick={onPrev}
+            aria-label="Previous image"
+            className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur transition-colors hover:bg-black/80"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            type="button"
+            onClick={onNext}
+            aria-label="Next image"
+            className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur transition-colors hover:bg-black/80"
+          >
+            <ChevronRight size={20} />
+          </button>
+        </div>
+
+        {current.caption ? (
+          <p className="mt-4 text-center text-[15px] text-zinc-400">{current.caption}</p>
+        ) : null}
+      </div>
+    </div>,
+    document.body,
+  );
+}
+
+function Action({ item, onExplore }) {
   const isDownload = item.action === 'Download';
+
+  if (item.gallery) {
+    return (
+      <button
+        type="button"
+        onClick={onExplore}
+        className="inline-flex items-center gap-1.5 text-[15px] font-medium text-brand-on-dark transition-colors hover:text-white"
+      >
+        {item.action}
+        <ArrowUpRight size={15} />
+      </button>
+    );
+  }
+
   return (
     <a
       href={item.href}
