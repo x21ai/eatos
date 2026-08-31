@@ -12,12 +12,14 @@ import {
 } from 'lucide-react';
 import { showcaseLogos } from '@/components/marketing/customerShowcase';
 import ResellerForm from './ResellerForm';
+import ResellerApplyModal from './ResellerApplyModal';
 import { heroImage, glanceBenefits, faqs } from './content';
 
 const benefitIcons = [Handshake, CalendarDays, Megaphone, FileText];
 
 export default function ResellerPage() {
   const [openFaq, setOpenFaq] = useState(null);
+  const [applyOpen, setApplyOpen] = useState(false);
 
 
   return (
@@ -39,7 +41,7 @@ export default function ResellerPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-on-dark" />
                 Reseller Program
               </span>
-              <h1 className="mt-6 max-w-2xl text-4xl font-bold leading-[1.06] tracking-tighter md:text-6xl">
+              <h1 className="mt-6 max-w-3xl text-5xl font-bold leading-[1.04] tracking-tighter sm:text-6xl md:text-7xl lg:text-[86px]">
                 Start Your
                 <br />
                 Reseller Journey
@@ -59,24 +61,48 @@ export default function ResellerPage() {
       {/* Solve it with your solution */}
       <section className="border-y border-white/10 py-16 md:py-24">
         <div className="site-container">
-          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
-            <h2 className="text-3xl font-bold tracking-tighter md:text-5xl">
-              Solve it with your solution.
-            </h2>
-            <div>
-              <p className="text-base leading-relaxed text-white/70 md:text-lg">
-                Grow your business by specializing in our products and working one-on-one with eatOS
-                sellers to design and implement all sorts of bespoke experiences. From eCommerce
-                partners to systems integrators, eatOS solutions partners receive platform access
-                and exclusive benefits.
-              </p>
-              <a
-                href="#reseller-apply"
-                className="group mt-7 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-white/90"
-              >
-                Apply to be a Reseller Partner
-                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-              </a>
+          <div className="rounded-[28px] border border-white/10 bg-white/5 p-8 md:rounded-[36px] md:p-14">
+            <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-16">
+              <div className="lg:col-span-5">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-on-dark">
+                  Partner with eatOS
+                </span>
+                <h2 className="mt-4 text-3xl font-bold leading-[1.08] tracking-tighter md:text-4xl lg:text-5xl">
+                  Solve it with
+                  <br />
+                  your solution.
+                </h2>
+              </div>
+              <div className="lg:col-span-7">
+                <p className="text-base leading-relaxed text-white/70 md:text-lg">
+                  Grow your business by specializing in our products and working one-on-one with
+                  eatOS sellers to design and implement all sorts of bespoke experiences. From
+                  eCommerce partners to systems integrators, eatOS solutions partners receive
+                  platform access and exclusive benefits.
+                </p>
+                <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3">
+                  {[
+                    { k: 'Platform access', v: 'Full product suite' },
+                    { k: 'Deal support', v: 'One-on-one sellers' },
+                    { k: 'Tiers', v: 'Silver and Gold' },
+                  ].map((stat) => (
+                    <div key={stat.k} className="bg-black/40 px-5 py-4">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/50">
+                        {stat.k}
+                      </p>
+                      <p className="mt-1.5 text-sm font-semibold">{stat.v}</p>
+                    </div>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setApplyOpen(true)}
+                  className="group mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-white/90"
+                >
+                  Apply to be a Reseller Partner
+                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -192,6 +218,7 @@ export default function ResellerPage() {
       </section>
 
 
+      <ResellerApplyModal open={applyOpen} onClose={() => setApplyOpen(false)} />
     </div>
   );
 }

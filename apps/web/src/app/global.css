@@ -261,3 +261,23 @@
 .shop-rte :where(table) { @apply my-6 w-full border-collapse text-left text-sm text-zinc-400; }
 .shop-rte :where(th, td) { @apply border border-white/10 px-3 py-2; }
 .shop-rte :where(th) { @apply font-semibold text-white; }
+
+/* HubSpot embedded forms: full width inside their container */
+.hs-form-full,
+.hs-form-full form,
+.hs-form-full .hs-form-field,
+.hs-form-full .hs-fieldtype-text,
+.hs-form-full .hs-fieldtype-textarea {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+.hs-form-full input[type='text'],
+.hs-form-full input[type='email'],
+.hs-form-full input[type='tel'],
+.hs-form-full input[type='number'],
+.hs-form-full select,
+.hs-form-full textarea {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
