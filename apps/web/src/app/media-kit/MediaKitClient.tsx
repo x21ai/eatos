@@ -319,6 +319,7 @@ export default function MediaKitClient() {
           onClose={close}
           onPrev={prev}
           onNext={next}
+          onSelect={setIndex}
         />
       ) : null}
     </main>
