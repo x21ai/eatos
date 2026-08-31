@@ -24,7 +24,7 @@ import p9 from './assets/products/p9.png.asset.json';
 import p10 from './assets/products/p10.png.asset.json';
 
 export const productGallery = [
-  { url: p1.png ?? p1.url, caption: 'Dual screen Point of Sale terminal' },
+  { url: p1.url, caption: 'Dual screen Point of Sale terminal' },
   { url: p2.url, caption: 'Self Service Kiosk, Touch to Start' },
   { url: p3.url, caption: 'Self Service Kiosk ordering screen' },
   { url: p4.url, caption: 'Table Side ordering on mobile' },
