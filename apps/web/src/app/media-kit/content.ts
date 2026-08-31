@@ -110,5 +110,6 @@ export const items = [
     action: 'Explore Photos',
     href: '/media-kit',
     image: lifestyleShot.url,
+    gallery: miscGallery,
   },
 ];
