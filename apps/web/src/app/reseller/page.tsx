@@ -164,7 +164,7 @@ export default function ResellerPage() {
               Receive eatOS partnership updates directly in your inbox.
             </p>
           </div>
-          <div className="mx-auto mt-10 w-full max-w-3xl rounded-3xl bg-white p-6 text-black md:p-10">
+          <div className="mt-10 w-full rounded-3xl bg-white p-6 text-black md:p-12">
             <ResellerForm />
           </div>
         </div>
