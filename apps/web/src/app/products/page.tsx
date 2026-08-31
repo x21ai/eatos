@@ -211,16 +211,16 @@ export default function ProductsPage() {
                   </p>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex w-full flex-col sm:w-auto sm:flex-row sm:flex-nowrap gap-4 shrink-0">
                   <a
                     href="/contact"
-                    className="px-8 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform text-center"
+                    className="whitespace-nowrap px-8 py-4 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform text-center"
                   >
                     Contact Sales
                   </a>
                   <a
                     href="/bookademo"
-                    className="px-8 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors text-center"
+                    className="whitespace-nowrap px-8 py-4 rounded-full border border-white/20 text-white font-semibold hover:bg-white/10 transition-colors text-center"
                   >
                     Book a Demo
                   </a>
