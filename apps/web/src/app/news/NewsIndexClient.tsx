@@ -75,6 +75,13 @@ export default function NewsIndexClient({ initialCategory = 'All News' }) {
                 >
                   Read the blog
                 </a>
+                <a
+                  href="/media-kit"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-white"
+                >
+                  Media Kit
+                  <ArrowRight size={16} />
+                </a>
               </div>
             </div>
           </motion.div>
