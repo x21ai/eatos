@@ -171,7 +171,7 @@ function SubscribeCard() {
         Subscribe via Email
       </h3>
       <p className="mt-3 text-[13px] leading-6 text-zinc-400">
-        Get restaurant technology tips, product news and operating playbooks in your inbox.
+        Get restaurant technology tips, product news & operating playbooks in your inbox.
       </p>
       <form onSubmit={onSubmit} className="mt-5">
         <label htmlFor="blog-subscribe-email" className="sr-only">
