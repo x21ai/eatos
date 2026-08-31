@@ -5,20 +5,20 @@ import { products, railCollections } from './catalog';
 export const metadata = {
   title: 'Shop Restaurant Hardware',
   description:
-    'Buy eatOS Point of Sale terminals, handhelds, kitchen displays, self service kiosks, customer facing displays and accessories, or build a custom bundle.',
+    'Buy eatOS Point of Sale terminals, handhelds, kitchen displays, self service kiosks, guest facing displays and accessories, or build a custom bundle.',
   alternates: { canonical: '/shop' },
   openGraph: {
     type: 'website',
     url: '/shop',
     title: 'Shop Restaurant Hardware | eatOS',
     description:
-      'Point of Sale terminals, handhelds, kitchen displays, kiosks, customer facing displays and accessories for restaurants.',
+      'Point of Sale terminals, handhelds, kitchen displays, kiosks, guest facing displays and accessories for restaurants.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Shop Restaurant Hardware | eatOS',
     description:
-      'Point of Sale terminals, handhelds, kitchen displays, kiosks, customer facing displays and accessories for restaurants.',
+      'Point of Sale terminals, handhelds, kitchen displays, kiosks, guest facing displays and accessories for restaurants.',
   },
 };
 

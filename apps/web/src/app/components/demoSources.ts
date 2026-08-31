@@ -78,7 +78,7 @@ export const demoSources: DemoSource[] = [
 
   {
     id: 'cfd',
-    label: 'CFD',
+    label: 'Guest Facing Display',
     url: 'https://cfd6.lovable.app/',
     blurb: 'A guest facing display for order clarity, tips, and pickup details.',
     device: 'tablet',
@@ -120,7 +120,7 @@ export const displayName = (id: string) => {
     case 'kds':
       return 'Kitchen Display System';
     case 'cfd':
-      return 'Customer Facing Display';
+      return 'Guest Facing Display';
     case 'kiosk':
       return 'Self Service Kiosk';
     default:
@@ -144,7 +144,7 @@ export const journeySteps: JourneyStep[] = [
   },
   {
     step: 2,
-    title: 'Customer Facing Display',
+    title: 'Guest Facing Display',
     caption: 'Guests see their order, tip, and pickup details on a clear display at the counter or window.',
     demoId: 'cfd',
   },

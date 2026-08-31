@@ -8,7 +8,7 @@ const demos = [
   { id: 'pos', label: 'Point of Sale', url: 'https://mobileposapp.lovable.app/' },
   { id: 'kds', label: 'KDS', url: 'https://kds6.lovable.app/kds/v3' },
   { id: 'kiosk', label: 'Kiosk', url: 'https://kiosk6.lovable.app/' },
-  { id: 'cfd', label: 'CFD', url: 'https://cfd6.lovable.app/' },
+  { id: 'cfd', label: 'Guest Facing Display', url: 'https://cfd6.lovable.app/' },
   { id: 'dashboard', label: 'Dashboard', url: 'https://dashboard6c.lovable.app/' },
   { id: 'inventoryos', label: 'InventoryOS', url: 'https://inventoryos6.lovable.app/' },
 ];

@@ -97,7 +97,7 @@ export const platformProducts = [
   },
   {
     icon: Monitor,
-    title: "Customer Display",
+    title: "Guest Facing Display",
     desc: "Transparent checkout for guests",
     color: "from-sky-500 to-blue-600",
   },

@@ -171,7 +171,7 @@ export default function Header() {
         "/products/self-service-kiosk",
         "/products/tableside-order-and-pay",
         "/products/apponlineorderingdelivery",
-        "/products/customer-facing-display",
+        "/products/guest-facing-display",
         "/products/autonomous-and-automated-delivery",
       ].some((p) => path === p || path.startsWith(p + "/"))
     )
@@ -321,8 +321,8 @@ export default function Header() {
       iconWrap: "bg-indigo-100 text-indigo-700",
     },
     {
-      href: "/products/customer-facing-display",
-      title: "Customer Display",
+      href: "/products/guest-facing-display",
+      title: "Guest Facing Display",
       description: "Clear checkout for guests",
       Icon: CreditCard,
       iconWrap: "bg-sky-100 text-sky-700",
@@ -807,9 +807,9 @@ export default function Header() {
                   color: "text-lime-600",
                 },
                 {
-                  href: "/products/customer-facing-display",
+                  href: "/products/guest-facing-display",
                   Icon: CreditCard,
-                  label: "Customer Display",
+                  label: "Guest Facing Display",
                   color: "text-sky-600",
                 },
                 {

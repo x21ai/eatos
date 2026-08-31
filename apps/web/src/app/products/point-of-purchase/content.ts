@@ -81,7 +81,7 @@ export const features = [
     id: 'compatibility',
     title: 'Powerful Compatibility',
     body:
-      'The handheld works alongside your terminals, kitchen displays, kiosks and customer facing displays on one shared platform.',
+      'The handheld works alongside your terminals, kitchen displays, kiosks and guest facing displays on one shared platform.',
     more:
       'Add devices as service grows and every one of them reads from the same menu, staff list and reporting.',
     imageLabel: 'eatOS device family on a dark counter',

@@ -5,18 +5,18 @@ export const metadata = {
     template: '%s | eatOS',
   },
   description:
-    'Explore the eatOS product family: Point of Sale terminals, handhelds, kitchen displays, kiosks, customer displays and payment devices.',
+    'Explore the eatOS product family: Point of Sale terminals, handhelds, kitchen displays, kiosks, guest facing displays and payment devices.',
   openGraph: {
     type: 'website',
     title: 'Restaurant Products and Devices | eatOS',
     description:
-      'Point of Sale terminals, handhelds, kitchen displays, kiosks, customer displays and payment devices.',
+      'Point of Sale terminals, handhelds, kitchen displays, kiosks, guest facing displays and payment devices.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Restaurant Products and Devices | eatOS',
     description:
-      'Point of Sale terminals, handhelds, kitchen displays, kiosks, customer displays and payment devices.',
+      'Point of Sale terminals, handhelds, kitchen displays, kiosks, guest facing displays and payment devices.',
   },
 };
 

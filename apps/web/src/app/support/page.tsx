@@ -5,7 +5,7 @@ import { articles, categories } from './content';
 export const metadata = {
   title: 'eatOS Help Center',
   description:
-    'Guides, how-to articles and troubleshooting for the eatOS Point of Sale, Kitchen Display System, Dashboard, Kiosk, Customer Facing Display, payments and hardware.',
+    'Guides, how-to articles and troubleshooting for the eatOS Point of Sale, Kitchen Display System, Dashboard, Kiosk, Guest Facing Display, payments and hardware.',
   alternates: { canonical: '/support' },
   openGraph: {
     type: 'website',

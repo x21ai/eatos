@@ -76,7 +76,7 @@ const categories = [
     color: 'indigo',
     products: [
       'self-service-kiosk',
-      'customer-facing-display',
+      'guest-facing-display',
       'tableside-order-and-pay',
       'apponlineorderingdelivery',
     ],

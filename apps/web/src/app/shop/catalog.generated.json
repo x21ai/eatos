@@ -57,12 +57,12 @@
    ]
   },
   {
-   "slug": "customer-facing-display",
-   "title": "Customer Facing Display",
+   "slug": "guest-facing-display",
+   "title": "Guest Facing Display",
    "descriptionHtml": "",
    "image": "https://cdn.shopify.com/s/files/1/0461/6821/1605/collections/CFD.png?v=1735305757",
    "productSlugs": [
-    "customer-facing-display-t2"
+    "guest-facing-display-t2"
    ]
   },
   {
@@ -71,7 +71,7 @@
    "descriptionHtml": "",
    "image": "https://cdn.shopify.com/s/files/1/0461/6821/1605/collections/kds.png?v=1723104360",
    "productSlugs": [
-    "customer-facing-display-t2"
+    "guest-facing-display-t2"
    ]
   },
   {
@@ -329,7 +329,7 @@
    "vendor": "eatOS - Restaurants Made Simple",
    "productType": null,
    "tags": [],
-   "descriptionHtml": "<p><meta charset=\"utf-8\"><meta charset=\"utf-8\">Built In Printer, Customer Facing Display WiFi. Cellular Data Plan Sold Separately<br></p>",
+   "descriptionHtml": "<p><meta charset=\"utf-8\"><meta charset=\"utf-8\">Built In Printer, Guest Facing Display WiFi. Cellular Data Plan Sold Separately<br></p>",
    "images": [],
    "options": [
     {
@@ -393,7 +393,7 @@
    "vendor": "eatOS - Restaurants Made Simple",
    "productType": null,
    "tags": [],
-   "descriptionHtml": "<p><meta charset=\"utf-8\">Built In Printer, Customer Facing Display WiFi. Cellular Data Plan Included</p>",
+   "descriptionHtml": "<p><meta charset=\"utf-8\">Built In Printer, Guest Facing Display WiFi. Cellular Data Plan Included</p>",
    "images": [],
    "options": [
     {
@@ -759,9 +759,9 @@
      "name": "Custom Bundle Choice ",
      "values": [
       "Point of Sale (Sunmi T2) + Point of Purchase",
-      "Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Point of Sale (Sunmi T2) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite)",
       "Point of Sale (Sunmi T3) + Point of Purchase",
-      "Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)"
+      "Point of Sale (Sunmi T3) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite)"
      ]
     },
     {
@@ -849,7 +849,7 @@
     },
     {
      "id": "45660475949205",
-     "title": "Buy Now / Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite)",
+     "title": "Buy Now / Point of Sale (Sunmi T2) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite)",
      "sku": null,
      "price": {
       "amount": 569,
@@ -860,14 +860,14 @@
      "requiresShipping": true,
      "options": [
       "Buy Now",
-      "Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Point of Sale (Sunmi T2) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite)",
       "Kitchen Display System (Sunmi T2 Lite)"
      ],
      "imageUrl": null
     },
     {
      "id": "45660480635029",
-     "title": "Buy Now / Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Self Service Kiosk (Sunmi K2 Mini)",
+     "title": "Buy Now / Point of Sale (Sunmi T2) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite) / Self Service Kiosk (Sunmi K2 Mini)",
      "sku": null,
      "price": {
       "amount": 569,
@@ -878,14 +878,14 @@
      "requiresShipping": true,
      "options": [
       "Buy Now",
-      "Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Point of Sale (Sunmi T2) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite)",
       "Self Service Kiosk (Sunmi K2 Mini)"
      ],
      "imageUrl": null
     },
     {
      "id": "45660480667797",
-     "title": "Buy Now / Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)",
+     "title": "Buy Now / Point of Sale (Sunmi T2) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)",
      "sku": null,
      "price": {
       "amount": 569,
@@ -896,14 +896,14 @@
      "requiresShipping": true,
      "options": [
       "Buy Now",
-      "Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Point of Sale (Sunmi T2) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite)",
       "Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)"
      ],
      "imageUrl": null
     },
     {
      "id": "45660480700565",
-     "title": "Buy Now / Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / None",
+     "title": "Buy Now / Point of Sale (Sunmi T2) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite) / None",
      "sku": null,
      "price": {
       "amount": 569,
@@ -914,7 +914,7 @@
      "requiresShipping": true,
      "options": [
       "Buy Now",
-      "Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Point of Sale (Sunmi T2) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite)",
       "None"
      ],
      "imageUrl": null
@@ -993,7 +993,7 @@
     },
     {
      "id": "45660476014741",
-     "title": "Buy Now / Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite)",
+     "title": "Buy Now / Point of Sale (Sunmi T3) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite)",
      "sku": null,
      "price": {
       "amount": 569,
@@ -1004,14 +1004,14 @@
      "requiresShipping": true,
      "options": [
       "Buy Now",
-      "Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Point of Sale (Sunmi T3) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite)",
       "Kitchen Display System (Sunmi T2 Lite)"
      ],
      "imageUrl": null
     },
     {
      "id": "45660480831637",
-     "title": "Buy Now / Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Self Service Kiosk (Sunmi K2 Mini)",
+     "title": "Buy Now / Point of Sale (Sunmi T3) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite) / Self Service Kiosk (Sunmi K2 Mini)",
      "sku": null,
      "price": {
       "amount": 569,
@@ -1022,14 +1022,14 @@
      "requiresShipping": true,
      "options": [
       "Buy Now",
-      "Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Point of Sale (Sunmi T3) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite)",
       "Self Service Kiosk (Sunmi K2 Mini)"
      ],
      "imageUrl": null
     },
     {
      "id": "45660480864405",
-     "title": "Buy Now / Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)",
+     "title": "Buy Now / Point of Sale (Sunmi T3) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)",
      "sku": null,
      "price": {
       "amount": 569,
@@ -1040,14 +1040,14 @@
      "requiresShipping": true,
      "options": [
       "Buy Now",
-      "Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Point of Sale (Sunmi T3) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite)",
       "Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)"
      ],
      "imageUrl": null
     },
     {
      "id": "45660480897173",
-     "title": "Buy Now / Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / None",
+     "title": "Buy Now / Point of Sale (Sunmi T3) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite) / None",
      "sku": null,
      "price": {
       "amount": 569,
@@ -1058,7 +1058,7 @@
      "requiresShipping": true,
      "options": [
       "Buy Now",
-      "Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Point of Sale (Sunmi T3) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite)",
       "None"
      ],
      "imageUrl": null
@@ -1137,7 +1137,7 @@
     },
     {
      "id": "45660476080277",
-     "title": "Pay As You Go / Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite)",
+     "title": "Pay As You Go / Point of Sale (Sunmi T2) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite)",
      "sku": null,
      "price": {
       "amount": 569,
@@ -1148,14 +1148,14 @@
      "requiresShipping": true,
      "options": [
       "Pay As You Go",
-      "Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Point of Sale (Sunmi T2) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite)",
       "Kitchen Display System (Sunmi T2 Lite)"
      ],
      "imageUrl": null
     },
     {
      "id": "45660481028245",
-     "title": "Pay As You Go / Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Self Service Kiosk (Sunmi K2 Mini)",
+     "title": "Pay As You Go / Point of Sale (Sunmi T2) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite) / Self Service Kiosk (Sunmi K2 Mini)",
      "sku": null,
      "price": {
       "amount": 569,
@@ -1166,14 +1166,14 @@
      "requiresShipping": true,
      "options": [
       "Pay As You Go",
-      "Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Point of Sale (Sunmi T2) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite)",
       "Self Service Kiosk (Sunmi K2 Mini)"
      ],
      "imageUrl": null
     },
     {
      "id": "45660481061013",
-     "title": "Pay As You Go / Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)",
+     "title": "Pay As You Go / Point of Sale (Sunmi T2) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)",
      "sku": null,
      "price": {
       "amount": 569,
@@ -1184,14 +1184,14 @@
      "requiresShipping": true,
      "options": [
       "Pay As You Go",
-      "Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Point of Sale (Sunmi T2) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite)",
       "Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)"
      ],
      "imageUrl": null
     },
     {
      "id": "45660481093781",
-     "title": "Pay As You Go / Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / None",
+     "title": "Pay As You Go / Point of Sale (Sunmi T2) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite) / None",
      "sku": null,
      "price": {
       "amount": 569,
@@ -1202,7 +1202,7 @@
      "requiresShipping": true,
      "options": [
       "Pay As You Go",
-      "Point of Sale (Sunmi T2) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Point of Sale (Sunmi T2) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite)",
       "None"
      ],
      "imageUrl": null
@@ -1281,7 +1281,7 @@
     },
     {
      "id": "45660476145813",
-     "title": "Pay As You Go / Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite)",
+     "title": "Pay As You Go / Point of Sale (Sunmi T3) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite)",
      "sku": null,
      "price": {
       "amount": 569,
@@ -1292,14 +1292,14 @@
      "requiresShipping": true,
      "options": [
       "Pay As You Go",
-      "Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Point of Sale (Sunmi T3) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite)",
       "Kitchen Display System (Sunmi T2 Lite)"
      ],
      "imageUrl": null
     },
     {
      "id": "45660481224853",
-     "title": "Pay As You Go / Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Self Service Kiosk (Sunmi K2 Mini)",
+     "title": "Pay As You Go / Point of Sale (Sunmi T3) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite) / Self Service Kiosk (Sunmi K2 Mini)",
      "sku": null,
      "price": {
       "amount": 569,
@@ -1310,14 +1310,14 @@
      "requiresShipping": true,
      "options": [
       "Pay As You Go",
-      "Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Point of Sale (Sunmi T3) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite)",
       "Self Service Kiosk (Sunmi K2 Mini)"
      ],
      "imageUrl": null
     },
     {
      "id": "45660481257621",
-     "title": "Pay As You Go / Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)",
+     "title": "Pay As You Go / Point of Sale (Sunmi T3) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite) / Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)",
      "sku": null,
      "price": {
       "amount": 569,
@@ -1328,14 +1328,14 @@
      "requiresShipping": true,
      "options": [
       "Pay As You Go",
-      "Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Point of Sale (Sunmi T3) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite)",
       "Kitchen Display System (Sunmi T2 Lite) + Self Service Kiosk (Sunmi K2 Mini)"
      ],
      "imageUrl": null
     },
     {
      "id": "45660481290389",
-     "title": "Pay As You Go / Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite) / None",
+     "title": "Pay As You Go / Point of Sale (Sunmi T3) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite) / None",
      "sku": null,
      "price": {
       "amount": 569,
@@ -1346,7 +1346,7 @@
      "requiresShipping": true,
      "options": [
       "Pay As You Go",
-      "Point of Sale (Sunmi T3) + Point of Purchase + Customer Facing Display (Sunmi T2 Lite)",
+      "Point of Sale (Sunmi T3) + Point of Purchase + Guest Facing Display (Sunmi T2 Lite)",
       "None"
      ],
      "imageUrl": null
@@ -1567,7 +1567,7 @@
   {
    "id": "8577356726421",
    "slug": "sunmi-t2-15-10-point-of-sale",
-   "title": "Sunmi-T2: 15\" Point of Sale with 10\" Customer Facing Display",
+   "title": "Sunmi-T2: 15\" Point of Sale with 10\" Guest Facing Display",
    "vendor": "eatOS - Restaurants Made Simple",
    "productType": null,
    "tags": [],
@@ -1575,7 +1575,7 @@
    "images": [
     {
      "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/Sunmi_-_T2S_-_15Point_of_Sale_with_10Customer_Facing_Display_1.png?v=1723219915",
-     "alt": "Sunmi-T2: 15\" Point of Sale with 10\" Customer Facing Display",
+     "alt": "Sunmi-T2: 15\" Point of Sale with 10\" Guest Facing Display",
      "width": 1200,
      "height": 1200
     }
@@ -1714,7 +1714,7 @@
   },
   {
    "id": "8577334575253",
-   "slug": "customer-facing-display-t2",
+   "slug": "guest-facing-display-t2",
    "title": "Sunmi T2 Lite 15\"",
    "vendor": "eatOS - Restaurants Made Simple",
    "productType": null,
@@ -1761,7 +1761,7 @@
    "compareAtPrice": null,
    "available": true,
    "collectionSlugs": [
-    "customer-facing-display",
+    "guest-facing-display",
     "kitchen-display-systems"
    ],
    "publishedAt": "2024-08-09T09:25:48-04:00",
@@ -1938,7 +1938,7 @@
    "vendor": "eatOS - Restaurant management made simple",
    "productType": null,
    "tags": [],
-   "descriptionHtml": "<div>\n<meta charset=\"utf-8\">\n<p dir=\"ltr\"><meta charset=\"utf-8\">15” Station with 10” Customer Facing Display <br>with Built-In Printer</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Credit Card Reader</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Free Remote Assistance</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Free Menu Build</p>\n</div>\n<ul></ul>",
+   "descriptionHtml": "<div>\n<meta charset=\"utf-8\">\n<p dir=\"ltr\"><meta charset=\"utf-8\">15” Station with 10” Guest Facing Display <br>with Built-In Printer</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Credit Card Reader</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Free Remote Assistance</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Free Menu Build</p>\n</div>\n<ul></ul>",
    "images": [
     {
      "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/QuickService_1_1.png?v=1736173124",
@@ -2317,7 +2317,7 @@
    "vendor": "eatOS - Restaurant management made simple",
    "productType": null,
    "tags": [],
-   "descriptionHtml": "<div>\n<meta charset=\"utf-8\">\n<p dir=\"ltr\"><meta charset=\"utf-8\">15” Station with 10” Customer Facing Display <br>with Built-In Printer</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">15” Kitchen Display with Stand</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Credit Card Reader</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Free Menu Build</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Free Remote Assistance</p>\n</div>\n<ul></ul>",
+   "descriptionHtml": "<div>\n<meta charset=\"utf-8\">\n<p dir=\"ltr\"><meta charset=\"utf-8\">15” Station with 10” Guest Facing Display <br>with Built-In Printer</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">15” Kitchen Display with Stand</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Credit Card Reader</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Free Menu Build</p>\n<p dir=\"ltr\"><meta charset=\"utf-8\">Free Remote Assistance</p>\n</div>\n<ul></ul>",
    "images": [
     {
      "url": "https://cdn.shopify.com/s/files/1/0461/6821/1605/files/fs1.png?v=1738150113",

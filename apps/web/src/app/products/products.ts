@@ -68,14 +68,14 @@ export const products = [
     ],
   },
   {
-    slug: "customer-facing-display",
-    title: "Customer Facing Display",
+    slug: "guest-facing-display",
+    title: "Guest Facing Display",
     tagline: "Order transparency. Instant trust.",
     description:
       "Put the order in the customer's hands. Real-time display of items, totals, and promotions.",
     icon: "Monitor",
     color: "blue",
-    href: "/products/customer-facing-display",
+    href: "/products/guest-facing-display",
     features: [
       "Live order preview",
       "Promo display",
