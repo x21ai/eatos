@@ -13,6 +13,30 @@ import emblemsZip from './assets/eatOS_Emblems.zip.asset.json';
 import productShot from '@/assets/point-of-purchase-terminals.png.asset.json';
 import lifestyleShot from '@/assets/pizzeria-delivery.jpg.asset.json';
 
+import g1 from './assets/gallery/eatOS_Image_24.jpg.asset.json';
+import g2 from './assets/gallery/eatOS_Image_21_1.jpg.asset.json';
+import g3 from './assets/gallery/eatOS_Image_20.jpg.asset.json';
+import g4 from './assets/gallery/eatOS_Image_19.jpg.asset.json';
+import g5 from './assets/gallery/eatOS_Image_18.jpg.asset.json';
+import g6 from './assets/gallery/eatOS_Image_17.jpg.asset.json';
+import g7 from './assets/gallery/eatOS_Image_16.jpg.asset.json';
+import g8 from './assets/gallery/eatOS_Image_13.jpg.asset.json';
+import g9 from './assets/gallery/eatOS_Image_11.jpg.asset.json';
+import g10 from './assets/gallery/eatOS_Image_14.jpg.asset.json';
+
+export const miscGallery = [
+  { url: g1.url, caption: 'Customer Facing Display at the counter' },
+  { url: g2.url, caption: 'Kitchen Display System in service' },
+  { url: g3.url, caption: 'Self Service Kiosk, floor standing' },
+  { url: g4.url, caption: 'Guest ordering at a Self Service Kiosk' },
+  { url: g5.url, caption: 'Online ordering app' },
+  { url: g6.url, caption: 'Mobile ordering in the dining room' },
+  { url: g7.url, caption: 'Handheld payments at the table' },
+  { url: g8.url, caption: 'Tap to pay on a handheld terminal' },
+  { url: g9.url, caption: 'Point of Sale terminal in use' },
+  { url: g10.url, caption: 'QR code ordering at the table' },
+];
+
 export const hero = {
   eyebrow: 'Resources',
   title: 'Media Kit',
