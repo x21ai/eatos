@@ -25,11 +25,12 @@ import p10 from './assets/products/p10.png.asset.json';
 
 export const productGallery = [
   { url: p1.url, caption: 'Dual screen Point of Sale terminal' },
-  { url: p2.url, caption: 'Self Service Kiosk, Touch to Start' },
-  { url: p3.url, caption: 'Self Service Kiosk ordering screen' },
+  { url: p2.url, caption: 'Point of Sale terminal with clock in keypad' },
+  { url: p3.url, caption: 'Self Service Kiosk, floor standing with ordering screen' },
   { url: p4.url, caption: 'Table Side ordering on mobile' },
-  { url: p5.url, caption: 'Analytics and Reporting on tablet' },
-  { url: p6.url, caption: 'Workforce Management on tablet and mobile' },
+  { url: p5.url, caption: 'Handheld terminal with tap to pay' },
+  { url: p6.url, caption: 'Self Service Kiosk, counter top with ordering screen' },
+
   { url: p7.url, caption: 'Workforce Management on mobile' },
   { url: p8.url, caption: 'Table Side ordering on tablet and mobile' },
   { url: p9.url, caption: 'Customer Facing Display with dual screen' },
