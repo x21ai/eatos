@@ -7,6 +7,7 @@ import { ArrowRight } from 'lucide-react';
 import { Placeholder } from '@/components/marketing/Placeholder';
 import { NewsletterSection } from '@/components/NewsletterSection';
 import { newsHero, categories, newsItems, formatDate } from './content';
+import newsHeroImage from '../blog/assets/blog-hero.jpg.asset.json';
 
 const PAGE_SIZE = 12;
 
