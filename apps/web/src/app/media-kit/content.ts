@@ -10,8 +10,31 @@ import logosZip from './assets/eatOS_Logos.zip.asset.json';
 import iconsZip from './assets/eatOS_Icons.zip.asset.json';
 import emblemsZip from './assets/eatOS_Emblems.zip.asset.json';
 
-import productShot from '@/assets/point-of-purchase-terminals.png.asset.json';
 import lifestyleShot from '@/assets/pizzeria-delivery.jpg.asset.json';
+
+import p1 from './assets/products/p1.png.asset.json';
+import p2 from './assets/products/p2.png.asset.json';
+import p3 from './assets/products/p3.png.asset.json';
+import p4 from './assets/products/p4.png.asset.json';
+import p5 from './assets/products/p5.png.asset.json';
+import p6 from './assets/products/p6.png.asset.json';
+import p7 from './assets/products/p7.png.asset.json';
+import p8 from './assets/products/p8.png.asset.json';
+import p9 from './assets/products/p9.png.asset.json';
+import p10 from './assets/products/p10.png.asset.json';
+
+export const productGallery = [
+  { url: p1.png ?? p1.url, caption: 'Dual screen Point of Sale terminal' },
+  { url: p2.url, caption: 'Self Service Kiosk, Touch to Start' },
+  { url: p3.url, caption: 'Self Service Kiosk ordering screen' },
+  { url: p4.url, caption: 'Table Side ordering on mobile' },
+  { url: p5.url, caption: 'Analytics and Reporting on tablet' },
+  { url: p6.url, caption: 'Workforce Management on tablet and mobile' },
+  { url: p7.url, caption: 'Workforce Management on mobile' },
+  { url: p8.url, caption: 'Table Side ordering on tablet and mobile' },
+  { url: p9.url, caption: 'Customer Facing Display with dual screen' },
+  { url: p10.url, caption: 'Point of Sale terminal with open order' },
+];
 
 import g1 from './assets/gallery/eatOS_Image_24.jpg.asset.json';
 import g2 from './assets/gallery/eatOS_Image_21_1.jpg.asset.json';
