@@ -1,30 +1,35 @@
-# Newsroom page, linked from the footer
+# Media Kit page
 
-The footer "Newsroom" link currently points to `/blog`. A newsroom already exists at `/news` with 97 imported items (each with title, category, date, author, excerpt, hero image and body), served at their original `/news/<slug>` URLs, with `/newsroom` already rewriting to `/news`.
+A new `/media-kit` page carrying the same content blocks as the reference, rebuilt in the site's black Montserrat theme instead of the light Wix layout.
 
-So this is two things: point the footer link at the real newsroom, and restructure the `/news` index so its layout matches the reference screenshot while keeping our black site styling.
+## Content on the page
 
-## What changes
+Hero: "Media Kit" title, short eyebrow ("Resources") and one-line description about using eatOS brand assets correctly.
 
-1. **Footer link**: `Newsroom` goes to `/news` instead of `/blog`.
+Then the same six items from the reference:
 
-2. **Newsroom index layout** (`/news`), rebuilt to the reference structure, top to bottom:
-   - Breadcrumb line ("Newsroom").
-   - Featured lead item: category tag, date, large headline, short description, "Read More" button on the left; the item's hero image on the right.
-   - Category strip: a full-width dark bar with the four categories (Event News, Product News, Industry News, Company News), each with an icon, filtering the list below.
-   - Two spotlight cards side by side: image-backed panels with category tag, date, headline, description and a "Read More" button.
-   - "Latest News" section: centered heading, then a two-column grid of compact cards, each with a thumbnail on the left and date, title, excerpt and "Read More" on the right. Load-more pagination stays.
-   - "Access Brand Materials" band with the media-inquiries line and a "Media Kit" button.
-   - Existing newsletter section stays at the bottom.
+1. **Brand Guidelines** (featured wide card) with the description about consistent brand identity, logo usage, color palette, typography, imagery and tone, plus a Download action.
+2. **eatOS logo** (featured wide card) with the jewel and wordmark description and a Download action.
+3. **eatOS Icons** with Download.
+4. **eatOS Emblem** with Download.
+5. **eatOS Products** with an Explore Photos action.
+6. **Miscellaneous Images** with an Explore Photos action.
 
-3. Styling stays ours: black background, Montserrat, brand pink accents, same container width, rounded cards and hairline borders as the blog index. Same hero top spacing as other interior pages.
+Closing CTA row matching the brochures page (Book a Demo / View Pricing).
 
-4. Category filtering keeps working through the URL (`/news?category=...`) so filtered views stay linkable.
+## Layout and styling
 
-## Technical notes
+- Two full-width feature cards at the top (text left, asset visual right), then a 2-column grid for the remaining four, matching the reference's hierarchy but on dark surfaces (`bg-white/[0.04]` cards, white headings, zinc body text, brand pink `#d70480` accents).
+- Same reveal-on-scroll motion, spacing scale and hero top offset (`pt-[128px] md:pt-[176px]`) used by `/brochures`, so the page sits consistently with the rest of the site.
+- Responsive: single column on mobile, stacked cards on tablet, two columns on desktop.
 
-- Files touched: `apps/web/src/components/Footer.tsx`, `apps/web/src/app/news/NewsIndexClient.tsx`, and `apps/web/src/app/news/content.ts` only if the category strip needs icon metadata.
-- No content re-import: the existing `news.generated.json` supplies everything. Item detail pages at `/news/<slug>` are unchanged.
-- The "Media Kit" button targets the existing brochures/press destination; if no media kit asset exists it links to `/brochures`.
-- No em dashes in any copy.
-- Verify at 390px, 768px and 1280px with no horizontal overflow and no console errors.
+## Assets
+
+The reference's downloadable files (brand book PDF, logo pack, icon set, emblem, product and lifestyle photo sets) are not in the repo. Each card will render its visual from an existing brand/product asset where one is already available, and its Download / Explore Photos action will point to a placeholder target flagged with a TODO until you send the real files or links. Send the PDFs/zips and I'll wire them to the CDN.
+
+## Wiring
+
+- Route: `apps/web/src/app/media-kit/page.tsx` (metadata: title, description, og/twitter) plus `MediaKitClient.tsx` for the interactive/animated parts, matching the brochures pattern.
+- Add "Media Kit" to the footer Resources column and to the `/resources` hub card grid.
+- Add `/media-kit` to `apps/web/src/app/sitemap.ts`.
+- Verify the route returns 200 and renders cleanly at mobile, tablet and desktop widths.
