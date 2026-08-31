@@ -211,7 +211,7 @@ export default function MediaKitClient() {
                     {item.description}
                   </p>
                   <div className="mt-7">
-                    <Action item={item} />
+                    <Action item={item} onExplore={() => open(item)} />
                   </div>
                 </div>
                 <div className="order-1 md:order-2">
@@ -236,7 +236,7 @@ export default function MediaKitClient() {
                     </h3>
                     <p className="mt-3 text-[15px] leading-7 text-zinc-400">{item.description}</p>
                     <div className="mt-6">
-                      <Action item={item} />
+                      <Action item={item} onExplore={() => open(item)} />
                     </div>
                   </div>
                   <div className="transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
