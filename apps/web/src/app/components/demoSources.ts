@@ -78,7 +78,7 @@ export const demoSources: DemoSource[] = [
 
   {
     id: 'cfd',
-    label: 'CFD',
+    label: 'Guest Facing Display',
     url: 'https://cfd6.lovable.app/',
     blurb: 'A guest facing display for order clarity, tips, and pickup details.',
     device: 'tablet',
