@@ -55,7 +55,7 @@ function Visual({ item, large = false }) {
   );
 }
 
-function GalleryModal({ images, index, onClose, onPrev, onNext, title }) {
+function GalleryModal({ images, index, onClose, onPrev, onNext, onSelect, title }) {
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'Escape') onClose();
