@@ -202,6 +202,7 @@ const LINK_GROUPS = [
       { label: 'Report Fraud', href: '/report-fraud' },
       { label: 'Newsroom', href: '/news' },
       { label: 'Comparison', href: '/comparison' },
+      { label: 'Reseller', href: '/reseller' },
     ],
   },
   {
