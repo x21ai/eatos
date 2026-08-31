@@ -42,15 +42,14 @@ export default function NewsIndexClient({ initialCategory = 'All News' }) {
             transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
             className="relative overflow-hidden rounded-[24px] border border-white/10 md:rounded-[32px]"
           >
-            {featured?.image ? (
-              <img
-                src={featured.image}
-                alt=""
-                aria-hidden
-                className="absolute inset-0 h-full w-full object-cover opacity-40"
-              />
-            ) : null}
-            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/40" />
+            <img
+              src={newsHeroImage.url}
+              alt=""
+              aria-hidden
+              className="absolute inset-0 h-full w-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-black/70" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/50" />
             <div className="relative px-6 py-14 sm:px-10 sm:py-16 md:px-14 md:py-20">
               <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-on-dark">
                 {newsHero.eyebrow}
