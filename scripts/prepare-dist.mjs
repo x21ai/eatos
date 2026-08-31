@@ -129,5 +129,5 @@ writeFileSync("dist/_headers", "/*\n  X-Content-Type-Options: nosniff\n");
 
 console.log(
   `dist/ prepared from apps/web/.next (${pages} pages, ${routes.length} clean URLs, ` +
-    `${parentRoutes.length} overview routes served as .html, ${rewritten} files relinked)`,
+    `each page written as <route>.html and <route>/index.html)`,
 );
