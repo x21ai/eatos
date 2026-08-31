@@ -166,6 +166,23 @@ function Action({ item, onExplore }) {
 }
 
 export default function MediaKitClient() {
+  const [gallery, setGallery] = useState(null);
+  const [index, setIndex] = useState(0);
+
+  const open = useCallback((item) => {
+    setGallery(item);
+    setIndex(0);
+  }, []);
+  const close = useCallback(() => setGallery(null), []);
+  const prev = useCallback(
+    () => setGallery((g) => (setIndex((i) => (i - 1 + g.gallery.length) % g.gallery.length), g)),
+    [],
+  );
+  const next = useCallback(
+    () => setGallery((g) => (setIndex((i) => (i + 1) % g.gallery.length), g)),
+    [],
+  );
+
   return (
     <main className="bg-black text-white">
       {/* Hero */}
