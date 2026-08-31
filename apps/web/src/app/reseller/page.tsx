@@ -1,8 +1,7 @@
 // @ts-nocheck
 'use client';
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import { useState } from 'react';
 import {
   ArrowRight,
   ChevronDown,
@@ -15,22 +14,11 @@ import { showcaseLogos } from '@/components/marketing/customerShowcase';
 import ResellerForm from './ResellerForm';
 import { heroImage, glanceBenefits, faqs } from './content';
 
-const MEETINGS_SCRIPT_SRC =
-  'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
-
 const benefitIcons = [Handshake, CalendarDays, Megaphone, FileText];
 
 export default function ResellerPage() {
   const [openFaq, setOpenFaq] = useState(null);
 
-  useEffect(() => {
-    if (document.querySelector(`script[src="${MEETINGS_SCRIPT_SRC}"]`)) return;
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = MEETINGS_SCRIPT_SRC;
-    script.async = true;
-    document.body.appendChild(script);
-  }, []);
 
   return (
     <div className="bg-black text-white">
