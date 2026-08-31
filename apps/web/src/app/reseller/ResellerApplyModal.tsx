@@ -36,7 +36,7 @@ export default function ResellerApplyModal({ open, onClose }: Props) {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-3xl rounded-3xl bg-white p-6 text-black shadow-2xl md:p-10"
+        className="relative w-full max-w-6xl rounded-3xl bg-white p-6 text-black shadow-2xl md:p-10"
         onClick={(e) => e.stopPropagation()}
       >
         <button
