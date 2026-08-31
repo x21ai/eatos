@@ -140,7 +140,7 @@ export default function SupportHomeClient() {
       </section>
 
       {/* Contact channels */}
-      <section className="border-t border-white/10 bg-zinc-950 py-14 md:py-18">
+      <section className="border-t border-white/10 bg-zinc-950 py-14 md:py-20">
         <div className="site-container">
           <h2 className="text-2xl font-bold tracking-tighter text-white sm:text-3xl">
             Reach a real specialist
