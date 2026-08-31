@@ -46,7 +46,7 @@ const serviceStyles = [
     iconClass: 'bg-orange-500/20 text-orange-400',
     checkClass: 'text-orange-500',
     description: 'Speed is everything. Take orders and move queues fast.',
-    bullets: ['Lightning-fast order entry', 'Self-service kiosk mode', 'Next-day deposits'],
+    bullets: ['Lightning-fast order entry', 'Self-service kiosk mode', 'cloud-based ecosystem'],
   },
   {
     name: 'Full Service',
