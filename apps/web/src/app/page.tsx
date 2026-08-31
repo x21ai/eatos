@@ -8,6 +8,7 @@ import {
   Gift,
 
   Command,
+  Cpu,
   CreditCard,
   Sparkles,
   Utensils,
