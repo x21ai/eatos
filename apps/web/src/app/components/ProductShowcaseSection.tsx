@@ -1,234 +1,28 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { useCallback, useRef, useState } from 'react';
+import { Play } from 'lucide-react';
 import { motion } from 'motion/react';
 import { demoSources } from './demoSources';
 
-// TODO: Dashboard and inventoryOS still use placeholder mockups.
-import posPlaceholder from './assets/pos-demo-poster.jpg.asset.json';
-import dashPlaceholder from './assets/dashboard-demo-poster.jpg.asset.json';
-import invPlaceholder from './assets/inventoryos-demo-poster.jpg.asset.json';
-
-import posShot from './assets/showcase-pos.png.asset.json';
-import kdsShot from './assets/showcase-kds.png.asset.json';
-import kioskShot from './assets/showcase-kiosk.png.asset.json';
-import cfdShot from './assets/showcase-CFD.png.asset.json';
-import tablesideShot from './assets/showcase-Tableside_Ordering.png.asset.json';
-import analyticsShot from './assets/showcase-Analytics.png.asset.json';
-import deliveryShot from './assets/showcase-Servebot.png.asset.json';
-import popShot from './assets/showcase-POP_edited.png.asset.json';
-import onlineShot from './assets/showcase-OrderOS.png.asset.json';
-import workforceShot from './assets/showcase-Workforce.png.asset.json';
-
-type ShowcaseProduct = {
+type ShowcaseBox = {
+  id: string;
   name: string;
   href: string;
-  image: string;
-  demoId?: string;
-  frame?: 'tablet';
 };
 
-function TabletFrame({
-  src,
-  alt,
-  className = '',
-}: {
-  src: string;
-  alt: string;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`relative w-[108%] rounded-md border border-white/25 bg-zinc-700 p-[2.5%] shadow-[0_25px_45px_rgba(0,0,0,0.65)] ${className}`}
-    >
-      <div className="absolute left-1/2 top-[1.1%] h-1 w-1 -translate-x-1/2 rounded-full bg-white/40" />
-      <div className="overflow-hidden bg-black">
-        <img src={src} alt={alt} loading="lazy" className="block w-full object-cover" />
-      </div>
-    </div>
-  );
-}
-
-
-const showcaseProducts: ShowcaseProduct[] = [
-  { name: 'AI Enabled\nPoint of Sale', href: '/pointofsale', image: posShot.url, demoId: 'pos' },
+const showcaseBoxes: ShowcaseBox[] = [
+  { id: 'pos', name: 'AI Enabled Point of Sale', href: '/pointofsale' },
   {
-    name: 'AI Enabled\nKitchen Display System',
+    id: 'kds',
+    name: 'AI Enabled Kitchen Display System',
     href: '/products/kitchen-display-system',
-    image: kdsShot.url,
-    demoId: 'kds',
   },
-  {
-    name: 'Self Service Kiosk',
-    href: '/products/self-service-kiosk',
-    image: kioskShot.url,
-    demoId: 'kiosk',
-  },
-  {
-    name: 'Guest Facing Display',
-    href: '/products/guest-facing-display',
-    image: cfdShot.url,
-    demoId: 'cfd',
-  },
-  {
-    name: 'Dashboard',
-    href: '/products/reporting-analytics',
-    image: dashPlaceholder.url,
-    demoId: 'dashboard',
-    frame: 'tablet',
-  },
-  {
-    name: 'inventoryOS',
-    href: '/products/simplified-inventory-management',
-    image: invPlaceholder.url,
-    demoId: 'inventoryos',
-    frame: 'tablet',
-  },
-  {
-    name: 'Table Side\nOrder & Pay',
-    href: '/products/tableside-order-and-pay',
-    image: tablesideShot.url,
-    demoId: 'pos',
-  },
-  {
-    name: 'Analytics & Reporting',
-    href: '/products/reporting-analytics',
-    image: analyticsShot.url,
-    demoId: 'dashboard',
-  },
-  {
-    name: 'Autonomous & Automated Delivery',
-    href: '/products/autonomous-and-automated-delivery',
-    image: deliveryShot.url,
-    demoId: 'inventoryos',
-  },
-  {
-    name: 'AI Enabled\nPoint of Purchase',
-    href: '/products/point-of-purchase',
-    image: popShot.url,
-    demoId: 'pos',
-  },
-
-  {
-    name: 'Online Ordering',
-    href: '/products/apponlineorderingdelivery',
-    image: onlineShot.url,
-    demoId: 'kiosk',
-  },
-  {
-    name: 'Workforce Management',
-    href: '/products/workforce-management',
-    image: workforceShot.url,
-    demoId: 'dashboard',
-  },
+  { id: 'kiosk', name: 'Self Service Kiosk', href: '/products/self-service-kiosk' },
+  { id: 'cfd', name: 'Guest Facing Display', href: '/products/guest-facing-display' },
+  { id: 'dashboard', name: 'Dashboard', href: '/products/reporting-analytics' },
+  { id: 'inventoryos', name: 'inventoryOS', href: '/products/simplified-inventory-management' },
 ];
-
-
-
-function ProductAnimationModal({
-  product,
-  onClose,
-}: {
-  product: ShowcaseProduct;
-  onClose: () => void;
-}) {
-  const demo = demoSources.find((d) => d.id === product.demoId);
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    document.addEventListener('keydown', onKey);
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      document.body.style.overflow = prev;
-    };
-  }, [onClose]);
-
-  if (typeof document === 'undefined') return null;
-
-  const overlay = (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-label={`${product.name} demo`}
-      style={{ zIndex: 2147483000 }}
-      className="fixed inset-0 flex items-center justify-center bg-black/85 p-0 backdrop-blur-sm sm:p-6"
-      onClick={onClose}
-    >
-      <div
-        className="flex h-full w-full max-w-[1100px] flex-col overflow-hidden bg-zinc-950 shadow-2xl sm:h-auto sm:rounded-2xl"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-3 sm:px-6">
-          <div className="min-w-0">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-brand-on-dark">
-              How it Works
-            </p>
-            <h2 className="truncate text-sm font-bold text-white sm:text-base">{product.name}</h2>
-          </div>
-          <div className="flex shrink-0 items-center gap-2">
-            <a
-              href={product.href}
-              className="hidden rounded-full border border-white/15 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-white/10 sm:inline-flex"
-            >
-              Learn more
-            </a>
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label="Close demo"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:bg-white/10"
-            >
-              <X size={16} />
-            </button>
-          </div>
-        </div>
-
-        <div className="flex flex-1 flex-col items-center justify-center bg-black p-3 sm:p-6">
-          {demo?.media ? (
-            <>
-              <video
-                key={demo.id}
-                className="w-full rounded-xl bg-black"
-                poster={demo.media.poster}
-                autoPlay
-                muted
-                loop
-                playsInline
-                controls
-              >
-                {demo.media.sources.map((s) => (
-                  <source key={s.src} src={s.src} type={s.type} />
-                ))}
-              </video>
-              <p className="mt-3 text-center text-sm text-white/70">{demo.media.caption}</p>
-            </>
-          ) : product.frame === 'tablet' ? (
-            <TabletFrame
-              src={product.image}
-              alt={`${product.name} on an eatOS tablet`}
-              className="max-w-[900px]"
-            />
-          ) : (
-            <img
-              src={product.image}
-              alt={`${product.name} on an eatOS device`}
-              className="max-h-[70vh] w-auto max-w-full object-contain"
-            />
-          )}
-        </div>
-      </div>
-    </div>
-  );
-
-  return createPortal(overlay, document.body);
-}
-
 
 interface ProductShowcaseSectionProps {
   title?: string;
@@ -239,33 +33,33 @@ export function ProductShowcaseSection({
   title = 'How it Works',
   description = 'Everything your restaurant needs today and for the future.',
 }: ProductShowcaseSectionProps) {
-  const trackRef = useRef<HTMLDivElement | null>(null);
-  const [atStart, setAtStart] = useState(true);
-  const [atEnd, setAtEnd] = useState(false);
-  const [activeProduct, setActiveProduct] = useState<ShowcaseProduct | null>(null);
-  const closeModal = useCallback(() => setActiveProduct(null), []);
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
 
+  const toggle = useCallback((id: string) => {
+    setActiveId((current) => {
+      if (current === id) {
+        const el = videoRefs.current[id];
+        if (el) {
+          el.pause();
+          el.currentTime = 0;
+        }
+        return null;
+      }
 
-  const updateArrows = useCallback(() => {
-    const el = trackRef.current;
-    if (!el) return;
-    setAtStart(el.scrollLeft <= 4);
-    setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 4);
+      if (current) {
+        const prev = videoRefs.current[current];
+        if (prev) {
+          prev.pause();
+          prev.currentTime = 0;
+        }
+      }
+
+      const next = videoRefs.current[id];
+      if (next) void next.play().catch(() => undefined);
+      return id;
+    });
   }, []);
-
-  useEffect(() => {
-    updateArrows();
-    window.addEventListener('resize', updateArrows);
-    return () => window.removeEventListener('resize', updateArrows);
-  }, [updateArrows]);
-
-  const scrollByCards = (direction: 1 | -1) => {
-    const el = trackRef.current;
-    if (!el) return;
-    const card = el.querySelector<HTMLElement>('[data-showcase-card]');
-    const step = card ? card.offsetWidth + 24 : el.clientWidth * 0.8;
-    el.scrollBy({ left: direction * step, behavior: 'smooth' });
-  };
 
   return (
     <section className="py-14 md:py-20 bg-black border-t border-white/5">
@@ -289,72 +83,58 @@ export function ProductShowcaseSection({
           </motion.p>
         </div>
 
-        <div className="relative">
-          {/* Arrows */}
-          <button
-            type="button"
-            aria-label="Previous products"
-            onClick={() => scrollByCards(-1)}
-            disabled={atStart}
-            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-20 h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/70 backdrop-blur-md text-white transition-all hover:bg-white/10 hover:border-white/30 disabled:opacity-25 disabled:pointer-events-none"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <button
-            type="button"
-            aria-label="Next products"
-            onClick={() => scrollByCards(1)}
-            disabled={atEnd}
-            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-20 h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/70 backdrop-blur-md text-white transition-all hover:bg-white/10 hover:border-white/30 disabled:opacity-25 disabled:pointer-events-none"
-          >
-            <ChevronRight size={20} />
-          </button>
+        <div className="overflow-hidden rounded-3xl border border-white/12 bg-white/[0.03] p-2 sm:p-3">
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3">
+            {showcaseBoxes.map((box) => {
+              const demo = demoSources.find((d) => d.id === box.id);
+              const isActive = activeId === box.id;
 
-          <div
-            ref={trackRef}
-            onScroll={updateArrows}
-            className="flex gap-16 md:gap-24 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hidden px-10 md:px-20 pb-2 [scroll-padding-left:2.5rem]"
-          >
-            {showcaseProducts.map((product) => (
-              <button
-                key={product.name}
-                type="button"
-                onClick={() => setActiveProduct(product)}
-                aria-label={`Watch the ${product.name} demo`}
-                data-showcase-card
-                className="group snap-start shrink-0 basis-[72%] sm:basis-[calc((100%-6rem)/3)] lg:basis-[calc((100%-12rem)/5)] flex h-full flex-col items-center justify-start text-center"
-              >
-                <div className="relative flex h-[16rem] w-full items-center justify-center md:h-[19rem]">
-                  <div className="absolute bottom-2 h-16 w-3/5 rounded-[100%] bg-white/10 blur-2xl" />
-                  {product.frame === 'tablet' ? (
-                    <TabletFrame
-                      src={product.image}
-                      alt={`${product.name} shown on an eatOS tablet`}
-                      className="relative z-10 mx-auto transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-[1.04]"
-                    />
-                  ) : (
-                    <img
-                      src={product.image}
-                      alt={`${product.name} shown on an eatOS device`}
-                      loading="lazy"
-                      className="relative z-10 mx-auto max-h-full w-auto max-w-full scale-[1.28] object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.65)] transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-[1.33]"
-                    />
-                  )}
-                </div>
-                <h3 className="mt-6 whitespace-pre-line text-xs md:text-sm font-semibold tracking-tight text-white/90 group-hover:text-white transition-colors max-w-[12rem] leading-snug">
-                  {product.name}
-                </h3>
+              return (
+                <button
+                  key={box.id}
+                  type="button"
+                  onClick={() => toggle(box.id)}
+                  aria-label={isActive ? `Stop the ${box.name} demo` : `Play the ${box.name} demo`}
+                  className="group relative block aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/10 bg-black text-left transition-all duration-500 hover:-translate-y-1 hover:border-white/25"
+                >
+                  {demo?.media ? (
+                    <video
+                      ref={(el) => {
+                        videoRefs.current[box.id] = el;
+                      }}
+                      className="absolute inset-0 h-full w-full object-cover"
+                      poster={demo.media.poster}
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      controls={isActive}
+                    >
+                      {demo.media.sources.map((s) => (
+                        <source key={s.src} src={s.src} type={s.type} />
+                      ))}
+                    </video>
+                  ) : null}
 
-              </button>
-            ))}
+                  {!isActive ? (
+                    <>
+                      <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
+                      <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                        <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-black/50 text-white backdrop-blur-md transition-transform duration-500 group-hover:scale-110">
+                          <Play size={18} fill="currentColor" />
+                        </span>
+                      </span>
+                      <span className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 p-4 text-sm font-semibold tracking-tight text-white opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 sm:p-5">
+                        {box.name}
+                      </span>
+                    </>
+                  ) : null}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
-
-      {activeProduct ? (
-        <ProductAnimationModal product={activeProduct} onClose={closeModal} />
-      ) : null}
     </section>
   );
-
 }
