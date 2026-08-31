@@ -90,9 +90,9 @@ export default function ResellerPage() {
               Reseller program at a glance
             </h2>
             <p className="mt-4 text-base leading-relaxed text-white/70 md:text-lg">
-              We value every eatOS reseller, providing them with essential benefits. For Silver and
-              Gold Partners seeking accelerated growth, we offer exclusive resources on our
-              marketing and sales platforms.
+              We value every eatOS reseller, providing them essential benefits. For Silver & Gold
+              Partners seeking accelerated growth, we offer exclusive resources on marketing and
+              sales platforms.
             </p>
           </div>
 
