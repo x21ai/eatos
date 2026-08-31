@@ -200,7 +200,7 @@ const LINK_GROUPS = [
       { label: 'Customers', href: '/customers' },
       { label: 'Contact Sales', href: '/contact' },
       { label: 'Report Fraud', href: '/report-fraud' },
-      { label: 'Newsroom', href: '/blog' },
+      { label: 'Newsroom', href: '/news' },
       { label: 'Comparison', href: '/comparison' },
     ],
   },
