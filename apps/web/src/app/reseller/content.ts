@@ -1,7 +1,6 @@
 // @ts-nocheck
-import hero from '../partners/assets/partners-hero.avif.asset.json';
+import hero from './assets/reseller-hero.jpg.asset.json';
 
-// TODO: replace with the final reseller hero artwork when supplied.
 export const heroImage = hero.url;
 
 export const glanceBenefits = [
