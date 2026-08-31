@@ -7,6 +7,7 @@ import {
   CalendarCheck,
   ChevronRight,
   FileText,
+  Image as ImageIcon,
   LayoutDashboard,
   LifeBuoy,
   Tag,
