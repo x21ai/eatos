@@ -68,9 +68,9 @@ export default function ResellerPage() {
               </h2>
               <p className="mt-5 text-base leading-relaxed text-white/70 md:text-lg">
                 Grow your business by specializing in our products and working one-on-one with
-                eatOS sellers to design and implement all sorts of bespoke experiences. From
-                eCommerce partners to systems integrators, eatOS solutions partners receive
-                platform access and exclusive benefits.
+                eatOS sellers to design &amp; implement all sorts of bespoke experiences. From
+                eCommerce partners to systems integrators, Our solutions partners receive
+                platform access &amp; exclusive benefits.
               </p>
               <button
                 type="button"
