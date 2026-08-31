@@ -34,6 +34,7 @@ export function ProductShowcaseSection({
   description = 'Everything your restaurant needs today and for the future.',
 }: ProductShowcaseSectionProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const tileRefs = useRef<Record<string, HTMLVideoElement | null>>({});
 
@@ -150,6 +151,10 @@ export function ProductShowcaseSection({
                     key={box.id}
                     type="button"
                     onClick={() => setExpandedId(box.id)}
+                    onMouseEnter={() => setHoveredId(box.id)}
+                    onMouseLeave={() => setHoveredId(null)}
+                    onFocus={() => setHoveredId(box.id)}
+                    onBlur={() => setHoveredId(null)}
                     aria-label={`Play the ${box.name} demo`}
                     className="group relative block aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/10 bg-black text-left transition-all duration-500 hover:-translate-y-1 hover:border-white/25"
                   >
@@ -172,12 +177,14 @@ export function ProductShowcaseSection({
                       </video>
                     ) : null}
 
-                    <span className="pointer-events-none absolute inset-0 z-10 bg-black/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" />
-                    <span className="pointer-events-none absolute inset-x-0 bottom-0 z-20 translate-y-2 p-4 text-center text-sm font-semibold tracking-tight text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 sm:p-5">
+                    <span
+                      className={`pointer-events-none absolute inset-0 z-10 bg-black/60 transition-opacity duration-300 ${hoveredId === box.id ? 'opacity-100' : 'opacity-0'}`}
+                    />
+                    <span
+                      className={`pointer-events-none absolute inset-x-0 bottom-0 z-20 p-4 text-center text-sm font-semibold tracking-tight text-white transition-all duration-300 sm:p-5 ${hoveredId === box.id ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'}`}
+                    >
                       {box.name}
                     </span>
-
-
                   </button>
                 );
               })}
