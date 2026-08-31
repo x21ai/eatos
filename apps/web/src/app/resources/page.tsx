@@ -7,6 +7,7 @@ import {
   CalendarCheck,
   ChevronRight,
   FileText,
+  Image as ImageIcon,
   LayoutDashboard,
   LifeBuoy,
   Tag,
@@ -31,6 +32,12 @@ const resourceLinks = [
     href: '/brochures',
     Icon: FileText,
     tagline: 'One brochure for every product in eatOS restaurant technology cloud.',
+  },
+  {
+    title: 'Media Kit',
+    href: '/media-kit',
+    Icon: ImageIcon,
+    tagline: 'Brand guidelines, logos, icons and approved eatOS imagery.',
   },
   {
     title: 'Book a Demo',

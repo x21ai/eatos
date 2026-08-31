@@ -212,6 +212,7 @@ const LINK_GROUPS = [
       { label: 'Pricing', href: '/pricing' },
       { label: 'Blog', href: '/blog' },
       { label: 'Brochures', href: '/brochures' },
+      { label: 'Media Kit', href: '/media-kit' },
       { label: 'Book a Demo', href: '/bookademo' },
       { label: 'Help Center', href: '/support' },
       { label: 'Status', href: '/system-status' },

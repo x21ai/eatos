@@ -53,6 +53,7 @@ export default async function sitemap() {
     '/catering',
     '/pizzeria',
     '/brochures',
+    '/media-kit',
     '/support',
     '/eatos-vs-other-pos-software',
     ...['square', 'toast', 'lightspeed', 'spoton', 'touchbistro', 'revel', 'micros'].map(
