@@ -23,6 +23,10 @@ import g7 from './assets/gallery/eatOS_Image_16.jpg.asset.json';
 import g8 from './assets/gallery/eatOS_Image_13.jpg.asset.json';
 import g9 from './assets/gallery/eatOS_Image_11.jpg.asset.json';
 import g10 from './assets/gallery/eatOS_Image_14.jpg.asset.json';
+import g11 from './assets/gallery/eatOS_Image_22_2.jpg.asset.json';
+import g12 from './assets/gallery/eatOS_Image_23.jpg.asset.json';
+import g13 from './assets/gallery/eatOS_Image_12.jpg.asset.json';
+import g14 from './assets/gallery/eatOS_Image_15.jpg.asset.json';
 
 export const miscGallery = [
   { url: g1.url, caption: 'Customer Facing Display at the counter' },
@@ -35,6 +39,10 @@ export const miscGallery = [
   { url: g8.url, caption: 'Tap to pay on a handheld terminal' },
   { url: g9.url, caption: 'Point of Sale terminal in use' },
   { url: g10.url, caption: 'QR code ordering at the table' },
+  { url: g11.url, caption: 'Kitchen Display System above the line' },
+  { url: g12.url, caption: 'Customer Facing Display at checkout' },
+  { url: g13.url, caption: 'Point of Sale terminal at the counter' },
+  { url: g14.url, caption: 'Online ordering on a guest smartphone' },
 ];
 
 export const hero = {

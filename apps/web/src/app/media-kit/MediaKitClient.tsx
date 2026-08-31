@@ -55,7 +55,7 @@ function Visual({ item, large = false }) {
   );
 }
 
-function GalleryModal({ images, index, onClose, onPrev, onNext, title }) {
+function GalleryModal({ images, index, onClose, onPrev, onNext, onSelect, title }) {
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'Escape') onClose();
@@ -93,21 +93,32 @@ function GalleryModal({ images, index, onClose, onPrev, onNext, title }) {
               {index + 1} / {images.length}
             </span>
           </p>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close gallery"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:bg-white/10"
-          >
-            <X size={18} />
-          </button>
+          <div className="flex items-center gap-2">
+            <a
+              href={current.url}
+              download={`eatOS_Image_${index + 1}.jpg`}
+              aria-label="Download this image"
+              className="flex h-10 items-center gap-2 rounded-full border border-white/15 px-4 text-[13px] font-semibold text-white transition-colors hover:bg-white/10"
+            >
+              <Download size={16} />
+              Download
+            </a>
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Close gallery"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:bg-white/10"
+            >
+              <X size={18} />
+            </button>
+          </div>
         </div>
 
         <div className="relative overflow-hidden rounded-[20px] border border-white/10 bg-zinc-950">
           <img
             src={current.url}
             alt={current.caption || `${title} ${index + 1}`}
-            className="max-h-[70vh] w-full object-contain"
+            className="max-h-[60vh] w-full object-contain"
           />
           <button
             type="button"
@@ -130,7 +141,31 @@ function GalleryModal({ images, index, onClose, onPrev, onNext, title }) {
         {current.caption ? (
           <p className="mt-4 text-center text-[15px] text-zinc-400">{current.caption}</p>
         ) : null}
+
+        <div className="mt-4 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {images.map((img, i) => (
+            <button
+              key={img.url}
+              type="button"
+              onClick={() => onSelect(i)}
+              aria-label={`Show image ${i + 1}`}
+              aria-current={i === index}
+              className={`relative h-14 w-20 shrink-0 overflow-hidden rounded-lg border transition-opacity ${
+                i === index
+                  ? 'border-brand opacity-100'
+                  : 'border-white/10 opacity-60 hover:opacity-100'
+              }`}
+            >
+              <img
+                src={img.url}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </button>
+          ))}
+        </div>
       </div>
+
     </div>,
     document.body,
   );
@@ -284,6 +319,7 @@ export default function MediaKitClient() {
           onClose={close}
           onPrev={prev}
           onNext={next}
+          onSelect={setIndex}
         />
       ) : null}
     </main>
