@@ -141,7 +141,7 @@ export function ProductShowcaseSection({
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
               {showcaseBoxes.map((box) => {
                 const demo = demoSources.find((d) => d.id === box.id);
 
@@ -172,10 +172,11 @@ export function ProductShowcaseSection({
                       </video>
                     ) : null}
 
-                    <span className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/10 to-transparent opacity-100 transition-opacity duration-500 [@media(hover:hover)]:opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100" />
-                    <span className="pointer-events-none absolute inset-x-0 bottom-0 z-20 p-4 text-center text-sm font-semibold tracking-tight text-white opacity-100 transition-all duration-500 sm:p-5 [@media(hover:hover)]:translate-y-2 [@media(hover:hover)]:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
+                    <span className="pointer-events-none absolute inset-0 z-10 bg-black/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" />
+                    <span className="pointer-events-none absolute inset-x-0 bottom-0 z-20 translate-y-2 p-4 text-center text-sm font-semibold tracking-tight text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 sm:p-5">
                       {box.name}
                     </span>
+
 
                   </button>
                 );
