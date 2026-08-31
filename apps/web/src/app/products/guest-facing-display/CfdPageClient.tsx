@@ -41,7 +41,7 @@ const hardwareIcons = [
   { Icon: Smartphone, tint: 'bg-pink-500/10 text-pink-400' },
 ];
 
-const related = products.filter((p) => p.slug !== 'customer-facing-display').slice(0, 3);
+const related = products.filter((p) => p.slug !== 'guest-facing-display').slice(0, 3);
 
 const rise = {
   initial: { opacity: 0, y: 30 },
@@ -69,7 +69,7 @@ export default function CfdPageClient() {
               Products
             </a>
             <ChevronRight size={14} className="shrink-0" />
-            <span className="text-white">Customer Facing Display</span>
+            <span className="text-white">Guest Facing Display</span>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -121,7 +121,7 @@ export default function CfdPageClient() {
                 >
                   {hero.primaryCta.label}
                 </a>
-                <BrochureButton brochureId="customer-facing-display" />
+                <BrochureButton brochureId="guest-facing-display" />
               </motion.div>
             </div>
 
@@ -174,7 +174,7 @@ export default function CfdPageClient() {
               muted
               playsInline
               preload="metadata"
-              aria-label="Customer Facing Display demo animation"
+              aria-label="Guest Facing Display demo animation"
             >
               {demo?.media?.sources.map((s) => (
                 <source key={s.src} src={s.src} type={s.type} />
@@ -271,7 +271,7 @@ export default function CfdPageClient() {
         <div className="site-container">
           <motion.div {...rise} className="text-center mb-14 md:mb-20">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">
-              Why Customer Facing Display?
+              Why Guest Facing Display?
             </h2>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
               Built for real restaurant operations. Designed to disappear into workflow.
@@ -407,7 +407,7 @@ export default function CfdPageClient() {
                 Ready to get started?
               </h2>
               <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-10">
-                See Customer Facing Display in action. Book a demo and we will show you exactly how it fits your operation from day one.
+                See Guest Facing Display in action. Book a demo and we will show you exactly how it fits your operation from day one.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a

@@ -1,19 +1,19 @@
 // @ts-nocheck
-// All copy for the Customer Facing Display product page. Edit here.
+// All copy for the Guest Facing Display product page. Edit here.
 
 import orderReview from '@/assets/cfd-order-review.png.asset.json';
 import marketing from '@/assets/cfd-marketing.png.asset.json';
 import tips from '@/assets/cfd-tips.png.asset.json';
 
 export const hero = {
-  eyebrow: 'Customer Facing Display',
+  eyebrow: 'Guest Facing Display',
   title: 'Transparent Orders',
   titleAccent: 'and Easy Tipping',
   description:
     'Show every order in real time, then close it out with contactless payments, digital tips and instant receipts.',
   primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'Watch Video', href: '#' },
-  imageLabel: 'Customer facing display screen',
+  imageLabel: 'Guest facing display screen',
   image: null,
   stats: [
     { value: '100%', label: 'Transparent orders' },
@@ -37,7 +37,7 @@ export const features = [
       'Give guests a clear view of every item, modifier and total before they pay. When customers can confirm their order on the screen, mistakes are caught before they reach the kitchen.',
     more:
       'Real-time line item display means fewer remakes, fewer refunds and a smoother experience for staff and guests alike.',
-    imageLabel: 'Order confirmation on customer facing display',
+    imageLabel: 'Order confirmation on guest facing display',
     image: orderReview.url,
     metrics: [
       { value: '100%', label: 'Accurate orders' },
@@ -51,7 +51,7 @@ export const features = [
       'Turn the second screen into a marketing channel. Promote high-margin items, daily specials and loyalty offers while guests review their order.',
     more:
       'Targeted prompts and branded visuals keep your best offers visible at the exact moment guests are ready to add more.',
-    imageLabel: 'Promotional offer on customer facing display',
+    imageLabel: 'Promotional offer on guest facing display',
     image: marketing.url,
     metrics: [
       { value: '100%', label: 'Real-time insights' },

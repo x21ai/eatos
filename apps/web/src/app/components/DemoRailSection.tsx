@@ -51,7 +51,7 @@ export function DemoRailSection({
       case 'kds':
         return 'Kitchen Display System';
       case 'cfd':
-        return 'Customer Facing Display';
+        return 'Guest Facing Display';
       case 'kiosk':
         return 'Self Service Kiosk';
       default:

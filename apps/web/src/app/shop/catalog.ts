@@ -82,7 +82,7 @@ const railOrder = [
   'point-of-purchase',
   'kitchen-display-systems',
   'self-service-kiosk',
-  'customer-facing-display',
+  'guest-facing-display',
   'applications',
   'other-accessories',
 ];

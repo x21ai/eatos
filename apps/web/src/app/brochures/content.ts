@@ -81,8 +81,8 @@ export const brochures = [
       'https://6789180.fs1.hubspotusercontent-na1.net/hubfs/6789180/eatOS%20-%20Brochures%20(March%2024)/OrderOS%20ver%202.9(p)%2005%20Jun%2023%20ph.pdf',
   },
   {
-    id: 'customer-facing-display',
-    title: 'Customer Facing Display',
+    id: 'guest-facing-display',
+    title: 'Guest Facing Display',
     description:
       'Upgrade the checkout experience with clear order details, tips and pickup information.',
     flipbook: 'https://go.fliplink.me/view/F0AFD115-4737-4372-8741-E9207034E29F',

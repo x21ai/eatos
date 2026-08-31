@@ -9,7 +9,7 @@ export const supportHero = {
   eyebrow: 'Help Center',
   title: 'eatOS Support',
   intro:
-    'Setup guides, how-to articles and troubleshooting for the eatOS Point of Sale, Kitchen Display System, Dashboard, Kiosk, Customer Facing Display and hardware.',
+    'Setup guides, how-to articles and troubleshooting for the eatOS Point of Sale, Kitchen Display System, Dashboard, Kiosk, Guest Facing Display and hardware.',
 };
 
 export const articles = generatedArticles;

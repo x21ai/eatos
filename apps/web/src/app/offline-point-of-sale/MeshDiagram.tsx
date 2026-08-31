@@ -25,7 +25,7 @@ export default function MeshDiagram() {
     { Icon: TabletSmartphone, x: 380, y: 290, label: 'Kiosk', labelPos: 'below', tint: 'text-emerald-400 border-emerald-400/40 bg-emerald-500/10' },
     { Icon: Smartphone, x: 640, y: 290, label: 'Handheld', labelPos: 'below', tint: 'text-violet-400 border-violet-400/40 bg-violet-500/10' },
     { Icon: CreditCard, x: 840, y: 240, label: 'Payments', labelPos: 'below', tint: 'text-emerald-400 border-emerald-400/40 bg-emerald-500/10' },
-    { Icon: Monitor, x: 880, y: 80, label: 'Customer Display', labelPos: 'above', tint: 'text-rose-400 border-rose-400/40 bg-rose-500/10' },
+    { Icon: Monitor, x: 880, y: 80, label: 'Guest Facing Display', labelPos: 'above', tint: 'text-rose-400 border-rose-400/40 bg-rose-500/10' },
   ];
 
 

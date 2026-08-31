@@ -150,7 +150,7 @@ const LINK_GROUPS = [
       { label: 'Kitchen Display', href: '/products/kitchen-display-system' },
       { label: 'Self-Service Kiosk', href: '/products/self-service-kiosk' },
       { label: 'Handheld', href: '/products/point-of-purchase' },
-      { label: 'Customer Display', href: '/products/customer-facing-display' },
+      { label: 'Guest Facing Display', href: '/products/guest-facing-display' },
       { label: 'Inventory', href: '/products/simplified-inventory-management' },
       { label: 'Workforce', href: '/products/workforce-management' },
       { label: 'Payments', href: '/accept-payments' },

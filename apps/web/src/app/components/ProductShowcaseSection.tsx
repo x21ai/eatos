@@ -67,8 +67,8 @@ const showcaseProducts: ShowcaseProduct[] = [
     demoId: 'kiosk',
   },
   {
-    name: 'Customer Facing Display',
-    href: '/products/customer-facing-display',
+    name: 'Guest Facing Display',
+    href: '/products/guest-facing-display',
     image: cfdShot.url,
     demoId: 'cfd',
   },

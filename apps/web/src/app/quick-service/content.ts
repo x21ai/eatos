@@ -97,7 +97,7 @@ export const bundle = {
 };
 
 export const ecosystem = [
-  { title: 'Customer Facing Display', imageLabel: 'Customer facing display' },
+  { title: 'Guest Facing Display', imageLabel: 'Guest facing display' },
   { title: 'Analytics & Reporting', imageLabel: 'Analytics and reporting' },
   { title: 'Table Side Order & Pay', imageLabel: 'Table side order and pay' },
   { title: 'Kiosk', imageLabel: 'Self-service kiosk' },

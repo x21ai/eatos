@@ -33,7 +33,7 @@ export const productGallery = [
 
   { url: p7.url, caption: 'Workforce Management on mobile' },
   { url: p8.url, caption: 'Table Side ordering on tablet and mobile' },
-  { url: p9.url, caption: 'Customer Facing Display with dual screen' },
+  { url: p9.url, caption: 'Guest Facing Display with dual screen' },
   { url: p10.url, caption: 'Point of Sale terminal with open order' },
 ];
 
@@ -53,7 +53,7 @@ import g13 from './assets/gallery/eatOS_Image_12.jpg.asset.json';
 import g14 from './assets/gallery/eatOS_Image_15.jpg.asset.json';
 
 export const miscGallery = [
-  { url: g1.url, caption: 'Customer Facing Display at the counter' },
+  { url: g1.url, caption: 'Guest Facing Display at the counter' },
   { url: g2.url, caption: 'Kitchen Display System in service' },
   { url: g3.url, caption: 'Self Service Kiosk, floor standing' },
   { url: g4.url, caption: 'Guest ordering at a Self Service Kiosk' },
@@ -64,7 +64,7 @@ export const miscGallery = [
   { url: g9.url, caption: 'Point of Sale terminal in use' },
   { url: g10.url, caption: 'QR code ordering at the table' },
   { url: g11.url, caption: 'Kitchen Display System above the line' },
-  { url: g12.url, caption: 'Customer Facing Display at checkout' },
+  { url: g12.url, caption: 'Guest Facing Display at checkout' },
   { url: g13.url, caption: 'Point of Sale terminal at the counter' },
   { url: g14.url, caption: 'Online ordering on a guest smartphone' },
 ];
