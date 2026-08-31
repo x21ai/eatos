@@ -160,10 +160,25 @@ writeFileSync(
     .map((r) => `${r}\n  Content-Type: text/html; charset=utf-8`)
     .join("\n")}\n`,
 );
-writeFileSync(
-  "dist/_redirects",
-  `${routes.map((r) => `${r} ${r}.html 200`).join("\n")}\n`,
-);
+
+// Only the overview routes need a rewrite rule: every other clean URL exists on
+// disk as an extensionless file. Proxy (200) rules are capped at 100 by the
+// host, so emitting one per page silently dropped everything after the first
+// hundred, which is what made /blog, /support and /news answer 404 while
+// smaller routes worked.
+const proxyRules = parentRoutes.map((r) => `/${r} /${r}.html 200`);
+
+// Legacy URLs that only existed as framework-level redirects, which static
+// hosting never sees. Kept small and explicit.
+const legacyRedirects = [
+  "/newsroom /news 301",
+  "/newsroom/* /news/:splat 301",
+  "/blogs /blog 301",
+  "/get-started /bookademo 301",
+  "/tap-to-pay /accept-payments 301",
+];
+
+writeFileSync("dist/_redirects", `${[...proxyRules, ...legacyRedirects].join("\n")}\n`);
 
 console.log(
   `dist/ prepared from apps/web/.next (${pages} pages, ${routes.length} clean URLs, ` +

@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { Placeholder } from '@/components/marketing/Placeholder';
@@ -20,6 +20,12 @@ export default function NewsIndexClient({ initialCategory = 'All News' }) {
     categories.includes(initialCategory) ? initialCategory : 'All News',
   );
   const [page, setPage] = useState(1);
+
+  // The page is static HTML, so the ?category= deep link is read after mount.
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get('category');
+    if (requested && categories.includes(requested)) setActive(requested);
+  }, []);
 
   const available = categories.filter(
     (c) => c === 'All News' || newsItems.some((p) => p.category === c),

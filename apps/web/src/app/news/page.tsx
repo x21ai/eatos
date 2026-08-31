@@ -16,8 +16,8 @@ export const metadata = {
   twitter: { card: 'summary_large_image' },
 };
 
-export default async function NewsIndexPage({ searchParams }) {
-  const sp = (await searchParams) || {};
-  const category = Array.isArray(sp.category) ? sp.category[0] : sp.category;
-  return <NewsIndexClient initialCategory={category || 'All News'} />;
+// Kept free of searchParams so the page prerenders as static HTML. The
+// ?category= filter is applied on the client instead.
+export default function NewsIndexPage() {
+  return <NewsIndexClient />;
 }
