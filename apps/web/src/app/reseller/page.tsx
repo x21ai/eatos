@@ -41,7 +41,7 @@ export default function ResellerPage() {
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-on-dark" />
                 Reseller Program
               </span>
-              <h1 className="mt-6 max-w-3xl text-5xl font-bold leading-[1.04] tracking-tighter sm:text-6xl md:text-7xl lg:text-[86px]">
+              <h1 className="mt-6 max-w-3xl text-4xl font-bold leading-[1.06] tracking-tighter sm:text-5xl md:text-6xl lg:text-[64px]">
                 Start Your
                 <br />
                 Reseller Journey
