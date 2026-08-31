@@ -3,9 +3,18 @@
 import { useEffect, useRef } from 'react';
 
 const HS_SCRIPT_SRC = 'https://js.hsforms.net/forms/embed/v2.js';
-const TARGET_ID = 'hubspot-reseller-form';
 
-export default function ResellerForm() {
+type Props = {
+  formId?: string;
+  targetId?: string;
+  className?: string;
+};
+
+export default function ResellerForm({
+  formId = 'a2a3be3d-16bc-429d-9e55-010af450fcd5',
+  targetId = 'hubspot-reseller-form',
+  className = 'mt-2',
+}: Props) {
   const created = useRef(false);
 
   useEffect(() => {
@@ -13,12 +22,14 @@ export default function ResellerForm() {
       if (created.current) return;
       const hbspt = (window as any).hbspt;
       if (!hbspt?.forms) return;
+      const target = document.getElementById(targetId);
+      if (!target) return;
       created.current = true;
       hbspt.forms.create({
         region: 'na1',
         portalId: '6789180',
-        formId: 'a2a3be3d-16bc-429d-9e55-010af450fcd5',
-        target: `#${TARGET_ID}`,
+        formId,
+        target: `#${targetId}`,
       });
     };
 
@@ -38,7 +49,7 @@ export default function ResellerForm() {
     }
     script.addEventListener('load', create);
     return () => script?.removeEventListener('load', create);
-  }, []);
+  }, [formId, targetId]);
 
-  return <div id={TARGET_ID} className="mt-2" />;
+  return <div id={targetId} className={`hs-form-full ${className}`} />;
 }
