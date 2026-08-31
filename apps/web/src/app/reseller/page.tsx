@@ -203,40 +203,7 @@ export default function ResellerPage() {
         </div>
       </section>
 
-      {/* Closing CTA */}
-      <section className="border-t border-white/10 py-20 md:py-28">
-        <div className="site-container">
-          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            <div>
-              <h2 className="text-3xl font-bold leading-[1.1] tracking-tighter md:text-5xl">
-                Unlock New Opportunities: Become a Reseller with eatOS Today!
-              </h2>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
-                Pick a time that works for you and our partner team will walk you through tiers,
-                economics and the enablement you get from day one.
-              </p>
-              <Link
-                href="/bookademo"
-                className="group mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
-              >
-                Book a Demo
-                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
-            <div>
-              <p className="mb-4 text-center text-sm font-semibold uppercase tracking-[0.2em] text-white/50">
-                Connect With Us
-              </p>
-              <div className="overflow-hidden rounded-[28px] border border-white/10 bg-black md:rounded-[36px]">
-                <div
-                  className="meetings-iframe-container bg-black"
-                  data-src="https://meetings.hubspot.com/booka/initial-meeting?embed=true"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
     </div>
   );
 }
