@@ -61,20 +61,45 @@ let pages = 0;
 // Extensionless copies are deliberately NOT written any more: the host serves
 // them byte for byte as application/octet-stream with X-Content-Type-Options:
 // nosniff, so the browser downloads the page instead of rendering it.
+function publishedHref(href) {
+  if (!href.startsWith("/") || href === "/") return href;
+
+  const [pathAndQuery, hash = ""] = href.split("#", 2);
+  const [pathname, query = ""] = pathAndQuery.split("?", 2);
+  if (
+    pathname.startsWith("/_next/") ||
+    pathname.startsWith("/api/") ||
+    /\.[a-z0-9]{1,8}$/i.test(pathname)
+  ) {
+    return href;
+  }
+
+  const cleanPath = pathname.replace(/\/$/, "");
+  return `${cleanPath}.html${query ? `?${query}` : ""}${hash ? `#${hash}` : ""}`;
+}
+
+function writePublishedPage(source, target) {
+  const html = readFileSync(source, "utf8").replace(
+    /href=(['"])(\/[^'"]*)\1/g,
+    (match, quote, href) => `href=${quote}${publishedHref(href)}${quote}`,
+  );
+  writeFileSync(target, html);
+}
+
 function emit(source, route) {
   const flat = path.join("dist", `${route}.html`);
   mkdirSync(path.dirname(flat), { recursive: true });
-  cpSync(source, flat);
+  writePublishedPage(source, flat);
 
   const indexTarget = path.join("dist", route, "index.html");
   mkdirSync(path.dirname(indexTarget), { recursive: true });
-  cpSync(source, indexTarget);
+  writePublishedPage(source, indexTarget);
 }
 
 for (const { source, route } of found) {
   if (route === "index" || route === "_not-found") {
     const target = route === "index" ? "dist/index.html" : "dist/404.html";
-    cpSync(source, target);
+    writePublishedPage(source, target);
     pages += 1;
     continue;
   }
