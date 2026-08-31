@@ -673,8 +673,8 @@ export default function HomePage() {
               <span className="text-gray-500">every part of service.</span>
             </h2>
             <p className="text-white font-medium text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
-              eatOS runs front of house, back of house and growth on one
-              connected system.
+              eatOS runs the front of house, back of house and future growth on
+              one seamlessly connected restaurant system.
             </p>
           </motion.div>
 
@@ -685,14 +685,14 @@ export default function HomePage() {
                 title: 'Operations',
                 subtitle: 'Run service flawlessly',
                 body:
-                  'Point of Sale, kitchen flow and workforce scheduling that keep front and back of house in sync.',
+                  'Point of Sale, kitchen flow and workforce scheduling that keep front and back in sync.',
               },
               {
                 icon: Sparkles,
                 title: 'Guest Experience',
                 subtitle: 'Delight every guest',
                 body:
-                  'Let guests order their way: at the table, at the counter or from home. Fast and frictionless.',
+                  'Let guests order their way: at the table, at counter or from home. Fast and frictionless.',
               },
               {
                 icon: TrendingUp,
@@ -706,7 +706,7 @@ export default function HomePage() {
                 title: 'Intelligence',
                 subtitle: 'See everything clearly',
                 body:
-                  'Real-time analytics and AI-powered ordering that sharpen every decision you make.',
+                  'Real-time analytics and AI-powered ordering that sharpen every decision.',
               },
             ].map((pillar, i) => {
               const Icon = pillar.icon;
@@ -766,7 +766,7 @@ export default function HomePage() {
 
               <p className="text-sm lg:text-lg text-gray-400 mb-10 leading-relaxed max-w-lg">
                 Every order, shift and payment feeds one intelligence layer, so
-                you get live numbers and clear next steps instead of raw data.
+                you get live data and clear next steps instead of raw data.
               </p>
 
               <div className="space-y-4 mb-10">
