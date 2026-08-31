@@ -1,7 +1,7 @@
 'use client';
 
-import { useCallback, useRef, useState } from 'react';
-import { Play } from 'lucide-react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { X } from 'lucide-react';
 import { motion } from 'motion/react';
 import { demoSources } from './demoSources';
 
@@ -33,33 +33,46 @@ export function ProductShowcaseSection({
   title = 'How it Works',
   description = 'Everything your restaurant needs today and for the future.',
 }: ProductShowcaseSectionProps) {
-  const [activeId, setActiveId] = useState<string | null>(null);
-  const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const tileRefs = useRef<Record<string, HTMLVideoElement | null>>({});
 
-  const toggle = useCallback((id: string) => {
-    setActiveId((current) => {
-      if (current === id) {
-        const el = videoRefs.current[id];
-        if (el) {
-          el.pause();
-          el.currentTime = 0;
-        }
-        return null;
-      }
+  const expanded = expandedId ? showcaseBoxes.find((b) => b.id === expandedId) : null;
+  const expandedDemo = expandedId ? demoSources.find((d) => d.id === expandedId) : null;
 
-      if (current) {
-        const prev = videoRefs.current[current];
-        if (prev) {
-          prev.pause();
-          prev.currentTime = 0;
-        }
-      }
+  const close = useCallback(() => setExpandedId(null), []);
 
-      const next = videoRefs.current[id];
-      if (next) void next.play().catch(() => undefined);
-      return id;
-    });
-  }, []);
+  // Autoplay tiles only while the section is on screen.
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || expandedId) return;
+
+    const setPlaying = (playing: boolean) => {
+      Object.values(tileRefs.current).forEach((video) => {
+        if (!video) return;
+        if (playing) void video.play().catch(() => undefined);
+        else video.pause();
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => setPlaying(entry.isIntersecting));
+      },
+      { threshold: 0.15 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [expandedId]);
+
+  useEffect(() => {
+    if (!expandedId) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') close();
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [expandedId, close]);
 
   return (
     <section className="py-14 md:py-20 bg-black border-t border-white/5">
@@ -83,56 +96,91 @@ export function ProductShowcaseSection({
           </motion.p>
         </div>
 
-        <div className="overflow-hidden rounded-3xl border border-white/12 bg-white/[0.03] p-2 sm:p-3">
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3">
-            {showcaseBoxes.map((box) => {
-              const demo = demoSources.find((d) => d.id === box.id);
-              const isActive = activeId === box.id;
-
-              return (
-                <button
-                  key={box.id}
-                  type="button"
-                  onClick={() => toggle(box.id)}
-                  aria-label={isActive ? `Stop the ${box.name} demo` : `Play the ${box.name} demo`}
-                  className="group relative block aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/10 bg-black text-left transition-all duration-500 hover:-translate-y-1 hover:border-white/25"
+        <div
+          ref={containerRef}
+          className="overflow-hidden rounded-3xl border border-white/12 bg-white/[0.03] p-2 sm:p-3"
+        >
+          {expanded && expandedDemo?.media ? (
+            <div className="relative">
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/10 bg-black sm:aspect-[16/9]">
+                <video
+                  key={expanded.id}
+                  className="absolute inset-0 h-full w-full object-cover"
+                  poster={expandedDemo.media.poster}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
                 >
-                  {demo?.media ? (
-                    <video
-                      ref={(el) => {
-                        videoRefs.current[box.id] = el;
-                      }}
-                      className="absolute inset-0 h-full w-full object-cover"
-                      poster={demo.media.poster}
-                      muted
-                      loop
-                      playsInline
-                      preload="metadata"
-                      controls={isActive}
-                    >
-                      {demo.media.sources.map((s) => (
-                        <source key={s.src} src={s.src} type={s.type} />
-                      ))}
-                    </video>
-                  ) : null}
-
-                  {!isActive ? (
-                    <>
-                      <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
-                      <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                        <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-black/50 text-white backdrop-blur-md transition-transform duration-500 group-hover:scale-110">
-                          <Play size={18} fill="currentColor" />
-                        </span>
-                      </span>
-                      <span className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 p-4 text-sm font-semibold tracking-tight text-white opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 sm:p-5">
-                        {box.name}
-                      </span>
-                    </>
-                  ) : null}
+                  {expandedDemo.media.sources.map((s) => (
+                    <source key={s.src} src={s.src} type={s.type} />
+                  ))}
+                </video>
+                <button
+                  type="button"
+                  onClick={close}
+                  aria-label="Close video"
+                  className="absolute right-3 top-3 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-md transition-colors hover:bg-white/15"
+                >
+                  <X size={16} />
                 </button>
-              );
-            })}
-          </div>
+              </div>
+
+              <div className="flex flex-col items-center gap-2 px-4 py-5 text-center sm:flex-row sm:justify-between sm:text-left">
+                <div className="min-w-0">
+                  <h3 className="text-base font-bold tracking-tight text-white">{expanded.name}</h3>
+                  <p className="mt-1 text-sm text-white/70">{expandedDemo.media.caption}</p>
+                </div>
+                <a
+                  href={expanded.href}
+                  className="shrink-0 whitespace-nowrap rounded-full border border-white/15 px-5 py-2 text-xs font-semibold text-white transition-colors hover:bg-white/10"
+                >
+                  Learn more
+                </a>
+              </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3">
+              {showcaseBoxes.map((box) => {
+                const demo = demoSources.find((d) => d.id === box.id);
+
+                return (
+                  <button
+                    key={box.id}
+                    type="button"
+                    onClick={() => setExpandedId(box.id)}
+                    aria-label={`Play the ${box.name} demo`}
+                    className="group relative block aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/10 bg-black text-left transition-all duration-500 hover:-translate-y-1 hover:border-white/25"
+                  >
+                    {demo?.media ? (
+                      <video
+                        ref={(el) => {
+                          tileRefs.current[box.id] = el;
+                        }}
+                        className="absolute inset-0 h-full w-full object-cover"
+                        poster={demo.media.poster}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                      >
+                        {demo.media.sources.map((s) => (
+                          <source key={s.src} src={s.src} type={s.type} />
+                        ))}
+                      </video>
+                    ) : null}
+
+                    <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/5 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-100" />
+                    <span className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 p-4 text-center text-sm font-semibold tracking-tight text-white opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 sm:p-5">
+                      {box.name}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     </section>
