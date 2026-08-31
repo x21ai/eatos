@@ -36,7 +36,7 @@ const curatedPosts = [
     slug: 'never-miss-a-beat-how-offline-resilience-keeps-your-sales-rolling',
     title: 'Never Miss a Beat: How Offline Resilience Keeps Your Sales Rolling with edgeOS',
     category: 'Point of Sale',
-    date: '2026-11-19',
+    date: '2026-08-26',
     author: 'eatOS Staff',
     excerpt:
       'Network outages do not have to bring your restaurant to a halt. Offline resilience with edgeOS keeps service running when connections fail, so you never miss a beat.',
@@ -75,7 +75,7 @@ const curatedPosts = [
     slug: 'empower-your-restaurant-team-with-simplified-workforce-management',
     title: 'Empower Your Restaurant Team with Simplified Workforce Management',
     category: 'Workforce Management',
-    date: '2026-11-14',
+    date: '2026-08-25',
     author: 'eatOS Staff',
     excerpt:
       'Managing your restaurant workforce should not drain your time or energy. workforceOS from eatOS offers scheduling, time tracking and payroll integration that put teams first.',
@@ -117,7 +117,7 @@ const curatedPosts = [
     slug: '10-tips-to-enhance-your-restaurant-analytics-and-reporting-system',
     title: '10 Tips to Enhance Your Restaurant Analytics and Reporting System',
     category: 'Point of Sale',
-    date: '2026-02-16',
+    date: '2026-08-18',
     author: 'eatOS Staff',
     excerpt:
       'A well-optimized restaurant analytics and reporting system is essential for tracking performance, making data-driven decisions and boosting profitability.',
@@ -153,7 +153,7 @@ const curatedPosts = [
     slug: 'how-tableside-ordering-and-payment-enhances-restaurant-experience',
     title: 'How Tableside Ordering and Payment Enhances Restaurant Service and Increases Sales',
     category: 'Tableside Ordering',
-    date: '2026-11-05',
+    date: '2026-08-19',
     author: 'eatOS Staff',
     excerpt:
       'Tableside ordering and payment systems are transforming the dining experience by offering speed, convenience and efficiency for both guests and staff.',
@@ -200,7 +200,7 @@ const curatedPosts = [
     slug: 'the-complete-guide-to-restaurant-inventory-management',
     title: 'The Complete Guide to Restaurant Inventory Management',
     category: 'Inventory Management',
-    date: '2026-01-14',
+    date: '2026-08-12',
     author: 'eatOS Staff',
     excerpt:
       'Restaurant inventory management is the backbone of any successful food business. Keeping stock monitored, controlled and profitable protects your margin.',
