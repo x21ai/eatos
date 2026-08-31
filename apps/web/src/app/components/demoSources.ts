@@ -1,10 +1,12 @@
-import posMp4 from './assets/eatOS-Pointofsale_Demo_ver1.0_p_31_Aug_26IN.mp4.asset.json';
-import posPoster from './assets/eatOS-Pointofsale_Demo_ver1.0_p_31_Aug_26IN-poster.jpg.asset.json';
-import kdsMp4 from './assets/eatOS-kictchen_display_system_demo_ver1.0_p_31_Aug_26IN.mp4.asset.json';
-import kdsPoster from './assets/eatOS-kictchen_display_system_demo_ver1.0_p_31_Aug_26IN-poster.jpg.asset.json';
-import cfdMp4 from './assets/eatOS-Guest_facing_display_demo_ver1.0_p_31_Aug_26IN.mp4.asset.json';
-import cfdPoster from './assets/eatOS-Guest_facing_display_demo_ver1.0_p_31_Aug_26IN-poster.jpg.asset.json';
-
+import posMp4 from './assets/pos-demo.mp4.asset.json';
+import posWebm from './assets/pos-demo.webm.asset.json';
+import posPoster from './assets/pos-demo-poster.jpg.asset.json';
+import kdsMp4 from './assets/kds-demo.mp4.asset.json';
+import kdsWebm from './assets/kds-demo.webm.asset.json';
+import kdsPoster from './assets/kds-demo-poster.jpg.asset.json';
+import cfdMp4 from './assets/cfd3-demo.mp4.asset.json';
+import cfdWebm from './assets/cfd3-demo.webm.asset.json';
+import cfdPoster from './assets/cfd3-demo-poster.jpg.asset.json';
 import kioskMp4 from './assets/kiosk-demo.mp4.asset.json';
 import kioskWebm from './assets/kiosk-demo.webm.asset.json';
 import kioskPoster from './assets/kiosk-demo-poster.jpg.asset.json';
@@ -43,7 +45,7 @@ export const demoSources: DemoSource[] = [
     blurb: 'Ring in orders, split checks, and take payment in seconds anywhere.',
     device: 'tablet',
     media: {
-      sources: [{ src: posMp4.url, type: 'video/mp4' }],
+      sources: videoSources(posWebm, posMp4),
       poster: posPoster.url,
       caption: 'Ring in the order, take payment, close the ticket.',
     },
@@ -55,7 +57,7 @@ export const demoSources: DemoSource[] = [
     blurb: 'Route tickets to the right station and keep orders moving on time.',
     device: 'tablet',
     media: {
-      sources: [{ src: kdsMp4.url, type: 'video/mp4' }],
+      sources: videoSources(kdsWebm, kdsMp4),
       poster: kdsPoster.url,
       caption: 'Clock in, work the board, bump the ticket.',
     },
@@ -81,7 +83,7 @@ export const demoSources: DemoSource[] = [
     blurb: 'A guest facing display for order clarity, tips, and pickup details.',
     device: 'tablet',
     media: {
-      sources: [{ src: cfdMp4.url, type: 'video/mp4' }],
+      sources: videoSources(cfdWebm, cfdMp4),
       poster: cfdPoster.url,
       caption: 'Check in, redeem a reward, tip, pay, and get the receipt.',
     },
