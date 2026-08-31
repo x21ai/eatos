@@ -172,10 +172,11 @@ export function ProductShowcaseSection({
                       </video>
                     ) : null}
 
-                    <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/5 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-100" />
-                    <span className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 p-4 text-center text-sm font-semibold tracking-tight text-white opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 sm:p-5">
+                    <span className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/10 to-transparent opacity-100 transition-opacity duration-500 [@media(hover:hover)]:opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100" />
+                    <span className="pointer-events-none absolute inset-x-0 bottom-0 z-20 p-4 text-center text-sm font-semibold tracking-tight text-white opacity-100 transition-all duration-500 sm:p-5 [@media(hover:hover)]:translate-y-2 [@media(hover:hover)]:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
                       {box.name}
                     </span>
+
                   </button>
                 );
               })}
