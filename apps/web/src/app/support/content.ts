@@ -12,6 +12,100 @@ export const supportHero = {
     'Setup guides, how-to articles and troubleshooting for the eatOS Point of Sale, Kitchen Display System, Dashboard, Kiosk, Guest Facing Display and hardware.',
 };
 
+// Marketing content for the support landing page. Kept out of the components so
+// copy stays in one place.
+export const supportChannels = [
+  {
+    id: 'chat',
+    icon: 'chat',
+    label: 'Live chat',
+    detail: 'Chat with a specialist inside your Dashboard',
+    meta: 'Typical reply under 2 minutes',
+    href: '/contactsales',
+    external: false,
+  },
+  {
+    id: 'email',
+    icon: 'mail',
+    label: 'Email support',
+    detail: 'support@eatos.com',
+    meta: 'Answered within 4 hours, 24/7',
+    href: 'mailto:support@eatos.com',
+    external: true,
+  },
+  {
+    id: 'whatsapp',
+    icon: 'whatsapp',
+    label: 'WhatsApp',
+    detail: 'Message us from the floor',
+    meta: 'Photos and screenshots welcome',
+    href: 'https://wa.me/18449732867',
+    external: true,
+  },
+  {
+    id: 'phone',
+    icon: 'phone',
+    label: 'Phone',
+    detail: '+1 (844) 563-2867',
+    meta: 'Live agents around the clock',
+    href: 'tel:+18445632867',
+    external: true,
+  },
+];
+
+export const supportSteps = [
+  {
+    number: '01',
+    title: 'Choose your plan',
+    body: 'Pick a 1 or 3 year plan that fits your service model. Every plan includes unlimited support at no extra cost.',
+    linkLabel: 'See pricing',
+    href: '/pricing',
+  },
+  {
+    number: '02',
+    title: 'Create your eatOS account',
+    body: 'Your onboarding specialist sets up your account, menu structure and payment processing with you on the call.',
+    linkLabel: 'Book a demo',
+    href: '/book-demo',
+  },
+  {
+    number: '03',
+    title: 'Activate in Dashboard',
+    body: 'Pair your terminals, Kitchen Display System and Guest Facing Display from the Dashboard, then go live the same day.',
+    linkLabel: 'Activation guides',
+    href: '/support',
+  },
+];
+
+export const supportPillars = [
+  {
+    icon: 'award',
+    title: 'Top tier restaurant technology experts',
+    body: 'Our team has run kitchens, bars and counters. You get people who understand a Friday night rush, not a script reader.',
+  },
+  {
+    icon: 'clock',
+    title: '24/7 emergency coverage',
+    body: 'Hardware down, printer offline, payments stalled: we answer at 2am with the same urgency as 2pm, every day of the year.',
+  },
+  {
+    icon: 'user',
+    title: 'A dedicated support expert',
+    body: 'One named specialist who knows your locations, your menu and your setup, so you never restart the story on every call.',
+  },
+];
+
+export const supportPromise = {
+  title: 'Free, ongoing support for every customer',
+  body: 'Support is never an upsell at eatOS. Onboarding, training, hardware troubleshooting and ongoing optimization are included with every plan, delivered by real specialists in your time zone.',
+  stats: [
+    { value: '24/7', label: 'Coverage, every day of the year' },
+    { value: '< 4 min', label: 'Average first response time' },
+    { value: '0 USD', label: 'Cost for ongoing support' },
+  ],
+};
+
+
 export const articles = generatedArticles;
 export const categories = generatedCategories.categories;
 export const featuredSlugs = generatedCategories.featured;
