@@ -385,7 +385,7 @@ export default function HomePage() {
             >
               <div className="flex flex-row items-center justify-between gap-4 h-full">
                 <div className="min-w-0 sm:max-w-[50%]">
-                  <h3 className="text-2xl md:text-2xl lg:text-3xl font-bold tracking-tighter mb-2">Hardware</h3>
+                   <h3 className="text-2xl md:text-2xl lg:text-3xl font-bold tracking-tighter mb-2">Loyalty</h3>
                   <p className="text-gray-400 text-sm md:text-sm lg:text-base">Milled aluminum. Built to last.</p>
                 </div>
                 <div className="w-20 h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 shrink-0 bg-black rounded-full flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform duration-500">
