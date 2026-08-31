@@ -29,14 +29,14 @@ export default function ResellerApplyModal({ open, onClose }: Props) {
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[200] flex items-start justify-center overflow-y-auto bg-black/80 p-4 backdrop-blur-sm md:items-center md:p-8"
+      className="fixed inset-0 z-[200] flex items-center justify-center bg-black/80 p-3 backdrop-blur-sm md:p-6"
       role="dialog"
       aria-modal="true"
       aria-label="Apply to be a reseller partner"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-6xl rounded-3xl bg-white p-6 text-black shadow-2xl md:p-10"
+        className="relative max-h-[92vh] w-full max-w-6xl overflow-y-auto overscroll-contain rounded-3xl bg-white p-6 text-black shadow-2xl md:max-h-[88vh] md:p-10"
         onClick={(e) => e.stopPropagation()}
       >
         <button
