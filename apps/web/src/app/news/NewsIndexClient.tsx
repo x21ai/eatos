@@ -21,6 +21,12 @@ export default function NewsIndexClient({ initialCategory = 'All News' }) {
   );
   const [page, setPage] = useState(1);
 
+  // The page is static HTML, so the ?category= deep link is read after mount.
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get('category');
+    if (requested && categories.includes(requested)) setActive(requested);
+  }, []);
+
   const available = categories.filter(
     (c) => c === 'All News' || newsItems.some((p) => p.category === c),
   );
