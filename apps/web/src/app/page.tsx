@@ -8,6 +8,7 @@ import {
   Gift,
 
   Command,
+  Cpu,
   CreditCard,
   Sparkles,
   Utensils,
@@ -801,18 +802,48 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="relative"
             >
-              <img
-                src={kdsKitchenAsset.url}
-                alt="eatOS platform running across a working restaurant kitchen"
-                loading="lazy"
-                className="relative z-10 rounded-3xl w-full aspect-[4/3] object-cover"
-              />
+              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/10 bg-zinc-900/50 backdrop-blur-sm">
+                <div className="absolute inset-0 bg-grid-white/[0.02] [mask-image:linear-gradient(to_bottom,transparent,black)]" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64">
+                    <div className="absolute inset-0 bg-[#d70480]/30 rounded-full animate-pulse blur-3xl" />
+                    <div className="absolute inset-0 bg-purple-500/30 rounded-full animate-pulse blur-3xl delay-700 translate-x-10" />
+                    <div className="relative z-10 w-full h-full border border-white/10 bg-black/40 backdrop-blur-xl rounded-full flex items-center justify-center">
+                      <Cpu size={64} className="text-white/80" />
+                    </div>
+
+                    {[0, 1, 2, 3].map((i) => (
+                      <div
+                        key={i}
+                        className="absolute top-1/2 left-1/2 w-4 h-4 bg-white rounded-full shadow-[0_0_20px_white]"
+                        style={{
+                          transform: `rotate(${i * 90}deg) translateX(140px)`,
+                          animation: 'homeOrbit 10s linear infinite',
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+
             </motion.div>
           </div>
         </div>
       </section>
 
+      <style jsx global>{`
+        @keyframes homeOrbit {
+          from {
+            transform: rotate(0deg) translateX(140px) rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg) translateX(140px) rotate(-360deg);
+          }
+        }
+      `}</style>
+
       <NewsletterSection />
+
     </div>
   );
 }
