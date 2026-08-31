@@ -101,7 +101,7 @@ export function VoiceOSSection() {
 
               <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
                 <a
-                  href="#"
+                  href="/book-demo"
                   className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full border border-white/20 text-white/90 hover:text-white hover:border-white/35 hover:bg-white/5 transition-all"
                 >
                   Try the demo <ArrowRight size={18} />
