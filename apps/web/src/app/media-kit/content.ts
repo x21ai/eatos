@@ -131,8 +131,10 @@ export const items = [
     description: 'See the eatOS ecosystem working together across different businesses.',
     action: 'Explore Photos',
     href: '/media-kit',
-    image: productShot.url,
+    image: p1.url,
     contain: true,
+    light: true,
+    gallery: productGallery,
   },
   {
     id: 'miscellaneous-images',
