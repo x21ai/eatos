@@ -39,6 +39,7 @@ export default async function sitemap() {
     '/news',
     '/privacy-policy',
     '/terms-and-conditions',
+    '/sms-policy',
     '/report-fraud',
     '/system-status',
     '/offline-point-of-sale',
