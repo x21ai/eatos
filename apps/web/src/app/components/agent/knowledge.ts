@@ -89,7 +89,7 @@ export const agentCapabilities = [
     status: 'Signed-in accounts',
     title: 'Takes action on your account',
     body:
-      'Account actions such as checking an order, running a device health check or resending a receipt run behind sign-in, scoped to your locations only.',
+      'Account actions such as checking an order, running a device health check or resending a receipt run behind secure sign-in, scoped to your specific locations only.',
   },
 ];
 
