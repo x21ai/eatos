@@ -1,6 +1,7 @@
 // @ts-nocheck
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import {
   ArrowRight,
@@ -13,11 +14,17 @@ import {
   MessageCircle,
   MessageSquare,
   Phone,
+  Route,
+  Sparkles,
   UserRound,
+  Wand2,
 } from 'lucide-react';
 import SupportSearch from './SupportSearch';
 import supportTeam from '@/assets/support/support-team.jpg.asset.json';
 import deviceLineup from '@/assets/point-of-purchase-terminals-v2.png.asset.json';
+import { openAgent } from '../components/agent/agentBus';
+import { agentCapabilities } from '../components/agent/knowledge';
+import { starterQuestions } from '../components/agent/retrieval';
 import {
   articleHref,
   articles,
@@ -36,6 +43,12 @@ const channelIcons = {
   mail: Mail,
   whatsapp: MessageCircle,
   phone: Phone,
+};
+
+const capabilityIcons = {
+  answer: Sparkles,
+  triage: Route,
+  act: Wand2,
 };
 
 const pillarIcons = {
