@@ -484,12 +484,13 @@ export default function SupportHomeClient() {
               <h2 className="mt-5 text-xl font-bold tracking-tighter text-white sm:text-2xl">
                 Still need a hand?
               </h2>
-              <p className="mt-3 max-w-xl text-sm leading-6 text-zinc-400">
+              <p className="mt-3 max-w-md text-sm leading-6 text-zinc-400">
                 Our support team is available around the clock. Check live service health, or reach out
                 and we will get you back up and running.
               </p>
             </div>
-            <div className="flex flex-nowrap items-center gap-2 overflow-x-auto no-scrollbar sm:gap-3">
+            <div className="flex shrink-0 flex-nowrap items-center gap-2 sm:gap-3">
+
               <a
                 href="/contactsales"
                 className="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-zinc-200"
