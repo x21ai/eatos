@@ -268,7 +268,8 @@ export default function SupportHomeClient() {
             Where the agent hands you off
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-zinc-400">
-            Triage picks the channel that matches the severity and carries your context into it. You can
+            Triage automatically picks the right channel that matches the severity and carries your full
+            context into it. You can
             also go straight to any of them.
           </p>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
