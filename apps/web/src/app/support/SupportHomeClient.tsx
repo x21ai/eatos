@@ -489,7 +489,7 @@ export default function SupportHomeClient() {
                 and we will get you back up and running.
               </p>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-nowrap items-center gap-2 overflow-x-auto no-scrollbar sm:gap-3">
               <a
                 href="/contactsales"
                 className="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-zinc-200"
