@@ -63,7 +63,13 @@ function summarize(blocks) {
     }
     if ((type === "h2" || type === "h3" || type === "h4") && text && steps.length < 6) {
       const key = text.toLowerCase();
-      if (key === "introduction" || key === "conclusion" || seenStep.has(key)) continue;
+      if (
+        key === "introduction" ||
+        key === "conclusion" ||
+        key === "table of contents" ||
+        seenStep.has(key)
+      )
+        continue;
       seenStep.add(key);
       steps.push(truncate(text, 120));
     }

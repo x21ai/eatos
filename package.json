@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node scripts/dev-preview.mjs",
     "build:dev": "node scripts/check-copy.mjs && ./apps/web/node_modules/.bin/next build apps/web && node scripts/prepare-dist.mjs",
-    "build": "node scripts/check-copy.mjs && ./apps/web/node_modules/.bin/next build apps/web && node scripts/prepare-dist.mjs",
+    "build": "node scripts/build-assistant-index.mjs && node scripts/check-copy.mjs && ./apps/web/node_modules/.bin/next build apps/web && node scripts/prepare-dist.mjs",
     "start": "./apps/web/node_modules/.bin/next start apps/web --port 8080",
     "typecheck": "cd apps/web && ./node_modules/.bin/tsc --noEmit -p tsconfig.json"
   },
