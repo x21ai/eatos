@@ -127,17 +127,22 @@ export default function ResellerPage() {
         <div className="group relative mt-10 overflow-hidden">
           <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-black to-transparent md:w-28" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-black to-transparent md:w-28" />
-          <div className="marquee-track flex w-max items-center gap-14 md:gap-24">
+          <div className="marquee-track flex w-max items-center gap-6 md:gap-10">
             {[...showcaseLogos, ...showcaseLogos].map((logo, i) => (
-              <img
+              <div
                 key={`${logo.name}-${i}`}
-                src={logo.src}
-                alt={`${logo.name} logo`}
-                loading="lazy"
-                className="h-10 w-auto max-w-[150px] shrink-0 object-contain opacity-80 brightness-0 invert transition-opacity hover:opacity-100 md:h-14 md:max-w-[190px]"
-              />
+                className="flex h-20 w-[170px] shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white px-5 py-3 md:h-24 md:w-[210px]"
+              >
+                <img
+                  src={logo.src}
+                  alt={`${logo.name} logo`}
+                  loading="lazy"
+                  className="max-h-full w-auto max-w-full object-contain"
+                />
+              </div>
             ))}
           </div>
+
         </div>
       </section>
 
