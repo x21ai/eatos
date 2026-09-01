@@ -15,17 +15,49 @@ const RESTART_WINDOW_MS = 60_000;
 const MAX_RESTARTS_PER_WINDOW = 10;
 let restartTimestamps = [];
 
+function killTree(child, signal) {
+  if (!child) return;
+  try {
+    // Killing the process group takes the next-server worker down too;
+    // otherwise the orphan keeps port 3001 and every restart hits EADDRINUSE.
+    process.kill(-child.pid, signal);
+  } catch {
+    try {
+      child.kill(signal);
+    } catch {
+      /* already gone */
+    }
+  }
+}
+
 function stop(signal = "SIGTERM", exitCode = 0) {
   if (stopping) return;
   stopping = true;
-  for (const child of [next, vite]) {
-    if (child && !child.killed) child.kill(signal);
-  }
+  killTree(next, signal);
+  if (vite && !vite.killed) vite.kill(signal);
   setTimeout(() => process.exit(exitCode), 100).unref();
 }
 
 process.once("SIGINT", () => stop("SIGINT"));
 process.once("SIGTERM", () => stop("SIGTERM"));
+process.once("exit", () => killTree(next, "SIGKILL"));
+
+async function waitForPortFree(timeoutMs = 30_000) {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    try {
+      await fetch(`http://127.0.0.1:${nextPort}/`, {
+        signal: AbortSignal.timeout(2000),
+      });
+      // Something still answers on 3001 — an orphaned worker. Clear it.
+      killTree(next, "SIGKILL");
+      await new Promise((resolve) => setTimeout(resolve, 500));
+    } catch {
+      return true;
+    }
+  }
+  return false;
+}
 
 function startNext() {
   next = spawn(
@@ -33,6 +65,7 @@ function startNext() {
     ["dev", "apps/web", "--port", nextPort],
     {
       stdio: "inherit",
+      detached: true,
       env: {
         ...process.env,
         // Long editing sessions can exhaust the default heap and get the dev
@@ -44,8 +77,9 @@ function startNext() {
     },
   );
 
-  next.once("exit", (code, signal) => {
-    if (stopping) return;
+  const supervised = next;
+  supervised.once("exit", async (code, signal) => {
+    if (stopping || next !== supervised) return;
 
     const now = Date.now();
     restartTimestamps = restartTimestamps.filter(
@@ -61,13 +95,15 @@ function startNext() {
     }
 
     console.error(
-      `[dev-preview] Next dev server exited (code=${code} signal=${signal}). Restarting in 1s...`,
+      `[dev-preview] Next dev server exited (code=${code} signal=${signal}). Restarting...`,
     );
-    setTimeout(() => {
-      if (!stopping) startNext();
-    }, 1000).unref();
+    // Make sure the old worker released port 3001 before respawning.
+    killTree(supervised, "SIGKILL");
+    await waitForPortFree();
+    if (!stopping) startNext();
   });
 }
+
 
 async function waitForNext(timeoutMs = 90_000) {
   const deadline = Date.now() + timeoutMs;
