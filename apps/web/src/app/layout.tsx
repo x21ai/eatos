@@ -73,6 +73,7 @@ export default function RootLayout({ children }) {
           <Footer />
           <CookieBanner />
           <BookDemoTracker />
+          <AgentAssistant />
         </Providers>
       </body>
     </html>
