@@ -391,7 +391,7 @@ export default function Footer() {
 
         <nav
           aria-label="Footer"
-          className="flex flex-wrap justify-center items-start gap-10 py-16 lg:flex-nowrap lg:justify-between lg:gap-x-12"
+          className="flex flex-wrap justify-center md:justify-start items-start gap-10 py-16 lg:flex-nowrap lg:justify-between lg:gap-x-12"
         >
           {LINK_GROUPS.map(({ title, href: groupHref, links }) => {
             const groupId = `footer-group-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
