@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 import SupportSearch from './SupportSearch';
 import supportTeam from '@/assets/support/support-team.jpg.asset.json';
-import deviceLineup from '@/assets/point-of-purchase-terminals-v2.png.asset.json';
+import supportExperts from '@/assets/support/support-experts.jpg.asset.json';
 import { openAgent } from '../components/agent/agentBus';
 import { agentCapabilities } from '../components/agent/knowledge';
 import { starterQuestions } from '../components/agent/retrieval';
