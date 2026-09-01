@@ -171,7 +171,7 @@ export default function SupportHomeClient() {
                 AI agent online 24/7
               </p>
               <h1 className="mt-5 text-3xl font-bold leading-[1.05] tracking-tighter text-white sm:text-4xl md:text-5xl">
-                Support that resolves, not just responds
+                Support that resolves, not just responds queries.
               </h1>
               <p className="mt-5 max-w-2xl text-sm leading-6 text-zinc-400 sm:text-base sm:leading-7">
                 Ask the eatOS support agent in plain language. It answers from {articles.length} help

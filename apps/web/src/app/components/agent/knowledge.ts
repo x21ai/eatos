@@ -73,7 +73,7 @@ export const agentCapabilities = [
     status: 'Live now',
     title: 'Grounded answers with sources',
     body:
-      'Ask in plain language. The agent answers from the eatOS help center and cites the exact guides it used, so you can verify every step.',
+      'Ask in plain language. The agent answers from the eatOS help center and cites the exact guides it used, so you can verify each and every step during process.',
   },
   {
     id: 'triage',
