@@ -436,11 +436,12 @@ export default function SupportHomeClient() {
             <Reveal delay={0.08} className="min-w-0">
               <div className="overflow-hidden rounded-[28px] border border-white/10 bg-black">
                 <img
-                  src={deviceLineup.url}
-                  alt="eatOS terminals, handheld and kiosk hardware lineup"
+                  src={supportExperts.url}
+                  alt="eatOS support specialists wearing headsets, standing together in an office"
                   loading="lazy"
                   className="h-full w-full object-cover"
                 />
+
               </div>
             </Reveal>
           </div>
