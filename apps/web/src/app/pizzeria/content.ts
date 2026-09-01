@@ -3,7 +3,7 @@
 // Images are placeholders for now, set `image` to an asset url when available.
 
 import builderAsset from '@/assets/pizzeria-builder.png.asset.json';
-import deliveryAsset from '@/assets/pizzeria-delivery.jpg.asset.json';
+import deliveryAsset from '@/assets/pizzeria-delivery-pickup.jpg.asset.json';
 import costAsset from '@/assets/pizzeria-cost.png.asset.json';
 
 export const hero = {
