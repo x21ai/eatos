@@ -47,25 +47,25 @@ function keywordsFor(article) {
   return Array.from(seen);
 }
 
+// Articles carry paragraphs and headings only, so the agent quotes the opening
+// paragraphs as the answer and uses the headings as the guide outline.
 function summarize(blocks) {
   const paragraphs = [];
   const steps = [];
+  const seenStep = new Set();
 
   for (const block of Array.isArray(blocks) ? blocks : []) {
     const text = clean(block?.text);
     const type = block?.type;
 
-    if ((type === "p" || type === "lead") && text.length > 40 && paragraphs.length < 3) {
+    if (type === "p" && text.length > 40 && paragraphs.length < 3) {
       paragraphs.push(text);
     }
-    if ((type === "li" || type === "step") && text && steps.length < 6) {
-      steps.push(truncate(text, 160));
-    }
-    if (Array.isArray(block?.items)) {
-      for (const item of block.items) {
-        const itemText = clean(typeof item === "string" ? item : item?.text);
-        if (itemText && steps.length < 6) steps.push(truncate(itemText, 160));
-      }
+    if ((type === "h2" || type === "h3" || type === "h4") && text && steps.length < 6) {
+      const key = text.toLowerCase();
+      if (key === "introduction" || key === "conclusion" || seenStep.has(key)) continue;
+      seenStep.add(key);
+      steps.push(truncate(text, 120));
     }
   }
 
