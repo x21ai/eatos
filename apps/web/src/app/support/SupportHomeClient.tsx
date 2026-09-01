@@ -485,8 +485,7 @@ export default function SupportHomeClient() {
                 Still need a hand?
               </h2>
               <p className="mt-3 max-w-md text-sm leading-6 text-zinc-400">
-                Our support team is available around the clock. Check live service health, or reach out
-                and we will get you back up and running.
+                Our support team is available around the clock. Check live service health, or reach out we will get you back up & running.
               </p>
             </div>
             <div className="flex shrink-0 flex-nowrap items-center gap-2 sm:gap-3">
