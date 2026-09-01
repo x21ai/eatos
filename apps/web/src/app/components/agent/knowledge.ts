@@ -104,7 +104,7 @@ const escalationBase = {
     id: 'phone',
     label: 'Call support now',
     detail: '+1 (844) 563-2867',
-    meta: 'Live agents around the clock',
+    meta: 'LIVE AGENTS SUPPORT  AROUND THE CLOCK',
   },
   whatsapp: {
     id: 'whatsapp',

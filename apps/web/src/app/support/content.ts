@@ -19,7 +19,7 @@ export const supportChannels = [
     id: 'chat',
     icon: 'chat',
     label: 'Live chat',
-    detail: 'Chat with a specialist inside your Dashboard',
+    detail: 'Chat with a specialist anytime inside your Dashboard ',
     meta: 'Typical reply under 2 minutes',
     href: '/contactsales',
     external: false,
@@ -47,7 +47,7 @@ export const supportChannels = [
     icon: 'phone',
     label: 'Phone',
     detail: '+1 (844) 563-2867',
-    meta: 'Live agents around the clock',
+    meta: 'LIVE AGENTS SUPPORT  AROUND THE CLOCK',
     href: 'tel:+18445632867',
     external: true,
   },
@@ -97,7 +97,7 @@ export const supportPillars = [
 
 export const supportPromise = {
   title: 'Free, ongoing support for every customer',
-  body: 'Support is never an upsell at eatOS. Onboarding, training, hardware troubleshooting and ongoing optimization are included with every plan, delivered by real specialists in your time zone.',
+  body: 'Support is never an upsell at eatOS. Onboarding, training, hardware troubleshooting and ongoing optimization are included with each and every plan, delivered by real specialists according your time zone.',
   stats: [
     { value: '24/7', label: 'Coverage, every day of the year' },
     { value: '< 4 min', label: 'Average first response time' },
