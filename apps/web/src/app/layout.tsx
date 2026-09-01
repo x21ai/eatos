@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import Providers from '@/components/Providers';
 import CookieBanner from '@/components/CookieBanner';
 import BookDemoTracker from '@/components/BookDemoTracker';
+import AgentAssistant from './components/agent/AgentAssistant';
 
 export const metadata = {
   metadataBase: new URL('https://eatos.com'),
@@ -72,6 +73,7 @@ export default function RootLayout({ children }) {
           <Footer />
           <CookieBanner />
           <BookDemoTracker />
+          <AgentAssistant />
         </Providers>
       </body>
     </html>
