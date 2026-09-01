@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 import SupportSearch from './SupportSearch';
 import supportTeam from '@/assets/support/support-team.jpg.asset.json';
-import deviceLineup from '@/assets/point-of-purchase-terminals-v2.png.asset.json';
+import supportExperts from '@/assets/support/support-experts.jpg.asset.json';
 import { openAgent } from '../components/agent/agentBus';
 import { agentCapabilities } from '../components/agent/knowledge';
 import { starterQuestions } from '../components/agent/retrieval';
@@ -436,11 +436,12 @@ export default function SupportHomeClient() {
             <Reveal delay={0.08} className="min-w-0">
               <div className="overflow-hidden rounded-[28px] border border-white/10 bg-black">
                 <img
-                  src={deviceLineup.url}
-                  alt="eatOS terminals, handheld and kiosk hardware lineup"
+                  src={supportExperts.url}
+                  alt="eatOS support specialists wearing headsets, standing together in an office"
                   loading="lazy"
                   className="h-full w-full object-cover"
                 />
+
               </div>
             </Reveal>
           </div>
