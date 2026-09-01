@@ -181,7 +181,7 @@ export function ProductShowcaseSection({
                       className={`pointer-events-none absolute inset-0 z-10 bg-black/60 transition-opacity duration-300 ${hoveredId === box.id ? 'opacity-100' : 'opacity-0'}`}
                     />
                     <span
-                      className={`pointer-events-none absolute inset-x-0 bottom-0 z-20 p-4 text-center text-lg font-semibold tracking-tight text-white transition-all duration-300 sm:p-5 sm:text-xl lg:text-2xl ${hoveredId === box.id ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'}`}
+                      className={`pointer-events-none absolute inset-x-0 bottom-0 z-20 p-4 text-center text-sm font-semibold tracking-tight text-white transition-all duration-300 sm:p-5 sm:text-base lg:text-lg ${hoveredId === box.id ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'}`}
                     >
                       {box.name}
                     </span>
