@@ -438,6 +438,7 @@ export default function Footer() {
             <nav aria-label="Legal and privacy" className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
               <a href="/privacy-policy" className={`${bottomLink} rounded-sm ${focusRing}`}>Privacy Policy</a>
               <a href="/terms-and-conditions" className={`${bottomLink} rounded-sm ${focusRing}`}>Terms of Service</a>
+              <a href="/sms-policy" className={`${bottomLink} rounded-sm ${focusRing}`}>SMS Terms</a>
               <button
                 type="button"
                 aria-label="Open cookie preferences"
