@@ -85,10 +85,62 @@ function CategoryCard({ category, index }) {
   );
 }
 
+function AgentComposer() {
+  const [question, setQuestion] = useState('');
+
+  return (
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        openAgent({ question, context: 'Help center' });
+        setQuestion('');
+      }}
+      className="w-full max-w-2xl"
+    >
+      <div className="flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.04] px-5 py-3.5 focus-within:border-white/40">
+        <Sparkles size={18} className="shrink-0 text-brand-on-dark" aria-hidden />
+        <input
+          value={question}
+          onChange={(event) => setQuestion(event.target.value)}
+          placeholder="Ask anything: reset a PIN, printer offline, add a menu item"
+          aria-label="Ask the eatOS support agent"
+          className="min-w-0 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-zinc-500 sm:text-base"
+        />
+        <button
+          type="submit"
+          className="hidden shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-black transition-colors hover:bg-zinc-200 sm:inline-flex"
+        >
+          Ask
+          <ArrowRight size={13} aria-hidden />
+        </button>
+        <button
+          type="submit"
+          aria-label="Ask the support agent"
+          className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white text-black sm:hidden"
+        >
+          <ArrowRight size={15} />
+        </button>
+      </div>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {starterQuestions.slice(0, 3).map((preset) => (
+          <button
+            key={preset}
+            type="button"
+            onClick={() => openAgent({ question: preset, context: 'Help center' })}
+            className="rounded-full border border-white/12 bg-white/[0.02] px-3.5 py-1.5 text-left text-[11px] font-semibold text-zinc-300 transition-colors hover:border-white/35 hover:text-white"
+          >
+            {preset}
+          </button>
+        ))}
+      </div>
+    </form>
+  );
+}
+
 export default function SupportHomeClient() {
   return (
     <div className="bg-black text-zinc-200">
-      {/* Hero */}
+      {/* Hero: the agent is the front door */}
       <section className="relative overflow-hidden bg-black pt-[128px] md:pt-[176px] pb-14 md:pb-20">
         <div className="site-container">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
@@ -103,20 +155,22 @@ export default function SupportHomeClient() {
                   <span className="absolute inset-0 animate-ping rounded-full bg-brand-on-dark/60" />
                   <span className="h-2 w-2 rounded-full bg-brand-on-dark" />
                 </span>
-                Support team online
+                AI agent online 24/7
               </p>
               <h1 className="mt-5 text-3xl font-bold leading-[1.05] tracking-tighter text-white sm:text-4xl md:text-5xl">
-                24/7 professional assistance for everything you run on eatOS
+                Support that resolves, not just responds
               </h1>
               <p className="mt-5 max-w-2xl text-sm leading-6 text-zinc-400 sm:text-base sm:leading-7">
-                {supportHero.intro}
+                Ask the eatOS support agent in plain language. It answers from {articles.length} help
+                articles, shows you the exact guide it used, and hands you to a specialist with your
+                details already attached when a person is faster.
               </p>
               <div className="mt-8">
-                <SupportSearch />
+                <AgentComposer />
               </div>
               <p className="mt-4 text-xs text-zinc-500">
-                {articles.length} articles across {categories.length} categories, updated as the
-                platform ships.
+                Grounded in {articles.length} articles across {categories.length} categories. Prefer to
+                browse? Everything is still below.
               </p>
             </motion.div>
 
@@ -134,20 +188,75 @@ export default function SupportHomeClient() {
                 className="h-full w-full object-cover"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              <div className="absolute inset-x-4 bottom-4 rounded-2xl border border-white/12 bg-black/70 p-4 backdrop-blur">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-on-dark">
+                  Agent first, humans always
+                </p>
+                <p className="mt-2 text-[13px] leading-5 text-zinc-300">
+                  The agent handles the answer. The same specialists who install eatOS in live
+                  restaurants take it from there.
+                </p>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Contact channels */}
+      {/* What the agent does */}
       <section className="border-t border-white/10 bg-zinc-950 py-14 md:py-20">
         <div className="site-container">
           <h2 className="text-2xl font-bold tracking-tighter text-white sm:text-3xl">
-            Reach a real specialist
+            An agent that answers, triages and acts
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-6 text-zinc-400">
-            Four ways to reach us, all staffed by the same team that installs and runs eatOS in live
-            restaurants.
+            Three tiers, each stated plainly so you know exactly what happens when you ask.
+          </p>
+          <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+            {agentCapabilities.map((capability, index) => {
+              const Icon = capabilityIcons[capability.id] ?? Sparkles;
+              return (
+                <Reveal key={capability.id} delay={Math.min(index, 3) * 0.06}>
+                  <div className="flex h-full min-w-0 flex-col rounded-3xl border border-white/10 bg-black p-7">
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="grid h-11 w-11 place-items-center rounded-2xl border border-white/12 bg-white/[0.05] text-brand-on-dark">
+                        <Icon size={19} aria-hidden />
+                      </span>
+                      <span className="rounded-full border border-white/12 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-400">
+                        {capability.status}
+                      </span>
+                    </div>
+                    <span className="mt-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-on-dark">
+                      {capability.tier}
+                    </span>
+                    <h3 className="mt-2 text-lg font-bold tracking-tight text-white sm:text-xl">
+                      {capability.title}
+                    </h3>
+                    <p className="mt-3 flex-1 text-sm leading-6 text-zinc-400">{capability.body}</p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+          <button
+            type="button"
+            onClick={() => openAgent({ context: 'Help center' })}
+            className="mt-8 inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-zinc-200"
+          >
+            Start with the agent
+            <ArrowRight size={16} />
+          </button>
+        </div>
+      </section>
+
+      {/* Escalation channels */}
+      <section className="border-t border-white/10 bg-black py-14 md:py-20">
+        <div className="site-container">
+          <h2 className="text-2xl font-bold tracking-tighter text-white sm:text-3xl">
+            Where the agent hands you off
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-zinc-400">
+            Triage picks the channel that matches the severity and carries your context into it. You can
+            also go straight to any of them.
           </p>
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {supportChannels.map((channel, index) => {
@@ -162,7 +271,7 @@ export default function SupportHomeClient() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-60px' }}
                   transition={{ duration: 0.45, delay: Math.min(index, 4) * 0.05 }}
-                  className="group flex min-w-0 flex-col rounded-3xl border border-white/10 bg-black p-6 transition-colors hover:border-white/30"
+                  className="group flex min-w-0 flex-col rounded-3xl border border-white/10 bg-white/[0.03] p-6 transition-colors hover:border-white/30"
                 >
                   <span className="grid h-11 w-11 place-items-center rounded-2xl border border-white/12 bg-white/[0.05] text-brand-on-dark">
                     <Icon size={19} aria-hidden />
