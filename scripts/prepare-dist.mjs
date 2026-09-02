@@ -18,6 +18,7 @@ import {
   cpSync,
   existsSync,
   mkdirSync,
+  readFileSync,
   readdirSync,
   rmSync,
   statSync,
