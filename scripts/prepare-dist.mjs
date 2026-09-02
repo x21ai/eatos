@@ -54,12 +54,15 @@ walk(appDir);
 const routes = [];
 let pages = 0;
 
-// Every page is written twice, both times with an .html extension:
-//   dist/<route>.html        - the host's "append .html" lookup / rewrite target
-//   dist/<route>/index.html  - directory-index lookup
-// Extensionless copies are deliberately NOT written any more: the host serves
-// them byte for byte as application/octet-stream with X-Content-Type-Options:
-// nosniff, so the browser downloads the page instead of rendering it.
+// Every page is written three times:
+//   dist/<route>            - the clean URL the site actually links to
+//   dist/<route>.html       - kept so previously shared/indexed .html links work
+//   dist/<route>/index.html - directory-index lookup
+// The extensionless copy is what makes a clean URL resolve on this host, which
+// matches exact file keys only. Its content type is pinned to text/html through
+// dist/_headers, otherwise the host labels it application/octet-stream.
+const cleanPaths = [];
+
 function emit(source, route) {
   const flat = path.join("dist", `${route}.html`);
   mkdirSync(path.dirname(flat), { recursive: true });
@@ -68,7 +71,19 @@ function emit(source, route) {
   const indexTarget = path.join("dist", route, "index.html");
   mkdirSync(path.dirname(indexTarget), { recursive: true });
   cpSync(source, indexTarget);
+
+  const bare = path.join("dist", route);
+  // dist/<route> is a directory (it holds index.html), so the extensionless
+  // copy cannot live at that exact key. Write it as a sibling of the directory
+  // only when no directory conflict exists; otherwise the directory index and
+  // the _headers rule below cover it.
+  if (!existsSync(bare) || !statSync(bare).isDirectory()) {
+    mkdirSync(path.dirname(bare), { recursive: true });
+    cpSync(source, bare);
+    cleanPaths.push(`/${route}`);
+  }
 }
+
 
 for (const { source, route } of found) {
   if (route === "index" || route === "_not-found") {
