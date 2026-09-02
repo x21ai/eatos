@@ -43,9 +43,11 @@ export function ProductShowcaseSection({
   mediaOverrides,
 }: ProductShowcaseSectionProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [expandedRatio, setExpandedRatio] = useState<number | null>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const tileRefs = useRef<Record<string, HTMLVideoElement | null>>({});
+
 
   const mediaFor = (id: string) =>
     mediaOverrides?.[id] ?? demoSources.find((d) => d.id === id)?.media ?? null;
@@ -53,8 +55,12 @@ export function ProductShowcaseSection({
   const expanded = expandedId ? showcaseBoxes.find((b) => b.id === expandedId) : null;
   const expandedMedia = expandedId ? mediaFor(expandedId) : null;
 
-
   const close = useCallback(() => setExpandedId(null), []);
+
+  useEffect(() => {
+    setExpandedRatio(null);
+  }, [expandedId]);
+
 
   // Autoplay tiles only while the section is on screen.
   useEffect(() => {
@@ -116,7 +122,14 @@ export function ProductShowcaseSection({
         >
           {expanded && expandedMedia ? (
             <div className="relative">
-              <div className="relative flex h-[46vh] w-full items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black sm:h-[54vh] lg:h-[60vh]">
+              <div
+                className="relative mx-auto flex w-full items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black"
+                style={{
+                  aspectRatio: expandedRatio ?? 16 / 9,
+                  maxHeight: 'min(60vh, 100%)',
+                  maxWidth: '100%',
+                }}
+              >
                 <video
                   key={expanded.id}
                   className="absolute inset-0 h-full w-full object-contain"
@@ -126,11 +139,18 @@ export function ProductShowcaseSection({
                   loop
                   playsInline
                   controls
+                  onLoadedMetadata={(e) => {
+                    const v = e.currentTarget;
+                    if (v.videoWidth && v.videoHeight) {
+                      setExpandedRatio(v.videoWidth / v.videoHeight);
+                    }
+                  }}
                 >
                   {expandedMedia.sources.map((s) => (
                     <source key={s.src} src={s.src} type={s.type} />
                   ))}
                 </video>
+
                 <button
                   type="button"
                   onClick={close}
