@@ -24,22 +24,35 @@ const showcaseBoxes: ShowcaseBox[] = [
   { id: 'inventoryos', name: 'inventoryOS', href: '/products/simplified-inventory-management' },
 ];
 
+type MediaOverride = {
+  sources: { src: string; type: string }[];
+  poster: string;
+  caption: string;
+};
+
 interface ProductShowcaseSectionProps {
   title?: string;
   description?: string;
+  /** Optional per-product media, keyed by product id. Overrides the shared demo clips. */
+  mediaOverrides?: Record<string, MediaOverride>;
 }
 
 export function ProductShowcaseSection({
   title = 'How it Works',
   description = 'Everything your restaurant needs today and for the future.',
+  mediaOverrides,
 }: ProductShowcaseSectionProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const tileRefs = useRef<Record<string, HTMLVideoElement | null>>({});
 
+  const mediaFor = (id: string) =>
+    mediaOverrides?.[id] ?? demoSources.find((d) => d.id === id)?.media ?? null;
+
   const expanded = expandedId ? showcaseBoxes.find((b) => b.id === expandedId) : null;
-  const expandedDemo = expandedId ? demoSources.find((d) => d.id === expandedId) : null;
+  const expandedMedia = expandedId ? mediaFor(expandedId) : null;
+
 
   const close = useCallback(() => setExpandedId(null), []);
 
