@@ -4,12 +4,14 @@ import posterAsset from './assets/poster.jpg.asset.json';
 import counterAsset from './assets/counter.jpg.asset.json';
 import detailAsset from './assets/detail.jpg.asset.json';
 import heroVideoAsset from './assets/hero-video.mp4.asset.json';
+import tapPayCounterAsset from './assets/tap-pay-counter.jpg.asset.json';
 
 export const images = {
   hero: heroAsset.url,
   poster: posterAsset.url,
   counter: counterAsset.url,
   detail: detailAsset.url,
+  tapPayCounter: tapPayCounterAsset.url,
 };
 
 export const heroVideo = heroVideoAsset.url;
