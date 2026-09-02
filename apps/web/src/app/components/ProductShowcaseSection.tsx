@@ -138,7 +138,6 @@ export function ProductShowcaseSection({
                   muted
                   loop
                   playsInline
-                  controls
                   onLoadedMetadata={(e) => {
                     const v = e.currentTarget;
                     if (v.videoWidth && v.videoHeight) {
