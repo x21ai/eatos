@@ -43,9 +43,11 @@ export function ProductShowcaseSection({
   mediaOverrides,
 }: ProductShowcaseSectionProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [expandedRatio, setExpandedRatio] = useState<number | null>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const tileRefs = useRef<Record<string, HTMLVideoElement | null>>({});
+
 
   const mediaFor = (id: string) =>
     mediaOverrides?.[id] ?? demoSources.find((d) => d.id === id)?.media ?? null;
