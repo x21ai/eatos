@@ -43,7 +43,7 @@ export const pillars = [
     id: 'platform',
     title: 'Get everything your enterprise needs',
     body:
-      'Our all-in-one food-service and restaurant management suite makes it easier to manage guests, staff, marketing, finances and the menu.',
+      'Our all-in-one food-service and restaurant management suite makes it easier to manage guests, staff, marketing, finances and the menu with the restaurant technology cloud.',
     more:
       'It is built to help restaurant enterprises thrive efficiently, with corporate oversight and location-level control in one place.',
     imageLabel: 'Enterprise management suite',
