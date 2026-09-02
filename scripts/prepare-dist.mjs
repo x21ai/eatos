@@ -116,31 +116,19 @@ for (const route of allRoutes) {
   if (allRoutes.some((other) => other.startsWith(prefix))) parents.add(route);
 }
 
-const cleanFiles = [];
 const parentRoutes = [];
 
 for (const route of allRoutes) {
   const source = pageByRoute.get(route);
 
-  // Always publish the .html twin so existing links keep working.
+  // The .html key is the only form this host will serve for a page.
   const flat = path.join("dist", `${route}.html`);
   mkdirSync(path.dirname(flat), { recursive: true });
   cpSync(source, flat);
 
-  if (parents.has(route)) {
-    // Must stay a directory; serve the clean URL through a rewrite rule.
-    const indexTarget = path.join("dist", route, "index.html");
-    mkdirSync(indexTarget.replace(/[\\/]index\.html$/, ""), { recursive: true });
-    cpSync(source, indexTarget);
-    parentRoutes.push(route);
-    continue;
-  }
-
-  const bare = path.join("dist", route);
-  mkdirSync(path.dirname(bare), { recursive: true });
-  cpSync(source, bare);
-  cleanFiles.push(route);
+  if (parents.has(route)) parentRoutes.push(route);
 }
+
 
 // The host resolves exact file keys only: it has no "append .html" lookup, no
 // directory index and it ignores dist/_redirects. Verified live: /pricing.html
