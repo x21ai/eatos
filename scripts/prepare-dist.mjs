@@ -205,5 +205,5 @@ writeFileSync(
 
 console.log(
   `dist/ prepared from apps/web/.next (${allRoutes.length} routes, ` +
-    `${cleanFiles.length} clean-path files, ${parentRoutes.length} section rewrites)`,
+    `${rewritten} files link-rewritten, ${parentRoutes.length} section rewrites)`,
 );
