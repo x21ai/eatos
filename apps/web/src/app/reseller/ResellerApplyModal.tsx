@@ -36,7 +36,7 @@ export default function ResellerApplyModal({ open, onClose }: Props) {
       onClick={onClose}
     >
       <div
-        className="relative max-h-[92vh] w-full max-w-6xl overflow-y-auto overscroll-contain rounded-3xl bg-white p-6 text-black shadow-2xl md:max-h-[88vh] md:p-10"
+        className="relative max-h-[92vh] w-full max-w-6xl overflow-y-auto overscroll-contain rounded-3xl bg-white p-6 text-black shadow-2xl [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:max-h-[88vh] md:p-10"
         onClick={(e) => e.stopPropagation()}
       >
         <button
