@@ -24,22 +24,35 @@ const showcaseBoxes: ShowcaseBox[] = [
   { id: 'inventoryos', name: 'inventoryOS', href: '/products/simplified-inventory-management' },
 ];
 
+type MediaOverride = {
+  sources: { src: string; type: string }[];
+  poster: string;
+  caption: string;
+};
+
 interface ProductShowcaseSectionProps {
   title?: string;
   description?: string;
+  /** Optional per-product media, keyed by product id. Overrides the shared demo clips. */
+  mediaOverrides?: Record<string, MediaOverride>;
 }
 
 export function ProductShowcaseSection({
   title = 'How it Works',
   description = 'Everything your restaurant needs today and for the future.',
+  mediaOverrides,
 }: ProductShowcaseSectionProps) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const tileRefs = useRef<Record<string, HTMLVideoElement | null>>({});
 
+  const mediaFor = (id: string) =>
+    mediaOverrides?.[id] ?? demoSources.find((d) => d.id === id)?.media ?? null;
+
   const expanded = expandedId ? showcaseBoxes.find((b) => b.id === expandedId) : null;
-  const expandedDemo = expandedId ? demoSources.find((d) => d.id === expandedId) : null;
+  const expandedMedia = expandedId ? mediaFor(expandedId) : null;
+
 
   const close = useCallback(() => setExpandedId(null), []);
 
@@ -101,20 +114,20 @@ export function ProductShowcaseSection({
           ref={containerRef}
           className="overflow-hidden rounded-3xl border border-white/12 bg-white/[0.03] p-2 sm:p-3"
         >
-          {expanded && expandedDemo?.media ? (
+          {expanded && expandedMedia ? (
             <div className="relative">
               <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/10 bg-black sm:aspect-[16/9]">
                 <video
                   key={expanded.id}
                   className="absolute inset-0 h-full w-full object-cover"
-                  poster={expandedDemo.media.poster}
+                  poster={expandedMedia.poster}
                   autoPlay
                   muted
                   loop
                   playsInline
                   controls
                 >
-                  {expandedDemo.media.sources.map((s) => (
+                  {expandedMedia.sources.map((s) => (
                     <source key={s.src} src={s.src} type={s.type} />
                   ))}
                 </video>
@@ -131,7 +144,7 @@ export function ProductShowcaseSection({
               <div className="flex flex-col items-center gap-2 px-4 py-5 text-center sm:flex-row sm:justify-between sm:text-left">
                 <div className="min-w-0">
                   <h3 className="text-base font-bold tracking-tight text-white">{expanded.name}</h3>
-                  <p className="mt-1 text-sm text-white/70">{expandedDemo.media.caption}</p>
+                  <p className="mt-1 text-sm text-white/70">{expandedMedia.caption}</p>
                 </div>
                 <a
                   href={expanded.href}
@@ -144,7 +157,7 @@ export function ProductShowcaseSection({
           ) : (
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
               {showcaseBoxes.map((box) => {
-                const demo = demoSources.find((d) => d.id === box.id);
+                const demo = mediaFor(box.id);
 
                 return (
                   <button
@@ -158,20 +171,20 @@ export function ProductShowcaseSection({
                     aria-label={`Play the ${box.name} demo`}
                     className="group relative block aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/10 bg-black text-left transition-all duration-500 hover:-translate-y-1 hover:border-white/25"
                   >
-                    {demo?.media ? (
+                    {demo ? (
                       <video
                         ref={(el) => {
                           tileRefs.current[box.id] = el;
                         }}
                         className="absolute inset-0 h-full w-full object-cover"
-                        poster={demo.media.poster}
+                        poster={demo.poster}
                         autoPlay
                         muted
                         loop
                         playsInline
                         preload="metadata"
                       >
-                        {demo.media.sources.map((s) => (
+                        {demo.sources.map((s) => (
                           <source key={s.src} src={s.src} type={s.type} />
                         ))}
                       </video>

@@ -26,6 +26,8 @@ import {
 import { motion } from 'motion/react';
 import { NewsletterSection } from '@/components/NewsletterSection';
 import { ProductShowcaseSection } from '../components/ProductShowcaseSection';
+import { homepage1ShowcaseMedia } from './showcaseMedia';
+
 import svcQuickService from '../../assets/svc-quick-service.jpg.asset.json';
 import svcFullService from '../../assets/svc-full-service.jpg.asset.json';
 import svcFineDining from '../../assets/svc-fine-dining.jpg.asset.json';
@@ -205,7 +207,9 @@ export default function HomePage() {
       <ProductShowcaseSection
         title="How it Works"
         description="Experience the full eatOS platform in your browser. Switch between products to see every feature in action and explore the complete workflow."
+        mediaOverrides={homepage1ShowcaseMedia}
       />
+
 
 
       {/* Social Proof / Trust Section */}
