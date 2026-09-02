@@ -1,73 +1,84 @@
-# Fix clean URLs so pages open without ".html"
+# Every page opens on a clean URL, no ".html" anywhere
 
-## Why it happens (verified against the live site)
+## Goal
 
-I tested the published site directly:
+`https://eatos.lovable.app/pricing`, `/shop`, `/support`, `/products/...`, blog and shop
+pages all open directly, and no `.html` ever appears in the address bar. The `.html` URLs
+keep working silently so anything already shared or indexed is not broken.
+
+## Why it happens today (verified on the live site)
 
 ```text
-GET /pricing        -> 502 / 404   (clean URL does not resolve)
-GET /pricing.html   -> 200 OK      (only this exists)
-GET /pricing/       -> 404
-GET /shop           -> 404
-GET /support        -> 404
+GET /pricing        -> not found
+GET /pricing.html   -> 200 OK, text/html
+GET /pricing/       -> not found
+GET /shop           -> not found
+GET /support        -> not found
 ```
 
-Two things in `scripts/prepare-dist.mjs` combine to produce what you are seeing:
+Two causes in `scripts/prepare-dist.mjs`:
 
-1. Every page is published as `dist/<route>.html`, and a step near the end of the script
-   rewrites every internal link in the published HTML from `/pricing` to `/pricing.html`.
-   That rewrite is why the extension shows up in the address bar on every click.
-2. The script also writes a `dist/_redirects` file whose last rule (`/* /:splat.html 200`)
-   was supposed to make the clean URLs resolve. The live responses above prove the host
-   is not applying that rule, so any clean URL, typed or shared, returns not found.
+1. Pages are published only as `dist/<route>.html` and `dist/<route>/index.html`, and a
+   step at the end of the script rewrites every internal link from `/pricing` to
+   `/pricing.html`. That rewrite is why the extension shows in the URL on every click.
+2. The `dist/_redirects` file ends with `/* /:splat.html 200`, which was supposed to make
+   clean URLs resolve. The responses above prove the host is not applying it, so a typed or
+   shared clean URL returns not found. The host resolves exact file keys only: it does not
+   append `.html`, does not serve a directory index, and does not fall back to `404.html`.
 
-The link rewrite was added as a workaround for exactly that failure. It keeps the site
-clickable, but at the cost of `.html` in every URL, which also splits your canonical tags
-(the sitemap and canonicals still advertise the clean URLs) from what actually loads.
+An earlier attempt at publishing extensionless files did make clean URLs resolve, but the
+host labelled them `application/octet-stream` with `nosniff`, so browsers downloaded the
+page instead of rendering it. That is why they were removed and the `.html` rewrite added.
 
 ## The fix
 
-### Step 1: confirm which lookup the host honors
-Before changing the publish script I will probe the live deployment for the variants the
-current build already contains, including `/pricing/index.html` and an extensionless
-object, and record exactly which ones return `200` with `content-type: text/html`. This
-takes one pass and removes all guesswork about host behavior.
+### 1. Remove the link rewrite
+Delete the href-rewriting block in `scripts/prepare-dist.mjs`. Internal links go back to
+clean URLs, which is what the site's own markup, canonicals and sitemap already use. This
+is the change that removes `.html` from the address bar.
 
-### Step 2: publish clean URLs as real files
-Based on that result, one of two routes:
+### 2. Make clean URLs resolve as HTML
+Publish an extensionless file at every clean path (`dist/pricing`, `dist/shop`,
+`dist/products/point-of-sale`, and so on) alongside a `dist/_headers` file that pins
+`content-type: text/html; charset=utf-8` for those paths. Extensionless files are the only
+form the host resolves at a clean URL, so the remaining problem is purely the content type,
+and `_headers` is the mechanism for that.
 
-- **If the host serves an extensionless object as HTML**, write each page at its clean path
-  (`dist/pricing`) with an explicit HTML content type, keep the `.html` copy as a fallback
-  for existing shared links, and delete the internal link rewrite so navigation stays on
-  clean URLs. An earlier attempt at extensionless files caused browsers to download the
-  file instead of rendering it, so this route only proceeds if the probe shows a correct
-  `text/html` content type.
-- **Otherwise**, publish a tiny HTML page at every clean path that immediately forwards to
-  the `.html` file. Typed and shared clean URLs then land on the right page, and the
-  `.html` rewrite stays only for in-site links. This is the guaranteed-to-work fallback
-  and is what I will use if the probe is inconclusive.
+Then publish once and measure live: status code and `content-type` for a clean URL on a
+leaf page, a section page with children, a deep shop product and a blog post.
 
-### Step 3: keep old links alive and consistent
-- Every existing `.html` URL keeps working, so nothing already shared or indexed breaks.
-- Canonical tags and `sitemap.xml` stay on the clean URLs, which is what you want search
-  engines to consolidate on.
+### 3. If `_headers` is still ignored, escalate rather than reintroduce ".html"
+If the probe shows `application/octet-stream` again, the static mirror cannot deliver clean
+URLs on this host and the publish artifact itself is the problem. In that case I switch the
+project off the hand-rolled `dist/` mirror and publish the app through the platform's own
+routing, which resolves clean URLs natively, instead of flattening the Next build into a
+static folder. I will explain the tradeoffs before making that change rather than doing it
+silently, since it touches how the project is built and deployed rather than page content.
+
+I will not fall back to `.html` links again. That is the behaviour you are asking to remove.
+
+### 4. Keep old URLs alive
+- `<route>.html` and `<route>/index.html` keep being published, so every previously shared
+  or indexed `.html` link still loads.
 - The legacy redirects already in the script (`/newsroom`, `/get-started`, `/tap-to-pay`,
-  shop and collection paths) are preserved untouched.
+  `/cart`, shop collection and page paths) stay exactly as they are.
+- Canonical tags and `sitemap.xml` continue to advertise the clean URLs, which is now what
+  actually loads, so search engines consolidate on one form.
 
-### Step 4: verify
-After publishing, re-run the same probe across a representative set (`/`, `/pricing`,
-`/shop`, `/support`, `/products/point-of-sale`, a blog post, a shop product) and confirm
-each returns `200 text/html` at the clean URL, and that clicking through the site no longer
-shows `.html`.
+### 5. Verify across the whole site, not a sample
+After publishing, request every route in the inventory (all pages plus generated shop,
+blog, news and support routes) and require `200` with `content-type: text/html` on the clean
+URL. A `200` with `application/octet-stream` counts as a failure. Then a browser pass over
+the header, footer, mega menu, shop flow and a blog post to confirm no `.html` appears in
+the URL bar and no console errors.
 
 ## Technical notes
-- All changes live in `scripts/prepare-dist.mjs`: the href rewrite block and the emit step.
-  No application code, routes or components change.
-- The `_redirects` wildcard stays in place; it costs nothing if the host ever starts
-  honoring it, and Step 2 no longer depends on it.
-- Page count roughly doubles in the published output because each route ships a clean-path
-  file plus its `.html` twin. With around 1,400 pages this is still well within limits.
+- All edits are confined to `scripts/prepare-dist.mjs` plus the new `dist/_headers` output.
+  No page content, component, styling or route changes.
+- The published output grows by one file per route (the extensionless copy). At roughly
+  1,400 routes that is well within host limits.
+- This is only observable on the published site, so a publish is part of the work, and
+  nothing is reported as fixed until live headers confirm HTML on clean URLs.
 
 ## Not doing
-No route renames, no changes to page content, and no removal of the `.html` files, since
-those are what current inbound links point at.
+No route renames, no copy or design changes, and no removal of the `.html` files.
