@@ -139,13 +139,21 @@ const parentRoutes = [];
 for (const route of allRoutes) {
   const source = pageByRoute.get(route);
 
-  // The .html key is the only form this host will serve for a page.
+  // The .html key is the only form this host is known to serve for a page.
   const flat = path.join("dist", `${route}.html`);
   mkdirSync(path.dirname(flat), { recursive: true });
   cpSync(source, flat);
 
+  // Directory-index twin, so clean URLs work on any host that does resolve
+  // /<route> or /<route>/ to /<route>/index.html. Harmless where it does not:
+  // the .html key above stays the form every internal link points at.
+  const dirIndex = path.join("dist", route, "index.html");
+  mkdirSync(path.dirname(dirIndex), { recursive: true });
+  cpSync(source, dirIndex);
+
   if (parents.has(route)) parentRoutes.push(route);
 }
+
 
 
 // The host resolves exact file keys only: it has no "append .html" lookup, no
