@@ -27,8 +27,8 @@ export default function ShopHomeClient() {
             transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
             className="max-w-3xl"
           >
-            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-on-dark">
-              eatOS Shop
+            <p className="text-[11px] font-semibold tracking-[0.28em] text-brand-on-dark">
+              eatOS SHOP
             </p>
             <h1 className="mt-5 text-3xl font-bold leading-[1.05] tracking-tighter text-white sm:text-4xl md:text-5xl">
               Restaurant hardware, built for the floor
