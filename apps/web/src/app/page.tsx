@@ -26,13 +26,13 @@ import {
 import { motion } from 'motion/react';
 import { NewsletterSection } from '@/components/NewsletterSection';
 import { DemoRailSection } from './components/DemoRailSection';
-import svcQuickService from '../assets/svc-quick-service.jpg.asset.json';
-import svcFullService from '../assets/svc-full-service.jpg.asset.json';
-import svcFineDining from '../assets/svc-fine-dining.jpg.asset.json';
-import svcCafe from '../assets/svc-cafe.jpg.asset.json';
-import svcBar from '../assets/svc-bar.jpg.asset.json';
-import svcFoodTruck from '../assets/svc-food-truck.jpg.asset.json';
-import svcGhostKitchen from '../assets/svc-ghost-kitchen.jpg.asset.json';
+import svcQuickService from '../assets/svc-quick-service-v2.jpg.asset.json';
+import svcFullService from '../assets/svc-full-service-v2.jpg.asset.json';
+import svcFineDining from '../assets/svc-fast-casual-v2.jpg.asset.json';
+import svcCafe from '../assets/svc-cafe-v2.jpg.asset.json';
+import svcBar from '../assets/svc-bar-v2.jpg.asset.json';
+import svcFoodTruck from '../assets/svc-food-truck-v2.jpg.asset.json';
+import svcGhostKitchen from '../assets/svc-ghost-kitchen-v2.jpg.asset.json';
 import svcFranchise from '../assets/svc-franchise.jpg.asset.json';
 import kdsKitchenAsset from '../assets/kds-kitchen-desk.jpg.asset.json';
 
