@@ -94,7 +94,7 @@ export default function PartnersPage() {
                     {track.body}
                   </p>
                   <a
-                    href="/contact"
+                    href="/bookademo"
                     className="group mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-white"
                   >
                     Book a Demo
