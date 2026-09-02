@@ -18,6 +18,7 @@ import {
   cpSync,
   existsSync,
   mkdirSync,
+  readFileSync,
   readdirSync,
   rmSync,
   statSync,
@@ -115,43 +116,59 @@ for (const route of allRoutes) {
   if (allRoutes.some((other) => other.startsWith(prefix))) parents.add(route);
 }
 
-const cleanFiles = [];
 const parentRoutes = [];
 
 for (const route of allRoutes) {
   const source = pageByRoute.get(route);
 
-  // Always publish the .html twin so existing links keep working.
+  // The .html key is the only form this host will serve for a page.
   const flat = path.join("dist", `${route}.html`);
   mkdirSync(path.dirname(flat), { recursive: true });
   cpSync(source, flat);
 
-  if (parents.has(route)) {
-    // Must stay a directory; serve the clean URL through a rewrite rule.
-    const indexTarget = path.join("dist", route, "index.html");
-    mkdirSync(indexTarget.replace(/[\\/]index\.html$/, ""), { recursive: true });
-    cpSync(source, indexTarget);
-    parentRoutes.push(route);
-    continue;
-  }
-
-  const bare = path.join("dist", route);
-  mkdirSync(path.dirname(bare), { recursive: true });
-  cpSync(source, bare);
-  cleanFiles.push(route);
+  if (parents.has(route)) parentRoutes.push(route);
 }
 
-// Pin the content type for extensionless pages. Without this the host sends
-// application/octet-stream with nosniff and the browser downloads the file.
-const headerRules = [
-  "/*",
-  "  X-Content-Type-Options: nosniff",
-  ...cleanFiles.flatMap((route) => [
-    `/${route}`,
-    "  Content-Type: text/html; charset=utf-8",
-  ]),
-];
-writeFileSync("dist/_headers", `${headerRules.join("\n")}\n`);
+
+// The host resolves exact file keys only: it has no "append .html" lookup, no
+// directory index and it ignores dist/_redirects. Verified live: /pricing.html
+// serves 200 while /pricing, /pricing/ and the extensionless copy all 404. So
+// every internal href is rewritten onto the .html target that really exists,
+// otherwise navigation breaks. Canonical tags and the sitemap keep the clean
+// URLs for the eventual origin host.
+const htmlFiles = [];
+function collectHtml(dir) {
+  for (const entry of readdirSync(dir)) {
+    const full = path.join(dir, entry);
+    if (statSync(full).isDirectory()) {
+      collectHtml(full);
+      continue;
+    }
+    if (full.endsWith(".html")) htmlFiles.push(full);
+  }
+}
+collectHtml("dist");
+
+const hasHtml = (route) => existsSync(path.join("dist", `${route}.html`));
+let rewritten = 0;
+
+for (const file of htmlFiles) {
+  const original = readFileSync(file, "utf8");
+  const updated = original.replace(/href="\/([^"#?]*?)"/g, (match, route) => {
+    if (!route || route.includes(".") || route.startsWith("_next/")) return match;
+    const clean = route.replace(/\/$/, "");
+    if (!clean || !hasHtml(clean)) return match;
+    return `href="/${clean}.html"`;
+  });
+  if (updated !== original) {
+    writeFileSync(file, updated);
+    rewritten += 1;
+  }
+}
+
+// No dist/_headers is written: every page is served from a .html key, which the
+// host already labels text/html.
+
 
 // Asset paths pass through first so nothing below can rewrite them.
 const passthrough = ["/_next/* /_next/:splat 200"];
@@ -188,5 +205,5 @@ writeFileSync(
 
 console.log(
   `dist/ prepared from apps/web/.next (${allRoutes.length} routes, ` +
-    `${cleanFiles.length} clean-path files, ${parentRoutes.length} section rewrites)`,
+    `${rewritten} files link-rewritten, ${parentRoutes.length} section rewrites)`,
 );
