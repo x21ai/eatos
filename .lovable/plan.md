@@ -1,82 +1,73 @@
-# US restaurant lingo audit and copy alignment
+# Fix clean URLs so pages open without ".html"
 
-## What the document covers vs what the website has
+## Why it happens (verified against the live site)
 
-Most of the lingo sheet describes in-app POS and KDS screen labels (Open Checks, Bump,
-Till, Opening Float, Split Tender, Manager Approval, 86, Order Up). Those labels live in
-the POS/KDS product, not in this marketing website, so they are out of scope here. Three
-of its rules do apply to public site copy, and I checked each against the codebase.
+I tested the published site directly:
 
-### 1. Customer to Guest (applies, biggest item)
-The sheet says replace "Customer" with "Guest". The site still uses "customer" and
-"customers" in around 120 places in editable copy. Confirmed locations:
+```text
+GET /pricing        -> 502 / 404   (clean URL does not resolve)
+GET /pricing.html   -> 200 OK      (only this exists)
+GET /pricing/       -> 404
+GET /shop           -> 404
+GET /support        -> 404
+```
 
-- Comparison page copy: `app/comparison/competitors.ts` (lines 47, 73, 105, 163, 177, 203)
-  and `app/comparison/content.ts` (11, 43, 48)
-- Online Ordering: `app/products/apponlineorderingdelivery/content.ts` (Customer Profile
-  feature name and key feature list, lines 25, 48, 49)
-- AI Enabled Ordering: `app/products/ai-enabled-ordering-automation/content.ts`
-  ("Enhanced Customer Engagement" heading and body, lines 14, 27, 50, 51, 53, 56)
-- Full Service: `app/full-service/content.ts:56` "Never miss out on a customer"
-- Catering: `app/catering/content.ts:56` "Customer-centric catering services"
-- Enterprise POS: `app/enterprise-pos/content.ts:58`
-- Support assistant copy: `app/components/agent/knowledge.ts:61`
-- Company hub and layout descriptions: `app/company/page.tsx`, `app/company/layout.tsx`
-- Reseller: `app/reseller/content.ts:13`
+Two things in `scripts/prepare-dist.mjs` combine to produce what you are seeing:
 
-Deliberately left alone (renaming these would break links, SEO or accuracy):
-`/customers` route, its page title and "Customer Stories" label, "Customer satisfaction"
-and "Repeat customers" metric labels, the `Customers API` row on system status, internal
-file and variable names, and legal pages (Privacy, Terms, SMS Policy) where wording is
-contractual.
+1. Every page is published as `dist/<route>.html`, and a step near the end of the script
+   rewrites every internal link in the published HTML from `/pricing` to `/pricing.html`.
+   That rewrite is why the extension shows up in the address bar on every click.
+2. The script also writes a `dist/_redirects` file whose last rule (`/* /:splat.html 200`)
+   was supposed to make the clean URLs resolve. The live responses above prove the host
+   is not applying that rule, so any clean URL, typed or shared, returns not found.
 
-### 2. Ticket to Check (applies only partly)
-The sheet's rule is about POS checks. On the site, almost every "ticket" is a *kitchen*
-ticket, which the same sheet explicitly endorses (KOT becomes Kitchen Ticket). So:
+The link rewrite was added as a workaround for exactly that failure. It keeps the site
+clickable, but at the cost of `.html` in every URL, which also splits your canonical tags
+(the sitemap and canonicals still advertise the clean URLs) from what actually loads.
 
-- Keep as-is (kitchen context, correct US usage): Kitchen Display System page and content,
-  `app/products/kitchen-display-system/*`, `app/products/hardware/content.ts`,
-  `app/components/demoSources.ts`, `components/AIIntelligence/sections/KitchenIntelligenceSection.tsx`,
-  `app/ghost-kitchens/content.ts`, `app/pizzeria/PizzeriaClient.tsx`,
-  `app/fast-casual/FastCasualClient.tsx`, `app/brochures/content.ts:97`
-- Change to Check (payment context, currently wrong for US):
-  - `app/tap-to-pay/content.ts:38` "the ticket closes itself" becomes "the check closes itself"
-  - `app/products/apponlineorderingdelivery/content.ts:65` "keep the full ticket" becomes
-    "keep the full check"
-- Keep "average ticket" everywhere (`app/products/products.ts:43`, `app/home-1/page.tsx:551`):
-  it is standard US restaurant finance language, not the POS check label.
+## The fix
 
-### 3. Sign In / Sign Out (applies)
-The sheet says Login becomes Sign In and Logout becomes Sign Out.
+### Step 1: confirm which lookup the host honors
+Before changing the publish script I will probe the live deployment for the variants the
+current build already contains, including `/pricing/index.html` and an extensionless
+object, and record exactly which ones return `200` with `content-type: text/html`. This
+takes one pass and removes all guesswork about host behavior.
 
-- `components/Header.tsx:1016` nav label "Login" becomes "Sign In"
-- `components/UtilityBar.tsx` login link label
-- `app/account/signup/page.tsx:102` button "Sign Up" becomes "Create Account"
-  (the sheet's own preferred term)
-- Account screen headings under `app/account/signin` and `app/account/signup`
-- The `/login` route path itself stays, so existing links and bookmarks keep working
+### Step 2: publish clean URLs as real files
+Based on that result, one of two routes:
 
-### 4. Terms from the sheet that do not appear on the website at all
-No changes needed, verified by search: KOT, Gratuity, Cash Drawer, Open Drawer,
-Table Layout, Split Payment, Item Summary, New Order, Ticket Listing, Delivered,
-Activate Device, Preparing, Unseen/Seen, Opening Cash.
+- **If the host serves an extensionless object as HTML**, write each page at its clean path
+  (`dist/pricing`) with an explicit HTML content type, keep the `.html` copy as a fallback
+  for existing shared links, and delete the internal link rewrite so navigation stays on
+  clean URLs. An earlier attempt at extensionless files caused browsers to download the
+  file instead of rendering it, so this route only proceeds if the probe shows a correct
+  `text/html` content type.
+- **Otherwise**, publish a tiny HTML page at every clean path that immediately forwards to
+  the `.html` file. Typed and shared clean URLs then land on the right page, and the
+  `.html` rewrite stays only for in-site links. This is the guaranteed-to-work fallback
+  and is what I will use if the probe is inconclusive.
 
-Also already correct: "Guest Facing Display" (renamed earlier), 86 usage, Revenue Center.
+### Step 3: keep old links alive and consistent
+- Every existing `.html` URL keeps working, so nothing already shared or indexed breaks.
+- Canonical tags and `sitemap.xml` stay on the clean URLs, which is what you want search
+  engines to consolidate on.
+- The legacy redirects already in the script (`/newsroom`, `/get-started`, `/tap-to-pay`,
+  shop and collection paths) are preserved untouched.
 
-## What I would change if you approve
-
-Copy-only edits in the files listed under items 1, 2 and 3. No layout, component
-structure or routing changes, no legal page rewrites, no route renames.
+### Step 4: verify
+After publishing, re-run the same probe across a representative set (`/`, `/pricing`,
+`/shop`, `/support`, `/products/point-of-sale`, a blog post, a shop product) and confirm
+each returns `200 text/html` at the clean URL, and that clicking through the site no longer
+shows `.html`.
 
 ## Technical notes
-- All edits land in `content.ts` copy files plus `Header.tsx`, `UtilityBar.tsx` and the
-  two account pages; generated blog, news and support datasets are excluded so historical
-  articles keep their original wording.
-- Grammar is adjusted per sentence where "guest" changes the article or verb form.
-- Verify with a production build and a quick pass over Comparison, Online Ordering,
-  AI Ordering, Full Service, Catering and the header at desktop and mobile widths.
+- All changes live in `scripts/prepare-dist.mjs`: the href rewrite block and the emit step.
+  No application code, routes or components change.
+- The `_redirects` wildcard stays in place; it costs nothing if the host ever starts
+  honoring it, and Step 2 no longer depends on it.
+- Page count roughly doubles in the published output because each route ships a clean-path
+  file plus its `.html` twin. With around 1,400 pages this is still well within limits.
 
-## Open question
-Confirm whether you want "customer support", "customer satisfaction" and
-"customer base" phrases also switched to "guest", or kept, since those refer to eatOS
-supporting *you* rather than to diners. My recommendation is to keep them.
+## Not doing
+No route renames, no changes to page content, and no removal of the `.html` files, since
+those are what current inbound links point at.
