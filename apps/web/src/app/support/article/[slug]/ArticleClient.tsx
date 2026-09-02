@@ -73,7 +73,7 @@ function Helpful({ slug }) {
           No
         </button>
         <a
-          href="/contactsales"
+          href="/contact"
           className="text-sm font-semibold text-brand-on-dark transition-colors hover:text-white"
         >
           Contact support

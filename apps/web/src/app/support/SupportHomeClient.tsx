@@ -493,14 +493,14 @@ export default function SupportHomeClient() {
             <div className="flex shrink-0 flex-nowrap items-center gap-2 sm:gap-3">
 
               <a
-                href="/contactsales"
+                href="/contact"
                 className="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-zinc-200"
               >
                 Contact support
                 <ArrowRight size={16} />
               </a>
               <a
-                href="/book-demo"
+                href="/bookademo"
                 className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-white"
               >
                 Book a demo

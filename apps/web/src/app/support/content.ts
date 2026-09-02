@@ -21,7 +21,7 @@ export const supportChannels = [
     label: 'Live chat',
     detail: 'Chat with a specialist anytime inside your Dashboard ',
     meta: 'Typical reply under 2 minutes',
-    href: '/contactsales',
+    href: '/contact',
     external: false,
   },
   {
@@ -66,7 +66,7 @@ export const supportSteps = [
     title: 'Create your eatOS account',
     body: 'Your onboarding specialist sets up your account, menu structure and payment processing with you on the call.',
     linkLabel: 'Book a demo',
-    href: '/book-demo',
+    href: '/bookademo',
   },
   {
     number: '03',
