@@ -1,5 +1,4 @@
 // @ts-nocheck
-import Link from 'next/link';
 import { ArrowRight, Users, Megaphone, BarChart3, Puzzle, CheckCircle2 } from 'lucide-react';
 import PartnerForm from './PartnerForm';
 import { heroImage, programsImage, partnerTracks, integrationPartners } from './content';
@@ -20,7 +19,7 @@ export default function PartnersPage() {
         <div className="site-container">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-semibold tracking-[0.08em] text-white/70">
                 <span className="h-1.5 w-1.5 rounded-full bg-brand-on-dark" />
                 eatOS Partner Program
               </span>
@@ -34,19 +33,19 @@ export default function PartnersPage() {
                 build, grow and scale your own business with eatOS.
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <Link
+                <a
                   href="/contact"
                   className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-colors hover:bg-white/90"
                 >
                   Become a partner
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-                </Link>
-                <Link
+                </a>
+                <a
                   href="/bookademo"
                   className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
                 >
                   Talk to our team
-                </Link>
+                </a>
               </div>
             </div>
 
@@ -94,7 +93,7 @@ export default function PartnersPage() {
                   <p className="mt-3 flex-grow text-sm leading-relaxed text-white/70">
                     {track.body}
                   </p>
-                  <Link
+                  <a
                     href="/contact"
                     className="group mt-7 inline-flex items-center gap-1.5 text-sm font-semibold text-white"
                   >
@@ -103,7 +102,7 @@ export default function PartnersPage() {
                       size={15}
                       className="transition-transform group-hover:translate-x-1"
                     />
-                  </Link>
+                  </a>
                 </div>
               );
             })}
@@ -148,13 +147,13 @@ export default function PartnersPage() {
                 without any obligation, simply by connecting restaurants with the right business
                 solutions.
               </p>
-              <Link
+              <a
                 href="/contact"
                 className="group mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-white/90"
               >
                 Apply now
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -259,7 +258,7 @@ export default function PartnersPage() {
                 Tell us about your business and our partner team will follow up shortly.
               </p>
             </div>
-            <div className="mx-auto mt-8 w-full max-w-3xl rounded-2xl bg-white p-6 text-black md:p-8">
+            <div className="mx-auto mt-8 w-full rounded-2xl bg-white p-6 text-black md:p-8">
               <PartnerForm />
             </div>
           </div>
