@@ -55,8 +55,12 @@ export function ProductShowcaseSection({
   const expanded = expandedId ? showcaseBoxes.find((b) => b.id === expandedId) : null;
   const expandedMedia = expandedId ? mediaFor(expandedId) : null;
 
-
   const close = useCallback(() => setExpandedId(null), []);
+
+  useEffect(() => {
+    setExpandedRatio(null);
+  }, [expandedId]);
+
 
   // Autoplay tiles only while the section is on screen.
   useEffect(() => {
