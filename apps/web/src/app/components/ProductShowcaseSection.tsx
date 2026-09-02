@@ -116,10 +116,10 @@ export function ProductShowcaseSection({
         >
           {expanded && expandedMedia ? (
             <div className="relative">
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/10 bg-black sm:aspect-[16/9]">
+              <div className="relative flex h-[46vh] w-full items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black sm:h-[54vh] lg:h-[60vh]">
                 <video
                   key={expanded.id}
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className="absolute inset-0 h-full w-full object-contain"
                   poster={expandedMedia.poster}
                   autoPlay
                   muted
@@ -176,7 +176,7 @@ export function ProductShowcaseSection({
                         ref={(el) => {
                           tileRefs.current[box.id] = el;
                         }}
-                        className="absolute inset-0 h-full w-full object-cover"
+                        className="absolute inset-0 h-full w-full object-contain"
                         poster={demo.poster}
                         autoPlay
                         muted
