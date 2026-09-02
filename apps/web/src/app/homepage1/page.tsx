@@ -205,7 +205,9 @@ export default function HomePage() {
       <ProductShowcaseSection
         title="How it Works"
         description="Experience the full eatOS platform in your browser. Switch between products to see every feature in action and explore the complete workflow."
+        mediaOverrides={homepage1ShowcaseMedia}
       />
+
 
 
       {/* Social Proof / Trust Section */}
