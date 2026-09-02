@@ -14,7 +14,7 @@ import {
 import { motion } from 'motion/react';
 import {
   features as tapFeatures,
-  heroVideo,
+  
   places,
   requirements,
   images,
