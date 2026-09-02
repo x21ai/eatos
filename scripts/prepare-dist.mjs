@@ -84,13 +84,31 @@ for (const { source, route } of found) {
 
 // Legacy paths that only existed as framework-level redirects. Materialised as
 // their own pages carrying the destination page's markup.
+const competitorComparisonSlugs = [
+  "square",
+  "toast",
+  "lightspeed",
+  "spoton",
+  "touchbistro",
+  "revel",
+  "micros",
+];
+
 const legacyAliases = [
   ["newsroom", "news"],
   ["get-started", "bookademo"],
   ["tap-to-pay", "accept-payments"],
   ["cart", "shop"],
   ["collections/all", "shop"],
+  // Live comparison URLs exist only as framework rewrites onto /comparison/*,
+  // so publish them as real pages too.
+  ["eatos-vs-other-pos-software", "comparison"],
+  ...competitorComparisonSlugs.map((slug) => [
+    `eatos-vs-${slug}`,
+    `comparison/${slug}`,
+  ]),
 ];
+
 
 for (const [alias, target] of legacyAliases) {
   const source = sourceByRoute.get(target);
