@@ -63,7 +63,7 @@ export const pillars = [
     body:
       'Take orders, open tabs and accept payments without leaving the rail. A handheld terminal keeps bartenders face-to-face with guests, so service stays personal and the line never stalls.',
     more:
-      'Tap, insert, swipe or contactless payments settle on the spot, tips are prompted automatically, and every transaction posts straight to the tab. The best bartenders stay on the floor with a mobile device.',
+      'Tap, insert, swipe or contactless payments settle on the spot, tips are prompted automatically, and every transaction posts straight to the tab. The best bartenders stay on the floor with a device.',
     imageLabel: 'Bartender tapping a card on a handheld at the rail',
     image: handheldImg.url,
   },
