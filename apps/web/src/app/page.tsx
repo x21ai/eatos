@@ -30,10 +30,10 @@ import svcQuickService from '../assets/svc-quick-service-v2.jpg.asset.json';
 import svcFullService from '../assets/svc-full-service-v2.jpg.asset.json';
 import svcFineDining from '../assets/svc-fast-casual-v2.jpg.asset.json';
 import svcCafe from '../assets/svc-cafe-v2.jpg.asset.json';
-import svcBar from '../assets/svc-bar-v2.jpg.asset.json';
+import svcBar from '../assets/svc-bar-v3.jpg.asset.json';
 import svcFoodTruck from '../assets/svc-food-truck-v2.jpg.asset.json';
 import svcGhostKitchen from '../assets/svc-ghost-kitchen-v2.jpg.asset.json';
-import svcFranchise from '../assets/svc-franchise.jpg.asset.json';
+import svcFranchise from '../assets/svc-enterprise-v2.jpg.asset.json';
 import kdsKitchenAsset from '../assets/kds-kitchen-desk.jpg.asset.json';
 
 
