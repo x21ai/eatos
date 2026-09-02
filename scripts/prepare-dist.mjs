@@ -142,6 +142,43 @@ for (const route of allRoutes) {
   cleanFiles.push(route);
 }
 
+// The host resolves exact file keys only: it has no "append .html" lookup, no
+// directory index and it ignores dist/_redirects. Verified live: /pricing.html
+// serves 200 while /pricing, /pricing/ and the extensionless copy all 404. So
+// every internal href is rewritten onto the .html target that really exists,
+// otherwise navigation breaks. Canonical tags and the sitemap keep the clean
+// URLs for the eventual origin host.
+const htmlFiles = [];
+function collectHtml(dir) {
+  for (const entry of readdirSync(dir)) {
+    const full = path.join(dir, entry);
+    if (statSync(full).isDirectory()) {
+      collectHtml(full);
+      continue;
+    }
+    if (full.endsWith(".html")) htmlFiles.push(full);
+  }
+}
+collectHtml("dist");
+
+const hasHtml = (route) => existsSync(path.join("dist", `${route}.html`));
+let rewritten = 0;
+
+for (const file of htmlFiles) {
+  const original = readFileSync(file, "utf8");
+  const updated = original.replace(/href="\/([^"#?]*?)"/g, (match, route) => {
+    if (!route || route.includes(".") || route.startsWith("_next/")) return match;
+    const clean = route.replace(/\/$/, "");
+    if (!clean || !hasHtml(clean)) return match;
+    return `href="/${clean}.html"`;
+  });
+  if (updated !== original) {
+    writeFileSync(file, updated);
+    rewritten += 1;
+  }
+}
+
+
 // Pin the content type for extensionless pages. Without this the host sends
 // application/octet-stream with nosniff and the browser downloads the file.
 const headerRules = [
