@@ -177,14 +177,14 @@ export function ProductShowcaseSection({
                           tileRefs.current[box.id] = el;
                         }}
                         className="absolute inset-0 h-full w-full object-cover"
-                        poster={demo.media.poster}
+                        poster={demo.poster}
                         autoPlay
                         muted
                         loop
                         playsInline
                         preload="metadata"
                       >
-                        {demo.media.sources.map((s) => (
+                        {demo.sources.map((s) => (
                           <source key={s.src} src={s.src} type={s.type} />
                         ))}
                       </video>
