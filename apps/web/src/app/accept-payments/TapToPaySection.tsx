@@ -14,7 +14,7 @@ import {
 import { motion } from 'motion/react';
 import {
   features as tapFeatures,
-  heroVideo,
+  
   places,
   requirements,
   images,
@@ -85,15 +85,13 @@ export default function TapToPaySection() {
             {...rise}
             className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5"
           >
-            <video
-              src={heroVideo}
-              poster={images.poster}
-              className="aspect-[4/3] w-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
+            <img
+              src={images.tapPayCounter}
+              alt="Guest tapping a card to pay at a cafe counter"
+              className="aspect-[4/3] w-full h-full object-cover"
+              loading="lazy"
             />
+
           </motion.div>
         </div>
 
