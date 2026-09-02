@@ -166,18 +166,9 @@ for (const file of htmlFiles) {
   }
 }
 
+// No dist/_headers is written: every page is served from a .html key, which the
+// host already labels text/html.
 
-// Pin the content type for extensionless pages. Without this the host sends
-// application/octet-stream with nosniff and the browser downloads the file.
-const headerRules = [
-  "/*",
-  "  X-Content-Type-Options: nosniff",
-  ...cleanFiles.flatMap((route) => [
-    `/${route}`,
-    "  Content-Type: text/html; charset=utf-8",
-  ]),
-];
-writeFileSync("dist/_headers", `${headerRules.join("\n")}\n`);
 
 // Asset paths pass through first so nothing below can rewrite them.
 const passthrough = ["/_next/* /_next/:splat 200"];
