@@ -17,7 +17,7 @@ export const hero = {
   imageLabel: 'Inventory management dashboard',
   image: null,
   stats: [
-    { value: '30%', label: 'Less waste. Increase checks.' },
+    { value: '30%', label: 'Less waste' },
     { value: '100%', label: 'Real-time tracking' },
     { value: '24/7', label: 'Stock visibility' },
   ],
