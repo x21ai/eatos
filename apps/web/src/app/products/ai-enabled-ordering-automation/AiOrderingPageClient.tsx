@@ -252,7 +252,7 @@ export default function AiOrderingPageClient() {
                 Icon: Shield,
                 tint: 'bg-indigo-500/10 text-indigo-400',
                 title: 'Accurate every time',
-                body: 'Voice recognition confirms items, modifiers and totals before the kitchen ticket reaches the kitchen.',
+                body: 'Voice recognition confirms items, modifiers and totals before the kitchen ticket is sent.',
               },
               {
                 Icon: Clock,
