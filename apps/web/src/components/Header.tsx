@@ -1013,7 +1013,7 @@ export default function Header() {
                 {
                   href: "https://dashboard.eatos.com/#/account/login",
                   Icon: LayoutGrid,
-                  label: "Login",
+                  label: "Sign In",
                   external: true,
                 },
                 {
