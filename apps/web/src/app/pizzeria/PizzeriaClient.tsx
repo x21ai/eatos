@@ -218,7 +218,13 @@ export default function PizzeriaClient() {
                 </div>
 
                 <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                  <div className="rounded-[2rem] border border-white/10 bg-white/5 overflow-hidden">
+                  <div
+                    className={
+                      pillar.id === 'cost'
+                        ? 'overflow-hidden'
+                        : 'rounded-[2rem] border border-white/10 bg-white/5 overflow-hidden'
+                    }
+                  >
                     <Placeholder
                       label={pillar.imageLabel}
                       src={pillar.image}
