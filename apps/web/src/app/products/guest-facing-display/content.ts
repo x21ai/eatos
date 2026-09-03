@@ -1,9 +1,9 @@
 // @ts-nocheck
 // All copy for the Guest Facing Display product page. Edit here.
 
-import orderReview from '@/assets/cfd-order-review.png.asset.json';
-import marketing from '@/assets/cfd-marketing.png.asset.json';
-import tips from '@/assets/cfd-tips.png.asset.json';
+import orderReview from '@/assets/cfd-feature-1.png.asset.json';
+import marketing from '@/assets/cfd-feature-2.png.asset.json';
+import tips from '@/assets/cfd-feature-3.png.asset.json';
 
 export const hero = {
   eyebrow: 'Guest Facing Display',
