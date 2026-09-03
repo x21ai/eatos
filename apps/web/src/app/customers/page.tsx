@@ -1,5 +1,11 @@
 // @ts-nocheck
 import { ArrowRight, Users } from "lucide-react";
+import customer1 from "./assets/customer-1.jpg.asset.json";
+import customer2 from "./assets/customer-2.jpg.asset.json";
+import customer3 from "./assets/customer-3.png.asset.json";
+import customer4 from "./assets/customer-4.jpg.asset.json";
+import customer5 from "./assets/customer-5.png.asset.json";
+import customer6 from "./assets/customer-6.jpg.asset.json";
 
 export const metadata = {
   title: "Customers | eatOS | Restaurant Success Stories",
