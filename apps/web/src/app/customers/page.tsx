@@ -1,5 +1,11 @@
 // @ts-nocheck
 import { ArrowRight, Users } from "lucide-react";
+import customer1 from "./assets/customer-1.jpg.asset.json";
+import customer2 from "./assets/customer-2.jpg.asset.json";
+import customer3 from "./assets/customer-3.png.asset.json";
+import customer4 from "./assets/customer-4.jpg.asset.json";
+import customer5 from "./assets/customer-5.png.asset.json";
+import customer6 from "./assets/customer-6.jpg.asset.json";
 
 export const metadata = {
   title: "Customers | eatOS | Restaurant Success Stories",
@@ -12,8 +18,7 @@ const caseStudies = [
     name: "The Corner Kitchen",
     location: "New York, NY",
     type: "Full Service",
-    image:
-      "https://framerusercontent.com/images/jmUYZhUVZsYzpWQJh0KHr9yn7oc.png",
+    image: customer1.url,
     quote:
       "eatOS completely transformed how we run our restaurant. From Point of Sale to kitchen display to payments, everything just works together seamlessly.",
     person: "James Miller",
@@ -30,8 +35,7 @@ const caseStudies = [
     name: "Coastal Grill",
     location: "Miami, FL",
     type: "Full Service",
-    image:
-      "https://framerusercontent.com/images/IR05SrNN2KJg1vMOblov7yBD37w.png",
+    image: customer2.url,
     quote:
       "The onboarding was incredibly smooth. The eatOS team had us running in 2 days, and our staff actually loved the new system from day one.",
     person: "Rachel Martinez",
@@ -48,8 +52,7 @@ const caseStudies = [
     name: "Seoul Kitchen",
     location: "Los Angeles, CA",
     type: "Quick Service",
-    image:
-      "https://framerusercontent.com/images/cLG0kROuoRurUKeaXm2SUjBYH9k.png",
+    image: customer3.url,
     quote:
       "Switching to eatOS was the best decision we made last year.\nRevenue up 22% and our team loves it. The AI features are a game-changer.",
     person: "David Kim",
@@ -66,8 +69,7 @@ const caseStudies = [
     name: "Bella Vita Trattoria",
     location: "Chicago, IL",
     type: "Full Service",
-    image:
-      "https://framerusercontent.com/images/PO7lSjwObqoznVjdFK478wgC3PY.png",
+    image: customer4.url,
     quote:
       "We went from 3 separate systems to just eatOS. The kitchen display alone saved us 2 hours per shift. Our chefs couldn't be happier.",
     person: "Marco Rossi",
@@ -84,8 +86,7 @@ const caseStudies = [
     name: "Green Bowl Co.",
     location: "Austin, TX",
     type: "Quick Service",
-    image:
-      "https://framerusercontent.com/images/IR05SrNN2KJg1vMOblov7yBD37w.png",
+    image: customer5.url,
     quote:
       "The self-service kiosks paid for themselves in the first month. Lines are shorter, orders are bigger, and our team can focus on quality.",
     person: "Sarah Thompson",
@@ -102,8 +103,7 @@ const caseStudies = [
     name: "Harbor Fish & Chips",
     location: "Seattle, WA",
     type: "Quick Service",
-    image:
-      "https://framerusercontent.com/images/jmUYZhUVZsYzpWQJh0KHr9yn7oc.png",
+    image: customer6.url,
     quote:
       "eatOS Intelligence predicts our busiest hours and auto-adjusts staffing suggestions. It's like having a data analyst on payroll, except it's free.",
     person: "Tom Bradley",
