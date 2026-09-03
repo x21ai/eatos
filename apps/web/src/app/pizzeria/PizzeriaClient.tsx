@@ -230,6 +230,8 @@ export default function PizzeriaClient() {
                       src={pillar.image}
                       ratio="aspect-[16/10]"
                       className="rounded-none"
+                      bare={pillar.id === 'cost'}
+                      contain={pillar.id === 'cost'}
                     />
                   </div>
                 </div>
