@@ -266,7 +266,7 @@ export default function KdsPageClient() {
                 Icon: Zap,
                 tint: 'bg-amber-500/10 text-amber-400',
                 title: 'Built for speed',
-                body: 'Tickets land the moment they are sent, so the line never waits on paper or a runner.',
+                body: 'Kitchen tickets land the moment they are sent, so the line never waits on paper or a runner.',
               },
               {
                 Icon: Shield,

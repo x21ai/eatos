@@ -76,7 +76,7 @@ const caseStudies = [
     color: "bg-rose-500/20 text-rose-200",
     stats: [
       { label: "Time saved per shift", value: "2 hrs" },
-      { label: "Ticket accuracy", value: "99.2%" },
+      { label: "Check accuracy", value: "99.2%" },
       { label: "Food waste reduction", value: "-35%" },
     ],
   },
@@ -93,7 +93,7 @@ const caseStudies = [
     initials: "ST",
     color: "bg-emerald-500/20 text-emerald-200",
     stats: [
-      { label: "Avg ticket size", value: "+27%" },
+      { label: "Avg check size", value: "+27%" },
       { label: "Wait time", value: "-40%" },
       { label: "Repeat customers", value: "+35%" },
     ],

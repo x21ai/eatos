@@ -24,7 +24,7 @@ export const products = [
     title: "Kitchen Display System",
     tagline: "Chaos, controlled. Reduce wait times.",
     description:
-      "Kitchen-grade hardware that connects front and back of house in real time. Never miss a ticket.",
+      "Kitchen-grade hardware that connects front and back of house in real time. Never miss a kitchen ticket.",
     icon: "ChefHat",
     color: "green",
     href: "/products/kitchen-display-system",
@@ -40,7 +40,7 @@ export const products = [
     title: "Self-Service Kiosk",
     tagline: "Reduce wait times. Increase checks.",
     description:
-      "Let guests order on their terms. Reduce labor costs while boosting average ticket by 20%.",
+      "Let guests order on their terms. Reduce labor costs while boosting average check by 20%.",
     icon: "Smartphone",
     color: "indigo",
     href: "/products/self-service-kiosk",

@@ -25,7 +25,7 @@ export function KitchenIntelligenceSection() {
 
               <div className="mt-8 grid gap-3">
                 {[
-                  "Real-time ticket flow analysis",
+                  "Real-time kitchen ticket flow analysis",
                   "Station load balancing",
                   "Prep timing breakdown detection",
                   "Menu item disruption scoring",
@@ -44,7 +44,7 @@ export function KitchenIntelligenceSection() {
 
               <StatRow
                 stats={[
-                  { value: "22%", label: "Faster ticket times" },
+                  { value: "22%", label: "Faster kitchen ticket times" },
                   { value: "< 50ms", label: "Decision latency" },
                   { value: "1000s", label: "Patterns learned per week" },
                 ]}
@@ -104,7 +104,7 @@ export function KitchenIntelligenceSection() {
                 </div>
                 <div className="mt-2 text-[14px] text-[#E5E7EB] leading-relaxed">
                   Station B is slipping on items with modifiers. Suggest routing
-                  "build-your-own" tickets to Station C between 6–8pm.
+                  "build-your-own" kitchen tickets to Station C between 6–8pm.
                 </div>
               </div>
             </Card>

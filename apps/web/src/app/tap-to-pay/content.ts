@@ -37,7 +37,7 @@ export const steps = [
   {
     step: '03',
     title: 'They tap. You are done.',
-    body: 'Card, phone or watch: one tap approves it. The receipt goes out by text or email, the ticket closes itself.',
+    body: 'Card, phone or watch: one tap approves it. The receipt goes out by text or email, the check closes itself.',
   },
 ];
 

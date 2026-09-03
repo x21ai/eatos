@@ -41,7 +41,7 @@ const media = (
 
 export const homepage1ShowcaseMedia: Record<string, ShowcaseMedia> = {
   pos: media(posWebm, posMp4, posPoster, 'Ring in the order, take payment, close the check.'),
-  kds: media(kdsWebm, kdsMp4, kdsPoster, 'Route tickets, work the board, bump on time.'),
+  kds: media(kdsWebm, kdsMp4, kdsPoster, 'Route kitchen tickets, work the board, bump on time.'),
   kiosk: media(kioskWebm, kioskMp4, kioskPoster, 'Touch to start, build the order, tip and pay.'),
   cfd: media(cfdWebm, cfdMp4, cfdPoster, 'Order clarity, rewards, tipping and receipts.'),
   dashboard: media(dashWebm, dashMp4, dashPoster, 'Sales, labor and menu performance, live.'),

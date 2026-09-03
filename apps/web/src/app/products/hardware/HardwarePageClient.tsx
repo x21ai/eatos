@@ -250,7 +250,7 @@ export default function HardwarePageClient() {
                 Icon: Zap,
                 tint: 'bg-amber-500/10 text-amber-400',
                 title: 'Built for speed',
-                body: 'Orders, payments and tickets move in seconds so lines keep moving and tables turn sooner.',
+                body: 'Orders, payments and checks move in seconds so lines keep moving and tables turn sooner.',
               },
               {
                 Icon: Shield,

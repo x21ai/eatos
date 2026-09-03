@@ -49,10 +49,10 @@ export const features = [
     id: 'kitchen-display-system',
     title: 'Kitchen Display System',
     body:
-      'Boost efficiency with our ticket system. Connect multiple kitchen displays for real-time updates so prep, fire and expo work from one source of truth.',
+      'Boost efficiency with our kitchen ticket system. Connect multiple kitchen displays for real-time updates so prep, fire and expo work from one source of truth.',
     more:
       'Sealed, fanless displays stay readable through heat and steam, and mount on a wall, pole or under a shelf with touch.',
-    imageLabel: 'Kitchen display showing live tickets',
+    imageLabel: 'Kitchen display showing live kitchen tickets',
     image: kdsImg.url,
     metrics: [
       { value: '100%', label: 'Real-Time Orders' },

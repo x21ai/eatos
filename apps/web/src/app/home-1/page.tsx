@@ -548,7 +548,7 @@ export default function HomePage() {
                   { value: '30%', label: 'Faster table turns' },
                   { value: '50%', label: 'Fewer order errors' },
                   { value: '2x', label: 'Faster training' },
-                  { value: '15%', label: 'Higher average ticket' },
+                  { value: '15%', label: 'Higher average check' },
                 ].map((stat) => (
                   <div
                     key={stat.label}

@@ -112,7 +112,7 @@ export const features = [
       'Orders route straight from the table to the right prep station the moment you confirm them, with modifiers and allergy notes attached.',
     more:
       'Hold appetizers, fire entrees and pace courses from the handheld so the kitchen and the dining room stay in step.',
-    imageLabel: 'Kitchen display showing incoming tickets',
+    imageLabel: 'Kitchen display showing incoming kitchen tickets',
     image: fireAsset.url,
     metrics: [
       { value: '10x', label: 'Faster' },

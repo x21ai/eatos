@@ -38,7 +38,7 @@ const growLinks = [
     href: '/products/tableside-order-and-pay',
     Icon: QrCode,
     tagline: 'Let guests order and pay from their own phones at the table.',
-    points: ['QR ordering', 'Split payments', 'Faster turns'],
+    points: ['QR ordering', 'Split tender', 'Faster turns'],
   },
 ];
 

@@ -35,7 +35,7 @@ const related = [
   {
     href: '/products/kitchen-display-system',
     title: 'Kitchen Display System',
-    tagline: 'Route tickets to the right station.',
+    tagline: 'Route kitchen tickets to the right station.',
     Icon: Zap,
     iconClass: 'bg-sky-500/15 text-sky-400',
   },
@@ -239,7 +239,7 @@ export default function GhostKitchenClient() {
               {
                 Icon: ShieldCheck,
                 title: 'Reliable through the rush',
-                body: 'Online or offline, tickets and payments keep clearing through the busiest delivery windows.',
+                body: 'Online or offline, checks and payments keep clearing through the busiest delivery windows.',
                 iconClass: 'bg-violet-500/15 text-violet-400',
               },
               {

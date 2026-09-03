@@ -24,7 +24,7 @@ export const marquee = [
   {
     value: 'Always on',
     label:
-      'Online or offline, service keeps moving across every device, and tickets sync automatically once connectivity returns.',
+      'Online or offline, service keeps moving across every device, and checks sync automatically once connectivity returns.',
   },
   {
     value: '600+ integrations',

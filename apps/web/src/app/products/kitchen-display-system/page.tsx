@@ -4,7 +4,7 @@ import KdsPageClient from './KdsPageClient';
 export const metadata = {
   title: 'Kitchen Display System',
   description:
-    'The eatOS Kitchen Display System streamlines kitchen communication with prep station routing, multi-lingual tickets, kitchen-grade hardware and real-time analytics.',
+    'The eatOS Kitchen Display System streamlines kitchen communication with prep station routing, multi-lingual kitchen tickets, kitchen-grade hardware and real-time analytics.',
   openGraph: {
     type: 'website',
     title: 'Kitchen Display System | eatOS',
