@@ -39,7 +39,7 @@ export default function ContactSalesPage() {
     },
     {
       q: 'Do I need to buy new hardware?',
-      a: 'Not necessarily. eatOS works with most existing hardware, but we also offer purpose-built terminals (eatOS Pro and Mini) for the best experience.',
+      a: 'Not necessarily. eatOS works with most existing hardware, but we also offer purpose-built terminals (eatOS Point of Sale and Point of Purchase) for the best experience.',
     },
     {
       q: 'Is there a contract or commitment?',
