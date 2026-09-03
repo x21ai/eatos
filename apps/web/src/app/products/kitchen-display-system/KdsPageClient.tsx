@@ -234,14 +234,13 @@ export default function KdsPageClient() {
               </div>
 
               <div className={`min-w-0 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                <div className="overflow-hidden rounded-lg border border-white/10 bg-white/5">
-                  <Placeholder
-                    label={feature.imageLabel}
-                    src={feature.image}
-                    ratio="aspect-[16/9]"
-                    pad
-                  />
-                </div>
+                <Placeholder
+                  label={feature.imageLabel}
+                  src={feature.image}
+                  ratio="aspect-[16/9]"
+                  pad
+                  bare
+                />
               </div>
             </motion.div>
           ))}
