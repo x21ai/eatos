@@ -10,16 +10,21 @@ export function Placeholder({
   className = '',
   src,
   pad = false,
+  bare = false,
 }) {
   const dark = tone === 'dark';
 
   if (src) {
     return (
       <div
-        className={`relative w-full overflow-hidden rounded-lg ${
-          dark
-            ? 'bg-zinc-900 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]'
-            : 'bg-zinc-200/70 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.35)]'
+        className={`relative w-full overflow-hidden ${
+          bare
+            ? ''
+            : `rounded-lg ${
+                dark
+                  ? 'bg-zinc-900 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]'
+                  : 'bg-zinc-200/70 shadow-[0_30px_80px_-50px_rgba(0,0,0,0.35)]'
+              }`
         } ${className}`}
       >
         <img
