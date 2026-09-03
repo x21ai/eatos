@@ -49,10 +49,10 @@ export const features = [
     id: 'kitchen-display-system',
     title: 'Kitchen Display System',
     body:
-      'Boost efficiency with our ticket system. Connect multiple kitchen displays for real-time updates so prep, fire and expo work from one source of truth.',
+      'Boost efficiency with our kitchen ticket system. Connect multiple kitchen displays for real-time updates so prep, fire and expo work from one source of truth.',
     more:
       'Sealed, fanless displays stay readable through heat and steam, and mount on a wall, pole or under a shelf with touch.',
-    imageLabel: 'Kitchen display showing live tickets',
+    imageLabel: 'Kitchen display showing live kitchen tickets',
     image: kdsImg.url,
     metrics: [
       { value: '100%', label: 'Real-Time Orders' },
@@ -63,7 +63,7 @@ export const features = [
     id: 'self-ordering-kiosk',
     title: 'Self Ordering Kiosk',
     body:
-      'Boost customer satisfaction with our self-ordering kiosks. Seamless integration with eatOS Point of Sale and Kitchen Display ensures fast, accurate orders.',
+      'Boost guest satisfaction with our self-ordering kiosks. Seamless integration with eatOS Point of Sale and Kitchen Display ensures fast, accurate orders.',
     more:
       'Kiosk, freestanding and wall-mount formats let guests browse, customize and pay on their own while your team stays on food.',
     imageLabel: 'Self ordering kiosk',
@@ -77,7 +77,7 @@ export const features = [
     id: 'payment-acceptance',
     title: 'Payment Acceptance',
     body:
-      'Protect your customers data with compact, robust card readers. Industry-leading security keeps transactions safe and gives you peace of mind.',
+      'Protect your guests data with compact, robust card readers. Industry-leading security keeps transactions safe and gives you peace of mind.',
     more:
       'EMV chip, tap and swipe in one device, with encrypted, PCI compliant processing at the counter or at the table.',
     imageLabel: 'Handheld card reader',

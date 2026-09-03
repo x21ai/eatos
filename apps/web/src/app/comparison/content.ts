@@ -8,7 +8,7 @@ export const hero = {
   eyebrow: 'eatOS vs Other Point of Sale',
   title: 'eatOS Restaurant Cloud: Complete Comparison',
   description:
-    'Equipped with essential tools, eatOS empowers you to connect with customers and expand your business, both in-person and online.',
+    'Equipped with essential tools, eatOS empowers you to connect with guests and expand your business, both in-person and online.',
   primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'View Pricing', href: '/pricing' },
   media: 'eatOS Point of Sale terminals',
@@ -40,7 +40,7 @@ export const whySwitch = [
   },
   {
     title: 'Robust Feature Set',
-    body: 'From every management to customer engagement, eatOS offers a comprehensive suite of tools to run your restaurant.',
+    body: 'From every management to guest engagement, eatOS offers a comprehensive suite of tools to run your restaurant.',
     link: { label: 'Learn more about eatOS Point of Sale', href: '/pointofsale' },
   },
   {

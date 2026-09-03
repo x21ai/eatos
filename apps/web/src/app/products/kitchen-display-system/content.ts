@@ -14,7 +14,7 @@ export const hero = {
   eyebrow: 'Kitchen Display System',
   title: 'Chaos, controlled.',
   description:
-    'The digital command center that keeps your kitchen in sync, prep, fire and serve without missing a ticket.',
+    'The digital command center that keeps your kitchen in sync, prep, fire and serve without missing a kitchen ticket.',
   primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'Watch Video', href: '/bookademo' },
   image: heroAsset.url,
@@ -30,7 +30,7 @@ export const keyFeatures = [
 // Quiet numeral row directly under the hero.
 export const marquee = [
   { value: '10x', label: 'Error-free orders' },
-  { value: '100%', label: 'Real-time tickets' },
+  { value: '100%', label: 'Real-time kitchen tickets' },
   { value: '5 yrs', label: 'Peak-tested hardware' },
   { value: '24/7', label: 'Cloud reporting' },
 ];
@@ -67,7 +67,7 @@ export const features = [
       { value: '100%', label: 'Real-Time Orders' },
     ],
     body:
-      'Route every item to the station that cooks it. Tickets appear the moment they are sent, so cold, hot and expo lines work from the same source of truth instead of a stack of paper.',
+      'Route every item to the station that cooks it. Kitchen tickets appear the moment they are sent, so cold, hot and expo lines work from the same source of truth instead of a stack of paper.',
     more:
       'Course firing, hold-and-release timing and station prep rules keep long-cook items in sync with quick plates, so a table is finished together rather than one dish at a time.',
     imageLabel: 'KDS station routing view',
@@ -81,10 +81,10 @@ export const features = [
       { value: '10x', label: 'More Language Options' },
     ],
     body:
-      'Every member of your team reads tickets in the language they think in. Front of house writes it once and the kitchen sees it translated on screen.',
+      'Every member of your team reads kitchen tickets in the language they think in. Front of house writes it once and the kitchen sees it translated on screen.',
     more:
       'Language is set per display, not per venue, so a single kitchen can run different languages at different stations without changing your menu data.',
-    imageLabel: 'Multi-language ticket board',
+    imageLabel: 'Multi-language kitchen ticket board',
     image: multiLingualAsset.url,
   },
   {
@@ -123,10 +123,10 @@ export const features = [
       { value: '24/7', label: 'Digital Shift' },
     ],
     body:
-      'Retire the ticket printer. No more paper, ribbon and jammed rolls in the middle of a rush, and no lost tickets under the pass.',
+      'Retire the ticket printer. No more paper, ribbon and jammed rolls in the middle of a rush, and no lost kitchen tickets under the pass.',
     more:
-      'Every ticket stays searchable after service, so voids, remakes and delays can be reviewed instead of guessed at.',
-    imageLabel: 'Digital ticket queue',
+      'Every kitchen ticket stays searchable after service, so voids, remakes and delays can be reviewed instead of guessed at.',
+    imageLabel: 'Digital kitchen ticket queue',
     image: printingAsset.url,
   },
   {
@@ -137,7 +137,7 @@ export const features = [
       { value: '100%', label: 'Data Driven' },
     ],
     body:
-      'Track ticket times by station, item and daypart. See where the line slows down and staff against what actually happened, not what you remember.',
+      'Track kitchen ticket times by station, item and daypart. See where the line slows down and staff against what actually happened, not what you remember.',
     more:
       'Reports roll up across locations, so a multi-unit operator can compare kitchens on the same measures from one dashboard.',
     imageLabel: 'Kitchen performance dashboard',

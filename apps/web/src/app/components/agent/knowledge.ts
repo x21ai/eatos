@@ -7,14 +7,14 @@
 export const AGENT_NAME = 'eatOS Support Agent';
 
 export const productRoutes = [
-  { id: 'pos', label: 'Point of Sale', href: '/pointofsale', keywords: ['pos', 'point of sale', 'terminal', 'register', 'checkout', 'handheld', 'ticket', 'order'] },
+  { id: 'pos', label: 'Point of Sale', href: '/pointofsale', keywords: ['pos', 'point of sale', 'terminal', 'register', 'checkout', 'handheld', 'check', 'ticket', 'order'] },
   { id: 'kds', label: 'Kitchen Display System', href: '/products/kitchen-display-system', keywords: ['kds', 'kitchen', 'display', 'expo', 'line', 'prep', 'bump'] },
   { id: 'kiosk', label: 'Self Service Kiosk', href: '/products/self-service-kiosk', keywords: ['kiosk', 'self service', 'self-service', 'touch to start'] },
   { id: 'gfd', label: 'Guest Facing Display', href: '/products/guest-facing-display', keywords: ['guest facing', 'guest display', 'tip screen', 'signature'] },
   { id: 'dashboard', label: 'Dashboard', href: '/products/dashboard', keywords: ['dashboard', 'back office', 'reporting', 'reports', 'menu builder', 'settings'] },
   { id: 'payments', label: 'Payments', href: '/accept-payments', keywords: ['payment', 'payments', 'processing', 'card', 'refund', 'batch', 'deposit', 'tap to pay', 'rate'] },
   { id: 'online', label: 'Online Ordering', href: '/products/online-ordering', keywords: ['online ordering', 'website ordering', 'delivery', 'pickup', 'qr'] },
-  { id: 'hardware', label: 'Hardware', href: '/shop', keywords: ['hardware', 'printer', 'cash drawer', 'router', 'device', 'stand', 'scanner', 'offline'] },
+  { id: 'hardware', label: 'Hardware', href: '/shop', keywords: ['hardware', 'printer', 'till', 'cash drawer', 'router', 'device', 'stand', 'scanner', 'offline'] },
 ];
 
 export const platformFacts = [

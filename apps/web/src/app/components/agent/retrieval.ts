@@ -140,7 +140,7 @@ export function composeReply(question, index) {
 /** Suggestion chips shown before the visitor types anything. */
 export const starterQuestions = [
   'How do I reset an employee PIN?',
-  'My kitchen printer stopped printing tickets',
+  'My kitchen printer stopped printing kitchen tickets',
   'How do I add an item to my menu?',
-  'How do I run an end of day report?',
+  'How do I run a close of day report?',
 ];

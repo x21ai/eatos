@@ -108,7 +108,7 @@ const reasons = {
     {
       icon: 'chef',
       title: 'Kitchen Command',
-      body: 'Upgrade your kitchen with real time, synced ticketing. No more delays or confusion, just smooth and efficient order management on every display.',
+      body: 'Upgrade your kitchen with real time, synced kitchen ticketing. No more delays or confusion, just smooth and efficient order management on every display.',
       link: { label: 'Learn more about eatOS', href: '/about-eatos' },
     },
   ],

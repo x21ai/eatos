@@ -317,7 +317,7 @@ export default function SupportHomeClient() {
               Get started in three steps
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-zinc-400">
-              From choosing a plan to serving your first ticket, with a specialist alongside you the
+              From choosing a plan to serving your first check, with a specialist alongside you the
               whole way.
             </p>
           </Reveal>

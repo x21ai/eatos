@@ -29,7 +29,7 @@ const related = [
   {
     href: '/accept-payments#tap-to-pay',
     title: 'Table Side Order and Pay',
-    tagline: 'Take the order and the payment at the table, split checks, and close tickets without leaving the guest.',
+    tagline: 'Take the order and the payment at the table, split checks, and close checks without leaving the guest.',
     Icon: CreditCard,
     iconClass: 'bg-violet-500/15 text-violet-400',
   },

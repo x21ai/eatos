@@ -62,7 +62,7 @@ export const features = [
     id: 'no-third-party-commissions',
     title: 'No 3rd Party Commissions',
     body:
-      'Take orders on your own channel and keep the full ticket. No per order cut, no bidding for placement, no surprise fees at the end of the month.',
+      'Take orders on your own channel and keep the full check. No per order cut, no bidding for placement, no surprise fees at the end of the month.',
     more:
       'Delivery still works through your own drivers or an integrated partner, on your terms.',
     imageLabel: 'Commission free order summary',

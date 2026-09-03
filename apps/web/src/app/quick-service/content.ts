@@ -46,7 +46,7 @@ export const pillars = [
     body:
       'eatOS runs online and offline, so you never lose a sale when the connection drops. Multi-user, multi-device environments stay in sync the moment you are back.',
     more:
-      'Payments, tickets and totals queue locally and reconcile automatically, with no manual re-entry after service.',
+      'Payments, checks and totals queue locally and reconcile automatically, with no manual re-entry after service.',
     imageLabel: 'Offline mode payment',
     image: offlineImg.url,
     metrics: [

@@ -31,7 +31,7 @@ export const features = [
     body:
       'ServeBot is a completely autonomous system designed to handle a range of tasks, enabling your staff to concentrate on delivering exceptional customer service.',
     more:
-      'Whether it is taking orders or serving food and drinks, ServeBot manages everything, giving your employees more time for meaningful interactions with customers.',
+      'Whether it is taking orders or serving food and drinks, ServeBot manages everything, giving your team members more time for meaningful interactions with guests.',
     imageLabel: 'ServeBot delivering food and drinks',
     image: '/__l5e/assets-v1/8405e851-9c4f-4768-a692-13c8d3d61447/auto1.png',
     metrics: [

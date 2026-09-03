@@ -85,7 +85,7 @@ export const hardware = {
     },
     {
       title: 'Shift Swapping',
-      body: 'Employees request swaps and coverage inside the app. Managers approve with one tap, and the schedule updates instantly.',
+      body: 'Team members request swaps and coverage inside the app. Managers approve with one tap, and the schedule updates instantly.',
     },
     {
       title: 'Mobile-First Design',

@@ -47,19 +47,19 @@ export const demoSources: DemoSource[] = [
     media: {
       sources: videoSources(posWebm, posMp4),
       poster: posPoster.url,
-      caption: 'Ring in the order, take payment, close the ticket.',
+      caption: 'Ring in the order, take payment, close the check.',
     },
   },
   {
     id: 'kds',
     label: 'KDS',
     url: 'https://kds6.lovable.app/kds/v3',
-    blurb: 'Route tickets to the right station and keep orders moving on time.',
+    blurb: 'Route kitchen tickets to the right station and keep orders moving on time.',
     device: 'tablet',
     media: {
       sources: videoSources(kdsWebm, kdsMp4),
       poster: kdsPoster.url,
-      caption: 'Clock in, work the board, bump the ticket.',
+      caption: 'Clock in, work the board, bump the kitchen ticket.',
     },
   },
 
@@ -151,7 +151,7 @@ export const journeySteps: JourneyStep[] = [
   {
     step: 3,
     title: 'Kitchen Display System',
-    caption: 'The ticket lands on the right station instantly, with timers that keep every course on pace.',
+    caption: 'The kitchen ticket lands on the right station instantly, with timers that keep every course on pace.',
     demoId: 'kds',
   },
   {

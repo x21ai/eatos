@@ -11,12 +11,12 @@ const features = [
   {
     icon: Languages,
     title: "Multi-lingual support",
-    desc: "Kitchen staff see tickets in their preferred language, no translation delays.",
+    desc: "Kitchen staff see kitchen tickets in their preferred language, no translation delays.",
   },
   {
     icon: Clock,
     title: "Real-time updates",
-    desc: "Color-coded alerts and live timing keep the line moving and tickets accurate.",
+    desc: "Color-coded alerts and live timing keep the line moving and kitchen tickets accurate.",
   },
 ];
 

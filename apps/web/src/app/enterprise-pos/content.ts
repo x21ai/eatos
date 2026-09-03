@@ -24,7 +24,7 @@ export const marquee = [
   {
     value: 'Always on',
     label:
-      'Online or offline, service keeps moving across every device, and tickets sync automatically once connectivity returns.',
+      'Online or offline, service keeps moving across every device, and checks sync automatically once connectivity returns.',
   },
   {
     value: '600+ integrations',
@@ -55,7 +55,7 @@ export const pillars = [
     body:
       'Streamline the clock-in process, schedule shifts and manage payroll all in one place with eatOS.',
     more:
-      'Create an easy environment for your teams to work in, so they can focus on your products and your customers.',
+      'Create an easy environment for your teams to work in, so they can focus on your products and your guests.',
     imageLabel: 'Workforce scheduling and attendance',
     image: workforceImg.url,
   },

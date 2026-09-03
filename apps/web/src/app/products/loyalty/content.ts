@@ -25,7 +25,7 @@ export const hero = {
 };
 
 export const keyFeatures = [
-  'Enhanced Customer Satisfaction',
+  'Enhanced Guest Satisfaction',
   'Referral System',
   'Birthday & Special Occasion Perks',
   'Loyalty Programs',
@@ -34,7 +34,7 @@ export const keyFeatures = [
 export const features = [
   {
     id: 'enhanced-customer-satisfaction',
-    title: 'Enhanced Customer Satisfaction',
+    title: 'Enhanced Guest Satisfaction',
     body:
       'Make every guest feel recognized. Personalized rewards tiered perks create a dining experience that goes beyond the meal.',
     more:

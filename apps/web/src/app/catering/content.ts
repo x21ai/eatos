@@ -53,7 +53,7 @@ export const pillars = [
   },
   {
     id: 'clients',
-    title: 'Customer-centric catering services',
+    title: 'Guest-centric catering services',
     body:
       'Customize orders for dietary preferences and use CRM data to personalize service for repeat clients.',
     more: 'Event planning stays simple, from first quote to final plate.',

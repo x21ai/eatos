@@ -94,7 +94,7 @@ export const brochures = [
     id: 'kitchen-display-system',
     title: 'Kitchen Display System',
     description:
-      'Real-time ticket routing, prep timers and analytics that keep the kitchen on pace.',
+      'Real-time kitchen ticket routing, prep timers and analytics that keep the kitchen on pace.',
     flipbook: 'https://go.fliplink.me/view/F8BE159F-5BEB-474A-96CB-7C3A0AF05A47',
     cover: coverKds.url,
     download:

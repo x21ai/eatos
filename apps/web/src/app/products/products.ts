@@ -24,7 +24,7 @@ export const products = [
     title: "Kitchen Display System",
     tagline: "Chaos, controlled. Reduce wait times.",
     description:
-      "Kitchen-grade hardware that connects front and back of house in real time. Never miss a ticket.",
+      "Kitchen-grade hardware that connects front and back of house in real time. Never miss a kitchen ticket.",
     icon: "ChefHat",
     color: "green",
     href: "/products/kitchen-display-system",
@@ -40,7 +40,7 @@ export const products = [
     title: "Self-Service Kiosk",
     tagline: "Reduce wait times. Increase checks.",
     description:
-      "Let guests order on their terms. Reduce labor costs while boosting average ticket by 20%.",
+      "Let guests order on their terms. Reduce labor costs while boosting average check by 20%.",
     icon: "Smartphone",
     color: "indigo",
     href: "/products/self-service-kiosk",
@@ -72,7 +72,7 @@ export const products = [
     title: "Guest Facing Display",
     tagline: "Order transparency. Instant trust.",
     description:
-      "Put the order in the customer's hands. Real-time display of items, totals, and promotions.",
+      "Put the order in the guest's hands. Real-time display of items, totals, and promotions.",
     icon: "Monitor",
     color: "blue",
     href: "/products/guest-facing-display",
@@ -80,7 +80,7 @@ export const products = [
       "Live order preview",
       "Promo display",
       "Tip suggestions",
-      "Customer signatures",
+      "Guest signatures",
     ],
   },
   {
@@ -144,7 +144,7 @@ export const products = [
       "Branded mobile app",
       "Delivery integration",
       "Order throttling",
-      "Customer data ownership",
+      "Guest data ownership",
     ],
   },
   {
@@ -246,7 +246,7 @@ export const products = [
   {
     slug: "loyalty",
     title: "Loyalty",
-    tagline: "Reward your best customers.",
+    tagline: "Reward your best guests.",
     description:
       "Build loyalty programs that keep guests coming back. Points, rewards, and exclusive offers.",
     icon: "Heart",
