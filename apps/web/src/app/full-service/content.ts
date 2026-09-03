@@ -53,7 +53,7 @@ export const pillars = [
   },
   {
     id: 'offline',
-    title: 'Never miss out on a customer',
+    title: 'Never miss out on a guest',
     body:
       'Fully functioning in online and offline modes, eatOS keeps business running even when the Wi-Fi is down, so service and payments never stop mid-course.',
     more:

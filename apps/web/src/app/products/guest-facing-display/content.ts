@@ -34,7 +34,7 @@ export const features = [
     id: 'reduce-order-errors',
     title: 'Reduce Order Errors',
     body:
-      'Give guests a clear view of every item, modifier and total before they pay. When customers can confirm their order on the screen, mistakes are caught before they reach the kitchen.',
+      'Give guests a clear view of every item, modifier and total before they pay. When guests can confirm their order on the screen, mistakes are caught before they reach the kitchen.',
     more:
       'Real-time line item display means fewer remakes, fewer refunds and a smoother experience for staff and guests alike.',
     imageLabel: 'Order confirmation on guest facing display',
@@ -46,7 +46,7 @@ export const features = [
   },
   {
     id: 'customer-marketing',
-    title: 'Customer Marketing',
+    title: 'Guest Marketing',
     body:
       'Turn the second screen into a marketing channel. Promote high-margin items, daily specials and loyalty offers while guests review their order.',
     more:

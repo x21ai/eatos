@@ -63,7 +63,7 @@ export const features = [
     id: 'self-ordering-kiosk',
     title: 'Self Ordering Kiosk',
     body:
-      'Boost customer satisfaction with our self-ordering kiosks. Seamless integration with eatOS Point of Sale and Kitchen Display ensures fast, accurate orders.',
+      'Boost guest satisfaction with our self-ordering kiosks. Seamless integration with eatOS Point of Sale and Kitchen Display ensures fast, accurate orders.',
     more:
       'Kiosk, freestanding and wall-mount formats let guests browse, customize and pay on their own while your team stays on food.',
     imageLabel: 'Self ordering kiosk',
@@ -77,7 +77,7 @@ export const features = [
     id: 'payment-acceptance',
     title: 'Payment Acceptance',
     body:
-      'Protect your customers data with compact, robust card readers. Industry-leading security keeps transactions safe and gives you peace of mind.',
+      'Protect your guests data with compact, robust card readers. Industry-leading security keeps transactions safe and gives you peace of mind.',
     more:
       'EMV chip, tap and swipe in one device, with encrypted, PCI compliant processing at the counter or at the table.',
     imageLabel: 'Handheld card reader',

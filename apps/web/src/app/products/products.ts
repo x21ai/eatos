@@ -72,7 +72,7 @@ export const products = [
     title: "Guest Facing Display",
     tagline: "Order transparency. Instant trust.",
     description:
-      "Put the order in the customer's hands. Real-time display of items, totals, and promotions.",
+      "Put the order in the guest's hands. Real-time display of items, totals, and promotions.",
     icon: "Monitor",
     color: "blue",
     href: "/products/guest-facing-display",
@@ -80,7 +80,7 @@ export const products = [
       "Live order preview",
       "Promo display",
       "Tip suggestions",
-      "Customer signatures",
+      "Guest signatures",
     ],
   },
   {
@@ -144,7 +144,7 @@ export const products = [
       "Branded mobile app",
       "Delivery integration",
       "Order throttling",
-      "Customer data ownership",
+      "Guest data ownership",
     ],
   },
   {
@@ -246,7 +246,7 @@ export const products = [
   {
     slug: "loyalty",
     title: "Loyalty",
-    tagline: "Reward your best customers.",
+    tagline: "Reward your best guests.",
     description:
       "Build loyalty programs that keep guests coming back. Points, rewards, and exclusive offers.",
     icon: "Heart",

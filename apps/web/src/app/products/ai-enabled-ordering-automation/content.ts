@@ -11,7 +11,7 @@ export const hero = {
   title: 'Let AI Handle Your',
   titleAccent: 'Voice Ordering Process',
   description:
-    'Automate the process of taking orders over the phone. Let AI interact with your customers, confirm every item and send the order straight to the kitchen.',
+    'Automate the process of taking orders over the phone. Let AI interact with your guests, confirm every item and send the order straight to the kitchen.',
   primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   imageLabel: 'VoiceOS ordering interface',
   image: null,
@@ -24,7 +24,7 @@ export const hero = {
 
 export const keyFeatures = [
   'Streamlined Order Taking Process',
-  'Enhanced Customer Engagement',
+  'Enhanced Guest Engagement',
   'Increased Efficiency and Productivity',
   'Order Accuracy and Customization',
   'Seamless Integration with eatOS',
@@ -48,12 +48,12 @@ export const features = [
   },
   {
     id: 'enhanced-customer-engagement',
-    title: 'Enhanced Customer Engagement',
+    title: 'Enhanced Guest Engagement',
     body:
-      'VoiceOS improves customer engagement by accepting orders via natural voice commands. This interactive experience increases satisfaction, letting customers share preferences, ask questions, which builds loyalty.',
+      'VoiceOS improves guest engagement by accepting orders via natural voice commands. This interactive experience increases satisfaction, letting guests share preferences, ask questions, which builds loyalty.',
     more:
       'Guests talk the way they always have, and the assistant keeps up with modifiers, allergies and follow-up questions.',
-    imageLabel: 'Enhanced customer engagement',
+    imageLabel: 'Enhanced guest engagement',
     image: engagementAsset.url,
     metrics: [
       { value: '100%', label: 'Interactive' },
@@ -78,7 +78,7 @@ export const features = [
     id: 'order-accuracy-and-customization',
     title: 'Order Accuracy and Customization',
     body:
-      'VoiceOS captures accurate orders using advanced voice recognition, minimizing errors. Customers can effortlessly customize orders to fit dietary needs, special requests.',
+      'VoiceOS captures accurate orders using advanced voice recognition, minimizing errors. Guests can effortlessly customize orders to fit dietary needs, special requests.',
     more:
       'Each order is read back for confirmation before it reaches the kitchen, so remakes and refunds drop.',
     imageLabel: 'Order accuracy and customization',
@@ -95,7 +95,7 @@ export const hardware = {
     {
       title: 'Seamless Integration with eatOS',
       body:
-        'AI-Enabled Ordering Automation fits smoothly into restaurant management. VoiceOS sends orders to the eatOS Point of Sale and kitchen displays, making ordering efficient and improving customer satisfaction.',
+        'AI-Enabled Ordering Automation fits smoothly into restaurant management. VoiceOS sends orders to the eatOS Point of Sale and kitchen displays, making ordering efficient and improving guest satisfaction.',
     },
     {
       title: 'Data-Driven Insights and Analytics',

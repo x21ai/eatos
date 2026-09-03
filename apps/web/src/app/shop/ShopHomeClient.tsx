@@ -34,7 +34,7 @@ export default function ShopHomeClient() {
               Restaurant hardware, built for the floor
             </h1>
             <p className="mt-5 max-w-2xl text-sm leading-6 text-zinc-400 sm:text-base sm:leading-7">
-              Point of Sale terminals, handhelds, kitchen displays, self service kiosks, customer
+              Point of Sale terminals, handhelds, kitchen displays, self service kiosks, guest
               facing displays and every accessory that goes with them. Build a bundle or buy exactly
               what your service needs.
             </p>

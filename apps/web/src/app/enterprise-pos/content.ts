@@ -55,7 +55,7 @@ export const pillars = [
     body:
       'Streamline the clock-in process, schedule shifts and manage payroll all in one place with eatOS.',
     more:
-      'Create an easy environment for your teams to work in, so they can focus on your products and your customers.',
+      'Create an easy environment for your teams to work in, so they can focus on your products and your guests.',
     imageLabel: 'Workforce scheduling and attendance',
     image: workforceImg.url,
   },
