@@ -1,7 +1,7 @@
 // @ts-nocheck
 import loyalty1 from './assets/loyaty_1.png.asset.json';
 import loyalty2 from './assets/loy2.png.asset.json';
-import loyalty3 from './assets/bday.png.asset.json';
+import loyalty3 from './assets/loyalty-bday-v2.png.asset.json';
 import loyalty4 from './assets/loa.png.asset.json';
 // All copy for the Loyalty product page. Edit here.
 // Images are intentionally left blank for now: the shared Placeholder renders
