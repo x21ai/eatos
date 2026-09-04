@@ -2,9 +2,9 @@
 // All copy for the Catering solution page. Edit here.
 
 import heroImg from './assets/cat-hero.jpg.asset.json';
-import opsImg from './assets/cat-ops-v2.jpg.asset.json';
+import opsImg from './assets/cat-ops-v3.png.asset.json';
 import inventoryImg from './assets/cat-inventory-v2.jpg.asset.json';
-import guestsImg from './assets/cat-guests-v2.jpg.asset.json';
+import guestsImg from './assets/cat-guests-v3.png.asset.json';
 
 export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
