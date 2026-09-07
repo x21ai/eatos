@@ -2,10 +2,12 @@
 import TablesidePageClient from './TablesidePageClient';
 
 export const metadata = {
+  alternates: { canonical: '/products/tableside-order-and-pay' },
   title: 'Tableside Order & Pay',
   description:
     'eatOS Tableside Order & Pay lets guests scan, order, and pay from their phone with no app download. Real-Time MenuSync, dynamic payments, and a merchant platform built for restaurants.',
   openGraph: {
+    url: '/products/tableside-order-and-pay',
     type: 'website',
     title: 'Tableside Order & Pay | eatOS',
     description:

@@ -9,10 +9,12 @@ import {
 } from "lucide-react";
 
 export const metadata = {
+  alternates: { canonical: '/products/hardware/pro' },
   title: 'Point of Sale Pro Terminal',
   description:
     'The eatOS Pro terminal: a commercial grade countertop Point of Sale with a bright touch display, built in payments and offline reliability.',
   openGraph: {
+    url: '/products/hardware/pro',
     type: 'website',
     title: 'Point of Sale Pro Terminal | eatOS',
     description:

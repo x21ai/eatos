@@ -2,10 +2,12 @@
 import FullServiceClient from "./FullServiceClient";
 
 export const metadata = {
+  alternates: { canonical: '/full-service' },
   title: "Full-Service Restaurant Point of Sale",
   description:
     "Full-service restaurant Point of Sale with reservations, table management and order coursing, online and offline, in one cloud platform.",
   openGraph: {
+    url: '/full-service',
     title: "Full-Service Restaurant Point of Sale | eatOS",
     description:
       "Reservations, table management, coursing, tableside pay and kitchen displays for full-service restaurants, all on eatOS.",

@@ -2,10 +2,12 @@
 import { ArrowRight, HeartHandshake, Sparkles, Shield, Wrench } from 'lucide-react';
 
 export const metadata = {
+  alternates: { canonical: '/about-eatos' },
   title: 'About Us',
   description:
     'eatOS is building the operating system for modern hospitality. Learn about our mission, our principles, and the team behind the software.',
   openGraph: {
+    url: '/about-eatos',
     title: 'About eatOS - Built for the People Who Run the Shift',
     description:
       'Learn about eatOS: the team, mission, and values behind the restaurant operating system.',

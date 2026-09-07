@@ -2,10 +2,12 @@
 import CafeClient from "./CafeClient";
 
 export const metadata = {
+  alternates: { canonical: '/cafe-pos' },
   title: "Point of Sale System for Cafes",
   description:
     "Cafe Point of Sale that is easy to learn, with menu and inventory control, employee management and self-service kiosk ordering.",
   openGraph: {
+    url: '/cafe-pos',
     title: "Point of Sale System for Cafes | eatOS",
     description:
       "Fast order entry, modifiers, inventory control, loyalty and kiosk ordering for cafes and coffee shops, all on eatOS.",
