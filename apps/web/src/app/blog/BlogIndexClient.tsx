@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Placeholder } from '@/components/marketing/Placeholder';
+import { sizedImage } from '@/lib/imageUrl';
 import { NewsletterSection } from '@/components/NewsletterSection';
 import { blogHero, categories, posts, formatDate } from './content';
 import CategoryFilter, { categoryHref } from './CategoryFilter';
@@ -113,7 +114,7 @@ function Card({ post, index }) {
       transition={{ duration: 0.5, delay: Math.min(index, 5) * 0.05 }}
       className="group flex min-w-0 flex-col rounded-[24px] border border-white/10 bg-white/[0.03] p-4 transition-colors hover:border-white/25 sm:p-5"
     >
-      <Placeholder label={post.title} src={post.image} tone="dark" ratio="aspect-[16/10]" />
+      <Placeholder label={post.title} src={post.image} tone="dark" ratio="aspect-[16/10]" width={680} />
       <div className="mt-6 min-w-0 flex-1">
         <Meta post={post} />
         <h3 className="mt-3 line-clamp-2 text-xl font-bold leading-snug tracking-tighter text-white transition-colors group-hover:text-brand-on-dark sm:text-[1.375rem]">
@@ -136,7 +137,14 @@ function SidebarRecent({ items }) {
             <a href={`/blogs/${post.slug}`} className="group flex min-w-0 items-start gap-4">
               <span className="relative h-16 w-20 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-zinc-900">
                 {post.image ? (
-                  <img src={post.image} alt="" aria-hidden loading="lazy" className="h-full w-full object-cover" />
+                  <img
+                    src={sizedImage(post.image, 200)}
+                    alt=""
+                    aria-hidden
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                  />
                 ) : null}
               </span>
               <span className="min-w-0">

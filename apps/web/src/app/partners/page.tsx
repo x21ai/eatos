@@ -4,6 +4,7 @@ import PartnerForm from './PartnerForm';
 import { heroImage, programsImage, partnerTracks, integrationPartners } from './content';
 
 export const metadata = {
+  alternates: { canonical: '/partners' },
   title: 'Partner Program',
   description:
     'Join the eatOS partner ecosystem as a referral partner, ambassador, reseller or integration partner and grow alongside restaurants of every size.',

@@ -8,6 +8,7 @@ import customer5 from "./assets/customer-5.png.asset.json";
 import customer6 from "./assets/customer-6.jpg.asset.json";
 
 export const metadata = {
+  alternates: { canonical: '/customers' },
   title: "Customers | eatOS | Restaurant Success Stories",
   description:
     "See how restaurants across the country use eatOS to streamline operations, increase revenue, and delight their guests.",

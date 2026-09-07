@@ -1,9 +1,11 @@
 // @ts-nocheck
 export const metadata = {
+  alternates: { canonical: '/ai/intelligence' },
   title: 'AI Intelligence Layer for Restaurants',
   description:
     'The eatOS intelligence layer turns live service data into forecasts, prep guidance and pricing insight for every location you run.',
   openGraph: {
+    url: '/ai/intelligence',
     type: 'website',
     title: 'AI Intelligence Layer for Restaurants | eatOS',
     description:

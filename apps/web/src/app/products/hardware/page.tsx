@@ -2,10 +2,12 @@
 import HardwarePageClient from './HardwarePageClient';
 
 export const metadata = {
+  alternates: { canonical: '/products/hardware' },
   title: 'Restaurant Hardware',
   description:
     'eatOS hardware to fit your business: Point of Sale terminals, kitchen displays, self ordering kiosks and payment readers.',
   openGraph: {
+    url: '/products/hardware',
     type: 'website',
     title: 'Restaurant Hardware | eatOS',
     description:

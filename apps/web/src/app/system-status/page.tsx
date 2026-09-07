@@ -9,10 +9,12 @@ import {
 
 
 export const metadata = {
+  alternates: { canonical: '/system-status' },
   title: 'System Status',
   description:
     'Live status of eatOS services including Point of Sale, Dashboard, Online Ordering, Payments, and API. Real-time uptime and incident information.',
   openGraph: {
+    url: '/system-status',
     title: 'eatOS System Status',
     description:
       'Live status of eatOS services including Point of Sale, Dashboard, Online Ordering, Payments, and API.',

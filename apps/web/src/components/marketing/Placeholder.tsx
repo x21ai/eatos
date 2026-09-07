@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { ImageIcon } from 'lucide-react';
+import { sizedImage } from '@/lib/imageUrl';
 
 // `tone` adapts the surface to the light or dark band it sits in.
 // `pad` adds safe padding around a real image and switches to object-contain so it never gets cropped or touches the edges.
@@ -12,6 +13,7 @@ export function Placeholder({
   pad = false,
   bare = false,
   contain = false,
+  width = 900,
 }) {
   const dark = tone === 'dark';
 
@@ -27,9 +29,10 @@ export function Placeholder({
         className={`relative ${ratio} w-full overflow-hidden rounded-[24px] md:rounded-[32px] ${surface} ${className}`}
       >
         <img
-          src={src}
+          src={sizedImage(src, width)}
           alt={label}
           loading="lazy"
+          decoding="async"
           className={
             contain
               ? 'absolute inset-0 h-full w-full object-contain'

@@ -97,7 +97,7 @@ export default function BlogPostClient({ slug }) {
 
       <div className="site-container">
         <div className="-mt-10 md:-mt-14">
-          <Placeholder label={post.title} src={post.image} tone="dark" ratio="aspect-[16/9]" />
+          <Placeholder label={post.title} src={post.image} tone="dark" ratio="aspect-[16/9]" width={1100} />
         </div>
 
         <div className="mx-auto max-w-[700px] py-16 md:py-24">

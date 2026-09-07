@@ -2,10 +2,12 @@
 import OrderingPageClient from './OrderingPageClient';
 
 export const metadata = {
+  alternates: { canonical: '/products/apponlineorderingdelivery' },
   title: 'Online Ordering & Delivery App for Restaurants',
   description:
     'OrderOS gives you a white-labeled ordering app and website with guest profiles and zero third party commissions on every order.',
   openGraph: {
+    url: '/products/apponlineorderingdelivery',
     type: 'website',
     title: 'Online Ordering & Delivery App for Restaurants | eatOS',
     description:

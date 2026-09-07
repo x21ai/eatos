@@ -2,10 +2,12 @@
 import AiOrderingPageClient from './AiOrderingPageClient';
 
 export const metadata = {
+  alternates: { canonical: '/products/ai-enabled-ordering-automation' },
   title: 'AI-Enabled Ordering Automation',
   description:
     'VoiceOS from eatOS answers calls, takes orders and books reservations with AI, sending every order straight to your Point of Sale and kitchen displays.',
   openGraph: {
+    url: '/products/ai-enabled-ordering-automation',
     type: 'website',
     title: 'AI-Enabled Ordering Automation | eatOS',
     description:

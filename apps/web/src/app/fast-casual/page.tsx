@@ -2,10 +2,12 @@
 import FastCasualClient from "./FastCasualClient";
 
 export const metadata = {
+  alternates: { canonical: '/fast-casual' },
   title: "Fast-Casual Restaurant Point of Sale",
   description:
     "Fast-casual Point of Sale from eatOS: faster table turnaround, accurate order fulfillment and efficient order management in one platform.",
   openGraph: {
+    url: '/fast-casual',
     title: "Fast-Casual Restaurant Point of Sale | eatOS",
     description:
       "Counter, kiosk, handheld and kitchen display in one connected system built for fast-casual restaurants.",

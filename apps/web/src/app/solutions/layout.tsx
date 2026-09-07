@@ -1,5 +1,6 @@
 // @ts-nocheck
 export const metadata = {
+  alternates: { canonical: '/solutions' },
   title: {
     default: 'Restaurant Solutions by Service Style',
     template: '%s | eatOS',
@@ -7,6 +8,7 @@ export const metadata = {
   description:
     'Point of Sale and restaurant management built for quick service, full service, fast casual, cafes, bars, food trucks, catering and enterprise groups.',
   openGraph: {
+    url: '/solutions',
     type: 'website',
     title: 'Restaurant Solutions by Service Style | eatOS',
     description:

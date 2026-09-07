@@ -10,10 +10,12 @@ import {
 } from "lucide-react";
 
 export const metadata = {
+  alternates: { canonical: '/work-with-us' },
   title: 'Careers at eatOS | Restaurant Technology Cloud',
   description:
     'Join the eatOS team building restaurant technology used by operators across the country. See open engineering, design and go to market roles.',
   openGraph: {
+    url: '/work-with-us',
     type: 'website',
     title: 'Careers at eatOS | Restaurant Technology Cloud',
     description:

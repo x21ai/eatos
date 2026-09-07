@@ -2,10 +2,12 @@
 import PosPageClient from './PosPageClient';
 
 export const metadata = {
+  alternates: { canonical: '/pointofsale' },
   title: 'Restaurant Point of Sale System',
   description:
     'A cloud Point of Sale built for service: real-time menu management, table management, built-in online ordering, order and pay at table, and offline reliability.',
   openGraph: {
+    url: '/pointofsale',
     type: 'website',
     title: 'Restaurant Point of Sale System | eatOS',
     description:

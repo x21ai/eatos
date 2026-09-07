@@ -2,10 +2,12 @@
 import KioskPageClient from './KioskPageClient';
 
 export const metadata = {
+  alternates: { canonical: '/products/self-service-kiosk' },
   title: 'Self-Service Kiosk',
   description:
     'eatOS self-service kiosks make ordering simple, shorter lines, larger checks, smart upsells and orders that route straight to the kitchen.',
   openGraph: {
+    url: '/products/self-service-kiosk',
     type: 'website',
     title: 'Self-Service Kiosk | eatOS',
     description:

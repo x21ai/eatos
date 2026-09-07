@@ -2,10 +2,12 @@
 import { effectiveDate, sections } from "./content";
 
 export const metadata = {
+  alternates: { canonical: '/terms-and-conditions' },
   title: 'Terms of Service',
   description:
     'The terms that govern use of eatOS restaurant technology software, hardware and payment services.',
   openGraph: {
+    url: '/terms-and-conditions',
     type: 'website',
     title: 'Terms of Service | eatOS',
     description:

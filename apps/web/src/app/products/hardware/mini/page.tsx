@@ -8,10 +8,12 @@ import {
 } from "lucide-react";
 
 export const metadata = {
+  alternates: { canonical: '/products/hardware/mini' },
   title: 'Mini Handheld Terminal',
   description:
     'The eatOS Mini puts a full Point of Sale in your hand for tableside ordering, payments and inventory checks.',
   openGraph: {
+    url: '/products/hardware/mini',
     type: 'website',
     title: 'Mini Handheld Terminal | eatOS',
     description:
