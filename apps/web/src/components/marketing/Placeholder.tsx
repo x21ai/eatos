@@ -13,6 +13,7 @@ export function Placeholder({
   pad = false,
   bare = false,
   contain = false,
+  width = 900,
 }) {
   const dark = tone === 'dark';
 
