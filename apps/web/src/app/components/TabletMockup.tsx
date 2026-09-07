@@ -21,21 +21,13 @@ export function TabletMockup({ sources, poster, label, className = '' }: TabletM
             className="absolute left-1.5 sm:left-2 top-1/2 -translate-y-1/2 h-1.5 w-1.5 rounded-full bg-white/25 ring-1 ring-black/60"
           />
           <div className="relative h-full w-full overflow-hidden rounded-[0.9rem] sm:rounded-[1.15rem] bg-black">
-            <video
+            <LazyVideo
               key={sources[0]?.src}
               className="absolute inset-0 h-full w-full object-contain"
               poster={poster}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              aria-label={`${label} demo animation`}
-            >
-              {sources.map((s) => (
-                <source key={s.src} src={s.src} type={s.type} />
-              ))}
-            </video>
+              sources={sources}
+              ariaLabel={`${label} demo animation`}
+            />
           </div>
         </div>
       </div>
