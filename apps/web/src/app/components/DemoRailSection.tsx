@@ -107,11 +107,12 @@ export function DemoRailSection({
                   key={d.id}
                   type="button"
                   onClick={() => setActiveId(d.id)}
-                  className={`relative min-w-0 text-left rounded-xl border px-4 py-3 transition-colors lg:w-full ${
+                  className={`relative min-w-0 text-left rounded-xl border px-4 py-3 transition-colors lg:w-full ${mobileOrder[d.id] ?? ''} lg:order-none ${
                     active
                       ? 'bg-white text-black border-white'
                       : 'bg-zinc-900/60 border-white/10 text-white hover:border-white/30'
                   }`}
+
                 >
                   {active && (
                     <span className="absolute left-0 top-3 bottom-3 w-1 rounded-full bg-emerald-500 hidden lg:block" />
