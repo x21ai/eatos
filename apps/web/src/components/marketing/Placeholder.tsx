@@ -29,9 +29,10 @@ export function Placeholder({
         className={`relative ${ratio} w-full overflow-hidden rounded-[24px] md:rounded-[32px] ${surface} ${className}`}
       >
         <img
-          src={src}
+          src={sizedImage(src, width)}
           alt={label}
           loading="lazy"
+          decoding="async"
           className={
             contain
               ? 'absolute inset-0 h-full w-full object-contain'
