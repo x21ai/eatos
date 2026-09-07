@@ -1,9 +1,11 @@
 // @ts-nocheck
 export const metadata = {
+  alternates: { canonical: '/contact' },
   title: 'Contact eatOS Sales',
   description:
     'Talk to the eatOS sales team about pricing, hardware bundles, multi location rollouts and migrating from your current Point of Sale.',
   openGraph: {
+    url: '/contact',
     type: 'website',
     title: 'Contact eatOS Sales | Restaurant Technology Cloud',
     description:

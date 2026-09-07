@@ -1,5 +1,6 @@
 // @ts-nocheck
 export const metadata = {
+  alternates: { canonical: '/products' },
   title: {
     default: 'Restaurant Products and Devices',
     template: '%s | eatOS',
@@ -7,6 +8,7 @@ export const metadata = {
   description:
     'Explore the eatOS product family: Point of Sale terminals, handhelds, kitchen displays, kiosks, guest facing displays and payment devices.',
   openGraph: {
+    url: '/products',
     type: 'website',
     title: 'Restaurant Products and Devices | eatOS',
     description:

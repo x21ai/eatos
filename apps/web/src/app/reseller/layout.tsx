@@ -1,9 +1,11 @@
 // @ts-nocheck
 export const metadata = {
+  alternates: { canonical: '/reseller' },
   title: 'eatOS Reseller Program',
   description:
     'Become an eatOS reseller partner, earn recurring revenue on Point of Sale, payments and hardware, and grow with support from our sales and marketing teams.',
   openGraph: {
+    url: '/reseller',
     type: 'website',
     title: 'eatOS Reseller Program | Start Your Reseller Journey',
     description:

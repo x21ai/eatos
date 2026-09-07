@@ -1,9 +1,11 @@
 // @ts-nocheck
 export const metadata = {
+  alternates: { canonical: '/sms-policy' },
   title: 'SMS Terms & Conditions',
   description:
     'How eatOS sends SMS messages, message frequency, consent, opt-out instructions, carrier rates and privacy for text communications.',
   openGraph: {
+    url: '/sms-policy',
     type: 'website',
     title: 'SMS Terms & Conditions | eatOS',
     description:

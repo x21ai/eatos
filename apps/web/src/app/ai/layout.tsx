@@ -1,5 +1,6 @@
 // @ts-nocheck
 export const metadata = {
+  alternates: { canonical: '/ai' },
   title: {
     default: 'Restaurant AI Intelligence',
     template: '%s | eatOS',
@@ -7,6 +8,7 @@ export const metadata = {
   description:
     'AI built into restaurant operations: demand forecasting, menu performance insight, labor planning and guest personalization on one platform.',
   openGraph: {
+    url: '/ai',
     type: 'website',
     title: 'Restaurant AI Intelligence | eatOS',
     description:
