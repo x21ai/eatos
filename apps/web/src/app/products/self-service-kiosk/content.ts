@@ -32,7 +32,7 @@ export const keyFeatures = [
 export const features = [
   {
     id: 'designed',
-    title: 'Designed for the restaurant industry',
+    title: 'Designed for the restaurants',
     body:
       'A guest-facing menu built by restaurant people: clear categories, photo-led items and modifier flows that guests understand on the first tap.',
     more:
