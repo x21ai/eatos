@@ -127,20 +127,12 @@ function stopPlaceholder() {
   });
 }
 
-function run(command, commandArgs) {
-  return new Promise((resolve) => {
-    const child = spawn(command, commandArgs, { stdio: "inherit" });
-    child.once("error", (err) => {
-      console.error(`[dev-preview] ${command} failed: ${err.message}`);
-      resolve(false);
-    });
-    child.once("exit", (code) => resolve(code === 0));
-  });
-}
-
 /**
- * Dependencies can be missing after a sandbox reset. Install them instead of
- * crashing, and keep retrying with backoff — a missing tree is recoverable.
+ * Dependencies can be temporarily missing while the platform installer is
+ * restoring a sandbox. Never launch another installer here: competing Bun or
+ * Yarn processes contend for the same lock and can exhaust the install timeout.
+ * Keep the startup page available and begin booting as soon as the binaries
+ * installed by the platform appear.
  */
 async function ensureDependencies() {
   let attempt = 0;
@@ -150,15 +142,10 @@ async function ensureDependencies() {
     }
     attempt += 1;
     console.error(
-      `[dev-preview] dev dependencies missing (attempt ${attempt}); installing…`,
+      `[dev-preview] waiting for platform dependency install (attempt ${attempt})…`,
     );
-    const installed =
-      (await run("yarn", ["install"])) || (await run("bun", ["install"]));
-    if (installed && resolveBin(NEXT_BIN_CANDIDATES) && resolveBin(VITE_BIN_CANDIDATES)) {
-      return true;
-    }
     const wait = Math.min(30_000, 3_000 * attempt);
-    console.error(`[dev-preview] retrying dependency install in ${wait}ms`);
+    console.error(`[dev-preview] checking dependencies again in ${wait}ms`);
     await new Promise((resolve) => setTimeout(resolve, wait));
   }
   return false;

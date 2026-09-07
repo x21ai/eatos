@@ -1,6 +1,6 @@
 {
   "workspaces": [
-    "apps/*"
+    "apps/web"
   ],
   "scripts": {
     "dev": "node scripts/dev-preview.mjs",
@@ -10,10 +10,8 @@
     "typecheck": "cd apps/web && ./node_modules/.bin/tsc --noEmit -p tsconfig.json"
   },
   "resolutions": {
-    "react-native": "patch:react-native@npm%3A0.81.4#~/.yarn/patches/react-native+0.81.4.patch",
     "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "react-native-screens": "4.16.0"
+    "react-dom": "19.1.0"
   },
   "devDependencies": {
     "eslint": "^9.27.0",
