@@ -15,6 +15,7 @@ import BrochureButton from '@/components/BrochureButton';
 import { Placeholder } from '@/components/marketing/Placeholder';
 import { features, hero } from './content';
 import { demoSources } from '../components/demoSources';
+import LazyVideo from '@/components/marketing/LazyVideo';
 
 const posDemo = demoSources.find((d) => d.id === 'pos');
 
@@ -113,20 +114,12 @@ export default function PosPageClient() {
               className="mx-auto min-w-0 max-w-3xl"
             >
               <div className="bg-zinc-900 rounded-[1.5rem] md:rounded-[2rem] shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/10 overflow-hidden relative">
-                <video
-                  className="w-full h-auto block"
-                  poster={posDemo?.media?.poster}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  aria-label="Point of Sale demo animation"
-                >
-                  {posDemo?.media?.sources.map((s) => (
-                    <source key={s.src} src={s.src} type={s.type} />
-                  ))}
-                </video>
+                <LazyVideo
+              className="w-full h-auto block"
+              poster={posDemo?.media?.poster}
+              sources={posDemo?.media?.sources || []}
+              ariaLabel="Point of Sale demo animation"
+            />
 
               </div>
 
