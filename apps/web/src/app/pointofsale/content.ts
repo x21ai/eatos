@@ -2,9 +2,10 @@
 // All copy for the Point of Sale product page. Edit here.
 
 import menuImg from './assets/pos-1f-2.jpg.asset.json';
-import tablesImg from './assets/pos-tablemanagement.png.asset.json';
-import orderingImg from './assets/pos-onlineordering.png.asset.json';
-import offlineImg from './assets/pos-workoffline.png.asset.json';
+// Lighter WebP renditions of the same pictures (originals were ~1 MB PNGs).
+const tablesImg = { url: '/img/pointofsale/pos-tablemanagement.webp' };
+const orderingImg = { url: '/img/pointofsale/pos-onlineordering.webp' };
+const offlineImg = { url: '/img/pointofsale/pos-workoffline.webp' };
 
 
 
