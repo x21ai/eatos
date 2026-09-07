@@ -93,7 +93,16 @@ export function DemoRailSection({
               const active = d.id === activeId;
               const AppIcon = appIcon[d.id];
               const Icon = deviceIcon[d.device] ?? Tablet;
+              const mobileOrder: Record<string, string> = {
+                pos: 'order-1',
+                kiosk: 'order-2',
+                kds: 'order-3',
+                cfd: 'order-4',
+                dashboard: 'order-5',
+                inventoryos: 'order-6',
+              };
               return (
+
                 <button
                   key={d.id}
                   type="button"
