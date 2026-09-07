@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { ImageIcon } from 'lucide-react';
+import { sizedImage } from '@/lib/imageUrl';
 
 // `tone` adapts the surface to the light or dark band it sits in.
 // `pad` adds safe padding around a real image and switches to object-contain so it never gets cropped or touches the edges.
