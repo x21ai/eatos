@@ -28,7 +28,7 @@ export const keyFeatures = [
   'Automated Stock Alerts',
   'Vendor Management Made Easy',
   'Recipe Costing and Menu',
-  'Comprehensive Reporting and Analytics',
+  'Comprehensive Reporting ',
   'Seamless Integration',
 ];
 
@@ -39,7 +39,7 @@ export const features = [
     body:
       'Keep track of your inventory easily with eatOS. Monitor stock levels in real time to prevent ingredient shortages. With precise inventory data, you can make better purchasing choices and improve your supply chain efficiency.',
     more:
-      'Every count syncs across the Point of Sale, kitchen, and back office so the whole team sees one source of truth.',
+      'Every count syncs across the Point of Sale, kitchen, back office so whole team sees one source of truth.',
     imageLabel: 'Real-time inventory tracking',
     image: inven1.url,
     metrics: [
@@ -53,7 +53,7 @@ export const features = [
     body:
       'Say goodbye to manual inventory checks and slow calculations. eatOS streamlines inventory tracking, providing instant alerts for low stock levels or reorder times. With automated notifications, you can reduce waste, avoid overstocking, and maintain a consistent ingredient supply.',
     more:
-      'Alerts reach the right person before a shortage affects service, so you never run out of what guests love.',
+      'Alerts reach the right person before a shortage affects service, so never run out of what guests love.',
     imageLabel: 'Automated stock alerts',
     image: inven2.url,
     metrics: [
