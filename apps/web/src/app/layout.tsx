@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import Providers from '@/components/Providers';
 import CookieBanner from '@/components/CookieBanner';
 import BookDemoTracker from '@/components/BookDemoTracker';
+import StaticLinkFix from '@/components/StaticLinkFix';
 import AgentAssistant from './components/agent/AgentAssistant';
 
 export const metadata = {
@@ -73,6 +74,7 @@ export default function RootLayout({ children }) {
           <Footer />
           <CookieBanner />
           <BookDemoTracker />
+          <StaticLinkFix />
           <AgentAssistant />
         </Providers>
       </body>
