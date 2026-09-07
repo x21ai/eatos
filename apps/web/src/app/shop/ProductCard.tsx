@@ -24,14 +24,14 @@ export default function ProductCard({ product }) {
           <div className="h-full w-full bg-zinc-900" />
         )}
         {compare && price && compare !== price ? (
-          <span className="absolute left-4 top-4 rounded-full bg-brand px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white">
+          <span className="absolute left-4 top-4 rounded-full bg-brand px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-white">
             Save
           </span>
         ) : null}
       </div>
       <div className="flex flex-1 flex-col p-5">
         {product.collectionSlugs[0] ? (
-          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
             {product.collectionSlugs[0].replace(/-/g, ' ')}
           </p>
         ) : null}
