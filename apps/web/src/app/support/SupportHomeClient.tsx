@@ -202,7 +202,7 @@ export default function SupportHomeClient() {
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
               <div className="absolute inset-x-4 bottom-4 rounded-2xl border border-white/12 bg-black/70 p-4 backdrop-blur">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-on-dark">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-on-dark">
                   Agent first, humans always
                 </p>
                 <p className="mt-2 text-[13px] leading-5 text-zinc-300">
@@ -234,7 +234,7 @@ export default function SupportHomeClient() {
                       <span className="grid h-11 w-11 place-items-center rounded-2xl border border-white/12 bg-white/[0.05] text-brand-on-dark">
                         <Icon size={19} aria-hidden />
                       </span>
-                      <span className="rounded-full border border-white/12 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-400">
+                      <span className="rounded-full border border-white/12 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-zinc-400">
                         {capability.status}
                       </span>
                     </div>
@@ -490,7 +490,7 @@ export default function SupportHomeClient() {
                 Our support team is available around the clock. Check live service health, or reach out we will get you back up & running.
               </p>
             </div>
-            <div className="flex shrink-0 flex-nowrap items-center gap-2 sm:gap-3">
+            <div className="flex w-full flex-wrap items-center gap-2 md:w-auto md:shrink-0 md:flex-nowrap sm:gap-3">
 
               <a
                 href="/contact"

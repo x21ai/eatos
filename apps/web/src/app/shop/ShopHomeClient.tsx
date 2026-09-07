@@ -79,7 +79,7 @@ export default function ShopHomeClient() {
                 <h3 className="text-sm font-bold tracking-tight text-white transition-colors group-hover:text-brand-on-dark sm:text-base">
                   {collection.title}
                 </h3>
-                <span className="mt-4 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
+                <span className="mt-4 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
                   {collection.productSlugs.length}{' '}
                   {collection.productSlugs.length === 1 ? 'product' : 'products'}
                   <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" aria-hidden />
