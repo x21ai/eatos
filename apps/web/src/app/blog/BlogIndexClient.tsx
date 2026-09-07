@@ -136,7 +136,14 @@ function SidebarRecent({ items }) {
             <a href={`/blogs/${post.slug}`} className="group flex min-w-0 items-start gap-4">
               <span className="relative h-16 w-20 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-zinc-900">
                 {post.image ? (
-                  <img src={post.image} alt="" aria-hidden loading="lazy" className="h-full w-full object-cover" />
+                  <img
+                    src={sizedImage(post.image, 200)}
+                    alt=""
+                    aria-hidden
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                  />
                 ) : null}
               </span>
               <span className="min-w-0">
