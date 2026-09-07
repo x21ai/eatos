@@ -113,7 +113,7 @@ function Card({ post, index }) {
       transition={{ duration: 0.5, delay: Math.min(index, 5) * 0.05 }}
       className="group flex min-w-0 flex-col rounded-[24px] border border-white/10 bg-white/[0.03] p-4 transition-colors hover:border-white/25 sm:p-5"
     >
-      <Placeholder label={post.title} src={post.image} tone="dark" ratio="aspect-[16/10]" />
+      <Placeholder label={post.title} src={post.image} tone="dark" ratio="aspect-[16/10]" width={680} />
       <div className="mt-6 min-w-0 flex-1">
         <Meta post={post} />
         <h3 className="mt-3 line-clamp-2 text-xl font-bold leading-snug tracking-tighter text-white transition-colors group-hover:text-brand-on-dark sm:text-[1.375rem]">
