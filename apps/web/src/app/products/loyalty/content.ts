@@ -62,7 +62,7 @@ export const features = [
   },
   {
     id: 'birthday-special-occasion-perks',
-    title: 'Birthday & Special Occasion Perks',
+    title: 'Special Occasion Perks',
     body:
       'Celebrate the moments that matter. Automatically send birthday, anniversary offers and special occasion surprises.',
     more:
