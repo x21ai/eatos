@@ -123,7 +123,7 @@ export const features = [
       { value: '24/7', label: 'Digital Shift' },
     ],
     body:
-      'Retire the ticket printer. No more paper, ribbon and jammed rolls in the middle of a rush, and no lost kitchen tickets under the pass.',
+      'Retire the ticket printer. No more paper, ribbon or jammed rolls mid-rush, and no lost checks under the pass.',
     more:
       'Every kitchen ticket stays searchable after service, so voids, remakes and delays can be reviewed instead of guessed at.',
     imageLabel: 'Digital kitchen ticket queue',
