@@ -265,13 +265,13 @@ export default function PopPageClient() {
                 Icon: Shield,
                 tint: 'bg-sky-500/10 text-sky-400',
                 title: 'Reliable at scale',
-                body: 'One handheld or fifty, every device stays in sync with your menu, staff and reporting.',
+                body: 'One handheld or many, every device stays in sync with your menu, staff and reporting.',
               },
               {
                 Icon: Clock,
                 tint: 'bg-emerald-500/10 text-emerald-400',
                 title: '24/7 support',
-                body: 'Real people, real help, any time you need it, especially through the dinner rush.',
+                body: 'Real people, real help, any time you need it, especially through the rush.',
               },
             ].map((card, index) => (
               <motion.div

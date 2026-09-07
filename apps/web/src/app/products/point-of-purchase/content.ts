@@ -41,7 +41,7 @@ export const features = [
     body:
       'A full size Point of Sale in the palm of your hand. One device covers ordering, payment and receipts, so you spend less on stations and still run the whole floor.',
     more:
-      'Servers stay with guests instead of walking to a terminal, and every check closes where the order started.',
+      'Servers stay with guests instead of walking to a terminal, & every check closes where order started.',
     imageLabel: 'Handheld eatOS terminal in use at the counter',
     image: costsAsset.url,
     metrics: [
@@ -69,7 +69,7 @@ export const features = [
     body:
       'Tap, insert, swipe or scan to pay, right at the table. Guests choose how to split, how to tip and where the receipt goes.',
     more:
-      'Split by item, by seat or evenly across the table, then email or text the receipt without a trip to the counter.',
+      'Split by item, by seat or evenly across the table, then email or text receipt without a trip to  counter.',
     imageLabel: 'Guest tapping a phone on a handheld reader',
     image: paymentsAsset.url,
     metrics: [
