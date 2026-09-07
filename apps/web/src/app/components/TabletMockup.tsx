@@ -1,5 +1,7 @@
 'use client';
 
+import LazyVideo from '@/components/marketing/LazyVideo';
+
 export type VideoSource = { src: string; type: string };
 
 interface TabletMockupProps {
