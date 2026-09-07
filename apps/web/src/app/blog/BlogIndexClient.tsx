@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Placeholder } from '@/components/marketing/Placeholder';
+import { sizedImage } from '@/lib/imageUrl';
 import { NewsletterSection } from '@/components/NewsletterSection';
 import { blogHero, categories, posts, formatDate } from './content';
 import CategoryFilter, { categoryHref } from './CategoryFilter';
