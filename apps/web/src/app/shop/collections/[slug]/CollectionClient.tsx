@@ -5,9 +5,9 @@ import { motion } from 'motion/react';
 import ProductCard from '../../ProductCard';
 import { getCollection, getCollectionProducts } from '../../catalog';
 
-export default function CollectionClient({ slug }) {
-  const collection = getCollection(slug);
-  const items = getCollectionProducts(slug);
+export default function CollectionClient({ slug, collection: collectionProp, items: itemsProp }) {
+  const collection = collectionProp || getCollection(slug);
+  const items = itemsProp && itemsProp.length ? itemsProp : getCollectionProducts(slug);
 
   if (!collection) {
     return (

@@ -12,9 +12,9 @@ function newsHref(slug) {
   return `/news/${encodeURIComponent(slug)}`;
 }
 
-export default function NewsPostClient({ slug }) {
-  const post = getNewsItem(slug);
-  const related = getRelatedNews(slug, 3);
+export default function NewsPostClient({ slug, post: postProp, related: relatedProp }) {
+  const post = postProp || getNewsItem(slug);
+  const related = relatedProp || getRelatedNews(slug, 3);
 
   const handleShare = () => {
     try {

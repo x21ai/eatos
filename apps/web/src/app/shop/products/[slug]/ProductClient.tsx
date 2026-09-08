@@ -14,9 +14,9 @@ import {
   processingRate,
 } from '../../catalog';
 
-export default function ProductClient({ slug }) {
-  const product = getProduct(slug);
-  const related = getRelatedProducts(slug, 3);
+export default function ProductClient({ slug, product: productProp, related: relatedProp }) {
+  const product = productProp || getProduct(slug);
+  const related = relatedProp && relatedProp.length ? relatedProp : getRelatedProducts(slug, 3);
   const [activeImage, setActiveImage] = useState(0);
   const [variantId, setVariantId] = useState(product?.variants?.[0]?.id ?? null);
   const [quantity, setQuantity] = useState(1);

@@ -1,6 +1,7 @@
 // @ts-nocheck
 import CollectionClient from './CollectionClient';
-import { collections, getCollection, getCollectionProducts } from '../../catalog';
+import { collections } from '../../catalog';
+import { getCollectionBySlug, getCollectionProducts } from '@/lib/shop/data';
 
 export const dynamicParams = true;
 
@@ -10,7 +11,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const collection = getCollection(slug);
+  const collection = await getCollectionBySlug(slug);
   if (!collection) return { title: 'Collection not found | eatOS Shop' };
   const canonical = `/shop/collections/${collection.slug}`;
   const description = `Shop ${collection.title} from eatOS. Restaurant hardware built for the floor, with support and setup included.`;
@@ -25,8 +26,8 @@ export async function generateMetadata({ params }) {
 
 export default async function ShopCollectionPage({ params }) {
   const { slug } = await params;
-  const collection = getCollection(slug);
-  const items = getCollectionProducts(slug);
+  const collection = await getCollectionBySlug(slug);
+  const items = await getCollectionProducts(slug);
   const jsonLd = collection
     ? {
         '@context': 'https://schema.org',
@@ -49,7 +50,7 @@ export default async function ShopCollectionPage({ params }) {
       {jsonLd ? (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       ) : null}
-      <CollectionClient slug={slug} />
+      <CollectionClient slug={slug} collection={collection} items={items} />
     </>
   );
 }

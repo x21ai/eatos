@@ -1,5 +1,6 @@
 // @ts-nocheck
 import BlogIndexClient from './BlogIndexClient';
+import { listArticles } from '@/lib/blog/data';
 
 export const metadata = {
   alternates: { canonical: '/blog' },
@@ -16,6 +17,7 @@ export const metadata = {
   twitter: { card: 'summary_large_image' },
 };
 
-export default function BlogIndexPage() {
-  return <BlogIndexClient />;
+export default async function BlogIndexPage() {
+  const posts = await listArticles('blog');
+  return <BlogIndexClient posts={posts} />;
 }

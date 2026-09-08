@@ -1,6 +1,7 @@
 // @ts-nocheck
 import ShopHomeClient from './ShopHomeClient';
-import { products, railCollections } from './catalog';
+import { products as importedProducts, railCollections as importedRail } from './catalog';
+import { getShopCatalog, listCollections, getCollectionProducts } from '@/lib/shop/data';
 
 export const metadata = {
   title: 'Shop Restaurant Hardware',
@@ -22,7 +23,17 @@ export const metadata = {
   },
 };
 
-export default function ShopPage() {
+export default async function ShopPage() {
+  const { products } = await getShopCatalog();
+  const railCollections = await listCollections();
+  const bundles = await getCollectionProducts('bundles');
+  const featuredCandidates = railCollections
+    .filter((c) => c.slug !== 'bundles')
+    .map((c) => products.find((p) => p.slug === c.productSlugs[0]))
+    .filter(Boolean);
+  const featured = featuredCandidates
+    .filter((p, i) => featuredCandidates.findIndex((o) => o.slug === p.slug) === i)
+    .slice(0, 6);
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
@@ -42,7 +53,7 @@ export default function ShopPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <ShopHomeClient />
+      <ShopHomeClient products={products} collections={railCollections} featured={featured} bundles={bundles} />
     </>
   );
 }

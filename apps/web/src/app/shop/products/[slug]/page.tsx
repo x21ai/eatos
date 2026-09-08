@@ -1,6 +1,7 @@
 // @ts-nocheck
 import ProductClient from './ProductClient';
-import { getProduct, products } from '../../catalog';
+import { products } from '../../catalog';
+import { getProductBySlug, listProducts } from '@/lib/shop/data';
 
 export const dynamicParams = true;
 
@@ -20,7 +21,7 @@ function plainText(html, limit = 155) {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = await getProductBySlug(slug);
   if (!product) return { title: 'Product not found | eatOS Shop' };
   const canonical = `/shop/products/${product.slug}`;
   const description =
@@ -49,7 +50,17 @@ export async function generateMetadata({ params }) {
 
 export default async function ShopProductPage({ params }) {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = await getProductBySlug(slug);
+  const all = await listProducts();
+  const related = product
+    ? all
+        .filter(
+          (p) =>
+            p.slug !== product.slug &&
+            p.collectionSlugs.some((c) => product.collectionSlugs.includes(c)),
+        )
+        .slice(0, 3)
+    : [];
   const jsonLd = product
     ? {
         '@context': 'https://schema.org',
@@ -80,7 +91,7 @@ export default async function ShopProductPage({ params }) {
       {jsonLd ? (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       ) : null}
-      <ProductClient slug={slug} />
+      <ProductClient slug={slug} product={product} related={related} />
     </>
   );
 }
