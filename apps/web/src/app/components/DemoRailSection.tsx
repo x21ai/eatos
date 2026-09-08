@@ -162,7 +162,7 @@ export function DemoRailSection({
               <div
                 className={`relative w-full bg-black p-3 sm:p-4 ${
                   demo.media.orientation === 'portrait'
-                    ? 'aspect-[3/4] sm:aspect-[4/3] lg:aspect-auto lg:h-[480px]'
+                    ? 'aspect-[9/16] sm:aspect-[3/4] lg:aspect-auto lg:h-[720px]'
                     : 'aspect-[16/10] lg:aspect-auto lg:h-[480px]'
                 }`}
               >
