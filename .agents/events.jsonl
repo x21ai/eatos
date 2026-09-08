@@ -1,0 +1,4 @@
+{"ts":"2026-08-27T11:15:00Z","agent":"cursor-agent","action":"land","task":"local-preview","detail":"yarn dev on :8080; marketing routes PASS; D1 binding degrade on /api/blog"}
+{"ts":"2026-09-07T17:18:55Z","agent":"cursor-agent","action":"land","task":"sync-lovable","detail":"ff-only pull AstroAii/eatos lovable -> 36a15654; local==origin; preview :8080 restarted; prod still stale"}
+{"ts":"2026-09-07T17:19:12Z","agent":"cursor-agent","action":"land","task":"sync-lovable","detail":"ff-only pull AstroAii/eatos lovable -> 36a15654; local==origin; preview :8080; prod still stale"}
+{"ts":"2026-09-08T00:50:38Z","agent":"cursor-agent","action":"claim","task":"cursor-handoff","detail":"loaded docs/cursor-handoff.md @ da46b7fb; supabase-eatos MCP has no posts/shop tables; awaiting project confirm for A"}

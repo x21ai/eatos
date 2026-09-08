@@ -1,6 +1,31 @@
 # eatOS 2.0 — Handoff Log
 
-## Current snapshot (2026-08-03T18:10Z)
+## Current snapshot (2026-09-08T00:50Z)
+- **Cursor handoff loaded:** [docs/cursor-handoff.md](cursor-handoff.md) (+ schema
+  [supabase-content-schema.md](supabase-content-schema.md), wiring
+  [backend-wiring.md](backend-wiring.md)). Local `lovable@da46b7fb` = `origin/lovable`
+  (pulled 74 commits; includes seed SQL + Supabase read layer).
+- **Frontend done:** 81 routes; blog/news/shop read Supabase when env set, else JSON
+  fallbacks. No cart/checkout/admin write path yet. Tasks A-F ordered in the handoff.
+- **Blocker for Task A:** MCP `user-supabase-eatos` → `pizmdmweivuquwxlsizd.supabase.co`
+  has workspaces/rooms/marketing tables, **no** `posts` / shop tables. Do not create
+  content schema there until operator confirms that project (or a different one) is
+  the eatOS content target.
+- Preview / prod sync state unchanged from prior entry (`s.eatos.dev` still stale).
+
+### 2026-09-08T00:50Z — Loaded docs/cursor-handoff.md
+- **Requested:** Operator pointed at the Cursor handoff (current state, paste prompt,
+  six tasks A-F, hard rules, file map).
+- **Done:** Fast-forwarded to `da46b7fb`; read handoff + schema + backend-wiring;
+  listed tables on linked Supabase MCP project (wrong-looking product schema).
+- **Issues:** Need confirmed Supabase project before CREATE TABLE / seed load.
+- **Stand / next:** Confirm target Supabase, then execute Task A (schema + RLS + grants).
+- **Who / where:** Cursor agent, eatos, `lovable@da46b7fb`.
+- **Evidence:** `docs/cursor-handoff.md` present (151 lines); MCP list_tables has no
+  posts/collections/products.
+- **Timestamp:** 2026-09-08T00:50:00Z
+
+## Prior snapshot (2026-08-03T18:10Z)
 - **Lovable preview:** branch `lovable` on `x21ai/eatos-snap-capture` includes Lovable
   harness fixes (root `dev`/`build` on port **8080**, `date-fns` in `apps/web`).
   Local `main` fast-forwarded to `26250ad` + cleanup commit (no `.wrangler` in git).
