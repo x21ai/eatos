@@ -7,9 +7,9 @@ import kdsPoster from './assets/kds-demo-poster.jpg.asset.json';
 import cfdMp4 from './assets/cfd3-demo.mp4.asset.json';
 import cfdWebm from './assets/cfd3-demo.webm.asset.json';
 import cfdPoster from './assets/cfd3-demo-poster.jpg.asset.json';
-import kioskMp4 from './assets/kiosk-demo.mp4.asset.json';
-import kioskWebm from './assets/kiosk-demo.webm.asset.json';
-import kioskPoster from './assets/kiosk-demo-poster.jpg.asset.json';
+import kioskMp4 from './assets/kiosk-portrait.mp4.asset.json';
+import kioskWebm from './assets/kiosk-portrait.webm.asset.json';
+import kioskPoster from './assets/kiosk-portrait-poster.jpg.asset.json';
 import dashMp4 from './assets/dashboard-demo.mp4.asset.json';
 import dashWebm from './assets/dashboard-demo.webm.asset.json';
 import dashPoster from './assets/dashboard-demo-poster.jpg.asset.json';
@@ -26,6 +26,8 @@ export type DemoMedia = {
   sources: { src: string; type: string }[];
   poster: string;
   caption: string;
+  /** Tall kiosk style clip. Defaults to landscape when omitted. */
+  orientation?: 'portrait' | 'landscape';
 };
 
 export type DemoSource = {
@@ -72,7 +74,8 @@ export const demoSources: DemoSource[] = [
     media: {
       sources: videoSources(kioskWebm, kioskMp4),
       poster: kioskPoster.url,
-      caption: 'Touch to start, build the order, tip and pay.',
+      caption: 'Touch to start, build the order, pay and take the receipt.',
+      orientation: 'portrait',
     },
   },
 

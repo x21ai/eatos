@@ -1,0 +1,453 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<style>
+@font-face{font-family:'Mont';src:url('montserrat.ttf');font-weight:100 900;}
+@font-face{font-family:'Script';src:url('pacifico.ttf');}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:900px;height:1600px;overflow:hidden;background:#fff;}
+body{font-family:'Mont',sans-serif;color:#111827;-webkit-font-smoothing:antialiased;}
+#stage{position:relative;width:900px;height:1600px;overflow:hidden;background:#fff;}
+.screen{position:absolute;inset:0;opacity:0;background:#fff;}
+
+/* brand mark */
+.mk{display:flex;flex-direction:column;align-items:center;}
+.mk .ring{width:78px;height:78px;border-radius:50%;border:2.5px solid currentColor;display:flex;align-items:center;justify-content:center;}
+.mk .ring svg{width:46px;height:46px;}
+.mk b{display:block;margin-top:10px;font-family:'Script';font-size:44px;font-weight:400;line-height:1;}
+.mk s{text-decoration:none;display:block;margin-top:6px;font-size:15px;font-weight:700;letter-spacing:.5em;text-indent:.5em;}
+.mk.sm .ring{width:44px;height:44px;border-width:1.6px;}
+.mk.sm .ring svg{width:26px;height:26px;}
+.mk.sm b{margin-top:5px;font-size:24px;}
+.mk.sm s{margin-top:2px;font-size:9px;}
+
+/* topbar */
+.topbar{position:absolute;left:0;top:0;width:900px;height:104px;display:flex;align-items:center;padding:0 30px;background:#fff;}
+.topbar .back{width:56px;height:56px;border-radius:50%;background:#f3f4f6;display:flex;align-items:center;justify-content:center;font-size:30px;color:#374151;line-height:1;}
+.topbar .ttl{flex:1;text-align:center;font-size:40px;font-weight:800;letter-spacing:-.02em;}
+.topbar .rgt{width:56px;display:flex;justify-content:flex-end;}
+
+#pw{position:absolute;right:24px;bottom:18px;background:rgba(24,24,27,.86);color:#fff;border-radius:9px;padding:8px 14px;display:flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.18em;z-index:60;}
+#pw img{height:15px;width:auto;filter:invert(1);}
+
+/* ---------- 1 TOUCH TO START ---------- */
+#start{background:#120c08;color:#fff;}
+#start .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+#start .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.30) 34%,rgba(0,0,0,.34) 62%,rgba(0,0,0,.80) 100%);}
+#start .top{position:absolute;left:0;top:56px;width:900px;display:flex;justify-content:center;color:#fff;}
+#start .wel{position:absolute;left:50%;top:266px;transform:translateX(-50%);padding:11px 32px;border-radius:40px;background:rgba(255,255,255,.16);font-size:17px;font-weight:800;letter-spacing:.36em;text-indent:.36em;}
+#start h1{position:absolute;left:0;top:330px;width:900px;text-align:center;font-family:'Script';font-size:62px;font-weight:400;text-shadow:0 6px 30px rgba(0,0,0,.55);}
+#start .sub{position:absolute;left:0;top:426px;width:900px;text-align:center;font-size:24px;font-weight:600;color:rgba(255,255,255,.88);}
+#start .cta{position:absolute;left:0;top:640px;width:900px;text-align:center;font-family:'Script';font-size:118px;line-height:1.06;font-weight:400;text-shadow:0 10px 44px rgba(0,0,0,.6);}
+#start .cards{position:absolute;left:0;bottom:88px;width:900px;display:flex;justify-content:center;gap:20px;}
+#start .cards i{width:112px;height:70px;border-radius:13px;background:#fff;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:21px;font-weight:900;color:#1f2937;box-shadow:0 12px 30px -14px rgba(0,0,0,.7);}
+#start .cards i.v{color:#1a1f71;}
+#start .cards i.mc{color:#eb5b26;}
+#start .cards i.ax{color:#1a5fb4;font-size:16px;}
+#start .cards i.ap{font-size:24px;}
+#start .cards i.nfc svg{width:36px;height:36px;}
+
+/* ---------- 2 DINE MODE ---------- */
+#dine{background:#eef0f4;}
+#dine .head{position:absolute;left:0;top:0;width:900px;height:520px;background:linear-gradient(180deg,#ffffff 0%,#fdfcfb 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#7a2b2b;}
+#dine .head .nm{margin-top:30px;font-size:44px;font-weight:800;letter-spacing:-.02em;color:#1f2a37;}
+#dine .lang{position:absolute;right:34px;top:40px;height:56px;padding:0 24px;border-radius:32px;background:#fff;box-shadow:0 6px 20px -10px rgba(0,0,0,.35);display:flex;align-items:center;gap:10px;font-size:22px;font-weight:700;color:#374151;}
+#dine .gt{position:absolute;left:0;top:690px;width:900px;text-align:center;font-size:26px;font-weight:600;color:#6b7280;}
+#dine h2{position:absolute;left:0;top:738px;width:900px;text-align:center;font-size:46px;font-weight:800;letter-spacing:-.02em;color:#1f2a37;}
+#dine .opts{position:absolute;left:60px;top:860px;width:780px;display:flex;gap:28px;}
+#dine .opt{flex:1;background:#fff;border:2px solid #e6e8ee;border-radius:24px;padding:44px 24px;text-align:center;}
+#dine .opt.on{border-color:#111827;box-shadow:0 18px 44px -22px rgba(0,0,0,.45);}
+#dine .opt em{font-style:normal;display:flex;width:96px;height:96px;margin:0 auto;border-radius:26px;background:#f3f4f6;align-items:center;justify-content:center;}
+#dine .opt.on em{background:#111827;color:#fff;}
+#dine .opt em svg{width:52px;height:52px;}
+#dine .opt b{display:block;margin-top:26px;font-size:34px;font-weight:800;}
+#dine .opt s{text-decoration:none;display:block;margin-top:12px;font-size:21px;font-weight:600;color:#8a919c;}
+
+/* ---------- 3 MENU ---------- */
+#menu{background:#f7f8fa;}
+#menu .promo{position:absolute;left:30px;top:34px;width:840px;height:236px;border-radius:22px;overflow:hidden;background:#b81b21;}
+#menu .promo img{position:absolute;right:0;top:0;width:470px;height:236px;object-fit:cover;}
+#menu .promo .gr{position:absolute;inset:0;background:linear-gradient(90deg,#c81d23 0%,#c81d23 48%,rgba(200,29,35,.10) 88%);}
+#menu .promo .tx{position:absolute;left:34px;top:40px;color:#fff;}
+#menu .promo .tx u{text-decoration:none;display:block;font-size:34px;font-weight:900;letter-spacing:.02em;}
+#menu .promo .tx b{display:block;margin-top:4px;font-size:44px;font-weight:900;letter-spacing:.01em;}
+#menu .promo .pill{position:absolute;left:34px;top:150px;background:#fff;color:#c81d23;border-radius:8px;padding:8px 16px;display:flex;align-items:baseline;gap:8px;}
+#menu .promo .pill i{font-style:normal;font-size:16px;font-weight:800;}
+#menu .promo .pill b{font-size:34px;font-weight:900;}
+#menu .dots{position:absolute;left:0;top:288px;width:900px;display:flex;justify-content:center;align-items:center;gap:10px;}
+#menu .dots i{width:9px;height:9px;border-radius:50%;background:#d3d6dd;}
+#menu .dots i.on{width:34px;border-radius:6px;background:#111827;}
+#menu .bar{position:absolute;left:30px;top:330px;width:840px;display:flex;gap:18px;}
+#menu .mode{height:76px;padding:0 26px;border-radius:16px;background:#eceef2;display:flex;align-items:center;gap:12px;font-size:24px;font-weight:700;}
+#menu .srch{flex:1;height:76px;border-radius:16px;background:#fff;border:1px solid #e6e8ee;display:flex;align-items:center;padding:0 24px;gap:14px;font-size:24px;font-weight:600;color:#9ca3af;}
+#menu .srch .mag{margin-left:auto;}
+#menu .cats{position:absolute;left:30px;top:442px;width:840px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+#menu .cat{background:#fff;border:1px solid #eaecf1;border-radius:20px;padding:30px 12px 26px;text-align:center;}
+#menu .cat.on{border-color:#111827;box-shadow:0 16px 40px -22px rgba(0,0,0,.5);}
+#menu .cat .th{width:112px;height:112px;margin:0 auto;border-radius:50%;overflow:hidden;background:#f1f2f5;}
+#menu .cat .th img{width:100%;height:100%;object-fit:cover;}
+#menu .cat b{display:block;margin-top:20px;font-size:28px;font-weight:800;}
+#menu .cat s{text-decoration:none;display:block;margin-top:8px;font-size:19px;font-weight:600;color:#9199a5;}
+
+/* ---------- 4 ITEM ---------- */
+#item{background:#fff;}
+#item .photo{position:absolute;left:0;top:104px;width:900px;height:392px;overflow:hidden;background:#f3f4f6;}
+#item .photo img{width:100%;height:100%;object-fit:cover;}
+#item .cal{position:absolute;left:30px;top:432px;background:rgba(31,41,55,.72);color:#fff;border-radius:10px;padding:8px 16px;font-size:20px;font-weight:700;}
+#item .hd{position:absolute;left:30px;top:526px;width:840px;display:flex;align-items:flex-start;}
+#item .hd b{flex:1;font-size:42px;font-weight:800;letter-spacing:-.02em;}
+#item .hd u{text-decoration:none;font-size:42px;font-weight:800;}
+#item .desc{position:absolute;left:30px;top:590px;width:840px;font-size:23px;line-height:1.45;font-weight:500;color:#4b5563;}
+#item .chips{position:absolute;left:30px;top:690px;width:840px;display:flex;gap:12px;}
+#item .chips i{font-style:normal;height:44px;padding:0 18px;border-radius:10px;display:flex;align-items:center;font-size:20px;font-weight:700;background:#f1f2f5;color:#374151;}
+#item .chips i.warn{background:#fef3c7;color:#92400e;}
+#item .chips i.hide{opacity:0;}
+#item .act{position:absolute;left:30px;top:766px;width:840px;display:flex;align-items:center;gap:22px;}
+#item .qty{height:78px;padding:0 10px;border-radius:44px;border:1.5px solid #e0e3e9;display:flex;align-items:center;gap:20px;}
+#item .qty span{width:58px;height:58px;border-radius:50%;background:#f3f4f6;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700;color:#4b5563;line-height:1;}
+#item .qty b{min-width:34px;text-align:center;font-size:28px;font-weight:800;}
+#addbtn{flex:1;height:78px;border-radius:44px;background:#111827;color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;}
+#item .tabs{position:absolute;left:30px;top:876px;width:840px;display:flex;border-bottom:1.5px solid #ebedf1;}
+#item .tabs i{font-style:normal;flex:1;text-align:center;padding-bottom:18px;font-size:26px;font-weight:700;color:#9199a5;}
+#item .tabs i.on{color:#111827;box-shadow:inset 0 -4px 0 #111827;}
+#item .cnt{position:absolute;left:30px;top:952px;width:840px;}
+#item .cnt .lbl{display:flex;align-items:center;gap:14px;}
+#item .cnt .lbl em{font-style:normal;height:48px;padding:0 20px;border-radius:12px;background:#111827;color:#fff;display:flex;align-items:center;gap:10px;font-size:21px;font-weight:800;}
+#item .cnt .lbl em u{text-decoration:none;background:rgba(255,255,255,.22);border-radius:20px;padding:1px 9px;font-size:17px;}
+#item .cnt .lbl s{text-decoration:none;margin-left:auto;font-size:19px;font-weight:700;color:#9199a5;}
+#item .cnt .hdr{margin-top:26px;display:flex;align-items:center;font-size:19px;font-weight:800;letter-spacing:.16em;color:#6b7280;}
+#item .cnt .hdr s{text-decoration:none;margin-left:auto;letter-spacing:.02em;font-weight:700;color:#9199a5;}
+#item .grid{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+#item .ao{border:1.5px solid #e8eaef;border-radius:18px;overflow:hidden;background:#fff;}
+#item .ao.on{border-color:#111827;}
+#item .ao .im{height:118px;background:#f4f5f8;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+#item .ao .im img{width:100%;height:100%;object-fit:cover;}
+#item .ao .bt{padding:16px 18px;display:flex;align-items:center;}
+#item .ao .bt div b{display:block;font-size:23px;font-weight:800;}
+#item .ao .bt div s{text-decoration:none;display:block;margin-top:4px;font-size:20px;font-weight:600;color:#8a919c;}
+#item .ao .bt .add{margin-left:auto;height:48px;padding:0 22px;border-radius:26px;background:#111827;color:#fff;display:flex;align-items:center;font-size:20px;font-weight:800;}
+#item .ao .bt .stp{margin-left:auto;height:48px;padding:0 8px;border-radius:26px;background:#f3f4f6;display:flex;align-items:center;gap:14px;}
+#item .ao .bt .stp i{font-style:normal;width:36px;height:36px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;color:#374151;line-height:1;}
+#item .ao .bt .stp b{font-size:22px;font-weight:800;}
+
+/* ---------- 5 UPSELL ---------- */
+#ups{background:#fff;}
+#ups .toast{position:absolute;left:0;top:0;width:900px;height:82px;background:#16a34a;color:#fff;display:flex;align-items:center;justify-content:center;gap:14px;font-size:26px;font-weight:800;}
+#ups .pill{position:absolute;left:30px;top:132px;height:56px;padding:0 24px;border-radius:32px;background:#f1f2f5;display:flex;align-items:center;gap:12px;font-size:20px;font-weight:800;letter-spacing:.14em;color:#374151;}
+#ups h2{position:absolute;left:30px;top:220px;width:840px;font-size:52px;font-weight:800;letter-spacing:-.025em;}
+#ups .combo{position:absolute;left:30px;top:314px;width:840px;border:2px solid #16a34a;background:#f2fbf5;border-radius:24px;padding:30px;display:flex;align-items:center;gap:26px;}
+#ups .combo .th{position:relative;width:150px;height:110px;flex:none;}
+#ups .combo .th img{position:absolute;top:0;width:104px;height:104px;border-radius:50%;object-fit:cover;background:#fff;box-shadow:0 0 0 5px #f2fbf5;}
+#ups .combo .th img:nth-child(2){object-fit:cover;}
+#ups .combo .th img:nth-child(1){left:0;}
+#ups .combo .th img:nth-child(2){left:46px;}
+#ups .combo .tx b{display:block;font-size:32px;font-weight:800;letter-spacing:-.02em;color:#14532d;line-height:1.2;}
+#ups .combo .tx s{text-decoration:none;display:block;margin-top:8px;font-size:22px;font-weight:600;color:#3f6b4c;}
+#ups .combo .tx u{text-decoration:none;display:block;margin-top:10px;font-size:26px;font-weight:800;color:#166534;}
+#addedbtn{margin-left:auto;height:66px;padding:0 30px;border-radius:36px;background:#16a34a;color:#fff;display:flex;align-items:center;gap:12px;font-size:24px;font-weight:800;flex:none;}
+#ups .lab{position:absolute;left:30px;top:600px;font-size:20px;font-weight:800;letter-spacing:.18em;color:#6b7280;}
+#ups .also{position:absolute;left:30px;top:656px;width:840px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+#ups .dr{text-align:center;}
+#ups .dr .th{width:214px;height:214px;margin:0 auto;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 1px #eef0f4;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;}
+#ups .dr .th img{width:80%;height:88%;object-fit:contain;}
+#ups .dr b{display:block;margin-top:24px;font-size:30px;font-weight:800;line-height:1.25;}
+#ups .dr s{text-decoration:none;display:block;margin-top:8px;font-size:24px;font-weight:700;color:#4b5563;}
+#ups .dr .bn{margin:18px auto 0;width:74px;height:74px;border-radius:50%;background:#111827;color:#fff;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:600;line-height:1;}
+#ups .dr .bn.stp{width:150px;border-radius:40px;background:#16a34a;gap:16px;font-size:26px;font-weight:800;}
+#ups .dr .bn.stp i{font-style:normal;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.24);display:flex;align-items:center;justify-content:center;font-size:26px;line-height:1;}
+#ups .bottom{position:absolute;left:30px;bottom:44px;width:840px;height:96px;border-radius:52px;background:#111827;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;}
+
+/* ---------- 6 REVIEW ---------- */
+#rev{background:#f6f7f9;}
+#rev .top{position:absolute;left:30px;top:38px;width:840px;display:flex;align-items:center;}
+#rev .top .mn{height:64px;padding:0 30px;border-radius:36px;background:#111827;color:#fff;display:flex;align-items:center;font-size:24px;font-weight:800;}
+#rev .top b{flex:1;text-align:center;font-size:44px;font-weight:800;letter-spacing:-.02em;margin-right:96px;}
+#rev .list{position:absolute;left:30px;top:136px;width:840px;}
+#rev .li{background:#fff;border:1px solid #eaecf1;border-radius:20px;padding:22px 24px;display:flex;align-items:flex-start;gap:22px;margin-bottom:16px;}
+#rev .li .th{width:88px;height:88px;border-radius:16px;overflow:hidden;background:#f2f3f6;flex:none;}
+#rev .li .th img{width:100%;height:100%;object-fit:cover;}
+#rev .li .tx{flex:1;min-width:0;}
+#rev .li .tx b{display:block;font-size:30px;font-weight:800;letter-spacing:-.01em;}
+#rev .li .tx .mods{margin-top:8px;font-size:20px;font-weight:600;color:#6b7280;line-height:1.4;}
+#rev .li .tx .warn{margin-top:10px;display:flex;gap:10px;}
+#rev .li .tx .warn i{font-style:normal;height:34px;padding:0 12px;border-radius:8px;background:#fef3c7;color:#92400e;display:flex;align-items:center;font-size:17px;font-weight:700;}
+#rev .li .tx .lk{margin-top:12px;display:flex;gap:22px;font-size:20px;font-weight:600;color:#4b5563;text-decoration:underline;}
+#rev .li .rt{text-align:right;flex:none;}
+#rev .li .rt u{text-decoration:none;display:block;font-size:30px;font-weight:800;}
+#rev .li .rt .stp{margin-top:16px;height:56px;padding:0 6px;border-radius:32px;border:1.5px solid #e0e3e9;display:flex;align-items:center;gap:14px;}
+#rev .li .rt .stp i{font-style:normal;width:44px;height:44px;border-radius:50%;background:#f3f4f6;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;color:#4b5563;line-height:1;}
+#rev .li .rt .stp b{font-size:24px;font-weight:800;min-width:22px;text-align:center;}
+#rev .tot{position:absolute;left:30px;bottom:184px;width:840px;background:#fff;border:1px solid #eaecf1;border-radius:20px;padding:22px 26px;}
+#rev .tot div{display:flex;align-items:center;font-size:26px;font-weight:700;color:#4b5563;margin-bottom:12px;}
+#rev .tot div:last-child{margin-bottom:0;}
+#rev .tot div b{margin-left:auto;font-weight:800;color:#111827;}
+#rev .tot div.big{font-size:32px;color:#111827;font-weight:800;padding-top:14px;border-top:1px solid #eef0f4;}
+#placebtn{position:absolute;left:30px;bottom:48px;width:840px;height:104px;border-radius:56px;background:#111827;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;}
+
+/* ---------- 7 PAYMENT ---------- */
+#pay{background:#fff;}
+#pay .sum{position:absolute;left:0;top:104px;width:900px;height:84px;background:#f4f5f8;display:flex;align-items:center;padding:0 30px;font-size:24px;font-weight:700;color:#4b5563;}
+#pay .sum b{margin-left:auto;font-size:28px;font-weight:800;color:#111827;}
+#pay .lab{position:absolute;left:30px;font-size:20px;font-weight:800;letter-spacing:.18em;color:#6b7280;}
+#pay .lab.a{top:236px;}
+#pay .lab.b{top:790px;}
+#pay .g{position:absolute;left:30px;width:840px;display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+#pay .g.a{top:288px;}
+#pay .g.b{top:842px;}
+#pay .pc{border:1.5px solid #e8eaef;border-radius:22px;padding:34px 26px;background:#fff;}
+#pay .pc.on{border-color:#111827;background:#f4f5f8;box-shadow:0 18px 44px -24px rgba(0,0,0,.45);}
+#pay .pc em{font-style:normal;display:flex;width:82px;height:82px;border-radius:22px;background:#f3f4f6;align-items:center;justify-content:center;}
+#pay .pc.on em{background:#111827;color:#fff;}
+#pay .pc em svg{width:44px;height:44px;}
+#pay .pc b{display:block;margin-top:24px;font-size:28px;font-weight:800;}
+#pay .note{position:absolute;left:30px;bottom:52px;width:840px;text-align:center;font-size:22px;font-weight:600;color:#9199a5;}
+
+/* ---------- 8 DONE ---------- */
+#done{background:#fff;}
+#done .top{position:absolute;left:0;top:52px;width:900px;display:flex;justify-content:center;color:#7a2b2b;}
+#done h2{position:absolute;left:0;top:266px;width:900px;text-align:center;font-size:44px;font-weight:800;letter-spacing:.02em;color:#1f2a37;}
+#done .sb{position:absolute;left:0;top:328px;width:900px;text-align:center;font-size:24px;font-weight:600;color:#8a919c;}
+#done .onl{position:absolute;left:0;top:396px;width:900px;text-align:center;font-size:22px;font-weight:600;color:#9199a5;}
+#done .num{position:absolute;left:0;top:428px;width:900px;text-align:center;font-size:96px;font-weight:900;letter-spacing:-.03em;}
+#done .card{position:absolute;left:70px;top:576px;width:760px;background:#fff;border:1px solid #e8eaef;border-radius:20px;box-shadow:0 22px 60px -34px rgba(0,0,0,.45);padding:26px 30px;}
+#done .card .hd{display:flex;align-items:center;padding-bottom:20px;border-bottom:1px dashed #dfe2e8;}
+#done .card .hd .md{height:52px;padding:0 26px;border-radius:30px;background:#111827;color:#fff;display:flex;align-items:center;font-size:20px;font-weight:800;letter-spacing:.12em;}
+#done .card .hd .btns{margin-left:auto;display:flex;gap:12px;}
+#done .card .hd .btns i{font-style:normal;height:52px;padding:0 20px;border-radius:12px;background:#f3f4f6;display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;color:#374151;}
+#done .card .r{display:flex;align-items:baseline;font-size:24px;font-weight:700;color:#4b5563;margin-top:14px;}
+#done .card .r b{margin-left:auto;font-weight:800;color:#111827;}
+#done .card .r.big{margin-top:22px;font-size:32px;font-weight:800;color:#111827;}
+#done .card .r.red,#done .card .r.red b{color:#c81d23;}
+#done .card .sep{margin-top:20px;padding-top:18px;border-top:1px dashed #dfe2e8;}
+#done .card .il{display:flex;align-items:baseline;font-size:24px;font-weight:700;margin-top:16px;}
+#done .card .il b{margin-left:auto;font-weight:800;}
+#done .card .il .mods{display:block;margin-top:6px;font-size:19px;font-weight:600;color:#9199a5;}
+#neworder{position:absolute;left:70px;bottom:250px;width:760px;height:100px;border-radius:54px;background:#111827;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;}
+#done .cd{position:absolute;left:0;bottom:368px;width:900px;text-align:center;font-size:21px;font-weight:600;color:#9199a5;}
+#done .take{position:absolute;left:0;bottom:150px;width:900px;text-align:center;font-size:24px;font-weight:700;color:#4b5563;}
+#done .slot{position:absolute;left:280px;bottom:44px;width:340px;height:92px;}
+#done .slot .paper{position:absolute;left:26px;top:0;width:288px;background:#fff;border:1px solid #e5e7eb;border-radius:4px;box-shadow:0 10px 24px -14px rgba(0,0,0,.5);padding:14px 18px 22px;}
+#done .slot .paper .l{height:7px;border-radius:4px;background:#e9ebef;margin-bottom:9px;}
+#done .slot .paper .l.s{width:56%;}
+#done .slot .paper .l.m{width:78%;}
+#done .slot .bar{position:absolute;left:0;bottom:0;width:340px;height:26px;border-radius:14px;background:#1c1f24;box-shadow:inset 0 3px 6px rgba(0,0,0,.7);}
+
+/* cursor */
+#cursor{position:absolute;left:0;top:0;width:0;height:0;z-index:70;}
+#cursor svg{position:absolute;left:-4px;top:-3px;width:46px;height:46px;filter:drop-shadow(0 3px 6px rgba(0,0,0,.45));}
+#rip{position:absolute;width:130px;height:130px;margin:-65px 0 0 -65px;border-radius:50%;background:radial-gradient(circle,rgba(17,24,39,.34) 0%,rgba(17,24,39,0) 70%);z-index:69;opacity:0;}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 1 TOUCH TO START -->
+<div class="screen" id="start">
+  <img class="bg" src="hero.jpg"/>
+  <div class="shade"></div>
+  <div class="top">
+    <div class="mk"><div class="ring"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 4c-8 0-14 6-14 14s6 12 12 12 10-4 10-9-4-8-8-8-6 2-6 5 2 4 4 4"/><path d="M20 4c0-2 2-3 2-3"/></svg></div><b>Memories</b><s>CAFE</s></div>
+  </div>
+  <div class="wel">WELCOME</div>
+  <h1>Taste, crafted daily</h1>
+  <div class="sub">Order in under 2 minutes</div>
+  <div class="cta" id="cta">Touch to<br/>Start</div>
+  <div class="cards">
+    <i class="v">VISA</i><i class="mc">MC</i><i class="ax">AMEX</i><i class="ap">&#63743;Pay</i>
+    <i class="nfc"><svg viewBox="0 0 40 40" fill="none" stroke="#1f2937" stroke-width="3" stroke-linecap="round"><path d="M13 8c6 6 6 18 0 24"/><path d="M21 6c8 8 8 20 0 28"/><path d="M29 4c10 10 10 22 0 32"/></svg></i>
+  </div>
+</div>
+
+<!-- 2 DINE MODE -->
+<div class="screen" id="dine">
+  <div class="head">
+    <div class="mk"><div class="ring"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 4c-8 0-14 6-14 14s6 12 12 12 10-4 10-9-4-8-8-8-6 2-6 5 2 4 4 4"/><path d="M20 4c0-2 2-3 2-3"/></svg></div><b>Memories</b><s>CAFE</s></div>
+    <div class="nm">Memories Cafe</div>
+  </div>
+  <div class="lang"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#374151" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 4 3 14 0 18M12 3c-3 4-3 14 0 18"/></svg>EN</div>
+  <div class="gt">Good evening</div>
+  <h2>How would you like to dine?</h2>
+  <div class="opts">
+    <div class="opt" id="dopt0">
+      <em><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 3v7a2 2 0 002 2h0a2 2 0 002-2V3M6 12v9"/><path d="M14 21V3c3 0 5 3 5 7s-2 5-4 5h-1"/></svg></em>
+      <b>Dine In</b><s>Eat here at the restaurant</s>
+    </div>
+    <div class="opt" id="dopt1">
+      <em><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 8h14l-1.4 12.2A2 2 0 0115.6 22H8.4a2 2 0 01-2-1.8L5 8z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg></em>
+      <b>Take Out</b><s>Pick up at the counter</s>
+    </div>
+  </div>
+</div>
+
+<!-- 3 MENU -->
+<div class="screen" id="menu">
+  <div class="promo">
+    <img src="products/spaghetti_meatballs.png"/>
+    <div class="gr"></div>
+    <div class="tx"><u>FLAVOUR FUN</u><b>BOX OF 4</b></div>
+    <div class="pill"><i>FROM</i><b>$37.90</b></div>
+  </div>
+  <div class="dots"><i></i><i></i><i class="on"></i><i></i><i></i></div>
+  <div class="bar">
+    <div class="mode">Dine In <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#374151" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg></div>
+    <div class="srch">Search your favorite foods<span class="mag"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#6b7280" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg></span></div>
+  </div>
+  <div class="cats">
+    <div class="cat" id="cat0"><div class="th"><img src="products/cat_food.jpg"/></div><b>Food</b><s>10 products</s></div>
+    <div class="cat" id="cat1"><div class="th"><img src="products/cat_drinks.jpg"/></div><b>Drinks</b><s>8 products</s></div>
+    <div class="cat" id="cat2"><div class="th"><img src="products/cat_dessert.jpg"/></div><b>Dessert</b><s>6 products</s></div>
+    <div class="cat" id="cat3"><div class="th"><img src="products/peruvian_sandwich.png"/></div><b>Breakfast</b><s>4 products</s></div>
+    <div class="cat" id="cat4"><div class="th"><img src="products/grilled_chicken_breast.png"/></div><b>Salads &amp; Bowls</b><s>3 products</s></div>
+    <div class="cat" id="cat5"><div class="th"><img src="products/rigatoni_ragu.png"/></div><b>Pizza</b><s>3 products</s></div>
+    <div class="cat"><div class="th"><img src="products/skirt_steak.png"/></div><b>Grill</b><s>6 products</s></div>
+    <div class="cat"><div class="th"><img src="products/spicy_linguine.png"/></div><b>Pasta</b><s>5 products</s></div>
+    <div class="cat"><div class="th"><img src="products/wiener_schnitzel.png"/></div><b>Combos</b><s>4 products</s></div>
+  </div>
+</div>
+
+<!-- 4 ITEM -->
+<div class="screen" id="item">
+  <div class="topbar">
+    <div class="back" id="ibk">&#8249;</div>
+    <div class="rgt" style="flex:1;display:flex;justify-content:center"><div class="mk sm" style="color:#7a2b2b"><div class="ring"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 4c-8 0-14 6-14 14s6 12 12 12 10-4 10-9-4-8-8-8-6 2-6 5 2 4 4 4"/></svg></div><b>Memories</b><s>CAFE</s></div></div>
+    <div class="rgt"></div>
+  </div>
+  <div class="photo"><img src="products/cat_food.jpg"/></div>
+  <div class="cal">557 cal</div>
+  <div class="hd"><b>Classic Cheeseburger</b><u id="iprice">$16.00</u></div>
+  <div class="desc">Flame-grilled beef patty with melted cheddar, lettuce, tomato and house sauce on a toasted brioche bun.</div>
+  <div class="chips">
+    <i>Medium Rare</i><i id="ichip1" class="hide">+Double Cheese x2</i><i class="warn">Honey</i><i class="warn">Pepper</i>
+  </div>
+  <div class="act">
+    <div class="qty"><span>&#8722;</span><b>1</b><span>+</span></div>
+    <div id="addbtn">Add to Order &middot; <span id="iaddtot">$16.00</span></div>
+  </div>
+  <div class="tabs"><i>Product Choices</i><i class="on">Add-Ons</i></div>
+  <div class="cnt">
+    <div class="lbl"><em>Add-ons <u id="aocount">0</u></em><s>Optional</s></div>
+    <div class="hdr">ADD-ONS<s>Optional</s></div>
+    <div class="grid">
+      <div class="ao" id="ao0">
+        <div class="im"><img src="products/cat_food.jpg"/></div>
+        <div class="bt"><div><b>Double Cheese</b><s>+$2.00</s></div>
+          <div class="add" id="aoadd0">Add</div>
+          <div class="stp" id="aostp0" style="display:none"><i>&#8722;</i><b>2</b><i>+</i></div>
+        </div>
+      </div>
+      <div class="ao"><div class="im"><img src="products/skirt_steak.png"/></div><div class="bt"><div><b>Bacon</b><s>+$3.00</s></div><div class="add">Add</div></div></div>
+      <div class="ao"><div class="im"><img src="products/grilled_chicken_breast.png"/></div><div class="bt"><div><b>Double Broccoli</b><s>+$1.50</s></div><div class="add">Add</div></div></div>
+      <div class="ao"><div class="im"><img src="products/grilled_branzino.png"/></div><div class="bt"><div><b>Avocado</b><s>+$2.50</s></div><div class="add">Add</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 5 UPSELL -->
+<div class="screen" id="ups">
+  <div class="toast" id="upstoast"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg>Combo added &middot; Save $4.00</div>
+  <div class="pill">&#10022; AI SUGGESTED</div>
+  <h2>Complete your meal</h2>
+  <div class="combo">
+    <div class="th"><img src="products/drink1_nologo.png"/><img src="products/cat_food.jpg"/></div>
+    <div class="tx"><b>Classic Cheeseburger Combo</b><s>Meal upgrade</s><u>Save $4.00</u></div>
+    <div id="addedbtn"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg><span id="addedlbl">Add</span></div>
+  </div>
+  <div class="lab">ALSO TRY</div>
+  <div class="also">
+    <div class="dr"><div class="th"><img src="products/drink1_nologo.png"/></div><b>Spanish Latte</b><s>$5.00</s><div class="bn" id="dbn0">+</div></div>
+    <div class="dr"><div class="th"><img src="products/drink2_nologo.png"/></div><b>Chocolate Caliente</b><s>$6.00</s><div class="bn" id="dbn1">+</div></div>
+    <div class="dr"><div class="th"><img src="products/drink3_nologo.png"/></div><b>Double Espresso</b><s>$4.00</s><div class="bn" id="dbn2">+</div></div>
+  </div>
+  <div class="bottom" id="upsgo">Review Order &middot; <span id="upstot">$40.00</span></div>
+</div>
+
+<!-- 6 REVIEW -->
+<div class="screen" id="rev">
+  <div class="top"><div class="mn">Menu</div><b>Order Review</b></div>
+  <div class="list">
+    <div class="li">
+      <div class="th"><img src="products/cat_food.jpg"/></div>
+      <div class="tx"><b>Classic Cheeseburger</b>
+        <div class="mods">Medium Rare, +Double Cheese x2, Combo upgrade</div>
+        <div class="warn"><i>&#9888; Honey</i><i>&#9888; Pepper</i></div>
+        <div class="lk"><span>Edit</span><span>Remove</span></div>
+      </div>
+      <div class="rt"><u>$20.00</u><div class="stp"><i>&#8722;</i><b>1</b><i>+</i></div></div>
+    </div>
+    <div class="li">
+      <div class="th"><img src="products/drink2_nologo.png"/></div>
+      <div class="tx"><b>Chocolate Caliente</b><div class="lk"><span>Edit</span><span>Remove</span></div></div>
+      <div class="rt"><u>$6.00</u><div class="stp"><i>&#8722;</i><b>1</b><i>+</i></div></div>
+    </div>
+    <div class="li">
+      <div class="th"><img src="products/drink1_nologo.png"/></div>
+      <div class="tx"><b>Spanish Latte</b><div class="lk"><span>Edit</span><span>Remove</span></div></div>
+      <div class="rt"><u>$5.00</u><div class="stp"><i>&#8722;</i><b>1</b><i>+</i></div></div>
+    </div>
+    <div class="li">
+      <div class="th"><img src="products/cat_dessert.jpg"/></div>
+      <div class="tx"><b>Churros</b><div class="lk"><span>Edit</span><span>Remove</span></div></div>
+      <div class="rt"><u>$9.00</u><div class="stp"><i>&#8722;</i><b>1</b><i>+</i></div></div>
+    </div>
+  </div>
+  <div class="tot">
+    <div>Subtotal<b>$40.00</b></div>
+    <div>Tax<b>$3.40</b></div>
+    <div class="big">Total<b>$43.40</b></div>
+  </div>
+  <div id="placebtn">Place Order &middot; $43.40</div>
+</div>
+
+<!-- 7 PAYMENT -->
+<div class="screen" id="pay">
+  <div class="topbar"><div class="back">&#8249;</div><div class="ttl">Payment method</div><div class="rgt"></div></div>
+  <div class="sum">Products 4<b>Total $43.40</b></div>
+  <div class="lab a">PAY WITH</div>
+  <div class="g a">
+    <div class="pc" id="pc0"><em><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></em><b>Credit/Debit Card</b></div>
+    <div class="pc" id="pc1"><em><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3zM19 19h2v2h-2z"/></svg></em><b>QR Code</b></div>
+    <div class="pc" id="pc2" style="grid-column:1/2"><em><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg></em><b>Pay at Cashier</b></div>
+  </div>
+  <div class="lab b">REDEEM</div>
+  <div class="g b">
+    <div class="pc"><em><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.3.9-4.5 4.4 1 6.1-5.5-3-5.5 3 1-6.1L3 9.5l6.3-.9z"/></svg></em><b>Loyalty Points</b></div>
+    <div class="pc"><em><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8a2 2 0 002-2h14a2 2 0 002 2v3a2 2 0 000 2v3a2 2 0 00-2 2H5a2 2 0 00-2-2v-3a2 2 0 000-2z"/><path d="M9 8v8"/></svg></em><b>Coupons</b></div>
+    <div class="pc" style="grid-column:1/2"><em><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M3 12h18M12 8v12"/><path d="M8.5 8a2.5 2.5 0 010-5C11 3 12 8 12 8s1-5 3.5-5a2.5 2.5 0 010 5"/></svg></em><b>Gift Card</b></div>
+  </div>
+  <div class="note">Tap a payment option to finish your order</div>
+</div>
+
+<!-- 8 DONE -->
+<div class="screen" id="done">
+  <div class="top"><div class="mk sm"><div class="ring"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 4c-8 0-14 6-14 14s6 12 12 12 10-4 10-9-4-8-8-8-6 2-6 5 2 4 4 4"/></svg></div><b>Memories</b><s>CAFE</s></div></div>
+  <h2>THANK YOU FOR YOUR ORDER</h2>
+  <div class="sb">How would you like to receive your receipt?</div>
+  <div class="onl">Your order number</div>
+  <div class="num">#260</div>
+  <div class="card">
+    <div class="hd"><div class="md">DINE IN</div><div class="btns"><i>&#9993; SMS</i><i>&#9993; Email</i></div></div>
+    <div class="r big">TOTAL<b>$43.40</b></div>
+    <div class="r">Sub Total<b>$40.00</b></div>
+    <div class="r">Tax<b>$3.40</b></div>
+    <div class="r red">Discount<b>($0.00)</b></div>
+    <div class="sep">
+      <div class="il">1 &times; Classic Cheeseburger<b>$20.00</b><span class="mods"></span></div>
+      <div class="il">2 &times; Chocolate Caliente<b>$6.00</b></div>
+      <div class="il">3 &times; Spanish Latte<b>$5.00</b></div>
+      <div class="il">4 &times; Churros<b>$9.00</b></div>
+    </div>
+  </div>
+  <div class="cd" id="donecd">Starting a new order in 20s</div>
+  <div id="neworder">New Order</div>
+  <div class="take">Take your receipt &nbsp;&#8595;</div>
+  <div class="slot"><div class="paper" id="paper"><div class="l m"></div><div class="l"></div><div class="l s"></div><div class="l m"></div></div><div class="bar"></div></div>
+</div>
+
+<div id="rip"></div>
+<div id="cursor"><svg viewBox="0 0 24 24"><path d="M6 2l13 10-6 1 3.5 7-2.6 1.2L10.5 14 6 18z" fill="#fff" stroke="#111827" stroke-width="1.4"/></svg></div>
+<div id="pw"><img src="logo.png"/><span>KIOSK DEMO</span></div>
+</div>
+<script src="scene.js"></script>
+</body>
+</html>
