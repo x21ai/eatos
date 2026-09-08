@@ -5,18 +5,27 @@ import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import ProductCard from './ProductCard';
 import {
-  bundleProducts,
+  bundleProducts as importedBundles,
   collectionHref,
   contentPageHref,
-  featuredProducts,
+  featuredProducts as importedFeatured,
   formatMoney,
   processingRate,
-  products,
-  railCollections,
+  products as importedProducts,
+  railCollections as importedRail,
   shopContentPages,
 } from './catalog';
 
-export default function ShopHomeClient() {
+export default function ShopHomeClient({
+  products: productsProp,
+  collections: collectionsProp,
+  featured: featuredProp,
+  bundles: bundlesProp,
+}) {
+  const products = productsProp && productsProp.length ? productsProp : importedProducts;
+  const railCollections = collectionsProp && collectionsProp.length ? collectionsProp : importedRail;
+  const featuredProducts = featuredProp && featuredProp.length ? featuredProp : importedFeatured;
+  const bundleProducts = bundlesProp && bundlesProp.length ? bundlesProp : importedBundles;
   return (
     <div className="bg-black text-zinc-200">
       <section className="pt-[128px] md:pt-[176px] pb-14 md:pb-20">
