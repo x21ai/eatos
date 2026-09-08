@@ -7,7 +7,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Placeholder } from '@/components/marketing/Placeholder';
 import { sizedImage } from '@/lib/imageUrl';
 import { NewsletterSection } from '@/components/NewsletterSection';
-import { blogHero, categories, posts, formatDate } from './content';
+import { blogHero, categories, posts as importedPosts, formatDate } from './content';
 import CategoryFilter, { categoryHref } from './CategoryFilter';
 import blogHeroImage from './assets/blog-hero.jpg.asset.json';
 
@@ -289,7 +289,8 @@ function Pagination({ page, pageCount, onChange }) {
   );
 }
 
-export default function BlogIndexClient() {
+export default function BlogIndexClient({ posts: postsProp }) {
+  const posts = postsProp && postsProp.length ? postsProp : importedPosts;
   const [active, setActive] = useState('All Posts');
   const [page, setPage] = useState(1);
 
@@ -307,7 +308,7 @@ export default function BlogIndexClient() {
 
   const sorted = useMemo(
     () => [...posts].sort((a, b) => new Date(b.date) - new Date(a.date)),
-    [],
+    [posts],
   );
 
   const filtered = useMemo(

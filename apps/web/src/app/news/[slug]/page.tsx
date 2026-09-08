@@ -1,6 +1,7 @@
 // @ts-nocheck
 import NewsPostClient from './NewsPostClient';
-import { newsItems, getNewsItem } from '../content';
+import { newsItems } from '../content';
+import { getArticle, getRelatedArticles } from '@/lib/blog/data';
 
 export const dynamicParams = true;
 
@@ -10,7 +11,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const post = getNewsItem(slug);
+  const post = await getArticle(slug, 'news');
   if (!post) return { title: 'Story not found | eatOS Newsroom' };
   const canonical = `/news/${encodeURIComponent(post.slug)}`;
   return {
@@ -35,7 +36,8 @@ export async function generateMetadata({ params }) {
 
 export default async function NewsPostPage({ params }) {
   const { slug } = await params;
-  const post = getNewsItem(slug);
+  const post = await getArticle(slug, 'news');
+  const related = post ? await getRelatedArticles(slug, 'news', 3) : [];
   const jsonLd = post
     ? {
         '@context': 'https://schema.org',
@@ -59,7 +61,7 @@ export default async function NewsPostPage({ params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       ) : null}
-      <NewsPostClient slug={slug} />
+      <NewsPostClient slug={slug} post={post} related={related} />
     </>
   );
 }

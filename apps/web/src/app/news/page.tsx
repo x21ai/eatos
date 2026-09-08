@@ -1,5 +1,6 @@
 // @ts-nocheck
 import NewsIndexClient from './NewsIndexClient';
+import { listArticles } from '@/lib/blog/data';
 
 export const metadata = {
   title: 'Newsroom | eatOS Restaurant Technology News',
@@ -18,6 +19,7 @@ export const metadata = {
 
 // Kept free of searchParams so the page prerenders as static HTML. The
 // ?category= filter is applied on the client instead.
-export default function NewsIndexPage() {
-  return <NewsIndexClient />;
+export default async function NewsIndexPage() {
+  const items = await listArticles('news');
+  return <NewsIndexClient items={items} />;
 }

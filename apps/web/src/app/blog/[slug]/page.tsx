@@ -1,6 +1,7 @@
 // @ts-nocheck
 import BlogPostClient from './BlogPostClient';
-import { posts, getPost } from '../content';
+import { posts } from '../content';
+import { getArticle, listArticles, getRelatedArticles } from '@/lib/blog/data';
 
 export const dynamicParams = true;
 
@@ -10,7 +11,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = await getArticle(slug, 'blog');
   if (!post) return { title: 'Article not found | eatOS Blog' };
   const canonical = `/blogs/${post.slug}`;
   return {
@@ -35,7 +36,8 @@ export async function generateMetadata({ params }) {
 
 export default async function BlogPostPage({ params }) {
   const { slug } = await params;
-  const post = getPost(slug);
+  const post = await getArticle(slug, 'blog');
+  const related = post ? await getRelatedArticles(slug, 'blog', 3) : [];
   const jsonLd = post
     ? {
         '@context': 'https://schema.org',
@@ -59,7 +61,7 @@ export default async function BlogPostPage({ params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       ) : null}
-      <BlogPostClient slug={slug} />
+      <BlogPostClient slug={slug} post={post} related={related} />
     </>
   );
 }

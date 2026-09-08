@@ -11,9 +11,9 @@ import CategoryFilter from '../CategoryFilter';
 import PostReactions from './PostReactions';
 
 
-export default function BlogPostClient({ slug }) {
-  const post = getPost(slug);
-  const related = getRelated(slug, 3);
+export default function BlogPostClient({ slug, post: postProp, related: relatedProp }) {
+  const post = postProp || getPost(slug);
+  const related = relatedProp || getRelated(slug, 3);
 
   const handleShare = () => {
     try {
