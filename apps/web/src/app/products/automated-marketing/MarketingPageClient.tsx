@@ -257,7 +257,7 @@ export default function MarketingPageClient() {
                 Icon: Clock,
                 tint: 'bg-emerald-500/10 text-emerald-400',
                 title: '24/7 support',
-                body: 'Real people, real help, any time you need it, especially through the dinner rush.',
+                body: 'Real people, real help, any time you need it, especially through the rush.',
               },
             ].map((card, index) => (
               <motion.div
