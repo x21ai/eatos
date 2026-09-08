@@ -6,9 +6,10 @@ import posPoster from './assets/hp1-pos-poster.jpg.asset.json';
 import kdsMp4 from './assets/hp1-kds.mp4.asset.json';
 import kdsWebm from './assets/hp1-kds.webm.asset.json';
 import kdsPoster from './assets/hp1-kds-poster.jpg.asset.json';
-import kioskMp4 from './assets/hp1-kiosk.mp4.asset.json';
-import kioskWebm from './assets/hp1-kiosk.webm.asset.json';
-import kioskPoster from './assets/hp1-kiosk-poster.jpg.asset.json';
+// The kiosk tile shares the portrait kiosk animation used across the site.
+import kioskMp4 from '../components/assets/kiosk-portrait.mp4.asset.json';
+import kioskWebm from '../components/assets/kiosk-portrait.webm.asset.json';
+import kioskPoster from '../components/assets/kiosk-portrait-poster.jpg.asset.json';
 import cfdMp4 from './assets/hp1-cfd.mp4.asset.json';
 import cfdWebm from './assets/hp1-cfd.webm.asset.json';
 import cfdPoster from './assets/hp1-cfd-poster.jpg.asset.json';
@@ -42,7 +43,7 @@ const media = (
 export const homepage1ShowcaseMedia: Record<string, ShowcaseMedia> = {
   pos: media(posWebm, posMp4, posPoster, 'Ring in the order, take payment, close the check.'),
   kds: media(kdsWebm, kdsMp4, kdsPoster, 'Route kitchen tickets, work the board, bump on time.'),
-  kiosk: media(kioskWebm, kioskMp4, kioskPoster, 'Touch to start, build the order, tip and pay.'),
+  kiosk: media(kioskWebm, kioskMp4, kioskPoster, 'Touch to start, build the order, pay and take the receipt.'),
   cfd: media(cfdWebm, cfdMp4, cfdPoster, 'Order clarity, rewards, tipping and receipts.'),
   dashboard: media(dashWebm, dashMp4, dashPoster, 'Sales, labor and menu performance, live.'),
   inventoryos: media(invWebm, invMp4, invPoster, 'Counts, vendors and recipe costing in one view.'),

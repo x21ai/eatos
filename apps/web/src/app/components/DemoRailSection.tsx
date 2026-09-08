@@ -159,12 +159,19 @@ export function DemoRailSection({
             </div>
 
             {demo.media ? (
-              <div className="relative w-full aspect-[16/10] lg:aspect-auto lg:h-[480px] bg-black p-3 sm:p-4">
+              <div
+                className={`relative w-full bg-black p-3 sm:p-4 ${
+                  demo.media.orientation === 'portrait'
+                    ? 'aspect-[3/4] sm:aspect-[4/3] lg:aspect-auto lg:h-[480px]'
+                    : 'aspect-[16/10] lg:aspect-auto lg:h-[480px]'
+                }`}
+              >
                 <TabletMockup
                   sources={demo.media.sources}
                   poster={demo.media.poster}
                   label={displayLabel(demo.id)}
-                  className="h-full w-full"
+                  orientation={demo.media.orientation}
+                  className="h-full"
                 />
               </div>
             ) : (

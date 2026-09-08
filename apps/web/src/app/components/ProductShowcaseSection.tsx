@@ -123,13 +123,25 @@ export function ProductShowcaseSection({
           {expanded && expandedMedia ? (
             <div className="relative">
               <div
-                className="relative mx-auto flex w-full items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black"
-                style={{
-                  aspectRatio: expandedRatio ?? 16 / 9,
-                  maxHeight: 'min(60vh, 100%)',
-                  maxWidth: '100%',
-                }}
+                className="relative mx-auto flex items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black"
+                style={
+                  // Tall clips are sized by height so the whole screen stays visible;
+                  // wide clips keep filling the available width.
+                  expandedRatio !== null && expandedRatio < 1
+                    ? {
+                        aspectRatio: expandedRatio,
+                        height: 'min(70vh, 720px)',
+                        maxWidth: '100%',
+                      }
+                    : {
+                        aspectRatio: expandedRatio ?? 16 / 9,
+                        width: '100%',
+                        maxHeight: 'min(60vh, 100%)',
+                        maxWidth: '100%',
+                      }
+                }
               >
+
                 <video
                   key={expanded.id}
                   className="absolute inset-0 h-full w-full object-contain"
