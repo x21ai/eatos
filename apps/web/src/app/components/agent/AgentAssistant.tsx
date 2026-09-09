@@ -26,6 +26,7 @@ import { AGENT_OPEN_EVENT } from './agentBus';
 import { composeReply, starterQuestions } from './retrieval';
 import {
   AGENT_NAME,
+  AGENT_SUBTITLE,
   buildEscalation,
   productRoutes,
   severityOptions,
@@ -237,6 +238,8 @@ function AnswerBody({ reply, onTriage }) {
 export default function AgentAssistant() {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
+  const [preview, setPreview] = useState(false);
+  const previewTimer = useRef(null);
   const [turns, setTurns] = useState([]);
   const [input, setInput] = useState('');
   const [thinking, setThinking] = useState(false);
@@ -302,6 +305,35 @@ export default function AgentAssistant() {
     setTriage({ step: product ? 'severity' : 'product', product: product ?? null, severity: null, note: '' });
   }, []);
 
+  // Hover preview is pointer-only: on touch the icon simply opens the panel.
+  const showPreview = useCallback(() => {
+    if (typeof window === 'undefined') return;
+    if (!window.matchMedia?.('(hover: hover)').matches) return;
+    if (previewTimer.current) window.clearTimeout(previewTimer.current);
+    setPreview(true);
+  }, []);
+
+  const hidePreview = useCallback(() => {
+    if (previewTimer.current) window.clearTimeout(previewTimer.current);
+    previewTimer.current = window.setTimeout(() => setPreview(false), 180);
+  }, []);
+
+  useEffect(() => {
+    if (!preview) return;
+    const onKey = (event) => {
+      if (event.key === 'Escape') setPreview(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [preview]);
+
+  useEffect(
+    () => () => {
+      if (previewTimer.current) window.clearTimeout(previewTimer.current);
+    },
+    [],
+  );
+
   const transcriptSummary = useMemo(() => {
     const asked = turns.filter((t) => t.role === 'visitor').map((t) => t.text);
     const lines = ['Sent from the eatOS support agent.', ''];
@@ -320,19 +352,92 @@ export default function AgentAssistant() {
 
   if (!mounted) return null;
 
+  const openPanel = (focusInput = false) => {
+    setPreview(false);
+    setOpen(true);
+    if (focusInput) {
+      window.setTimeout(() => inputRef.current?.focus(), 120);
+    }
+  };
+
   const launcher = (
-    <button
-      type="button"
-      onClick={() => setOpen(true)}
-      aria-label="Open the eatOS support agent"
-      className="fixed bottom-5 right-5 z-[70] inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-black px-4 py-3 text-sm font-semibold text-white shadow-2xl transition-transform hover:scale-[1.03] sm:px-5"
+    <div
+      className="fixed bottom-5 right-5 z-[70] flex items-center justify-end gap-3"
+      onMouseEnter={showPreview}
+      onMouseLeave={hidePreview}
+      onFocus={showPreview}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) hidePreview();
+      }}
     >
-      <span className="relative grid h-6 w-6 place-items-center rounded-full bg-brand text-white">
-        <Sparkles size={13} aria-hidden />
-      </span>
-      <span className="hidden sm:inline">Ask the support agent</span>
-      <span className="sm:hidden">Support</span>
-    </button>
+      {preview ? (
+        <div
+          role="group"
+          aria-label={`${AGENT_NAME}, ${AGENT_SUBTITLE}`}
+          className="w-[min(320px,calc(100vw-6.5rem))] rounded-[26px] border border-white/12 bg-zinc-950/95 p-4 text-left shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-right-4 duration-200"
+        >
+          <div className="flex items-start justify-between gap-3">
+            <p className="min-w-0 text-[15px] font-bold leading-snug tracking-tight text-white">
+              Hey! I&apos;m {AGENT_NAME}. How can I help your restaurant today?
+            </p>
+            <span className="flex shrink-0 -space-x-2" aria-hidden>
+              {['A', 'M', 'J'].map((initial) => (
+                <span
+                  key={initial}
+                  className="grid h-7 w-7 place-items-center rounded-full border border-zinc-950 bg-brand text-[10px] font-bold text-white"
+                >
+                  {initial}
+                </span>
+              ))}
+            </span>
+          </div>
+
+          <p className="mt-2 flex items-center gap-2 text-[12px] font-medium text-zinc-400">
+            <span className="relative grid h-2 w-2 place-items-center">
+              <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/70" />
+              <span className="h-2 w-2 rounded-full bg-emerald-400" />
+            </span>
+            We are online, typical reply under 2 minutes
+          </p>
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => openPanel(false)}
+              className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-2 text-[12px] font-semibold text-black transition-colors hover:bg-zinc-200"
+            >
+              <MessageSquare size={13} aria-hidden />
+              Chat with {AGENT_NAME}
+            </button>
+            <button
+              type="button"
+              onClick={() => openPanel(true)}
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3.5 py-2 text-[12px] font-semibold text-white transition-colors hover:border-white/40"
+            >
+              <BookOpen size={13} aria-hidden />
+              Search help articles
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      <button
+        type="button"
+        onClick={() => openPanel(false)}
+        aria-label={`Ask ${AGENT_NAME}, the eatOS support agent`}
+        title={`Ask ${AGENT_NAME}`}
+        className="group relative grid h-14 w-14 shrink-0 place-items-center rounded-full border border-white/15 bg-black text-white shadow-2xl transition-transform hover:-translate-y-0.5 hover:scale-[1.04]"
+      >
+        <span className="absolute inset-0 rounded-full bg-brand/30 blur-xl transition-opacity group-hover:opacity-100 md:opacity-0" />
+        <span className="relative grid h-9 w-9 place-items-center rounded-full bg-brand text-white">
+          <Sparkles size={17} aria-hidden />
+        </span>
+        <span className="absolute right-1 top-1 grid h-3 w-3 place-items-center">
+          <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/70" />
+          <span className="h-2.5 w-2.5 rounded-full border-2 border-black bg-emerald-400" />
+        </span>
+      </button>
+    </div>
   );
 
   const panel = open ? (
@@ -359,6 +464,7 @@ export default function AgentAssistant() {
               Online 24/7
             </p>
             <h2 className="mt-1.5 truncate text-base font-bold tracking-tight text-white">{AGENT_NAME}</h2>
+            <p className="mt-0.5 truncate text-[11px] text-zinc-500">{AGENT_SUBTITLE}</p>
           </div>
           <button
             type="button"
