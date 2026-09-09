@@ -5,13 +5,13 @@ import { HeroVideoSection } from './sections/HeroVideoSection';
 import { CustomerShowcase } from '@/components/marketing/CustomerShowcase';
 import { NewsletterSection } from '@/components/NewsletterSection';
 import { DemoRailSection } from '../components/DemoRailSection';
-import { OnePlatformSection } from '../homepage2/sections/OnePlatformSection';
-import { ServiceModelsSection } from '../homepage2/sections/ServiceModelsSection';
-import { HardwareSection } from '../homepage2/sections/HardwareSection';
-import { AIIntelligenceSection } from '../homepage2/sections/AIIntelligenceSection';
-import { ROISection } from '../homepage2/sections/ROISection';
-import { SwitchingSection } from '../homepage2/sections/SwitchingSection';
-import { FinalCTASection } from '../homepage2/sections/FinalCTASection';
+import { OnePlatformSection } from './sections/OnePlatformSection';
+import { ServiceModelsSection } from './sections/ServiceModelsSection';
+import { HardwareSection } from './sections/HardwareSection';
+import { AIIntelligenceSection } from './sections/AIIntelligenceSection';
+import { ROISection } from './sections/ROISection';
+import { SwitchingSection } from './sections/SwitchingSection';
+import { FinalCTASection } from './sections/FinalCTASection';
 
 export default function Homepage3() {
   return (
