@@ -1,14 +1,19 @@
 # eatOS 2.0 — Handoff Log
 
-## Current snapshot (2026-09-09T21:56:06Z)
-- **Canonical remote:** `origin` = `https://github.com/x21ai/eatos.git` (`astroaii` = old).
-- **Branch:** `cursor/backend-from-brief` (lovable merged + backend brief work).
-- **Brief:** `docs/cursor-tasks-remaining.md`. Locked Stripe / Resend / OpenAI+RAG / kiosk A.
-- **D1:** migrations `0007_admin_users` + `0008_kiosk_maya` applied remote+local.
-  Content counts still PASS. Demo `kiosk_devices` token `kiosk-demo-token`.
-- **Built:** admin guard, news admin/API, uploads R2, admin orders, `/kiosk`, Maya `/api/support/chat`.
-- **Blocked human gates:** Stripe keys, OPENAI_API_KEY, ADMIN_OWNER_EMAIL seed.
-- **Next:** deploy Worker; seed admin when email known; Stripe test E2E.
+## Current snapshot (2026-09-09T22:02:45Z)
+- **origin:** `https://github.com/x21ai/eatos.git` branch `cursor/backend-from-brief`; Worker `69563554`.
+- **Brief:** admin gate, news/orders/uploads, `/kiosk`, Maya chat shipped; D1 `0007`/`0008`/`0009` remote.
+- **Smoke:** blog/news APIs return rows after SEO columns; kiosk demo token; Maya grounded+miss; writes 401.
+- **Blocked:** Stripe keys, OPENAI_API_KEY, ADMIN_OWNER_EMAIL (Slack #cursor-frustrations).
+
+### 2026-09-09T22:02:45Z — Deploy brief backend + posts SEO fix
+- **Requested:** Sync x21ai + finish Lovable cursor-tasks-remaining.
+- **Done:** Remotes, merge, implement tasks 2-6, deploy, migration 0009 for seo_* columns.
+- **Issues:** Paid Stripe E2E and live OpenAI Maya await secrets; admin owner seed awaits email.
+- **Stand / next:** Add secrets; `node scripts/seed-admin-owner.mjs`; merge to lovable.
+- **Who / where:** Cursor `cursor/backend-from-brief` / s.eatos.dev.
+- **Evidence:** Worker 69563554; curl blog/news/kiosk/maya PASS.
+- **Timestamp:** 2026-09-09T22:02:45Z
 
 ### 2026-09-09T21:56:06Z — x21ai sync + Lovable tasks 1-6 implementation
 - **Requested:** Point at x21ai/eatos lovable; sync brief; build backend (Stripe/Resend/Maya).

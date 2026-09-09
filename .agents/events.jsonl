@@ -5,3 +5,4 @@
 {"ts":"2026-09-09T21:46:08Z","agent":"cursor-agent","action":"claim","task":"git-remote-sync","detail":"origin->x21ai/eatos; merging lovable into cursor branch"}
 {"ts":"2026-09-09T21:47:44Z","agent":"cursor-agent","action":"land","task":"git-remote-sync","detail":"origin x21ai/eatos; branch cursor/backend-from-brief pushed"}
 {"ts":"2026-09-09T21:51:13Z","agent":"cursor-agent","action":"heartbeat","task":"t2-t6-parallel","detail":"5 writers dispatched; waiting on news uploads orders kiosk maya"}
+{"ts":"2026-09-09T22:00:52Z","agent":"cursor-agent","action":"land","task":"t2-t6","detail":"deployed Worker 69563554; smoke in progress"}
