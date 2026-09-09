@@ -12,7 +12,7 @@ export function AIIntelligenceSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-100 text-indigo-700 text-sm font-semibold mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-soft text-brand text-sm font-semibold mb-6">
               <Bot size={14} />
               <span>
                 <strong>eatOS</strong> Intelligence
@@ -22,7 +22,7 @@ export function AIIntelligenceSection() {
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
               Automate the busy work
               <br />
-              <span className="text-indigo-500">with AI.</span>
+              <span className="text-brand">with AI.</span>
             </h2>
 
             <p className="text-lg text-gray-600 mb-10 leading-relaxed">
@@ -34,7 +34,7 @@ export function AIIntelligenceSection() {
 
             <div className="space-y-6">
               <div className="flex items-start gap-4 p-5 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                <div className="bg-indigo-100 text-indigo-600 p-3 rounded-xl flex-shrink-0">
+                <div className="bg-brand-soft text-brand p-3 rounded-xl flex-shrink-0">
                   <Phone size={22} />
                 </div>
                 <div>
@@ -49,7 +49,7 @@ export function AIIntelligenceSection() {
               </div>
 
               <div className="flex items-start gap-4 p-5 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                <div className="bg-purple-100 text-purple-600 p-3 rounded-xl flex-shrink-0">
+                <div className="bg-brand-soft text-brand p-3 rounded-xl flex-shrink-0">
                   <BarChart3 size={22} />
                 </div>
                 <div>
@@ -82,7 +82,7 @@ export function AIIntelligenceSection() {
             <div className="mt-8">
               <a
                 href="/ai"
-                className="inline-flex items-center gap-2 text-indigo-600 font-semibold hover:underline"
+                className="inline-flex items-center gap-2 text-brand font-semibold hover:underline"
               >
                 Learn more about <strong>eatOS</strong> AI{" "}
                 <ArrowRight size={16} />
@@ -96,7 +96,7 @@ export function AIIntelligenceSection() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="absolute -inset-10 bg-gradient-to-tr from-indigo-200/40 to-purple-200/30 rounded-[3rem] blur-3xl" />
+            <div className="absolute -inset-10 bg-gradient-to-tr from-brand-soft to-brand-soft rounded-[3rem] blur-3xl" />
             <img
               src="https://ucarecdn.com/fe0512b6-e43a-4dcf-a209-609ad3bd5be8/-/format/auto/"
               alt="eatOS Intelligence Dashboard"

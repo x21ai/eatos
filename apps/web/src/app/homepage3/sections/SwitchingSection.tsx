@@ -38,7 +38,7 @@ export function SwitchingSection() {
                   {step.step}
                 </div>
                 <div className="relative z-10">
-                  <div className="bg-indigo-100 text-indigo-600 p-3 rounded-xl w-fit mb-6">
+                  <div className="bg-brand-soft text-brand p-3 rounded-xl w-fit mb-6">
                     <Icon size={24} />
                   </div>
                   <h3 className="text-lg font-bold mb-2">{step.title}</h3>
@@ -59,14 +59,14 @@ export function SwitchingSection() {
           className="text-center mt-12 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500"
         >
           <span className="flex items-center gap-1.5">
-            <Shield size={14} className="text-indigo-500" /> Free data migration
+            <Shield size={14} className="text-brand" /> Free data migration
           </span>
           <span className="flex items-center gap-1.5">
-            <Headphones size={14} className="text-indigo-500" /> Dedicated
+            <Headphones size={14} className="text-brand" /> Dedicated
             onboarding specialist
           </span>
           <span className="flex items-center gap-1.5">
-            <Wifi size={14} className="text-indigo-500" /> Works with your
+            <Wifi size={14} className="text-brand" /> Works with your
             existing hardware
           </span>
         </motion.div>

@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 export function FinalCTASection() {
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-br from-indigo-600 via-blue-600 to-violet-600 text-white relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-gradient-to-br from-[#b0036a] via-[#d70480] to-[#8a0455] text-white relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-white rounded-full blur-3xl" />

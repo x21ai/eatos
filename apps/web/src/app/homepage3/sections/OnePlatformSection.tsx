@@ -12,7 +12,7 @@ export function OnePlatformSection() {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <p className="text-sm font-semibold tracking-widest text-indigo-500 uppercase mb-4">
+          <p className="text-sm font-semibold tracking-widest text-brand uppercase mb-4">
             One platform. Every tool.
           </p>
           <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
@@ -54,7 +54,7 @@ export function OnePlatformSection() {
             <a
               key={name}
               href="/products"
-              className="px-5 py-2.5 rounded-full border border-gray-200 text-sm font-medium text-gray-700 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700 transition-all"
+              className="px-5 py-2.5 rounded-full border border-gray-200 text-sm font-medium text-gray-700 hover:border-brand hover:bg-brand-soft hover:text-brand transition-all"
             >
               {name}
             </a>
@@ -70,7 +70,7 @@ export function OnePlatformSection() {
         >
           <a
             href="/products"
-            className="text-indigo-600 font-semibold text-sm hover:underline inline-flex items-center gap-1"
+            className="text-brand font-semibold text-sm hover:underline inline-flex items-center gap-1"
           >
             Explore all products <ArrowRight size={14} />
           </a>

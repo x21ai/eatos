@@ -13,7 +13,7 @@ export function ROISection() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <p className="text-sm font-semibold tracking-widest text-indigo-400 uppercase mb-4">
+          <p className="text-sm font-semibold tracking-widest text-brand-on-dark uppercase mb-4">
             The impact
           </p>
           <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
@@ -35,10 +35,10 @@ export function ROISection() {
                 transition={{ delay: i * 0.1 }}
                 className="bg-zinc-900 rounded-3xl p-8 border border-white/5"
               >
-                <Icon size={24} className="text-indigo-400 mb-6" />
+                <Icon size={24} className="text-brand-on-dark mb-6" />
                 <div className="text-5xl md:text-6xl font-bold tracking-tighter mb-2">
                   {stat.value}
-                  <span className="text-indigo-400">{stat.unit}</span>
+                  <span className="text-brand-on-dark">{stat.unit}</span>
                 </div>
                 <p className="text-sm text-gray-500">{stat.label}</p>
               </motion.div>
@@ -54,7 +54,7 @@ export function ROISection() {
           transition={{ delay: 0.3 }}
           className="mt-12 bg-zinc-900 rounded-3xl p-10 md:p-14 border border-white/5 flex flex-col md:flex-row items-start gap-10"
         >
-          <Quote size={40} className="text-indigo-500/40 flex-shrink-0" />
+          <Quote size={40} className="text-brand/40 flex-shrink-0" />
           <div>
             <blockquote className="text-xl md:text-2xl text-gray-300 font-light leading-relaxed mb-6 italic">
               "<strong>eatOS</strong> completely transformed how we run our
@@ -63,7 +63,7 @@ export function ROISection() {
               week on admin alone."
             </blockquote>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center text-sm font-bold text-indigo-400">
+              <div className="w-10 h-10 rounded-full bg-brand-soft0/20 flex items-center justify-center text-sm font-bold text-brand-on-dark">
                 JM
               </div>
               <div>
