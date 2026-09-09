@@ -175,6 +175,7 @@ function ReportForm() {
   const [values, setValues] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle');
+  const [reference, setReference] = useState('');
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -189,9 +190,26 @@ function ReportForm() {
     if (Object.keys(nextErrors).some((key) => nextErrors[key])) return;
 
     setStatus('loading');
-    await new Promise((resolve) => setTimeout(resolve, 900));
-    setStatus('done');
-    setValues(initialForm);
+    try {
+      const res = await fetch('/api/report-fraud', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: values.firstName,
+          email: values.email,
+          phone: values.phone,
+          message: values.message,
+          category: 'fraud-report',
+        }),
+      });
+      const payload = await res.json();
+      if (!res.ok || payload?.error) throw new Error(payload?.message || 'Submit failed');
+      setReference(payload?.data?.reference || '');
+      setStatus('done');
+      setValues(initialForm);
+    } catch {
+      setStatus('failed');
+    }
   };
 
   if (status === 'done') {
@@ -207,9 +225,19 @@ function ReportForm() {
           Thank you for reporting this incident. Our fraud prevention team will review your
           submission and reach out if we need more information.
         </p>
+        {reference ? (
+          <p className="mx-auto mt-4 max-w-sm text-sm text-white">
+            Your reference number is{' '}
+            <span className="font-semibold text-brand-on-dark">{reference}</span>. Quote it
+            if you contact support about this report.
+          </p>
+        ) : null}
         <button
           type="button"
-          onClick={() => setStatus('idle')}
+          onClick={() => {
+            setReference('');
+            setStatus('idle');
+          }}
           className="mt-7 inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
         >
           Submit another report
@@ -217,6 +245,7 @@ function ReportForm() {
       </div>
     );
   }
+
 
   const fieldClass = (name) =>
     `w-full rounded-2xl border bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-500 focus:border-brand/60 ${
@@ -308,7 +337,13 @@ function ReportForm() {
       >
         {status === 'loading' ? 'Submitting…' : 'Submit report'}
       </button>
+      {status === 'failed' ? (
+        <p role="status" className="mt-4 text-sm text-red-400">
+          We could not send your report. Please try again in a moment.
+        </p>
+      ) : null}
       <p className="mt-4 text-xs leading-5 text-zinc-500">{report.privacyNote}</p>
+
     </form>
   );
 }

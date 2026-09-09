@@ -1,115 +1,171 @@
-// @ts-nocheck
-import sql from "@/app/api/utils/sql";
+// Blog and newsroom collection endpoint, backed by Cloudflare D1.
+//
+// Tool contract (an AI agent can perform the same actions as the admin UI):
+//   list_articles  GET  /api/blog?kind=blog|news&status=&search=&cursor=&limit=
+//     -> { data: Article[], next_cursor: string|null, has_more: boolean }
+//   create_article POST /api/blog
+//     body { kind?, title (required), slug (required), excerpt?, content?,
+//            cover_image?, category?, author_name?, published_at?, status? }
+//     -> { data: Article } 201
+// Errors are always { error: true, code, message }.
 
-export async function GET(request) {
-  const { searchParams } = new URL(request.url);
-  const page = parseInt(searchParams.get("page") || "1");
-  const limit = parseInt(searchParams.get("limit") || "10");
-  const status = searchParams.get("status");
-  const offset = (page - 1) * limit;
+import { queryAll, queryOne, execute } from '@/lib/db/client';
+import { htmlToBlocks, blocksToHtml, excerptFromBlocks } from '@/lib/blog/html';
 
-  try {
-    const args = [];
-    let query = `
-      SELECT id, title, slug, excerpt, cover_image, author_name, published_at, status
-      FROM blog_posts
-      WHERE 1=1
-    `;
+type Kind = 'blog' | 'news';
 
-    if (status) {
-      args.push(status);
-      query += ` AND status = $${args.length}`;
-    }
+const TABLES: Record<Kind, string> = { blog: 'posts', news: 'news_posts' };
 
-    query += ` ORDER BY published_at DESC LIMIT $${args.length + 1} OFFSET $${args.length + 2}`;
-    args.push(limit, offset);
-
-    const posts = await sql(query, args);
-
-    // Mock post for demonstration
-    const mockPost = {
-      id: 999,
-      title:
-        "Never Miss a Beat: How Offline Resilience Keeps Your Sales Rolling",
-      slug: "never-miss-a-beat-how-offline-resilience-keeps-your-sales-rolling",
-      excerpt:
-        "Discover how offline resilience technology ensures your restaurant never stops serving, even when the internet goes down.",
-      cover_image:
-        "https://ucarecdn.com/d08b4ab7-c83d-4cd2-b37e-4b202ad04b97/-/format/auto/",
-      author_name: "eatOS Team",
-      published_at: "2025-11-19T10:00:00Z",
-      status: "published",
-    };
-
-    // Inject mock post at the top of the first page if filtering allows
-    if (page === 1 && (!status || status === "published")) {
-      // Check if it's already in the DB to avoid duplicates (based on slug)
-      const exists = posts.some((p) => p.slug === mockPost.slug);
-      if (!exists) {
-        posts.unshift(mockPost);
-      }
-    }
-
-    const countArgs = [];
-    let countQuery = `SELECT COUNT(*) AS count FROM blog_posts WHERE 1=1`;
-
-    if (status) {
-      countArgs.push(status);
-      countQuery += ` AND status = $${countArgs.length}`;
-    }
-
-    const totalCount = await sql(countQuery, countArgs);
-
-    return Response.json({
-      data: posts,
-      pagination: {
-        page,
-        limit,
-        total: parseInt(totalCount[0].count),
-        totalPages: Math.ceil(parseInt(totalCount[0].count) / limit),
-      },
-    });
-  } catch (error) {
-    console.error("Error fetching blog posts:", error);
-    return Response.json(
-      { error: "Failed to fetch blog posts" },
-      { status: 500 },
-    );
-  }
+function tableFor(value: string | null): string {
+  return TABLES[(value === 'news' ? 'news' : 'blog') as Kind];
 }
 
-export async function POST(request) {
-  try {
-    const body = await request.json();
-    const {
-      title,
-      slug,
-      excerpt,
-      content,
-      cover_image,
-      author_name,
-      published_at,
-    } = body;
+function fail(code: string, message: string, status: number) {
+  return Response.json({ error: true, code, message }, { status });
+}
 
-    if (!title || !slug) {
-      return Response.json(
-        { error: "Title and slug are required" },
-        { status: 400 },
-      );
+function toApiArticle(row: Record<string, any>) {
+  const blocks = (() => {
+    try {
+      const parsed = JSON.parse(String(row.body ?? '[]'));
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
     }
+  })();
 
-    const newPost = await sql`
-      INSERT INTO blog_posts (title, slug, excerpt, content, cover_image, author_name, published_at)
-      VALUES (${title}, ${slug}, ${excerpt}, ${content}, ${cover_image}, ${author_name}, ${published_at || new Date().toISOString()})
-      RETURNING *
-    `;
+  return {
+    slug: row.slug,
+    title: row.title,
+    excerpt: row.excerpt ?? '',
+    content: row.content_html || blocksToHtml(blocks),
+    body: blocks,
+    cover_image: row.cover_image ?? null,
+    category: row.category ?? null,
+    author_name: row.author_name ?? null,
+    published_at: row.published_at ?? null,
+    status: row.status ?? 'draft',
+    seo_title: row.seo_title ?? null,
+    seo_description: row.seo_description ?? null,
+    keywords: row.keywords ?? null,
+  };
+}
 
-    return Response.json(newPost[0], { status: 201 });
-  } catch (error) {
-    console.error("Error creating blog post:", error);
-    return Response.json(
-      { error: "Failed to create blog post" },
-      { status: 500 },
+export async function GET(request: Request) {
+  const url = new URL(request.url);
+  const table = tableFor(url.searchParams.get('kind'));
+  const status = url.searchParams.get('status');
+  const search = (url.searchParams.get('search') || '').trim();
+  const cursor = url.searchParams.get('cursor');
+  const limit = Math.min(
+    Math.max(parseInt(url.searchParams.get('limit') || '50', 10) || 50, 1),
+    100
+  );
+
+  const where: string[] = [];
+  const args: unknown[] = [];
+
+  if (status && status !== 'all') {
+    where.push('status = ?');
+    args.push(status);
+  }
+  if (search) {
+    where.push('(title LIKE ? OR excerpt LIKE ?)');
+    args.push(`%${search}%`, `%${search}%`);
+  }
+  if (cursor) {
+    // Cursor is the published_at of the last row already returned.
+    where.push('(published_at IS NULL OR published_at < ?)');
+    args.push(cursor);
+  }
+
+  const clause = where.length ? `WHERE ${where.join(' AND ')}` : '';
+  const rows = await queryAll<Record<string, any>>(
+    `SELECT slug, title, excerpt, cover_image, category, author_name,
+            published_at, status, seo_title, seo_description, keywords, body, content_html
+       FROM ${table} ${clause}
+      ORDER BY published_at DESC, slug ASC
+      LIMIT ?`,
+    [...args, limit + 1]
+  );
+
+  if (rows === null) {
+    return fail(
+      'database_unavailable',
+      'The content database is not reachable from this request.',
+      503
     );
   }
+
+  const hasMore = rows.length > limit;
+  const page = hasMore ? rows.slice(0, limit) : rows;
+  const last = page[page.length - 1];
+
+  return Response.json({
+    data: page.map(toApiArticle),
+    next_cursor: hasMore ? (last?.published_at ?? null) : null,
+    has_more: hasMore,
+  });
+}
+
+export async function POST(request: Request) {
+  let body: Record<string, any>;
+  try {
+    body = await request.json();
+  } catch {
+    return fail('invalid_json', 'The request body must be JSON.', 400);
+  }
+
+  const table = tableFor(body.kind ?? null);
+  const title = typeof body.title === 'string' ? body.title.trim() : '';
+  const slug = typeof body.slug === 'string' ? body.slug.trim() : '';
+
+  if (!title || !slug) {
+    return fail('validation_failed', 'Both title and slug are required.', 400);
+  }
+
+  const existing = await queryOne(`SELECT slug FROM ${table} WHERE slug = ?`, [slug]);
+  if (existing) {
+    return fail('slug_taken', 'An article with that slug already exists.', 409);
+  }
+
+  const blocks = Array.isArray(body.body) ? body.body : htmlToBlocks(body.content);
+  const excerpt =
+    typeof body.excerpt === 'string' && body.excerpt.trim()
+      ? body.excerpt.trim()
+      : excerptFromBlocks(blocks);
+
+  try {
+    await execute(
+      `INSERT INTO ${table}
+         (slug, title, excerpt, body, content_html, cover_image, category,
+          author_name, published_at, status, seo_title, seo_description, keywords)
+       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+      [
+        slug,
+        title,
+        excerpt,
+        JSON.stringify(blocks),
+        body.content ?? null,
+        body.cover_image ?? null,
+        body.category ?? null,
+        body.author_name ?? 'eatOS Staff',
+        body.published_at ?? new Date().toISOString(),
+        body.status ?? 'draft',
+        body.seo_title ?? null,
+        body.seo_description ?? null,
+        body.keywords ?? null,
+      ]
+    );
+  } catch (error) {
+    console.error('Failed to create article', error);
+    return fail('write_failed', 'The article could not be saved.', 500);
+  }
+
+  const row = await queryOne<Record<string, any>>(
+    `SELECT * FROM ${table} WHERE slug = ?`,
+    [slug]
+  );
+
+  return Response.json({ data: row ? toApiArticle(row) : { slug, title } }, { status: 201 });
 }

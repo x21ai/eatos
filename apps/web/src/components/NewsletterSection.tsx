@@ -7,13 +7,30 @@ export function NewsletterSection() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('idle');
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const value = email.trim();
     const valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value) && value.length <= 255;
-    setStatus(valid ? 'success' : 'error');
-    if (valid) setEmail('');
+    if (!valid) {
+      setStatus('error');
+      return;
+    }
+
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: value, source: 'site-newsletter' }),
+      });
+      if (!res.ok) throw new Error('Signup failed');
+      setStatus('success');
+      setEmail('');
+    } catch {
+      setStatus('failed');
+    }
   };
+
 
   return (
     <section className="border-t border-white/5 bg-black py-20 md:py-28">
@@ -52,9 +69,10 @@ export function NewsletterSection() {
                 />
                 <button
                   type="submit"
-                  className="h-12 w-full shrink-0 rounded-full bg-white px-7 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:h-11 sm:w-auto"
+                  disabled={status === 'loading'}
+                  className="h-12 w-full shrink-0 rounded-full bg-white px-7 text-sm font-semibold text-black transition-opacity hover:opacity-85 disabled:opacity-60 sm:h-11 sm:w-auto"
                 >
-                  Subscribe
+                  {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
                 </button>
               </div>
 
@@ -63,7 +81,7 @@ export function NewsletterSection() {
                 className={`mt-4 min-h-5 text-sm ${
                   status === 'success'
                     ? 'text-brand-on-dark'
-                    : status === 'error'
+                    : status === 'error' || status === 'failed'
                       ? 'text-red-400'
                       : 'text-gray-500'
                 }`}
@@ -72,8 +90,11 @@ export function NewsletterSection() {
                   ? "Thanks, you're on the list."
                   : status === 'error'
                     ? 'Please enter a valid email address.'
-                    : 'No spam. Unsubscribe anytime.'}
+                    : status === 'failed'
+                      ? 'Something went wrong. Please try again.'
+                      : 'No spam. Unsubscribe anytime.'}
               </p>
+
             </form>
           </div>
         </div>

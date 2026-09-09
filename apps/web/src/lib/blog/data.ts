@@ -1,9 +1,11 @@
 // @ts-nocheck
 // Reads blog and newsroom articles from Cloudflare D1, falling back to the
-// imported JSON that ships with the site when D1 is unavailable or empty.
-// Pages call these helpers, never the raw tables.
+// content that ships with the site whenever the database is not reachable, for
+// example during the static build where request bindings do not exist. Pages
+// call these helpers, never the raw tables.
 
-import { getPublishedArticleRow, listPublishedArticleRows } from '@/lib/d1/content';
+import { selectArticle, selectArticles } from '@/lib/db/content';
+import { parseJson } from '@/lib/db/client';
 import { rowToArticle } from './types';
 import { posts as importedPosts } from '@/app/blog/content';
 import { newsItems as importedNews } from '@/app/news/content';
@@ -13,28 +15,24 @@ const FALLBACK = {
   news: importedNews,
 };
 
+function toArticle(row) {
+  return rowToArticle({ ...row, body: parseJson(row.body, []) });
+}
+
 function byDateDesc(a, b) {
   return new Date(b.date) - new Date(a.date);
 }
 
 export async function listArticles(kind = 'blog') {
-  try {
-    const rows = await listPublishedArticleRows(kind);
-    if (!rows || rows.length === 0) return FALLBACK[kind];
-    return rows.map(rowToArticle).sort(byDateDesc);
-  } catch {
-    return FALLBACK[kind];
-  }
+  const rows = await selectArticles(kind);
+  if (!rows || rows.length === 0) return FALLBACK[kind];
+  return rows.map(toArticle).sort(byDateDesc);
 }
 
 export async function getArticle(slug, kind = 'blog') {
-  try {
-    const row = await getPublishedArticleRow(kind, slug);
-    if (row) return rowToArticle(row);
-  } catch {
-    // fall through to bundled content
-  }
-  return FALLBACK[kind].find((p) => p.slug === slug) || null;
+  const row = await selectArticle(kind, slug);
+  if (!row) return FALLBACK[kind].find((p) => p.slug === slug) || null;
+  return toArticle(row);
 }
 
 export async function getRelatedArticles(slug, kind = 'blog', count = 3) {
