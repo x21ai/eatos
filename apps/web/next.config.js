@@ -176,7 +176,7 @@ const nextConfig = {
       ['/pages/:slug', '/shop/:slug'],
       ['/shop/pages/:slug', '/shop/:slug'],
       ['/shop/collections/all', '/shop'],
-      ['/cart', '/shop'],
+      // /cart is a real cart page now (do not redirect to /shop).
 
       // Store collection pages.
       ['/product-page/:slug', '/shop'],

@@ -1,6 +1,29 @@
 # eatOS 2.0 — Handoff Log
 
-## Current snapshot (2026-09-09T18:57Z)
+## Current snapshot (2026-09-09T20:00Z)
+- **Checkout stack live** on Worker `45571b24`: cart APIs, shop admin APIs,
+  `/cart`, `/order-status`, `/status`, `/admin/shop`, PDP Add to cart.
+- **D1 migration `0006_carts_orders_status` applied** (carts, orders,
+  payment_events, service_status).
+- **RESEND_API_KEY** on Worker (from Doppler `RESEND_KEY`). **Stripe keys
+  missing** — checkout returns `payments_unconfigured` until
+  `STRIPE_SECRET_KEY` (+ webhook secret) are set.
+- **Next:** operator provides Stripe secrets; then E2E pay + confirmation email.
+  Maya AI route (handoff §6.6) still deferred.
+
+### 2026-09-09T20:00Z — Cart through status (handoff §6.1–6.5)
+- **Requested:** Complete remaining checkout work one by one.
+- **Done:** Shop admin CRUD APIs/UI; cart schema+API+UI; checkout+Stripe helpers;
+  webhook+Resend confirmation; order lookup; `/login`→`/account/signin`; live
+  `/status` from D1; deployed `45571b24`.
+- **Issues:** No Stripe keys in Doppler yet (human gate). Maya §6.6 not started.
+- **Stand / next:** Add Stripe secrets, configure webhook, verify paid order email.
+- **Who / where:** Cursor agent, `cursor/document-cursor-handoff-status`.
+- **Evidence:** curl cart create/add PASS; checkout 503 payments_unconfigured;
+  `/api/status` groups=2; pages 200.
+- **Timestamp:** 2026-09-09T20:00:00Z
+
+## Prior snapshot (2026-09-09T18:57Z)
 - **D1 live load PASS:** posts 966, news_posts 97, products 52, collections 8,
   product_images 59, product_variants 120, collection_products 38.
 - **Merged** `origin/lovable` tip through `c21176a3` (docs/d1-and-checkout-handoff.md,

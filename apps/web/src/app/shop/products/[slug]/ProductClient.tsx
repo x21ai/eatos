@@ -3,7 +3,7 @@
 
 import { useMemo, useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight, Check, Loader2, ShoppingCart } from 'lucide-react';
 import ProductCard from '../../ProductCard';
 import {
   collectionHref,
@@ -13,6 +13,7 @@ import {
   getRelatedProducts,
   processingRate,
 } from '../../catalog';
+import { addToCart } from '@/lib/shop/cart-client';
 
 export default function ProductClient({ slug, product: productProp, related: relatedProp }) {
   const product = productProp || getProduct(slug);
@@ -20,6 +21,8 @@ export default function ProductClient({ slug, product: productProp, related: rel
   const [activeImage, setActiveImage] = useState(0);
   const [variantId, setVariantId] = useState(product?.variants?.[0]?.id ?? null);
   const [quantity, setQuantity] = useState(1);
+  const [adding, setAdding] = useState(false);
+  const [message, setMessage] = useState('');
 
   const variant = useMemo(
     () => product?.variants?.find((v) => v.id === variantId) ?? product?.variants?.[0] ?? null,
@@ -47,6 +50,24 @@ export default function ProductClient({ slug, product: productProp, related: rel
   const compare = formatMoney(variant?.compareAtPrice ?? product.compareAtPrice);
   const primaryCollection = product.collectionSlugs[0] ? getCollection(product.collectionSlugs[0]) : null;
   const images = product.images.length ? product.images : [null];
+  const canBuy = Boolean(price) && product.available && (variant?.available ?? true);
+
+  async function onAddToCart() {
+    setAdding(true);
+    setMessage('');
+    try {
+      await addToCart({
+        variantId: variant?.id,
+        productSlug: product.slug,
+        quantity,
+      });
+      setMessage('Added to cart.');
+    } catch (err) {
+      setMessage(err.message || 'Could not add to cart.');
+    } finally {
+      setAdding(false);
+    }
+  }
 
   return (
     <div className="bg-black text-zinc-200">
@@ -67,7 +88,6 @@ export default function ProductClient({ slug, product: productProp, related: rel
           </nav>
 
           <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14">
-            {/* Gallery */}
             <div>
               <div className="overflow-hidden rounded-3xl border border-white/10 bg-white">
                 {images[activeImage] ? (
@@ -104,7 +124,6 @@ export default function ProductClient({ slug, product: productProp, related: rel
               ) : null}
             </div>
 
-            {/* Detail */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -124,7 +143,9 @@ export default function ProductClient({ slug, product: productProp, related: rel
                 ) : null}
               </div>
               {price ? (
-                <p className="mt-2 text-xs text-zinc-500">Starting at {price} with {processingRate}</p>
+                <p className="mt-2 text-xs text-zinc-500">
+                  Starting at {price} with {processingRate}
+                </p>
               ) : null}
 
               {product.options
@@ -177,15 +198,36 @@ export default function ProductClient({ slug, product: productProp, related: rel
                     +
                   </button>
                 </div>
-                <a
-                  href="/bookademo"
-                  className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-                >
-                  Request this setup <ArrowRight size={15} aria-hidden />
-                </a>
+                {canBuy ? (
+                  <>
+                    <button
+                      type="button"
+                      disabled={adding}
+                      onClick={onAddToCart}
+                      className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-60"
+                    >
+                      {adding ? <Loader2 size={15} className="animate-spin" /> : <ShoppingCart size={15} />}
+                      Add to cart
+                    </button>
+                    <a
+                      href="/cart"
+                      className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white hover:border-white/40"
+                    >
+                      View cart <ArrowRight size={15} aria-hidden />
+                    </a>
+                  </>
+                ) : (
+                  <a
+                    href="/bookademo"
+                    className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                  >
+                    Request this setup <ArrowRight size={15} aria-hidden />
+                  </a>
+                )}
               </div>
+              {message ? <p className="mt-3 text-xs text-brand-on-dark">{message}</p> : null}
               <p className="mt-3 text-xs text-zinc-500">
-                {product.available && variant?.available
+                {canBuy
                   ? 'In stock and ready to ship.'
                   : 'Currently on request. Our team will confirm lead time.'}
               </p>
@@ -198,14 +240,16 @@ export default function ProductClient({ slug, product: productProp, related: rel
               ) : null}
 
               <ul className="mt-10 grid gap-3 border-t border-white/10 pt-8 text-sm text-zinc-400">
-                {['Setup and onboarding support included', 'Works with the full eatOS cloud', 'Warranty and replacement coverage'].map(
-                  (item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <Check size={16} className="mt-0.5 shrink-0 text-brand-on-dark" aria-hidden />
-                      {item}
-                    </li>
-                  ),
-                )}
+                {[
+                  'Setup and onboarding support included',
+                  'Works with the full eatOS cloud',
+                  'Warranty and replacement coverage',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <Check size={16} className="mt-0.5 shrink-0 text-brand-on-dark" aria-hidden />
+                    {item}
+                  </li>
+                ))}
               </ul>
             </motion.div>
           </div>
