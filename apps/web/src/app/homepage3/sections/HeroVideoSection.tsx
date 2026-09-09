@@ -4,7 +4,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react';
-import { showcaseVideos } from '@/components/marketing/customerShowcase';
+import { showcaseVideos } from '@/components/marketing/customerShowcaseData';
 import { stats } from '../../homepage2/data/stats';
 
 const CLIP_MS = 7000;

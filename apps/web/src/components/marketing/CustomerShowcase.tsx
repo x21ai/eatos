@@ -2,7 +2,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { showcaseVideos, showcaseLogos } from './customerShowcase';
+import { showcaseVideos, showcaseLogos } from './customerShowcaseData';
 
 function VideoCard({ item }) {
   const ref = useRef(null);

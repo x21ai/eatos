@@ -10,7 +10,7 @@ import {
   Megaphone,
   FileText,
 } from 'lucide-react';
-import { showcaseLogos } from '@/components/marketing/customerShowcase';
+import { showcaseLogos } from '@/components/marketing/customerShowcaseData';
 import ResellerForm from './ResellerForm';
 import ResellerApplyModal from './ResellerApplyModal';
 import { heroImage, glanceBenefits, faqs } from './content';
