@@ -338,7 +338,13 @@ function ReportForm() {
       >
         {status === 'loading' ? 'Submitting…' : 'Submit report'}
       </button>
+      {status === 'failed' ? (
+        <p role="status" className="mt-4 text-sm text-red-400">
+          We could not send your report. Please try again in a moment.
+        </p>
+      ) : null}
       <p className="mt-4 text-xs leading-5 text-zinc-500">{report.privacyNote}</p>
+
     </form>
   );
 }
