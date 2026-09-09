@@ -1,118 +1,165 @@
-// @ts-nocheck
-import sql from "@/app/api/utils/sql";
+// Single article endpoint, backed by Cloudflare D1.
+//
+// Tool contract:
+//   get_article    GET    /api/blog/{slug}?kind=blog|news -> { data: Article }
+//   update_article PATCH  /api/blog/{slug}?kind=blog|news
+//     body any of { title, content, body, excerpt, cover_image, category,
+//                   author_name, seo_title, seo_description, keywords,
+//                   new_slug, status, published_at } -> { data: Article }
+//   delete_article DELETE /api/blog/{slug}?kind=blog|news -> { data: { slug } }
+// Errors are always { error: true, code, message }.
 
-export async function GET(request, { params }) {
-  const { slug } = params;
+import { queryOne, execute } from '@/lib/db/client';
+import { htmlToBlocks, blocksToHtml } from '@/lib/blog/html';
 
-  // Mock data for the specific eatOS article requested
-  if (
-    slug === "never-miss-a-beat-how-offline-resilience-keeps-your-sales-rolling"
-  ) {
-    return Response.json({
-      id: 999,
-      title:
-        "Never Miss a Beat: How Offline Resilience Keeps Your Sales Rolling",
-      slug: "never-miss-a-beat-how-offline-resilience-keeps-your-sales-rolling",
-      excerpt:
-        "Discover how offline resilience technology ensures your restaurant never stops serving, even when the internet goes down.",
-      content: `
-        <p>In the fast-paced world of restaurant management, reliability is everything. When the internet goes down, your sales shouldn't have to stop. That's why offline resilience is a critical feature for modern point-of-sale systems.</p>
-        
-        <h2>Why Offline Mode Matters</h2>
-        <p>Internet outages are unpredictable. Whether it's a storm, a service provider issue, or a hardware glitch, losing connectivity can cost restaurants thousands of dollars in lost revenue during peak hours. Traditional cloud-based systems often freeze up, leaving staff unable to process orders or payments.</p>
-        
-        <h2>How Offline Resilience Works</h2>
-        <p>With advanced offline resilience technology, your Point of Sale system locally stores all transaction data. The moment connectivity is lost, the system seamlessly switches to offline mode without skipping a beat. Staff can continue to:</p>
-        <ul>
-          <li>Take orders and send tickets to the kitchen</li>
-          <li>Process credit card payments (stored for later authorization)</li>
-          <li>Manage table seating and reservations</li>
-          <li>Print receipts and kitchen tickets</li>
-        </ul>
-        
-        <h2>Syncing Back Up</h2>
-        <p>Once the internet connection is restored, the system automatically syncs all offline data back to the cloud. This ensures your reporting, inventory, and sales data are always accurate, with zero manual entry required.</p>
-        
-        <p>Don't let a bad connection break your business. Embrace offline resilience and keep your sales rolling, no matter what.</p>
-      `,
-      cover_image:
-        "https://ucarecdn.com/d08b4ab7-c83d-4cd2-b37e-4b202ad04b97/-/format/auto/",
-      author_name: "eatOS Team",
-      published_at: "2025-11-19T10:00:00Z",
-      seo_title: "Never Miss a Beat: Offline Resilience in Point of Sale",
-      seo_description:
-        "Keep your restaurant running even when the internet is down with offline resilience.",
-      keywords: "offline mode, restaurant pos, resilience, business continuity",
-      status: "published",
-    });
-  }
+const TABLES = { blog: 'posts', news: 'news_posts' } as const;
 
-  try {
-    const post = await sql`
-      SELECT *
-      FROM blog_posts
-      WHERE slug = ${slug}
-    `;
-
-    if (post.length === 0) {
-      return Response.json({ error: "Post not found" }, { status: 404 });
-    }
-
-    return Response.json(post[0]);
-  } catch (error) {
-    console.error("Error fetching blog post:", error);
-    return Response.json(
-      { error: "Failed to fetch blog post" },
-      { status: 500 },
-    );
-  }
+function tableFor(request: Request): string {
+  const kind = new URL(request.url).searchParams.get('kind');
+  return kind === 'news' ? TABLES.news : TABLES.blog;
 }
 
-export async function PATCH(request, { params }) {
-  const { slug } = params;
-  const body = await request.json();
-  const {
-    title,
-    content,
-    excerpt,
-    cover_image,
-    seo_title,
-    seo_description,
-    keywords,
-    new_slug,
-    status,
-    published_at,
-  } = body;
+function fail(code: string, message: string, status: number) {
+  return Response.json({ error: true, code, message }, { status });
+}
+
+function toApiArticle(row: Record<string, any>) {
+  const blocks = (() => {
+    try {
+      const parsed = JSON.parse(String(row.body ?? '[]'));
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  })();
+
+  return {
+    slug: row.slug,
+    title: row.title,
+    excerpt: row.excerpt ?? '',
+    content: row.content_html || blocksToHtml(blocks),
+    body: blocks,
+    cover_image: row.cover_image ?? null,
+    category: row.category ?? null,
+    author_name: row.author_name ?? null,
+    published_at: row.published_at ?? null,
+    status: row.status ?? 'draft',
+    seo_title: row.seo_title ?? null,
+    seo_description: row.seo_description ?? null,
+    keywords: row.keywords ?? null,
+  };
+}
+
+export async function GET(
+  request: Request,
+  { params }: { params: { slug: string } }
+) {
+  const table = tableFor(request);
+  const row = await queryOne<Record<string, any>>(
+    `SELECT * FROM ${table} WHERE slug = ?`,
+    [params.slug]
+  );
+
+  if (!row) return fail('not_found', 'No article exists with that slug.', 404);
+  return Response.json({ data: toApiArticle(row) });
+}
+
+export async function PATCH(
+  request: Request,
+  { params }: { params: { slug: string } }
+) {
+  const table = tableFor(request);
+
+  let body: Record<string, any>;
+  try {
+    body = await request.json();
+  } catch {
+    return fail('invalid_json', 'The request body must be JSON.', 400);
+  }
+
+  const current = await queryOne<Record<string, any>>(
+    `SELECT * FROM ${table} WHERE slug = ?`,
+    [params.slug]
+  );
+  if (!current) return fail('not_found', 'No article exists with that slug.', 404);
+
+  const sets: string[] = [];
+  const args: unknown[] = [];
+  const set = (column: string, value: unknown) => {
+    sets.push(`${column} = ?`);
+    args.push(value);
+  };
+
+  const simple: Array<[string, string]> = [
+    ['title', 'title'],
+    ['excerpt', 'excerpt'],
+    ['cover_image', 'cover_image'],
+    ['category', 'category'],
+    ['author_name', 'author_name'],
+    ['seo_title', 'seo_title'],
+    ['seo_description', 'seo_description'],
+    ['keywords', 'keywords'],
+    ['status', 'status'],
+    ['published_at', 'published_at'],
+  ];
+  for (const [field, column] of simple) {
+    if (body[field] !== undefined) set(column, body[field]);
+  }
+
+  if (typeof body.content === 'string') {
+    set('content_html', body.content);
+    set('body', JSON.stringify(htmlToBlocks(body.content)));
+  } else if (Array.isArray(body.body)) {
+    set('body', JSON.stringify(body.body));
+    set('content_html', blocksToHtml(body.body));
+  }
+
+  const nextSlug =
+    typeof body.new_slug === 'string' && body.new_slug.trim() && body.new_slug !== params.slug
+      ? body.new_slug.trim()
+      : null;
+
+  if (nextSlug) {
+    const clash = await queryOne(`SELECT slug FROM ${table} WHERE slug = ?`, [nextSlug]);
+    if (clash) return fail('slug_taken', 'Another article already uses that slug.', 409);
+    set('slug', nextSlug);
+  }
+
+  if (!sets.length) return Response.json({ data: toApiArticle(current) });
+
+  set('updated_at', new Date().toISOString());
 
   try {
-    const updatedPost = await sql`
-      UPDATE blog_posts
-      SET
-        title = COALESCE(${title}, title),
-        content = COALESCE(${content}, content),
-        excerpt = COALESCE(${excerpt}, excerpt),
-        cover_image = COALESCE(${cover_image}, cover_image),
-        seo_title = COALESCE(${seo_title}, seo_title),
-        seo_description = COALESCE(${seo_description}, seo_description),
-        keywords = COALESCE(${keywords}, keywords),
-        slug = COALESCE(${new_slug}, slug),
-        status = COALESCE(${status}, status),
-        published_at = COALESCE(${published_at}, published_at),
-        updated_at = CURRENT_TIMESTAMP
-      WHERE slug = ${slug}
-      RETURNING *
-    `;
-
-    if (updatedPost.length === 0) {
-      return Response.json({ error: "Post not found" }, { status: 404 });
-    }
-
-    return Response.json(updatedPost[0]);
-  } catch (error) {
-    console.error("Error updating blog post:", error);
-    return Response.json(
-      { error: "Failed to update blog post" },
-      { status: 500 },
+    await execute(
+      `UPDATE ${table} SET ${sets.join(', ')} WHERE slug = ?`,
+      [...args, params.slug]
     );
+  } catch (error) {
+    console.error('Failed to update article', error);
+    return fail('write_failed', 'The article could not be saved.', 500);
   }
+
+  const row = await queryOne<Record<string, any>>(
+    `SELECT * FROM ${table} WHERE slug = ?`,
+    [nextSlug || params.slug]
+  );
+  return Response.json({ data: row ? toApiArticle(row) : null });
+}
+
+export async function DELETE(
+  request: Request,
+  { params }: { params: { slug: string } }
+) {
+  const table = tableFor(request);
+  const current = await queryOne(`SELECT slug FROM ${table} WHERE slug = ?`, [params.slug]);
+  if (!current) return fail('not_found', 'No article exists with that slug.', 404);
+
+  try {
+    await execute(`DELETE FROM ${table} WHERE slug = ?`, [params.slug]);
+  } catch (error) {
+    console.error('Failed to delete article', error);
+    return fail('write_failed', 'The article could not be deleted.', 500);
+  }
+
+  return Response.json({ data: { slug: params.slug } });
 }
