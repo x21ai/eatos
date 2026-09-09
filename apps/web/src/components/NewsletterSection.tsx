@@ -7,13 +7,30 @@ export function NewsletterSection() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('idle');
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const value = email.trim();
     const valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value) && value.length <= 255;
-    setStatus(valid ? 'success' : 'error');
-    if (valid) setEmail('');
+    if (!valid) {
+      setStatus('error');
+      return;
+    }
+
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: value, source: 'site-newsletter' }),
+      });
+      if (!res.ok) throw new Error('Signup failed');
+      setStatus('success');
+      setEmail('');
+    } catch {
+      setStatus('failed');
+    }
   };
+
 
   return (
     <section className="border-t border-white/5 bg-black py-20 md:py-28">
