@@ -52,12 +52,13 @@ function toApiArticle(row: Record<string, any>) {
 
 export async function GET(
   request: Request,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
+  const { slug } = await params;
   const table = tableFor(request);
   const row = await queryOne<Record<string, any>>(
     `SELECT * FROM ${table} WHERE slug = ?`,
-    [params.slug]
+    [slug]
   );
 
   if (!row) return fail('not_found', 'No article exists with that slug.', 404);
@@ -66,8 +67,9 @@ export async function GET(
 
 export async function PATCH(
   request: Request,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
+  const { slug } = await params;
   const table = tableFor(request);
 
   let body: Record<string, any>;
@@ -79,7 +81,7 @@ export async function PATCH(
 
   const current = await queryOne<Record<string, any>>(
     `SELECT * FROM ${table} WHERE slug = ?`,
-    [params.slug]
+    [slug]
   );
   if (!current) return fail('not_found', 'No article exists with that slug.', 404);
 
@@ -115,7 +117,7 @@ export async function PATCH(
   }
 
   const nextSlug =
-    typeof body.new_slug === 'string' && body.new_slug.trim() && body.new_slug !== params.slug
+    typeof body.new_slug === 'string' && body.new_slug.trim() && body.new_slug !== slug
       ? body.new_slug.trim()
       : null;
 
@@ -132,7 +134,7 @@ export async function PATCH(
   try {
     await execute(
       `UPDATE ${table} SET ${sets.join(', ')} WHERE slug = ?`,
-      [...args, params.slug]
+      [...args, slug]
     );
   } catch (error) {
     console.error('Failed to update article', error);
@@ -141,25 +143,26 @@ export async function PATCH(
 
   const row = await queryOne<Record<string, any>>(
     `SELECT * FROM ${table} WHERE slug = ?`,
-    [nextSlug || params.slug]
+    [nextSlug || slug]
   );
   return Response.json({ data: row ? toApiArticle(row) : null });
 }
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
+  const { slug } = await params;
   const table = tableFor(request);
-  const current = await queryOne(`SELECT slug FROM ${table} WHERE slug = ?`, [params.slug]);
+  const current = await queryOne(`SELECT slug FROM ${table} WHERE slug = ?`, [slug]);
   if (!current) return fail('not_found', 'No article exists with that slug.', 404);
 
   try {
-    await execute(`DELETE FROM ${table} WHERE slug = ?`, [params.slug]);
+    await execute(`DELETE FROM ${table} WHERE slug = ?`, [slug]);
   } catch (error) {
     console.error('Failed to delete article', error);
     return fail('write_failed', 'The article could not be deleted.', 500);
   }
 
-  return Response.json({ data: { slug: params.slug } });
+  return Response.json({ data: { slug: slug } });
 }
