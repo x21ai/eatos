@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { Shield, Headphones, Wifi } from "lucide-react";
 import { motion } from "motion/react";
-import { switchingSteps } from "../data/switchingSteps";
+import { switchingSteps } from "../../homepage2/data/switchingSteps";
 
 export function SwitchingSection() {
   return (

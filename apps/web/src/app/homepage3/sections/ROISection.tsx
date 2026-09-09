@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { Quote } from "lucide-react";
 import { motion } from "motion/react";
-import { stats } from "../data/stats";
+import { stats } from "../../homepage2/data/stats";
 
 export function ROISection() {
   return (

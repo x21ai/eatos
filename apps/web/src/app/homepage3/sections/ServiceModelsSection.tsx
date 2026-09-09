@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { Check } from "lucide-react";
 import { motion } from "motion/react";
-import { serviceModels } from "../data/serviceModels";
+import { serviceModels } from "../../homepage2/data/serviceModels";
 
 export function ServiceModelsSection() {
   return (
