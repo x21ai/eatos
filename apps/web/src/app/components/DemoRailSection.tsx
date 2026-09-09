@@ -177,6 +177,7 @@ export function DemoRailSection({
             })}
           </div>
 
+          <div ref={panelRef} className="min-w-0">
           <div className="relative w-full rounded-2xl border border-white/10 overflow-hidden bg-zinc-900 shadow-2xl">
             <div className="flex items-center justify-center gap-2 px-4 py-3 border-b border-white/10 bg-zinc-900/50">
               {(() => {
@@ -220,6 +221,10 @@ export function DemoRailSection({
                 />
               </div>
             )}
+          </div>
+          <p className="mt-3 hidden lg:block text-center text-xs font-medium text-white/50">
+            Scroll here to move through the products
+          </p>
           </div>
         </div>
       </div>
