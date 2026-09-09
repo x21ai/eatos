@@ -69,9 +69,10 @@ export function NewsletterSection() {
                 />
                 <button
                   type="submit"
-                  className="h-12 w-full shrink-0 rounded-full bg-white px-7 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:h-11 sm:w-auto"
+                  disabled={status === 'loading'}
+                  className="h-12 w-full shrink-0 rounded-full bg-white px-7 text-sm font-semibold text-black transition-opacity hover:opacity-85 disabled:opacity-60 sm:h-11 sm:w-auto"
                 >
-                  Subscribe
+                  {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
                 </button>
               </div>
 
@@ -80,7 +81,7 @@ export function NewsletterSection() {
                 className={`mt-4 min-h-5 text-sm ${
                   status === 'success'
                     ? 'text-brand-on-dark'
-                    : status === 'error'
+                    : status === 'error' || status === 'failed'
                       ? 'text-red-400'
                       : 'text-gray-500'
                 }`}
@@ -89,8 +90,11 @@ export function NewsletterSection() {
                   ? "Thanks, you're on the list."
                   : status === 'error'
                     ? 'Please enter a valid email address.'
-                    : 'No spam. Unsubscribe anytime.'}
+                    : status === 'failed'
+                      ? 'Something went wrong. Please try again.'
+                      : 'No spam. Unsubscribe anytime.'}
               </p>
+
             </form>
           </div>
         </div>
