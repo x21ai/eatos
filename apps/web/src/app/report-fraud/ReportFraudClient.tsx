@@ -246,7 +246,6 @@ function ReportForm() {
     );
   }
 
-  }
 
   const fieldClass = (name) =>
     `w-full rounded-2xl border bg-white/[0.04] px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-500 focus:border-brand/60 ${
