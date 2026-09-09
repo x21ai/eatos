@@ -66,8 +66,8 @@ export default function EditBlogPost({ params }) {
       });
 
       if (!res.ok) throw new Error("Failed to update post");
-      const payload = await res.json();
-      return payload.data;
+      const result = await res.json();
+      return result.data;
     },
     onSuccess: (data) => {
       toast.success("Post updated successfully");
