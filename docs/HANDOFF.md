@@ -1,6 +1,50 @@
 # eatOS 2.0 — Handoff Log
 
-## Current snapshot (2026-09-09T15:55Z)
+## Current snapshot (2026-09-09T18:57Z)
+- **D1 live load PASS:** posts 966, news_posts 97, products 52, collections 8,
+  product_images 59, product_variants 120, collection_products 38.
+- **Merged** `origin/lovable` tip through `c21176a3` (docs/d1-and-checkout-handoff.md,
+  scripts/load-d1-remote.mjs, lib/db/*, newsletter + report-fraud APIs).
+- **Migrations applied remote:** `0003_content`, `0004_posts_editor`,
+  `0005_product_variants_position` (fixes catalog→content schema gap).
+- **Assets:** R2 `eatos-web-assets` still mirrors 298 `__l5e` objects (Worker
+  `MEDIA_R2`); Lovable CDN fallback remains.
+- **Next (from handoff §5+):** cart → checkout → Stripe → Resend emails.
+
+### 2026-09-09T18:57Z — Merge Lovable D1 handoff + live load
+- **Requested:** Pull Lovable handoff and run `load-d1-remote.mjs` on live D1.
+- **Done:** Merged; applied migrations; seeded; fixed verify table names; added
+  `0005_product_variants_position`; deduped product_images; all expected counts PASS.
+- **Issues:** First variants seed failed until 0005; image row count inflated to
+  177 then cleaned to 59; iCloud `* 2.*` duplicates deleted locally.
+- **Stand / next:** Deploy Worker with lib/db + handoff APIs; then cart/checkout.
+- **Who / where:** Cursor agent, `cursor/document-cursor-handoff-status` @ `6208dad5`.
+- **Evidence:** per-table COUNT PASS list above; migration list includes 0005.
+- **Timestamp:** 2026-09-09T18:57:00Z
+
+## Prior snapshot (2026-09-09T16:25Z)
+- **LIVE:** Worker `eatos-web` version `7a3ec642-1cd7-45d2-8d7b-8fdebd73470d`.
+  `/__l5e/assets-v1/*` served from R2 `eatos-web-assets` (`MEDIA_R2`), Lovable
+  CDN fallback if missing. 298 unique assets mirrored (`ok=298 fail=0`).
+- **D1-only content:** remote D1 seeded (966 posts, 97 news, 52 products, 8
+  collections). Readers in `lib/blog/data.ts` + `lib/shop/data.ts`.
+- **Lovable:** paste prompt in [docs/LOVABLE-D1.md](LOVABLE-D1.md). No Cloudflare
+  tokens. After new Lovable media: `doppler run --project x21 --config
+  prd_cloudflare -- node scripts/mirror-l5e-assets.mjs --upload`.
+
+### 2026-09-09T16:25Z — Mirror Lovable media to R2
+- **Requested:** Push all images/videos to Cloudflare CDN (R2).
+- **Done:** Created bucket `eatos-web-assets`; bound `MEDIA_R2`; uploaded 298
+  `__l5e/assets-v1` objects; Worker serves R2 first; prod HEAD 200 on demo
+  webm, logo png, poster jpg.
+- **Issues:** New Lovable uploads need a remirror until that is automated.
+- **Stand / next:** Hard refresh s.eatos.dev; optional git commit of route +
+  wrangler + mirror script.
+- **Who / where:** Cursor agent, `cursor/document-cursor-handoff-status`.
+- **Evidence:** wrangler upload log ok=298; Worker version `7a3ec642`; curl 200s.
+- **Timestamp:** 2026-09-09T16:25:00Z
+
+## Prior snapshot (2026-09-09T15:55Z)
 - **D1-only content:** migration `0003_content_catalog.sql`; readers in
   `lib/blog/data.ts` + `lib/shop/data.ts` use D1 via `lib/d1/content.ts` (JSON
   fallback when bindings missing). Remote D1 seeded: 966 posts, 97 news, 52

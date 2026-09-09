@@ -94,6 +94,7 @@ function loadSeeds() {
 
 function verify() {
   // Table names match apps/web/migrations/0003_content.sql (not shop_* aliases).
+  // Query one table at a time: D1 rejects large compound SELECTs.
   const checks = [
     ["posts", 966],
     ["news_posts", 97],
@@ -105,14 +106,40 @@ function verify() {
   ];
 
   console.log("\n== Verifying row counts ==");
-  const sql = checks
-    .map(([table]) => `SELECT '${table}' AS t, COUNT(*) AS n FROM ${table}`)
-    .join(" UNION ALL ");
-
-  runWrangler(["d1", "execute", DB_NAME, scopeFlag, "--command", sql]);
-
-  console.log("\nExpected counts:");
-  checks.forEach(([table, n]) => console.log(`  ${table}: ${n}`));
+  let mismatch = 0;
+  for (const [table, expected] of checks) {
+    const result = spawnSync(
+      "npx",
+      [
+        "--yes",
+        WRANGLER,
+        "d1",
+        "execute",
+        DB_NAME,
+        scopeFlag,
+        "--json",
+        "--command",
+        `SELECT COUNT(*) AS n FROM ${table}`,
+      ],
+      { cwd: WEB_DIR, encoding: "utf8", env: process.env },
+    );
+    let actual = null;
+    try {
+      const parsed = JSON.parse(result.stdout || "[]");
+      actual = parsed[0]?.results?.[0]?.n ?? null;
+    } catch {
+      actual = null;
+    }
+    const ok = actual === expected;
+    if (!ok) mismatch++;
+    console.log(
+      `  ${table}: actual=${actual ?? "?"} expected=${expected}${ok ? "" : "  MISMATCH"}`,
+    );
+  }
+  if (mismatch) {
+    console.error(`\n${mismatch} table(s) below expected. Re-run the loader.`);
+    process.exit(1);
+  }
 }
 
 if (!seedsOnly) applyMigrations();

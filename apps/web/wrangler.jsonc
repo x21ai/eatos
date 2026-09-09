@@ -21,12 +21,16 @@
       "migrations_dir": "migrations"
     }
   ],
-  // R2 bucket used by the OpenNext incremental (ISR) cache.
-  // Run `wrangler r2 bucket create eatos-web-cache` before deploying.
+  // R2: OpenNext ISR cache + mirrored Lovable media (__l5e/assets-v1).
+  // Create with: wrangler r2 bucket create eatos-web-cache|eatos-web-assets
   "r2_buckets": [
     {
       "binding": "NEXT_INC_CACHE_R2_BUCKET",
       "bucket_name": "eatos-web-cache"
+    },
+    {
+      "binding": "MEDIA_R2",
+      "bucket_name": "eatos-web-assets"
     }
   ],
   "vars": {
