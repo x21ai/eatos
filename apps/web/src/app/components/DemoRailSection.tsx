@@ -1,7 +1,7 @@
 'use client';
 
 import type React from 'react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { motion } from 'motion/react';
 import { Tablet, Laptop, Smartphone } from 'lucide-react';
@@ -45,6 +45,39 @@ export function DemoRailSection({
 }: DemoRailSectionProps) {
   const [activeId, setActiveId] = useState(demoSources[0].id);
   const demo = demoSources.find((d) => d.id === activeId) ?? demoSources[0];
+  const panelRef = useRef<HTMLDivElement | null>(null);
+  const lastStepAt = useRef(0);
+
+  // While the pointer sits over the demo panel, the wheel moves through the
+  // products instead of scrolling the page, looping at either end.
+  useEffect(() => {
+    const el = panelRef.current;
+    if (!el) return;
+    if (typeof window === 'undefined') return;
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    const onWheel = (event: WheelEvent) => {
+      const dy =
+        event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? 100 : 1);
+      if (Math.abs(dy) < 4) return;
+      event.preventDefault();
+
+      const now = Date.now();
+      if (now - lastStepAt.current < 450) return;
+      lastStepAt.current = now;
+
+      const dir = dy > 0 ? 1 : -1;
+      setActiveId((current) => {
+        const total = demoSources.length;
+        const index = demoSources.findIndex((d) => d.id === current);
+        const next = ((index < 0 ? 0 : index) + dir + total) % total;
+        return demoSources[next].id;
+      });
+    };
+
+    el.addEventListener('wheel', onWheel, { passive: false });
+    return () => el.removeEventListener('wheel', onWheel);
+  }, []);
 
   const displayLabel = (id: string) => {
     switch (id) {
@@ -144,6 +177,7 @@ export function DemoRailSection({
             })}
           </div>
 
+          <div ref={panelRef} className="min-w-0">
           <div className="relative w-full rounded-2xl border border-white/10 overflow-hidden bg-zinc-900 shadow-2xl">
             <div className="flex items-center justify-center gap-2 px-4 py-3 border-b border-white/10 bg-zinc-900/50">
               {(() => {
@@ -187,6 +221,10 @@ export function DemoRailSection({
                 />
               </div>
             )}
+          </div>
+          <p className="mt-3 hidden lg:block text-center text-xs font-medium text-white/50">
+            Scroll here to move through the products
+          </p>
           </div>
         </div>
       </div>
