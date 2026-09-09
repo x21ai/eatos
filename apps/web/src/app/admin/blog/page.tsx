@@ -45,7 +45,8 @@ export default function BlogDashboard() {
         body: JSON.stringify({ title, slug }),
       });
       if (!res.ok) throw new Error("Failed to create post");
-      return res.json();
+      const payload = await res.json();
+      return payload.data;
     },
     onSuccess: (data) => {
       toast.success("Draft created");

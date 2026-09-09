@@ -33,7 +33,8 @@ export default function EditBlogPost({ params }) {
     queryFn: async () => {
       const res = await fetch(`/api/blog/${slug}`);
       if (!res.ok) throw new Error("Failed to fetch post");
-      return res.json();
+      const payload = await res.json();
+      return payload.data;
     },
     onSuccess: (data) => {
       reset({
@@ -65,7 +66,8 @@ export default function EditBlogPost({ params }) {
       });
 
       if (!res.ok) throw new Error("Failed to update post");
-      return res.json();
+      const payload = await res.json();
+      return payload.data;
     },
     onSuccess: (data) => {
       toast.success("Post updated successfully");
