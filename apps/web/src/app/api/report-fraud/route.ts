@@ -3,10 +3,11 @@
 //
 // Tool contract:
 //   submit_fraud_report POST /api/report-fraud
-//     { firstName, lastName, email, phone?, category, details }
+//     { firstName, email, message, lastName?, phone?, category?, details? }
 //     -> { data: { reference, status: 'new', created_at } }
 // Call when someone reports suspected fraud involving eatOS. Do not call for
 // general support questions. Errors are { error: true, code, message }.
+
 
 import { execute } from '@/lib/db/client';
 
@@ -37,15 +38,15 @@ export async function POST(request: Request) {
   const lastName = text(body.lastName, 80);
   const email = text(body.email, 254).toLowerCase();
   const phone = text(body.phone, 40);
-  const category = text(body.category, 80);
-  const details = text(body.details, 5000);
+  const category = text(body.category, 80) || 'general';
+  // The site form labels this field "message"; agents may send "details".
+  const details = text(body.details, 5000) || text(body.message, 5000);
 
   const missing: string[] = [];
   if (!firstName) missing.push('firstName');
-  if (!lastName) missing.push('lastName');
   if (!EMAIL.test(email)) missing.push('email');
-  if (!category) missing.push('category');
   if (details.length < 10) missing.push('details');
+
 
   if (missing.length) {
     return fail('validation_failed', 'Some required fields are missing or invalid.', 400, {
