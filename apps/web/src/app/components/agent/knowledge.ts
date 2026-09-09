@@ -4,7 +4,8 @@
 // Every entry points at a real page on this site. Nothing here is generated, so
 // the agent can quote it verbatim without inventing anything.
 
-export const AGENT_NAME = 'eatOS Support Agent';
+export const AGENT_NAME = 'Maya';
+export const AGENT_SUBTITLE = 'eatOS Support Agent';
 
 export const productRoutes = [
   { id: 'pos', label: 'Point of Sale', href: '/pointofsale', keywords: ['pos', 'point of sale', 'terminal', 'register', 'checkout', 'handheld', 'check', 'ticket', 'order'] },
