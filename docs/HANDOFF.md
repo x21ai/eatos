@@ -1,5 +1,36 @@
 # eatOS 2.0 — Handoff Log
 
+## Current snapshot (2026-09-09T21:56:06Z)
+- **Canonical remote:** `origin` = `https://github.com/x21ai/eatos.git` (`astroaii` = old).
+- **Branch:** `cursor/backend-from-brief` (lovable merged + backend brief work).
+- **Brief:** `docs/cursor-tasks-remaining.md`. Locked Stripe / Resend / OpenAI+RAG / kiosk A.
+- **D1:** migrations `0007_admin_users` + `0008_kiosk_maya` applied remote+local.
+  Content counts still PASS. Demo `kiosk_devices` token `kiosk-demo-token`.
+- **Built:** admin guard, news admin/API, uploads R2, admin orders, `/kiosk`, Maya `/api/support/chat`.
+- **Blocked human gates:** Stripe keys, OPENAI_API_KEY, ADMIN_OWNER_EMAIL seed.
+- **Next:** deploy Worker; seed admin when email known; Stripe test E2E.
+
+### 2026-09-09T21:56:06Z — x21ai sync + Lovable tasks 1-6 implementation
+- **Requested:** Point at x21ai/eatos lovable; sync brief; build backend (Stripe/Resend/Maya).
+- **Done:** Remotes retargeted; merge+push; D1 verify; admin_users+kiosk/maya migrations;
+  requireAdmin on write APIs; news/orders/uploads/kiosk/Maya code on branch.
+- **Issues:** Stripe/OpenAI/ADMIN_OWNER_EMAIL missing in Doppler; paid checkout + live Maya model blocked; admin seed pending.
+- **Stand / next:** `yarn cf:deploy`; operator adds secrets; then E2E checks.
+- **Who / where:** Cursor agent, `cursor/backend-from-brief` @ x21ai.
+- **Evidence:** D1 count OK; Slack #cursor-frustrations for secrets; files under admin/news,api/support/chat,kiosk.
+- **Timestamp:** 2026-09-09T21:56:06Z
+
+### 2026-09-09T21:47:44Z — Point origin at x21ai/eatos and sync lovable
+- **Requested:** Move setup to x21ai/eatos lovable; sync Lovable task brief; build backend.
+- **Done:** origin→x21ai; astroaii kept; merged lovable into `cursor/backend-from-brief`;
+  pushed; kept non-`shop_*` D1 table names in loader/docs.
+- **Issues:** none for sync. Stripe secrets still human gate for paid checkout.
+- **Stand / next:** Task 1 verify D1 counts on live; then admin_users gate.
+- **Who / where:** Cursor agent @ `cursor/backend-from-brief`.
+- **Evidence:** `git remote -v` origin=x21ai; branch pushed; `docs/cursor-tasks-remaining.md` present.
+- **Timestamp:** 2026-09-09T21:47:44Z
+
+
 ## Current snapshot (2026-09-09T20:00Z)
 - **Checkout stack live** on Worker `45571b24`: cart APIs, shop admin APIs,
   `/cart`, `/order-status`, `/status`, `/admin/shop`, PDP Add to cart.

@@ -1,25 +1,19 @@
-// Single article endpoint, backed by Cloudflare D1.
+// Single newsroom article endpoint, backed by Cloudflare D1 `news_posts`.
 //
 // Tool contract:
-//   get_article    GET    /api/blog/{slug}?kind=blog|news -> { data: Article }
-//   update_article PATCH  /api/blog/{slug}?kind=blog|news
+//   get_article    GET    /api/news/{slug} -> { data: Article }
+//   update_article PATCH  /api/news/{slug}
 //     body any of { title, content, body, excerpt, cover_image, category,
 //                   author_name, seo_title, seo_description, keywords,
 //                   new_slug, status, published_at } -> { data: Article }
-//   delete_article DELETE /api/blog/{slug}?kind=blog|news -> { data: { slug } }
+//   delete_article DELETE /api/news/{slug} -> { data: { slug } }
 // Errors are always { error: true, code, message }.
 
 import { queryOne, execute } from '@/lib/db/client';
 import { htmlToBlocks, blocksToHtml } from '@/lib/blog/html';
 import { adminFail, requireAdmin } from '@/lib/admin/guard';
 
-
-const TABLES = { blog: 'posts', news: 'news_posts' } as const;
-
-function tableFor(request: Request): string {
-  const kind = new URL(request.url).searchParams.get('kind');
-  return kind === 'news' ? TABLES.news : TABLES.blog;
-}
+const TABLE = 'news_posts';
 
 function fail(code: string, message: string, status: number) {
   return Response.json({ error: true, code, message }, { status });
@@ -57,9 +51,8 @@ export async function GET(
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await params;
-  const table = tableFor(request);
   const row = await queryOne<Record<string, any>>(
-    `SELECT * FROM ${table} WHERE slug = ?`,
+    `SELECT * FROM ${TABLE} WHERE slug = ?`,
     [slug]
   );
 
@@ -78,7 +71,6 @@ export async function PATCH(
   }
 
   const { slug } = await params;
-  const table = tableFor(request);
 
   let body: Record<string, any>;
   try {
@@ -88,7 +80,7 @@ export async function PATCH(
   }
 
   const current = await queryOne<Record<string, any>>(
-    `SELECT * FROM ${table} WHERE slug = ?`,
+    `SELECT * FROM ${TABLE} WHERE slug = ?`,
     [slug]
   );
   if (!current) return fail('not_found', 'No article exists with that slug.', 404);
@@ -130,7 +122,7 @@ export async function PATCH(
       : null;
 
   if (nextSlug) {
-    const clash = await queryOne(`SELECT slug FROM ${table} WHERE slug = ?`, [nextSlug]);
+    const clash = await queryOne(`SELECT slug FROM ${TABLE} WHERE slug = ?`, [nextSlug]);
     if (clash) return fail('slug_taken', 'Another article already uses that slug.', 409);
     set('slug', nextSlug);
   }
@@ -141,16 +133,16 @@ export async function PATCH(
 
   try {
     await execute(
-      `UPDATE ${table} SET ${sets.join(', ')} WHERE slug = ?`,
+      `UPDATE ${TABLE} SET ${sets.join(', ')} WHERE slug = ?`,
       [...args, slug]
     );
   } catch (error) {
-    console.error('Failed to update article', error);
+    console.error('Failed to update news article', error);
     return fail('write_failed', 'The article could not be saved.', 500);
   }
 
   const row = await queryOne<Record<string, any>>(
-    `SELECT * FROM ${table} WHERE slug = ?`,
+    `SELECT * FROM ${TABLE} WHERE slug = ?`,
     [nextSlug || slug]
   );
   return Response.json({ data: row ? toApiArticle(row) : null });
@@ -167,14 +159,13 @@ export async function DELETE(
   }
 
   const { slug } = await params;
-  const table = tableFor(request);
-  const current = await queryOne(`SELECT slug FROM ${table} WHERE slug = ?`, [slug]);
+  const current = await queryOne(`SELECT slug FROM ${TABLE} WHERE slug = ?`, [slug]);
   if (!current) return fail('not_found', 'No article exists with that slug.', 404);
 
   try {
-    await execute(`DELETE FROM ${table} WHERE slug = ?`, [slug]);
+    await execute(`DELETE FROM ${TABLE} WHERE slug = ?`, [slug]);
   } catch (error) {
-    console.error('Failed to delete article', error);
+    console.error('Failed to delete news article', error);
     return fail('write_failed', 'The article could not be deleted.', 500);
   }
 

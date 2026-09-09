@@ -1,10 +1,10 @@
-// Blog and newsroom collection endpoint, backed by Cloudflare D1.
+// Newsroom collection endpoint, backed by Cloudflare D1 `news_posts`.
 //
 // Tool contract (an AI agent can perform the same actions as the admin UI):
-//   list_articles  GET  /api/blog?kind=blog|news&status=&search=&cursor=&limit=
+//   list_articles  GET  /api/news?status=&search=&cursor=&limit=
 //     -> { data: Article[], next_cursor: string|null, has_more: boolean }
-//   create_article POST /api/blog
-//     body { kind?, title (required), slug (required), excerpt?, content?,
+//   create_article POST /api/news
+//     body { title (required), slug (required), excerpt?, content?,
 //            cover_image?, category?, author_name?, published_at?, status? }
 //     -> { data: Article } 201
 // Errors are always { error: true, code, message }.
@@ -13,13 +13,7 @@ import { queryAll, queryOne, execute } from '@/lib/db/client';
 import { htmlToBlocks, blocksToHtml, excerptFromBlocks } from '@/lib/blog/html';
 import { adminFail, requireAdmin } from '@/lib/admin/guard';
 
-type Kind = 'blog' | 'news';
-
-const TABLES: Record<Kind, string> = { blog: 'posts', news: 'news_posts' };
-
-function tableFor(value: string | null): string {
-  return TABLES[(value === 'news' ? 'news' : 'blog') as Kind];
-}
+const TABLE = 'news_posts';
 
 function fail(code: string, message: string, status: number) {
   return Response.json({ error: true, code, message }, { status });
@@ -54,7 +48,6 @@ function toApiArticle(row: Record<string, any>) {
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
-  const table = tableFor(url.searchParams.get('kind'));
   const status = url.searchParams.get('status');
   const search = (url.searchParams.get('search') || '').trim();
   const cursor = url.searchParams.get('cursor');
@@ -84,7 +77,7 @@ export async function GET(request: Request) {
   const rows = await queryAll<Record<string, any>>(
     `SELECT slug, title, excerpt, cover_image, category, author_name,
             published_at, status, seo_title, seo_description, keywords, body, content_html
-       FROM ${table} ${clause}
+       FROM ${TABLE} ${clause}
       ORDER BY published_at DESC, slug ASC
       LIMIT ?`,
     [...args, limit + 1]
@@ -123,7 +116,6 @@ export async function POST(request: Request) {
     return fail('invalid_json', 'The request body must be JSON.', 400);
   }
 
-  const table = tableFor(body.kind ?? null);
   const title = typeof body.title === 'string' ? body.title.trim() : '';
   const slug = typeof body.slug === 'string' ? body.slug.trim() : '';
 
@@ -131,7 +123,7 @@ export async function POST(request: Request) {
     return fail('validation_failed', 'Both title and slug are required.', 400);
   }
 
-  const existing = await queryOne(`SELECT slug FROM ${table} WHERE slug = ?`, [slug]);
+  const existing = await queryOne(`SELECT slug FROM ${TABLE} WHERE slug = ?`, [slug]);
   if (existing) {
     return fail('slug_taken', 'An article with that slug already exists.', 409);
   }
@@ -144,7 +136,7 @@ export async function POST(request: Request) {
 
   try {
     await execute(
-      `INSERT INTO ${table}
+      `INSERT INTO ${TABLE}
          (slug, title, excerpt, body, content_html, cover_image, category,
           author_name, published_at, status, seo_title, seo_description, keywords)
        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`,
@@ -165,12 +157,12 @@ export async function POST(request: Request) {
       ]
     );
   } catch (error) {
-    console.error('Failed to create article', error);
+    console.error('Failed to create news article', error);
     return fail('write_failed', 'The article could not be saved.', 500);
   }
 
   const row = await queryOne<Record<string, any>>(
-    `SELECT * FROM ${table} WHERE slug = ?`,
+    `SELECT * FROM ${TABLE} WHERE slug = ?`,
     [slug]
   );
 

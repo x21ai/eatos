@@ -1,5 +1,5 @@
 import { fail, ok, readJson, newId, moneyMinor } from '@/lib/api';
-import { execute, queryAll, queryOne } from '@/lib/db/client';
+import { execute } from '@/lib/db/client';
 import { getCartByToken, listCartItems } from '@/lib/shop/cart';
 import { createCheckoutSession, isStripeConfigured } from '@/lib/payments/stripe';
 
@@ -8,12 +8,39 @@ function orderNumber() {
   return `EO-${n.slice(-8)}`;
 }
 
+function resolveSource(raw: unknown): 'web' | 'kiosk' {
+  return raw === 'kiosk' ? 'kiosk' : 'web';
+}
+
+function resolveCheckoutEmail(opts: {
+  source: 'web' | 'kiosk';
+  email: string;
+  deviceId: string;
+}): string | null {
+  if (opts.email && opts.email.includes('@')) return opts.email;
+  if (opts.source !== 'kiosk') return null;
+  if (opts.deviceId) return `kiosk+${opts.deviceId}@eatos.dev`;
+  return 'kiosk@eatos.dev';
+}
+
 export async function POST(request: Request) {
   const body = (await readJson(request)) || {};
   const token = typeof body.cart_token === 'string' ? body.cart_token : '';
-  const email = typeof body.email === 'string' ? body.email.trim().toLowerCase() : '';
+  const emailRaw = typeof body.email === 'string' ? body.email.trim().toLowerCase() : '';
+  const source = resolveSource(body.source);
+  const deviceId =
+    typeof body.device_id === 'string'
+      ? body.device_id.trim()
+      : typeof body.deviceId === 'string'
+        ? body.deviceId.trim()
+        : '';
+
   if (!token) return fail('validation_failed', 'cart_token is required.');
-  if (!email || !email.includes('@')) return fail('validation_failed', 'A valid email is required.');
+
+  const email = resolveCheckoutEmail({ source, email: emailRaw, deviceId });
+  if (!email || !email.includes('@')) {
+    return fail('validation_failed', 'A valid email is required.');
+  }
 
   const cart = await getCartByToken(token);
   if (!cart) return fail('not_found', 'Cart not found.', 404);
@@ -37,9 +64,9 @@ export async function POST(request: Request) {
     await execute(
       `INSERT INTO orders (
          id, order_number, cart_id, email, status, currency,
-         subtotal_amount, shipping_amount, tax_amount, total_amount, provider
-       ) VALUES (?, ?, ?, ?, 'pending', ?, ?, 0, 0, ?, 'stripe')`,
-      [id, number, cart.id, email, currency, subtotal, subtotal],
+         subtotal_amount, shipping_amount, tax_amount, total_amount, provider, source
+       ) VALUES (?, ?, ?, ?, 'pending', ?, ?, 0, 0, ?, 'stripe', ?)`,
+      [id, number, cart.id, email, currency, subtotal, subtotal, source],
     );
 
     for (const item of items) {
@@ -60,6 +87,12 @@ export async function POST(request: Request) {
     }
 
     const origin = new URL(request.url).origin;
+    const successPath =
+      source === 'kiosk'
+        ? `/kiosk/receipt?order=${encodeURIComponent(number)}&email=${encodeURIComponent(email)}&paid=1`
+        : `/order-status?order=${encodeURIComponent(number)}&email=${encodeURIComponent(email)}&paid=1`;
+    const cancelPath = source === 'kiosk' ? '/kiosk?cancelled=1' : '/cart?cancelled=1';
+
     const session = await createCheckoutSession({
       orderId: id,
       orderNumber: number,
@@ -71,8 +104,8 @@ export async function POST(request: Request) {
         currency: i.currency,
         productSlug: i.product_slug,
       })),
-      successUrl: `${origin}/order-status?order=${encodeURIComponent(number)}&email=${encodeURIComponent(email)}&paid=1`,
-      cancelUrl: `${origin}/cart?cancelled=1`,
+      successUrl: `${origin}${successPath}`,
+      cancelUrl: `${origin}${cancelPath}`,
     });
 
     await execute(
@@ -84,6 +117,8 @@ export async function POST(request: Request) {
       order_id: id,
       order_number: number,
       checkout_url: session.url,
+      source,
+      email,
       total: moneyMinor(subtotal, currency),
     }, 201);
   } catch (error) {

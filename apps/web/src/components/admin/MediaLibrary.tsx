@@ -11,12 +11,10 @@ import {
   Link as LinkIcon,
   Settings2,
 } from "lucide-react";
-import useUpload from "@/utils/useUpload";
 import { toast } from "sonner";
 
 export default function MediaLibrary({ onSelect, onClose }) {
   const [activeTab, setActiveTab] = useState("library"); // library | upload | url | ai
-  const [upload] = useUpload();
   const queryClient = useQueryClient();
   const [uploading, setUploading] = useState(false);
 
@@ -33,17 +31,23 @@ export default function MediaLibrary({ onSelect, onClose }) {
   const [generating, setGenerating] = useState(false);
   const fileInputRef = useRef(null);
 
-  // Fetch Media
+  // Fetch recent shop uploads from R2 (admin uploads API)
   const { data: media = [], isLoading } = useQuery({
     queryKey: ["media-library"],
     queryFn: async () => {
-      const res = await fetch("/api/media");
+      const res = await fetch("/api/admin/uploads?limit=100");
       if (!res.ok) throw new Error("Failed to fetch media");
-      return res.json();
+      const json = await res.json();
+      const items = Array.isArray(json?.data) ? json.data : [];
+      return items.map((item, index) => ({
+        id: item.key || item.url || String(index),
+        url: item.url,
+        filename: item.key?.split("/").pop() || "image",
+      }));
     },
   });
 
-  // Save to Media Library DB
+  // Persist URL imports / AI gens into legacy media table when available
   const saveMediaMutation = useMutation({
     mutationFn: async (data) => {
       const res = await fetch("/api/media", {
@@ -117,18 +121,26 @@ export default function MediaLibrary({ onSelect, onClose }) {
         img.onerror = reject;
       });
 
-      const { url, error } = await upload({ file: processedFile });
-      if (error) throw new Error(error);
+      const formData = new FormData();
+      formData.append("file", processedFile);
+      formData.append("product_slug", "misc");
 
-      await saveMediaMutation.mutateAsync({
-        url,
-        filename: processedFile.name,
-        mime_type: processedFile.type,
+      const uploadRes = await fetch("/api/admin/uploads", {
+        method: "POST",
+        body: formData,
       });
+      const uploadJson = await uploadRes.json().catch(() => ({}));
+      if (!uploadRes.ok) {
+        throw new Error(
+          uploadJson?.message || uploadJson?.error || "Upload failed",
+        );
+      }
+      const url = uploadJson?.data?.url;
+      if (!url) throw new Error("Upload failed: no URL returned");
 
+      queryClient.invalidateQueries(["media-library"]);
+      setActiveTab("library");
       toast.success("Image uploaded!");
-      // If we are just uploading, maybe go back to library, or select it?
-      // Usually users want to select it immediately.
       onSelect(url);
     } catch (err) {
       toast.error("Upload failed");

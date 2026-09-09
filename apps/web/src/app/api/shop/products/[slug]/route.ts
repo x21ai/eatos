@@ -1,5 +1,7 @@
 import { fail, ok, readJson } from '@/lib/api';
 import { execute, queryOne, parseJson } from '@/lib/db/client';
+import { adminFail, requireAdmin } from '@/lib/admin/guard';
+
 
 function toProduct(row: Record<string, any>) {
   return {
@@ -33,6 +35,12 @@ export async function PATCH(
   request: Request,
   context: { params: Promise<{ slug: string }> },
 ) {
+  try {
+    await requireAdmin(request);
+  } catch (error) {
+    return adminFail(error);
+  }
+
   const { slug } = await context.params;
   const existing = await queryOne<Record<string, any>>(`SELECT * FROM products WHERE slug = ?`, [slug]);
   if (!existing) return fail('not_found', 'Product not found.', 404);
@@ -98,6 +106,12 @@ export async function DELETE(
   _request: Request,
   context: { params: Promise<{ slug: string }> },
 ) {
+  try {
+    await requireAdmin(request);
+  } catch (error) {
+    return adminFail(error);
+  }
+
   const { slug } = await context.params;
   const existing = await queryOne(`SELECT slug FROM products WHERE slug = ?`, [slug]);
   if (!existing) return fail('not_found', 'Product not found.', 404);

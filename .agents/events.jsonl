@@ -2,3 +2,6 @@
 {"ts":"2026-09-07T17:18:55Z","agent":"cursor-agent","action":"land","task":"sync-lovable","detail":"ff-only pull AstroAii/eatos lovable -> 36a15654; local==origin; preview :8080 restarted; prod still stale"}
 {"ts":"2026-09-07T17:19:12Z","agent":"cursor-agent","action":"land","task":"sync-lovable","detail":"ff-only pull AstroAii/eatos lovable -> 36a15654; local==origin; preview :8080; prod still stale"}
 {"ts":"2026-09-08T00:50:38Z","agent":"cursor-agent","action":"claim","task":"cursor-handoff","detail":"loaded docs/cursor-handoff.md @ da46b7fb; supabase-eatos MCP has no posts/shop tables; awaiting project confirm for A"}
+{"ts":"2026-09-09T21:46:08Z","agent":"cursor-agent","action":"claim","task":"git-remote-sync","detail":"origin->x21ai/eatos; merging lovable into cursor branch"}
+{"ts":"2026-09-09T21:47:44Z","agent":"cursor-agent","action":"land","task":"git-remote-sync","detail":"origin x21ai/eatos; branch cursor/backend-from-brief pushed"}
+{"ts":"2026-09-09T21:51:13Z","agent":"cursor-agent","action":"heartbeat","task":"t2-t6-parallel","detail":"5 writers dispatched; waiting on news uploads orders kiosk maya"}

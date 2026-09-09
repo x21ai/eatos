@@ -1,6 +1,8 @@
 // Shop product admin API (mirrors /api/blog list/create shape).
 import { fail, ok, okList, readJson, newId } from '@/lib/api';
 import { execute, queryAll, queryOne, parseJson } from '@/lib/db/client';
+import { adminFail, requireAdmin } from '@/lib/admin/guard';
+
 
 function toProduct(row: Record<string, any>) {
   return {
@@ -54,6 +56,12 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
+  try {
+    await requireAdmin(request);
+  } catch (error) {
+    return adminFail(error);
+  }
+
   const body = (await readJson(request)) || {};
   const title = typeof body.title === 'string' ? body.title.trim() : '';
   let slug = typeof body.slug === 'string' ? body.slug.trim() : '';

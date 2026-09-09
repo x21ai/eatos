@@ -257,19 +257,77 @@ export default function AgentAssistant() {
     if (!text) return;
     setTriage(null);
     setInput('');
-    setTurns((prev) => [...prev, { id: `${Date.now()}-q`, role: 'visitor', text }]);
-    setThinking(true);
-    setPending(text);
+    setTurns((prev) => {
+      const history = [];
+      for (const turn of prev) {
+        if (turn.role === 'visitor' && turn.text) {
+          history.push({ role: 'user', content: turn.text });
+        } else if (turn.role === 'agent' && turn.reply?.kind === 'answer' && turn.reply.answer) {
+          history.push({ role: 'assistant', content: turn.reply.answer });
+        }
+      }
+      setThinking(true);
+      setPending({ question: text, history });
+      return [...prev, { id: `${Date.now()}-q`, role: 'visitor', text }];
+    });
   }, []);
 
-  // Answer once the index is available. Keeps the "thinking" state honest: it
-  // reflects the index actually loading, not a fake delay.
+  // Prefer live Maya (/api/support/chat). On any failure, fall back to the
+  // bundled composeReply path so the panel never shows a raw provider error.
   useEffect(() => {
     if (!pending || !index) return;
-    const reply = composeReply(pending, index);
-    setTurns((prev) => [...prev, { id: `${Date.now()}-a`, role: 'agent', reply }]);
-    setThinking(false);
-    setPending(null);
+    let cancelled = false;
+    const { question, history } = pending;
+    const traceId =
+      typeof crypto !== 'undefined' && crypto.randomUUID
+        ? crypto.randomUUID()
+        : `maya-${Date.now()}`;
+
+    (async () => {
+      let reply = null;
+      try {
+        const res = await fetch('/api/support/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ question, history, trace_id: traceId }),
+        });
+        if (!res.ok) throw new Error(`chat_http_${res.status}`);
+        const json = await res.json();
+        if (json?.data?.reply?.kind) {
+          reply = json.data.reply;
+        } else if (typeof json?.data?.answer === 'string') {
+          const sources = Array.isArray(json.data.sources) ? json.data.sources : [];
+          if (sources[0]) {
+            reply = {
+              kind: 'answer',
+              question,
+              answer: json.data.answer,
+              outline: [],
+              source: sources[0],
+              related: sources.slice(1),
+              product: null,
+            };
+          } else {
+            reply = { kind: 'miss', question, related: sources, product: null };
+          }
+        } else {
+          throw new Error('chat_bad_body');
+        }
+      } catch {
+        reply = composeReply(question, index);
+      }
+      if (cancelled) return;
+      setTurns((prev) => [
+        ...prev,
+        { id: `${Date.now()}-a`, role: 'agent', reply, traceId },
+      ]);
+      setThinking(false);
+      setPending(null);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
   }, [pending, index]);
 
   useEffect(() => {
