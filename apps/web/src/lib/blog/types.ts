@@ -21,12 +21,13 @@ export interface Article {
   body: BlogBodyBlock[];
 }
 
-/** Row shape expected from Supabase. Column names are the contract. */
+/** Row shape expected from D1 (or Supabase). Column names are the contract. */
 export interface PostRow {
   slug: string;
   title: string;
   excerpt: string | null;
-  body: BlogBodyBlock[] | null;
+  /** JSON array, or a JSON string when read from SQLite TEXT. */
+  body: BlogBodyBlock[] | string | null;
   cover_image: string | null;
   category: string | null;
   author_name: string | null;
@@ -40,6 +41,19 @@ export const POST_COLUMNS =
 export const POST_LIST_COLUMNS =
   'slug,title,excerpt,cover_image,category,author_name,published_at,status';
 
+function parseBody(body: PostRow['body']): BlogBodyBlock[] {
+  if (Array.isArray(body)) return body;
+  if (typeof body === 'string' && body.length > 0) {
+    try {
+      const parsed = JSON.parse(body);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  }
+  return [];
+}
+
 export function rowToArticle(row: PostRow): Article {
   return {
     slug: row.slug,
@@ -49,6 +63,6 @@ export function rowToArticle(row: PostRow): Article {
     author: row.author_name || 'eatOS Staff',
     excerpt: row.excerpt || '',
     image: row.cover_image || null,
-    body: Array.isArray(row.body) ? row.body : [],
+    body: parseBody(row.body),
   };
 }

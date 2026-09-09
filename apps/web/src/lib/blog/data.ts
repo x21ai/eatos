@@ -1,18 +1,12 @@
 // @ts-nocheck
-// Reads blog and newsroom articles from the customer-owned Supabase project,
-// falling back to the imported content that ships with the site whenever the
-// environment keys or tables are not there yet. Pages call these helpers, never
-// the raw tables.
+// Reads blog and newsroom articles from Cloudflare D1, falling back to the
+// imported JSON that ships with the site when D1 is unavailable or empty.
+// Pages call these helpers, never the raw tables.
 
-import { supabaseSelect, isSupabaseConfigured } from '@/lib/supabase/rest';
-import { POST_COLUMNS, POST_LIST_COLUMNS, rowToArticle } from './types';
+import { getPublishedArticleRow, listPublishedArticleRows } from '@/lib/d1/content';
+import { rowToArticle } from './types';
 import { posts as importedPosts } from '@/app/blog/content';
 import { newsItems as importedNews } from '@/app/news/content';
-
-const TABLES = {
-  blog: 'posts',
-  news: 'news_posts',
-};
 
 const FALLBACK = {
   blog: importedPosts,
@@ -24,36 +18,23 @@ function byDateDesc(a, b) {
 }
 
 export async function listArticles(kind = 'blog') {
-  if (!isSupabaseConfigured()) return FALLBACK[kind];
-
-  const { data, error } = await supabaseSelect({
-    table: TABLES[kind],
-    select: POST_LIST_COLUMNS,
-    filters: { status: 'eq.published' },
-    order: 'published_at.desc',
-    revalidate: 60,
-  });
-
-  if (error || !data || data.length === 0) return FALLBACK[kind];
-  return data.map(rowToArticle).sort(byDateDesc);
+  try {
+    const rows = await listPublishedArticleRows(kind);
+    if (!rows || rows.length === 0) return FALLBACK[kind];
+    return rows.map(rowToArticle).sort(byDateDesc);
+  } catch {
+    return FALLBACK[kind];
+  }
 }
 
 export async function getArticle(slug, kind = 'blog') {
-  if (!isSupabaseConfigured()) {
-    return FALLBACK[kind].find((p) => p.slug === slug) || null;
+  try {
+    const row = await getPublishedArticleRow(kind, slug);
+    if (row) return rowToArticle(row);
+  } catch {
+    // fall through to bundled content
   }
-
-  const { data, error } = await supabaseSelect({
-    table: TABLES[kind],
-    select: POST_COLUMNS,
-    filters: { slug: `eq.${slug}`, status: 'eq.published', limit: '1' },
-    revalidate: 60,
-  });
-
-  if (error || !data || data.length === 0) {
-    return FALLBACK[kind].find((p) => p.slug === slug) || null;
-  }
-  return rowToArticle(data[0]);
+  return FALLBACK[kind].find((p) => p.slug === slug) || null;
 }
 
 export async function getRelatedArticles(slug, kind = 'blog', count = 3) {

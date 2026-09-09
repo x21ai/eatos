@@ -1,5 +1,10 @@
 # Content schema for your own Supabase project
 
+> **Superseded for s.eatos.dev:** the live site uses **Cloudflare D1** only.
+> See [docs/LOVABLE-D1.md](./LOVABLE-D1.md) and migration
+> `apps/web/migrations/0003_content_catalog.sql`. Column names below remain the
+> contract; storage is SQLite TEXT for JSON fields instead of Postgres jsonb/arrays.
+
 The site now reads blog, newsroom and shop content from your Supabase project
 when credentials are present, and falls back to the content bundled in the site
 when they are not. No database, migration or secret was created here: build the

@@ -15,15 +15,16 @@ const nextConfig = {
   // Force-include better-auth's dist files. Next traces imports under the
   // `node` condition, so the `workerd`-only files (e.g. instrumentation/
   // pure.index.mjs) are never copied, and the OpenNext (Workers) esbuild pass
-  // then fails to resolve them. Including the whole dist trees fixes that.
+  // then fails to resolve them. Yarn hoists these to the monorepo root
+  // node_modules, so paths must point there (not apps/web/node_modules).
   outputFileTracingIncludes: {
     '/**': [
-      './node_modules/@better-auth/core/dist/**',
-      './node_modules/better-auth/dist/**',
+      '../../node_modules/@better-auth/core/dist/**',
+      '../../node_modules/better-auth/dist/**',
     ],
     '**/*': [
-      './node_modules/@better-auth/core/dist/**',
-      './node_modules/better-auth/dist/**',
+      '../../node_modules/@better-auth/core/dist/**',
+      '../../node_modules/better-auth/dist/**',
     ],
   },
   // Resolve leftover `@auth/create` imports to local shims (see src/__create/@auth/create).
@@ -187,18 +188,7 @@ const nextConfig = {
 
 module.exports = nextConfig;
 
-// Enables Cloudflare bindings (D1 `DB`, R2 cache) inside `next dev` so
-// getCloudflareContext() works locally the same way it does on Workers.
-// No-op in production builds.
-if (process.env.NODE_ENV === 'development') {
-  (async () => {
-    try {
-      const { initOpenNextCloudflareForDev } = await import(
-        '@opennextjs/cloudflare'
-      );
-      await initOpenNextCloudflareForDev();
-    } catch {
-      // Adapter not available (e.g. plain `next build`); safe to ignore.
-    }
-  })();
-}
+// Do not call initOpenNextCloudflareForDev() here: miniflare persistence fails
+// under this iCloud workspace path ("invalid digit found in string") and takes
+// down `next dev`. Production Workers still get D1 via wrangler bindings.
+// Blog/shop readers fall back to bundled JSON when getCloudflareContext fails.

@@ -1,17 +1,63 @@
 # eatOS 2.0 — Handoff Log
 
-## Current snapshot (2026-09-08T00:50Z)
-- **Cursor handoff loaded:** [docs/cursor-handoff.md](cursor-handoff.md) (+ schema
-  [supabase-content-schema.md](supabase-content-schema.md), wiring
-  [backend-wiring.md](backend-wiring.md)). Local `lovable@da46b7fb` = `origin/lovable`
-  (pulled 74 commits; includes seed SQL + Supabase read layer).
-- **Frontend done:** 81 routes; blog/news/shop read Supabase when env set, else JSON
-  fallbacks. No cart/checkout/admin write path yet. Tasks A-F ordered in the handoff.
-- **Blocker for Task A:** MCP `user-supabase-eatos` → `pizmdmweivuquwxlsizd.supabase.co`
-  has workspaces/rooms/marketing tables, **no** `posts` / shop tables. Do not create
-  content schema there until operator confirms that project (or a different one) is
-  the eatOS content target.
-- Preview / prod sync state unchanged from prior entry (`s.eatos.dev` still stale).
+## Current snapshot (2026-09-09T15:55Z)
+- **D1-only content:** migration `0003_content_catalog.sql`; readers in
+  `lib/blog/data.ts` + `lib/shop/data.ts` use D1 via `lib/d1/content.ts` (JSON
+  fallback when bindings missing). Remote D1 seeded: 966 posts, 97 news, 52
+  products, 8 collections. Scripts: `export-d1-seed.mjs`, `seed-d1.mjs`.
+- **LIVE:** Worker `eatos-web` version `8fced54c-4eb8-404d-9da3-312ade78e345`
+  (D1 readers + latest Lovable design through `746d437e` Maya launcher). Prod
+  smoke 200 on `/`, `/blog`, `/news`, `/shop`, blog detail.
+- **Lovable:** paste prompt in [docs/LOVABLE-D1.md](LOVABLE-D1.md). No Cloudflare
+  tokens to Lovable; API-only integration.
+- **Local dev:** if `next dev` crashes with Turbopack "Failed to open database",
+  run `rm -rf apps/web/.next` then `yarn dev`. iCloud path skips local D1 bindings.
+
+### 2026-09-09T15:55Z — D1-only content + Lovable guidance
+- **Requested:** Latest design, D1 for everything, pages working, Lovable access.
+- **Done:** Merged `origin/lovable` @ `746d437e`; D1 schema+seed+readers; deployed
+  `8fced54c`; wrote `docs/LOVABLE-D1.md`; prod verified.
+- **Issues:** Local `next dev` needs clean `.next` after Turbopack cache poison;
+  Lovable cannot hold D1 credentials (by design).
+- **Stand / next:** Wire newsletter/report-fraud/cart APIs; optional commit branch.
+- **Who / where:** Cursor agent, `cursor/document-cursor-handoff-status`.
+- **Evidence:** remote D1 counts; `s.eatos.dev` 200s; `docs/LOVABLE-D1.md`.
+- **Timestamp:** 2026-09-09T15:55:00Z
+
+## Prior snapshot (2026-09-08T22:55Z)
+- **LIVE https://s.eatos.dev DEPLOYED:** Worker `eatos-web` version
+  `65eb99e7-52c4-49ef-99cd-9dd5a4830019` via `doppler run --project x21 --config
+  prd_cloudflare -- yarn cf:deploy` from `apps/web`. Homepage now matches Lovable
+  (title RMS + `$2 Billion`). Zone purge `eatos.dev` success.
+- **Deploy fix:** `apps/web/next.config.js` `outputFileTracingIncludes` paths updated
+  to monorepo-root `../../node_modules/@better-auth/...` so OpenNext can resolve
+  `@better-auth/core/instrumentation` (workerd `pure.index.mjs`).
+- Branch: `cursor/document-cursor-handoff-status` includes design tip `82c9087d`.
+- Task A Supabase project confirm still open.
+
+### 2026-09-08T22:55Z — Deploy Lovable tip to s.eatos.dev
+- **Requested:** Deploy synced site/design to https://s.eatos.dev.
+- **Done:** Fixed better-auth NFT paths; OpenNext build+deploy; Worker version
+  `65eb99e7`; zone purge_everything on eatos.dev; verified live HTML markers.
+- **Issues:** Full R2 incremental-cache wipe was slow/hung on first attempt; zone
+  purge + verify deploy were enough for homepage to flip. Cap R2 deletes next time.
+- **Stand / next:** Confirm Supabase for content Task A; optional commit of
+  next.config.js deploy fix.
+- **Who / where:** Cursor agent; Doppler `x21/prd_cloudflare` + `servers-teamkeys/stg`.
+- **Evidence:** `s.eatos.dev` title + `$2 Billion` (was `$300M` / old title).
+- **Rollback:** Cloudflare Workers versions → previous `eatos-web` version before
+  `65eb99e7`.
+- **Timestamp:** 2026-09-08T22:55:00Z
+
+### 2026-09-08T22:42Z — Sync to latest Lovable design
+- **Requested:** Sync; confirm latest site and design.
+- **Done:** Fetched; was 11 commits behind; merged `origin/lovable` (`82c9087d`);
+  `yarn install`; restarted `yarn dev`; HTTP 200 on `/`, kiosk, platform, pricing.
+- **Issues:** Production still stale until explicit Cloudflare deploy.
+- **Stand / next:** Deploy to `s.eatos.dev` when ready; confirm Supabase for Task A.
+- **Who / where:** Cursor agent, `cursor/document-cursor-handoff-status@58a0bd16`.
+- **Evidence:** local/Lovable both `$2 Billion` + RMS title; tip includes kiosk portrait assets.
+- **Timestamp:** 2026-09-08T22:42:00Z
 
 ### 2026-09-08T00:50Z — Loaded docs/cursor-handoff.md
 - **Requested:** Operator pointed at the Cursor handoff (current state, paste prompt,
