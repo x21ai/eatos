@@ -26,6 +26,7 @@ import { AGENT_OPEN_EVENT } from './agentBus';
 import { composeReply, starterQuestions } from './retrieval';
 import {
   AGENT_NAME,
+  AGENT_SUBTITLE,
   buildEscalation,
   productRoutes,
   severityOptions,
@@ -237,6 +238,8 @@ function AnswerBody({ reply, onTriage }) {
 export default function AgentAssistant() {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
+  const [preview, setPreview] = useState(false);
+  const previewTimer = useRef(null);
   const [turns, setTurns] = useState([]);
   const [input, setInput] = useState('');
   const [thinking, setThinking] = useState(false);
