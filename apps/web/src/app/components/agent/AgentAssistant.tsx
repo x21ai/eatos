@@ -305,6 +305,35 @@ export default function AgentAssistant() {
     setTriage({ step: product ? 'severity' : 'product', product: product ?? null, severity: null, note: '' });
   }, []);
 
+  // Hover preview is pointer-only: on touch the icon simply opens the panel.
+  const showPreview = useCallback(() => {
+    if (typeof window === 'undefined') return;
+    if (!window.matchMedia?.('(hover: hover)').matches) return;
+    if (previewTimer.current) window.clearTimeout(previewTimer.current);
+    setPreview(true);
+  }, []);
+
+  const hidePreview = useCallback(() => {
+    if (previewTimer.current) window.clearTimeout(previewTimer.current);
+    previewTimer.current = window.setTimeout(() => setPreview(false), 180);
+  }, []);
+
+  useEffect(() => {
+    if (!preview) return;
+    const onKey = (event) => {
+      if (event.key === 'Escape') setPreview(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [preview]);
+
+  useEffect(
+    () => () => {
+      if (previewTimer.current) window.clearTimeout(previewTimer.current);
+    },
+    [],
+  );
+
   const transcriptSummary = useMemo(() => {
     const asked = turns.filter((t) => t.role === 'visitor').map((t) => t.text);
     const lines = ['Sent from the eatOS support agent.', ''];
@@ -435,6 +464,7 @@ export default function AgentAssistant() {
               Online 24/7
             </p>
             <h2 className="mt-1.5 truncate text-base font-bold tracking-tight text-white">{AGENT_NAME}</h2>
+            <p className="mt-0.5 truncate text-[11px] text-zinc-500">{AGENT_SUBTITLE}</p>
           </div>
           <button
             type="button"
