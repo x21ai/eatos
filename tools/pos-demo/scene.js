@@ -141,7 +141,7 @@ const TAPS = [
   T.tapCharge, T.tapCash, T.tapExact, T.tapChargeCash,
 ];
 
-const EMAIL = 'johndoe@eatos.com';
+const EMAIL = 'owner@your-restaurant.com';
 
 function pressed(t, at) {
   return t >= at && t < at + 0.16;
