@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "asset_id": "c407bdd4-cbf1-4b24-8fda-334d812c609b",
+  "asset_id": "fe63ca90-f73e-408f-a6a8-ad7ce30a55f3",
   "project_id": "b675eaf0-f678-4036-aa59-3142eda6c8f6",
-  "url": "/__l5e/assets-v1/c407bdd4-cbf1-4b24-8fda-334d812c609b/inventoryos-demo.mp4",
-  "r2_key": "a/v1/b675eaf0-f678-4036-aa59-3142eda6c8f6/c407bdd4-cbf1-4b24-8fda-334d812c609b/inventoryos-demo.mp4",
+  "url": "/__l5e/assets-v1/fe63ca90-f73e-408f-a6a8-ad7ce30a55f3/inventoryos-demo.mp4",
+  "r2_key": "a/v1/b675eaf0-f678-4036-aa59-3142eda6c8f6/fe63ca90-f73e-408f-a6a8-ad7ce30a55f3/inventoryos-demo.mp4",
   "original_filename": "inventoryos-demo.mp4",
-  "size": 2574720,
+  "size": 1543438,
   "content_type": "video/mp4",
-  "created_at": "2026-08-27T17:26:16Z"
+  "created_at": "2026-09-10T11:53:31Z"
 }
