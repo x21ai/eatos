@@ -6,6 +6,7 @@ import { motion } from 'motion/react';
 import { ChevronRight, Sparkles, Star } from 'lucide-react';
 import { showcaseVideos } from '@/components/marketing/customerShowcase';
 import heroPoster from '../../../assets/svc-full-service-v2.jpg.asset.json';
+import { stats } from '../../homepage2/data/stats';
 
 const CLIP_MS = 7000;
 
