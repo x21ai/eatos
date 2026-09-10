@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "asset_id": "f6b168c4-086a-4835-bcdd-d717d0cdbb8d",
+  "asset_id": "db5653a4-7dd1-4b6f-b44a-f7a34b2a9d09",
   "project_id": "b675eaf0-f678-4036-aa59-3142eda6c8f6",
-  "url": "/__l5e/assets-v1/f6b168c4-086a-4835-bcdd-d717d0cdbb8d/kds-demo.mp4",
-  "r2_key": "a/v1/b675eaf0-f678-4036-aa59-3142eda6c8f6/f6b168c4-086a-4835-bcdd-d717d0cdbb8d/kds-demo.mp4",
+  "url": "/__l5e/assets-v1/db5653a4-7dd1-4b6f-b44a-f7a34b2a9d09/kds-demo.mp4",
+  "r2_key": "a/v1/b675eaf0-f678-4036-aa59-3142eda6c8f6/db5653a4-7dd1-4b6f-b44a-f7a34b2a9d09/kds-demo.mp4",
   "original_filename": "kds-demo.mp4",
-  "size": 1409206,
+  "size": 1303823,
   "content_type": "video/mp4",
-  "created_at": "2026-09-10T08:07:02Z"
+  "created_at": "2026-09-10T08:40:38Z"
 }
