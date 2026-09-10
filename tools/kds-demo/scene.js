@@ -217,7 +217,7 @@ const TAPS = [
 const STATES = ['Seen', 'Preparing', 'Ready', 'Served'];
 const STATE_CLASS = ['', 'prep', 'ready', 'served'];
 
-const EMAIL = 'johndoe@eatos.com';
+const EMAIL = 'owner@your-restaurant.com';
 const pressed = (t, at) => t >= at && t < at + 0.16;
 
 window.__render = function (t) {
