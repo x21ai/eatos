@@ -46,7 +46,7 @@ export function InsightsSection() {
           {latest.map((post) => (
             <a
               key={post.slug}
-              href={`/post/${post.slug}`}
+              href={`/blogs/${post.slug}`}
               className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white ring-1 ring-zinc-200 transition-shadow hover:shadow-lg"
             >
               {post.image ? (
