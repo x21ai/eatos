@@ -2,7 +2,7 @@
 'use client';
 
 import { NewsletterSection } from '@/components/NewsletterSection';
-import { CustomerShowcase } from '@/components/marketing/CustomerShowcase';
+
 import { HeroVideoSection } from './sections/HeroVideoSection';
 import { CapabilityListSection } from './sections/CapabilityListSection';
 import { FeatureCardsSection } from './sections/FeatureCardsSection';
