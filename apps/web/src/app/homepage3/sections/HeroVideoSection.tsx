@@ -162,6 +162,26 @@ export function HeroVideoSection() {
             <Sparkles size={18} /> Explore Intelligence
           </a>
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.3 }}
+          className="mt-12 grid grid-cols-2 gap-6 border-t border-white/15 pt-8 text-left md:mt-20 md:grid-cols-4 md:gap-10"
+        >
+          {stats.map((stat) => (
+            <div key={stat.label}>
+              <div className="flex items-center gap-2">
+                <stat.icon size={16} style={{ color: 'var(--brand-on-dark, #ff4fa3)' }} />
+                <span className="text-lg font-semibold tracking-tight text-white md:text-2xl">
+                  {stat.value}
+                  {stat.unit}
+                </span>
+              </div>
+              <p className="mt-2 text-xs leading-relaxed text-gray-400 md:text-sm">{stat.label}</p>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
