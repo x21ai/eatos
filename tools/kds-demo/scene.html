@@ -163,24 +163,40 @@ body{font-family:'Mont',sans-serif;color:#111;-webkit-font-smoothing:antialiased
 <body>
 <div id="stage">
 
-  <!-- SIGN IN -->
+  <!-- ACTIVATE DEVICE -->
   <div class="screen" id="signin">
-    <div class="photo"><img src="signin-photo.jpg" alt=""/></div>
-    <div class="cap">Keep every ticket on time</div>
-    <div class="dots"><i></i><i class="on"></i><i></i><i></i></div>
-    <div class="panel">
-      <div class="logo"><img src="logo.png" alt="eatOS"/><s>Restaurants Made Simple</s></div>
-      <h1>Kitchen Display System</h1>
-      <div class="flabel">Email Address</div>
-      <div class="field" id="emailf"><span id="emailv" class="ph">Enter Email</span></div>
-      <div class="flabel">Password</div>
-      <div class="field" id="passf"><span id="passv" class="ph">Enter Password</span><span class="eye">&#9788;</span></div>
-      <div id="signbtn">Sign in</div>
-      <div class="forgot">Forgot Your Password?</div>
-      <div class="create">Create an account</div>
-      <div class="ver">4.10.2 (+11350) / 3.44.2 / 24.08.26</div>
+    <div class="alogo"><img src="logo.png" alt="eatOS"/></div>
+    <h1>Activate your device</h1>
+    <div class="asub">Activate your device using one of the options below.</div>
+    <div class="cols">
+      <div class="acol">
+        <div class="aopt">OPTION 1 <i>&#9432;</i></div>
+        <h2>Scan this QR code</h2>
+        <p>Scan the QR code below using your mobile or tablet camera.</p>
+        <div class="qr"><div class="qrg" id="qrg"></div></div>
+      </div>
+      <div class="adiv"><em>OR</em></div>
+      <div class="acol">
+        <div class="aopt">OPTION 2 <i>&#9432;</i></div>
+        <h2>Use a browser</h2>
+        <p>Go to the link below on any device and enter the code displayed.</p>
+        <div class="step"><span class="stepn">1</span><span class="stept">Go to this link:</span></div>
+        <div class="link">eatos.com/pair</div>
+        <div class="step"><span class="stepn">2</span><span class="stept">When asked, enter this code:</span></div>
+        <div class="tiles" id="tiles"></div>
+      </div>
+      <div class="adiv"><em>OR</em></div>
+      <div class="acol">
+        <div class="aopt">OPTION 3 <i>&#9432;</i></div>
+        <h2>Activate with Code</h2>
+        <p>Enter your email or mobile number to receive a code.</p>
+        <div class="field afield" id="emailf"><span class="ico">&#9993;</span><span id="emailv" class="ph">Email or phone number</span></div>
+        <div id="signbtn"><span>&#10148;</span> Send Code</div>
+      </div>
     </div>
+    <div class="aibtn"><span class="aidot"></span>Activate with AI<i>&#9432;</i></div>
   </div>
+
 
   <!-- LOADING -->
   <div class="screen" id="loading">
