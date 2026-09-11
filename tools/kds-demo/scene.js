@@ -134,11 +134,51 @@ TICKETS.forEach((tk, i) => {
   track.appendChild(el);
 });
 
+/* ---------- activation screen: QR + code tiles ---------- */
+const CODE = 'TLQ5D2';
+const tilesEl = $('tiles');
+CODE.split('').forEach((c, i) => {
+  const d = document.createElement('div');
+  d.className = 'tile';
+  d.id = 'tile' + i;
+  d.textContent = c;
+  tilesEl.appendChild(d);
+});
+
+/* deterministic pseudo QR pattern with the three finder squares */
+(function buildQR() {
+  const N = 29;
+  const g = $('qrg');
+  let seed = 20260911;
+  const rnd = () => ((seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff);
+  const finder = (r, c) => {
+    const near = (r0, c0) => r >= r0 && r < r0 + 7 && c >= c0 && c < c0 + 7;
+    for (const [r0, c0] of [[0, 0], [0, N - 7], [N - 7, 0]]) {
+      if (near(r0, c0)) {
+        const dr = Math.abs(r - (r0 + 3)), dc = Math.abs(c - (c0 + 3));
+        const d = Math.max(dr, dc);
+        return d === 3 || d === 1 || d === 0 ? 1 : 0;
+      }
+      if (r >= r0 - 1 && r <= r0 + 7 && c >= c0 - 1 && c <= c0 + 7) return 0;
+    }
+    return -1;
+  };
+  for (let r = 0; r < N; r++) {
+    for (let c = 0; c < N; c++) {
+      const f = finder(r, c);
+      const on = f === -1 ? rnd() > 0.48 : f === 1;
+      const s = document.createElement('span');
+      if (!on) s.style.background = 'transparent';
+      g.appendChild(s);
+    }
+  }
+})();
+
 /* ---------- timeline ---------- */
 const T = {
   signIn: [0, 0.5],
-  email: [0.7, 1.9],
-  pass: [2.0, 2.9],
+  tiles: [0.85, 1.75],
+  email: [2.0, 3.0],
   tapSignIn: 3.25,
   loading: [3.45, 4.5],
   appIn: [4.45, 4.85],
