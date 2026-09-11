@@ -218,12 +218,18 @@ const P = {
   act2: tapPos('act1', 1),
 };
 
+function rectPos(id) {
+  const r = $(id).getBoundingClientRect();
+  return [r.left + r.width / 2, r.top + r.height / 2];
+}
+const A = { email: rectPos('emailf'), send: rectPos('signbtn'), code: rectPos('tiles') };
+
 /* cursor waypoints: [t, x, y] */
 const WP = [
-  [0.0, 1180, 300],
-  [0.8, 1195, 330],
-  [2.05, 1195, 425],
-  [3.1, 1240, 500],
+  [0.0, A.code[0] - 120, A.code[1] + 130],
+  [0.9, A.code[0], A.code[1] + 40],
+  [T.email[0] - 0.15, A.email[0] - 60, A.email[1]],
+  [3.1, A.send[0], A.send[1]],
   [4.9, 1180, 300],
   [5.0, 1140, 280],
   [5.4, 1300, 280],
