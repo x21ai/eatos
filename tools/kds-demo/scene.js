@@ -134,7 +134,7 @@ TICKETS.forEach((tk, i) => {
   track.appendChild(el);
 });
 
-/* ---------- activation screen: QR + code tiles ---------- */
+/* ---------- sign in screen: QR + code tiles ---------- */
 const CODE = 'TLQ5D2';
 const tilesEl = $('tiles');
 CODE.split('').forEach((c, i) => {
@@ -269,7 +269,7 @@ const pressed = (t, at) => t >= at && t < at + 0.16;
 window.__render = function (t) {
   const cls = (el, c, on) => el.classList.toggle(c, !!on);
 
-  /* --- activate device --- */
+  /* --- sign in --- */
   const signVis = t < T.loading[0] + 0.1 ? 1 - seg(t, T.loading[0] - 0.15, T.loading[0] + 0.1) : 0;
   $('signin').style.opacity = Math.min(seg(t, T.signIn[0], T.signIn[1]), signVis);
 
