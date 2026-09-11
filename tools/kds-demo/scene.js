@@ -269,21 +269,24 @@ const pressed = (t, at) => t >= at && t < at + 0.16;
 window.__render = function (t) {
   const cls = (el, c, on) => el.classList.toggle(c, !!on);
 
-  /* --- sign in --- */
+  /* --- activate device --- */
   const signVis = t < T.loading[0] + 0.1 ? 1 - seg(t, T.loading[0] - 0.15, T.loading[0] + 0.1) : 0;
   $('signin').style.opacity = Math.min(seg(t, T.signIn[0], T.signIn[1]), signVis);
 
+  /* code tiles pop in one by one */
+  const span = (T.tiles[1] - T.tiles[0]) / CODE.length;
+  for (let i = 0; i < CODE.length; i++) {
+    const p = seg(t, T.tiles[0] + i * span, T.tiles[0] + i * span + 0.3);
+    const el = $('tile' + i);
+    el.style.opacity = p.toFixed(3);
+    el.style.transform = 'scale(' + (0.82 + 0.18 * p).toFixed(3) + ')';
+  }
+
   const en = Math.round(seg(t, T.email[0], T.email[1]) * EMAIL.length);
   const emailv = $('emailv');
-  if (en === 0) { emailv.textContent = 'Enter Email'; emailv.className = 'ph'; }
+  if (en === 0) { emailv.textContent = 'Email or phone number'; emailv.className = 'ph'; }
   else { emailv.textContent = EMAIL.slice(0, en); emailv.className = ''; }
-  cls($('emailf'), 'focus', t >= T.email[0] - 0.2 && t < T.pass[0]);
-
-  const pn = Math.round(seg(t, T.pass[0], T.pass[1]) * 10);
-  const passv = $('passv');
-  if (pn === 0) { passv.textContent = 'Enter Password'; passv.className = 'ph'; }
-  else { passv.textContent = '\u2022'.repeat(pn); passv.className = ''; }
-  cls($('passf'), 'focus', t >= T.pass[0] - 0.2 && t < T.tapSignIn + 0.2);
+  cls($('emailf'), 'focus', t >= T.email[0] - 0.2 && t < T.tapSignIn + 0.2);
   $('signbtn').style.transform = pressed(t, T.tapSignIn) ? 'scale(0.97)' : 'scale(1)';
 
   /* --- loading --- */
