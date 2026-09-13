@@ -134,11 +134,51 @@ TICKETS.forEach((tk, i) => {
   track.appendChild(el);
 });
 
+/* ---------- sign in screen: QR + code tiles ---------- */
+const CODE = 'TLQ5D2';
+const tilesEl = $('tiles');
+CODE.split('').forEach((c, i) => {
+  const d = document.createElement('div');
+  d.className = 'tile';
+  d.id = 'tile' + i;
+  d.textContent = c;
+  tilesEl.appendChild(d);
+});
+
+/* deterministic pseudo QR pattern with the three finder squares */
+(function buildQR() {
+  const N = 29;
+  const g = $('qrg');
+  let seed = 20260911;
+  const rnd = () => ((seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff);
+  const finder = (r, c) => {
+    const near = (r0, c0) => r >= r0 && r < r0 + 7 && c >= c0 && c < c0 + 7;
+    for (const [r0, c0] of [[0, 0], [0, N - 7], [N - 7, 0]]) {
+      if (near(r0, c0)) {
+        const dr = Math.abs(r - (r0 + 3)), dc = Math.abs(c - (c0 + 3));
+        const d = Math.max(dr, dc);
+        return d === 3 || d === 1 || d === 0 ? 1 : 0;
+      }
+      if (r >= r0 - 1 && r <= r0 + 7 && c >= c0 - 1 && c <= c0 + 7) return 0;
+    }
+    return -1;
+  };
+  for (let r = 0; r < N; r++) {
+    for (let c = 0; c < N; c++) {
+      const f = finder(r, c);
+      const on = f === -1 ? rnd() > 0.48 : f === 1;
+      const s = document.createElement('span');
+      if (!on) s.style.background = 'transparent';
+      g.appendChild(s);
+    }
+  }
+})();
+
 /* ---------- timeline ---------- */
 const T = {
   signIn: [0, 0.5],
-  email: [0.7, 1.9],
-  pass: [2.0, 2.9],
+  tiles: [0.85, 1.75],
+  email: [2.0, 3.0],
   tapSignIn: 3.25,
   loading: [3.45, 4.5],
   appIn: [4.45, 4.85],
@@ -178,12 +218,18 @@ const P = {
   act2: tapPos('act1', 1),
 };
 
+function rectPos(id) {
+  const r = $(id).getBoundingClientRect();
+  return [r.left + r.width / 2, r.top + r.height / 2];
+}
+const A = { email: rectPos('emailf'), send: rectPos('signbtn'), code: rectPos('tiles') };
+
 /* cursor waypoints: [t, x, y] */
 const WP = [
-  [0.0, 1180, 300],
-  [0.8, 1195, 330],
-  [2.05, 1195, 425],
-  [3.1, 1240, 500],
+  [0.0, A.code[0] - 120, A.code[1] + 130],
+  [0.9, A.code[0], A.code[1] + 40],
+  [T.email[0] - 0.15, A.email[0] - 60, A.email[1]],
+  [3.1, A.send[0], A.send[1]],
   [4.9, 1180, 300],
   [5.0, 1140, 280],
   [5.4, 1300, 280],
@@ -217,7 +263,7 @@ const TAPS = [
 const STATES = ['Seen', 'Preparing', 'Ready', 'Served'];
 const STATE_CLASS = ['', 'prep', 'ready', 'served'];
 
-const EMAIL = 'johndoe@eatos.com';
+const EMAIL = 'owner@your-restaurant.com';
 const pressed = (t, at) => t >= at && t < at + 0.16;
 
 window.__render = function (t) {
@@ -227,17 +273,20 @@ window.__render = function (t) {
   const signVis = t < T.loading[0] + 0.1 ? 1 - seg(t, T.loading[0] - 0.15, T.loading[0] + 0.1) : 0;
   $('signin').style.opacity = Math.min(seg(t, T.signIn[0], T.signIn[1]), signVis);
 
+  /* code tiles pop in one by one */
+  const span = (T.tiles[1] - T.tiles[0]) / CODE.length;
+  for (let i = 0; i < CODE.length; i++) {
+    const p = seg(t, T.tiles[0] + i * span, T.tiles[0] + i * span + 0.3);
+    const el = $('tile' + i);
+    el.style.opacity = p.toFixed(3);
+    el.style.transform = 'scale(' + (0.82 + 0.18 * p).toFixed(3) + ')';
+  }
+
   const en = Math.round(seg(t, T.email[0], T.email[1]) * EMAIL.length);
   const emailv = $('emailv');
-  if (en === 0) { emailv.textContent = 'Enter Email'; emailv.className = 'ph'; }
+  if (en === 0) { emailv.textContent = 'Email or phone number'; emailv.className = 'ph'; }
   else { emailv.textContent = EMAIL.slice(0, en); emailv.className = ''; }
-  cls($('emailf'), 'focus', t >= T.email[0] - 0.2 && t < T.pass[0]);
-
-  const pn = Math.round(seg(t, T.pass[0], T.pass[1]) * 10);
-  const passv = $('passv');
-  if (pn === 0) { passv.textContent = 'Enter Password'; passv.className = 'ph'; }
-  else { passv.textContent = '\u2022'.repeat(pn); passv.className = ''; }
-  cls($('passf'), 'focus', t >= T.pass[0] - 0.2 && t < T.tapSignIn + 0.2);
+  cls($('emailf'), 'focus', t >= T.email[0] - 0.2 && t < T.tapSignIn + 0.2);
   $('signbtn').style.transform = pressed(t, T.tapSignIn) ? 'scale(0.97)' : 'scale(1)';
 
   /* --- loading --- */

@@ -3,28 +3,37 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react';
+import { ChevronRight, Sparkles, Star } from 'lucide-react';
 import { showcaseVideos } from '@/components/marketing/customerShowcaseData';
+import heroPoster from '../../../assets/svc-full-service-v2.jpg.asset.json';
 import { stats } from '../../homepage2/data/stats';
 
 const CLIP_MS = 7000;
 
 /**
- * Full width hero with real customer footage playing behind the headline.
- * The clips cross fade one into the next. On small screens and for anyone who
- * asks for reduced motion the video never loads and a brand gradient shows
- * instead, so phones do not pay for a background video.
+ * Same hero as the live home page, with real customer footage behind it.
+ *
+ * The poster still shows immediately so the hero is never blank. Tablet and
+ * desktop cross fade through every clip, phones play a single clip, and anyone
+ * asking for reduced motion or hitting a network error keeps the poster.
  */
 export function HeroVideoSection() {
   const [active, setActive] = useState(0);
-  const [playVideo, setPlayVideo] = useState(false);
+  const [clipCount, setClipCount] = useState(0);
+  const [failed, setFailed] = useState(false);
   const videoRefs = useRef([]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const wide = window.matchMedia('(min-width: 768px)');
+    const wide = window.matchMedia('(min-width: 640px)');
     const calm = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const decide = () => setPlayVideo(wide.matches && !calm.matches);
+    const decide = () => {
+      if (calm.matches) {
+        setClipCount(0);
+        return;
+      }
+      setClipCount(wide.matches ? showcaseVideos.length : 1);
+    };
     decide();
     wide.addEventListener('change', decide);
     calm.addEventListener('change', decide);
@@ -35,138 +44,145 @@ export function HeroVideoSection() {
   }, []);
 
   useEffect(() => {
-    if (!playVideo) return;
+    if (clipCount < 2) return;
     const timer = setInterval(
-      () => setActive((i) => (i + 1) % showcaseVideos.length),
+      () => setActive((i) => (i + 1) % clipCount),
       CLIP_MS,
     );
     return () => clearInterval(timer);
-  }, [playVideo]);
+  }, [clipCount]);
 
   useEffect(() => {
-    if (!playVideo) return;
+    if (clipCount === 0) return;
     videoRefs.current.forEach((el, i) => {
       if (!el) return;
       if (i === active) {
-        el.currentTime = 0;
+        try {
+          el.currentTime = 0;
+        } catch {
+          // Safari throws when the clip has not buffered yet; harmless.
+        }
         el.play?.().catch(() => {});
       } else {
         el.pause?.();
       }
     });
-  }, [active, playVideo]);
+  }, [active, clipCount]);
+
+  const clips = failed ? [] : showcaseVideos.slice(0, clipCount);
 
   return (
-    <section className="relative flex min-h-[100dvh] items-center overflow-hidden bg-black text-white">
-      {/* Background: gradient always, footage on larger screens */}
+    <section className="relative flex items-center justify-center overflow-hidden py-28 md:h-[100dvh] md:min-h-screen md:py-0">
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(215,4,128,0.35),transparent_60%),radial-gradient(circle_at_80%_10%,rgba(79,70,229,0.35),transparent_55%)] bg-zinc-950" />
-        {playVideo
-          ? showcaseVideos.map((clip, i) => (
-              <video
-                key={clip.src}
-                ref={(el) => {
-                  videoRefs.current[i] = el;
-                }}
-                src={`${clip.src}#t=0.1`}
-                muted
-                loop
-                playsInline
-                preload={i === 0 ? 'auto' : 'none'}
-                aria-hidden="true"
-                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1600ms] ease-in-out ${
-                  i === active ? 'opacity-60' : 'opacity-0'
-                }`}
-              />
-            ))
-          : null}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/55 to-black" />
+        <img
+          src={heroPoster.url}
+          alt=""
+          aria-hidden="true"
+          fetchPriority="high"
+          className="absolute inset-0 h-full w-full object-cover opacity-60"
+        />
+        {clips.map((clip, i) => (
+          <video
+            key={clip.src}
+            ref={(el) => {
+              videoRefs.current[i] = el;
+            }}
+            src={`${clip.src}#t=0.1`}
+            poster={heroPoster.url}
+            muted
+            loop
+            autoPlay={i === 0}
+            playsInline
+            preload={i === 0 ? 'metadata' : 'none'}
+            aria-hidden="true"
+            onError={() => {
+              if (i === 0) setFailed(true);
+            }}
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1600ms] ease-in-out ${
+              i === active ? 'opacity-60' : 'opacity-0'
+            }`}
+          />
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
       </div>
 
-      <div className="site-container relative z-10 pt-32 pb-16 md:pt-40 md:pb-24">
+      <div className="site-container relative z-10 pt-10 text-center md:pt-20">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium backdrop-blur-md"
-          style={{ color: '#f9a8d4' }}
+          transition={{ duration: 1, delay: 0.4 }}
+          className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-medium backdrop-blur-md md:mb-8 md:px-4 md:py-2 md:text-sm"
+          style={{ color: 'var(--brand-on-dark)' }}
         >
-          <Sparkles size={14} />
-          <span>Real restaurants, running on eatOS right now</span>
+          <Star size={14} fill="currentColor" />
+          <span>
+            The all-new <strong>eatOS</strong> 2.0
+          </span>
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.15 }}
-          className="max-w-4xl text-5xl font-bold leading-[1.03] tracking-tighter md:text-7xl lg:text-[5.5rem]"
+          transition={{ duration: 1, delay: 0.6 }}
+          className="mb-5 text-5xl font-bold leading-[1.05] tracking-tighter sm:text-6xl md:mb-8 md:text-9xl"
         >
-          We run the
-          <br />
-          hardest hours.
+          Beyond <br />
+          <span className="bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
+            Operating.
+          </span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.9, delay: 0.35 }}
-          className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-gray-300 md:text-2xl"
+          transition={{ duration: 1, delay: 0.9 }}
+          className="mx-auto mb-8 max-w-3xl text-[15px] font-light leading-relaxed text-gray-300 md:mb-12 md:text-[22px]"
         >
-          Point of Sale, payments, kitchen, kiosk and intelligence on one
-          platform, built for the rush and the people working it.
+          The restaurant operating system that sees, thinks, acts quietly and
+          reliably at scale. Beautiful hardware. Invisible software.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
+          transition={{ duration: 1, delay: 1.1 }}
+          className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-6"
         >
           <a
             href="/bookademo"
-            className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-lg font-semibold text-black transition-transform duration-300 hover:scale-105"
+            className="group relative w-full overflow-hidden rounded-full bg-white px-8 py-3.5 text-base font-semibold text-black transition-all duration-300 hover:scale-105 sm:w-auto md:py-4 md:text-lg"
           >
-            Book a Demo
-            <ArrowRight
-              size={18}
-              className="transition-transform group-hover:translate-x-1"
-            />
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              Book a Demo <ChevronRight size={18} />
+            </span>
           </a>
           <a
-            href="/platform"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-8 py-4 text-lg font-medium text-white transition-all hover:bg-white/10"
+            href="/ai"
+            className="flex w-full items-center justify-center gap-2 rounded-full border border-white/20 px-8 py-3.5 text-base font-medium text-white backdrop-blur-sm transition-all hover:border-white/40 hover:bg-white/10 sm:w-auto md:py-4 md:text-lg"
           >
-            Explore the platform
+            <Sparkles size={18} /> Explore Intelligence
           </a>
         </motion.div>
 
-        {/* Stats strip */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.7 }}
-          className="mt-14 grid grid-cols-2 gap-x-8 gap-y-8 border-t border-white/10 pt-8 md:mt-20 md:grid-cols-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.3 }}
+          className="mt-12 grid grid-cols-2 gap-6 border-t border-white/15 pt-8 text-left md:mt-20 md:grid-cols-4 md:gap-10"
         >
-          {stats.map((stat) => {
-            const Icon = stat.icon;
-            return (
-              <div key={stat.label}>
-                <Icon size={18} className="mb-3 text-white/40" />
-                <div className="text-2xl font-bold tracking-tighter md:text-3xl">
+          {stats.map((stat) => (
+            <div key={stat.label}>
+              <div className="flex items-center gap-2">
+                <stat.icon size={16} style={{ color: 'var(--brand-on-dark, #ff4fa3)' }} />
+                <span className="text-lg font-semibold tracking-tight text-white md:text-2xl">
                   {stat.value}
                   {stat.unit}
-                </div>
-                <div className="mt-1 text-sm leading-snug text-gray-400">
-                  {stat.label}
-                </div>
+                </span>
               </div>
-            );
-          })}
+              <p className="mt-2 text-xs leading-relaxed text-gray-400 md:text-sm">{stat.label}</p>
+            </div>
+          ))}
         </motion.div>
-      </div>
-
-      <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2">
-        <ChevronDown size={24} className="animate-bounce text-white/40" />
       </div>
     </section>
   );
