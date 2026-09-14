@@ -82,9 +82,6 @@ export function AgentsSection() {
                   <p className="mt-3 text-[15px] text-[#9CA3AF] leading-relaxed">
                     {a.desc}
                   </p>
-                  <p className="mt-5 text-xs text-[#6B7280]">
-                    {a.capabilities} capabilities
-                  </p>
                 </Card>
               </Reveal>
             );
