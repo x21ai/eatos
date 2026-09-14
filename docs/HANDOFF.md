@@ -1,10 +1,19 @@
 # eatOS 2.0 — Handoff Log
 
-## Current snapshot (2026-09-09T22:02:45Z)
-- **origin:** `https://github.com/x21ai/eatos.git` branch `cursor/backend-from-brief`; Worker `69563554`.
-- **Brief:** admin gate, news/orders/uploads, `/kiosk`, Maya chat shipped; D1 `0007`/`0008`/`0009` remote.
-- **Smoke:** blog/news APIs return rows after SEO columns; kiosk demo token; Maya grounded+miss; writes 401.
-- **Blocked:** Stripe keys, OPENAI_API_KEY, ADMIN_OWNER_EMAIL (Slack #cursor-frustrations).
+## Current snapshot (2026-09-13T15:55:21Z)
+- **Git:** `cursor/backend-from-brief` @ `fb52f23d` = lovable tip `3a95fd9f` + backend. Clean, pushed to x21ai.
+- **Live:** Worker `60037bd9` on s.eatos.dev (redeployed after lovable merge).
+- **Not on `lovable` branch yet:** backend commits still only on Cursor branch (86 lovable commits were merged *into* Cursor).
+- **Still gated:** Stripe / OPENAI / ADMIN_OWNER_EMAIL.
+
+### 2026-09-13T15:55:21Z — Pull lovable + redeploy
+- **Requested:** Latest pull; confirm committed and live/up to date.
+- **Done:** Fetched 86 lovable commits; merged; pushed; redeployed Worker `60037bd9`.
+- **Issues:** None for sync. Secrets gates unchanged.
+- **Stand / next:** Optional merge Cursor branch → `lovable`; add secrets.
+- **Who / where:** Cursor agent, x21ai/eatos.
+- **Evidence:** deploy Version ID `60037bd9`; git clean.
+- **Timestamp:** 2026-09-13T15:55:21Z
 
 ### 2026-09-09T22:02:45Z — Deploy brief backend + posts SEO fix
 - **Requested:** Sync x21ai + finish Lovable cursor-tasks-remaining.
