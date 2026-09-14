@@ -63,8 +63,6 @@ export function VoiceOSSection() {
                 It answers the phone.
                 <br />
                 Takes the order.
-                <br />
-                Never calls in sick.
               </h2>
               <p className="mt-6 text-lg md:text-xl text-[#9CA3AF] leading-relaxed max-w-xl">
                 VoiceOS handles calls with natural conversation. Understands
