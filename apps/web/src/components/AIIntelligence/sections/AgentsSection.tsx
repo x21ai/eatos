@@ -54,15 +54,14 @@ export function AgentsSection() {
       <div className="site-container">
         <Reveal id="agents-head">
           <div className="max-w-4xl">
-            <SectionLabel>AUTONOMOUS AGENTS</SectionLabel>
+            <SectionLabel>Autonomous intelligence</SectionLabel>
             <h2 className="mt-5 text-4xl md:text-6xl font-bold tracking-tighter leading-[1.05]">
               Six agents.
               <br />
               Zero handoffs.
             </h2>
             <p className="mt-6 text-lg md:text-xl text-[#9CA3AF] leading-relaxed max-w-3xl">
-              Specialized AI that handles the decisions you shouldn't have to
-              make.
+              Choose where you work. See only the intelligence built for that role.
             </p>
           </div>
         </Reveal>
