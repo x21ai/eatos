@@ -56,9 +56,9 @@ export function AgentsSection() {
           <div className="max-w-4xl">
             <SectionLabel>Autonomous intelligence</SectionLabel>
             <h2 className="mt-5 text-4xl md:text-6xl font-bold tracking-tighter leading-[1.05]">
-              Six agents.
+              Six roles.
               <br />
-              Zero handoffs.
+              One system of intelligence.
             </h2>
             <p className="mt-6 text-lg md:text-xl text-[#9CA3AF] leading-relaxed max-w-3xl">
               Choose where you work. See only the intelligence built for that role.
