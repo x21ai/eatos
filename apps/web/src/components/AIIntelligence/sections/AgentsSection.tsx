@@ -158,7 +158,7 @@ export function AgentsSection() {
             title: "Voice order intelligence",
             status: "Candidate",
             Icon: Mic,
-            desc: "Captures a voice order placed on the guest portal and hands it straight to order intelligence, so a spoken order moves exactly like a typed one.",
+            desc: "Captures a voice order on the guest portal and hands it to order intelligence; a spoken order moves like a typed one.",
             sources: "Guest ordering portal, voice channel",
           },
         ],
