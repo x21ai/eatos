@@ -1,11 +1,11 @@
 // @ts-nocheck
 import {
-  Receipt,
-  Flame,
-  Package,
-  Calendar,
-  Heart,
-  ShieldCheck,
+  Building2,
+  ClipboardList,
+  Landmark,
+  Users,
+  Utensils,
+  ChefHat,
 } from "lucide-react";
 import { useMemo } from "react";
 import { SectionLabel } from "../SectionLabel";
@@ -16,34 +16,40 @@ export function AgentsSection() {
   const agents = useMemo(
     () => [
       {
-        title: "Order Agent",
-        desc: "Captures orders via voice or text. Routes to kitchen. Suggests upsells. 40% faster than manual.",
-        Icon: Receipt,
+        title: "Operator",
+        desc: "Operator could be the owner, or the general manager running more than one location. This is the view above any single restaurant.",
+        Icon: Building2,
+        capabilities: 3,
       },
       {
-        title: "Kitchen Agent",
-        desc: "Detects bottlenecks. Balances stations. Predicts delays before they happen.",
-        Icon: Flame,
+        title: "Manager",
+        desc: "Shift and unit operations. Staffing, exceptions, and what's coming next in the next few days.",
+        Icon: ClipboardList,
+        capabilities: 3,
       },
       {
-        title: "Inventory Agent",
-        desc: "Tracks real consumption. Auto-reorders. Flags waste. Protects your margins.",
-        Icon: Package,
+        title: "Finance",
+        desc: "Accounting and margin. The money side of the business, from daily transactions up to monthly close.",
+        Icon: Landmark,
+        capabilities: 3,
       },
       {
-        title: "Labor Agent",
-        desc: "Builds schedules from demand forecasts. Identifies gaps. Cuts labor cost 18%.",
-        Icon: Calendar,
+        title: "Guest",
+        desc: "The diner's experience of the restaurant. Are they known, are they being seated, and how easy is it to order.",
+        Icon: Users,
+        capabilities: 3,
       },
       {
-        title: "Customer Agent",
-        desc: "Predicts churn. Triggers retention offers. Remembers preferences. Increases repeat visits 23%.",
-        Icon: Heart,
+        title: "Server",
+        desc: "Table-side staff. Taking the order and knowing the guest in front of them.",
+        Icon: Utensils,
+        capabilities: 3,
       },
       {
-        title: "Payments Agent",
-        desc: "Monitors failures by card and device. Catches fee spikes. Flags fraud patterns.",
-        Icon: ShieldCheck,
+        title: "Kitchen",
+        desc: "Back-of-house production. The line, prep, and what's on the menu.",
+        Icon: ChefHat,
+        capabilities: 3,
       },
     ],
     [],
@@ -81,6 +87,9 @@ export function AgentsSection() {
                   </h3>
                   <p className="mt-3 text-[15px] text-[#9CA3AF] leading-relaxed">
                     {a.desc}
+                  </p>
+                  <p className="mt-5 text-xs text-[#6B7280]">
+                    {a.capabilities} capabilities
                   </p>
                 </Card>
               </Reveal>
