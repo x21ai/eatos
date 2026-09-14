@@ -130,7 +130,7 @@ export function AgentsSection() {
             title: "Pricing & discount intelligence",
             status: "Candidate",
             Icon: Tag,
-            desc: "Tracks discount leakage and promo abuse, showing exactly where discounting is eating margin faster than it drives volume.",
+            desc: "Tracks discount and promo abuse, showing exactly where discounting is eating margin than it drives volume.",
             sources: "Discounts, promo code, tax itemized sales",
           },
         ],
