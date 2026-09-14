@@ -17,7 +17,7 @@ export function AgentsSection() {
     () => [
       {
         title: "Operator",
-        desc: "Operator could be the owner, or the general manager running more than one location. This is the view above any single restaurant.",
+        desc: "Operator could be the owner, or general manager running multiple locations. This is the view above any single restaurant.",
         Icon: Building2,
         capabilities: 3,
       },
