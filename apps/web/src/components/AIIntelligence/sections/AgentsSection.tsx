@@ -214,7 +214,7 @@ export function AgentsSection() {
             title: "Menu performance intelligence",
             status: "Candidate",
             Icon: BookOpen,
-            desc: "Flags underperforming products to cut and modifiers that are quietly killing margin.",
+            desc: "Flags underperforming products to cut & modifiers that are quietly killing margin.",
             sources: "Menu builder, products, price category, variant sales report",
           },
         ],
