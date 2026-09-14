@@ -238,40 +238,35 @@ export function AgentsSection() {
     <section className="py-20 md:py-28">
       <div className="site-container">
         <Reveal id="agents-head">
-          <div className="max-w-4xl">
+          <div>
             <SectionLabel>Autonomous intelligence</SectionLabel>
-            <h2 className="mt-5 text-4xl md:text-6xl font-bold tracking-tighter leading-[1.05]">
+            <h2 className="mt-5 text-4xl md:text-6xl font-bold tracking-tighter leading-[1.05] max-w-4xl">
               Six roles.
               <br />
               One system of intelligence.
             </h2>
-            <p className="mt-6 text-lg md:text-xl text-[#9CA3AF] leading-relaxed max-w-3xl">
-              Choose where you work. See only the intelligence built for that role.
-            </p>
+            <div className="mt-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              <p className="text-lg md:text-xl text-[#9CA3AF] leading-relaxed max-w-3xl">
+                Choose where you work. See only the intelligence built for that
+                role.
+              </p>
+              {active ? (
+                <button
+                  type="button"
+                  onClick={() => setActiveRole(null)}
+                  className="inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-[#8B5CF6]/60 px-5 py-2.5 text-sm font-medium text-[#C4B5FD] transition-colors hover:bg-[#8B5CF6]/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
+                >
+                  <ArrowLeft size={16} />
+                  Show all roles
+                </button>
+              ) : null}
+            </div>
           </div>
         </Reveal>
 
         {active ? (
           <>
-            <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-lg md:text-xl text-[#9CA3AF]">
-                Intelligence built for{" "}
-                <span className="text-[#A855F7]">
-                  {active.title.toLowerCase()}
-                </span>
-                .
-              </p>
-              <button
-                type="button"
-                onClick={() => setActiveRole(null)}
-                className="inline-flex w-fit items-center gap-2 rounded-full border border-[#8B5CF6]/60 px-5 py-2.5 text-sm font-medium text-[#C4B5FD] transition-colors hover:bg-[#8B5CF6]/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
-              >
-                <ArrowLeft size={16} />
-                Show all roles
-              </button>
-            </div>
-
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {active.capabilities.map((c, idx) => {
                 const Icon = c.Icon;
                 return (
