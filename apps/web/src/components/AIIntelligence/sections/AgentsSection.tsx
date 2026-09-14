@@ -94,7 +94,7 @@ export function AgentsSection() {
             title: "Loss prevention intelligence",
             status: "Priority",
             Icon: ShieldAlert,
-            desc: "Catches discount abuse, void patterns & tax discrepancies while they're still small, before they surface as a finance review issue.",
+            desc: "Catches discount abuse, void patterns & tax discrepancies while they're still small, they surface as a finance review issue.",
             sources:
               "Cash drawers, deposits, discounts, voids, refunds, cancelled orders",
           },
