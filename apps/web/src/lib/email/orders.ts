@@ -27,7 +27,7 @@ export async function sendOrderConfirmation(opts: {
   const lines = opts.items
     .map(
       (i) =>
-        `<li>${escapeHtml(i.title)} x ${i.quantity} — $${(i.unitAmountMinor / 100).toFixed(2)}</li>`,
+        `<li>${escapeHtml(i.title)} x ${i.quantity}: $${(i.unitAmountMinor / 100).toFixed(2)}</li>`,
     )
     .join('');
 
