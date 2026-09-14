@@ -19,37 +19,31 @@ export function AgentsSection() {
         title: "Operator",
         desc: "Operator could be the owner, or general manager running multiple locations. This is the view above any single restaurant.",
         Icon: Building2,
-        capabilities: 3,
       },
       {
         title: "Manager",
         desc: "Shift and unit operations. Staffing, exceptions, and what's coming next in the next few days.",
         Icon: ClipboardList,
-        capabilities: 3,
       },
       {
         title: "Finance",
         desc: "Accounting and margin. The money side of the business, from daily transactions up to monthly close.",
         Icon: Landmark,
-        capabilities: 3,
       },
       {
         title: "Guest",
         desc: "The diner's experience of the restaurant. Are they known, are they being seated, and how easy is it to order.",
         Icon: Users,
-        capabilities: 3,
       },
       {
         title: "Server",
         desc: "Table-side staff. Taking the order and knowing the guest in front of them.",
         Icon: Utensils,
-        capabilities: 3,
       },
       {
         title: "Kitchen",
         desc: "Back-of-house production. The line, prep, and what's on the menu.",
         Icon: ChefHat,
-        capabilities: 3,
       },
     ],
     [],
@@ -87,9 +81,6 @@ export function AgentsSection() {
                   </h3>
                   <p className="mt-3 text-[15px] text-[#9CA3AF] leading-relaxed">
                     {a.desc}
-                  </p>
-                  <p className="mt-5 text-xs text-[#6B7280]">
-                    {a.capabilities} capabilities
                   </p>
                 </Card>
               </Reveal>
