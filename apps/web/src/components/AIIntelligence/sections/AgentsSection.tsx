@@ -179,7 +179,7 @@ export function AgentsSection() {
             title: "Guest intelligence",
             status: "Live",
             Icon: Heart,
-            desc: "Remembers guest preferences table-side and flags who's a repeat visitor before the greeting.",
+            desc: "Remembers specific guest preferences table-side and flags who's a repeat visitor before the initial greeting.",
             sources: "Guests, feedback",
           },
           {
