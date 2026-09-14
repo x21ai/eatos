@@ -1,10 +1,18 @@
 # eatOS 2.0 — Handoff Log
 
-## Current snapshot (2026-09-13T15:55:21Z)
-- **Git:** `cursor/backend-from-brief` @ `fb52f23d` = lovable tip `3a95fd9f` + backend. Clean, pushed to x21ai.
-- **Live:** Worker `60037bd9` on s.eatos.dev (redeployed after lovable merge).
-- **Not on `lovable` branch yet:** backend commits still only on Cursor branch (86 lovable commits were merged *into* Cursor).
-- **Still gated:** Stripe / OPENAI / ADMIN_OWNER_EMAIL.
+## Current snapshot (2026-09-14T13:17:51Z)
+- **Synced:** `lovable` == `cursor/backend-from-brief` @ `f54be811` on `x21ai/eatos`.
+- **Live:** s.eatos.dev Worker `60037bd9` (includes lovable design + backend).
+- **Gates still open:** Stripe, OPENAI_API_KEY, ADMIN_OWNER_EMAIL.
+
+### 2026-09-14T13:17:51Z — Merge Cursor backend into lovable
+- **Requested:** Confirm all up to date, merged, synced, committed; s.eatos.dev has all changes.
+- **Done:** Fast-forward `lovable` to include backend; pushed; branches aligned; prod smoke 200.
+- **Issues:** none for sync.
+- **Stand / next:** secrets for paid checkout + live Maya model.
+- **Who / where:** Cursor agent, x21ai/eatos lovable.
+- **Evidence:** origin/lovable `f54be811`; Worker `60037bd9`; curl smoke PASS.
+- **Timestamp:** 2026-09-14T13:17:51Z
 
 ### 2026-09-13T15:55:21Z — Pull lovable + redeploy
 - **Requested:** Latest pull; confirm committed and live/up to date.
