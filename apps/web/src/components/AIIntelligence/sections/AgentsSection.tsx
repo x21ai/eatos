@@ -293,9 +293,7 @@ export function AgentsSection() {
                       <p className="mt-3 text-[15px] text-[#9CA3AF] leading-relaxed">
                         {c.desc}
                       </p>
-                      <p className="mt-auto pt-6 border-t border-white/10 text-[13px] text-[#6B7280] leading-relaxed">
-                        {c.sources}
-                      </p>
+
                     </Card>
                   </Reveal>
                 );
