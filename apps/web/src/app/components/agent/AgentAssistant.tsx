@@ -458,11 +458,11 @@ export default function AgentAssistant() {
             We are online, typical reply under 2 minutes
           </p>
 
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="mt-4 flex flex-nowrap items-center gap-2">
             <button
               type="button"
               onClick={() => openPanel(false)}
-              className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-2 text-[12px] font-semibold text-black transition-colors hover:bg-zinc-200"
+              className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full bg-white px-3 py-2 text-[11px] font-semibold text-black transition-colors hover:bg-zinc-200"
             >
               <MessageSquare size={13} aria-hidden />
               Chat with {AGENT_NAME}
@@ -470,7 +470,7 @@ export default function AgentAssistant() {
             <button
               type="button"
               onClick={() => openPanel(true)}
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3.5 py-2 text-[12px] font-semibold text-white transition-colors hover:border-white/40"
+              className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 px-3 py-2 text-[11px] font-semibold text-white transition-colors hover:border-white/40"
             >
               <BookOpen size={13} aria-hidden />
               Search help articles
