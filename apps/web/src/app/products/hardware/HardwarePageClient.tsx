@@ -256,7 +256,7 @@ export default function HardwarePageClient() {
                 Icon: Shield,
                 tint: 'bg-sky-500/10 text-sky-400',
                 title: 'Secure by default',
-                body: 'Encrypted, PCI compliant payments on every device, from the counter to the curb.',
+                body: 'Encrypted, PCI compliant payments on all device from counter to curb',
               },
               {
                 Icon: Clock,
