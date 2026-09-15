@@ -41,7 +41,9 @@ export async function GET(request: Request) {
   if (rows === null) return fail('database_unavailable', 'Database unavailable.', 503);
   const hasMore = rows.length > limit;
   const page = hasMore ? rows.slice(0, limit) : rows;
-  const next = hasMore ? page[page.length - 1]?.title ?? null : null;
+  const next = hasMore
+    ? String(page[page.length - 1]?.title ?? '') || null
+    : null;
   return okList(page.map(toProduct), next, hasMore);
 }
 
