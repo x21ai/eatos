@@ -14,7 +14,7 @@ export const hero = {
   eyebrow: 'Kitchen Display System',
   title: 'Chaos, controlled.',
   description:
-    'The digital command center that keeps your kitchen in sync, prep, fire and serve without missing a kitchen ticket.',
+    'The digital command center that keeps your kitchen in sync, prep, fire & serve without missing a kitchen ticket.',
   primaryCta: { label: 'Book a Demo', href: '/bookademo' },
   secondaryCta: { label: 'Watch Video', href: '/bookademo' },
   image: heroAsset.url,
