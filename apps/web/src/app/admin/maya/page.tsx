@@ -1,164 +1,133 @@
 // @ts-nocheck
-"use client";
+'use client';
 
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Bot, LifeBuoy, Loader2 } from "lucide-react";
-import { toast } from "sonner";
+import Link from 'next/link';
+import { useQuery } from '@tanstack/react-query';
+import { ArrowRight, Inbox, Loader2, MessageSquareQuote, Users } from 'lucide-react';
+import MayaAdminShell from '@/components/admin/MayaAdminShell';
 
-const ACCESS_ROLES = ["maya_agent", "help_agent"];
+const cards = [
+  {
+    href: '/admin/maya/inbox',
+    title: 'Conversation inbox',
+    body: 'Review open, pending, and resolved threads from the Maya assistant.',
+    icon: Inbox,
+  },
+  {
+    href: '/admin/maya/canned',
+    title: 'Quick replies',
+    body: 'Saved responses with optional help-article links for faster agent replies.',
+    icon: MessageSquareQuote,
+  },
+  {
+    href: '/admin/maya/agents',
+    title: 'Helpdesk agents',
+    body: 'Operators who can view the inbox, assign conversations, and reply to visitors.',
+    icon: Users,
+  },
+];
 
-const ROLE_LABELS = {
-  maya_agent: "Maya agent",
-  help_agent: "Help agent",
-};
-
-export default function MayaHelpAccessPage() {
-  const queryClient = useQueryClient();
-
-  const { data: me } = useQuery({
-    queryKey: ["admin-me"],
+export default function MayaHelpdeskHome() {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['maya-inbox-preview'],
     queryFn: async () => {
-      const res = await fetch("/api/admin/me");
-      if (!res.ok) throw new Error("Unauthorized");
-      return (await res.json()).data;
+      const res = await fetch('/api/admin/maya/conversations?status=open&limit=5');
+      const json = await res.json();
+      if (!res.ok || json.error) throw new Error(json.message || 'Failed to load inbox');
+      return json.data;
     },
+    retry: false,
   });
 
-  const canManage =
-    me?.capabilities?.includes("maya:manage") ||
-    me?.capabilities?.includes("help:manage");
-
-  const { data: users, isLoading } = useQuery({
-    queryKey: ["admin-users"],
-    enabled: canManage,
-    queryFn: async () => {
-      const res = await fetch("/api/admin/users");
-      if (!res.ok) throw new Error("Failed to load users");
-      return (await res.json()).data;
-    },
-  });
-
-  const updateMutation = useMutation({
-    mutationFn: async ({ userId, roles }) => {
-      const res = await fetch(`/api/admin/users/${encodeURIComponent(userId)}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ roles }),
-      });
-      const payload = await res.json();
-      if (!res.ok) throw new Error(payload.message || "Update failed");
-      return payload.data;
-    },
-    onSuccess: () => {
-      toast.success("Access updated");
-      queryClient.invalidateQueries(["admin-users"]);
-    },
-    onError: (err) => toast.error(err.message),
-  });
-
-  if (!canManage) {
-    return (
-      <div className="p-8 pt-32 text-center text-gray-400">
-        You do not have permission to manage Maya or helpdesk access.
-      </div>
-    );
-  }
-
-  const scopedUsers = (users || []).filter((u) =>
-    u.roles?.some((r) => ACCESS_ROLES.includes(r)),
-  );
+  const openCount = data?.conversations?.length ?? 0;
+  const needsBootstrap = error?.message?.includes('not registered as a Maya helpdesk agent');
 
   return (
-    <div className="p-8 pt-28 max-w-4xl mx-auto space-y-8">
-      <header>
-        <h1 className="text-3xl font-bold flex items-center gap-2">
-          <Bot size={28} /> Maya & helpdesk access
-        </h1>
-        <p className="text-gray-400 mt-2">
-          Grant scoped access for Maya AI tools and helpdesk admin screens. Full Crisp
-          parity is planned for a follow-up.
-        </p>
-      </header>
-
-      <section className="grid md:grid-cols-2 gap-4">
-        <div className="bg-[#111] border border-white/10 rounded-xl p-5">
-          <h2 className="font-semibold flex items-center gap-2">
-            <Bot size={16} /> Maya agent
-          </h2>
-          <p className="text-sm text-gray-400 mt-2">
-            View Maya chat logs and cache stats (read-only scaffolding in this PR).
+    <MayaAdminShell
+      title="Maya Helpdesk"
+      subtitle="Internal support operations for the eatOS AI assistant and visitor escalations."
+    >
+      {needsBootstrap ? (
+        <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-5">
+          <p className="text-sm text-amber-100">
+            Your admin account is not registered as a helpdesk agent yet. Bootstrap yourself as the
+            first lead agent to unlock the inbox.
           </p>
+          <button
+            type="button"
+            onClick={async () => {
+              const res = await fetch('/api/admin/maya/agents', { method: 'PUT' });
+              if (res.ok) window.location.reload();
+              else {
+                const json = await res.json();
+                alert(json.message || 'Bootstrap failed');
+              }
+            }}
+            className="mt-4 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-black"
+          >
+            Register as lead agent
+          </button>
         </div>
-        <div className="bg-[#111] border border-white/10 rounded-xl p-5">
-          <h2 className="font-semibold flex items-center gap-2">
-            <LifeBuoy size={16} /> Help agent
-          </h2>
-          <p className="text-sm text-gray-400 mt-2">
-            Access helpdesk admin tools when the CMS ships. Help articles remain static JSON for now.
-          </p>
-        </div>
-      </section>
+      ) : null}
 
-      <section className="space-y-4">
-        <h2 className="font-semibold">Users with Maya / help access</h2>
+      <div className="grid gap-4 sm:grid-cols-3">
+        {cards.map(({ href, title, body, icon: Icon }) => (
+          <Link
+            key={href}
+            href={href}
+            className="group rounded-2xl border border-white/10 bg-white/[0.02] p-5 transition-colors hover:border-white/25"
+          >
+            <Icon size={20} className="text-brand-on-dark" aria-hidden />
+            <h2 className="mt-3 text-base font-semibold text-white">{title}</h2>
+            <p className="mt-2 text-sm leading-6 text-zinc-400">{body}</p>
+            <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500 group-hover:text-white">
+              Open
+              <ArrowRight size={12} />
+            </span>
+          </Link>
+        ))}
+      </div>
+
+      <section className="rounded-2xl border border-white/10 p-5">
+        <div className="flex items-center justify-between gap-4">
+          <h2 className="text-sm font-semibold uppercase tracking-[0.16em] text-zinc-400">
+            Open conversations
+          </h2>
+          <Link href="/admin/maya/inbox" className="text-xs text-brand-on-dark hover:underline">
+            View inbox
+          </Link>
+        </div>
         {isLoading ? (
-          <Loader2 className="animate-spin" />
-        ) : (
-          <div className="space-y-3">
-            {(users || [])
-              .filter((u) => !u.isSuperadmin)
-              .map((user) => (
-                <div
-                  key={user.userId}
-                  className="bg-[#111] border border-white/10 rounded-xl p-4 flex flex-col md:flex-row md:items-center justify-between gap-3"
-                >
-                  <div>
-                    <p className="font-medium">{user.email}</p>
-                    <p className="text-xs text-gray-500">
-                      {(user.roles || [])
-                        .filter((r) => ACCESS_ROLES.includes(r) || r === "admin")
-                        .map((r) => ROLE_LABELS[r] || r)
-                        .join(" · ") || "No Maya/help roles"}
-                    </p>
-                  </div>
-                  <div className="flex gap-2">
-                    {ACCESS_ROLES.map((role) => {
-                      const active = user.roles?.includes(role);
-                      return (
-                        <button
-                          key={role}
-                          type="button"
-                          onClick={() => {
-                            const base = user.roles || [];
-                            const next = active
-                              ? base.filter((r) => r !== role)
-                              : [...base, role];
-                            if (next.length) {
-                              updateMutation.mutate({ userId: user.userId, roles: next });
-                            }
-                          }}
-                          className={`text-xs px-2 py-1 rounded border ${
-                            active
-                              ? "bg-white text-black border-white"
-                              : "border-white/20 text-gray-400"
-                          }`}
-                        >
-                          {ROLE_LABELS[role]}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              ))}
-          </div>
-        )}
-
-        {!scopedUsers.length && !isLoading && (
-          <p className="text-sm text-gray-500">
-            No dedicated Maya/help agents yet. Toggle roles above or invite from Team.
+          <p className="mt-4 inline-flex items-center gap-2 text-sm text-zinc-500">
+            <Loader2 size={14} className="animate-spin" /> Loading…
           </p>
-        )}
+        ) : null}
+        {!isLoading && !needsBootstrap && openCount === 0 ? (
+          <p className="mt-4 text-sm text-zinc-500">No open conversations right now.</p>
+        ) : null}
+        <ul className="mt-4 divide-y divide-white/10">
+          {(data?.conversations ?? []).map((c) => (
+            <li key={c.id}>
+              <Link
+                href={`/admin/maya/inbox/${c.id}`}
+                className="flex items-start justify-between gap-4 py-3 transition-colors hover:bg-white/[0.02]"
+              >
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-medium text-white">
+                    {c.subject || c.visitor_email || 'Visitor conversation'}
+                  </p>
+                  <p className="mt-1 truncate text-xs text-zinc-500">
+                    {c.last_message_preview || 'No messages yet'}
+                  </p>
+                </div>
+                <span className="shrink-0 rounded-full border border-white/15 px-2 py-0.5 text-[10px] uppercase tracking-wider text-zinc-400">
+                  {c.status}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
-    </div>
+    </MayaAdminShell>
   );
 }

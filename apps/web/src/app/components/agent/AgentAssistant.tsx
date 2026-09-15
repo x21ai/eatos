@@ -23,6 +23,11 @@ import {
   X,
 } from 'lucide-react';
 import { AGENT_OPEN_EVENT } from './agentBus';
+import {
+  pollAgentMessages,
+  setLastAgentMessageId,
+  syncConversation,
+} from './conversationSync';
 import { composeReply, starterQuestions } from './retrieval';
 import {
   AGENT_NAME,
@@ -55,6 +60,37 @@ function useAgentIndex(open) {
     };
   }, [open, index]);
   return index;
+}
+
+function LiveAgentBubble({ message, agentName }) {
+  return (
+    <div className="flex gap-3">
+      <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-2xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-300">
+        <MessageSquare size={15} aria-hidden />
+      </span>
+      <div className="min-w-0 max-w-[calc(100%-2.75rem)] rounded-3xl rounded-tl-lg border border-emerald-500/20 bg-emerald-500/[0.06] px-4 py-3.5 text-sm leading-6 text-zinc-100">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-400/90">
+          {agentName || 'Support specialist'}
+        </p>
+        <p className="mt-1 whitespace-pre-wrap">{message.body_text}</p>
+        {message.article_slugs?.length ? (
+          <ul className="mt-3 space-y-1 border-t border-white/10 pt-2">
+            {message.article_slugs.map((slug) => (
+              <li key={slug}>
+                <a
+                  href={articleHref(slug)}
+                  className="inline-flex items-center gap-1.5 text-xs text-brand-on-dark hover:underline"
+                >
+                  <BookOpen size={12} aria-hidden />
+                  {slug}
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
+    </div>
+  );
 }
 
 function Bubble({ role, children }) {
@@ -246,6 +282,10 @@ export default function AgentAssistant() {
   const [pending, setPending] = useState(null);
   const [triage, setTriage] = useState(null);
   const [seedContext, setSeedContext] = useState(null);
+  const [liveAgent, setLiveAgent] = useState(null);
+  const [conversationStatus, setConversationStatus] = useState(null);
+  const [liveAgentTurns, setLiveAgentTurns] = useState([]);
+  const [awaitingAgent, setAwaitingAgent] = useState(false);
   const scrollRef = useRef(null);
   const inputRef = useRef(null);
   const index = useAgentIndex(open);
@@ -257,6 +297,7 @@ export default function AgentAssistant() {
     if (!text) return;
     setTriage(null);
     setInput('');
+    syncConversation({ message: text, role: 'visitor', seedContext });
     setTurns((prev) => {
       const history = [];
       for (const turn of prev) {
@@ -270,7 +311,7 @@ export default function AgentAssistant() {
       setPending({ question: text, history });
       return [...prev, { id: `${Date.now()}-q`, role: 'visitor', text }];
     });
-  }, []);
+  }, [seedContext]);
 
   // Prefer live Maya (/api/support/chat). On any failure, fall back to the
   // bundled composeReply path so the panel never shows a raw provider error.
@@ -278,14 +319,12 @@ export default function AgentAssistant() {
     if (!pending || !index) return;
     let cancelled = false;
     const { question, history } = pending;
-    const traceId =
-      typeof crypto !== 'undefined' && crypto.randomUUID
-        ? crypto.randomUUID()
-        : `maya-${Date.now()}`;
 
     (async () => {
       let reply = null;
       try {
+        const { ensureTraceId } = await import('./conversationSync');
+        const traceId = ensureTraceId();
         const res = await fetch('/api/support/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -317,9 +356,26 @@ export default function AgentAssistant() {
         reply = composeReply(question, index);
       }
       if (cancelled) return;
+      const answerText =
+        reply?.kind === 'answer'
+          ? reply.answer
+          : reply?.kind === 'facts'
+            ? (reply.facts ?? []).map((f) => `${f.title}: ${f.body}`).join('\n')
+            : 'Maya could not find a confident answer.';
+      const sources = [];
+      if (reply?.source?.slug) sources.push({ slug: reply.source.slug });
+      for (const entry of reply?.related ?? []) {
+        if (entry?.slug) sources.push({ slug: entry.slug });
+      }
+      syncConversation({
+        message: answerText,
+        role: 'maya',
+        sources,
+        seedContext,
+      });
       setTurns((prev) => [
         ...prev,
-        { id: `${Date.now()}-a`, role: 'agent', reply, traceId },
+        { id: `${Date.now()}-a`, role: 'agent', reply },
       ]);
       setThinking(false);
       setPending(null);
@@ -328,7 +384,7 @@ export default function AgentAssistant() {
     return () => {
       cancelled = true;
     };
-  }, [pending, index]);
+  }, [pending, index, seedContext]);
 
   useEffect(() => {
     function onOpen(event) {
@@ -357,7 +413,48 @@ export default function AgentAssistant() {
   useEffect(() => {
     const node = scrollRef.current;
     if (node) node.scrollTop = node.scrollHeight;
-  }, [turns, thinking, triage, open]);
+  }, [turns, thinking, triage, open, liveAgentTurns]);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    let cancelled = false;
+
+    async function tick() {
+      const data = await pollAgentMessages();
+      if (cancelled || !data) return;
+
+      if (data.status) setConversationStatus(data.status);
+      if (data.assigned_agent) {
+        setLiveAgent(data.assigned_agent);
+        setAwaitingAgent(false);
+      } else if (data.status === 'pending') {
+        setAwaitingAgent(true);
+      }
+
+      if (data.messages?.length) {
+        setLiveAgentTurns((prev) => {
+          const seen = new Set(prev.map((m) => m.id));
+          const next = [...prev];
+          for (const msg of data.messages) {
+            if (!seen.has(msg.id)) {
+              seen.add(msg.id);
+              next.push(msg);
+            }
+          }
+          return next;
+        });
+        const last = data.latest_message_id;
+        if (last) setLastAgentMessageId(last);
+      }
+    }
+
+    tick();
+    const interval = window.setInterval(tick, 3000);
+    return () => {
+      cancelled = true;
+      window.clearInterval(interval);
+    };
+  }, [open]);
 
   const startTriage = useCallback((product) => {
     setTriage({ step: product ? 'severity' : 'product', product: product ?? null, severity: null, note: '' });
@@ -522,7 +619,13 @@ export default function AgentAssistant() {
               Online 24/7
             </p>
             <h2 className="mt-1.5 truncate text-base font-bold tracking-tight text-white">{AGENT_NAME}</h2>
-            <p className="mt-0.5 truncate text-[11px] text-zinc-500">{AGENT_SUBTITLE}</p>
+            <p className="mt-0.5 truncate text-[11px] text-zinc-500">
+              {liveAgent?.display_name || liveAgent?.email
+                ? `Connected with ${liveAgent.display_name || liveAgent.email.split('@')[0]}`
+                : awaitingAgent || conversationStatus === 'pending'
+                  ? 'Connecting you with a specialist…'
+                  : AGENT_SUBTITLE}
+            </p>
           </div>
           <button
             type="button"
@@ -562,6 +665,23 @@ export default function AgentAssistant() {
               </Bubble>
             ),
           )}
+
+          {liveAgentTurns.map((msg) => (
+            <LiveAgentBubble
+              key={msg.id}
+              message={msg}
+              agentName={liveAgent?.display_name || liveAgent?.email?.split('@')[0]}
+            />
+          ))}
+
+          {(awaitingAgent || conversationStatus === 'pending') && !liveAgent ? (
+            <Bubble role="agent">
+              <span className="inline-flex items-center gap-2 text-zinc-400">
+                <Loader2 size={14} className="animate-spin" aria-hidden />
+                A specialist is reviewing your conversation
+              </span>
+            </Bubble>
+          ) : null}
 
           {thinking ? (
             <Bubble role="agent">
@@ -609,7 +729,23 @@ export default function AgentAssistant() {
                   />
                   <button
                     type="button"
-                    onClick={() => setTriage({ ...triage, step: 'done' })}
+                    onClick={async () => {
+                      setTriage({ ...triage, step: 'done' });
+                      setAwaitingAgent(true);
+                      await syncConversation({
+                        message: [
+                          'Visitor requested human help.',
+                          triage.product ? `Product: ${triage.product.label}` : null,
+                          triage.severity ? `Severity: ${triage.severity.label}` : null,
+                          triage.note ? `Details: ${triage.note}` : null,
+                        ]
+                          .filter(Boolean)
+                          .join('\n'),
+                        role: 'visitor',
+                        escalate: true,
+                        seedContext,
+                      });
+                    }}
                     className="mt-3 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-black transition-colors hover:bg-zinc-200"
                   >
                     Hand this over
@@ -621,8 +757,12 @@ export default function AgentAssistant() {
               {triage.step === 'done' && escalation ? (
                 <div className="min-w-0">
                   <p>
-                    Routed. Based on {triage.severity.label.toLowerCase()}, this goes to{' '}
-                    {escalation.label.toLowerCase()} with your product, severity and notes attached.
+                    Your conversation is in our helpdesk inbox. A specialist can reply here in real
+                    time — stay in this chat for live updates.
+                  </p>
+                  <p className="mt-3 text-[12px] text-zinc-400">
+                    For {triage.severity.label.toLowerCase()} issues we also route to{' '}
+                    {escalation.label.toLowerCase()} when needed.
                   </p>
                   <a
                     href={escalation.href}
@@ -639,13 +779,6 @@ export default function AgentAssistant() {
                     <ArrowUpRight size={15} className="shrink-0 text-brand-on-dark" aria-hidden />
                   </a>
                   <p className="mt-2.5 text-[11px] text-zinc-500">{escalation.meta}</p>
-                  <a
-                    href="/system-status"
-                    className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-zinc-400 transition-colors hover:text-white"
-                  >
-                    Check live service health
-                    <ArrowRight size={12} aria-hidden />
-                  </a>
                 </div>
               ) : null}
             </Bubble>
@@ -679,8 +812,9 @@ export default function AgentAssistant() {
             </button>
           </div>
           <p className="mt-2.5 text-[10px] leading-4 text-zinc-600">
-            Answers are quoted from eatOS help articles with sources shown. Account actions require
-            sign-in.
+            {liveAgent || awaitingAgent
+              ? 'Live chat with our team. Replies appear here automatically.'
+              : 'Answers are quoted from eatOS help articles with sources shown. Account actions require sign-in.'}
           </p>
         </form>
       </div>

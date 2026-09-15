@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Seed RBAC: ensure pmt@eatos.com is superadmin in admin_users.
- * Run after migrations (0010_rbac.sql).
+ * Run after migrations (0011_rbac.sql).
  *
  * Usage:
  *   node scripts/seed-rbac.mjs

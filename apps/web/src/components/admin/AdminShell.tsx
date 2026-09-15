@@ -9,6 +9,7 @@ import {
   Newspaper,
   ShoppingBag,
   Package,
+  LayoutDashboard,
   Image,
   Users,
   CheckCircle,
@@ -19,6 +20,7 @@ import {
 import { authClient } from "@/lib/auth-client";
 
 const NAV_ITEMS = [
+  { href: "/admin", label: "Home", icon: LayoutDashboard, cap: null },
   { href: "/admin/blog", label: "Blog", icon: FileText, cap: "blog:read" },
   { href: "/admin/news", label: "Newsroom", icon: Newspaper, cap: "news:read" },
   { href: "/admin/shop", label: "Shop", icon: ShoppingBag, cap: "shop:read" },
