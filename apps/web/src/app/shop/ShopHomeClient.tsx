@@ -58,10 +58,10 @@ export default function ShopHomeClient({
                 Book a Demo <ArrowRight size={15} aria-hidden />
               </a>
               <a
-                href={contentPageHref('get-a-quote')}
+                href="/brochures"
                 className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-white/50"
               >
-                Request a Quote
+                Product Brochures
               </a>
             </div>
           </motion.div>
