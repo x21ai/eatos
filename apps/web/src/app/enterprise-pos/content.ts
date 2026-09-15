@@ -19,22 +19,22 @@ export const marquee = [
   {
     value: 'One platform',
     label:
-      'Every property, brand and location runs on a single connected system, with one source of truth for orders and payments.',
+      'Every property, brand and location runs on a single connected system.',
   },
   {
     value: 'Always on',
     label:
-      'Online or offline, service keeps moving across every device, and checks sync automatically once connectivity returns.',
+      'Online or offline, service keeps moving across every device, and checks sync automatically.',
   },
   {
     value: '600+ integrations',
     label:
-      'Open API and Marketplace connections let you plug eatOS into the systems your enterprise already runs on.',
+      'Open API and Marketplace connections let you plug eatOS into the systems.',
   },
   {
     value: 'Support 24/7',
     label:
-      'Enterprise support on call around the clock, with real people who understand multi-site restaurant operations.',
+      'Enterprise support on call with real people who understand  restaurant operations.',
   },
 ];
 
