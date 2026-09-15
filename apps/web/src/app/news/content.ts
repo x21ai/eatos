@@ -8,7 +8,7 @@ export const newsHero = {
   eyebrow: 'Newsroom',
   title: 'eatOS Newsroom',
   intro:
-    'Product announcements, company updates, events and restaurant industry news from the team building the eatOS restaurant technology cloud.',
+    'Product announcements, company, events and restaurant industry news from the team building the eatOS restaurant technology cloud.',
 };
 
 export const categories = ['All News', 'Product News', 'Company News', 'Event News', 'Industry News'];
