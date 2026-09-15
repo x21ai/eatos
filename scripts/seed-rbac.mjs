@@ -71,3 +71,13 @@ ON CONFLICT(email) DO UPDATE SET
 
 wrangler(['d1', 'execute', 'eatos-web-db', '--remote', '--command', sql]);
 console.log('Superadmin seeded for pmt@eatos.com');
+
+console.log('Ensuring product SEO columns (idempotent)…');
+const seo = spawnSync('node', ['scripts/ensure-product-seo-columns.mjs'], {
+  cwd: ROOT,
+  encoding: 'utf8',
+  env: process.env,
+});
+if (seo.stdout) process.stdout.write(seo.stdout);
+if (seo.stderr) process.stderr.write(seo.stderr);
+if (seo.status !== 0) process.exit(seo.status || 1);

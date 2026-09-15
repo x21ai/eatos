@@ -4,6 +4,8 @@ import { redirect } from 'next/navigation';
 import { auth } from '@/lib/auth';
 import { queryOne } from '@/lib/db/client';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   alternates: { canonical: '/admin' },
   title: 'Admin',

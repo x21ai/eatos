@@ -1,7 +1,8 @@
 -- Product SEO and multi-location stock tracking for eatOS shop admin.
-
-ALTER TABLE products ADD COLUMN seo_title TEXT;
-ALTER TABLE products ADD COLUMN seo_description TEXT;
+--
+-- SEO columns (seo_title, seo_description) may already exist on live D1 from manual
+-- cutover. SQLite has no ADD COLUMN IF NOT EXISTS; those columns are applied
+-- idempotently via: node scripts/ensure-product-seo-columns.mjs
 
 CREATE TABLE IF NOT EXISTS stock_locations (
   id TEXT PRIMARY KEY,
