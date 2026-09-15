@@ -23,6 +23,7 @@ import {
   X,
 } from 'lucide-react';
 import { AGENT_OPEN_EVENT } from './agentBus';
+import { syncConversation } from './conversationSync';
 import { composeReply, starterQuestions } from './retrieval';
 import {
   AGENT_NAME,
@@ -257,6 +258,7 @@ export default function AgentAssistant() {
     if (!text) return;
     setTriage(null);
     setInput('');
+    syncConversation({ message: text, role: 'visitor', seedContext });
     setTurns((prev) => {
       const history = [];
       for (const turn of prev) {
@@ -270,7 +272,7 @@ export default function AgentAssistant() {
       setPending({ question: text, history });
       return [...prev, { id: `${Date.now()}-q`, role: 'visitor', text }];
     });
-  }, []);
+  }, [seedContext]);
 
   // Prefer live Maya (/api/support/chat). On any failure, fall back to the
   // bundled composeReply path so the panel never shows a raw provider error.
@@ -278,14 +280,12 @@ export default function AgentAssistant() {
     if (!pending || !index) return;
     let cancelled = false;
     const { question, history } = pending;
-    const traceId =
-      typeof crypto !== 'undefined' && crypto.randomUUID
-        ? crypto.randomUUID()
-        : `maya-${Date.now()}`;
 
     (async () => {
       let reply = null;
       try {
+        const { ensureTraceId } = await import('./conversationSync');
+        const traceId = ensureTraceId();
         const res = await fetch('/api/support/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -317,9 +317,26 @@ export default function AgentAssistant() {
         reply = composeReply(question, index);
       }
       if (cancelled) return;
+      const answerText =
+        reply?.kind === 'answer'
+          ? reply.answer
+          : reply?.kind === 'facts'
+            ? (reply.facts ?? []).map((f) => `${f.title}: ${f.body}`).join('\n')
+            : 'Maya could not find a confident answer.';
+      const sources = [];
+      if (reply?.source?.slug) sources.push({ slug: reply.source.slug });
+      for (const entry of reply?.related ?? []) {
+        if (entry?.slug) sources.push({ slug: entry.slug });
+      }
+      syncConversation({
+        message: answerText,
+        role: 'maya',
+        sources,
+        seedContext,
+      });
       setTurns((prev) => [
         ...prev,
-        { id: `${Date.now()}-a`, role: 'agent', reply, traceId },
+        { id: `${Date.now()}-a`, role: 'agent', reply },
       ]);
       setThinking(false);
       setPending(null);
@@ -328,7 +345,7 @@ export default function AgentAssistant() {
     return () => {
       cancelled = true;
     };
-  }, [pending, index]);
+  }, [pending, index, seedContext]);
 
   useEffect(() => {
     function onOpen(event) {
@@ -609,7 +626,22 @@ export default function AgentAssistant() {
                   />
                   <button
                     type="button"
-                    onClick={() => setTriage({ ...triage, step: 'done' })}
+                    onClick={() => {
+                      setTriage({ ...triage, step: 'done' });
+                      syncConversation({
+                        message: [
+                          'Visitor requested human help.',
+                          triage.product ? `Product: ${triage.product.label}` : null,
+                          triage.severity ? `Severity: ${triage.severity.label}` : null,
+                          triage.note ? `Details: ${triage.note}` : null,
+                        ]
+                          .filter(Boolean)
+                          .join('\n'),
+                        role: 'visitor',
+                        escalate: true,
+                        seedContext,
+                      });
+                    }}
                     className="mt-3 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-black transition-colors hover:bg-zinc-200"
                   >
                     Hand this over
