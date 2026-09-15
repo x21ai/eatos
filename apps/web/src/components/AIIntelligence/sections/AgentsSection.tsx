@@ -232,13 +232,25 @@ export function AgentsSection() {
   const active = roles.find((r) => r.title === activeRole) || null;
 
   useEffect(() => {
-    if (!active) return;
+    if (!active && !activeCapability) return;
     const onKey = (e) => {
-      if (e.key === "Escape") setActiveRole(null);
+      if (e.key !== "Escape") return;
+      if (activeCapability) setActiveCapability(null);
+      else setActiveRole(null);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [active]);
+  }, [active, activeCapability]);
+
+  useEffect(() => {
+    if (!activeCapability) return;
+    setVideoRatio(16 / 9);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [activeCapability]);
 
   return (
     <section className="py-20 md:py-28">
