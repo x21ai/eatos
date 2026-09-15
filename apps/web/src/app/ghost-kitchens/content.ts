@@ -51,7 +51,7 @@ export const pillars = [
     id: 'kds',
     title: 'Kitchen Display System',
     body:
-      'Improve order accuracy, cut preparation times and keep a shared kitchen moving with clear kitchen tickets on every station.',
+      'Improve order accuracy, cut preparation times & keep a shared kitchen moving with clear kitchen tickets on every station.',
     more:
       'Seamless connectivity, prep station routing and kitchen grade hardware built for constant service.',
     imageLabel: 'Chef reading kitchen tickets on a kitchen display',

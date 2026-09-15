@@ -35,7 +35,7 @@ const related = [
   {
     href: '/products/kitchen-display-system',
     title: 'Kitchen Display System',
-    tagline: 'Route kitchen tickets to the right station.',
+    tagline: 'Route kitchen tickets to right station.',
     Icon: Zap,
     iconClass: 'bg-sky-500/15 text-sky-400',
   },
