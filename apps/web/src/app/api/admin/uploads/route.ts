@@ -1,6 +1,6 @@
 import { getCloudflareContext } from '@opennextjs/cloudflare';
 import { fail, ok, okList } from '@/lib/api';
-import { adminFail, requireAdmin } from '@/lib/admin/guard';
+import { adminFail, requireCapability } from '@/lib/admin/guard';
 
 /** R2 object key prefix that `/__l5e/assets-v1/[...path]` serves. */
 const ASSETS_PREFIX = '__l5e/assets-v1';
@@ -152,7 +152,7 @@ function probeDimensions(
  */
 export async function GET(request: Request) {
   try {
-    await requireAdmin(request);
+    await requireCapability(request, 'media:manage');
   } catch (error) {
     return adminFail(error);
   }
@@ -201,7 +201,7 @@ export async function GET(request: Request) {
  */
 export async function POST(request: Request) {
   try {
-    await requireAdmin(request);
+    await requireCapability(request, 'media:manage');
   } catch (error) {
     return adminFail(error);
   }

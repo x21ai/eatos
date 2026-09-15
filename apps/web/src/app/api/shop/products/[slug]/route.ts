@@ -1,6 +1,8 @@
 import { fail, ok, readJson } from '@/lib/api';
 import { execute, queryOne, parseJson } from '@/lib/db/client';
-import { adminFail, requireAdmin } from '@/lib/admin/guard';
+import { resolvePublishStatus } from '@/lib/admin/content-publish';
+import { adminFail, requireCapability, tryGetAdmin } from '@/lib/admin/guard';
+import { hasCapability } from '@/lib/admin/permissions';
 
 
 function toProduct(row: Record<string, any>) {
@@ -26,7 +28,14 @@ export async function GET(
   context: { params: Promise<{ slug: string }> },
 ) {
   const { slug } = await context.params;
-  const row = await queryOne<Record<string, any>>(`SELECT * FROM products WHERE slug = ?`, [slug]);
+  const admin = await tryGetAdmin(_request);
+  const canReadDrafts = admin && hasCapability(admin, 'shop:read');
+  const row = await queryOne<Record<string, any>>(
+    canReadDrafts
+      ? `SELECT * FROM products WHERE slug = ?`
+      : `SELECT * FROM products WHERE slug = ? AND status = 'published'`,
+    [slug],
+  );
   if (!row) return fail('not_found', 'Product not found.', 404);
   return ok(toProduct(row));
 }
@@ -35,8 +44,9 @@ export async function PATCH(
   request: Request,
   context: { params: Promise<{ slug: string }> },
 ) {
+  let admin;
   try {
-    await requireAdmin(request);
+    admin = await requireCapability(request, 'shop:write');
   } catch (error) {
     return adminFail(error);
   }
@@ -46,6 +56,21 @@ export async function PATCH(
   if (!existing) return fail('not_found', 'Product not found.', 404);
 
   const body = (await readJson(request)) || {};
+  let resolvedStatus = existing.status;
+  if (body.status !== undefined) {
+    const publish = await resolvePublishStatus(
+      admin,
+      'shop',
+      slug,
+      String(body.status),
+      String(existing.status ?? 'draft'),
+    );
+    resolvedStatus = publish.status;
+    body.status = publish.status;
+    if (publish.status === 'published' && body.published_at === undefined) {
+      body.published_at = new Date().toISOString();
+    }
+  }
   const nextSlug = typeof body.new_slug === 'string' && body.new_slug.trim() ? body.new_slug.trim() : slug;
   const title = typeof body.title === 'string' ? body.title.trim() : existing.title;
   const tags = Array.isArray(body.tags) ? body.tags : parseJson(existing.tags, []);
@@ -103,11 +128,11 @@ export async function PATCH(
 }
 
 export async function DELETE(
-  _request: Request,
+  request: Request,
   context: { params: Promise<{ slug: string }> },
 ) {
   try {
-    await requireAdmin(request);
+    await requireCapability(request, 'shop:write');
   } catch (error) {
     return adminFail(error);
   }

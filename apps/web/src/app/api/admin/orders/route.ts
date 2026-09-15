@@ -1,6 +1,6 @@
 import { fail, okList, moneyMinor } from '@/lib/api';
 import { queryAll } from '@/lib/db/client';
-import { adminFail, requireAdmin } from '@/lib/admin/guard';
+import { adminFail, requireCapability } from '@/lib/admin/guard';
 
 const ORDER_STATUSES = new Set([
   'pending',
@@ -46,7 +46,7 @@ function decodeCursor(cursor: string): { created_at: string; order_number: strin
 
 export async function GET(request: Request) {
   try {
-    await requireAdmin(request);
+    await requireCapability(request, 'orders:read');
   } catch (error) {
     return adminFail(error);
   }

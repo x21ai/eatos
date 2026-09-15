@@ -1,7 +1,9 @@
 // Shop product admin API (mirrors /api/blog list/create shape).
 import { fail, ok, okList, readJson, newId } from '@/lib/api';
 import { execute, queryAll, queryOne, parseJson } from '@/lib/db/client';
-import { adminFail, requireAdmin } from '@/lib/admin/guard';
+import { resolvePublishStatus } from '@/lib/admin/content-publish';
+import { adminFail, requireCapability, tryGetAdmin } from '@/lib/admin/guard';
+import { hasCapability } from '@/lib/admin/permissions';
 
 
 function toProduct(row: Record<string, any>) {
@@ -24,7 +26,12 @@ function toProduct(row: Record<string, any>) {
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
-  const status = url.searchParams.get('status');
+  const admin = await tryGetAdmin(request);
+  const canReadDrafts = admin && hasCapability(admin, 'shop:read');
+  let status = url.searchParams.get('status');
+  if (!canReadDrafts) {
+    status = 'published';
+  }
   const search = (url.searchParams.get('search') || '').trim();
   const cursor = url.searchParams.get('cursor');
   const limit = Math.min(Math.max(parseInt(url.searchParams.get('limit') || '50', 10) || 50, 1), 100);
@@ -56,8 +63,9 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
+  let admin;
   try {
-    await requireAdmin(request);
+    admin = await requireCapability(request, 'shop:write');
   } catch (error) {
     return adminFail(error);
   }
@@ -67,6 +75,9 @@ export async function POST(request: Request) {
   let slug = typeof body.slug === 'string' ? body.slug.trim() : '';
   if (!title) return fail('validation_failed', 'title is required.');
   if (!slug) slug = `product-${Date.now()}`;
+
+  const requestedStatus = typeof body.status === 'string' ? body.status : 'draft';
+  const publish = await resolvePublishStatus(admin, 'shop', slug, requestedStatus, 'draft');
 
   try {
     await execute(
@@ -83,8 +94,10 @@ export async function POST(request: Request) {
         typeof body.compare_at_amount === 'number' ? body.compare_at_amount : null,
         body.currency || 'USD',
         body.available === false ? 0 : 1,
-        body.status || 'draft',
-        body.published_at ?? null,
+        publish.status,
+        publish.status === 'published'
+          ? (body.published_at ?? new Date().toISOString())
+          : body.published_at ?? null,
       ],
     );
     // Ensure a default variant for cart/checkout.
