@@ -51,6 +51,8 @@ function StatusPill({ status }) {
 
 export function AgentsSection() {
   const [activeRole, setActiveRole] = useState(null);
+  const [activeCapability, setActiveCapability] = useState(null);
+  const [videoRatio, setVideoRatio] = useState(16 / 9);
 
   const roles = useMemo(
     () => [
