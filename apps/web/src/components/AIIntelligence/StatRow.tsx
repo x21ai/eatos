@@ -7,7 +7,7 @@ export function StatRow({ stats }) {
           <div className="text-[30px] sm:text-[34px] lg:text-[40px] leading-none font-bold tracking-tight text-white mb-2 whitespace-nowrap">
             {s.value}
           </div>
-          <div className="text-[12px] md:text-[13px] text-[#9CA3AF] leading-snug">
+          <div className="text-[12px] md:text-[13px] text-[#9CA3AF] leading-snug whitespace-pre-line">
             {s.label}
           </div>
         </div>

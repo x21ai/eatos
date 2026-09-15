@@ -44,9 +44,9 @@ export function KitchenIntelligenceSection() {
 
               <StatRow
                 stats={[
-                  { value: "22%", label: "Faster kitchen ticket times" },
+                  { value: "22%", label: "Faster kitchen\nticket times" },
                   { value: "< 50ms", label: "Decision latency" },
-                  { value: "1000s", label: "Patterns learned per week" },
+                  { value: "1000s", label: "Patterns learned\nper week" },
                 ]}
               />
             </div>
