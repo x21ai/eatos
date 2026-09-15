@@ -36,7 +36,7 @@ const related = [
   {
     href: '/products/kitchen-display-system',
     title: 'Kitchen Display System',
-    tagline: 'Kitchen tickets routed to the right station.',
+    tagline: 'Kitchen tickets routed to right station.',
     Icon: ChefHat,
     iconClass: 'bg-orange-500/15 text-orange-400',
   },
