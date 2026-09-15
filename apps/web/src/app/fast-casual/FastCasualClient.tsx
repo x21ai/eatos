@@ -35,7 +35,7 @@ const related = [
   {
     href: '/products/kitchen-display-system',
     title: 'Kitchen Display System',
-    tagline: 'Orders routed to the right station, so kitchen tickets clear faster during the rush.',
+    tagline: 'Orders routed to the right station, so kitchen tickets clear fast during rush.',
     Icon: ChefHat,
     iconClass: 'bg-amber-500/15 text-amber-400',
   },
