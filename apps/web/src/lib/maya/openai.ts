@@ -46,9 +46,15 @@ export function mayaSystemPrompt(): string {
   ].join(' ');
 }
 
+export type ChatCompletionOptions = {
+  maxTokens?: number;
+  temperature?: number;
+};
+
 export async function chatCompletion(
   apiKey: string,
   messages: ChatMessage[],
+  options: ChatCompletionOptions = {},
 ): Promise<OpenAIChatResult> {
   const res = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
@@ -58,8 +64,8 @@ export async function chatCompletion(
     },
     body: JSON.stringify({
       model: MODEL,
-      temperature: 0.2,
-      max_tokens: MAX_OUTPUT_TOKENS,
+      temperature: options.temperature ?? 0.2,
+      max_tokens: options.maxTokens ?? MAX_OUTPUT_TOKENS,
       response_format: { type: 'json_object' },
       messages,
     }),

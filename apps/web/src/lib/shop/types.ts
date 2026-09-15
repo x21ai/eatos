@@ -19,6 +19,8 @@ export interface ProductRow {
   currency: string | null;
   available: boolean | null;
   status: 'draft' | 'published' | string;
+  seo_title: string | null;
+  seo_description: string | null;
   published_at: string | null;
   updated_at: string | null;
 }
@@ -60,8 +62,21 @@ export interface CollectionProductRow {
   position: number | null;
 }
 
+export interface StockLocationRow {
+  id: string;
+  name: string;
+  label: string | null;
+  is_default: boolean;
+}
+
+export interface VariantStockRow {
+  variant_id: string;
+  location_id: string;
+  quantity: number;
+}
+
 export const PRODUCT_COLUMNS =
-  'slug,title,vendor,product_type,tags,description_html,price_amount,compare_at_amount,currency,available,status,published_at,updated_at';
+  'slug,title,vendor,product_type,tags,description_html,price_amount,compare_at_amount,currency,available,status,seo_title,seo_description,published_at,updated_at';
 
 export const COLLECTION_COLUMNS = 'slug,title,description_html,image,position';
 
