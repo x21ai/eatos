@@ -347,6 +347,65 @@ export function AgentsSection() {
           </div>
         )}
       </div>
+
+      {activeCapability ? (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+          role="dialog"
+          aria-modal="true"
+          aria-label={activeCapability.title}
+        >
+          <div
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            onClick={() => setActiveCapability(null)}
+          />
+          <div className="relative z-10 w-full max-w-4xl rounded-3xl border border-white/10 bg-[#0B1120] p-4 sm:p-6 shadow-2xl">
+            <div className="flex items-start justify-between gap-4">
+              <div className="min-w-0">
+                <h3 className="text-lg sm:text-xl font-semibold tracking-tight">
+                  {activeCapability.title}
+                </h3>
+                <p className="mt-1 text-sm text-[#9CA3AF] leading-relaxed">
+                  {activeCapability.desc}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveCapability(null)}
+                aria-label="Close video"
+                className="shrink-0 rounded-full border border-white/15 bg-white/5 p-2 text-white transition-colors hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <div
+              className="mx-auto mt-4 w-full overflow-hidden rounded-2xl bg-black"
+              style={{
+                aspectRatio: String(videoRatio),
+                maxHeight: "min(70vh, 720px)",
+                maxWidth: "100%",
+              }}
+            >
+              <video
+                key={activeCapability.title}
+                src={activeCapability.video || PLACEHOLDER_VIDEO}
+                className="h-full w-full object-contain"
+                controls
+                autoPlay
+                muted
+                playsInline
+                onLoadedMetadata={(e) => {
+                  const v = e.currentTarget;
+                  if (v.videoWidth && v.videoHeight) {
+                    setVideoRatio(v.videoWidth / v.videoHeight);
+                  }
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }
