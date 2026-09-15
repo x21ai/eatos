@@ -27,7 +27,7 @@ export const orderPanel = {
   title: 'eatOS Custom Gift Cards',
   price: 'From 79¢ USD per card',
   body:
-    'Upload your own art for the most customized card available. Packs start at 250 gift cards and take 15 business days to produce.',
+    'Upload your own art for most customized card available. Packs start at 250 gift cards and take 15 business days to produce.',
   cta: { label: 'Order Now', href: '/bookademo' },
 };
 

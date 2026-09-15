@@ -266,7 +266,7 @@ export default function GiftCardsPageClient() {
                 Icon: Shield,
                 tint: 'bg-rose-500/10 text-rose-400',
                 title: 'Reliable at scale',
-                body: 'One location or hundreds, every card balance stays accurate and auditable.',
+                body: 'One location or hundreds, every card balance stays accurate.',
               },
               {
                 Icon: Clock,
