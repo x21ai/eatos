@@ -55,7 +55,7 @@ export default function TermsOfServicePage() {
         <div className="site-container">
           <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-10">
             {/* TOC */}
-            <aside className="hidden lg:block lg:sticky lg:top-28 h-fit lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
+            <aside className="hidden lg:block lg:sticky lg:top-28 h-fit lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto scrollbar-hidden">
               <div className="rounded-3xl border border-white/15 bg-white/5 p-6">
                 <div className="text-[13px] font-semibold tracking-wide text-white mb-4">
                   On this page
