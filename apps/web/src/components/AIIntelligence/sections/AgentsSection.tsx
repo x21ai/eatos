@@ -22,11 +22,15 @@ import {
   Package,
   BookOpen,
   ArrowLeft,
+  X,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { SectionLabel } from "../SectionLabel";
 import { Card } from "../Card";
 import { Reveal } from "../Reveal";
+import placeholderVideo from "../../../app/tap-to-pay/assets/hero-video.mp4.asset.json";
+
+const PLACEHOLDER_VIDEO = placeholderVideo.url;
 
 function StatusPill({ status }) {
   const styles =
