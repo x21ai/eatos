@@ -168,10 +168,10 @@ export default function KioskPageClient() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="mx-auto min-w-0 max-w-[360px] sm:max-w-[440px] lg:max-w-[500px] rounded-[1.5rem] md:rounded-[2rem] border border-white/10 bg-zinc-900 shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-hidden"
+            className="mx-auto min-w-0 w-fit max-w-[260px] sm:max-w-[300px] lg:max-w-[340px] rounded-[1.5rem] md:rounded-[2rem] border border-white/10 bg-zinc-900 shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-hidden"
           >
             <LazyVideo
-              className="w-full h-auto block"
+              className="block h-[60vh] max-h-[560px] w-auto"
               poster={demo?.media?.poster}
               sources={demo?.media?.sources || []}
               ariaLabel="Self Service Kiosk demo animation"
