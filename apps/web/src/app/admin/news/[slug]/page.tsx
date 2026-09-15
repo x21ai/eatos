@@ -44,6 +44,10 @@ export default function EditNewsPost({ params }) {
         seo_title: data.seo_title,
         seo_description: data.seo_description,
         keywords: data.keywords,
+        status: data.status,
+        published_at: data.published_at
+          ? data.published_at.slice(0, 16)
+          : "",
       });
     },
   });
@@ -204,9 +208,13 @@ export default function EditNewsPost({ params }) {
                 className="w-full bg-[#050505] border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-white/20"
               >
                 <option value="draft">Draft</option>
-                <option value="published">Published</option>
+                <option value="published">Published (live)</option>
+                <option value="pending_publish">Pending approval</option>
                 <option value="archived">Archived</option>
               </select>
+              <p className="text-[11px] text-gray-500">
+                Draft editors submit for approval; publishers and superadmin can go live.
+              </p>
             </div>
 
             <div className="space-y-2">

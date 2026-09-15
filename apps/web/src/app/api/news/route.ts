@@ -11,7 +11,9 @@
 
 import { queryAll, queryOne, execute } from '@/lib/db/client';
 import { htmlToBlocks, blocksToHtml, excerptFromBlocks } from '@/lib/blog/html';
-import { adminFail, requireAdmin } from '@/lib/admin/guard';
+import { resolvePublishStatus } from '@/lib/admin/content-publish';
+import { adminFail, requireCapability, tryGetAdmin } from '@/lib/admin/guard';
+import { hasCapability } from '@/lib/admin/permissions';
 
 const TABLE = 'news_posts';
 
@@ -48,7 +50,12 @@ function toApiArticle(row: Record<string, any>) {
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
-  const status = url.searchParams.get('status');
+  const admin = await tryGetAdmin(request);
+  const canReadDrafts = admin && hasCapability(admin, 'news:read');
+  let status = url.searchParams.get('status');
+  if (!canReadDrafts) {
+    status = 'published';
+  }
   const search = (url.searchParams.get('search') || '').trim();
   const cursor = url.searchParams.get('cursor');
   const limit = Math.min(
@@ -103,8 +110,9 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
+  let admin;
   try {
-    await requireAdmin(request);
+    admin = await requireCapability(request, 'news:write');
   } catch (error) {
     return adminFail(error);
   }
@@ -134,6 +142,9 @@ export async function POST(request: Request) {
       ? body.excerpt.trim()
       : excerptFromBlocks(blocks);
 
+  const requestedStatus = typeof body.status === 'string' ? body.status : 'draft';
+  const publish = await resolvePublishStatus(admin, 'news', slug, requestedStatus, 'draft');
+
   try {
     await execute(
       `INSERT INTO ${TABLE}
@@ -149,8 +160,10 @@ export async function POST(request: Request) {
         body.cover_image ?? null,
         body.category ?? null,
         body.author_name ?? 'eatOS Staff',
-        body.published_at ?? new Date().toISOString(),
-        body.status ?? 'draft',
+        publish.status === 'published'
+          ? (body.published_at ?? new Date().toISOString())
+          : body.published_at ?? null,
+        publish.status,
         body.seo_title ?? null,
         body.seo_description ?? null,
         body.keywords ?? null,

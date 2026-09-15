@@ -11,7 +11,9 @@
 
 import { queryOne, execute } from '@/lib/db/client';
 import { htmlToBlocks, blocksToHtml } from '@/lib/blog/html';
-import { adminFail, requireAdmin } from '@/lib/admin/guard';
+import { resolvePublishStatus } from '@/lib/admin/content-publish';
+import { adminFail, requireCapability, tryGetAdmin } from '@/lib/admin/guard';
+import { hasCapability } from '@/lib/admin/permissions';
 
 
 const TABLES = { blog: 'posts', news: 'news_posts' } as const;
@@ -58,8 +60,14 @@ export async function GET(
 ) {
   const { slug } = await params;
   const table = tableFor(request);
+  const kind = new URL(request.url).searchParams.get('kind') === 'news' ? 'news' : 'blog';
+  const admin = await tryGetAdmin(request);
+  const canReadDrafts = admin && hasCapability(admin, kind === 'news' ? 'news:read' : 'blog:read');
+
   const row = await queryOne<Record<string, any>>(
-    `SELECT * FROM ${table} WHERE slug = ?`,
+    canReadDrafts
+      ? `SELECT * FROM ${table} WHERE slug = ?`
+      : `SELECT * FROM ${table} WHERE slug = ? AND status = 'published'`,
     [slug]
   );
 
@@ -71,14 +79,17 @@ export async function PATCH(
   request: Request,
   { params }: { params: Promise<{ slug: string }> }
 ) {
+  const { slug } = await params;
+  const table = tableFor(request);
+  const kind = new URL(request.url).searchParams.get('kind') === 'news' ? 'news' : 'blog';
+  const writeCap = kind === 'news' ? 'news:write' : 'blog:write';
+
+  let admin;
   try {
-    await requireAdmin(request);
+    admin = await requireCapability(request, writeCap);
   } catch (error) {
     return adminFail(error);
   }
-
-  const { slug } = await params;
-  const table = tableFor(request);
 
   let body: Record<string, any>;
   try {
@@ -100,6 +111,25 @@ export async function PATCH(
     args.push(value);
   };
 
+  let resolvedStatus: string | undefined;
+  if (body.status !== undefined) {
+    const publish = await resolvePublishStatus(
+      admin,
+      kind,
+      slug,
+      String(body.status),
+      String(current.status ?? 'draft'),
+    );
+    resolvedStatus = publish.status;
+    set('status', publish.status);
+    if (publish.status === 'published' && body.published_at === undefined) {
+      set('published_at', new Date().toISOString());
+    }
+    if (publish.queuedForApproval) {
+      // status already set to pending_publish
+    }
+  }
+
   const simple: Array<[string, string]> = [
     ['title', 'title'],
     ['excerpt', 'excerpt'],
@@ -109,11 +139,13 @@ export async function PATCH(
     ['seo_title', 'seo_title'],
     ['seo_description', 'seo_description'],
     ['keywords', 'keywords'],
-    ['status', 'status'],
     ['published_at', 'published_at'],
   ];
   for (const [field, column] of simple) {
-    if (body[field] !== undefined) set(column, body[field]);
+    if (body[field] !== undefined) {
+      if (field === 'published_at' && resolvedStatus === 'pending_publish') continue;
+      set(column, body[field]);
+    }
   }
 
   if (typeof body.content === 'string') {
@@ -160,14 +192,16 @@ export async function DELETE(
   request: Request,
   { params }: { params: Promise<{ slug: string }> }
 ) {
+  const { slug } = await params;
+  const table = tableFor(request);
+  const kind = new URL(request.url).searchParams.get('kind') === 'news' ? 'news' : 'blog';
+  const writeCap = kind === 'news' ? 'news:write' : 'blog:write';
+
   try {
-    await requireAdmin(request);
+    await requireCapability(request, writeCap);
   } catch (error) {
     return adminFail(error);
   }
-
-  const { slug } = await params;
-  const table = tableFor(request);
   const current = await queryOne(`SELECT slug FROM ${table} WHERE slug = ?`, [slug]);
   if (!current) return fail('not_found', 'No article exists with that slug.', 404);
 

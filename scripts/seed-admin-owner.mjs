@@ -55,9 +55,11 @@ try {
   // keep email fallback
 }
 
-const sql = `INSERT INTO admin_users (user_id, email, role)
-VALUES ('${String(userId).replace(/'/g, "''")}', '${email.replace(/'/g, "''")}', 'owner')
-ON CONFLICT(email) DO UPDATE SET user_id = excluded.user_id, role = 'owner'`;
+const role = email === "pmt@eatos.com" ? "superadmin" : "admin";
+const rolesJson = email === "pmt@eatos.com" ? '["superadmin"]' : '["admin"]';
+const sql = `INSERT INTO admin_users (user_id, email, role, roles)
+VALUES ('${String(userId).replace(/'/g, "''")}', '${email.replace(/'/g, "''")}', '${role}', '${rolesJson}')
+ON CONFLICT(email) DO UPDATE SET user_id = excluded.user_id, role = excluded.role, roles = excluded.roles`;
 
 wrangler([
   "d1",
