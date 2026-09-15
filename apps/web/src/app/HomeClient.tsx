@@ -789,7 +789,7 @@ export default function HomePage() {
               </div>
 
               <a
-                href="/ai/intelligence"
+                href="/ai"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-semibold text-sm hover:bg-gray-200 transition-colors"
               >
                 Explore Intelligence <ChevronRight size={14} />
