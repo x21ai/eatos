@@ -22,11 +22,15 @@ import {
   Package,
   BookOpen,
   ArrowLeft,
+  X,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { SectionLabel } from "../SectionLabel";
 import { Card } from "../Card";
 import { Reveal } from "../Reveal";
+import placeholderVideo from "../../../app/tap-to-pay/assets/hero-video.mp4.asset.json";
+
+const PLACEHOLDER_VIDEO = placeholderVideo.url;
 
 function StatusPill({ status }) {
   const styles =
@@ -47,6 +51,8 @@ function StatusPill({ status }) {
 
 export function AgentsSection() {
   const [activeRole, setActiveRole] = useState(null);
+  const [activeCapability, setActiveCapability] = useState(null);
+  const [videoRatio, setVideoRatio] = useState(16 / 9);
 
   const roles = useMemo(
     () => [
@@ -226,13 +232,25 @@ export function AgentsSection() {
   const active = roles.find((r) => r.title === activeRole) || null;
 
   useEffect(() => {
-    if (!active) return;
+    if (!active && !activeCapability) return;
     const onKey = (e) => {
-      if (e.key === "Escape") setActiveRole(null);
+      if (e.key !== "Escape") return;
+      if (activeCapability) setActiveCapability(null);
+      else setActiveRole(null);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [active]);
+  }, [active, activeCapability]);
+
+  useEffect(() => {
+    if (!activeCapability) return;
+    setVideoRatio(16 / 9);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [activeCapability]);
 
   return (
     <section className="py-20 md:py-28">
@@ -275,21 +293,26 @@ export function AgentsSection() {
                     key={`${active.title}-${c.title}`}
                     className="h-full"
                   >
-                    <Card className="flex h-full flex-col p-6 md:p-7">
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="w-11 h-11 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center">
-                          <Icon size={20} className="text-[#A855F7]" />
+                    <button
+                      type="button"
+                      onClick={() => setActiveCapability(c)}
+                      className="h-full w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] rounded-3xl"
+                    >
+                      <Card className="flex h-full flex-col p-6 md:p-7 transition-colors hover:border-[#8B5CF6]/50">
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="w-11 h-11 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center">
+                            <Icon size={20} className="text-[#A855F7]" />
+                          </div>
+                          <StatusPill status={c.status} />
                         </div>
-                        <StatusPill status={c.status} />
-                      </div>
-                      <h3 className="mt-5 text-xl font-semibold tracking-tight">
-                        {c.title}
-                      </h3>
-                      <p className="mt-3 text-[15px] text-[#9CA3AF] leading-relaxed">
-                        {c.desc}
-                      </p>
-
-                    </Card>
+                        <h3 className="mt-5 text-xl font-semibold tracking-tight">
+                          {c.title}
+                        </h3>
+                        <p className="mt-3 text-[15px] text-[#9CA3AF] leading-relaxed">
+                          {c.desc}
+                        </p>
+                      </Card>
+                    </button>
                   </Reveal>
                 );
               })}
@@ -324,6 +347,65 @@ export function AgentsSection() {
           </div>
         )}
       </div>
+
+      {activeCapability ? (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+          role="dialog"
+          aria-modal="true"
+          aria-label={activeCapability.title}
+        >
+          <div
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            onClick={() => setActiveCapability(null)}
+          />
+          <div className="relative z-10 w-full max-w-4xl rounded-3xl border border-white/10 bg-[#0B1120] p-4 sm:p-6 shadow-2xl">
+            <div className="flex items-start justify-between gap-4">
+              <div className="min-w-0">
+                <h3 className="text-lg sm:text-xl font-semibold tracking-tight">
+                  {activeCapability.title}
+                </h3>
+                <p className="mt-1 text-sm text-[#9CA3AF] leading-relaxed">
+                  {activeCapability.desc}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveCapability(null)}
+                aria-label="Close video"
+                className="shrink-0 rounded-full border border-white/15 bg-white/5 p-2 text-white transition-colors hover:bg-white/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6]"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <div
+              className="mx-auto mt-4 w-full overflow-hidden rounded-2xl bg-black"
+              style={{
+                aspectRatio: String(videoRatio),
+                maxHeight: "min(70vh, 720px)",
+                maxWidth: "100%",
+              }}
+            >
+              <video
+                key={activeCapability.title}
+                src={activeCapability.video || PLACEHOLDER_VIDEO}
+                className="h-full w-full object-contain"
+                controls
+                autoPlay
+                muted
+                playsInline
+                onLoadedMetadata={(e) => {
+                  const v = e.currentTarget;
+                  if (v.videoWidth && v.videoHeight) {
+                    setVideoRatio(v.videoWidth / v.videoHeight);
+                  }
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }
