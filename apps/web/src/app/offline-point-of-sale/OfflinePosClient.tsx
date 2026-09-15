@@ -184,7 +184,7 @@ export default function OfflinePosClient() {
       <section className="py-20 md:py-28 border-t border-white/5">
         <div className="site-container">
           <motion.div {...rise} className="mb-12 md:mb-16">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sky-400 mb-4">
+            <p className="text-xs font-semibold normal-case tracking-[0.24em] text-sky-400 mb-4">
               {platform.eyebrow}
             </p>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tighter">
