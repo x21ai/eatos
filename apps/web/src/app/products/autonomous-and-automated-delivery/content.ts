@@ -76,7 +76,7 @@ export const hardware = {
   specs: [
     {
       title: 'Swift, agile and space saving',
-      body: 'A slim, compact frame moves through tight aisles without disrupting the room or the service flow.',
+      body: 'A slim, compact frame moves through tight aisles without disrupting the room or service flow.',
     },
     {
       title: 'Enhanced operational efficiency',
