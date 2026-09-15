@@ -89,7 +89,7 @@ export const hardware = {
     },
     {
       title: 'Secure by design',
-      body: 'Tokenized payments and role based access keep guest and order data protected.',
+      body: 'Tokenized payments and role based access keep order data protected.',
     },
   ],
 };
