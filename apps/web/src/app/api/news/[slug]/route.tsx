@@ -11,7 +11,9 @@
 
 import { queryOne, execute } from '@/lib/db/client';
 import { htmlToBlocks, blocksToHtml } from '@/lib/blog/html';
-import { adminFail, requireAdmin } from '@/lib/admin/guard';
+import { resolvePublishStatus } from '@/lib/admin/content-publish';
+import { adminFail, requireCapability, tryGetAdmin } from '@/lib/admin/guard';
+import { hasCapability } from '@/lib/admin/permissions';
 
 const TABLE = 'news_posts';
 
@@ -51,8 +53,12 @@ export async function GET(
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await params;
+  const admin = await tryGetAdmin(request);
+  const canReadDrafts = admin && hasCapability(admin, 'news:read');
   const row = await queryOne<Record<string, any>>(
-    `SELECT * FROM ${TABLE} WHERE slug = ?`,
+    canReadDrafts
+      ? `SELECT * FROM ${TABLE} WHERE slug = ?`
+      : `SELECT * FROM ${TABLE} WHERE slug = ? AND status = 'published'`,
     [slug]
   );
 
@@ -64,13 +70,14 @@ export async function PATCH(
   request: Request,
   { params }: { params: Promise<{ slug: string }> }
 ) {
+  const { slug } = await params;
+
+  let admin;
   try {
-    await requireAdmin(request);
+    admin = await requireCapability(request, 'news:write');
   } catch (error) {
     return adminFail(error);
   }
-
-  const { slug } = await params;
 
   let body: Record<string, any>;
   try {
@@ -92,6 +99,22 @@ export async function PATCH(
     args.push(value);
   };
 
+  let resolvedStatus: string | undefined;
+  if (body.status !== undefined) {
+    const publish = await resolvePublishStatus(
+      admin,
+      'news',
+      slug,
+      String(body.status),
+      String(current.status ?? 'draft'),
+    );
+    resolvedStatus = publish.status;
+    set('status', publish.status);
+    if (publish.status === 'published' && body.published_at === undefined) {
+      set('published_at', new Date().toISOString());
+    }
+  }
+
   const simple: Array<[string, string]> = [
     ['title', 'title'],
     ['excerpt', 'excerpt'],
@@ -101,11 +124,13 @@ export async function PATCH(
     ['seo_title', 'seo_title'],
     ['seo_description', 'seo_description'],
     ['keywords', 'keywords'],
-    ['status', 'status'],
     ['published_at', 'published_at'],
   ];
   for (const [field, column] of simple) {
-    if (body[field] !== undefined) set(column, body[field]);
+    if (body[field] !== undefined) {
+      if (field === 'published_at' && resolvedStatus === 'pending_publish') continue;
+      set(column, body[field]);
+    }
   }
 
   if (typeof body.content === 'string') {
@@ -152,13 +177,14 @@ export async function DELETE(
   request: Request,
   { params }: { params: Promise<{ slug: string }> }
 ) {
+  const { slug } = await params;
+
   try {
-    await requireAdmin(request);
+    await requireCapability(request, 'news:write');
   } catch (error) {
     return adminFail(error);
   }
 
-  const { slug } = await params;
   const current = await queryOne(`SELECT slug FROM ${TABLE} WHERE slug = ?`, [slug]);
   if (!current) return fail('not_found', 'No article exists with that slug.', 404);
 

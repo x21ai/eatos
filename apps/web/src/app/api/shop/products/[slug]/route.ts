@@ -1,6 +1,8 @@
 import { fail, ok, readJson } from '@/lib/api';
 import { execute, queryOne, parseJson } from '@/lib/db/client';
-import { adminFail, requireAdmin } from '@/lib/admin/guard';
+import { resolvePublishStatus } from '@/lib/admin/content-publish';
+import { adminFail, requireCapability, tryGetAdmin } from '@/lib/admin/guard';
+import { hasCapability } from '@/lib/admin/permissions';
 import { loadProductDetail, toProduct } from '@/lib/shop/product-admin';
 import { ensureVariantStockRows } from '@/lib/shop/stock';
 
@@ -14,7 +16,7 @@ export async function GET(
 
   if (detail) {
     try {
-      await requireAdmin(request);
+      await requireCapability(request, 'shop:read');
     } catch (error) {
       return adminFail(error);
     }
@@ -23,9 +25,14 @@ export async function GET(
     return ok(product);
   }
 
-  const row = await queryOne<Record<string, unknown>>(`SELECT * FROM products WHERE slug = ?`, [
-    slug,
-  ]);
+  const admin = await tryGetAdmin(request);
+  const canReadDrafts = admin && hasCapability(admin, 'shop:read');
+  const row = await queryOne<Record<string, unknown>>(
+    canReadDrafts
+      ? `SELECT * FROM products WHERE slug = ?`
+      : `SELECT * FROM products WHERE slug = ? AND status = 'published'`,
+    [slug],
+  );
   if (!row) return fail('not_found', 'Product not found.', 404);
   return ok(toProduct(row));
 }
@@ -34,8 +41,9 @@ export async function PATCH(
   request: Request,
   context: { params: Promise<{ slug: string }> },
 ) {
+  let admin;
   try {
-    await requireAdmin(request);
+    admin = await requireCapability(request, 'shop:write');
   } catch (error) {
     return adminFail(error);
   }
@@ -47,6 +55,19 @@ export async function PATCH(
   if (!existing) return fail('not_found', 'Product not found.', 404);
 
   const body = (await readJson(request)) || {};
+  if (body.status !== undefined) {
+    const publish = await resolvePublishStatus(
+      admin,
+      'shop',
+      slug,
+      String(body.status),
+      String(existing.status ?? 'draft'),
+    );
+    body.status = publish.status;
+    if (publish.status === 'published' && body.published_at === undefined) {
+      body.published_at = new Date().toISOString();
+    }
+  }
   const nextSlug = typeof body.new_slug === 'string' && body.new_slug.trim() ? body.new_slug.trim() : slug;
   const title = typeof body.title === 'string' ? body.title.trim() : String(existing.title);
   const tags = Array.isArray(body.tags) ? body.tags : parseJson<string[]>(existing.tags, []);
@@ -118,7 +139,7 @@ export async function DELETE(
   context: { params: Promise<{ slug: string }> },
 ) {
   try {
-    await requireAdmin(request);
+    await requireCapability(request, 'shop:write');
   } catch (error) {
     return adminFail(error);
   }

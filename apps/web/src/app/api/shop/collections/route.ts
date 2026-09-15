@@ -1,6 +1,6 @@
 import { fail, ok, okList, readJson } from '@/lib/api';
 import { execute, queryAll, queryOne } from '@/lib/db/client';
-import { adminFail, requireAdmin } from '@/lib/admin/guard';
+import { adminFail, requireCapability } from '@/lib/admin/guard';
 
 
 function toCollection(row: Record<string, any>) {
@@ -36,7 +36,7 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
-    await requireAdmin(request);
+    await requireCapability(request, 'shop:write');
   } catch (error) {
     return adminFail(error);
   }
