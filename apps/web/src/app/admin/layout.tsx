@@ -1,7 +1,10 @@
+import AdminShell from '@/components/admin/AdminShell';
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { auth } from '@/lib/auth';
 import { queryOne } from '@/lib/db/client';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata = {
   alternates: { canonical: '/admin' },
@@ -39,5 +42,5 @@ export default async function Layout({
   if (!admin) {
     redirect('/account/signin?callbackUrl=/admin');
   }
-  return children;
+  return <AdminShell>{children}</AdminShell>;
 }

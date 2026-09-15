@@ -1,6 +1,6 @@
 import { fail, ok, readJson, moneyMinor } from '@/lib/api';
 import { execute, queryAll, queryOne } from '@/lib/db/client';
-import { adminFail, requireAdmin } from '@/lib/admin/guard';
+import { adminFail, requireCapability } from '@/lib/admin/guard';
 
 function toOrderDetail(row: Record<string, any>, items: Record<string, any>[]) {
   const currency = row.currency || 'USD';
@@ -63,7 +63,7 @@ export async function GET(
   context: { params: Promise<{ order_number: string }> },
 ) {
   try {
-    await requireAdmin(request);
+    await requireCapability(request, 'orders:read');
   } catch (error) {
     return adminFail(error);
   }
@@ -79,7 +79,7 @@ export async function PATCH(
   context: { params: Promise<{ order_number: string }> },
 ) {
   try {
-    await requireAdmin(request);
+    await requireCapability(request, 'orders:manage');
   } catch (error) {
     return adminFail(error);
   }

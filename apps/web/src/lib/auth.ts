@@ -17,11 +17,16 @@
  */
 import { argon2Verify } from 'argon2-wasm-edge';
 import { betterAuth } from 'better-auth';
-import { createAuthMiddleware } from 'better-auth/api';
+import { APIError, createAuthMiddleware } from 'better-auth/api';
 import { verifyPassword } from 'better-auth/crypto';
 import { bearer } from 'better-auth/plugins';
 import { getCloudflareContext } from '@opennextjs/cloudflare';
 import { D1Dialect } from 'kysely-d1';
+import {
+  isSignupEmailAllowed,
+  normalizeEmail,
+  SIGNUP_REJECTED_MESSAGE,
+} from '@/lib/auth/allowlist';
 
 // --- Cloudflare D1 port note ---------------------------------------------
 // Previously this used a Neon (Postgres) Pool. On Cloudflare Workers the
@@ -127,6 +132,21 @@ function createAuth(db: any, cfEnv: Record<string, any>) {
         verify: verifyCompatiblePassword,
       },
     },
+    databaseHooks: {
+      user: {
+        create: {
+          before: async (user) => {
+            const email = normalizeEmail(String(user.email || ''));
+            if (!email || !isSignupEmailAllowed(email)) {
+              throw APIError.from('FORBIDDEN', {
+                message: SIGNUP_REJECTED_MESSAGE,
+                code: 'SIGNUP_NOT_ALLOWED',
+              });
+            }
+          },
+        },
+      },
+    },
     hooks: {
       // better-auth's /sign-up/email schema requires `name`. Generated user
       // apps often collect only email+password, so backfill a name from the
@@ -135,6 +155,15 @@ function createAuth(db: any, cfEnv: Record<string, any>) {
         if (ctx.path !== '/sign-up/email') return;
         const body = ctx.body as { email?: unknown; name?: unknown } | undefined;
         if (!body || typeof body.email !== 'string') return;
+
+        const email = normalizeEmail(body.email);
+        if (!isSignupEmailAllowed(email)) {
+          throw APIError.from('FORBIDDEN', {
+            message: SIGNUP_REJECTED_MESSAGE,
+            code: 'SIGNUP_NOT_ALLOWED',
+          });
+        }
+
         if (typeof body.name === 'string' && body.name.trim().length > 0) return;
         const derived = body.email.split('@')[0];
         body.name = derived && derived.length > 0 ? derived : 'User';

@@ -1,32 +1,38 @@
 import { fail, ok, readJson } from '@/lib/api';
 import { execute, queryOne, parseJson } from '@/lib/db/client';
-import { adminFail, requireAdmin } from '@/lib/admin/guard';
-
-
-function toProduct(row: Record<string, any>) {
-  return {
-    slug: row.slug,
-    title: row.title,
-    vendor: row.vendor ?? null,
-    product_type: row.product_type ?? null,
-    tags: parseJson<string[]>(row.tags, []),
-    description_html: row.description_html ?? '',
-    price_amount: row.price_amount,
-    compare_at_amount: row.compare_at_amount,
-    currency: row.currency || 'USD',
-    available: row.available !== 0,
-    status: row.status || 'draft',
-    published_at: row.published_at ?? null,
-    updated_at: row.updated_at ?? null,
-  };
-}
+import { resolvePublishStatus } from '@/lib/admin/content-publish';
+import { adminFail, requireCapability, tryGetAdmin } from '@/lib/admin/guard';
+import { hasCapability } from '@/lib/admin/permissions';
+import { loadProductDetail, toProduct } from '@/lib/shop/product-admin';
+import { ensureVariantStockRows } from '@/lib/shop/stock';
 
 export async function GET(
-  _request: Request,
+  request: Request,
   context: { params: Promise<{ slug: string }> },
 ) {
   const { slug } = await context.params;
-  const row = await queryOne<Record<string, any>>(`SELECT * FROM products WHERE slug = ?`, [slug]);
+  const url = new URL(request.url);
+  const detail = url.searchParams.get('detail') === '1';
+
+  if (detail) {
+    try {
+      await requireCapability(request, 'shop:read');
+    } catch (error) {
+      return adminFail(error);
+    }
+    const product = await loadProductDetail(slug);
+    if (!product) return fail('not_found', 'Product not found.', 404);
+    return ok(product);
+  }
+
+  const admin = await tryGetAdmin(request);
+  const canReadDrafts = admin && hasCapability(admin, 'shop:read');
+  const row = await queryOne<Record<string, unknown>>(
+    canReadDrafts
+      ? `SELECT * FROM products WHERE slug = ?`
+      : `SELECT * FROM products WHERE slug = ? AND status = 'published'`,
+    [slug],
+  );
   if (!row) return fail('not_found', 'Product not found.', 404);
   return ok(toProduct(row));
 }
@@ -35,26 +41,43 @@ export async function PATCH(
   request: Request,
   context: { params: Promise<{ slug: string }> },
 ) {
+  let admin;
   try {
-    await requireAdmin(request);
+    admin = await requireCapability(request, 'shop:write');
   } catch (error) {
     return adminFail(error);
   }
 
   const { slug } = await context.params;
-  const existing = await queryOne<Record<string, any>>(`SELECT * FROM products WHERE slug = ?`, [slug]);
+  const existing = await queryOne<Record<string, unknown>>(`SELECT * FROM products WHERE slug = ?`, [
+    slug,
+  ]);
   if (!existing) return fail('not_found', 'Product not found.', 404);
 
   const body = (await readJson(request)) || {};
+  if (body.status !== undefined) {
+    const publish = await resolvePublishStatus(
+      admin,
+      'shop',
+      slug,
+      String(body.status),
+      String(existing.status ?? 'draft'),
+    );
+    body.status = publish.status;
+    if (publish.status === 'published' && body.published_at === undefined) {
+      body.published_at = new Date().toISOString();
+    }
+  }
   const nextSlug = typeof body.new_slug === 'string' && body.new_slug.trim() ? body.new_slug.trim() : slug;
-  const title = typeof body.title === 'string' ? body.title.trim() : existing.title;
-  const tags = Array.isArray(body.tags) ? body.tags : parseJson(existing.tags, []);
+  const title = typeof body.title === 'string' ? body.title.trim() : String(existing.title);
+  const tags = Array.isArray(body.tags) ? body.tags : parseJson<string[]>(existing.tags, []);
 
   try {
     await execute(
       `UPDATE products SET
          slug = ?, title = ?, vendor = ?, product_type = ?, tags = ?, description_html = ?,
          price_amount = ?, compare_at_amount = ?, currency = ?, available = ?, status = ?,
+         seo_title = ?, seo_description = ?,
          published_at = ?, updated_at = CURRENT_TIMESTAMP
        WHERE slug = ?`,
       [
@@ -69,6 +92,8 @@ export async function PATCH(
         body.currency || existing.currency || 'USD',
         body.available === false ? 0 : body.available === true ? 1 : existing.available,
         body.status || existing.status,
+        body.seo_title !== undefined ? body.seo_title : existing.seo_title,
+        body.seo_description !== undefined ? body.seo_description : existing.seo_description,
         body.published_at !== undefined ? body.published_at : existing.published_at,
         slug,
       ],
@@ -87,15 +112,22 @@ export async function PATCH(
         slug,
       ]);
     }
-    // Keep default variant price in sync when provided.
     if (typeof body.price_amount === 'number') {
       await execute(
         `UPDATE product_variants SET price_amount = ?, currency = ? WHERE id = ? OR (product_slug = ? AND title = 'Default')`,
-        [body.price_amount, body.currency || existing.currency || 'USD', `default:${nextSlug}`, nextSlug],
+        [
+          body.price_amount,
+          body.currency || existing.currency || 'USD',
+          `default:${nextSlug}`,
+          nextSlug,
+        ],
       );
     }
-    const row = await queryOne<Record<string, any>>(`SELECT * FROM products WHERE slug = ?`, [nextSlug]);
-    return ok(toProduct(row!));
+    const product = await loadProductDetail(nextSlug);
+    if (product?.variants?.length) {
+      await ensureVariantStockRows(product.variants.map((v) => v.id));
+    }
+    return ok(product ?? toProduct(existing));
   } catch (error) {
     console.error('patch product failed', error);
     return fail('write_failed', 'Could not update the product.', 500);
@@ -103,11 +135,11 @@ export async function PATCH(
 }
 
 export async function DELETE(
-  _request: Request,
+  request: Request,
   context: { params: Promise<{ slug: string }> },
 ) {
   try {
-    await requireAdmin(request);
+    await requireCapability(request, 'shop:write');
   } catch (error) {
     return adminFail(error);
   }

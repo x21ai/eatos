@@ -1,6 +1,6 @@
 import { fail, ok, readJson } from '@/lib/api';
 import { execute, queryOne } from '@/lib/db/client';
-import { adminFail, requireAdmin } from '@/lib/admin/guard';
+import { adminFail, requireCapability } from '@/lib/admin/guard';
 
 
 function toCollection(row: Record<string, any>) {
@@ -28,7 +28,7 @@ export async function PATCH(
   context: { params: Promise<{ slug: string }> },
 ) {
   try {
-    await requireAdmin(request);
+    await requireCapability(request, 'shop:write');
   } catch (error) {
     return adminFail(error);
   }
@@ -64,11 +64,11 @@ export async function PATCH(
 }
 
 export async function DELETE(
-  _request: Request,
+  request: Request,
   context: { params: Promise<{ slug: string }> },
 ) {
   try {
-    await requireAdmin(request);
+    await requireCapability(request, 'shop:write');
   } catch (error) {
     return adminFail(error);
   }
