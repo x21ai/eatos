@@ -293,21 +293,26 @@ export function AgentsSection() {
                     key={`${active.title}-${c.title}`}
                     className="h-full"
                   >
-                    <Card className="flex h-full flex-col p-6 md:p-7">
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="w-11 h-11 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center">
-                          <Icon size={20} className="text-[#A855F7]" />
+                    <button
+                      type="button"
+                      onClick={() => setActiveCapability(c)}
+                      className="h-full w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] rounded-3xl"
+                    >
+                      <Card className="flex h-full flex-col p-6 md:p-7 transition-colors hover:border-[#8B5CF6]/50">
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="w-11 h-11 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center">
+                            <Icon size={20} className="text-[#A855F7]" />
+                          </div>
+                          <StatusPill status={c.status} />
                         </div>
-                        <StatusPill status={c.status} />
-                      </div>
-                      <h3 className="mt-5 text-xl font-semibold tracking-tight">
-                        {c.title}
-                      </h3>
-                      <p className="mt-3 text-[15px] text-[#9CA3AF] leading-relaxed">
-                        {c.desc}
-                      </p>
-
-                    </Card>
+                        <h3 className="mt-5 text-xl font-semibold tracking-tight">
+                          {c.title}
+                        </h3>
+                        <p className="mt-3 text-[15px] text-[#9CA3AF] leading-relaxed">
+                          {c.desc}
+                        </p>
+                      </Card>
+                    </button>
                   </Reveal>
                 );
               })}
