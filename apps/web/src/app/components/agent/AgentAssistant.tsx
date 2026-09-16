@@ -23,7 +23,14 @@ import {
   X,
 } from 'lucide-react';
 import { AGENT_OPEN_EVENT } from './agentBus';
-import { syncConversation } from './conversationSync';
+import { useMayaRealtime } from '@/lib/maya/helpdesk/useMayaRealtime';
+import {
+  buildVisitorRealtimeUrl,
+  markVisitorMessagesRead,
+  pollAgentMessages,
+  setLastAgentMessageId,
+  syncConversation,
+} from './conversationSync';
 import { composeReply, starterQuestions } from './retrieval';
 import {
   AGENT_NAME,
@@ -56,6 +63,40 @@ function useAgentIndex(open) {
     };
   }, [open, index]);
   return index;
+}
+
+function LiveAgentBubble({ message, agentName }) {
+  return (
+    <div className="flex gap-3">
+      <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-2xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-300">
+        <MessageSquare size={15} aria-hidden />
+      </span>
+      <div className="min-w-0 max-w-[calc(100%-2.75rem)] rounded-3xl rounded-tl-lg border border-emerald-500/20 bg-emerald-500/[0.06] px-4 py-3.5 text-sm leading-6 text-zinc-100">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-400/90">
+          {agentName || 'Support specialist'}
+        </p>
+        <p className="mt-1 whitespace-pre-wrap">{message.body_text}</p>
+        {message.read_at ? (
+          <p className="mt-2 text-[10px] text-emerald-400/70">Seen</p>
+        ) : null}
+        {message.article_slugs?.length ? (
+          <ul className="mt-3 space-y-1 border-t border-white/10 pt-2">
+            {message.article_slugs.map((slug) => (
+              <li key={slug}>
+                <a
+                  href={articleHref(slug)}
+                  className="inline-flex items-center gap-1.5 text-xs text-brand-on-dark hover:underline"
+                >
+                  <BookOpen size={12} aria-hidden />
+                  {slug}
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
+    </div>
+  );
 }
 
 function Bubble({ role, children }) {
@@ -247,6 +288,14 @@ export default function AgentAssistant() {
   const [pending, setPending] = useState(null);
   const [triage, setTriage] = useState(null);
   const [seedContext, setSeedContext] = useState(null);
+  const [liveAgent, setLiveAgent] = useState(null);
+  const [conversationStatus, setConversationStatus] = useState(null);
+  const [liveAgentTurns, setLiveAgentTurns] = useState([]);
+  const [awaitingAgent, setAwaitingAgent] = useState(false);
+  const [agentTyping, setAgentTyping] = useState(false);
+  const [realtimeWsUrl, setRealtimeWsUrl] = useState(null);
+  const [usePollingFallback, setUsePollingFallback] = useState(false);
+  const typingTimer = useRef(null);
   const scrollRef = useRef(null);
   const inputRef = useRef(null);
   const index = useAgentIndex(open);
@@ -258,7 +307,16 @@ export default function AgentAssistant() {
     if (!text) return;
     setTriage(null);
     setInput('');
-    syncConversation({ message: text, role: 'visitor', seedContext });
+    const turnId = `${Date.now()}-q`;
+    void syncConversation({ message: text, role: 'visitor', seedContext }).then((result) => {
+      if (result?.message_id) {
+        setTurns((prev) =>
+          prev.map((turn) =>
+            turn.id === turnId ? { ...turn, serverMessageId: result.message_id } : turn,
+          ),
+        );
+      }
+    });
     setTurns((prev) => {
       const history = [];
       for (const turn of prev) {
@@ -270,7 +328,7 @@ export default function AgentAssistant() {
       }
       setThinking(true);
       setPending({ question: text, history });
-      return [...prev, { id: `${Date.now()}-q`, role: 'visitor', text }];
+      return [...prev, { id: turnId, role: 'visitor', text }];
     });
   }, [seedContext]);
 
@@ -374,7 +432,95 @@ export default function AgentAssistant() {
   useEffect(() => {
     const node = scrollRef.current;
     if (node) node.scrollTop = node.scrollHeight;
-  }, [turns, thinking, triage, open]);
+  }, [turns, thinking, triage, open, liveAgentTurns]);
+
+  useEffect(() => {
+    if (!open) return;
+    setRealtimeWsUrl(buildVisitorRealtimeUrl());
+  }, [open, liveAgentTurns.length, conversationStatus]);
+
+  const applyPollPayload = useCallback((data) => {
+    if (!data) return;
+    if (data.status) setConversationStatus(data.status);
+    if (data.assigned_agent) {
+      setLiveAgent(data.assigned_agent);
+      setAwaitingAgent(false);
+    } else if (data.status === 'pending') {
+      setAwaitingAgent(true);
+    }
+    if (data.messages?.length) {
+      setLiveAgentTurns((prev) => {
+        const seen = new Set(prev.map((m) => m.id));
+        const next = [...prev];
+        for (const msg of data.messages) {
+          if (!seen.has(msg.id)) {
+            seen.add(msg.id);
+            next.push(msg);
+          }
+        }
+        return next;
+      });
+      const last = data.latest_message_id;
+      if (last) setLastAgentMessageId(last);
+      const ids = data.messages.map((m) => m.id);
+      void markVisitorMessagesRead(ids);
+    }
+  }, []);
+
+  const { status: connectionStatus, sendTyping, sendRead, isFallback } = useMayaRealtime({
+    enabled: open && Boolean(realtimeWsUrl) && !usePollingFallback,
+    role: 'visitor',
+    wsUrl: realtimeWsUrl,
+    onFallback: () => setUsePollingFallback(true),
+    onMessage: (message) => {
+      setLiveAgentTurns((prev) => {
+        if (prev.some((m) => m.id === message.id)) return prev;
+        return [...prev, message];
+      });
+      setLastAgentMessageId(message.id);
+      sendRead([message.id]);
+      void markVisitorMessagesRead([message.id]);
+    },
+    onTyping: (role, isTyping) => {
+      if (role === 'agent') setAgentTyping(isTyping);
+    },
+    onRead: (messageIds, _readAt, readBy) => {
+      if (readBy !== 'agent') return;
+      const idSet = new Set(messageIds);
+      setTurns((prev) =>
+        prev.map((turn) =>
+          turn.serverMessageId && idSet.has(turn.serverMessageId)
+            ? { ...turn, readByAgent: true }
+            : turn,
+        ),
+      );
+    },
+    onMeta: (meta) => {
+      if (meta.status) setConversationStatus(meta.status);
+      if (meta.assigned_agent) {
+        setLiveAgent(meta.assigned_agent);
+        setAwaitingAgent(false);
+      }
+    },
+  });
+
+  useEffect(() => {
+    if (!open || (!usePollingFallback && !isFallback)) return undefined;
+    let cancelled = false;
+
+    async function tick() {
+      const data = await pollAgentMessages();
+      if (cancelled) return;
+      applyPollPayload(data);
+    }
+
+    tick();
+    const interval = window.setInterval(tick, 3000);
+    return () => {
+      cancelled = true;
+      window.clearInterval(interval);
+    };
+  }, [open, usePollingFallback, isFallback, applyPollPayload]);
 
   const startTriage = useCallback((product) => {
     setTriage({ step: product ? 'severity' : 'product', product: product ?? null, severity: null, note: '' });
@@ -475,11 +621,11 @@ export default function AgentAssistant() {
             We are online, typical reply under 2 minutes
           </p>
 
-          <div className="mt-4 flex flex-nowrap items-center gap-2">
+          <div className="mt-4 flex flex-wrap gap-2">
             <button
               type="button"
               onClick={() => openPanel(false)}
-              className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full bg-white px-3 py-2 text-[11px] font-semibold text-black transition-colors hover:bg-zinc-200"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-2 text-[12px] font-semibold text-black transition-colors hover:bg-zinc-200"
             >
               <MessageSquare size={13} aria-hidden />
               Chat with {AGENT_NAME}
@@ -487,7 +633,7 @@ export default function AgentAssistant() {
             <button
               type="button"
               onClick={() => openPanel(true)}
-              className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 px-3 py-2 text-[11px] font-semibold text-white transition-colors hover:border-white/40"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3.5 py-2 text-[12px] font-semibold text-white transition-colors hover:border-white/40"
             >
               <BookOpen size={13} aria-hidden />
               Search help articles
@@ -539,7 +685,13 @@ export default function AgentAssistant() {
               Online 24/7
             </p>
             <h2 className="mt-1.5 truncate text-base font-bold tracking-tight text-white">{AGENT_NAME}</h2>
-            <p className="mt-0.5 truncate text-[11px] text-zinc-500">{AGENT_SUBTITLE}</p>
+            <p className="mt-0.5 truncate text-[11px] text-zinc-500">
+              {liveAgent?.display_name || liveAgent?.email
+                ? `Connected with ${liveAgent.display_name || liveAgent.email.split('@')[0]}`
+                : awaitingAgent || conversationStatus === 'pending'
+                  ? 'Connecting you with a specialist…'
+                  : AGENT_SUBTITLE}
+            </p>
           </div>
           <button
             type="button"
@@ -571,7 +723,10 @@ export default function AgentAssistant() {
           {turns.map((turn) =>
             turn.role === 'visitor' ? (
               <Bubble key={turn.id} role="visitor">
-                {turn.text}
+                <span>{turn.text}</span>
+                {turn.readByAgent ? (
+                  <p className="mt-1 text-[10px] text-zinc-500">Seen</p>
+                ) : null}
               </Bubble>
             ) : (
               <Bubble key={turn.id} role="agent">
@@ -579,6 +734,36 @@ export default function AgentAssistant() {
               </Bubble>
             ),
           )}
+
+          {liveAgentTurns.map((msg) => (
+            <LiveAgentBubble
+              key={msg.id}
+              message={msg}
+              agentName={liveAgent?.display_name || liveAgent?.email?.split('@')[0]}
+            />
+          ))}
+
+          {(awaitingAgent || conversationStatus === 'pending') && !liveAgent ? (
+            <Bubble role="agent">
+              <span className="inline-flex items-center gap-2 text-zinc-400">
+                <Loader2 size={14} className="animate-spin" aria-hidden />
+                A specialist is reviewing your conversation
+              </span>
+            </Bubble>
+          ) : null}
+
+          {agentTyping ? (
+            <Bubble role="agent">
+              <span className="inline-flex items-center gap-2 text-emerald-300/90">
+                <span className="flex gap-1" aria-hidden>
+                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-emerald-400 [animation-delay:0ms]" />
+                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-emerald-400 [animation-delay:120ms]" />
+                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-emerald-400 [animation-delay:240ms]" />
+                </span>
+                Specialist is typing…
+              </span>
+            </Bubble>
+          ) : null}
 
           {thinking ? (
             <Bubble role="agent">
@@ -626,9 +811,10 @@ export default function AgentAssistant() {
                   />
                   <button
                     type="button"
-                    onClick={() => {
+                    onClick={async () => {
                       setTriage({ ...triage, step: 'done' });
-                      syncConversation({
+                      setAwaitingAgent(true);
+                      await syncConversation({
                         message: [
                           'Visitor requested human help.',
                           triage.product ? `Product: ${triage.product.label}` : null,
@@ -653,8 +839,12 @@ export default function AgentAssistant() {
               {triage.step === 'done' && escalation ? (
                 <div className="min-w-0">
                   <p>
-                    Routed. Based on {triage.severity.label.toLowerCase()}, this goes to{' '}
-                    {escalation.label.toLowerCase()} with your product, severity and notes attached.
+                    Your conversation is in our helpdesk inbox. A specialist can reply here in real
+                    time — stay in this chat for live updates.
+                  </p>
+                  <p className="mt-3 text-[12px] text-zinc-400">
+                    For {triage.severity.label.toLowerCase()} issues we also route to{' '}
+                    {escalation.label.toLowerCase()} when needed.
                   </p>
                   <a
                     href={escalation.href}
@@ -671,13 +861,6 @@ export default function AgentAssistant() {
                     <ArrowUpRight size={15} className="shrink-0 text-brand-on-dark" aria-hidden />
                   </a>
                   <p className="mt-2.5 text-[11px] text-zinc-500">{escalation.meta}</p>
-                  <a
-                    href="/system-status"
-                    className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-zinc-400 transition-colors hover:text-white"
-                  >
-                    Check live service health
-                    <ArrowRight size={12} aria-hidden />
-                  </a>
                 </div>
               ) : null}
             </Bubble>
@@ -696,7 +879,13 @@ export default function AgentAssistant() {
             <input
               ref={inputRef}
               value={input}
-              onChange={(event) => setInput(event.target.value)}
+              onChange={(event) => {
+                setInput(event.target.value);
+                sendTyping(true);
+                if (typingTimer.current) window.clearTimeout(typingTimer.current);
+                typingTimer.current = window.setTimeout(() => sendTyping(false), 1200);
+              }}
+              onBlur={() => sendTyping(false)}
               placeholder="Ask about setup, hardware, payments"
               aria-label="Ask the eatOS support agent"
               className="min-w-0 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-zinc-600"
@@ -711,8 +900,20 @@ export default function AgentAssistant() {
             </button>
           </div>
           <p className="mt-2.5 text-[10px] leading-4 text-zinc-600">
-            Answers are quoted from eatOS help articles with sources shown. Account actions require
-            sign-in.
+            {liveAgent || awaitingAgent ? (
+              <>
+                Live chat with our team.
+                {connectionStatus === 'connected'
+                  ? ' Connected in realtime.'
+                  : connectionStatus === 'reconnecting'
+                    ? ' Reconnecting…'
+                    : usePollingFallback || isFallback
+                      ? ' Using backup sync.'
+                      : ' Connecting…'}
+              </>
+            ) : (
+              'Answers are quoted from eatOS help articles with sources shown. Account actions require sign-in.'
+            )}
           </p>
         </form>
       </div>

@@ -1,5 +1,7 @@
 const VISITOR_KEY = 'maya_visitor_id';
 const TRACE_KEY = 'maya_trace_id';
+const CONVERSATION_KEY = 'maya_conversation_id';
+const LAST_AGENT_MSG_KEY = 'maya_last_agent_msg';
 
 function readStorage(key: string): string | null {
   if (typeof window === 'undefined') return null;
@@ -60,7 +62,22 @@ export function resetTraceId(): string {
       ? `maya_${crypto.randomUUID()}`
       : `maya_${Date.now()}`;
   writeStorage(TRACE_KEY, id);
+  writeStorage(CONVERSATION_KEY, '');
+  writeStorage(LAST_AGENT_MSG_KEY, '');
   return id;
+}
+
+export function getConversationId(): string | null {
+  const id = readStorage(CONVERSATION_KEY);
+  return id || null;
+}
+
+export function getLastAgentMessageId(): string | null {
+  return readStorage(LAST_AGENT_MSG_KEY);
+}
+
+export function setLastAgentMessageId(id: string) {
+  writeStorage(LAST_AGENT_MSG_KEY, id);
 }
 
 type SyncOpts = {
@@ -73,8 +90,15 @@ type SyncOpts = {
   visitorName?: string | null;
 };
 
+type SyncResult = {
+  conversation_id?: string | null;
+  message_id?: string | null;
+  assigned_agent_id?: string | null;
+  status?: string | null;
+};
+
 /** Fire-and-forget sync to the helpdesk inbox. Never throws to callers. */
-export async function syncConversation(opts: SyncOpts): Promise<void> {
+export async function syncConversation(opts: SyncOpts): Promise<SyncResult | null> {
   try {
     const [visitorId, traceId] = await Promise.all([
       ensureVisitorId(),
@@ -83,7 +107,7 @@ export async function syncConversation(opts: SyncOpts): Promise<void> {
     const pageUrl = typeof window !== 'undefined' ? window.location.href : null;
     const pageTitle = typeof document !== 'undefined' ? document.title : null;
 
-    await fetch('/api/support/conversations', {
+    const res = await fetch('/api/support/conversations', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -100,7 +124,75 @@ export async function syncConversation(opts: SyncOpts): Promise<void> {
         visitor_name: opts.visitorName ?? null,
       }),
     });
+    const json = await res.json();
+    const data = json?.data as SyncResult | undefined;
+    if (data?.conversation_id) {
+      writeStorage(CONVERSATION_KEY, data.conversation_id);
+    }
+    return data ?? null;
   } catch {
-    // inbox sync is best-effort; chat must keep working offline
+    return null;
+  }
+}
+
+export type VisitorPollMessage = {
+  id: string;
+  body_text: string;
+  article_slugs?: string[];
+  created_at: string;
+};
+
+export type VisitorPollResult = {
+  conversation_id: string | null;
+  status: string | null;
+  assigned_agent: { display_name: string | null; email: string } | null;
+  messages: VisitorPollMessage[];
+  latest_message_id: string | null;
+};
+
+export function buildVisitorRealtimeUrl(): string | null {
+  const traceId = readStorage(TRACE_KEY);
+  const visitorId = readStorage(VISITOR_KEY);
+  if (!traceId || !visitorId) return null;
+  const params = new URLSearchParams({ visitor_id: visitorId });
+  return `/api/support/conversations/${encodeURIComponent(traceId)}/realtime?${params}`;
+}
+
+/** Persist read receipts when HTTP fallback is active. */
+export async function markVisitorMessagesRead(messageIds: string[]): Promise<void> {
+  try {
+    const [visitorId, traceId] = await Promise.all([
+      ensureVisitorId(),
+      Promise.resolve(ensureTraceId()),
+    ]);
+    await fetch(`/api/support/conversations/${encodeURIComponent(traceId)}/read`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ visitor_id: visitorId, message_ids: messageIds }),
+    });
+  } catch {
+    // ignore
+  }
+}
+
+/** Poll for new human-agent replies. Returns null on network failure. */
+export async function pollAgentMessages(after?: string | null): Promise<VisitorPollResult | null> {
+  try {
+    const [visitorId, traceId] = await Promise.all([
+      ensureVisitorId(),
+      Promise.resolve(ensureTraceId()),
+    ]);
+    const params = new URLSearchParams({ visitor_id: visitorId });
+    const cursor = after ?? getLastAgentMessageId();
+    if (cursor) params.set('after', cursor);
+
+    const res = await fetch(
+      `/api/support/conversations/${encodeURIComponent(traceId)}/messages?${params}`,
+    );
+    if (!res.ok) return null;
+    const json = await res.json();
+    return (json?.data as VisitorPollResult) ?? null;
+  } catch {
+    return null;
   }
 }

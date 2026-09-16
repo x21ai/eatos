@@ -2,8 +2,10 @@ import { fail, ok, readJson, newId } from '@/lib/api';
 import {
   appendMessage,
   autoAssignConversation,
+  findAgentById,
   upsertConversation,
 } from '@/lib/maya/helpdesk/store';
+import { publishConversationMessage, publishConversationMeta } from '@/lib/maya/helpdesk/realtime';
 import type { ConversationStatus, MessageRole } from '@/lib/maya/helpdesk/types';
 
 const STATUSES = new Set<ConversationStatus>(['open', 'pending', 'resolved']);
@@ -82,6 +84,23 @@ export async function POST(request: Request) {
     let assigned = null;
     if (escalate && !conversation.assigned_agent_id) {
       assigned = await autoAssignConversation(conversation.id);
+    }
+
+    await publishConversationMessage(conversation.id, message);
+
+    const effectiveAgentId = assigned?.id ?? conversation.assigned_agent_id;
+    if (assigned || status) {
+      let assignedAgent = null;
+      if (effectiveAgentId) {
+        const agent = await findAgentById(effectiveAgentId);
+        if (agent) {
+          assignedAgent = { display_name: agent.display_name, email: agent.email };
+        }
+      }
+      await publishConversationMeta(conversation.id, {
+        status: status ?? (assigned ? 'pending' : conversation.status),
+        assigned_agent: assignedAgent,
+      });
     }
 
     return ok({
