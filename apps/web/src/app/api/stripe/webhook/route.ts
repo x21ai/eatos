@@ -2,7 +2,6 @@ import { postStripeWebhook } from '@/lib/payments/stripe-webhook-request';
 
 export const runtime = 'nodejs';
 
-/** Legacy webhook URL — forwards to the same handler as `/api/stripe/webhook`. */
 export async function POST(request: Request) {
   return postStripeWebhook(request);
 }

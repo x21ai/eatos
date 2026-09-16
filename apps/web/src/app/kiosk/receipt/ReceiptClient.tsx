@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { formatMinor } from '@/lib/shop/cart-client';
+import { normalizeLookupEmail, normalizeOrderNumber } from '@/lib/shop/order-lookup';
 
 type Money = { amount: number; currency: string };
 
@@ -43,7 +44,7 @@ export default function ReceiptClient({
       setError('');
       try {
         const res = await fetch(
-          `/api/orders/lookup?order=${encodeURIComponent(initialOrder)}&email=${encodeURIComponent(initialEmail)}`,
+          `/api/orders/lookup?order=${encodeURIComponent(normalizeOrderNumber(initialOrder))}&email=${encodeURIComponent(normalizeLookupEmail(initialEmail))}`,
         );
         const json = await res.json();
         if (!res.ok || json.error) throw new Error(json.message || 'Lookup failed');

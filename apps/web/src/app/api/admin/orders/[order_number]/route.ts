@@ -24,6 +24,7 @@ function toOrderDetail(row: Record<string, any>, items: Record<string, any>[]) {
     shipping_region: row.shipping_region ?? null,
     shipping_postal: row.shipping_postal ?? null,
     shipping_country: row.shipping_country ?? null,
+    shipping_phone: row.shipping_phone ?? null,
     provider: row.provider ?? null,
     provider_session_id: row.provider_session_id ?? null,
     provider_payment_id: row.provider_payment_id ?? null,

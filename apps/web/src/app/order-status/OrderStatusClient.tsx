@@ -4,21 +4,28 @@
 import { useEffect, useState } from 'react';
 import { Loader2, Search } from 'lucide-react';
 import { formatMinor } from '@/lib/shop/cart-client';
+import { normalizeLookupEmail, normalizeOrderNumber } from '@/lib/shop/order-lookup';
 
-export default function OrderStatusClient({ initialOrder = '', initialEmail = '' }) {
-  const [order, setOrder] = useState(initialOrder);
-  const [email, setEmail] = useState(initialEmail);
+export default function OrderStatusClient({
+  initialOrder = '',
+  initialEmail = '',
+  initialPaidHint = false,
+}) {
+  const [order, setOrder] = useState(normalizeOrderNumber(initialOrder));
+  const [email, setEmail] = useState(normalizeLookupEmail(initialEmail));
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   async function lookup(nextOrder = order, nextEmail = email) {
-    if (!nextOrder || !nextEmail) return;
+    const orderNumber = normalizeOrderNumber(nextOrder);
+    const lookupEmail = normalizeLookupEmail(nextEmail);
+    if (!orderNumber || !lookupEmail) return;
     setLoading(true);
     setError('');
     try {
       const res = await fetch(
-        `/api/orders/lookup?order=${encodeURIComponent(nextOrder)}&email=${encodeURIComponent(nextEmail)}`,
+        `/api/orders/lookup?order=${encodeURIComponent(orderNumber)}&email=${encodeURIComponent(lookupEmail)}`,
       );
       const json = await res.json();
       if (!res.ok || json.error) throw new Error(json.message || 'Lookup failed');
@@ -83,6 +90,12 @@ export default function OrderStatusClient({ initialOrder = '', initialEmail = ''
 
         {error ? <p className="mt-6 text-sm text-red-400">{error}</p> : null}
 
+        {initialPaidHint && result?.status === 'pending' ? (
+          <p className="mt-6 text-sm text-amber-300/90">
+            Payment received — your order is being confirmed. Refresh in a moment if status still shows pending.
+          </p>
+        ) : null}
+
         {result ? (
           <div className="mt-10 rounded-3xl border border-white/10 p-6 space-y-4">
             <div className="flex flex-wrap items-center justify-between gap-3">
@@ -94,6 +107,20 @@ export default function OrderStatusClient({ initialOrder = '', initialEmail = ''
               </div>
               <p className="text-lg font-semibold text-white">{formatMinor(result.total)}</p>
             </div>
+            <div className="grid gap-1 text-sm border-t border-white/10 pt-4">
+              <p className="flex justify-between gap-4">
+                <span className="text-zinc-500">Subtotal</span>
+                <span className="text-zinc-200">{formatMinor(result.subtotal)}</span>
+              </p>
+              <p className="flex justify-between gap-4">
+                <span className="text-zinc-500">Shipping</span>
+                <span className="text-zinc-200">{formatMinor(result.shipping)}</span>
+              </p>
+              <p className="flex justify-between gap-4">
+                <span className="text-zinc-500">Tax</span>
+                <span className="text-zinc-200">{formatMinor(result.tax)}</span>
+              </p>
+            </div>
             <ul className="divide-y divide-white/10 border-t border-white/10">
               {result.items.map((item) => (
                 <li key={`${item.product_slug}-${item.title}`} className="flex justify-between gap-4 py-3 text-sm">
@@ -104,6 +131,20 @@ export default function OrderStatusClient({ initialOrder = '', initialEmail = ''
                 </li>
               ))}
             </ul>
+            {(result.shipping_line1 || result.shipping_name) && (
+              <div className="border-t border-white/10 pt-4 text-sm text-zinc-300">
+                <p className="text-xs uppercase tracking-[0.16em] text-zinc-500">Ship to</p>
+                {result.shipping_name ? <p>{result.shipping_name}</p> : null}
+                {result.shipping_line1 ? <p>{result.shipping_line1}</p> : null}
+                {result.shipping_line2 ? <p>{result.shipping_line2}</p> : null}
+                <p>
+                  {[result.shipping_city, result.shipping_region, result.shipping_postal]
+                    .filter(Boolean)
+                    .join(', ')}
+                </p>
+                {result.shipping_country ? <p>{result.shipping_country}</p> : null}
+              </div>
+            )}
             <p className="text-xs text-zinc-500">
               Placed {result.created_at}
               {result.paid_at ? ` · Paid ${result.paid_at}` : ''}
