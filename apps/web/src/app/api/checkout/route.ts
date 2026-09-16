@@ -12,6 +12,13 @@ import {
   normalizeCountry,
   type ShippingAddressInput,
 } from '@/lib/shop/shipping';
+import { getShippingRatesConfig } from '@/lib/shop/shipping-config';
+import {
+  loadDiscountByCode,
+  normalizeDiscountCode,
+  recordDiscountRedemption,
+  validateDiscountForSubtotal,
+} from '@/lib/shop/discounts';
 
 function orderNumber() {
   const n = Date.now().toString(36).toUpperCase();
@@ -120,13 +127,35 @@ export async function POST(request: Request) {
   }
 
   const country = normalizeCountry(shipping.country || 'US');
-  const quote = await quoteCartShipping(items, country);
+  const rates = await getShippingRatesConfig();
+  const quote = await quoteCartShipping(items, country, rates);
   const addressError = validateShippingAddress(shipping, quote.requires_shipping);
   if (addressError) return fail('validation_failed', addressError);
 
   const subtotal = items.reduce((s, i) => s + i.unit_amount * i.quantity, 0);
+
+  const discountCodeRaw =
+    typeof body.discount_code === 'string' ? normalizeDiscountCode(body.discount_code) : '';
+  let discountAmount = 0;
+  let appliedDiscountCode: string | null = null;
+  let discountCodeId: string | null = null;
+
+  if (discountCodeRaw) {
+    const discountRow = await loadDiscountByCode(discountCodeRaw);
+    if (!discountRow) {
+      return fail('invalid_discount', 'Discount code not found.', 400);
+    }
+    const validation = validateDiscountForSubtotal(discountRow, subtotal);
+    if (!validation.valid) {
+      return fail('invalid_discount', validation.reason || 'Invalid discount code.', 400);
+    }
+    discountAmount = validation.discount_amount ?? 0;
+    appliedDiscountCode = discountRow.code;
+    discountCodeId = discountRow.id;
+  }
+
   const shippingAmount = quote.shipping_amount;
-  const total = subtotal + shippingAmount;
+  const total = Math.max(0, subtotal - discountAmount + shippingAmount);
   const currency = items[0].currency || 'USD';
   const id = newId('ord');
   const number = orderNumber();
@@ -136,10 +165,11 @@ export async function POST(request: Request) {
       `INSERT INTO orders (
          id, order_number, cart_id, email, status, currency,
          subtotal_amount, shipping_amount, tax_amount, total_amount,
+         discount_code, discount_amount,
          shipping_name, shipping_line1, shipping_line2,
          shipping_city, shipping_region, shipping_postal, shipping_country,
          shipping_phone, provider, source
-       ) VALUES (?, ?, ?, ?, 'pending', ?, ?, ?, 0, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'stripe', ?)`,
+       ) VALUES (?, ?, ?, ?, 'pending', ?, ?, ?, 0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'stripe', ?)`,
       [
         id,
         number,
@@ -149,6 +179,8 @@ export async function POST(request: Request) {
         subtotal,
         shippingAmount,
         total,
+        appliedDiscountCode,
+        discountAmount,
         quote.requires_shipping ? (shipping.name || '').trim() || null : null,
         quote.requires_shipping ? (shipping.line1 || '').trim() || null : null,
         quote.requires_shipping ? (shipping.line2 || '').trim() || null : null,
@@ -178,6 +210,15 @@ export async function POST(request: Request) {
       );
     }
 
+    if (discountCodeId && discountAmount > 0) {
+      await recordDiscountRedemption({
+        discountCodeId,
+        orderId: id,
+        email,
+        amountSavedMinor: discountAmount,
+      });
+    }
+
     const origin = new URL(request.url).origin;
     const successPath =
       source === 'kiosk'
@@ -200,6 +241,8 @@ export async function POST(request: Request) {
         })),
         shippingAmountMinor: shippingAmount,
         shippingLabel: quote.method.includes('free') ? 'Shipping (free)' : 'Shipping',
+        discountAmountMinor: discountAmount,
+        discountCode: appliedDiscountCode || undefined,
         successUrl: `${origin}${successPath}`,
         cancelUrl: `${origin}${cancelPath}`,
       });
@@ -238,6 +281,8 @@ export async function POST(request: Request) {
         email,
         requires_shipping: quote.requires_shipping,
         subtotal: moneyMinor(subtotal, currency),
+        discount: moneyMinor(discountAmount, currency),
+        discount_code: appliedDiscountCode,
         shipping: moneyMinor(shippingAmount, currency),
         total: moneyMinor(total, currency),
       },

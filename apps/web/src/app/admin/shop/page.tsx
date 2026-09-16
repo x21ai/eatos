@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { Loader2, Plus, Search } from 'lucide-react';
 import { toast } from 'sonner';
+import AdminShopNav from '@/components/admin/AdminShopNav';
 
 export default function ShopAdminProducts() {
   const [search, setSearch] = useState('');
@@ -44,6 +45,8 @@ export default function ShopAdminProducts() {
   return (
     <div className="min-h-screen bg-[#050505] text-white p-8 pt-32">
       <div className="max-w-6xl mx-auto space-y-8">
+        <AdminShopNav />
+
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Shop products</h1>

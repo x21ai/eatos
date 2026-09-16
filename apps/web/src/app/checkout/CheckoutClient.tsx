@@ -8,6 +8,7 @@ import {
   formatMinor,
   quoteShipping,
   startCheckout,
+  validateDiscountCode,
 } from '@/lib/shop/cart-client';
 
 const emptyAddress = {
@@ -30,6 +31,10 @@ export default function CheckoutClient() {
   const [quoting, setQuoting] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const [discountInput, setDiscountInput] = useState('');
+  const [discount, setDiscount] = useState(null);
+  const [discountBusy, setDiscountBusy] = useState(false);
+  const [discountError, setDiscountError] = useState('');
 
   const refreshQuote = useCallback(async (country) => {
     setQuoting(true);
@@ -73,7 +78,11 @@ export default function CheckoutClient() {
     setBusy(true);
     setError('');
     try {
-      const result = await startCheckout(email, quote?.requires_shipping ? address : { country: 'US' });
+      const result = await startCheckout(
+        email,
+        quote?.requires_shipping ? address : { country: 'US' },
+        discount?.code,
+      );
       if (result?.checkout_url) {
         window.location.href = result.checkout_url;
         return;
@@ -88,8 +97,28 @@ export default function CheckoutClient() {
 
   const requiresShipping = quote?.requires_shipping !== false;
   const shippingMoney = quote?.shipping ?? { amount: 0, currency: cart?.subtotal?.currency || 'USD' };
+  const discountMinor = discount?.discount?.amount || 0;
   const totalMinor =
-    (cart?.subtotal?.amount || 0) + (typeof shippingMoney.amount === 'number' ? shippingMoney.amount : 0);
+    (cart?.subtotal?.amount || 0) -
+    discountMinor +
+    (typeof shippingMoney.amount === 'number' ? shippingMoney.amount : 0);
+
+  async function applyDiscount(e) {
+    e.preventDefault();
+    setDiscountBusy(true);
+    setDiscountError('');
+    try {
+      const result = await validateDiscountCode(discountInput);
+      setDiscount(result);
+    } catch (err) {
+      setDiscount(null);
+      setDiscountError(err.message || 'Invalid code');
+    } finally {
+      setDiscountBusy(false);
+    }
+  }
+
+  const freeShipThreshold = quote?.shipping_rates?.domestic_free_over;
 
   return (
     <div className="bg-black text-zinc-200 min-h-screen">
@@ -226,6 +255,28 @@ export default function CheckoutClient() {
 
             <aside className="rounded-3xl border border-white/10 p-6 h-fit space-y-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">Order summary</p>
+
+              <form onSubmit={applyDiscount} className="flex gap-2">
+                <input
+                  value={discountInput}
+                  onChange={(e) => setDiscountInput(e.target.value.toUpperCase())}
+                  placeholder="Discount code"
+                  className="flex-1 rounded-xl border border-white/15 bg-black px-3 py-2 text-sm text-white outline-none focus:border-brand"
+                />
+                <button
+                  type="submit"
+                  disabled={discountBusy || !discountInput.trim()}
+                  className="rounded-xl border border-white/15 px-3 py-2 text-xs font-semibold uppercase tracking-wide disabled:opacity-50"
+                >
+                  Apply
+                </button>
+              </form>
+              {discountError ? <p className="text-xs text-red-400">{discountError}</p> : null}
+              {discount?.code ? (
+                <p className="text-xs text-green-400">
+                  {discount.code} applied (−{formatMinor(discount.discount)})
+                </p>
+              ) : null}
               <ul className="space-y-3 border-b border-white/10 pb-4 text-sm">
                 {cart.items.map((item) => (
                   <li key={item.id} className="flex justify-between gap-3">
@@ -240,6 +291,12 @@ export default function CheckoutClient() {
                 <span className="text-zinc-400">Subtotal</span>
                 <span className="font-semibold text-white">{formatMinor(cart.subtotal)}</span>
               </p>
+              {discountMinor > 0 ? (
+                <p className="flex justify-between text-sm">
+                  <span className="text-zinc-400">Discount</span>
+                  <span className="font-semibold text-green-400">−{formatMinor(discount.discount)}</span>
+                </p>
+              ) : null}
               <p className="flex justify-between text-sm">
                 <span className="text-zinc-400">Shipping</span>
                 <span className="font-semibold text-white">
@@ -261,7 +318,10 @@ export default function CheckoutClient() {
                 Pay with card <ArrowRight size={15} />
               </button>
               <p className="text-xs text-zinc-500">
-                US orders over $150 ship free. Secure checkout via Stripe.
+                {freeShipThreshold?.amount
+                  ? `US orders over ${formatMinor(freeShipThreshold)} ship free. `
+                  : 'US orders may qualify for free shipping. '}
+                Secure checkout via Stripe.
               </p>
               <a href="/cart" className="block text-center text-xs text-zinc-500 hover:text-zinc-300">
                 ← Back to cart

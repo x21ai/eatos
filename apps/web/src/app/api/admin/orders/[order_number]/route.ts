@@ -16,6 +16,8 @@ function toOrderDetail(row: Record<string, any>, items: Record<string, any>[]) {
     subtotal: moneyMinor(row.subtotal_amount ?? 0, currency),
     shipping: moneyMinor(row.shipping_amount ?? 0, currency),
     tax: moneyMinor(row.tax_amount ?? 0, currency),
+    discount: moneyMinor(row.discount_amount ?? 0, currency),
+    discount_code: row.discount_code ?? null,
     total: moneyMinor(row.total_amount ?? 0, currency),
     shipping_name: row.shipping_name ?? null,
     shipping_line1: row.shipping_line1 ?? null,
@@ -87,32 +89,46 @@ export async function PATCH(
 
   const { order_number } = await context.params;
   const body = (await readJson(request)) || {};
-  if (body.status !== 'fulfilled') {
-    return fail('validation_failed', "Only status 'fulfilled' is supported.");
+  const nextStatus = typeof body.status === 'string' ? body.status : '';
+
+  const allowed = new Set(['fulfilled', 'cancelled', 'refunded']);
+  if (!allowed.has(nextStatus)) {
+    return fail(
+      'validation_failed',
+      "Supported status values: 'fulfilled', 'cancelled', 'refunded'.",
+    );
   }
 
   const loaded = await loadOrder(order_number);
   if (!loaded) return fail('not_found', 'Order not found.', 404);
 
-  if (loaded.order.status === 'fulfilled') {
+  const current = loaded.order.status;
+
+  if (current === nextStatus) {
     return ok(toOrderDetail(loaded.order, loaded.items));
   }
 
-  if (loaded.order.status !== 'paid' && loaded.order.status !== 'fulfilled') {
+  const transitions: Record<string, Set<string>> = {
+    fulfilled: new Set(['paid']),
+    cancelled: new Set(['pending', 'paid']),
+    refunded: new Set(['paid', 'fulfilled']),
+  };
+
+  if (!transitions[nextStatus]?.has(current)) {
     return fail(
       'invalid_state',
-      `Cannot mark an order with status '${loaded.order.status}' as fulfilled.`,
+      `Cannot change order from '${current}' to '${nextStatus}'.`,
       409,
     );
   }
 
   try {
     await execute(
-      `UPDATE orders SET status = 'fulfilled', updated_at = CURRENT_TIMESTAMP WHERE order_number = ?`,
-      [loaded.order.order_number],
+      `UPDATE orders SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE order_number = ?`,
+      [nextStatus, loaded.order.order_number],
     );
   } catch (error) {
-    console.error('mark order fulfilled failed', error);
+    console.error('update order status failed', error);
     return fail('write_failed', 'Could not update the order.', 500);
   }
 
