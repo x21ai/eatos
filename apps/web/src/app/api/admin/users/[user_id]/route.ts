@@ -1,4 +1,4 @@
-import { adminFail, requireCapability, requireSuperadmin } from '@/lib/admin/guard';
+import { adminFail, requireCapability } from '@/lib/admin/guard';
 import { execute, queryOne } from '@/lib/db/client';
 import {
   ALL_ADMIN_ROLES,
@@ -41,7 +41,7 @@ export async function PATCH(
   );
 
   if (target.isSuperadmin && !admin.isSuperadmin) {
-    return fail('forbidden', 'Only the superadmin can modify the superadmin account.', 403);
+    return fail('forbidden', 'Only a superadmin can modify a superadmin account.', 403);
   }
 
   let body: Record<string, unknown>;
@@ -63,15 +63,25 @@ export async function PATCH(
     return fail('validation_failed', 'At least one valid role is required.', 400);
   }
 
-  if (roles.includes('superadmin') && !isSuperadminEmail(existing.email)) {
-    return fail('forbidden', 'Superadmin role can only be assigned to pmt@eatos.com.', 403);
+  if (roles.includes('superadmin') && !admin.isSuperadmin) {
+    return fail(
+      'forbidden',
+      'Only an existing superadmin may assign the superadmin role.',
+      403,
+    );
   }
 
   const safeRoles = isSuperadminEmail(existing.email)
     ? (['superadmin'] as AdminRole[])
-    : roles.filter((r) => r !== 'superadmin');
+    : roles;
 
   const primaryRole = safeRoles[0] ?? 'draft_editor';
+  const updatedIdentity = buildAdminIdentity(
+    existing.user_id,
+    existing.email,
+    JSON.stringify(safeRoles),
+    primaryRole,
+  );
 
   try {
     await execute(
@@ -93,8 +103,8 @@ export async function PATCH(
       ? {
           userId: row.user_id,
           email: row.email,
-          roles: safeRoles,
-          isSuperadmin: isSuperadminEmail(String(row.email)),
+          roles: updatedIdentity.roles,
+          isSuperadmin: updatedIdentity.isSuperadmin,
           createdAt: row.created_at,
         }
       : null,
@@ -113,8 +123,8 @@ export async function DELETE(
   }
 
   const { user_id: userId } = await context.params;
-  const existing = await queryOne<{ user_id: string; email: string }>(
-    `SELECT user_id, email FROM admin_users WHERE user_id = ? OR lower(email) = ?`,
+  const existing = await queryOne<{ user_id: string; email: string; role: string; roles: string }>(
+    `SELECT user_id, email, role, roles FROM admin_users WHERE user_id = ? OR lower(email) = ?`,
     [userId, userId.toLowerCase()],
   );
 
@@ -122,8 +132,15 @@ export async function DELETE(
     return fail('not_found', 'Admin user not found.', 404);
   }
 
-  if (isSuperadminEmail(existing.email)) {
-    return fail('forbidden', 'The superadmin account cannot be removed.', 403);
+  const target = buildAdminIdentity(
+    existing.user_id,
+    existing.email,
+    existing.roles,
+    existing.role,
+  );
+
+  if (target.isSuperadmin) {
+    return fail('forbidden', 'Superadmin accounts cannot be removed.', 403);
   }
 
   if (existing.user_id === admin.userId) {

@@ -1,6 +1,6 @@
 /**
- * Signup allowlist — only these emails may create accounts (email/password or OAuth).
- * Case-insensitive matching.
+ * Bootstrap signup allowlist — existing operators who must never be locked out.
+ * New team members become eligible via admin_invites / admin_users instead.
  */
 export const SIGNUP_ALLOWLIST = [
   'pmt@eigital.com',
@@ -14,9 +14,15 @@ export function normalizeEmail(email: string): string {
   return String(email || '').trim().toLowerCase();
 }
 
-export function isSignupEmailAllowed(email: string): boolean {
+/** Legacy sync check — bootstrap operators only. Prefer isSignupEligible() for gating. */
+export function isBootstrapSignupEmail(email: string): boolean {
   const normalized = normalizeEmail(email);
   return SIGNUP_ALLOWLIST.some((allowed) => allowed === normalized);
+}
+
+/** @deprecated Use isBootstrapSignupEmail or isSignupEligible instead. */
+export function isSignupEmailAllowed(email: string): boolean {
+  return isBootstrapSignupEmail(email);
 }
 
 export function isSuperadminEmail(email: string): boolean {
@@ -24,4 +30,4 @@ export function isSuperadminEmail(email: string): boolean {
 }
 
 export const SIGNUP_REJECTED_MESSAGE =
-  'Signup is restricted to approved eatOS accounts. Contact your administrator for access.';
+  'Signup is invite-only. Use the email address your administrator invited, or ask them to send a new invite.';

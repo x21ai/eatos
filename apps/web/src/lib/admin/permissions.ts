@@ -242,15 +242,15 @@ export function buildAdminIdentity(
 
   if (isSuperadminEmail(normalizedEmail)) {
     roles = Array.from(new Set<AdminRole>(['superadmin', ...roles]));
-  } else {
-    roles = roles.filter((r) => r !== 'superadmin');
   }
+
+  const isSuperadmin = roles.includes('superadmin');
 
   return {
     userId,
     email: normalizedEmail,
     roles,
-    isSuperadmin: isSuperadminEmail(normalizedEmail),
+    isSuperadmin,
   };
 }
 

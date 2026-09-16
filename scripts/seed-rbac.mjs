@@ -7,13 +7,13 @@
  *   node scripts/seed-rbac.mjs
  *   doppler run --project x21 --config prd_cloudflare -- node scripts/seed-rbac.mjs
  *
- * Signup allowlist (no DB row required — enforced in auth hooks):
+ * Bootstrap signup operators (always eligible without an invite row):
  *   - pmt@eigital.com
  *   - pmt@eatos.com
  *   - jaspreet.singh@eigital.com
  *
- * Only pmt@eatos.com receives superadmin. Other allowlisted emails can sign up
- * but need an admin invite (admin_users row) for /admin access.
+ * All other accounts require a Team invite (admin_invites + admin_users).
+ * Only an existing superadmin may assign the superadmin role to another email.
  */
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
