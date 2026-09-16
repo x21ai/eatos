@@ -47,14 +47,14 @@ export default function PublishQueuePage() {
 
   if (!me?.isSuperadmin) {
     return (
-      <div className="p-8 pt-32 text-center text-gray-400">
+      <div className="p-8 pt-8 text-center text-gray-400">
         Only the superadmin (pmt@eatos.com) can approve live publishing.
       </div>
     );
   }
 
   return (
-    <div className="p-8 pt-28 max-w-4xl mx-auto space-y-8">
+    <div className="p-8 pt-8 max-w-4xl mx-auto space-y-8">
       <header>
         <h1 className="text-3xl font-bold">Publish approval queue</h1>
         <p className="text-gray-400 mt-2">

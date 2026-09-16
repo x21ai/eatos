@@ -67,7 +67,7 @@ export default function EditCollection({ params }) {
   }
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white p-8 pt-32">
+    <div className="min-h-screen bg-[#050505] text-white p-8 pt-8">
       <div className="mx-auto max-w-3xl space-y-8">
         <a
           href="/admin/shop/collections"

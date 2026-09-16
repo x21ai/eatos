@@ -53,7 +53,7 @@ export default function AdminSettingsPage() {
   };
 
   return (
-    <div className="p-8 pt-28 max-w-lg mx-auto space-y-8">
+    <div className="p-8 pt-8 max-w-lg mx-auto space-y-8">
       <header>
         <h1 className="text-3xl font-bold">Account settings</h1>
         <p className="text-gray-400 mt-2">{me?.email}</p>

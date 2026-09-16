@@ -55,7 +55,7 @@ export default function AdminHomePage() {
   });
 
   return (
-    <div className="p-8 pt-28 max-w-5xl mx-auto space-y-10">
+    <div className="p-8 pt-8 max-w-5xl mx-auto space-y-10">
       <header>
         <h1 className="text-3xl font-bold">Admin home</h1>
         <p className="text-gray-400 mt-2">
