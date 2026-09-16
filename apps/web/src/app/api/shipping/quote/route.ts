@@ -1,6 +1,7 @@
 import { fail, ok, readJson, moneyMinor } from '@/lib/api';
 import { getCartByToken, listCartItems } from '@/lib/shop/cart';
 import { quoteCartShipping, normalizeCountry } from '@/lib/shop/shipping';
+import { getShippingRatesConfig } from '@/lib/shop/shipping-config';
 
 export async function POST(request: Request) {
   const body = (await readJson(request)) || {};
@@ -15,7 +16,8 @@ export async function POST(request: Request) {
   const items = await listCartItems(cart.id);
   if (!items.length) return fail('cart_empty', 'Cart is empty.', 400);
 
-  const quote = await quoteCartShipping(items, country);
+  const rates = await getShippingRatesConfig();
+  const quote = await quoteCartShipping(items, country, rates);
 
   return ok({
     requires_shipping: quote.requires_shipping,
@@ -25,5 +27,9 @@ export async function POST(request: Request) {
     total: moneyMinor(quote.subtotal_all + quote.shipping_amount, quote.currency),
     method: quote.method,
     country,
+    shipping_rates: {
+      domestic_free_over: moneyMinor(rates.domesticFreeOverMinor, quote.currency),
+      international_free_over: moneyMinor(rates.internationalFreeOverMinor, quote.currency),
+    },
   });
 }

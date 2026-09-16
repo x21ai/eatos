@@ -76,11 +76,21 @@ export async function cartRequiresShipping(items: CartLineForShipping[]): Promis
   return false;
 }
 
+export type ShippingRatesInput = {
+  domesticCountry: string;
+  domesticFlatMinor: number;
+  domesticFreeOverMinor: number;
+  internationalFlatMinor: number;
+  internationalFreeOverMinor: number;
+};
+
 export function quoteShippingAmount(opts: {
   subtotalShippableMinor: number;
   country: string;
   currency?: string;
+  rates?: ShippingRatesInput;
 }): { amount: number; method: string } {
+  const rates = opts.rates ?? SHIPPING_RATES;
   const country = normalizeCountry(opts.country);
   const subtotal = Math.max(0, opts.subtotalShippableMinor);
 
@@ -88,13 +98,9 @@ export function quoteShippingAmount(opts: {
     return { amount: 0, method: 'digital' };
   }
 
-  const domestic = country === SHIPPING_RATES.domesticCountry;
-  const flat = domestic
-    ? SHIPPING_RATES.domesticFlatMinor
-    : SHIPPING_RATES.internationalFlatMinor;
-  const freeOver = domestic
-    ? SHIPPING_RATES.domesticFreeOverMinor
-    : SHIPPING_RATES.internationalFreeOverMinor;
+  const domestic = country === rates.domesticCountry;
+  const flat = domestic ? rates.domesticFlatMinor : rates.internationalFlatMinor;
+  const freeOver = domestic ? rates.domesticFreeOverMinor : rates.internationalFreeOverMinor;
 
   if (subtotal >= freeOver) {
     return { amount: 0, method: domestic ? 'domestic_free' : 'international_free' };
@@ -109,6 +115,7 @@ export function quoteShippingAmount(opts: {
 export async function quoteCartShipping(
   items: CartLineForShipping[],
   country: string,
+  rates?: ShippingRatesInput,
 ): Promise<ShippingQuoteResult> {
   const requiresShipping = await cartRequiresShipping(items);
   const currency = items[0]?.currency || 'USD';
@@ -136,6 +143,7 @@ export async function quoteCartShipping(
     subtotalShippableMinor: subtotalShippable,
     country,
     currency,
+    rates,
   });
 
   return {

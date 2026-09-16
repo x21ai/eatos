@@ -105,7 +105,23 @@ export async function quoteShipping(country = 'US') {
   );
 }
 
-export async function startCheckout(email: string, shipping?: CheckoutShippingInput) {
+export async function validateDiscountCode(code: string) {
+  const token = getCartToken();
+  if (!token) throw new Error('No cart');
+  return parse(
+    await fetch('/api/discounts/validate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cart_token: token, code }),
+    }),
+  );
+}
+
+export async function startCheckout(
+  email: string,
+  shipping?: CheckoutShippingInput,
+  discountCode?: string,
+) {
   const token = getCartToken();
   if (!token) throw new Error('No cart');
   return parse(
@@ -116,6 +132,7 @@ export async function startCheckout(email: string, shipping?: CheckoutShippingIn
         cart_token: token,
         email,
         shipping: shipping || undefined,
+        discount_code: discountCode || undefined,
       }),
     }),
   );

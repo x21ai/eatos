@@ -107,7 +107,23 @@ export default function AdminOrdersList() {
                     </a>
                   </td>
                   <td className="px-4 py-3 text-zinc-300">{o.email}</td>
-                  <td className="px-4 py-3 capitalize text-zinc-300">{o.status}</td>
+                  <td className="px-4 py-3">
+                    <span
+                      className={`capitalize text-xs px-2 py-0.5 rounded-full ${
+                        o.status === 'paid' || o.status === 'fulfilled'
+                          ? 'bg-green-500/10 text-green-400'
+                          : o.status === 'pending'
+                            ? 'bg-yellow-500/10 text-yellow-400'
+                            : o.status === 'cancelled'
+                              ? 'bg-zinc-500/10 text-zinc-400'
+                              : o.status === 'refunded'
+                                ? 'bg-orange-500/10 text-orange-400'
+                                : 'text-zinc-300'
+                      }`}
+                    >
+                      {o.status}
+                    </span>
+                  </td>
                   <td className="px-4 py-3 capitalize text-zinc-300">{o.source}</td>
                   <td className="px-4 py-3 text-zinc-300">{formatMinor(o.total)}</td>
                   <td className="px-4 py-3 text-zinc-500">{o.created_at}</td>

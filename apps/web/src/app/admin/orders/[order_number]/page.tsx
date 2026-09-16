@@ -3,16 +3,24 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { CheckCircle2, Loader2 } from 'lucide-react';
+import { Ban, CheckCircle2, Loader2, RotateCcw } from 'lucide-react';
 import { toast } from 'sonner';
 import { formatMinor } from '@/lib/shop/cart-client';
+
+const STATUS_STYLES = {
+  pending: 'text-yellow-400',
+  paid: 'text-green-400',
+  fulfilled: 'text-blue-400',
+  cancelled: 'text-zinc-400',
+  refunded: 'text-orange-400',
+};
 
 export default function AdminOrderDetail() {
   const params = useParams();
   const orderNumber = params?.order_number;
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [fulfilling, setFulfilling] = useState(false);
+  const [updating, setUpdating] = useState('');
 
   async function load() {
     if (!orderNumber) return;
@@ -35,23 +43,23 @@ export default function AdminOrderDetail() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [orderNumber]);
 
-  async function markFulfilled() {
+  async function updateStatus(status) {
     if (!orderNumber) return;
-    setFulfilling(true);
+    setUpdating(status);
     try {
       const res = await fetch(`/api/admin/orders/${encodeURIComponent(orderNumber)}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: 'fulfilled' }),
+        body: JSON.stringify({ status }),
       });
       const json = await res.json();
       if (!res.ok || json.error) throw new Error(json.message || 'Update failed');
       setOrder(json.data);
-      toast.success('Order marked fulfilled');
+      toast.success(`Order marked ${status}`);
     } catch (err) {
       toast.error(err.message || 'Update failed');
     } finally {
-      setFulfilling(false);
+      setUpdating('');
     }
   }
 
@@ -63,7 +71,16 @@ export default function AdminOrderDetail() {
     );
   }
 
-  const canFulfill = order.status === 'paid';
+  const actions = [];
+  if (order.status === 'paid') {
+    actions.push({ status: 'fulfilled', label: 'Mark fulfilled', icon: CheckCircle2, primary: true });
+    actions.push({ status: 'cancelled', label: 'Cancel order', icon: Ban });
+    actions.push({ status: 'refunded', label: 'Mark refunded', icon: RotateCcw });
+  } else if (order.status === 'pending') {
+    actions.push({ status: 'cancelled', label: 'Cancel order', icon: Ban, primary: true });
+  } else if (order.status === 'fulfilled') {
+    actions.push({ status: 'refunded', label: 'Mark refunded', icon: RotateCcw, primary: true });
+  }
 
   return (
     <div className="min-h-screen bg-[#050505] text-white p-8 pt-32">
@@ -74,21 +91,30 @@ export default function AdminOrderDetail() {
               ← Orders
             </a>
             <h1 className="mt-2 text-2xl font-bold tracking-tight">{order.order_number}</h1>
-            <p className="mt-1 text-sm capitalize text-zinc-400">
+            <p className={`mt-1 text-sm capitalize ${STATUS_STYLES[order.status] || 'text-zinc-400'}`}>
               {order.status} · {order.source}
             </p>
           </div>
-          {canFulfill ? (
-            <button
-              type="button"
-              onClick={markFulfilled}
-              disabled={fulfilling}
-              className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-semibold"
-            >
-              {fulfilling ? <Loader2 className="animate-spin" size={14} /> : <CheckCircle2 size={14} />}
-              Mark fulfilled
-            </button>
-          ) : null}
+          <div className="flex flex-wrap gap-2">
+            {actions.map(({ status, label, icon: Icon, primary }) => (
+              <button
+                key={status}
+                type="button"
+                onClick={() => updateStatus(status)}
+                disabled={Boolean(updating)}
+                className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold disabled:opacity-60 ${
+                  primary ? 'bg-brand' : 'border border-white/15 text-zinc-200'
+                }`}
+              >
+                {updating === status ? (
+                  <Loader2 className="animate-spin" size={14} />
+                ) : (
+                  <Icon size={14} />
+                )}
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="rounded-2xl border border-white/10 p-5 space-y-2 text-sm">
@@ -100,6 +126,13 @@ export default function AdminOrderDetail() {
           </p>
           <p>
             <span className="text-zinc-500">Subtotal</span> · {formatMinor(order.subtotal)}
+            {order.discount?.amount > 0 ? (
+              <>
+                {' · '}
+                <span className="text-zinc-500">Discount</span> · −{formatMinor(order.discount)}
+                {order.discount_code ? ` (${order.discount_code})` : ''}
+              </>
+            ) : null}
             {' · '}
             <span className="text-zinc-500">Shipping</span> · {formatMinor(order.shipping)}
             {' · '}

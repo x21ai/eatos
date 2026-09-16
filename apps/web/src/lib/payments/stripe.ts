@@ -95,6 +95,21 @@ function checkoutErrorFromUnknown(error: unknown): StripeCheckoutError {
   );
 }
 
+async function createEphemeralDiscountCoupon(
+  stripe: StripeClient,
+  opts: { amountMinor: number; currency: string; code: string },
+) {
+  if (opts.amountMinor <= 0) return null;
+  const coupon = await stripe.coupons.create({
+    amount_off: opts.amountMinor,
+    currency: opts.currency.toLowerCase(),
+    duration: 'once',
+    name: `Discount ${opts.code}`,
+    max_redemptions: 1,
+  });
+  return coupon.id;
+}
+
 export async function createCheckoutSession(opts: {
   orderId: string;
   orderNumber: string;
@@ -102,6 +117,8 @@ export async function createCheckoutSession(opts: {
   lines: CheckoutLine[];
   shippingAmountMinor?: number;
   shippingLabel?: string;
+  discountAmountMinor?: number;
+  discountCode?: string;
   successUrl: string;
   cancelUrl: string;
 }) {
@@ -136,6 +153,18 @@ export async function createCheckoutSession(opts: {
   }
 
   try {
+    const currency = (opts.lines[0]?.currency || 'USD').toLowerCase();
+    const discountMinor = Math.max(0, opts.discountAmountMinor ?? 0);
+    let discounts: Array<{ coupon: string }> | undefined;
+    if (discountMinor > 0) {
+      const couponId = await createEphemeralDiscountCoupon(stripe, {
+        amountMinor: discountMinor,
+        currency,
+        code: opts.discountCode || 'PROMO',
+      });
+      if (couponId) discounts = [{ coupon: couponId }];
+    }
+
     const session = await stripe.checkout.sessions.create(
       {
         mode: 'payment',
@@ -144,9 +173,11 @@ export async function createCheckoutSession(opts: {
         success_url: opts.successUrl,
         cancel_url: opts.cancelUrl,
         line_items: lineItems,
+        discounts,
         metadata: {
           order_id: opts.orderId,
           order_number: opts.orderNumber,
+          ...(opts.discountCode ? { discount_code: opts.discountCode } : {}),
         },
       },
       { timeout: STRIPE_CHECKOUT_TIMEOUT_MS },
