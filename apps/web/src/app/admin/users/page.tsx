@@ -11,6 +11,7 @@ const ALL_ROLES = [
   "blogger",
   "newsroom",
   "publisher",
+  "developer",
   "draft_editor",
   "maya_agent",
   "help_agent",
@@ -22,15 +23,26 @@ const ROLE_LABELS = {
   blogger: "Blogger",
   newsroom: "Newsroom",
   publisher: "Publisher",
+  developer: "Developer",
   draft_editor: "Draft editor",
   maya_agent: "Maya agent",
   help_agent: "Help agent",
 };
 
+const ROLE_HELP = {
+  developer:
+    "Cross-area content builder (blog, newsroom, shop, media). Saves drafts only; Admin or Publisher must approve before anything goes live.",
+  draft_editor:
+    "Editorial draft access for blog and newsroom. Same draft-only publish flow — use Developer for shop and broader builds.",
+  publisher:
+    "Can publish live and approve pending requests for assigned content areas.",
+  admin: "Full admin access including team management and publish approval.",
+};
+
 export default function AdminUsersPage() {
   const queryClient = useQueryClient();
   const [email, setEmail] = useState("");
-  const [selectedRoles, setSelectedRoles] = useState(["draft_editor"]);
+  const [selectedRoles, setSelectedRoles] = useState(["developer"]);
 
   const { data: me } = useQuery({
     queryKey: ["admin-me"],
@@ -124,8 +136,11 @@ export default function AdminUsersPage() {
           <Shield size={28} /> Team & access
         </h1>
         <p className="text-gray-400 mt-2">
-          Invite allowlisted eatOS accounts and assign roles. Live publishing requires
-          publisher role or superadmin approval.
+          Invite allowlisted eatOS accounts and assign roles.{" "}
+          <strong className="text-gray-300">Developer</strong> is the recommended role
+          for engineers and content builders who draft across blog, newsroom, and shop —
+          their work stays in draft until an Admin, Publisher, or Superadmin approves it
+          in the publish queue.
         </p>
       </header>
 
@@ -151,11 +166,24 @@ export default function AdminUsersPage() {
                   ? "bg-white text-black border-white"
                   : "border-white/20 text-gray-400"
               }`}
+              title={ROLE_HELP[role] || undefined}
             >
               {ROLE_LABELS[role] || role}
             </button>
           ))}
         </div>
+        {selectedRoles.some((role) => ROLE_HELP[role]) && (
+          <ul className="text-xs text-gray-500 space-y-1 list-disc list-inside">
+            {selectedRoles
+              .filter((role) => ROLE_HELP[role])
+              .map((role) => (
+                <li key={role}>
+                  <span className="text-gray-400">{ROLE_LABELS[role]}:</span>{" "}
+                  {ROLE_HELP[role]}
+                </li>
+              ))}
+          </ul>
+        )}
         <button
           type="button"
           disabled={!email || inviteMutation.isLoading}
@@ -208,6 +236,7 @@ export default function AdminUsersPage() {
                               ? "bg-white/10 text-white border-white/30"
                               : "border-white/10 text-gray-500"
                           }`}
+                          title={ROLE_HELP[role] || undefined}
                         >
                           {ROLE_LABELS[role]}
                         </button>

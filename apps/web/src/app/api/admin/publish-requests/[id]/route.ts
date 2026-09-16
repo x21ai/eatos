@@ -1,4 +1,4 @@
-import { adminFail, requireSuperadmin } from '@/lib/admin/guard';
+import { adminFail, requireAdmin } from '@/lib/admin/guard';
 import {
   approvePublishRequest,
   rejectPublishRequest,
@@ -14,7 +14,7 @@ export async function PATCH(
 ) {
   let admin;
   try {
-    admin = await requireSuperadmin(request);
+    admin = await requireAdmin(request);
   } catch (error) {
     return adminFail(error);
   }
@@ -49,6 +49,11 @@ export async function PATCH(
 
     return fail('validation_failed', 'action must be approve or reject.', 400);
   } catch (error) {
+    const message =
+      error instanceof Error ? error.message : 'Could not process publish request.';
+    if (message.includes('permission')) {
+      return fail('forbidden', message, 403);
+    }
     console.error('publish request action failed', error);
     return fail('write_failed', 'Could not process publish request.', 500);
   }

@@ -6,6 +6,7 @@ export type AdminRole =
   | 'blogger'
   | 'newsroom'
   | 'publisher'
+  | 'developer'
   | 'draft_editor'
   | 'maya_agent'
   | 'help_agent';
@@ -38,10 +39,16 @@ export const ALL_ADMIN_ROLES: AdminRole[] = [
   'blogger',
   'newsroom',
   'publisher',
+  'developer',
   'draft_editor',
   'maya_agent',
   'help_agent',
 ];
+
+/** Roles that can be assigned via Team invite (excludes superadmin). */
+export const INVITABLE_ADMIN_ROLES: AdminRole[] = ALL_ADMIN_ROLES.filter(
+  (role) => role !== 'superadmin',
+);
 
 export const ROLE_LABELS: Record<AdminRole, string> = {
   superadmin: 'Superadmin',
@@ -49,6 +56,7 @@ export const ROLE_LABELS: Record<AdminRole, string> = {
   blogger: 'Blogger',
   newsroom: 'Newsroom',
   publisher: 'Publisher',
+  developer: 'Developer',
   draft_editor: 'Draft editor',
   maya_agent: 'Maya agent',
   help_agent: 'Help agent',
@@ -94,6 +102,7 @@ export const ROLE_CAPABILITIES: Record<AdminRole, Capability[]> = {
     'orders:read',
     'orders:manage',
     'media:manage',
+    'publish:approve',
     'maya:access',
     'maya:manage',
     'help:access',
@@ -114,7 +123,7 @@ export const ROLE_CAPABILITIES: Record<AdminRole, Capability[]> = {
     'shop:publish',
     'media:manage',
   ],
-  draft_editor: [
+  developer: [
     'admin:access',
     'blog:read',
     'blog:write',
@@ -122,6 +131,14 @@ export const ROLE_CAPABILITIES: Record<AdminRole, Capability[]> = {
     'news:write',
     'shop:read',
     'shop:write',
+    'media:manage',
+  ],
+  draft_editor: [
+    'admin:access',
+    'blog:read',
+    'blog:write',
+    'news:read',
+    'news:write',
     'media:manage',
   ],
   maya_agent: ['admin:access', 'maya:access'],
@@ -199,9 +216,11 @@ export function hasAnyCapability(
   return capabilities.some((c) => hasCapability(admin, c));
 }
 
+export type PublishContentType = 'blog' | 'news' | 'shop';
+
 export function canPublishContent(
   admin: AdminIdentity,
-  contentType: 'blog' | 'news' | 'shop',
+  contentType: PublishContentType,
 ): boolean {
   const cap: Capability =
     contentType === 'blog'
@@ -212,6 +231,22 @@ export function canPublishContent(
   return hasCapability(admin, cap);
 }
 
+/** Approve queued publish requests — blanket (admin/superadmin) or per content area (publisher). */
+export function canApprovePublishForContentType(
+  admin: AdminIdentity,
+  contentType: PublishContentType,
+): boolean {
+  if (admin.isSuperadmin) return true;
+  if (hasCapability(admin, 'publish:approve')) return true;
+  return canPublishContent(admin, contentType);
+}
+
+export function canApproveAnyPublishRequest(admin: AdminIdentity): boolean {
+  if (admin.isSuperadmin) return true;
+  if (hasCapability(admin, 'publish:approve')) return true;
+  return hasAnyCapability(admin, ['blog:publish', 'news:publish', 'shop:publish']);
+}
+
 export function roleSummary(admin: AdminIdentity): {
   canPublishLive: boolean;
   canApprovePublish: boolean;
@@ -220,7 +255,7 @@ export function roleSummary(admin: AdminIdentity): {
   const canPublishLive =
     admin.isSuperadmin ||
     hasAnyCapability(admin, ['blog:publish', 'news:publish', 'shop:publish']);
-  const canApprovePublish = hasCapability(admin, 'publish:approve');
+  const canApprovePublish = canApproveAnyPublishRequest(admin);
   return {
     canPublishLive,
     canApprovePublish,
