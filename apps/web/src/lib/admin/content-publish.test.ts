@@ -53,6 +53,43 @@ describe('resolvePublishStatus', () => {
     expect(execute).not.toHaveBeenCalled();
   });
 
+  it('lets developer_publish go live without queueing', async () => {
+    const devPub = buildAdminIdentity(
+      'devpub-1',
+      'devpub@eigital.com',
+      '["developer_publish"]',
+    );
+
+    const result = await resolvePublishStatus(
+      devPub,
+      'shop',
+      'widget',
+      'published',
+      'draft',
+    );
+
+    expect(result.status).toBe('published');
+    expect(result.queuedForApproval).toBeUndefined();
+    expect(execute).not.toHaveBeenCalled();
+  });
+
+  it('queues developer_view publish attempts even though they cannot write', async () => {
+    const viewer = buildAdminIdentity('view-1', 'viewer@eigital.com', '["developer_view"]');
+    vi.mocked(queryOne).mockResolvedValue(null);
+    vi.mocked(execute).mockResolvedValue(undefined);
+
+    const result = await resolvePublishStatus(
+      viewer,
+      'blog',
+      'my-post',
+      'published',
+      'draft',
+    );
+
+    expect(result.status).toBe('pending_publish');
+    expect(result.queuedForApproval).toBe(true);
+  });
+
   it('preserves non-publish status changes for developers', async () => {
     const developer = buildAdminIdentity(
       'dev-2',

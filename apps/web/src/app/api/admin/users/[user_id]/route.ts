@@ -4,6 +4,7 @@ import {
   ALL_ADMIN_ROLES,
   type AdminRole,
   buildAdminIdentity,
+  normalizeAssignedRoles,
 } from '@/lib/admin/permissions';
 import { isSuperadminEmail } from '@/lib/auth/allowlist';
 
@@ -55,8 +56,8 @@ export async function PATCH(
     return fail('validation_failed', 'roles array is required.', 400);
   }
 
-  const roles = rolesInput.filter((r): r is AdminRole =>
-    ALL_ADMIN_ROLES.includes(r as AdminRole),
+  const roles = normalizeAssignedRoles(
+    rolesInput.filter((r): r is AdminRole => ALL_ADMIN_ROLES.includes(r as AdminRole)),
   );
   if (!roles.length) {
     return fail('validation_failed', 'At least one valid role is required.', 400);

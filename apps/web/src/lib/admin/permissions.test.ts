@@ -5,6 +5,7 @@ import {
   canApprovePublishForContentType,
   canPublishContent,
   hasCapability,
+  normalizeAssignedRoles,
   parseRoles,
   roleSummary,
 } from '@/lib/admin/permissions';
@@ -25,6 +26,12 @@ describe('RBAC permissions', () => {
     expect(parseRoles(null, 'editor')).toEqual(['draft_editor']);
   });
 
+  it('normalizes multiple developer tiers to the highest level', () => {
+    expect(
+      normalizeAssignedRoles(['developer_view', 'developer', 'developer_publish', 'blogger']),
+    ).toEqual(['blogger', 'developer_publish']);
+  });
+
   it('grants superadmin all capabilities only for pmt@eatos.com', () => {
     const superadmin = buildAdminIdentity('1', 'pmt@eatos.com', '["admin"]', 'admin');
     expect(superadmin.isSuperadmin).toBe(true);
@@ -43,9 +50,24 @@ describe('RBAC permissions', () => {
     expect(hasCapability(editor, 'shop:write')).toBe(false);
   });
 
-  it('allows developer to draft across blog, newsroom, shop, and media', () => {
-    const developer = buildAdminIdentity(
+  it('developer_view is read-only across content areas', () => {
+    const viewer = buildAdminIdentity(
       '4',
+      'viewer@eigital.com',
+      '["developer_view"]',
+    );
+    expect(hasCapability(viewer, 'blog:read')).toBe(true);
+    expect(hasCapability(viewer, 'news:read')).toBe(true);
+    expect(hasCapability(viewer, 'shop:read')).toBe(true);
+    expect(hasCapability(viewer, 'blog:write')).toBe(false);
+    expect(hasCapability(viewer, 'shop:write')).toBe(false);
+    expect(hasCapability(viewer, 'media:manage')).toBe(false);
+    expect(roleSummary(viewer).draftOnly).toBe(true);
+  });
+
+  it('developer (draft) can write drafts but not publish live', () => {
+    const developer = buildAdminIdentity(
+      '5',
       'jaspreet.singh@eigital.com',
       '["developer"]',
     );
@@ -59,8 +81,25 @@ describe('RBAC permissions', () => {
     expect(roleSummary(developer).canApprovePublish).toBe(false);
   });
 
+  it('developer_publish can publish live but not approve others or manage users', () => {
+    const devPub = buildAdminIdentity(
+      '6',
+      'devpub@eigital.com',
+      '["developer_publish"]',
+    );
+    expect(hasCapability(devPub, 'blog:write')).toBe(true);
+    expect(hasCapability(devPub, 'blog:publish')).toBe(true);
+    expect(hasCapability(devPub, 'news:publish')).toBe(true);
+    expect(hasCapability(devPub, 'shop:publish')).toBe(true);
+    expect(hasCapability(devPub, 'users:manage')).toBe(false);
+    expect(hasCapability(devPub, 'publish:approve')).toBe(false);
+    expect(roleSummary(devPub).draftOnly).toBe(false);
+    expect(canApprovePublishForContentType(devPub, 'blog')).toBe(false);
+    expect(canApproveAnyPublishRequest(devPub)).toBe(false);
+  });
+
   it('scopes publisher approval to their content areas', () => {
-    const publisher = buildAdminIdentity('5', 'pub@eigital.com', '["publisher"]');
+    const publisher = buildAdminIdentity('7', 'pub@eigital.com', '["publisher"]');
     expect(canPublishContent(publisher, 'blog')).toBe(true);
     expect(canApprovePublishForContentType(publisher, 'blog')).toBe(true);
     expect(canApprovePublishForContentType(publisher, 'shop')).toBe(true);
@@ -68,7 +107,7 @@ describe('RBAC permissions', () => {
   });
 
   it('allows blogger to write but not approve publish queue items', () => {
-    const blogger = buildAdminIdentity('6', 'blog@eigital.com', '["blogger"]');
+    const blogger = buildAdminIdentity('8', 'blog@eigital.com', '["blogger"]');
     expect(hasCapability(blogger, 'blog:write')).toBe(true);
     expect(canPublishContent(blogger, 'blog')).toBe(false);
     expect(canApprovePublishForContentType(blogger, 'blog')).toBe(false);
