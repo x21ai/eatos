@@ -18,6 +18,8 @@ import {
   LogOut,
 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
+import AdminSiteHeader from "@/components/admin/AdminSiteHeader";
+import AdminSiteFooter from "@/components/admin/AdminSiteFooter";
 
 const NAV_ITEMS = [
   { href: "/admin", label: "Home", icon: LayoutDashboard, cap: null },
@@ -61,8 +63,9 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
   const perm = me?.permissions;
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white">
-      <aside className="fixed left-0 top-0 bottom-0 w-56 border-r border-white/5 bg-[#0A0A0A] pt-24 px-3 z-40 hidden lg:block">
+    <div className="min-h-screen bg-[#050505] text-white flex flex-col">
+      <AdminSiteHeader />
+      <aside className="fixed left-0 top-14 bottom-0 w-56 border-r border-white/5 bg-[#0A0A0A] px-3 pt-4 z-40 hidden lg:block">
         <div className="mb-6 px-3">
           <p className="text-xs uppercase tracking-wider text-gray-500">eatOS Admin</p>
           <p className="text-sm text-gray-300 truncate mt-1">{me?.email}</p>
@@ -113,7 +116,10 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
         </button>
       </aside>
 
-      <div className="lg:pl-56">{children}</div>
+      <div className="flex min-h-[calc(100vh-3.5rem)] flex-1 flex-col lg:pl-56 pt-14">
+        <div className="flex-1">{children}</div>
+        <AdminSiteFooter />
+      </div>
     </div>
   );
 }

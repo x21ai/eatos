@@ -17,7 +17,7 @@ export default function MayaAdminShell({ title, subtitle, children }) {
   const pathname = usePathname();
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white pt-28 pb-16">
+    <div className="min-h-screen bg-[#050505] text-white pt-8 pb-16">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
           <aside className="lg:w-56 shrink-0">

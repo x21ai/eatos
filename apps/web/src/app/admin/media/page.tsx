@@ -10,7 +10,7 @@ export default function MediaPage() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white">
-      <header className="fixed top-0 left-0 right-0 h-16 bg-[#0A0A0A] border-b border-white/5 flex items-center gap-4 px-6 z-50">
+      <header className="fixed top-14 left-0 right-0 h-16 bg-[#0A0A0A] border-b border-white/5 flex items-center gap-4 px-6 z-50">
         <a
           href="/admin/blog"
           className="p-2 hover:bg-white/5 rounded-full transition-colors text-gray-400 hover:text-white"
@@ -20,7 +20,7 @@ export default function MediaPage() {
         <h1 className="font-semibold text-lg">Media Library</h1>
       </header>
 
-      <div className="pt-20 px-6 max-w-7xl mx-auto h-[calc(100vh-20px)]">
+      <div className="pt-16 px-6 max-w-7xl mx-auto h-[calc(100vh-20px)]">
         {/* We reuse the MediaLibrary component but adapted for full page usage by hiding the modal wrapper if possible, 
              or just embedding it. Since MediaLibrary is built as a modal (fixed inset-0), 
              I should probably refactor it or just wrap it in a relative container if it supports it.

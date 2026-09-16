@@ -65,7 +65,7 @@ export default function AdminOrderDetail() {
 
   if (loading || !order) {
     return (
-      <div className="min-h-screen bg-[#050505] text-white p-8 pt-32">
+      <div className="min-h-screen bg-[#050505] text-white p-8 pt-8">
         {loading ? <Loader2 className="animate-spin" /> : <p className="text-sm text-zinc-400">Order not found.</p>}
       </div>
     );
@@ -83,7 +83,7 @@ export default function AdminOrderDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white p-8 pt-32">
+    <div className="min-h-screen bg-[#050505] text-white p-8 pt-8">
       <div className="max-w-3xl mx-auto space-y-8">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>

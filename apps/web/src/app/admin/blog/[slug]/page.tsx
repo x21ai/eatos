@@ -100,7 +100,7 @@ export default function EditBlogPost({ params }) {
   return (
     <div className="min-h-screen bg-[#050505] text-white">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 h-16 bg-[#0A0A0A] border-b border-white/5 flex items-center justify-between px-6 z-50">
+      <header className="fixed top-14 left-0 right-0 h-16 bg-[#0A0A0A] border-b border-white/5 flex items-center justify-between px-6 z-50">
         <div className="flex items-center gap-4">
           <a
             href="/admin/blog"
@@ -146,7 +146,7 @@ export default function EditBlogPost({ params }) {
       </header>
 
       {/* Main Layout */}
-      <div className="pt-24 pb-20 px-6 max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_350px] gap-8">
+      <div className="pt-16 pb-20 px-6 max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_350px] gap-8">
         {/* Left Column: Editor */}
         <div className="space-y-8 min-w-0">
           {/* Title */}
@@ -195,7 +195,7 @@ export default function EditBlogPost({ params }) {
         </div>
 
         {/* Right Column: Settings Sidebar */}
-        <div className="space-y-6 h-fit sticky top-24">
+        <div className="space-y-6 h-fit sticky top-[7.5rem]">
           {/* Publishing Settings */}
           <div className="bg-[#111] rounded-xl border border-white/10 p-5 space-y-4">
             <h3 className="font-semibold text-white flex items-center gap-2">

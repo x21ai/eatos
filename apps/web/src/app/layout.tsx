@@ -1,12 +1,9 @@
 // @ts-nocheck
 import './global.css';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import Providers from '@/components/Providers';
-import CookieBanner from '@/components/CookieBanner';
-import BookDemoTracker from '@/components/BookDemoTracker';
+import AppChrome from '@/components/AppChrome';
+import MarketingExtras from '@/components/MarketingExtras';
 import StaticLinkFix from '@/components/StaticLinkFix';
-import AgentAssistant from './components/agent/AgentAssistant';
 
 export const metadata = {
   metadataBase: new URL('https://eatos.com'),
@@ -69,13 +66,9 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning
       >
         <Providers>
-          <Header />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-          <CookieBanner />
-          <BookDemoTracker />
+          <AppChrome>{children}</AppChrome>
+          <MarketingExtras />
           <StaticLinkFix />
-          <AgentAssistant />
         </Providers>
       </body>
     </html>

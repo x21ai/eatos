@@ -75,7 +75,7 @@ export default function BlogDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white p-8 pt-32">
+    <div className="min-h-screen bg-[#050505] text-white p-8 pt-8">
       <div className="max-w-6xl mx-auto space-y-8">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">

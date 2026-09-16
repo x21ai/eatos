@@ -93,7 +93,7 @@ export default function AdminDiscountsPage() {
   const discounts = data || [];
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white p-8 pt-32">
+    <div className="min-h-screen bg-[#050505] text-white p-8 pt-8">
       <div className="max-w-6xl mx-auto space-y-8">
         <AdminShopNav />
 

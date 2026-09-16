@@ -111,14 +111,14 @@ export default function AdminUsersPage() {
 
   if (!me?.capabilities?.includes("users:manage")) {
     return (
-      <div className="p-8 pt-32 text-center text-gray-400">
+      <div className="p-8 pt-8 text-center text-gray-400">
         You do not have permission to manage team members.
       </div>
     );
   }
 
   return (
-    <div className="p-8 pt-28 max-w-5xl mx-auto space-y-10">
+    <div className="p-8 pt-8 max-w-5xl mx-auto space-y-10">
       <header>
         <h1 className="text-3xl font-bold flex items-center gap-2">
           <Shield size={28} /> Team & access

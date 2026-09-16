@@ -199,7 +199,7 @@ export default function ShopProductEditor() {
 
   if (!form) {
     return (
-      <div className="min-h-screen bg-[#050505] text-white p-8 pt-32 flex justify-center">
+      <div className="min-h-screen bg-[#050505] text-white p-8 pt-8 flex justify-center">
         <Loader2 className="animate-spin" />
       </div>
     );
@@ -207,7 +207,7 @@ export default function ShopProductEditor() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white">
-      <header className="fixed top-0 left-0 right-0 h-16 bg-[#0A0A0A] border-b border-white/5 flex items-center justify-between px-6 z-50">
+      <header className="fixed top-14 left-0 right-0 h-16 bg-[#0A0A0A] border-b border-white/5 flex items-center justify-between px-6 z-50">
         <div className="flex items-center gap-4 min-w-0">
           <a
             href="/admin/shop"
@@ -246,7 +246,7 @@ export default function ShopProductEditor() {
         </div>
       </header>
 
-      <div className="max-w-6xl mx-auto px-6 pt-24 pb-16 grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8">
+      <div className="max-w-6xl mx-auto px-6 pt-16 pb-16 grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8">
         <div className="space-y-6">
           <div className="bg-[#111] rounded-xl border border-white/10 p-5 space-y-4">
             <h2 className="font-semibold text-white">Product details</h2>
