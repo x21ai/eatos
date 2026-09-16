@@ -23,7 +23,10 @@ import {
   X,
 } from 'lucide-react';
 import { AGENT_OPEN_EVENT } from './agentBus';
+import { useMayaRealtime } from '@/lib/maya/helpdesk/useMayaRealtime';
 import {
+  buildVisitorRealtimeUrl,
+  markVisitorMessagesRead,
   pollAgentMessages,
   setLastAgentMessageId,
   syncConversation,
@@ -73,6 +76,9 @@ function LiveAgentBubble({ message, agentName }) {
           {agentName || 'Support specialist'}
         </p>
         <p className="mt-1 whitespace-pre-wrap">{message.body_text}</p>
+        {message.read_at ? (
+          <p className="mt-2 text-[10px] text-emerald-400/70">Seen</p>
+        ) : null}
         {message.article_slugs?.length ? (
           <ul className="mt-3 space-y-1 border-t border-white/10 pt-2">
             {message.article_slugs.map((slug) => (
@@ -286,6 +292,10 @@ export default function AgentAssistant() {
   const [conversationStatus, setConversationStatus] = useState(null);
   const [liveAgentTurns, setLiveAgentTurns] = useState([]);
   const [awaitingAgent, setAwaitingAgent] = useState(false);
+  const [agentTyping, setAgentTyping] = useState(false);
+  const [realtimeWsUrl, setRealtimeWsUrl] = useState(null);
+  const [usePollingFallback, setUsePollingFallback] = useState(false);
+  const typingTimer = useRef(null);
   const scrollRef = useRef(null);
   const inputRef = useRef(null);
   const index = useAgentIndex(open);
@@ -297,7 +307,16 @@ export default function AgentAssistant() {
     if (!text) return;
     setTriage(null);
     setInput('');
-    syncConversation({ message: text, role: 'visitor', seedContext });
+    const turnId = `${Date.now()}-q`;
+    void syncConversation({ message: text, role: 'visitor', seedContext }).then((result) => {
+      if (result?.message_id) {
+        setTurns((prev) =>
+          prev.map((turn) =>
+            turn.id === turnId ? { ...turn, serverMessageId: result.message_id } : turn,
+          ),
+        );
+      }
+    });
     setTurns((prev) => {
       const history = [];
       for (const turn of prev) {
@@ -309,7 +328,7 @@ export default function AgentAssistant() {
       }
       setThinking(true);
       setPending({ question: text, history });
-      return [...prev, { id: `${Date.now()}-q`, role: 'visitor', text }];
+      return [...prev, { id: turnId, role: 'visitor', text }];
     });
   }, [seedContext]);
 
@@ -416,36 +435,83 @@ export default function AgentAssistant() {
   }, [turns, thinking, triage, open, liveAgentTurns]);
 
   useEffect(() => {
-    if (!open) return undefined;
+    if (!open) return;
+    setRealtimeWsUrl(buildVisitorRealtimeUrl());
+  }, [open, liveAgentTurns.length, conversationStatus]);
+
+  const applyPollPayload = useCallback((data) => {
+    if (!data) return;
+    if (data.status) setConversationStatus(data.status);
+    if (data.assigned_agent) {
+      setLiveAgent(data.assigned_agent);
+      setAwaitingAgent(false);
+    } else if (data.status === 'pending') {
+      setAwaitingAgent(true);
+    }
+    if (data.messages?.length) {
+      setLiveAgentTurns((prev) => {
+        const seen = new Set(prev.map((m) => m.id));
+        const next = [...prev];
+        for (const msg of data.messages) {
+          if (!seen.has(msg.id)) {
+            seen.add(msg.id);
+            next.push(msg);
+          }
+        }
+        return next;
+      });
+      const last = data.latest_message_id;
+      if (last) setLastAgentMessageId(last);
+      const ids = data.messages.map((m) => m.id);
+      void markVisitorMessagesRead(ids);
+    }
+  }, []);
+
+  const { status: connectionStatus, sendTyping, sendRead, isFallback } = useMayaRealtime({
+    enabled: open && Boolean(realtimeWsUrl) && !usePollingFallback,
+    role: 'visitor',
+    wsUrl: realtimeWsUrl,
+    onFallback: () => setUsePollingFallback(true),
+    onMessage: (message) => {
+      setLiveAgentTurns((prev) => {
+        if (prev.some((m) => m.id === message.id)) return prev;
+        return [...prev, message];
+      });
+      setLastAgentMessageId(message.id);
+      sendRead([message.id]);
+      void markVisitorMessagesRead([message.id]);
+    },
+    onTyping: (role, isTyping) => {
+      if (role === 'agent') setAgentTyping(isTyping);
+    },
+    onRead: (messageIds, _readAt, readBy) => {
+      if (readBy !== 'agent') return;
+      const idSet = new Set(messageIds);
+      setTurns((prev) =>
+        prev.map((turn) =>
+          turn.serverMessageId && idSet.has(turn.serverMessageId)
+            ? { ...turn, readByAgent: true }
+            : turn,
+        ),
+      );
+    },
+    onMeta: (meta) => {
+      if (meta.status) setConversationStatus(meta.status);
+      if (meta.assigned_agent) {
+        setLiveAgent(meta.assigned_agent);
+        setAwaitingAgent(false);
+      }
+    },
+  });
+
+  useEffect(() => {
+    if (!open || (!usePollingFallback && !isFallback)) return undefined;
     let cancelled = false;
 
     async function tick() {
       const data = await pollAgentMessages();
-      if (cancelled || !data) return;
-
-      if (data.status) setConversationStatus(data.status);
-      if (data.assigned_agent) {
-        setLiveAgent(data.assigned_agent);
-        setAwaitingAgent(false);
-      } else if (data.status === 'pending') {
-        setAwaitingAgent(true);
-      }
-
-      if (data.messages?.length) {
-        setLiveAgentTurns((prev) => {
-          const seen = new Set(prev.map((m) => m.id));
-          const next = [...prev];
-          for (const msg of data.messages) {
-            if (!seen.has(msg.id)) {
-              seen.add(msg.id);
-              next.push(msg);
-            }
-          }
-          return next;
-        });
-        const last = data.latest_message_id;
-        if (last) setLastAgentMessageId(last);
-      }
+      if (cancelled) return;
+      applyPollPayload(data);
     }
 
     tick();
@@ -454,7 +520,7 @@ export default function AgentAssistant() {
       cancelled = true;
       window.clearInterval(interval);
     };
-  }, [open]);
+  }, [open, usePollingFallback, isFallback, applyPollPayload]);
 
   const startTriage = useCallback((product) => {
     setTriage({ step: product ? 'severity' : 'product', product: product ?? null, severity: null, note: '' });
@@ -657,7 +723,10 @@ export default function AgentAssistant() {
           {turns.map((turn) =>
             turn.role === 'visitor' ? (
               <Bubble key={turn.id} role="visitor">
-                {turn.text}
+                <span>{turn.text}</span>
+                {turn.readByAgent ? (
+                  <p className="mt-1 text-[10px] text-zinc-500">Seen</p>
+                ) : null}
               </Bubble>
             ) : (
               <Bubble key={turn.id} role="agent">
@@ -679,6 +748,19 @@ export default function AgentAssistant() {
               <span className="inline-flex items-center gap-2 text-zinc-400">
                 <Loader2 size={14} className="animate-spin" aria-hidden />
                 A specialist is reviewing your conversation
+              </span>
+            </Bubble>
+          ) : null}
+
+          {agentTyping ? (
+            <Bubble role="agent">
+              <span className="inline-flex items-center gap-2 text-emerald-300/90">
+                <span className="flex gap-1" aria-hidden>
+                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-emerald-400 [animation-delay:0ms]" />
+                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-emerald-400 [animation-delay:120ms]" />
+                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-emerald-400 [animation-delay:240ms]" />
+                </span>
+                Specialist is typing…
               </span>
             </Bubble>
           ) : null}
@@ -797,7 +879,13 @@ export default function AgentAssistant() {
             <input
               ref={inputRef}
               value={input}
-              onChange={(event) => setInput(event.target.value)}
+              onChange={(event) => {
+                setInput(event.target.value);
+                sendTyping(true);
+                if (typingTimer.current) window.clearTimeout(typingTimer.current);
+                typingTimer.current = window.setTimeout(() => sendTyping(false), 1200);
+              }}
+              onBlur={() => sendTyping(false)}
               placeholder="Ask about setup, hardware, payments"
               aria-label="Ask the eatOS support agent"
               className="min-w-0 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-zinc-600"
@@ -812,9 +900,20 @@ export default function AgentAssistant() {
             </button>
           </div>
           <p className="mt-2.5 text-[10px] leading-4 text-zinc-600">
-            {liveAgent || awaitingAgent
-              ? 'Live chat with our team. Replies appear here automatically.'
-              : 'Answers are quoted from eatOS help articles with sources shown. Account actions require sign-in.'}
+            {liveAgent || awaitingAgent ? (
+              <>
+                Live chat with our team.
+                {connectionStatus === 'connected'
+                  ? ' Connected in realtime.'
+                  : connectionStatus === 'reconnecting'
+                    ? ' Reconnecting…'
+                    : usePollingFallback || isFallback
+                      ? ' Using backup sync.'
+                      : ' Connecting…'}
+              </>
+            ) : (
+              'Answers are quoted from eatOS help articles with sources shown. Account actions require sign-in.'
+            )}
           </p>
         </form>
       </div>

@@ -42,6 +42,7 @@ export type MayaMessage = {
   sender_agent_id: string | null;
   metadata: Record<string, unknown>;
   created_at: string;
+  read_at: string | null;
 };
 
 export type MayaCannedReply = {

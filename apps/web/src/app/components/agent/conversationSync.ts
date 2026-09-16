@@ -67,6 +67,11 @@ export function resetTraceId(): string {
   return id;
 }
 
+export function getConversationId(): string | null {
+  const id = readStorage(CONVERSATION_KEY);
+  return id || null;
+}
+
 export function getLastAgentMessageId(): string | null {
   return readStorage(LAST_AGENT_MSG_KEY);
 }
@@ -87,6 +92,7 @@ type SyncOpts = {
 
 type SyncResult = {
   conversation_id?: string | null;
+  message_id?: string | null;
   assigned_agent_id?: string | null;
   status?: string | null;
 };
@@ -143,6 +149,31 @@ export type VisitorPollResult = {
   messages: VisitorPollMessage[];
   latest_message_id: string | null;
 };
+
+export function buildVisitorRealtimeUrl(): string | null {
+  const traceId = readStorage(TRACE_KEY);
+  const visitorId = readStorage(VISITOR_KEY);
+  if (!traceId || !visitorId) return null;
+  const params = new URLSearchParams({ visitor_id: visitorId });
+  return `/api/support/conversations/${encodeURIComponent(traceId)}/realtime?${params}`;
+}
+
+/** Persist read receipts when HTTP fallback is active. */
+export async function markVisitorMessagesRead(messageIds: string[]): Promise<void> {
+  try {
+    const [visitorId, traceId] = await Promise.all([
+      ensureVisitorId(),
+      Promise.resolve(ensureTraceId()),
+    ]);
+    await fetch(`/api/support/conversations/${encodeURIComponent(traceId)}/read`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ visitor_id: visitorId, message_ids: messageIds }),
+    });
+  } catch {
+    // ignore
+  }
+}
 
 /** Poll for new human-agent replies. Returns null on network failure. */
 export async function pollAgentMessages(after?: string | null): Promise<VisitorPollResult | null> {

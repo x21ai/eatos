@@ -2,7 +2,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { ArrowRight, Inbox, Loader2, MessageSquareQuote, Users } from 'lucide-react';
 import MayaAdminShell from '@/components/admin/MayaAdminShell';
 
@@ -28,7 +29,10 @@ const cards = [
 ];
 
 export default function MayaHelpdeskHome() {
-  const { data, isLoading, error } = useQuery({
+  const queryClient = useQueryClient();
+  const [bootstrapState, setBootstrapState] = useState('idle');
+
+  const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['maya-inbox-preview'],
     queryFn: async () => {
       const res = await fetch('/api/admin/maya/conversations?status=open&limit=5');
@@ -55,18 +59,34 @@ export default function MayaHelpdeskHome() {
           </p>
           <button
             type="button"
+            disabled={bootstrapState === 'loading'}
             onClick={async () => {
-              const res = await fetch('/api/admin/maya/agents', { method: 'PUT' });
-              if (res.ok) window.location.reload();
-              else {
+              setBootstrapState('loading');
+              try {
+                const res = await fetch('/api/admin/maya/agents', { method: 'PUT' });
                 const json = await res.json();
-                alert(json.message || 'Bootstrap failed');
+                if (!res.ok) {
+                  alert(json.message || 'Bootstrap failed');
+                  setBootstrapState('idle');
+                  return;
+                }
+                setBootstrapState('done');
+                await queryClient.invalidateQueries({ queryKey: ['maya-inbox-preview'] });
+                await refetch();
+              } catch {
+                alert('Bootstrap failed');
+                setBootstrapState('idle');
               }
             }}
-            className="mt-4 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-black"
+            className="mt-4 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-black disabled:opacity-50"
           >
-            Register as lead agent
+            {bootstrapState === 'loading' ? 'Registering…' : 'Register as lead agent'}
           </button>
+          {bootstrapState === 'done' ? (
+            <p className="mt-3 text-xs text-emerald-300">
+              You are registered as lead agent. Inbox access is unlocked.
+            </p>
+          ) : null}
         </div>
       ) : null}
 

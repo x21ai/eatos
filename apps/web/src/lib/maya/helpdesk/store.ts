@@ -69,6 +69,7 @@ function rowToMessage(row: Record<string, unknown>): MayaMessage {
     sender_agent_id: row.sender_agent_id ? String(row.sender_agent_id) : null,
     metadata: parseMeta(row.metadata_json),
     created_at: String(row.created_at),
+    read_at: row.read_at ? String(row.read_at) : null,
   };
 }
 
@@ -568,4 +569,56 @@ export async function deleteCannedReply(id: string): Promise<void> {
     `UPDATE maya_canned_replies SET is_active = 0, updated_at = datetime('now') WHERE id = ?`,
     [id],
   );
+}
+
+/** Mark messages from the other party as read (visitor reads agent/maya; agent reads visitor). */
+export async function markMessagesRead(opts: {
+  conversationId: string;
+  messageIds: string[];
+  readBy: 'visitor' | 'agent';
+}): Promise<MayaMessage[]> {
+  const ids = [...new Set(opts.messageIds.map((id) => id.trim()).filter(Boolean))].slice(0, 100);
+  if (!ids.length) return [];
+
+  const targetRoles =
+    opts.readBy === 'visitor' ? ['agent', 'maya'] : (['visitor'] as MessageRole[]);
+  const placeholders = ids.map(() => '?').join(', ');
+  const rolePlaceholders = targetRoles.map(() => '?').join(', ');
+
+  await execute(
+    `UPDATE maya_messages
+        SET read_at = datetime('now')
+      WHERE conversation_id = ?
+        AND id IN (${placeholders})
+        AND role IN (${rolePlaceholders})
+        AND read_at IS NULL`,
+    [opts.conversationId, ...ids, ...targetRoles],
+  );
+
+  const rows = await queryAll<Record<string, unknown>>(
+    `SELECT * FROM maya_messages
+      WHERE conversation_id = ?
+        AND id IN (${placeholders})
+      ORDER BY created_at ASC`,
+    [opts.conversationId, ...ids],
+  );
+  return (rows ?? []).map(rowToMessage);
+}
+
+export async function listUnreadMessageIds(opts: {
+  conversationId: string;
+  readBy: 'visitor' | 'agent';
+}): Promise<string[]> {
+  const targetRoles =
+    opts.readBy === 'visitor' ? ['agent', 'maya'] : (['visitor'] as MessageRole[]);
+  const rolePlaceholders = targetRoles.map(() => '?').join(', ');
+  const rows = await queryAll<{ id: string }>(
+    `SELECT id FROM maya_messages
+      WHERE conversation_id = ?
+        AND role IN (${rolePlaceholders})
+        AND read_at IS NULL
+      ORDER BY created_at ASC`,
+    [opts.conversationId, ...targetRoles],
+  );
+  return (rows ?? []).map((row) => String(row.id));
 }
