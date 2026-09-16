@@ -1,7 +1,11 @@
 import { fail, ok, readJson, newId, moneyMinor } from '@/lib/api';
 import { execute } from '@/lib/db/client';
 import { getCartByToken, listCartItems } from '@/lib/shop/cart';
-import { createCheckoutSession, isStripeConfigured } from '@/lib/payments/stripe';
+import {
+  createCheckoutSession,
+  isStripeConfigured,
+  StripeCheckoutError,
+} from '@/lib/payments/stripe';
 import {
   quoteCartShipping,
   validateShippingAddress,
@@ -107,7 +111,7 @@ export async function POST(request: Request) {
   const items = await listCartItems(cart.id);
   if (!items.length) return fail('cart_empty', 'Add at least one item before checkout.', 400);
 
-  if (!isStripeConfigured()) {
+  if (!(await isStripeConfigured())) {
     return fail(
       'payments_unconfigured',
       'Card payments are not configured yet. Set STRIPE_SECRET_KEY on the Worker.',
@@ -181,22 +185,44 @@ export async function POST(request: Request) {
         : `/order-status?order=${encodeURIComponent(number)}&email=${encodeURIComponent(email)}&paid=1`;
     const cancelPath = source === 'kiosk' ? '/kiosk?cancelled=1' : '/checkout?cancelled=1';
 
-    const session = await createCheckoutSession({
-      orderId: id,
-      orderNumber: number,
-      email,
-      lines: items.map((i) => ({
-        name: i.title,
-        quantity: i.quantity,
-        unitAmountMinor: i.unit_amount,
-        currency: i.currency,
-        productSlug: i.product_slug,
-      })),
-      shippingAmountMinor: shippingAmount,
-      shippingLabel: quote.method.includes('free') ? 'Shipping (free)' : 'Shipping',
-      successUrl: `${origin}${successPath}`,
-      cancelUrl: `${origin}${cancelPath}`,
-    });
+    let session;
+    try {
+      session = await createCheckoutSession({
+        orderId: id,
+        orderNumber: number,
+        email,
+        lines: items.map((i) => ({
+          name: i.title,
+          quantity: i.quantity,
+          unitAmountMinor: i.unit_amount,
+          currency: i.currency,
+          productSlug: i.product_slug,
+        })),
+        shippingAmountMinor: shippingAmount,
+        shippingLabel: quote.method.includes('free') ? 'Shipping (free)' : 'Shipping',
+        successUrl: `${origin}${successPath}`,
+        cancelUrl: `${origin}${cancelPath}`,
+      });
+    } catch (error) {
+      console.error('stripe checkout session failed', error);
+      const stripeError =
+        error instanceof StripeCheckoutError
+          ? error
+          : new StripeCheckoutError(
+              'stripe_checkout_failed',
+              'Could not start Stripe checkout. Your order was saved as pending — please try again.',
+            );
+      return Response.json(
+        {
+          error: true,
+          code: stripeError.code,
+          message: stripeError.message,
+          order_id: id,
+          order_number: number,
+        },
+        { status: 502 },
+      );
+    }
 
     await execute(
       `UPDATE orders SET provider_session_id = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?`,
