@@ -9,14 +9,14 @@ import {
   parseRoles,
   roleSummary,
 } from '@/lib/admin/permissions';
-import { isSignupEmailAllowed } from '@/lib/auth/allowlist';
+import { isBootstrapSignupEmail } from '@/lib/auth/allowlist';
 
-describe('signup allowlist', () => {
-  it('allows only approved emails (case-insensitive)', () => {
-    expect(isSignupEmailAllowed('PMT@eatos.com')).toBe(true);
-    expect(isSignupEmailAllowed('pmt@eigital.com')).toBe(true);
-    expect(isSignupEmailAllowed('jaspreet.singh@eigital.com')).toBe(true);
-    expect(isSignupEmailAllowed('random@example.com')).toBe(false);
+describe('bootstrap signup allowlist', () => {
+  it('allows only seeded operator emails (case-insensitive)', () => {
+    expect(isBootstrapSignupEmail('PMT@eatos.com')).toBe(true);
+    expect(isBootstrapSignupEmail('pmt@eigital.com')).toBe(true);
+    expect(isBootstrapSignupEmail('jaspreet.singh@eigital.com')).toBe(true);
+    expect(isBootstrapSignupEmail('random@example.com')).toBe(false);
   });
 });
 
@@ -32,10 +32,18 @@ describe('RBAC permissions', () => {
     ).toEqual(['blogger', 'developer_publish']);
   });
 
-  it('grants superadmin all capabilities only for pmt@eatos.com', () => {
+  it('grants superadmin all capabilities for pmt@eatos.com and assigned superadmin roles', () => {
     const superadmin = buildAdminIdentity('1', 'pmt@eatos.com', '["admin"]', 'admin');
     expect(superadmin.isSuperadmin).toBe(true);
     expect(hasCapability(superadmin, 'publish:approve')).toBe(true);
+
+    const delegatedSuperadmin = buildAdminIdentity(
+      '9',
+      'backup@company.com',
+      '["superadmin"]',
+    );
+    expect(delegatedSuperadmin.isSuperadmin).toBe(true);
+    expect(hasCapability(delegatedSuperadmin, 'users:manage')).toBe(true);
 
     const admin = buildAdminIdentity('2', 'pmt@eigital.com', '["admin"]', 'admin');
     expect(admin.isSuperadmin).toBe(false);

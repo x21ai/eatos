@@ -22,7 +22,8 @@ import { authClient } from "@/lib/auth-client";
 function SignUpForm() {
 	const searchParams = useSearchParams();
 	const callbackUrl = searchParams.get("callbackUrl") || "/";
-	const [email, setEmail] = useState("");
+	const invitedEmail = searchParams.get("email") || "";
+	const [email, setEmail] = useState(invitedEmail);
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState<string | null>(null);
 	const [loading, setLoading] = useState(false);

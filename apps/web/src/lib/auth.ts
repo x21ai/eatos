@@ -22,11 +22,12 @@ import { verifyPassword } from 'better-auth/crypto';
 import { bearer } from 'better-auth/plugins';
 import { getCloudflareContext } from '@opennextjs/cloudflare';
 import { D1Dialect } from 'kysely-d1';
+import { normalizeEmail } from '@/lib/auth/allowlist';
 import {
-  isSignupEmailAllowed,
-  normalizeEmail,
+  isSignupEligible,
+  markInviteAccepted,
   SIGNUP_REJECTED_MESSAGE,
-} from '@/lib/auth/allowlist';
+} from '@/lib/auth/signup-eligibility';
 
 // --- Cloudflare D1 port note ---------------------------------------------
 // Previously this used a Neon (Postgres) Pool. On Cloudflare Workers the
@@ -137,12 +138,16 @@ function createAuth(db: any, cfEnv: Record<string, any>) {
         create: {
           before: async (user) => {
             const email = normalizeEmail(String(user.email || ''));
-            if (!email || !isSignupEmailAllowed(email)) {
+            if (!email || !(await isSignupEligible(email))) {
               throw APIError.from('FORBIDDEN', {
                 message: SIGNUP_REJECTED_MESSAGE,
                 code: 'SIGNUP_NOT_ALLOWED',
               });
             }
+          },
+          after: async (user) => {
+            const email = normalizeEmail(String(user.email || ''));
+            if (email) await markInviteAccepted(email);
           },
         },
       },
@@ -157,7 +162,7 @@ function createAuth(db: any, cfEnv: Record<string, any>) {
         if (!body || typeof body.email !== 'string') return;
 
         const email = normalizeEmail(body.email);
-        if (!isSignupEmailAllowed(email)) {
+        if (!(await isSignupEligible(email))) {
           throw APIError.from('FORBIDDEN', {
             message: SIGNUP_REJECTED_MESSAGE,
             code: 'SIGNUP_NOT_ALLOWED',

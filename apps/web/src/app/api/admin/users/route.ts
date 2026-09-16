@@ -6,7 +6,8 @@ import {
   buildAdminIdentity,
   normalizeAssignedRoles,
 } from '@/lib/admin/permissions';
-import { isSuperadminEmail, isSignupEmailAllowed } from '@/lib/auth/allowlist';
+import { sendAdminInvite } from '@/lib/email/invites';
+import { isSuperadminEmail } from '@/lib/auth/allowlist';
 
 function fail(code: string, message: string, status: number) {
   return Response.json({ error: true, code, message }, { status });
@@ -26,6 +27,12 @@ function toApiUser(row: Record<string, unknown>) {
     isSuperadmin: identity.isSuperadmin,
     createdAt: row.created_at ?? null,
   };
+}
+
+const INVITE_TTL_DAYS = 14;
+
+function buildInviteExpirySql() {
+  return `datetime('now', '+${INVITE_TTL_DAYS} days')`;
 }
 
 export async function GET(request: Request) {
@@ -64,14 +71,6 @@ export async function POST(request: Request) {
     return fail('validation_failed', 'A valid email is required.', 400);
   }
 
-  if (!isSignupEmailAllowed(email)) {
-    return fail(
-      'email_not_allowlisted',
-      'This email is not on the signup allowlist. Only approved eatOS accounts can be invited.',
-      400,
-    );
-  }
-
   const rolesInput = Array.isArray(body.roles) ? body.roles : [body.role];
   const roles = normalizeAssignedRoles(
     rolesInput.filter((r): r is AdminRole => ALL_ADMIN_ROLES.includes(r as AdminRole)),
@@ -81,17 +80,17 @@ export async function POST(request: Request) {
     return fail('validation_failed', 'At least one valid role is required.', 400);
   }
 
-  if (roles.includes('superadmin') && !isSuperadminEmail(email)) {
+  if (roles.includes('superadmin') && !admin.isSuperadmin) {
     return fail(
       'forbidden',
-      'Superadmin role can only be assigned to pmt@eatos.com.',
+      'Only an existing superadmin may assign the superadmin role.',
       403,
     );
   }
 
   const safeRoles = isSuperadminEmail(email)
     ? (['superadmin'] as AdminRole[])
-    : roles.filter((r) => r !== 'superadmin');
+    : roles;
 
   const primaryRole = safeRoles[0] ?? 'draft_editor';
 
@@ -100,6 +99,34 @@ export async function POST(request: Request) {
     [email],
   );
   const userId = authUser?.id ?? email;
+
+  const previousAdmin = await queryOne<{
+    user_id: string;
+    email: string;
+    role: string;
+    roles: string;
+  }>(
+    `SELECT user_id, email, role, roles FROM admin_users WHERE lower(email) = ? LIMIT 1`,
+    [email],
+  );
+
+  const previousInvite = await queryOne<{
+    id: string;
+    roles: string;
+    invited_by: string;
+    invited_by_email: string;
+    token: string | null;
+    expires_at: string | null;
+  }>(
+    `SELECT id, roles, invited_by, invited_by_email, token, expires_at
+       FROM admin_invites
+      WHERE lower(email) = ? AND accepted_at IS NULL
+      LIMIT 1`,
+    [email],
+  );
+
+  const inviteId = crypto.randomUUID();
+  const inviteToken = crypto.randomUUID();
 
   try {
     await execute(
@@ -112,14 +139,93 @@ export async function POST(request: Request) {
       [userId, email, primaryRole, JSON.stringify(safeRoles)],
     );
 
-    await execute(
-      `INSERT INTO admin_invites (id, email, roles, invited_by, invited_by_email)
-       VALUES (?, ?, ?, ?, ?)`,
-      [crypto.randomUUID(), email, JSON.stringify(safeRoles), admin.userId, admin.email],
-    );
+    if (previousInvite) {
+      await execute(
+        `UPDATE admin_invites
+           SET roles = ?, invited_by = ?, invited_by_email = ?,
+               token = ?, expires_at = ${buildInviteExpirySql()}, created_at = datetime('now')
+         WHERE id = ?`,
+        [
+          JSON.stringify(safeRoles),
+          admin.userId,
+          admin.email,
+          inviteToken,
+          previousInvite.id,
+        ],
+      );
+    } else {
+      await execute(
+        `INSERT INTO admin_invites (id, email, roles, invited_by, invited_by_email, token, expires_at)
+         VALUES (?, ?, ?, ?, ?, ?, ${buildInviteExpirySql()})`,
+        [
+          inviteId,
+          email,
+          JSON.stringify(safeRoles),
+          admin.userId,
+          admin.email,
+          inviteToken,
+        ],
+      );
+    }
   } catch (error) {
     console.error('invite admin failed', error);
     return fail('write_failed', 'Could not invite admin user.', 500);
+  }
+
+  const signupUrl = `${(process.env.BETTER_AUTH_URL || 'https://s.eatos.dev').replace(/\/$/, '')}/account/signup?email=${encodeURIComponent(email)}`;
+  const emailResult = await sendAdminInvite({
+    to: email,
+    roles: safeRoles,
+    invitedByEmail: admin.email,
+    signupUrl,
+  });
+
+  if (!emailResult.ok) {
+    try {
+      if (previousAdmin) {
+        await execute(
+          `UPDATE admin_users SET user_id = ?, role = ?, roles = ? WHERE lower(email) = ?`,
+          [
+            previousAdmin.user_id,
+            previousAdmin.role,
+            previousAdmin.roles,
+            email,
+          ],
+        );
+      } else {
+        await execute(`DELETE FROM admin_users WHERE lower(email) = ?`, [email]);
+      }
+
+      if (previousInvite) {
+        await execute(
+          `UPDATE admin_invites
+             SET roles = ?, invited_by = ?, invited_by_email = ?, token = ?, expires_at = ?
+           WHERE id = ?`,
+          [
+            previousInvite.roles,
+            previousInvite.invited_by,
+            previousInvite.invited_by_email,
+            previousInvite.token,
+            previousInvite.expires_at,
+            previousInvite.id,
+          ],
+        );
+      } else {
+        await execute(
+          `DELETE FROM admin_invites
+            WHERE lower(email) = ? AND accepted_at IS NULL AND token = ?`,
+          [email, inviteToken],
+        );
+      }
+    } catch (rollbackError) {
+      console.error('invite rollback failed', rollbackError);
+    }
+
+    return fail(
+      emailResult.code === 'not_configured' ? 'email_not_configured' : 'email_failed',
+      emailResult.message,
+      502,
+    );
   }
 
   const row = await queryOne<Record<string, unknown>>(
@@ -127,5 +233,12 @@ export async function POST(request: Request) {
     [email],
   );
 
-  return Response.json({ data: row ? toApiUser(row) : { email, roles: safeRoles } }, { status: 201 });
+  return Response.json(
+    {
+      data: row ? toApiUser(row) : { email, roles: safeRoles },
+      email_sent: true,
+      message: `Invite email sent to ${email}.`,
+    },
+    { status: 201 },
+  );
 }

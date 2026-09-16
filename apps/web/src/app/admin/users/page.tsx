@@ -15,6 +15,8 @@ const OTHER_ROLES = [
   "help_agent",
 ];
 
+const SUPERADMIN_ROLE = "superadmin";
+
 const DEVELOPER_ACCESS_ROLES = ["developer_view", "developer", "developer_publish"];
 
 const ROLE_LABELS = {
@@ -97,10 +99,11 @@ export default function AdminUsersPage() {
       });
       const payload = await res.json();
       if (!res.ok) throw new Error(payload.message || "Invite failed");
-      return payload.data;
+      return payload;
     },
-    onSuccess: () => {
-      toast.success("Team member invited");
+    onSuccess: (payload) => {
+      const invitedEmail = payload?.data?.email || email;
+      toast.success(payload?.message || `Invite email sent to ${invitedEmail}`);
       setEmail("");
       queryClient.invalidateQueries(["admin-users"]);
     },
@@ -167,7 +170,8 @@ export default function AdminUsersPage() {
           <Shield size={28} /> Team & access
         </h1>
         <p className="text-gray-400 mt-2">
-          Invite allowlisted eatOS accounts and assign roles. Use{" "}
+          Invite team members by email and assign roles. Signup is invite-only — they must
+          use the link in the invite email and sign up with the invited address. Use{" "}
           <strong className="text-gray-300">Developer access</strong> for engineers and
           content builders — choose view-only, draft-only (needs approval to go live), or
           full develop-and-publish for blog, newsroom, and shop.
@@ -182,9 +186,13 @@ export default function AdminUsersPage() {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="name@eigital.com"
+          placeholder="name@company.com"
           className="w-full bg-[#050505] border border-white/10 rounded-lg px-3 py-2 text-sm"
         />
+        <p className="text-xs text-gray-500">
+          An invite email is sent immediately. The invitee can only sign up with this exact
+          email address.
+        </p>
 
         <div className="space-y-2">
           <p className="text-xs uppercase tracking-wider text-gray-500">Developer access</p>
@@ -223,6 +231,32 @@ export default function AdminUsersPage() {
             <p className="text-xs text-gray-500">{DEVELOPER_ACCESS_HELP[developerAccess]}</p>
           )}
         </div>
+
+        {me?.isSuperadmin && (
+          <div className="space-y-2">
+            <p className="text-xs uppercase tracking-wider text-gray-500">Superadmin</p>
+            <button
+              type="button"
+              onClick={() =>
+                setSelectedOtherRoles((prev) =>
+                  prev.includes(SUPERADMIN_ROLE)
+                    ? prev.filter((role) => role !== SUPERADMIN_ROLE)
+                    : [...prev.filter((role) => role !== "admin"), SUPERADMIN_ROLE],
+                )
+              }
+              className={`text-xs px-2 py-1 rounded border ${
+                selectedOtherRoles.includes(SUPERADMIN_ROLE)
+                  ? "bg-white text-black border-white"
+                  : "border-white/20 text-gray-400"
+              }`}
+            >
+              {ROLE_LABELS[SUPERADMIN_ROLE]}
+            </button>
+            <p className="text-xs text-gray-500">
+              Only the current superadmin can grant superadmin access to another invitee.
+            </p>
+          </div>
+        )}
 
         <div className="space-y-2">
           <p className="text-xs uppercase tracking-wider text-gray-500">Other roles</p>
