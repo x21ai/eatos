@@ -2,14 +2,16 @@
 'use client';
 
 import Link from 'next/link';
-import { use, useState } from 'react';
+import { use, useCallback, useEffect, useRef, useState } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { BookOpen, Loader2, Send } from 'lucide-react';
 import MayaAdminShell from '@/components/admin/MayaAdminShell';
+import { useMayaRealtime } from '@/lib/maya/helpdesk/useMayaRealtime';
 
 function MessageBubble({ message }) {
   const isVisitor = message.role === 'visitor';
   const isMaya = message.role === 'maya';
+  const isAgentSide = !isVisitor;
   return (
     <div className={isVisitor ? 'flex justify-end' : 'flex justify-start'}>
       <div
@@ -40,7 +42,11 @@ function MessageBubble({ message }) {
             ))}
           </ul>
         ) : null}
-        <p className="mt-2 text-[10px] text-zinc-600">{message.created_at}</p>
+        <div className="mt-2 flex items-center gap-2 text-[10px] text-zinc-600">
+          <span>{message.created_at}</span>
+          {isAgentSide && message.read_at ? <span className="text-emerald-400/80">Seen</span> : null}
+          {isVisitor && message.read_at ? <span className="text-zinc-500">Read</span> : null}
+        </div>
       </div>
     </div>
   );
@@ -51,6 +57,9 @@ export default function MayaConversationPage({ params }) {
   const queryClient = useQueryClient();
   const [reply, setReply] = useState('');
   const [selectedArticles, setSelectedArticles] = useState([]);
+  const [visitorTyping, setVisitorTyping] = useState(false);
+  const [usePollingFallback, setUsePollingFallback] = useState(false);
+  const typingTimer = useRef(null);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ['maya-conversation', id],
@@ -60,8 +69,80 @@ export default function MayaConversationPage({ params }) {
       if (!res.ok || json.error) throw new Error(json.message || 'Failed to load conversation');
       return json.data;
     },
-    refetchInterval: 5000,
+    refetchInterval: usePollingFallback ? 5000 : false,
   });
+
+  const markAgentRead = useCallback(
+    async (messageIds) => {
+      if (!messageIds?.length) return;
+      try {
+        await fetch(`/api/admin/maya/conversations/${id}/read`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message_ids: messageIds }),
+        });
+      } catch {
+        // polling/refetch still works
+      }
+    },
+    [id],
+  );
+
+  const { status: connectionStatus, sendTyping, sendRead, isFallback } = useMayaRealtime({
+    enabled: Boolean(id) && !usePollingFallback,
+    role: 'agent',
+    wsUrl: id ? `/api/admin/maya/conversations/${id}/realtime` : null,
+    onFallback: () => setUsePollingFallback(true),
+    onMessage: (message) => {
+      queryClient.setQueryData(['maya-conversation', id], (prev) => {
+        if (!prev) return prev;
+        if (prev.messages?.some((m) => m.id === message.id)) return prev;
+        return { ...prev, messages: [...(prev.messages ?? []), message] };
+      });
+      if (message.role === 'visitor') {
+        void markAgentRead([message.id]);
+        sendRead([message.id]);
+      }
+    },
+    onTyping: (role, isTyping) => {
+      if (role === 'visitor') setVisitorTyping(isTyping);
+    },
+    onRead: (messageIds, readAt, readBy) => {
+      if (readBy !== 'visitor') return;
+      queryClient.setQueryData(['maya-conversation', id], (prev) => {
+        if (!prev?.messages) return prev;
+        const ids = new Set(messageIds);
+        return {
+          ...prev,
+          messages: prev.messages.map((m) =>
+            ids.has(m.id) ? { ...m, read_at: readAt } : m,
+          ),
+        };
+      });
+    },
+    onMeta: (meta) => {
+      queryClient.setQueryData(['maya-conversation', id], (prev) => {
+        if (!prev) return prev;
+        return {
+          ...prev,
+          status: meta.status ?? prev.status,
+          assigned_agent: meta.assigned_agent ?? prev.assigned_agent,
+        };
+      });
+      queryClient.invalidateQueries({ queryKey: ['maya-inbox-preview'] });
+    },
+  });
+
+  useEffect(() => {
+    if (!data?.messages?.length) return;
+    const unreadVisitor = data.messages
+      .filter((m) => m.role === 'visitor' && !m.read_at)
+      .map((m) => m.id);
+    if (unreadVisitor.length) {
+      void markAgentRead(unreadVisitor);
+      sendRead(unreadVisitor);
+    }
+  }, [data?.messages, markAgentRead, sendRead]);
 
   const { data: cannedData } = useQuery({
     queryKey: ['maya-canned'],
@@ -183,6 +264,21 @@ export default function MayaConversationPage({ params }) {
               </select>
             </div>
 
+            <div className="flex items-center justify-between gap-3 rounded-xl border border-white/10 px-3 py-2 text-[11px] text-zinc-500">
+              <span>
+                {connectionStatus === 'connected'
+                  ? 'Realtime connected'
+                  : connectionStatus === 'reconnecting'
+                    ? 'Reconnecting…'
+                    : usePollingFallback || isFallback
+                      ? 'Backup sync (5s poll)'
+                      : 'Connecting…'}
+              </span>
+              {visitorTyping ? (
+                <span className="text-brand-on-dark">Visitor is typing…</span>
+              ) : null}
+            </div>
+
             <div className="max-h-[480px] space-y-3 overflow-y-auto rounded-2xl border border-white/10 p-4">
               {conversation.messages?.length ? (
                 conversation.messages.map((m) => <MessageBubble key={m.id} message={m} />)
@@ -212,7 +308,13 @@ export default function MayaConversationPage({ params }) {
               ) : null}
               <textarea
                 value={reply}
-                onChange={(e) => setReply(e.target.value)}
+                onChange={(e) => {
+                  setReply(e.target.value);
+                  sendTyping(true);
+                  if (typingTimer.current) window.clearTimeout(typingTimer.current);
+                  typingTimer.current = window.setTimeout(() => sendTyping(false), 1200);
+                }}
+                onBlur={() => sendTyping(false)}
                 rows={4}
                 placeholder="Type a reply to the visitor…"
                 className="mt-3 w-full resize-none rounded-xl border border-white/10 bg-black px-3 py-3 text-sm text-white outline-none focus:border-white/30"

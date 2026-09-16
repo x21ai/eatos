@@ -4,9 +4,11 @@ import { requireMayaAgent } from '@/lib/maya/helpdesk/guard';
 import {
   appendMessage,
   autoAssignConversation,
+  findAgentById,
   getConversationDetail,
   updateConversation,
 } from '@/lib/maya/helpdesk/store';
+import { publishConversationMessage, publishConversationMeta } from '@/lib/maya/helpdesk/realtime';
 import type { ConversationStatus } from '@/lib/maya/helpdesk/types';
 
 const STATUSES = new Set<ConversationStatus>(['open', 'pending', 'resolved']);
@@ -51,6 +53,12 @@ export async function PATCH(
     }
     if (body.auto_assign === true) {
       const agent = await autoAssignConversation(id);
+      if (agent) {
+        await publishConversationMeta(id, {
+          status: 'pending',
+          assigned_agent: { display_name: agent.display_name, email: agent.email },
+        });
+      }
       return ok({ assigned_agent: agent });
     }
     if (['low', 'normal', 'high'].includes(body.priority)) {
@@ -65,6 +73,21 @@ export async function PATCH(
 
     const updated = await updateConversation(id, patch);
     if (!updated) return fail('not_found', 'Conversation not found or no changes.', 404);
+
+    if (patch.status || patch.assigned_agent_id !== undefined) {
+      let assignedAgent = null;
+      if (updated.assigned_agent_id) {
+        const agent = await findAgentById(updated.assigned_agent_id);
+        if (agent) {
+          assignedAgent = { display_name: agent.display_name, email: agent.email };
+        }
+      }
+      await publishConversationMeta(id, {
+        status: updated.status,
+        assigned_agent: assignedAgent,
+      });
+    }
+
     return ok(updated);
   } catch (error) {
     return adminFail(error);
@@ -99,6 +122,15 @@ export async function POST(
     await updateConversation(id, {
       assigned_agent_id: ctx.agent.id,
       status: 'pending',
+    });
+
+    await publishConversationMessage(id, message);
+    await publishConversationMeta(id, {
+      status: 'pending',
+      assigned_agent: {
+        display_name: ctx.agent.display_name,
+        email: ctx.agent.email,
+      },
     });
 
     return ok(message);
