@@ -1,30 +1,25 @@
 import { fail, ok, moneyMinor } from '@/lib/api';
 import { queryAll, queryOne } from '@/lib/db/client';
+import {
+  lookupEmailCandidates,
+  normalizeLookupEmail,
+  normalizeOrderNumber,
+} from '@/lib/shop/order-lookup';
 
-export async function GET(request: Request) {
-  const url = new URL(request.url);
-  const orderNumber = (url.searchParams.get('order') || url.searchParams.get('order_number') || '')
-    .trim()
-    .toUpperCase();
-  const email = (url.searchParams.get('email') || '').trim().toLowerCase();
-
-  if (!orderNumber || !email) {
-    return fail('validation_failed', 'order and email query params are required.');
+async function findOrder(orderNumber: string, emailRaw: string) {
+  const candidates = lookupEmailCandidates(emailRaw);
+  for (const email of candidates) {
+    const order = await queryOne<Record<string, any>>(
+      `SELECT * FROM orders WHERE order_number = ? AND lower(email) = ? LIMIT 1`,
+      [orderNumber, email],
+    );
+    if (order) return order;
   }
+  return null;
+}
 
-  const order = await queryOne<Record<string, any>>(
-    `SELECT * FROM orders WHERE order_number = ? AND lower(email) = ? LIMIT 1`,
-    [orderNumber, email],
-  );
-  if (!order) return fail('not_found', 'No order matched that number and email.', 404);
-
-  const items =
-    (await queryAll<Record<string, any>>(
-      `SELECT product_slug, title, quantity, unit_amount, currency FROM order_items WHERE order_id = ?`,
-      [order.id],
-    )) || [];
-
-  return ok({
+function serializeOrder(order: Record<string, any>, items: Record<string, any>[]) {
+  return {
     order_number: order.order_number,
     email: order.email,
     status: order.status,
@@ -50,5 +45,28 @@ export async function GET(request: Request) {
       unit_price: moneyMinor(i.unit_amount, i.currency),
       line_total: moneyMinor(i.unit_amount * i.quantity, i.currency),
     })),
-  });
+  };
+}
+
+export async function GET(request: Request) {
+  const url = new URL(request.url);
+  const orderNumber = normalizeOrderNumber(
+    url.searchParams.get('order') || url.searchParams.get('order_number') || '',
+  );
+  const emailRaw = url.searchParams.get('email') || '';
+
+  if (!orderNumber || !normalizeLookupEmail(emailRaw)) {
+    return fail('validation_failed', 'order and email query params are required.');
+  }
+
+  const order = await findOrder(orderNumber, emailRaw);
+  if (!order) return fail('not_found', 'No order matched that number and email.', 404);
+
+  const items =
+    (await queryAll<Record<string, any>>(
+      `SELECT product_slug, title, quantity, unit_amount, currency FROM order_items WHERE order_id = ?`,
+      [order.id],
+    )) || [];
+
+  return ok(serializeOrder(order, items));
 }

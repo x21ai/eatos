@@ -1,4 +1,5 @@
 import OrderStatusClient from './OrderStatusClient';
+import { normalizeLookupEmail, normalizeOrderNumber } from '@/lib/shop/order-lookup';
 
 export const metadata = {
   title: 'Order status | eatOS',
@@ -14,8 +15,8 @@ export default async function OrderStatusPage({
   const params = await searchParams;
   return (
     <OrderStatusClient
-      initialOrder={params.order || ''}
-      initialEmail={params.email || ''}
+      initialOrder={normalizeOrderNumber(params.order || '')}
+      initialEmail={normalizeLookupEmail(params.email || '')}
       initialPaidHint={params.paid === '1'}
     />
   );

@@ -4,25 +4,28 @@
 import { useEffect, useState } from 'react';
 import { Loader2, Search } from 'lucide-react';
 import { formatMinor } from '@/lib/shop/cart-client';
+import { normalizeLookupEmail, normalizeOrderNumber } from '@/lib/shop/order-lookup';
 
 export default function OrderStatusClient({
   initialOrder = '',
   initialEmail = '',
   initialPaidHint = false,
 }) {
-  const [order, setOrder] = useState(initialOrder);
-  const [email, setEmail] = useState(initialEmail);
+  const [order, setOrder] = useState(normalizeOrderNumber(initialOrder));
+  const [email, setEmail] = useState(normalizeLookupEmail(initialEmail));
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   async function lookup(nextOrder = order, nextEmail = email) {
-    if (!nextOrder || !nextEmail) return;
+    const orderNumber = normalizeOrderNumber(nextOrder);
+    const lookupEmail = normalizeLookupEmail(nextEmail);
+    if (!orderNumber || !lookupEmail) return;
     setLoading(true);
     setError('');
     try {
       const res = await fetch(
-        `/api/orders/lookup?order=${encodeURIComponent(nextOrder)}&email=${encodeURIComponent(nextEmail)}`,
+        `/api/orders/lookup?order=${encodeURIComponent(orderNumber)}&email=${encodeURIComponent(lookupEmail)}`,
       );
       const json = await res.json();
       if (!res.ok || json.error) throw new Error(json.message || 'Lookup failed');
