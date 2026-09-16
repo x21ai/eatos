@@ -121,6 +121,7 @@ export default function AdminOrderDetail() {
                   .join(', ')}
               </p>
               {order.shipping_country ? <p>{order.shipping_country}</p> : null}
+              {order.shipping_phone ? <p>{order.shipping_phone}</p> : null}
             </div>
           )}
         </div>

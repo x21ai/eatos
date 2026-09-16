@@ -7,13 +7,11 @@ import {
   fetchCart,
   formatMinor,
   removeCartItem,
-  startCheckout,
   updateCartItem,
 } from '@/lib/shop/cart-client';
 
 export default function CartClient() {
   const [cart, setCart] = useState(null);
-  const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -52,24 +50,6 @@ export default function CartClient() {
       setCart(await removeCartItem(itemId));
     } catch (err) {
       setError(err.message || 'Remove failed');
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  async function onCheckout(e) {
-    e.preventDefault();
-    setBusy(true);
-    setError('');
-    try {
-      const result = await startCheckout(email);
-      if (result?.checkout_url) {
-        window.location.href = result.checkout_url;
-        return;
-      }
-      setError('Checkout did not return a payment URL.');
-    } catch (err) {
-      setError(err.message || 'Checkout failed');
     } finally {
       setBusy(false);
     }
@@ -154,35 +134,23 @@ export default function CartClient() {
               ))}
             </ul>
 
-            <form onSubmit={onCheckout} className="rounded-3xl border border-white/10 p-6 h-fit">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">Checkout</p>
+            <div className="rounded-3xl border border-white/10 p-6 h-fit">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">Summary</p>
               <p className="mt-4 flex justify-between text-sm">
                 <span className="text-zinc-400">Subtotal</span>
                 <span className="font-semibold text-white">{formatMinor(cart.subtotal)}</span>
               </p>
-              <label className="mt-6 block text-xs font-semibold uppercase tracking-[0.16em] text-zinc-500">
-                Email for receipt
-                <input
-                  required
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="mt-2 w-full rounded-xl border border-white/15 bg-black px-4 py-3 text-sm text-white outline-none focus:border-brand"
-                  placeholder="you@restaurant.com"
-                />
-              </label>
-              <button
-                type="submit"
-                disabled={busy}
-                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white disabled:opacity-60"
+              <p className="mt-2 text-xs text-zinc-500">Shipping calculated at checkout.</p>
+              <a
+                href="/checkout"
+                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white"
               >
-                {busy ? <Loader2 className="animate-spin" size={16} /> : null}
-                Pay with card <ArrowRight size={15} />
-              </button>
+                Continue to checkout <ArrowRight size={15} />
+              </a>
               <p className="mt-3 text-xs text-zinc-500">
-                Secure checkout via Stripe. You can look up the order later with your email.
+                Secure payment via Stripe. Look up orders anytime on the order status page.
               </p>
-            </form>
+            </div>
           </div>
         ) : null}
       </section>

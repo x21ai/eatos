@@ -82,14 +82,41 @@ export async function removeCartItem(itemId: string) {
   return parse(await fetch(`/api/cart/${token}/items/${itemId}`, { method: 'DELETE' }));
 }
 
-export async function startCheckout(email: string) {
+export type CheckoutShippingInput = {
+  name?: string;
+  line1?: string;
+  line2?: string;
+  city?: string;
+  region?: string;
+  postal?: string;
+  country?: string;
+  phone?: string;
+};
+
+export async function quoteShipping(country = 'US') {
+  const token = getCartToken();
+  if (!token) throw new Error('No cart');
+  return parse(
+    await fetch('/api/shipping/quote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cart_token: token, country }),
+    }),
+  );
+}
+
+export async function startCheckout(email: string, shipping?: CheckoutShippingInput) {
   const token = getCartToken();
   if (!token) throw new Error('No cart');
   return parse(
     await fetch('/api/checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ cart_token: token, email }),
+      body: JSON.stringify({
+        cart_token: token,
+        email,
+        shipping: shipping || undefined,
+      }),
     }),
   );
 }

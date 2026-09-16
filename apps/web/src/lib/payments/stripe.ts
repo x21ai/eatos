@@ -25,6 +25,8 @@ export async function createCheckoutSession(opts: {
   orderNumber: string;
   email: string;
   lines: CheckoutLine[];
+  shippingAmountMinor?: number;
+  shippingLabel?: string;
   successUrl: string;
   cancelUrl: string;
 }) {
@@ -37,23 +39,41 @@ export async function createCheckoutSession(opts: {
   const Stripe = (await import('stripe')).default;
   const stripe = new Stripe(secret);
 
+  const lineItems = opts.lines.map((line) => ({
+    quantity: line.quantity,
+    price_data: {
+      currency: line.currency.toLowerCase(),
+      unit_amount: line.unitAmountMinor,
+      product_data: {
+        name: line.name,
+        metadata: line.productSlug ? { product_slug: line.productSlug } : undefined,
+      },
+    },
+  }));
+
+  const shippingMinor = Math.max(0, opts.shippingAmountMinor ?? 0);
+  if (shippingMinor > 0) {
+    const currency = (opts.lines[0]?.currency || 'USD').toLowerCase();
+    lineItems.push({
+      quantity: 1,
+      price_data: {
+        currency,
+        unit_amount: shippingMinor,
+        product_data: {
+          name: opts.shippingLabel || 'Shipping',
+          metadata: undefined,
+        },
+      },
+    });
+  }
+
   const session = await stripe.checkout.sessions.create({
     mode: 'payment',
     customer_email: opts.email,
     client_reference_id: opts.orderId,
     success_url: opts.successUrl,
     cancel_url: opts.cancelUrl,
-    line_items: opts.lines.map((line) => ({
-      quantity: line.quantity,
-      price_data: {
-        currency: line.currency.toLowerCase(),
-        unit_amount: line.unitAmountMinor,
-        product_data: {
-          name: line.name,
-          metadata: line.productSlug ? { product_slug: line.productSlug } : undefined,
-        },
-      },
-    })),
+    line_items: lineItems,
     metadata: {
       order_id: opts.orderId,
       order_number: opts.orderNumber,

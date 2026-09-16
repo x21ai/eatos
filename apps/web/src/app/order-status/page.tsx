@@ -9,10 +9,14 @@ export const metadata = {
 export default async function OrderStatusPage({
   searchParams,
 }: {
-  searchParams: Promise<{ order?: string; email?: string }>;
+  searchParams: Promise<{ order?: string; email?: string; paid?: string }>;
 }) {
   const params = await searchParams;
   return (
-    <OrderStatusClient initialOrder={params.order || ''} initialEmail={params.email || ''} />
+    <OrderStatusClient
+      initialOrder={params.order || ''}
+      initialEmail={params.email || ''}
+      initialPaidHint={params.paid === '1'}
+    />
   );
 }
