@@ -1,10 +1,12 @@
 import { execute, queryOne } from '@/lib/db/client';
 import {
+  canApprovePublishForContentType,
   canPublishContent,
   type AdminIdentity,
+  type PublishContentType,
 } from '@/lib/admin/permissions';
 
-export type ContentType = 'blog' | 'news' | 'shop';
+export type ContentType = PublishContentType;
 
 const CONTENT_TABLES: Record<ContentType, string> = {
   blog: 'posts',
@@ -71,10 +73,6 @@ export async function approvePublishRequest(
   requestId: string,
   notes?: string,
 ): Promise<{ contentType: ContentType; slug: string } | null> {
-  if (!admin.isSuperadmin) {
-    throw new Error('Only the superadmin can approve publish requests.');
-  }
-
   const row = await queryOne<{
     id: string;
     content_type: string;
@@ -90,6 +88,10 @@ export async function approvePublishRequest(
   const contentType = row.content_type as ContentType;
   const table = CONTENT_TABLES[contentType];
   if (!table) return null;
+
+  if (!canApprovePublishForContentType(admin, contentType)) {
+    throw new Error('You do not have permission to approve this publish request.');
+  }
 
   const now = new Date().toISOString();
   await execute(
@@ -112,15 +114,20 @@ export async function rejectPublishRequest(
   requestId: string,
   notes?: string,
 ): Promise<boolean> {
-  if (!admin.isSuperadmin) {
-    throw new Error('Only the superadmin can reject publish requests.');
-  }
-
-  const row = await queryOne<{ id: string; status: string }>(
-    `SELECT id, status FROM publish_requests WHERE id = ?`,
+  const row = await queryOne<{
+    id: string;
+    content_type: string;
+    status: string;
+  }>(
+    `SELECT id, content_type, status FROM publish_requests WHERE id = ?`,
     [requestId],
   );
   if (!row || row.status !== 'pending') return false;
+
+  const contentType = row.content_type as ContentType;
+  if (!canApprovePublishForContentType(admin, contentType)) {
+    throw new Error('You do not have permission to reject this publish request.');
+  }
 
   const now = new Date().toISOString();
   await execute(

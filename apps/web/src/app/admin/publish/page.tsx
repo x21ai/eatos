@@ -17,9 +17,11 @@ export default function PublishQueuePage() {
     },
   });
 
+  const canApprove = me?.permissions?.canApprovePublish;
+
   const { data: requests, isLoading } = useQuery({
     queryKey: ["publish-requests"],
-    enabled: !!me?.isSuperadmin,
+    enabled: !!canApprove,
     queryFn: async () => {
       const res = await fetch("/api/admin/publish-requests?status=pending");
       if (!res.ok) throw new Error("Failed to load queue");
@@ -45,10 +47,10 @@ export default function PublishQueuePage() {
     onError: (err) => toast.error(err.message),
   });
 
-  if (!me?.isSuperadmin) {
+  if (!canApprove) {
     return (
       <div className="p-8 pt-8 text-center text-gray-400">
-        Only the superadmin (pmt@eatos.com) can approve live publishing.
+        You do not have permission to approve live publishing.
       </div>
     );
   }
@@ -58,7 +60,9 @@ export default function PublishQueuePage() {
       <header>
         <h1 className="text-3xl font-bold">Publish approval queue</h1>
         <p className="text-gray-400 mt-2">
-          Review draft content submitted by team members who cannot publish live.
+          Review draft content submitted by Developers and other draft-only roles.
+          Admins can approve all areas; Publishers can approve only the content types
+          they can publish live (blog, newsroom, or shop).
         </p>
       </header>
 

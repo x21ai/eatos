@@ -6,9 +6,21 @@ export type AdminRole =
   | 'blogger'
   | 'newsroom'
   | 'publisher'
+  | 'developer_view'
+  | 'developer'
+  | 'developer_publish'
   | 'draft_editor'
   | 'maya_agent'
   | 'help_agent';
+
+/** Mutually exclusive Developer access tiers (view → draft → publish). */
+export const DEVELOPER_ACCESS_ROLES = [
+  'developer_view',
+  'developer',
+  'developer_publish',
+] as const satisfies readonly AdminRole[];
+
+export type DeveloperAccessRole = (typeof DEVELOPER_ACCESS_ROLES)[number];
 
 export type Capability =
   | 'admin:access'
@@ -38,10 +50,18 @@ export const ALL_ADMIN_ROLES: AdminRole[] = [
   'blogger',
   'newsroom',
   'publisher',
+  'developer_view',
+  'developer',
+  'developer_publish',
   'draft_editor',
   'maya_agent',
   'help_agent',
 ];
+
+/** Roles that can be assigned via Team invite (excludes superadmin). */
+export const INVITABLE_ADMIN_ROLES: AdminRole[] = ALL_ADMIN_ROLES.filter(
+  (role) => role !== 'superadmin',
+);
 
 export const ROLE_LABELS: Record<AdminRole, string> = {
   superadmin: 'Superadmin',
@@ -49,6 +69,9 @@ export const ROLE_LABELS: Record<AdminRole, string> = {
   blogger: 'Blogger',
   newsroom: 'Newsroom',
   publisher: 'Publisher',
+  developer_view: 'Developer (view)',
+  developer: 'Developer (draft)',
+  developer_publish: 'Developer (publish)',
   draft_editor: 'Draft editor',
   maya_agent: 'Maya agent',
   help_agent: 'Help agent',
@@ -94,6 +117,7 @@ export const ROLE_CAPABILITIES: Record<AdminRole, Capability[]> = {
     'orders:read',
     'orders:manage',
     'media:manage',
+    'publish:approve',
     'maya:access',
     'maya:manage',
     'help:access',
@@ -114,7 +138,8 @@ export const ROLE_CAPABILITIES: Record<AdminRole, Capability[]> = {
     'shop:publish',
     'media:manage',
   ],
-  draft_editor: [
+  developer_view: ['admin:access', 'blog:read', 'news:read', 'shop:read'],
+  developer: [
     'admin:access',
     'blog:read',
     'blog:write',
@@ -122,6 +147,27 @@ export const ROLE_CAPABILITIES: Record<AdminRole, Capability[]> = {
     'news:write',
     'shop:read',
     'shop:write',
+    'media:manage',
+  ],
+  developer_publish: [
+    'admin:access',
+    'blog:read',
+    'blog:write',
+    'blog:publish',
+    'news:read',
+    'news:write',
+    'news:publish',
+    'shop:read',
+    'shop:write',
+    'shop:publish',
+    'media:manage',
+  ],
+  draft_editor: [
+    'admin:access',
+    'blog:read',
+    'blog:write',
+    'news:read',
+    'news:write',
     'media:manage',
   ],
   maya_agent: ['admin:access', 'maya:access'],
@@ -133,6 +179,31 @@ const LEGACY_ROLE_MAP: Record<string, AdminRole[]> = {
   editor: ['draft_editor'],
 };
 
+const DEVELOPER_ACCESS_SET = new Set<AdminRole>(DEVELOPER_ACCESS_ROLES);
+
+/** Keep at most one Developer access tier; prefer publish > draft > view. */
+export function normalizeAssignedRoles(roles: AdminRole[]): AdminRole[] {
+  const devTiers = roles.filter((role) => DEVELOPER_ACCESS_SET.has(role));
+  const otherRoles = roles.filter((role) => !DEVELOPER_ACCESS_SET.has(role));
+
+  if (!devTiers.length) return otherRoles;
+
+  const tier: DeveloperAccessRole = devTiers.includes('developer_publish')
+    ? 'developer_publish'
+    : devTiers.includes('developer')
+      ? 'developer'
+      : 'developer_view';
+
+  return [...otherRoles, tier];
+}
+
+export function getDeveloperAccessRole(roles: AdminRole[]): DeveloperAccessRole | null {
+  for (const role of DEVELOPER_ACCESS_ROLES) {
+    if (roles.includes(role)) return role;
+  }
+  return null;
+}
+
 export function parseRoles(raw: string | null | undefined, legacyRole?: string): AdminRole[] {
   if (raw) {
     try {
@@ -141,7 +212,7 @@ export function parseRoles(raw: string | null | undefined, legacyRole?: string):
         const roles = parsed.filter((r): r is AdminRole =>
           ALL_ADMIN_ROLES.includes(r as AdminRole),
         );
-        if (roles.length) return roles;
+        if (roles.length) return normalizeAssignedRoles(roles);
       }
     } catch {
       // fall through
@@ -199,9 +270,11 @@ export function hasAnyCapability(
   return capabilities.some((c) => hasCapability(admin, c));
 }
 
+export type PublishContentType = 'blog' | 'news' | 'shop';
+
 export function canPublishContent(
   admin: AdminIdentity,
-  contentType: 'blog' | 'news' | 'shop',
+  contentType: PublishContentType,
 ): boolean {
   const cap: Capability =
     contentType === 'blog'
@@ -212,6 +285,25 @@ export function canPublishContent(
   return hasCapability(admin, cap);
 }
 
+/** Approve queued publish requests — admin/superadmin or Publisher (not Developer publish tier). */
+export function canApprovePublishForContentType(
+  admin: AdminIdentity,
+  contentType: PublishContentType,
+): boolean {
+  if (admin.isSuperadmin) return true;
+  if (hasCapability(admin, 'publish:approve')) return true;
+  if (admin.roles.includes('publisher')) {
+    return canPublishContent(admin, contentType);
+  }
+  return false;
+}
+
+export function canApproveAnyPublishRequest(admin: AdminIdentity): boolean {
+  if (admin.isSuperadmin) return true;
+  if (hasCapability(admin, 'publish:approve')) return true;
+  return admin.roles.includes('publisher');
+}
+
 export function roleSummary(admin: AdminIdentity): {
   canPublishLive: boolean;
   canApprovePublish: boolean;
@@ -220,7 +312,7 @@ export function roleSummary(admin: AdminIdentity): {
   const canPublishLive =
     admin.isSuperadmin ||
     hasAnyCapability(admin, ['blog:publish', 'news:publish', 'shop:publish']);
-  const canApprovePublish = hasCapability(admin, 'publish:approve');
+  const canApprovePublish = canApproveAnyPublishRequest(admin);
   return {
     canPublishLive,
     canApprovePublish,

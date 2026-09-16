@@ -4,6 +4,7 @@ import {
   ALL_ADMIN_ROLES,
   type AdminRole,
   buildAdminIdentity,
+  normalizeAssignedRoles,
 } from '@/lib/admin/permissions';
 import { isSuperadminEmail, isSignupEmailAllowed } from '@/lib/auth/allowlist';
 
@@ -72,8 +73,8 @@ export async function POST(request: Request) {
   }
 
   const rolesInput = Array.isArray(body.roles) ? body.roles : [body.role];
-  const roles = rolesInput.filter((r): r is AdminRole =>
-    ALL_ADMIN_ROLES.includes(r as AdminRole),
+  const roles = normalizeAssignedRoles(
+    rolesInput.filter((r): r is AdminRole => ALL_ADMIN_ROLES.includes(r as AdminRole)),
   );
 
   if (!roles.length) {

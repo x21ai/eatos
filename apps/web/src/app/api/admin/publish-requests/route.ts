@@ -1,9 +1,18 @@
-import { adminFail, requireSuperadmin } from '@/lib/admin/guard';
+import { AdminAuthError, adminFail, requireAdmin } from '@/lib/admin/guard';
+import { canApproveAnyPublishRequest, canApprovePublishForContentType } from '@/lib/admin/permissions';
 import { queryAll } from '@/lib/db/client';
 
 export async function GET(request: Request) {
+  let admin;
   try {
-    await requireSuperadmin(request);
+    admin = await requireAdmin(request);
+    if (!canApproveAnyPublishRequest(admin)) {
+      throw new AdminAuthError(
+        403,
+        'forbidden',
+        'You do not have permission to view the publish queue.',
+      );
+    }
   } catch (error) {
     return adminFail(error);
   }
@@ -20,5 +29,9 @@ export async function GET(request: Request) {
     [status],
   );
 
-  return Response.json({ data: rows ?? [] });
+  const filtered = (rows ?? []).filter((row) =>
+    canApprovePublishForContentType(admin, String(row.content_type) as 'blog' | 'news' | 'shop'),
+  );
+
+  return Response.json({ data: filtered });
 }

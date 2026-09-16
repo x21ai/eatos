@@ -48,6 +48,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
   });
 
   const caps = new Set(me?.capabilities ?? []);
+  const perm = me?.permissions;
   const visibleNav = NAV_ITEMS.filter((item) => {
     if (item.cap === null) return true;
     if (!item.cap) return true;
@@ -55,12 +56,10 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
       return caps.has("maya:access") || caps.has("maya:manage") || caps.has("help:access") || caps.has("help:manage");
     }
     if (item.href === "/admin/publish") {
-      return me?.isSuperadmin;
+      return perm?.canApprovePublish;
     }
     return caps.has(item.cap);
   });
-
-  const perm = me?.permissions;
 
   return (
     <div className="min-h-screen bg-[#050505] text-white flex flex-col">
