@@ -8,4 +8,4 @@ SEO preserve / go-live hold (no DNS cutover)
 
 | Date | SHA | Phase | Summary |
 |------|-----|-------|---------|
-| 2026-09-24 | 73832cec | SEO preserve / go-live hold | Add Next.js 301s for live Wix sitemap 404s |
+| 2026-09-24 | 79e74713 | SEO preserve / go-live hold | Add Next.js 301s for live Wix sitemap 404s |

@@ -1,7 +1,7 @@
 # Cursor handoff
 
 - **Last update:** 2026-09-24
-- **Commit:** `73832cec`
+- **Commit:** `79e74713`
 - **Branch:** `cursor/seo-preserve-wix-redirects-dee2`
 - **Base:** `lovable`
 
