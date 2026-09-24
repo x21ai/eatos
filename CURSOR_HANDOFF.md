@@ -20,9 +20,9 @@ Security hardening for the public Next/OpenNext Worker without changing DNS, dep
 
 ## Next actions
 
-- Complete production build, route/header smoke checks, and OpenNext Cloudflare build.
+- Deploy through the normal Worker pipeline, then purge zone and R2 incremental-cache entries for the retired routes.
 - At Cloudflare, disable the zone HSTS/header override or set it to the exact application value so `max-age=0` no longer replaces the Worker header.
-- Review CSP reports before changing the policy from report-only to enforcement.
+- Add a CSP report collector, review integration violations, and narrow allowlists before changing the policy from report-only to enforcement.
 
 ## Blockers
 
