@@ -1,8 +1,9 @@
 import type { ConversationStatus, MayaMessage } from './types';
+import type { MayaConversationRoom } from './conversation-room';
 import type { RealtimeAssignedAgent, RealtimeServerEvent } from './realtime-types';
 import { toRealtimeMessage } from './realtime-types';
 
-type ConversationRoomBinding = DurableObjectNamespace;
+type ConversationRoomBinding = DurableObjectNamespace<MayaConversationRoom>;
 
 async function resolveConversationRoomBinding(): Promise<ConversationRoomBinding | null> {
   try {

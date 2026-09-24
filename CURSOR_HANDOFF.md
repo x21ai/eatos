@@ -2,7 +2,7 @@
 
 - **Last update:** 2026-09-24
 - **Branch:** `cursor/maya-public-chat-1cb4`
-- **Commit:** final integration commit pending
+- **Commit:** `822294ee` (public chat integration; validation fix pending)
 
 ## Current focus
 
@@ -12,6 +12,8 @@ Ship Maya as the feature-gated public marketing chat on `eatos.com` and
 ## Recent changes
 
 - Added public hostname/path gating and anonymous name/email lead capture.
+- Restored the visitor polling store methods omitted by the stacked Maya PR and
+  added local Worker binding types without changing browser `Response.json()` types.
 - Added Maya realtime Durable Object transport with HTTP polling fallback.
 - Added D1 helpdesk conversations, agent inbox, canned replies, and agent setup.
 - Added enablement, deployment, anonymous smoke, and Crisp parity documentation.

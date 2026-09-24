@@ -12,4 +12,5 @@ Append one entry per material development request. Do not include secrets or PII
 - **Outcome:** Maya helpdesk/realtime changes isolated onto `lovable`; production
   host gating, lead capture, fallback polling, deployment notes, and smoke steps
   added.
-- **Commits:** `219988ba`, `4ac33339`, `05287018`; final integration commit pending.
+- **Commits:** `219988ba`, `4ac33339`, `05287018`, `822294ee`; validation fix
+  commit pending.

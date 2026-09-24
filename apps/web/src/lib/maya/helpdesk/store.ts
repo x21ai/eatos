@@ -108,6 +108,14 @@ export async function findAgentByUserId(userId: string): Promise<MayaAgent | nul
   return row ? rowToAgent(row) : null;
 }
 
+export async function findAgentById(id: string): Promise<MayaAgent | null> {
+  const row = await queryOne<Record<string, unknown>>(
+    `SELECT * FROM maya_agents WHERE id = ? LIMIT 1`,
+    [id],
+  );
+  return row ? rowToAgent(row) : null;
+}
+
 export async function listAgents(activeOnly = true): Promise<MayaAgent[]> {
   const clause = activeOnly ? 'WHERE is_active = 1' : '';
   const rows = await queryAll<Record<string, unknown>>(
@@ -252,6 +260,59 @@ export async function upsertConversation(opts: {
   const row = await queryOne<Record<string, unknown>>(`SELECT * FROM maya_conversations WHERE id = ?`, [id]);
   if (!row) throw new Error('Conversation create failed');
   return rowToConversation(row);
+}
+
+export async function getConversationByTraceId(
+  traceId: string,
+): Promise<MayaConversation | null> {
+  const row = await queryOne<Record<string, unknown>>(
+    `SELECT * FROM maya_conversations WHERE trace_id = ? LIMIT 1`,
+    [traceId],
+  );
+  return row ? rowToConversation(row) : null;
+}
+
+export async function listMessagesAfter(
+  conversationId: string,
+  afterMessageId?: string | null,
+): Promise<MayaMessage[]> {
+  let rows: Record<string, unknown>[] | null;
+  if (afterMessageId) {
+    const anchor = await queryOne<Record<string, unknown>>(
+      `SELECT created_at, rowid AS anchor_rowid FROM maya_messages
+       WHERE id = ? AND conversation_id = ? LIMIT 1`,
+      [afterMessageId, conversationId],
+    );
+    if (anchor?.created_at) {
+      rows = await queryAll<Record<string, unknown>>(
+        `SELECT * FROM maya_messages
+         WHERE conversation_id = ?
+           AND (created_at > ? OR (created_at = ? AND rowid > ?))
+         ORDER BY created_at ASC, rowid ASC`,
+        [
+          conversationId,
+          anchor.created_at,
+          anchor.created_at,
+          Number(anchor.anchor_rowid),
+        ],
+      );
+    } else {
+      rows = await queryAll<Record<string, unknown>>(
+        `SELECT * FROM maya_messages
+         WHERE conversation_id = ?
+         ORDER BY created_at ASC`,
+        [conversationId],
+      );
+    }
+  } else {
+    rows = await queryAll<Record<string, unknown>>(
+      `SELECT * FROM maya_messages
+       WHERE conversation_id = ?
+       ORDER BY created_at ASC`,
+      [conversationId],
+    );
+  }
+  return (rows ?? []).map(rowToMessage);
 }
 
 export async function appendMessage(opts: {

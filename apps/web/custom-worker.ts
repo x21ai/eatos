@@ -6,4 +6,4 @@ export { MayaConversationRoom } from './src/lib/maya/helpdesk/conversation-room'
 
 export default {
   fetch: handler.fetch,
-} satisfies ExportedHandler<CloudflareEnv>;
+};
