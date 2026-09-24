@@ -523,7 +523,14 @@ export default function AgentAssistant() {
   }, [open, usePollingFallback, isFallback, applyPollPayload]);
 
   const startTriage = useCallback((product) => {
-    setTriage({ step: product ? 'severity' : 'product', product: product ?? null, severity: null, note: '' });
+    setTriage({
+      step: product ? 'severity' : 'product',
+      product: product ?? null,
+      severity: null,
+      note: '',
+      visitorName: '',
+      visitorEmail: '',
+    });
   }, []);
 
   // Hover preview is pointer-only: on touch the icon simply opens the panel.
@@ -801,12 +808,35 @@ export default function AgentAssistant() {
 
               {triage.step === 'note' ? (
                 <div className="min-w-0">
-                  <p>Add anything that helps, then I will hand this over with the full context.</p>
+                  <p>Where should our team follow up?</p>
+                  <input
+                    type="text"
+                    value={triage.visitorName}
+                    onChange={(event) =>
+                      setTriage({ ...triage, visitorName: event.target.value.slice(0, 120) })
+                    }
+                    placeholder="Your name"
+                    aria-label="Your name"
+                    autoComplete="name"
+                    className="mt-3 w-full rounded-2xl border border-white/12 bg-black/50 px-3.5 py-3 text-[13px] text-white outline-none placeholder:text-zinc-600 focus:border-white/40"
+                  />
+                  <input
+                    type="email"
+                    value={triage.visitorEmail}
+                    onChange={(event) =>
+                      setTriage({ ...triage, visitorEmail: event.target.value.slice(0, 200) })
+                    }
+                    placeholder="Work email"
+                    aria-label="Work email"
+                    autoComplete="email"
+                    className="mt-2 w-full rounded-2xl border border-white/12 bg-black/50 px-3.5 py-3 text-[13px] text-white outline-none placeholder:text-zinc-600 focus:border-white/40"
+                  />
                   <textarea
                     value={triage.note}
                     onChange={(event) => setTriage({ ...triage, note: event.target.value })}
                     rows={3}
-                    placeholder="Terminal 2 stopped printing after the update"
+                    placeholder="How can we help?"
+                    aria-label="How can we help?"
                     className="mt-3 w-full resize-none rounded-2xl border border-white/12 bg-black/50 px-3.5 py-3 text-[13px] text-white outline-none placeholder:text-zinc-600 focus:border-white/40"
                   />
                   <button
@@ -817,6 +847,8 @@ export default function AgentAssistant() {
                       await syncConversation({
                         message: [
                           'Visitor requested human help.',
+                          triage.visitorName ? `Name: ${triage.visitorName}` : null,
+                          triage.visitorEmail ? `Email: ${triage.visitorEmail}` : null,
                           triage.product ? `Product: ${triage.product.label}` : null,
                           triage.severity ? `Severity: ${triage.severity.label}` : null,
                           triage.note ? `Details: ${triage.note}` : null,
@@ -826,9 +858,15 @@ export default function AgentAssistant() {
                         role: 'visitor',
                         escalate: true,
                         seedContext,
+                        visitorName: triage.visitorName,
+                        visitorEmail: triage.visitorEmail,
                       });
                     }}
-                    className="mt-3 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-black transition-colors hover:bg-zinc-200"
+                    disabled={
+                      !triage.visitorName.trim() ||
+                      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(triage.visitorEmail.trim())
+                    }
+                    className="mt-3 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-black transition-colors hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-40"
                   >
                     Hand this over
                     <ArrowRight size={12} aria-hidden />

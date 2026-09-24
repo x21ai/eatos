@@ -6,7 +6,7 @@ import Providers from '@/components/Providers';
 import CookieBanner from '@/components/CookieBanner';
 import BookDemoTracker from '@/components/BookDemoTracker';
 import StaticLinkFix from '@/components/StaticLinkFix';
-import AgentAssistant from './components/agent/AgentAssistant';
+import PublicMayaChat from './components/agent/PublicMayaChat';
 
 export const metadata = {
   metadataBase: new URL('https://eatos.com'),
@@ -75,7 +75,7 @@ export default function RootLayout({ children }) {
           <CookieBanner />
           <BookDemoTracker />
           <StaticLinkFix />
-          <AgentAssistant />
+          <PublicMayaChat />
         </Providers>
       </body>
     </html>

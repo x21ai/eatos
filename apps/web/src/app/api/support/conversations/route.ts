@@ -9,7 +9,6 @@ import { publishConversationMessage, publishConversationMeta } from '@/lib/maya/
 import type { ConversationStatus, MessageRole } from '@/lib/maya/helpdesk/types';
 
 const STATUSES = new Set<ConversationStatus>(['open', 'pending', 'resolved']);
-const ROLES = new Set<MessageRole>(['visitor', 'agent', 'maya']);
 
 function articleSlugsFromSources(sources: unknown): string[] {
   if (!Array.isArray(sources)) return [];
@@ -30,7 +29,8 @@ export async function POST(request: Request) {
       ? body.visitor_id.trim().slice(0, 80)
       : '';
   const messageText = typeof body.message === 'string' ? body.message.trim() : '';
-  const role = ROLES.has(body.role) ? body.role : 'visitor';
+  // This route is anonymous. Never let a visitor impersonate a human agent.
+  const role: MessageRole = body.role === 'maya' ? 'maya' : 'visitor';
 
   if (!traceId) return fail('validation_failed', 'trace_id is required.');
   if (!visitorId) return fail('validation_failed', 'visitor_id is required.');

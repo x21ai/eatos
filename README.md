@@ -24,3 +24,9 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## Maya public chat
+
+The first-party Maya visitor chat, helpdesk inbox, Durable Object binding, production
+enablement flags, smoke test, and remaining Crisp parity gaps are documented in
+[`docs/MAYA_PUBLIC_CHAT.md`](docs/MAYA_PUBLIC_CHAT.md).
