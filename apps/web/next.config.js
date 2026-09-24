@@ -118,6 +118,7 @@ const nextConfig = {
       ['/orderattable', '/products/tableside-order-and-pay'],
       ['/workforceos', '/products/workforce-management'],
       ['/products/payment-solutions', '/accept-payments'],
+      ['/payments/payment-processing-fees', '/accept-payments'],
       
       ['/maya-ai', '/ai'],
 
@@ -128,6 +129,9 @@ const nextConfig = {
       ['/newsroom/:slug', '/news/:slug'],
       ['/event-list', '/blog'],
       ['/event-pages/:path+', '/blog'],
+      ['/event-details/national-restaurants-association-show-2023', '/blog'],
+      ['/event-details/restaurant-takeaway-innovation-expo', '/blog'],
+      ['/event-details/:slug', '/blog'],
       ['/blogs', '/blog'],
       ['/blog/categories/:category', '/blog'],
       ['/legal', '/terms-and-conditions'],
@@ -158,6 +162,7 @@ const nextConfig = {
       ['/ambassadors', '/partners'],
       ['/resellers', '/partners'],
       ['/resellers-', '/partners'],
+      ['/resellers-1', '/partners'],
 
       // Restaurant type collection pages.
       ['/restaurant/quick-service', '/quick-service'],
@@ -171,6 +176,19 @@ const nextConfig = {
       ['/restaurant/enterprise', '/enterprise-pos'],
       ['/restaurant/enterprises', '/enterprise-pos'],
       ['/restaurant/:path+', '/solutions'],
+
+      // Live Wix SEO paths missing from Worker (audit 2026-09).
+      ['/restaurant-type/bar-and-brewery', '/bar-and-brewery'],
+      ['/restaurant-type/cafe', '/cafe-pos'],
+      ['/restaurant-type/catering', '/catering'],
+      ['/restaurant-type/enterprise', '/enterprise-pos'],
+      ['/restaurant-type/enterprises', '/enterprise-pos'],
+      ['/restaurant-type/fast-casual', '/fast-casual'],
+      ['/restaurant-type/food-truck', '/food-truck'],
+      ['/restaurant-type/full-service', '/full-service'],
+      ['/restaurant-type/ghost-kitchen', '/ghost-kitchens'],
+      ['/restaurant-type/quick-service', '/quick-service'],
+      ['/restaurant-type/:path+', '/solutions'],
 
       // Legacy shop.eatos.com URLs now resolve inside the main site.
       ['/collections/:slug', '/shop/collections/:slug'],
