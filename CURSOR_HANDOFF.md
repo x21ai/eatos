@@ -1,7 +1,7 @@
 # Cursor handoff
 
 - **Last update:** 2026-09-24
-- **Commit:** `5e29282e`
+- **Commit:** `f3559087`
 - **Branch:** `cursor/harden-worker-site-a376`
 - **Base:** `lovable`
 
@@ -11,6 +11,7 @@ Security hardening for the public Next/OpenNext Worker without changing DNS, dep
 
 ## Recent changes
 
+- 2026-09-24 — Pinned OpenNext's Worker build to the repository's declared Yarn 4 package manager instead of ambiguous `bun.lock` auto-detection.
 - 2026-09-24 — Added one-year HSTS plus report-only CSP, anti-framing, referrer, permissions, and MIME-sniffing headers; disabled `X-Powered-By`.
 - 2026-09-24 — Production-gated stale homepage previews and the social development shim with 404 responses.
 - 2026-09-24 — Upgraded Next.js to 16.3.6 in the application lockfile.
