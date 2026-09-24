@@ -8,6 +8,7 @@ Public chat integration and deployment verification.
 
 | Date | SHA | Phase | Summary |
 | --- | --- | --- | --- |
+| 2026-09-24 | `905800c2` | Build validation | Complete missing realtime store methods and isolated Worker types. |
 | 2026-09-24 | `822294ee` | Public chat integration | Gate and wire Maya realtime helpdesk chat for production marketing hosts. |
 | 2026-09-24 | `05287018` | Realtime transport | Preserve Maya Durable Object migration numbering. |
 | 2026-09-24 | `4ac33339` | Realtime transport | Add WebSockets, typing, read receipts, and fallback support. |
