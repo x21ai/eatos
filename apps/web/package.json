@@ -5,6 +5,7 @@
 		"build": "next build --webpack",
 		"dev": "next dev --port 4000",
 		"start": "next start",
+		"test": "node --test security-headers.test.js",
 		"typecheck": "tsc --noEmit",
 		"cf:build": "opennextjs-cloudflare build",
 		"cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",

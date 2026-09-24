@@ -6,7 +6,10 @@ export default function SocialDevShimLayout({
 }: {
   children: ReactNode;
 }) {
-  if (process.env.NEXT_PUBLIC_CREATE_ENV !== 'DEVELOPMENT') {
+  if (
+    process.env.NODE_ENV === 'production' ||
+    process.env.NEXT_PUBLIC_CREATE_ENV !== 'DEVELOPMENT'
+  ) {
     notFound();
   }
 
