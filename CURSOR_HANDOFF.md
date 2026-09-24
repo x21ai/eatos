@@ -1,7 +1,7 @@
 # Cursor handoff
 
 - **Last update:** 2026-09-24
-- **Commit:** `32fb1b93`
+- **Commit:** `f2b65278`
 - **Branch:** `cursor/harden-worker-site-a376`
 - **Base:** `lovable`
 
@@ -11,6 +11,7 @@ Security hardening for the public Next/OpenNext Worker without changing DNS, dep
 
 ## Recent changes
 
+- 2026-09-24 — Preserved same-origin video autoplay, exempted only the explicit development builder from XFO, made the social shim fail closed on production builds, and wired the security test script.
 - 2026-09-24 — Pinned OpenNext's top-level Worker build command to the repository's declared Yarn 4 package manager instead of ambiguous `bun.lock` auto-detection.
 - 2026-09-24 — Added one-year HSTS plus report-only CSP, anti-framing, referrer, permissions, and MIME-sniffing headers; disabled `X-Powered-By`.
 - 2026-09-24 — Production-gated stale homepage previews and the social development shim with 404 responses.
