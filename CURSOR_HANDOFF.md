@@ -1,24 +1,27 @@
 # Cursor handoff
 
 - **Last update:** 2026-09-24
-- **Commit:** `79e74713`
-- **Branch:** `cursor/seo-preserve-wix-redirects-dee2`
+- **Commit:** `5e29282e`
+- **Branch:** `cursor/harden-worker-site-a376`
 - **Base:** `lovable`
 
 ## Current focus
 
-Permanent 301s for live Wix SEO paths that 404 on Worker staging (`s.eatos.dev`). Config-only; no DNS or deploy.
+Security hardening for the public Next/OpenNext Worker without changing DNS, deploying, or touching Shopify.
 
 ## Recent changes
 
+- 2026-09-24 — Added one-year HSTS plus report-only CSP, anti-framing, referrer, permissions, and MIME-sniffing headers; disabled `X-Powered-By`.
+- 2026-09-24 — Production-gated stale homepage previews and the social development shim with 404 responses.
+- 2026-09-24 — Upgraded Next.js to 16.3.6 in the application lockfile.
 - 2026-09-24 — Added `permanent: true` redirects in `apps/web/next.config.js` for `/resellers-1`, `/payments/payment-processing-fees`, `/event-details/...`, and `/restaurant-type/...` → nearest canonical pages. Existing redirects unchanged.
 
 ## Next actions
 
-- After merge, probe the 13 live-sitemap 404 paths on staging; expect 301 then 200 on indexable destinations.
-- Follow-up (out of scope): ~229 paths return 200 on staging but are missing from the staging sitemap (`sitemap.ts`).
-- Do **not** change DNS, wrangler deploy, or eatos.com cutover in this workstream.
+- Complete production build, route/header smoke checks, and OpenNext Cloudflare build.
+- At Cloudflare, disable the zone HSTS/header override or set it to the exact application value so `max-age=0` no longer replaces the Worker header.
+- Review CSP reports before changing the policy from report-only to enforcement.
 
 ## Blockers
 
-- Domain cutover remains held (go-live audit 2026-09-24). This PR does not unblock DNS.
+- Cloudflare production currently emits `Strict-Transport-Security: max-age=0` on challenge responses; edge coordination is required after merge.
