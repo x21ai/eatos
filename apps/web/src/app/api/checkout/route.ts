@@ -1,7 +1,12 @@
 import { fail, ok, readJson, newId, moneyMinor } from '@/lib/api';
 import { execute } from '@/lib/db/client';
 import { getCartByToken, listCartItems } from '@/lib/shop/cart';
-import { createCheckoutSession, isStripeConfigured } from '@/lib/payments/stripe';
+import { isMissingOrdersSourceColumn } from '@/lib/payments/orders';
+import {
+  createCheckoutSession,
+  isStripeConfigured,
+  stripeFailureResponse,
+} from '@/lib/payments/stripe';
 
 function orderNumber() {
   const n = Date.now().toString(36).toUpperCase();
@@ -47,7 +52,7 @@ export async function POST(request: Request) {
   const items = await listCartItems(cart.id);
   if (!items.length) return fail('cart_empty', 'Add at least one item before checkout.', 400);
 
-  if (!isStripeConfigured()) {
+  if (!(await isStripeConfigured())) {
     return fail(
       'payments_unconfigured',
       'Card payments are not configured yet. Set STRIPE_SECRET_KEY on the Worker.',
@@ -61,13 +66,15 @@ export async function POST(request: Request) {
   const number = orderNumber();
 
   try {
-    await execute(
-      `INSERT INTO orders (
-         id, order_number, cart_id, email, status, currency,
-         subtotal_amount, shipping_amount, tax_amount, total_amount, provider, source
-       ) VALUES (?, ?, ?, ?, 'pending', ?, ?, 0, 0, ?, 'stripe', ?)`,
-      [id, number, cart.id, email, currency, subtotal, subtotal, source],
-    );
+    await insertPendingOrder({
+      id,
+      number,
+      cartId: cart.id,
+      email,
+      currency,
+      subtotal,
+      source,
+    });
 
     for (const item of items) {
       await execute(
@@ -122,7 +129,56 @@ export async function POST(request: Request) {
       total: moneyMinor(subtotal, currency),
     }, 201);
   } catch (error) {
-    console.error('checkout failed', error);
-    return fail('checkout_failed', 'Could not start checkout.', 500);
+    console.error('checkout failed', error instanceof Error ? error.message : error);
+    const failure = stripeFailureResponse(error);
+    return fail(failure.code, failure.message, failure.status);
+  }
+}
+
+async function insertPendingOrder(order: {
+  id: string;
+  number: string;
+  cartId: string;
+  email: string;
+  currency: string;
+  subtotal: number;
+  source: string;
+}) {
+  try {
+    await execute(
+      `INSERT INTO orders (
+         id, order_number, cart_id, email, status, currency,
+         subtotal_amount, shipping_amount, tax_amount, total_amount, provider, source
+       ) VALUES (?, ?, ?, ?, 'pending', ?, ?, 0, 0, ?, 'stripe', ?)`,
+      [
+        order.id,
+        order.number,
+        order.cartId,
+        order.email,
+        order.currency,
+        order.subtotal,
+        order.subtotal,
+        order.source,
+      ],
+    );
+  } catch (error) {
+    if (!isMissingOrdersSourceColumn(error)) throw error;
+    // Migration 0008 adds orders.source. Checkout still has to reach Stripe
+    // when that column has not been applied yet.
+    await execute(
+      `INSERT INTO orders (
+         id, order_number, cart_id, email, status, currency,
+         subtotal_amount, shipping_amount, tax_amount, total_amount, provider
+       ) VALUES (?, ?, ?, ?, 'pending', ?, ?, 0, 0, ?, 'stripe')`,
+      [
+        order.id,
+        order.number,
+        order.cartId,
+        order.email,
+        order.currency,
+        order.subtotal,
+        order.subtotal,
+      ],
+    );
   }
 }

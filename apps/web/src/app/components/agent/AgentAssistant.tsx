@@ -171,7 +171,7 @@ function AnswerBody({ reply, onTriage }) {
   if (reply.kind === 'facts') {
     return (
       <div className="min-w-0">
-        <p>Here is what applies to that:</p>
+        <p>Here is what applies to that.</p>
         {reply.facts.map((fact) => (
           <div key={fact.id} className="mt-3 rounded-2xl border border-white/10 bg-black/40 px-3.5 py-3">
             <p className="text-[13px] font-semibold text-white">{fact.title}</p>
@@ -400,7 +400,7 @@ export default function AgentAssistant() {
     if (triage?.severity) lines.push(`Severity: ${triage.severity.label} (${triage.severity.note})`);
     if (triage?.note) lines.push(`Details: ${triage.note}`);
     if (asked.length) {
-      lines.push('', 'What I already asked the agent:');
+      lines.push('', 'What I already asked the agent.');
       asked.forEach((q) => lines.push(`- ${q}`));
     }
     return lines.join('\n');

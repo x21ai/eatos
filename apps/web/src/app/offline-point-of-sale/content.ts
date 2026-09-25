@@ -45,7 +45,7 @@ export const capabilities = [
 export const platform = {
   eyebrow: 'eatOS PLATFORM',
   title: 'Everything you need. Fully integrated.',
-  subtitle: 'Explore the eatOS platform:',
+  subtitle: 'Explore the eatOS platform',
 };
 
 export const cta = {

@@ -1,6 +1,12 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import {
+  PRIVACY_POLICY_HREF,
+  fixPrivacyPolicyLinks,
+  isPrivacyPolicyLabel,
+  privacyHrefNeedsFix,
+} from './privacyPolicyLink';
 
 const HS_SCRIPT_SRC = 'https://js.hsforms.net/forms/embed/v2.js';
 
@@ -50,6 +56,30 @@ export default function ResellerForm({
     script.addEventListener('load', create);
     return () => script?.removeEventListener('load', create);
   }, [formId, targetId]);
+
+  useEffect(() => {
+    const root = document.getElementById(targetId);
+    if (!root) return;
+
+    const fix = () => fixPrivacyPolicyLinks(root);
+    const onClick = (event: MouseEvent) => {
+      const anchor = (event.target as Element | null)?.closest?.('a');
+      if (!anchor || !root.contains(anchor)) return;
+      if (!isPrivacyPolicyLabel(anchor.textContent)) return;
+      if (!privacyHrefNeedsFix(anchor.getAttribute('href'))) return;
+      event.preventDefault();
+      window.location.assign(PRIVACY_POLICY_HREF);
+    };
+
+    fix();
+    const observer = new MutationObserver(fix);
+    observer.observe(root, { childList: true, subtree: true, attributes: true, attributeFilter: ['href'] });
+    root.addEventListener('click', onClick);
+    return () => {
+      observer.disconnect();
+      root.removeEventListener('click', onClick);
+    };
+  }, [targetId]);
 
   return <div id={targetId} className={`hs-form-full ${className}`} />;
 }

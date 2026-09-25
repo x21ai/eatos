@@ -22,5 +22,11 @@ export const metadata = {
 };
 
 export default function BookDemoLayout({ children }) {
-  return children;
+  return (
+    <>
+      <link rel="preconnect" href="https://meetings.hubspot.com" />
+      <link rel="dns-prefetch" href="https://meetings.hubspot.com" />
+      {children}
+    </>
+  );
 }
