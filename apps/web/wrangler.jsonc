@@ -11,6 +11,18 @@
   "observability": {
     "enabled": true
   },
+  // The live Worker still had MayaConversationRoom from a prior branch.
+  // These tags register then delete that class so OpenNext can publish.
+  "migrations": [
+    {
+      "tag": "v1-maya-realtime",
+      "new_sqlite_classes": ["MayaConversationRoom"]
+    },
+    {
+      "tag": "v2-remove-maya-realtime",
+      "deleted_classes": ["MayaConversationRoom"]
+    }
+  ],
   // D1 (SQLite) replaces Neon Postgres. Run `wrangler d1 create eatos-web-db`
   // and paste the returned database_id below before deploying.
   "d1_databases": [
