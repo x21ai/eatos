@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
+import { WhyFeatureCard, WhyFeatureSection } from '@/components/marketing/WhyFeatureSection';
 import { features as allFeatures, hardware, hero, keyFeatures } from './content';
 import { products } from '../products';
 import BrochureButton from '@/components/BrochureButton';
@@ -241,19 +242,18 @@ export default function PopPageClient() {
         </div>
       </section>
 
-      {/* Why */}
-      <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="site-container">
-          <motion.div {...rise} className="text-center mb-14 md:mb-20">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">
-              Why Point of Purchase?
-            </h2>
-            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
-              Built for real restaurant operations. Designed to disappear into workflow.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      <WhyFeatureSection
+        title={
+          <>
+            Why Point of Purchase?
+          </>
+        }
+        description={
+          <>
+            Built for real restaurant operations. Designed to disappear into workflow.
+          </>
+        }
+      >
             {[
               {
                 Icon: Zap,
@@ -274,53 +274,29 @@ export default function PopPageClient() {
                 body: 'Real people, real help, any time you need it, especially through the rush.',
               },
             ].map((card, index) => (
-              <motion.div
+              <WhyFeatureCard
                 key={card.title}
-                {...rise}
-                transition={{ delay: index * 0.1 }}
-                className="rounded-[2rem] border border-white/10 bg-white/5 p-8 md:p-10"
-              >
-                <div
-                  className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${card.tint}`}
-                >
-                  <card.Icon size={28} />
-                </div>
-                <h3 className="text-2xl font-bold tracking-tighter mb-3">{card.title}</h3>
-                <p className="text-white/90 leading-relaxed">{card.body}</p>
-              </motion.div>
+                icon={card.Icon}
+                tint={card.tint}
+                title={card.title}
+                body={card.body}
+                delay={index * 0.1}
+              />
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Hardware */}
-      <section className="py-20 md:py-28 border-t border-white/5">
-        <div className="site-container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {hardware.specs.map((spec, index) => (
-              <motion.div
-                key={spec.title}
-                {...rise}
-                transition={{ delay: index * 0.08 }}
-                className="rounded-[2rem] border border-white/10 bg-white/5 p-8"
-              >
-                {(() => {
-                  const { Icon, tint } = hardwareIcons[index % hardwareIcons.length];
-                  return (
-                    <div
-                      className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-5 ${tint}`}
-                    >
-                      <Icon size={24} />
-                    </div>
-                  );
-                })()}
-                <h3 className="text-xl font-bold tracking-tighter">{spec.title}</h3>
-                <p className="mt-3 text-white/90 leading-relaxed">{spec.body}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+            {hardware.specs.map((spec, index) => {
+              const { Icon, tint } = hardwareIcons[index % hardwareIcons.length];
+              return (
+                <WhyFeatureCard
+                  key={spec.title}
+                  icon={Icon}
+                  tint={tint}
+                  title={spec.title}
+                  body={spec.body}
+                  delay={index * 0.08}
+                />
+              );
+            })}
+      </WhyFeatureSection>
 
       {/* Related */}
       <section className="py-20 md:py-28 border-t border-white/5">

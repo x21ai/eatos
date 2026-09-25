@@ -15,6 +15,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { motion } from 'motion/react';
+import { CenteredLead } from '@/components/marketing/CenteredLead';
 import { Placeholder } from '@/components/marketing/Placeholder';
 import { hero, marquee, pillars } from './content';
 
@@ -223,9 +224,9 @@ export default function GhostKitchenClient() {
             <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-4">
               Why eatOS for ghost kitchens?
             </h2>
-            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto whitespace-pre-line">
-              Built for delivery-first kitchens, from the{"\n"}first online order to the last handoff.
-            </p>
+            <CenteredLead>
+              Built for delivery-first kitchens, from the first online order to the last handoff.
+            </CenteredLead>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
@@ -327,9 +328,9 @@ export default function GhostKitchenClient() {
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
                 Scale your ghost kitchen
               </h2>
-              <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-10 whitespace-pre-line">
-                See the ghost kitchen setup in action. Book a demo{"\n"}and we will show you how it fits your brands.
-              </p>
+              <CenteredLead className="mb-10">
+                See the ghost kitchen setup in action. Book a demo and we will show you how it fits your brands.
+              </CenteredLead>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="/bookademo"
