@@ -7,13 +7,13 @@
 
 ## Current focus
 
-Split public chat by deployed hostname and remove the retired Spring, Texas office address.
+Split public chat by deployed hostname and remove the retired Texas office address.
 
 ## Recent changes
 
 - 2026-09-25 — Added exact-host routing: Maya on `s.eatos.dev`, Crisp on `eatos.com` and `www.eatos.com`, and neither widget elsewhere.
 - 2026-09-25 — Configured the confirmed Crisp website ID and added report-only CSP allowances for the Crisp script and frame.
-- 2026-09-25 — Removed the Spring, Texas office from the footer and scrubbed matching repository plan notes.
+- 2026-09-25 — Removed the retired Texas office from the footer and scrubbed matching repository plan notes.
 - 2026-09-24 — Preserved same-origin video autoplay, exempted only the explicit development builder from XFO, made the social shim fail closed on production builds, and wired the security test script.
 - 2026-09-24 — Pinned OpenNext's top-level Worker build command to the repository's declared Yarn 4 package manager instead of ambiguous `bun.lock` auto-detection.
 - 2026-09-24 — Added one-year HSTS plus report-only CSP, anti-framing, referrer, permissions, and MIME-sniffing headers; disabled `X-Powered-By`.

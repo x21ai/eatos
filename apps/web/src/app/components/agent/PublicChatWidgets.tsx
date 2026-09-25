@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import AgentAssistant from './AgentAssistant';
+import { lazy, Suspense, useEffect, useState } from 'react';
 
 const MAYA_HOSTNAME = 's.eatos.dev';
 const LIVE_HOSTNAMES = new Set(['eatos.com', 'www.eatos.com']);
 const CRISP_SCRIPT_SRC = 'https://client.crisp.chat/l.js';
+const AgentAssistant = lazy(() => import('./AgentAssistant'));
 
 type PublicChatWidget = 'maya' | 'crisp' | null;
 
@@ -45,7 +45,6 @@ function CrispChat({ websiteId }: { websiteId: string }) {
     const script = document.createElement('script');
     script.src = CRISP_SCRIPT_SRC;
     script.async = true;
-    script.dataset.eatosCrisp = 'true';
     document.head.appendChild(script);
   }, [websiteId]);
 
@@ -64,7 +63,11 @@ export default function PublicChatWidgets({
   }, [crispWebsiteId]);
 
   if (widget === 'maya') {
-    return <AgentAssistant />;
+    return (
+      <Suspense fallback={null}>
+        <AgentAssistant />
+      </Suspense>
+    );
   }
 
   if (widget === 'crisp' && crispWebsiteId) {

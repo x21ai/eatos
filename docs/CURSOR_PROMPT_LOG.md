@@ -20,8 +20,8 @@ Append-only. Newest entries first. Never paste secrets, tokens, keys, or PII.
 - **Phase:** Public chat split / go-live hold
 - **Outcome:** Worker config, documentation, and a hostname-constrained fallback use the confirmed public website ID in `2a2116fd`.
 
-### 2026-09-25 — Remove the Spring, Texas office address
-- **Summary:** Remove the retired Spring, Texas office from the footer and scrub repository references to its street, suite, and postal code without inventing a replacement address. Rebase the work after merged security PR #20.
+### 2026-09-25 — Remove the retired Texas office address
+- **Summary:** Remove the retired Texas office from the footer and scrub repository references to its street, suite, and postal code without inventing a replacement address. Rebase the work after merged security PR #20.
 - **Ticket:** none
 - **Phase:** Public chat split / go-live hold
 - **Outcome:** Removed the footer office record and all matching repository plan-note references in `2a2116fd`; branch rebased onto merged security hardening.
