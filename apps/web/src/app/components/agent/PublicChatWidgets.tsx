@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import { subscribeCookieBannerVisible } from '@/lib/cookieBannerVisibility';
+import { AGENT_OPEN_EVENT } from './agentBus';
 import AgentAssistant from './AgentAssistant';
+import { openCrispConversation, type CrispChatSeed } from './crispChat';
 import { setCrispLauncherHidden } from './crispLauncherVisibility';
+import { publicChatHost } from './publicChatHost';
 
-const MAYA_HOSTNAME = 's.eatos.dev';
-const LIVE_HOSTNAMES = new Set(['eatos.com', 'www.eatos.com']);
 const CRISP_SCRIPT_SRC = 'https://client.crisp.chat/l.js';
 
 type PublicChatWidget = 'maya' | 'crisp' | null;
@@ -22,16 +23,9 @@ export function selectPublicChatWidget(
   hostname: string,
   crispWebsiteId?: string | null,
 ): PublicChatWidget {
-  const normalizedHostname = hostname.trim().toLowerCase();
-
-  if (normalizedHostname === MAYA_HOSTNAME) {
-    return 'maya';
-  }
-
-  if (LIVE_HOSTNAMES.has(normalizedHostname) && crispWebsiteId?.trim()) {
-    return 'crisp';
-  }
-
+  const host = publicChatHost(hostname);
+  if (host === 'maya') return 'maya';
+  if (host === 'crisp' && crispWebsiteId?.trim()) return 'crisp';
   return null;
 }
 
@@ -60,6 +54,18 @@ function CrispChat({ websiteId }: { websiteId: string }) {
       unsubscribe();
       setCrispLauncherHidden(false);
     };
+  }, []);
+
+  // Help-center CTAs call openAgent(). On live hosts that event should open
+  // Crisp, because Maya is not mounted here.
+  useEffect(() => {
+    function onOpen(event: Event) {
+      const detail = event instanceof CustomEvent ? (event.detail as CrispChatSeed) : undefined;
+      openCrispConversation(detail && typeof detail === 'object' ? detail : {});
+    }
+
+    window.addEventListener(AGENT_OPEN_EVENT, onOpen);
+    return () => window.removeEventListener(AGENT_OPEN_EVENT, onOpen);
   }, []);
 
   return null;

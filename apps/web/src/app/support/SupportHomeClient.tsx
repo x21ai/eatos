@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import {
   ArrowRight,
@@ -10,6 +10,7 @@ import {
   BookOpen,
   Clock,
   LifeBuoy,
+  Loader2,
   Mail,
   MessageCircle,
   MessageSquare,
@@ -24,7 +25,15 @@ import supportTeam from '@/assets/support/support-team.jpg.asset.json';
 import supportExperts from '@/assets/support/support-experts.jpg.asset.json';
 import { openAgent } from '../components/agent/agentBus';
 import { agentCapabilities } from '../components/agent/knowledge';
+import { publicChatHost } from '../components/agent/publicChatHost';
 import { starterQuestions } from '../components/agent/retrieval';
+import {
+  SUPPORT_ASK_INPUT_ID,
+  answerSupportQuestion,
+  focusSupportAsk,
+  resolveStartAgent,
+  resolveSupportAsk,
+} from './supportAgent';
 import {
   articleHref,
   articles,
@@ -98,55 +107,283 @@ function CategoryCard({ category, index }) {
   );
 }
 
-function AgentComposer() {
-  const [question, setQuestion] = useState('');
+function ArticleLink({ entry }) {
+  if (!entry?.slug) return null;
+  return (
+    <a
+      href={articleHref(entry.slug)}
+      className="group mt-2 flex min-w-0 items-start gap-3 rounded-2xl border border-white/10 bg-black/40 px-3.5 py-3 transition-colors hover:border-white/30"
+    >
+      <BookOpen size={15} className="mt-0.5 shrink-0 text-brand-on-dark" aria-hidden />
+      <span className="min-w-0">
+        {entry.categoryTitle ? (
+          <span className="block text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-500">
+            {entry.categoryTitle}
+          </span>
+        ) : null}
+        <span className="mt-1 block text-[13px] font-semibold leading-5 text-white transition-colors group-hover:text-brand-on-dark">
+          {entry.title}
+        </span>
+      </span>
+      <ArrowUpRight size={14} className="mt-0.5 shrink-0 text-zinc-500" aria-hidden />
+    </a>
+  );
+}
+
+function InlineReply({ reply, onContinue, showChat }) {
+  if (reply?.kind === 'answer') {
+    return (
+      <div>
+        <p className="whitespace-pre-line text-sm leading-6 text-zinc-200">{reply.answer}</p>
+        {reply.outline?.length ? (
+          <ul className="mt-3 space-y-1.5 border-l border-white/12 pl-3.5">
+            {reply.outline.map((step) => (
+              <li key={step} className="text-[13px] leading-5 text-zinc-400">
+                {step}
+              </li>
+            ))}
+          </ul>
+        ) : null}
+        <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-500">Source</p>
+        <ArticleLink entry={reply.source} />
+        {reply.related?.length ? (
+          <>
+            <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-500">
+              Related guides
+            </p>
+            {reply.related.map((entry) => (
+              <ArticleLink key={entry.slug} entry={entry} />
+            ))}
+          </>
+        ) : null}
+        {showChat ? <ContinueInChat onClick={onContinue} /> : null}
+      </div>
+    );
+  }
+
+  if (reply?.kind === 'facts') {
+    return (
+      <div>
+        <p className="text-sm leading-6 text-zinc-200">Here is what applies to that:</p>
+        {reply.facts?.map((fact) => (
+          <div key={fact.id ?? fact.title} className="mt-3 rounded-2xl border border-white/10 bg-black/40 px-3.5 py-3">
+            <p className="text-[13px] font-semibold text-white">{fact.title}</p>
+            <p className="mt-1.5 text-[13px] leading-5 text-zinc-400">{fact.body}</p>
+            {fact.href ? (
+              <a
+                href={fact.href}
+                className="mt-2.5 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-on-dark"
+              >
+                {fact.linkLabel || 'Learn more'}
+                <ArrowRight size={12} aria-hidden />
+              </a>
+            ) : null}
+          </div>
+        ))}
+        {showChat ? <ContinueInChat onClick={onContinue} /> : null}
+      </div>
+    );
+  }
 
   return (
-    <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        openAgent({ question, context: 'Help center' });
-        setQuestion('');
-      }}
-      className="w-full max-w-2xl"
-    >
-      <div className="flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.04] px-5 py-3.5 focus-within:border-white/40">
-        <Sparkles size={18} className="shrink-0 text-brand-on-dark" aria-hidden />
-        <input
-          value={question}
-          onChange={(event) => setQuestion(event.target.value)}
-          placeholder="Ask anything: reset a PIN, printer offline, add a menu item"
-          aria-label="Ask the eatOS support agent"
-          className="min-w-0 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-zinc-500 sm:text-base"
-        />
-        <button
-          type="submit"
-          className="hidden shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-black transition-colors hover:bg-zinc-200 sm:inline-flex"
+    <div>
+      <p className="text-sm leading-6 text-zinc-200">
+        No help article matched that confidently, so this will not guess.
+        {showChat ? ' You can continue in live chat, or contact support.' : ' Contact support and a specialist will take it from here.'}
+      </p>
+      {reply?.related?.length ? (
+        <>
+          <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-500">
+            Guides that may help
+          </p>
+          {reply.related.map((entry) => (
+            <ArticleLink key={entry.slug} entry={entry} />
+          ))}
+        </>
+      ) : null}
+      <div className="mt-4 flex flex-wrap items-center gap-2">
+        {showChat ? <ContinueInChat onClick={onContinue} className="" /> : null}
+        <a
+          href="/contact"
+          className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:border-white"
         >
-          Ask
+          Contact support
           <ArrowRight size={13} aria-hidden />
-        </button>
-        <button
-          type="submit"
-          aria-label="Ask the support agent"
-          className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white text-black sm:hidden"
-        >
-          <ArrowRight size={15} />
-        </button>
+        </a>
       </div>
-      <div className="mt-3 flex flex-wrap gap-2">
-        {starterQuestions.slice(0, 3).map((preset) => (
+    </div>
+  );
+}
+
+function ContinueInChat({ onClick, className = 'mt-4' }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`${className} inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:border-white`}
+    >
+      Continue in live chat
+      <ArrowRight size={13} aria-hidden />
+    </button>
+  );
+}
+
+function AgentComposer() {
+  const [question, setQuestion] = useState('');
+  const [asked, setAsked] = useState('');
+  const [reply, setReply] = useState(null);
+  const [status, setStatus] = useState('idle');
+  const [chatHost, setChatHost] = useState(null);
+  const requestRef = useRef(0);
+
+  useEffect(() => {
+    setChatHost(publicChatHost(window.location.hostname));
+  }, []);
+
+  const runInline = (text) => {
+    const id = requestRef.current + 1;
+    requestRef.current = id;
+    setAsked(text);
+    setReply(null);
+    setStatus('loading');
+    answerSupportQuestion(text).then(
+      (next) => {
+        if (requestRef.current !== id) return;
+        setReply(next);
+        setStatus('ready');
+      },
+      () => {
+        if (requestRef.current !== id) return;
+        setStatus('error');
+      },
+    );
+  };
+
+  const submit = (text) => {
+    const hostname = typeof window === 'undefined' ? '' : window.location.hostname;
+    const action = resolveSupportAsk(hostname, text);
+    const trimmed = text.trim();
+    if (action === 'maya') {
+      openAgent({ question: trimmed, context: 'Help center' });
+      setQuestion('');
+      return;
+    }
+    if (action === 'open-widget') {
+      openAgent({ context: 'Help center' });
+      return;
+    }
+    if (action === 'inline') runInline(trimmed);
+    setQuestion('');
+  };
+
+  return (
+    <div className="w-full max-w-2xl">
+      <form
+        id="support-agent"
+        onSubmit={(event) => {
+          event.preventDefault();
+          submit(question);
+        }}
+        className="scroll-mt-36"
+      >
+        <div className="flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.04] px-5 py-3.5 focus-within:border-white/40">
+          <Sparkles size={18} className="shrink-0 text-brand-on-dark" aria-hidden />
+          <input
+            id={SUPPORT_ASK_INPUT_ID}
+            value={question}
+            onChange={(event) => setQuestion(event.target.value)}
+            placeholder="Ask anything: reset a PIN, printer offline, add a menu item"
+            aria-label="Ask the eatOS support agent"
+            className="min-w-0 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-zinc-500 sm:text-base"
+          />
           <button
-            key={preset}
-            type="button"
-            onClick={() => openAgent({ question: preset, context: 'Help center' })}
-            className="rounded-full border border-white/12 bg-white/[0.02] px-3.5 py-1.5 text-left text-[11px] font-semibold text-zinc-300 transition-colors hover:border-white/35 hover:text-white"
+            type="submit"
+            className="hidden shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-black transition-colors hover:bg-zinc-200 sm:inline-flex"
           >
-            {preset}
+            Ask
+            <ArrowRight size={13} aria-hidden />
           </button>
-        ))}
+          <button
+            type="submit"
+            aria-label="Ask the support agent"
+            className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white text-black sm:hidden"
+          >
+            <ArrowRight size={15} />
+          </button>
+        </div>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {starterQuestions.slice(0, 3).map((preset) => (
+            <button
+              key={preset}
+              type="button"
+              onClick={() => submit(preset)}
+              className="rounded-full border border-white/12 bg-white/[0.02] px-3.5 py-1.5 text-left text-[11px] font-semibold text-zinc-300 transition-colors hover:border-white/35 hover:text-white"
+            >
+              {preset}
+            </button>
+          ))}
+        </div>
+      </form>
+      <div aria-live="polite" className={status === 'idle' ? '' : 'mt-4'}>
+        {status === 'loading' ? (
+          <p role="status" className="flex items-center gap-2 text-sm text-zinc-400">
+            <Loader2 size={16} className="animate-spin" aria-hidden />
+            Looking through the help center…
+          </p>
+        ) : null}
+        {status === 'error' ? (
+          <p role="status" className="text-sm leading-6 text-zinc-300">
+            We could not look that up just now. Please try again, or{' '}
+            <a href="/contact" className="font-semibold text-white underline">
+              contact support
+            </a>
+            .
+          </p>
+        ) : null}
+        {status === 'ready' && reply ? (
+          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-5">
+            {asked ? <p className="text-sm font-semibold text-white">{asked}</p> : null}
+            <div className={asked ? 'mt-3' : ''}>
+              <InlineReply
+                reply={reply}
+                showChat={chatHost === 'crisp'}
+                onContinue={() => openAgent({ question: asked, context: 'Help center' })}
+              />
+            </div>
+          </div>
+        ) : null}
       </div>
-    </form>
+    </div>
+  );
+}
+
+function StartAgentButton() {
+  const [notice, setNotice] = useState('');
+
+  return (
+    <div className="mt-8">
+      <button
+        type="button"
+        onClick={() => {
+          const hostname = window.location.hostname;
+          if (resolveStartAgent(hostname) === 'focus-ask') {
+            focusSupportAsk();
+            return;
+          }
+          openAgent({ context: 'Help center' });
+          if (publicChatHost(hostname) === 'crisp') setNotice('Opening live chat…');
+        }}
+        className="inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-zinc-200"
+      >
+        Start with the agent
+        <ArrowRight size={16} />
+      </button>
+      {notice ? (
+        <p role="status" className="mt-3 text-sm text-zinc-400">
+          {notice}
+        </p>
+      ) : null}
+    </div>
   );
 }
 
@@ -250,14 +487,7 @@ export default function SupportHomeClient() {
               );
             })}
           </div>
-          <button
-            type="button"
-            onClick={() => openAgent({ context: 'Help center' })}
-            className="mt-8 inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-zinc-200"
-          >
-            Start with the agent
-            <ArrowRight size={16} />
-          </button>
+          <StartAgentButton />
         </div>
       </section>
 
