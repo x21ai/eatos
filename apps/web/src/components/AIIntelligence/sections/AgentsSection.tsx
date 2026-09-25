@@ -28,7 +28,7 @@ import { useEffect, useMemo, useState } from "react";
 import { SectionLabel } from "../SectionLabel";
 import { Card } from "../Card";
 import { Reveal } from "../Reveal";
-import placeholderVideo from "../../../app/tap-to-pay/assets/hero-video.mp4.asset.json";
+import placeholderVideo from "../../../app/components/assets/ai-intelligence-demo.mp4.asset.json";
 
 const PLACEHOLDER_VIDEO = placeholderVideo.url;
 
