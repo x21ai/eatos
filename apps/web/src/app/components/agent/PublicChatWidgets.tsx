@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { subscribeCookieBannerVisible } from '@/lib/cookieBannerVisibility';
 import AgentAssistant from './AgentAssistant';
+import { setCrispLauncherHidden } from './crispLauncherVisibility';
 
 const MAYA_HOSTNAME = 's.eatos.dev';
 const LIVE_HOSTNAMES = new Set(['eatos.com', 'www.eatos.com']);
@@ -48,6 +50,17 @@ function CrispChat({ websiteId }: { websiteId: string }) {
     script.dataset.eatosCrisp = 'true';
     document.head.appendChild(script);
   }, [websiteId]);
+
+  // The consent UI owns the bottom of the page while it is up, so the launcher
+  // stays out of sight until the visitor has answered it.
+  useEffect(() => {
+    const unsubscribe = subscribeCookieBannerVisible(setCrispLauncherHidden);
+
+    return () => {
+      unsubscribe();
+      setCrispLauncherHidden(false);
+    };
+  }, []);
 
   return null;
 }

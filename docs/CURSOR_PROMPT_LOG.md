@@ -14,6 +14,18 @@ Append-only. Newest entries first. Never paste secrets, tokens, keys, or PII.
 
 ---
 
+### 2026-09-25 — Hide the Crisp chat button while the cookie bar is visible
+- **Summary:** Direction change on the same PR: instead of lifting the Crisp launcher above the cookie consent bar, hide the launcher entirely while any consent UI is on screen and show it again once the visitor accepts, rejects, or dismisses it, including when Cookie Settings re-opens the consent UI later. Hostname gate and staging Maya behavior unchanged.
+- **Ticket:** none
+- **Phase:** Public chat split / go-live hold
+- **Outcome:** `CookieBanner` publishes consent-UI visibility and the Crisp widget toggles `chat:hide` / `chat:show`; the earlier launcher-offset modules were removed. Verified in Chrome against the live hostname on desktop and mobile: zero frames with the launcher painted while the consent UI is up.
+
+### 2026-09-25 — Float the Crisp chat button above the cookie bar (superseded)
+- **Summary:** On live, push the Crisp launcher clear of the cookie consent bar while the bar is on screen and restore the default margin once the visitor accepts or dismisses it. Measure the real bar height instead of hardcoding one size, leave the hostname gate and staging Maya behavior alone, and open a PR against `lovable`.
+- **Ticket:** none
+- **Phase:** Public chat split / go-live hold
+- **Outcome:** Implemented with a bottom-inset store and Crisp launcher offset custom properties, then superseded the same day by the hide-while-visible behavior above.
+
 ### 2026-09-25 — Use confirmed Crisp website ID
 - **Summary:** Configure Crisp website ID `cf9ee4db-97df-4864-8fa6-194ad4762b95` for the two live domains, preferably through `NEXT_PUBLIC_CRISP_WEBSITE_ID`, with a production-host-only fallback where needed for Worker builds.
 - **Ticket:** none

@@ -2,6 +2,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { setCookieBannerVisible } from "@/lib/cookieBannerVisibility";
 
 const CONSENT_KEY = "eatos_cookie_consent";
 const PREFS_KEY = "eatos_cookie_prefs";
@@ -126,6 +127,14 @@ export default function CookieBanner() {
       document.body.style.paddingBottom = "";
     };
   }, [showBar]);
+
+  // Announce the consent UI, bar or preferences dialog, so the floating chat
+  // launcher can step aside until the visitor has answered it.
+  useEffect(() => {
+    setCookieBannerVisible(isVisible);
+
+    return () => setCookieBannerVisible(false);
+  }, [isVisible]);
 
   const handleAcceptAll = () => persist("accepted", ALL_ON);
   const handleRejectAll = () => persist("rejected", DEFAULT_PREFS);
