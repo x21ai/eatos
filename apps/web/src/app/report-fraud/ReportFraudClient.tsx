@@ -36,6 +36,18 @@ function Eyebrow({ children, className = '' }) {
 
 /* -------------------------------- Hero -------------------------------- */
 
+function openReportForm(event) {
+  const target = document.getElementById('report');
+  if (!target) return;
+  event.preventDefault();
+  const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  if (window.location.hash !== '#report') {
+    history.pushState(null, '', '#report');
+  }
+  if (typeof target.focus === 'function') target.focus({ preventScroll: true });
+}
+
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-black text-white">
@@ -59,6 +71,7 @@ function Hero() {
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
                 href={hero.primaryCta.href}
+                onClick={openReportForm}
                 className="inline-flex w-full items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-black transition-opacity hover:opacity-85 sm:w-auto"
               >
                 {hero.primaryCta.label}
@@ -350,7 +363,7 @@ function ReportForm() {
 
 function ReportSection() {
   return (
-    <section id="report" className="scroll-mt-24 bg-zinc-950">
+    <section id="report" tabIndex={-1} className="scroll-mt-36 bg-zinc-950 outline-none">
       <div className="site-container py-20 md:py-28">
         <div className="grid gap-12 md:grid-cols-2 md:gap-16">
           <Reveal>
@@ -422,7 +435,7 @@ export default function ReportFraudClient() {
     <main className="bg-black">
       <Hero />
       <Guidance />
-      
+      <ReportSection />
       <Help />
       
     </main>
