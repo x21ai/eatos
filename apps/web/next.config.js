@@ -1,8 +1,10 @@
 const path = require('node:path');
+const { securityHeaders } = require('./security-headers');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   devIndicators: false,
+  poweredByHeader: false,
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -48,6 +50,14 @@ const nextConfig = {
       '@auth/create': path.join(__dirname, 'src/__create/@auth/create/index.ts'),
     };
     return config;
+  },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: securityHeaders,
+      },
+    ];
   },
   rewrites() {
     return [

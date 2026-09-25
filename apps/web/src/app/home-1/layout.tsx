@@ -1,4 +1,6 @@
 // @ts-nocheck
+import { notFound } from 'next/navigation';
+
 export const metadata = {
   title: "Homepage Variant A",
   description: "Internal homepage layout variant used by the eatOS team.",
@@ -14,5 +16,9 @@ export const metadata = {
 };
 
 export default function Layout({ children }) {
+  if (process.env.NODE_ENV === 'production') {
+    notFound();
+  }
+
   return children;
 }
