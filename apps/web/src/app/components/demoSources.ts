@@ -44,7 +44,7 @@ export type DemoSource = {
 export const demoSources: DemoSource[] = [
   {
     id: 'ai',
-    label: 'Ai Intelligence',
+    label: 'Guest Intelligence',
     url: 'https://eatos.lovable.app/ai/intelligence',
     blurb: 'Maya automates the busy work across front of house, kitchen and back office.',
     device: 'laptop',
