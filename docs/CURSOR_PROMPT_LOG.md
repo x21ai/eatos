@@ -14,6 +14,12 @@ Append-only. Newest entries first. Never paste secrets, tokens, keys, or PII.
 
 ---
 
+### 2026-09-25 — Float the Crisp chat button above the cookie bar
+- **Summary:** On live, push the Crisp launcher clear of the cookie consent bar while the bar is on screen and restore the default margin once the visitor accepts or dismisses it. Measure the real bar height instead of hardcoding one size, leave the hostname gate and staging Maya behavior alone, and open a PR against `lovable`.
+- **Ticket:** none
+- **Phase:** Public chat split / go-live hold
+- **Outcome:** `CookieBanner` publishes its measured height through a shared bottom-inset store and the Crisp widget overrides Crisp's launcher offset custom properties while the bar is visible; verified in Chrome against the live hostname on desktop and mobile viewports.
+
 ### 2026-09-25 — Use confirmed Crisp website ID
 - **Summary:** Configure Crisp website ID `cf9ee4db-97df-4864-8fa6-194ad4762b95` for the two live domains, preferably through `NEXT_PUBLIC_CRISP_WEBSITE_ID`, with a production-host-only fallback where needed for Worker builds.
 - **Ticket:** none

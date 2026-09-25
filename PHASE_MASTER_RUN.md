@@ -8,6 +8,7 @@ Public chat split / go-live hold
 
 | Date | SHA | Phase | Summary |
 |------|-----|-------|---------|
+| 2026-09-25 | 3e06a1c7 | Public chat split / go-live hold | Lift the Crisp launcher above the cookie consent bar while it is visible |
 | 2026-09-25 | 2a2116fd | Public chat split / go-live hold | Gate Maya to staging, restore Crisp on live, and remove the Spring office |
 | 2026-09-24 | f2b65278 | Security hardening / go-live hold | Preserve development framing and first-party video autoplay |
 | 2026-09-24 | 32fb1b93 | Security hardening / go-live hold | Apply Yarn build override at the OpenNext config root |

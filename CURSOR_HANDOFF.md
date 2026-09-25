@@ -1,16 +1,17 @@
 # Cursor handoff
 
 - **Last update:** 2026-09-25
-- **Commit:** `2a2116fd`
-- **Branch:** `cursor/gate-public-chat-widgets-658e`
+- **Commit:** `3e06a1c7`
+- **Branch:** `cursor/crisp-above-cookie-bar-ac11`
 - **Base:** `lovable`
 
 ## Current focus
 
-Split public chat by deployed hostname and remove the retired Spring, Texas office address.
+Keep the live Crisp chat launcher usable while the cookie consent bar is on screen.
 
 ## Recent changes
 
+- 2026-09-25 — Lifted the Crisp launcher above the cookie consent bar: `CookieBanner` publishes its measured height (now re-measured with a `ResizeObserver`) and the Crisp widget overrides Crisp's launcher offset custom properties, clearing the override on consent.
 - 2026-09-25 — Added exact-host routing: Maya on `s.eatos.dev`, Crisp on `eatos.com` and `www.eatos.com`, and neither widget elsewhere.
 - 2026-09-25 — Configured the confirmed Crisp website ID and added report-only CSP allowances for the Crisp script and frame.
 - 2026-09-25 — Removed the Spring, Texas office from the footer and scrubbed matching repository plan notes.
@@ -26,6 +27,7 @@ Split public chat by deployed hostname and remove the retired Spring, Texas offi
 - Deploy through the normal Worker pipeline with `NEXT_PUBLIC_CRISP_WEBSITE_ID` set to the confirmed website ID.
 - Smoke test live (`eatos.com` and `www.eatos.com`) for Crisp without Maya, and staging (`s.eatos.dev`) for Maya without Crisp.
 - Before enforcing CSP, confirm all Crisp resources observed in reports are covered by the narrowed allowlists.
+- After deploy, confirm on live that the Crisp bubble clears the consent bar on desktop and mobile and drops back to its default position once consent is given.
 
 ## Blockers
 
