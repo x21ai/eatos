@@ -221,7 +221,7 @@ export default function HomePage() {
             <p className="text-xs md:text-sm uppercase tracking-widest text-gray-500 font-semibold mb-8 md:mb-12">
               Built for restaurants of every size
             </p>
-            <div className="flex flex-col sm:flex-row items-stretch justify-center divide-y sm:divide-y-0 sm:divide-x divide-white/10 max-w-3xl mx-auto">
+            <div className="flex flex-row items-stretch justify-center divide-x divide-white/10 max-w-3xl mx-auto">
               {[
                 { value: '99.9%', label: 'Uptime' },
                 { prefix: 'Over', value: '$2 Billion+', label: 'Processed' },
@@ -229,17 +229,17 @@ export default function HomePage() {
               ].map((stat) => (
                 <div
                   key={stat.value}
-                  className="flex-1 flex flex-col items-center py-3.5 sm:py-0 px-4 sm:px-6"
+                  className="flex-1 flex flex-col items-center min-w-0 py-0 px-1.5 sm:px-6"
                 >
-                  <div className={`${stat.prefix ? 'text-xl sm:text-3xl md:text-4xl whitespace-nowrap' : 'text-2xl sm:text-4xl md:text-5xl'} font-bold tracking-tighter text-white mb-1 sm:mb-2`}>
+                  <div className={`${stat.prefix ? 'text-base sm:text-3xl md:text-4xl' : 'text-xl sm:text-4xl md:text-5xl'} font-bold tracking-tighter text-white mb-1 sm:mb-2 leading-tight`}>
                     {stat.prefix && (
-                      <span className="text-xs sm:text-sm font-normal tracking-normal text-gray-500 align-middle mr-2">
+                      <span className="block sm:inline text-[10px] sm:text-sm font-normal tracking-normal text-gray-500 sm:align-middle sm:mr-2">
                         {stat.prefix}
                       </span>
                     )}
-                    {stat.value}
+                    <span className="whitespace-nowrap">{stat.value}</span>
                   </div>
-                  <div className="text-xs sm:text-sm text-gray-500">{stat.label}</div>
+                  <div className="text-[11px] sm:text-sm text-gray-500 leading-snug">{stat.label}</div>
                 </div>
               ))}
             </div>
