@@ -4,8 +4,8 @@ import {
   systemGroups,
   statusMeta,
   overallStatus,
-  LAST_UPDATED,
 } from './systems';
+import StatusTimestamp from './StatusTimestamp';
 
 
 export const metadata = {
@@ -31,15 +31,6 @@ const bannerCopy = {
 export default function SystemStatusPage() {
   const overall = overallStatus(systems);
   const meta = statusMeta[overall];
-  const updated = new Date(LAST_UPDATED).toLocaleString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-    hour: 'numeric',
-    minute: '2-digit',
-    timeZoneName: 'short',
-    timeZone: 'UTC',
-  });
 
   return (
     <main className="min-h-screen bg-black text-white">
@@ -61,7 +52,7 @@ export default function SystemStatusPage() {
             {bannerCopy[overall]}
           </h1>
         </div>
-        <p className="mt-4 text-sm text-gray-400">Last updated: {updated}</p>
+        <StatusTimestamp />
       </section>
 
       {/* Systems list */}

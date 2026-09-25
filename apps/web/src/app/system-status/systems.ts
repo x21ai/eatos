@@ -16,8 +16,6 @@ export interface SystemGroup {
   systems: SystemEntry[];
 }
 
-export const LAST_UPDATED = '2026-08-26T00:00:00Z';
-
 export const systemGroups: SystemGroup[] = [
   {
     name: 'Web Services',
