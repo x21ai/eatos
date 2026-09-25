@@ -36,6 +36,7 @@
   "vars": {
     "BETTER_AUTH_URL": "https://s.eatos.dev",
     "BETTER_AUTH_TRUSTED_ORIGINS": "https://s.eatos.dev",
-    "NEXT_PUBLIC_CREATE_HOST": "s.eatos.dev"
+    "NEXT_PUBLIC_CREATE_HOST": "s.eatos.dev",
+    "NEXT_PUBLIC_CRISP_WEBSITE_ID": "cf9ee4db-97df-4864-8fa6-194ad4762b95"
   }
 }

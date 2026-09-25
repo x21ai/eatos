@@ -21,9 +21,6 @@ The `OFFICES` array lost its second address line and the city labels lost their 
 - Los Angeles, CA
   - 750 N. San Vicente Blvd Ste 800
   - Los Angeles, California - 90048.
-- Houston, TX
-  - 21755 Interstate 45, Bldg 1 Ste 107
-  - Spring, Texas - 77388.
 
 City labels render semibold in white; both address lines render on their own lines in the lighter gray.
 

@@ -1,12 +1,12 @@
 # Footer Office Addresses Update
 
 ## Goal
-Update the four office address blocks in the footer to the new wording and format the user provided.
+Update the office address blocks in the footer to the new wording and format the user provided.
 
 ## Change
 Edit the `OFFICES` array in `apps/web/src/components/Footer.tsx` only.
 
-Current entries: Cupertino, Miami, Los Angeles, Houston with their existing `city` / `address` / `state` fields.
+Current entries use their existing `city` / `address` / `state` fields.
 
 New content (verbatim from the request):
 
@@ -19,9 +19,6 @@ New content (verbatim from the request):
 - Los Angeles, CA
   - 750 N. San Vicente Blvd Ste 800
   - Los Angeles, California - 90048.
-- Houston, TX
-  - 21755 Interstate 45, Bldg 1 Ste 107
-  - Spring, Texas - 77388.
 
 Mapping into the existing structure:
 - `city` gets the combined label (e.g. "Cupertino, CA")
