@@ -119,14 +119,6 @@ const OFFICES = [
     state: 'California',
     zip: '90048',
   },
-  {
-    stateCode: 'TX',
-    street: '21755 Interstate 45, Bldg 1',
-    suite: 'Ste 107',
-    city: 'Spring',
-    state: 'Texas',
-    zip: '77388',
-  },
 ];
 
 // Single source of truth for address rendering across the site.

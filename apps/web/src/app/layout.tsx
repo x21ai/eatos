@@ -6,7 +6,9 @@ import Providers from '@/components/Providers';
 import CookieBanner from '@/components/CookieBanner';
 import BookDemoTracker from '@/components/BookDemoTracker';
 import StaticLinkFix from '@/components/StaticLinkFix';
-import AgentAssistant from './components/agent/AgentAssistant';
+import PublicChatWidgets from './components/agent/PublicChatWidgets';
+
+const CRISP_WEBSITE_ID = 'cf9ee4db-97df-4864-8fa6-194ad4762b95';
 
 export const metadata = {
   metadataBase: new URL('https://eatos.com'),
@@ -62,6 +64,11 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const crispWebsiteId =
+    process.env.NEXT_PUBLIC_CRISP_WEBSITE_ID ??
+    process.env.CRISP_WEBSITE_ID ??
+    CRISP_WEBSITE_ID;
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -75,7 +82,7 @@ export default function RootLayout({ children }) {
           <CookieBanner />
           <BookDemoTracker />
           <StaticLinkFix />
-          <AgentAssistant />
+          <PublicChatWidgets crispWebsiteId={crispWebsiteId} />
         </Providers>
       </body>
     </html>

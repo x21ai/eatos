@@ -10,7 +10,6 @@ Change the shared address formatter so the locality line reads:
 Cupertino, California - 95014.
 Miami, Florida - 33131.
 Los Angeles, California - 90048.
-Spring, Texas - 77388.
 ```
 
 One formatter change covers footer and any other surface using it. The contact page has one hardcoded Cupertino address that gets the same treatment.

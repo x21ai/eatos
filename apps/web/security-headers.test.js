@@ -34,6 +34,8 @@ test('keeps CSP report-only while protecting framing separately', () => {
   assert.match(contentSecurityPolicy, /frame-ancestors 'none'/);
   assert.match(contentSecurityPolicy, /https:\/\/\*\.hubspot\.com/);
   assert.match(contentSecurityPolicy, /https:\/\/\*\.lovable\.app/);
+  assert.match(contentSecurityPolicy, /script-src[^;]+https:\/\/client\.crisp\.chat/);
+  assert.match(contentSecurityPolicy, /frame-src[^;]+https:\/\/client\.crisp\.chat/);
   assert.equal(
     headerValue('Content-Security-Policy-Report-Only'),
     contentSecurityPolicy
