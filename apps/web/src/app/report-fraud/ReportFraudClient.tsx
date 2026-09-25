@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client';
 
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import { Placeholder } from '@/components/marketing/Placeholder';
@@ -22,6 +22,26 @@ function Reveal({ children, delay = 0, className = '' }) {
       {children}
     </motion.div>
   );
+}
+
+const FRAUD_EMAIL = 'fraud@eatos.com';
+
+function FraudText({ text }) {
+  const parts = String(text ?? '').split(FRAUD_EMAIL);
+  if (parts.length === 1) return text;
+  return parts.map((part, index) => (
+    <Fragment key={index}>
+      {part}
+      {index < parts.length - 1 ? (
+        <a
+          href={`mailto:${FRAUD_EMAIL}`}
+          className="underline decoration-white/30 underline-offset-2 hover:text-white"
+        >
+          {FRAUD_EMAIL}
+        </a>
+      ) : null}
+    </Fragment>
+  ));
 }
 
 function Eyebrow({ children, className = '' }) {
@@ -128,10 +148,12 @@ function Spotlight({ item, index }) {
             {item.title}
           </h2>
           <p className="mt-5 max-w-xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
-            {item.body}
+            <FraudText text={item.body} />
           </p>
           {item.note ? (
-            <p className="mt-4 max-w-xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">{item.note}</p>
+            <p className="mt-4 max-w-xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
+              <FraudText text={item.note} />
+            </p>
           ) : null}
         </div>
         <div className={flip ? 'md:order-1' : ''}>

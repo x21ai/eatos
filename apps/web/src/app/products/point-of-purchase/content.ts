@@ -30,8 +30,8 @@ export const hero = {
 export const keyFeatures = [
   'All-in-One Point of Purchase',
   'Contactless Payments',
-  'Real-time MenuSync',
-  'Table management',
+  'Real-Time MenuSync',
+  'Table Management',
 ];
 
 export const features = [

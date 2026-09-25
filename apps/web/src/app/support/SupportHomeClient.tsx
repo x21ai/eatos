@@ -292,7 +292,7 @@ function AgentComposer() {
             id={SUPPORT_ASK_INPUT_ID}
             value={question}
             onChange={(event) => setQuestion(event.target.value)}
-            placeholder="Ask anything: reset a PIN, printer offline, add a menu item"
+            placeholder="Ask anything"
             aria-label="Ask the eatOS support agent"
             className="min-w-0 flex-1 bg-transparent text-sm text-white outline-none placeholder:text-zinc-500 sm:text-base"
           />
@@ -311,13 +311,13 @@ function AgentComposer() {
             <ArrowRight size={15} />
           </button>
         </div>
-        <div className="mt-3 flex flex-wrap gap-2">
+        <div className="mt-3 flex w-full min-w-0 flex-wrap gap-2">
           {starterQuestions.slice(0, 3).map((preset) => (
             <button
               key={preset}
               type="button"
               onClick={() => submit(preset)}
-              className="rounded-full border border-white/12 bg-white/[0.02] px-3.5 py-1.5 text-left text-[11px] font-semibold text-zinc-300 transition-colors hover:border-white/35 hover:text-white"
+              className="max-w-full min-w-0 whitespace-normal rounded-full border border-white/12 bg-white/[0.02] px-3.5 py-1.5 text-left text-[11px] font-semibold leading-4 text-zinc-300 transition-colors hover:border-white/35 hover:text-white"
             >
               {preset}
             </button>

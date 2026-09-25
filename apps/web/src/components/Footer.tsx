@@ -218,14 +218,14 @@ const CONTACT_CHANNELS = [
   {
     label: 'WhatsApp',
     ariaLabel: 'Message eatOS on WhatsApp (opens in a new tab)',
-    href: 'https://wa.me/18449732867',
+    href: 'https://wa.me/18445632867',
     Icon: MessageCircle,
     external: true,
   },
   {
     label: 'Text Message',
     ariaLabel: 'Text eatOS at +1 (844) 563-2867',
-    href: 'sms:+18449732867',
+    href: 'sms:+18445632867',
     Icon: MessageSquareText,
   },
   {
@@ -238,7 +238,7 @@ const CONTACT_CHANNELS = [
   {
     label: 'Call',
     ariaLabel: 'Call eatOS at +1 (844) 563-2867',
-    href: 'tel:+18449732867',
+    href: 'tel:+18445632867',
     Icon: Phone,
   },
 ];
@@ -328,7 +328,7 @@ export default function Footer() {
                     </h3>
                   </div>
                   <a
-                    href="tel:+18449732867"
+                    href="tel:+18445632867"
                     aria-label="Call sales at +1 (844) 563-2867"
                     className={`${cardLink} rounded-sm ${focusRing}`}
                   >
