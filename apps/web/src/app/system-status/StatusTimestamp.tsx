@@ -27,7 +27,7 @@ export default function StatusTimestamp() {
 
   return (
     <p className="mt-4 text-sm text-gray-400" aria-live="off" suppressHydrationWarning>
-      Current date and time: {easternTimeFormatter.format(currentTime)}
+      Last updated: {easternTimeFormatter.format(currentTime)}
     </p>
   );
 }
