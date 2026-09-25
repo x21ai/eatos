@@ -1,3 +1,5 @@
+import aiMp4 from './assets/ai-intelligence-demo.mp4.asset.json';
+import aiPoster from './assets/ai-intelligence-demo-poster.jpg.asset.json';
 import posMp4 from './assets/pos-demo.mp4.asset.json';
 import posWebm from './assets/pos-demo.webm.asset.json';
 import posPoster from './assets/pos-demo-poster.jpg.asset.json';
@@ -40,6 +42,18 @@ export type DemoSource = {
 };
 
 export const demoSources: DemoSource[] = [
+  {
+    id: 'ai',
+    label: 'Ai Intelligence',
+    url: 'https://eatos.lovable.app/ai/intelligence',
+    blurb: 'Maya automates the busy work across front of house, kitchen and back office.',
+    device: 'laptop',
+    media: {
+      sources: [{ src: aiMp4.url, type: 'video/mp4' }],
+      poster: aiPoster.url,
+      caption: 'Ask Maya, and the work gets done across every location.',
+    },
+  },
   {
     id: 'pos',
     label: 'Point of Sale',

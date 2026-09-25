@@ -4,7 +4,7 @@ import type React from 'react';
 import { useEffect, useRef, useState } from 'react';
 
 import { motion } from 'motion/react';
-import { Tablet, Laptop, Smartphone } from 'lucide-react';
+import { Tablet, Laptop, Smartphone, Sparkles } from 'lucide-react';
 import { demoSources } from './demoSources';
 import { TabletMockup } from './TabletMockup';
 import { PosIcon, KdsIcon, CfdIcon, KioskIcon } from './DeviceIcons';
@@ -16,6 +16,7 @@ const deviceIcon = {
 } as const;
 
 const appIcon: Record<string, (props: { className?: string }) => React.ReactElement> = {
+  ai: ({ className }) => <Sparkles className={className} />,
   pos: PosIcon,
   kds: KdsIcon,
   cfd: CfdIcon,
@@ -24,6 +25,7 @@ const appIcon: Record<string, (props: { className?: string }) => React.ReactElem
 
 // Each product keeps its own accent color for its icon
 const appIconColor: Record<string, string> = {
+  ai: 'text-pink-500',
   pos: 'text-indigo-500',
   kds: 'text-emerald-500',
   cfd: 'text-sky-500',
@@ -155,6 +157,7 @@ export function DemoRailSection({
               const AppIcon = appIcon[d.id];
               const Icon = deviceIcon[d.device] ?? Tablet;
               const mobileOrder: Record<string, string> = {
+                ai: 'order-first',
                 pos: 'order-1',
                 kiosk: 'order-2',
                 kds: 'order-3',
