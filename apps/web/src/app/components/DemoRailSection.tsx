@@ -16,7 +16,7 @@ const deviceIcon = {
 } as const;
 
 const appIcon: Record<string, (props: { className?: string }) => React.ReactElement> = {
-  ai: Sparkles,
+  ai: ({ className }) => <Sparkles className={className} />,
   pos: PosIcon,
   kds: KdsIcon,
   cfd: CfdIcon,
@@ -157,6 +157,7 @@ export function DemoRailSection({
               const AppIcon = appIcon[d.id];
               const Icon = deviceIcon[d.device] ?? Tablet;
               const mobileOrder: Record<string, string> = {
+                ai: 'order-first',
                 pos: 'order-1',
                 kiosk: 'order-2',
                 kds: 'order-3',
