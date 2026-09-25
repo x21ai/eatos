@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { subscribeBottomInset } from '@/lib/bottomInset';
 import AgentAssistant from './AgentAssistant';
+import { syncCrispLauncherOffset } from './crispLauncherOffset';
 
 const MAYA_HOSTNAME = 's.eatos.dev';
 const LIVE_HOSTNAMES = new Set(['eatos.com', 'www.eatos.com']);
@@ -48,6 +50,15 @@ function CrispChat({ websiteId }: { websiteId: string }) {
     script.dataset.eatosCrisp = 'true';
     document.head.appendChild(script);
   }, [websiteId]);
+
+  useEffect(() => {
+    const unsubscribe = subscribeBottomInset(syncCrispLauncherOffset);
+
+    return () => {
+      unsubscribe();
+      syncCrispLauncherOffset(0);
+    };
+  }, []);
 
   return null;
 }

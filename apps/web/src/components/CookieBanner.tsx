@@ -2,6 +2,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { setBottomInset } from "@/lib/bottomInset";
 
 const CONSENT_KEY = "eatos_cookie_consent";
 const PREFS_KEY = "eatos_cookie_prefs";
@@ -104,26 +105,42 @@ export default function CookieBanner() {
   // Reserve space at the bottom of the page while the consent bar is on screen so
   // the bar sits below the last footer row instead of covering it. The padding is
   // removed as soon as the bar goes away or the preferences dialog takes over.
+  // The same measurement is published so floating widgets (the Crisp chat
+  // launcher) can lift themselves clear of the bar.
   const barRef = useRef(null);
   const showBar = isVisible && !showPreferences;
 
   useEffect(() => {
     if (!showBar) {
       document.body.style.paddingBottom = "";
+      setBottomInset(0);
       return;
     }
 
     const applyPadding = () => {
       const height = barRef.current?.offsetHeight;
-      if (height) document.body.style.paddingBottom = `${height}px`;
+      if (height) {
+        document.body.style.paddingBottom = `${height}px`;
+        setBottomInset(height);
+      }
     };
 
     applyPadding();
     window.addEventListener("resize", applyPadding);
 
+    // The bar grows when its copy wraps, which happens on narrow viewports and
+    // after webfonts settle, not only on window resize.
+    const observer =
+      typeof ResizeObserver === "undefined"
+        ? null
+        : new ResizeObserver(applyPadding);
+    if (observer && barRef.current) observer.observe(barRef.current);
+
     return () => {
       window.removeEventListener("resize", applyPadding);
+      observer?.disconnect();
       document.body.style.paddingBottom = "";
+      setBottomInset(0);
     };
   }, [showBar]);
 
