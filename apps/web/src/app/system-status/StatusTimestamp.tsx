@@ -14,10 +14,10 @@ const easternTimeFormatter = new Intl.DateTimeFormat('en-US', {
 });
 
 export default function StatusTimestamp() {
-  const [currentTime, setCurrentTime] = useState('');
+  const [currentTime, setCurrentTime] = useState(() => new Date());
 
   useEffect(() => {
-    const updateTime = () => setCurrentTime(easternTimeFormatter.format(new Date()));
+    const updateTime = () => setCurrentTime(new Date());
 
     updateTime();
     const timer = window.setInterval(updateTime, 1000);
@@ -26,8 +26,8 @@ export default function StatusTimestamp() {
   }, []);
 
   return (
-    <p className="mt-4 text-sm text-gray-400" aria-live="off">
-      Current date and time: {currentTime || 'Loading Eastern Time...'}
+    <p className="mt-4 text-sm text-gray-400" aria-live="off" suppressHydrationWarning>
+      Current date and time: {easternTimeFormatter.format(currentTime)}
     </p>
   );
 }
