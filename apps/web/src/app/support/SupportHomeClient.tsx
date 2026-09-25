@@ -164,7 +164,7 @@ function InlineReply({ reply, onContinue, showChat }) {
   if (reply?.kind === 'facts') {
     return (
       <div>
-        <p className="text-sm leading-6 text-zinc-200">Here is what applies to that:</p>
+        <p className="text-sm leading-6 text-zinc-200">Here is what applies to that.</p>
         {reply.facts?.map((fact) => (
           <div key={fact.id ?? fact.title} className="mt-3 rounded-2xl border border-white/10 bg-black/40 px-3.5 py-3">
             <p className="text-[13px] font-semibold text-white">{fact.title}</p>

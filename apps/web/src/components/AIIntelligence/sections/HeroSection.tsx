@@ -11,7 +11,7 @@ export function HeroSection() {
         <div className="site-container">
           <Reveal id="top">
             <div className="max-w-4xl">
-              <SectionLabel>eatOS AI: Deep Dive</SectionLabel>
+              <SectionLabel>eatOS AI deep dive</SectionLabel>
               <h1 className="mt-6 text-5xl md:text-7xl font-bold tracking-tighter leading-[1.05]">
                 Operational
                 <br />

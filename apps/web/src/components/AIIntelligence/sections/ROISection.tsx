@@ -30,7 +30,7 @@ export function ROISection() {
               don't lie.
             </h2>
             <p className="mt-6 text-lg md:text-xl text-[#9CA3AF] leading-relaxed">
-              For a $2M/year restaurant:
+              For a $2M/year restaurant
             </p>
 
             <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
