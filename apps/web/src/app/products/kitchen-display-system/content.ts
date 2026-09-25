@@ -95,7 +95,7 @@ export const features = [
       { value: '100%', label: 'Guest-Driven' },
     ],
     body:
-      'Dine-in, counter, kiosk, handheld, web and delivery orders land on the same board. One queue, one prioritization, no channel left unwatched.',
+      'Dine-in, Counter, Kiosk, Handheld, Web and Delivery orders land on the same board. One queue, one prioritization, no channel left unwatched.',
     more:
       'Because the KDS shares the eatOS data layer with Point of Sale, online ordering and inventory, an item that runs out disappears from every ordering surface at once.',
     imageLabel: 'Connected devices overview',

@@ -94,7 +94,7 @@ export function MayaSection() {
                   View void report <ArrowRight size={16} />
                 </a>
                 <div className="mt-2 text-xs text-[#9CA3AF]">
-                  (Demo link: point this to your reports when ready)
+                  (Demo link. Point this to your reports when ready)
                 </div>
               </div>
             </Card>

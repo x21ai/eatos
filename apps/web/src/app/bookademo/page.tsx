@@ -1,21 +1,81 @@
 // @ts-nocheck
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Calendar, Users, CheckCircle2 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
-const MEETINGS_SCRIPT_SRC =
-  "https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js";
+const MEETINGS_URL =
+  "https://meetings.hubspot.com/booka/initial-meeting?embed=true";
+
+function BookingFormSkeleton() {
+  return (
+    <div
+      className="absolute inset-0 z-10 overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-950 p-5 sm:p-8"
+      aria-hidden="true"
+    >
+      <div className="mx-auto h-4 w-40 animate-pulse rounded-full bg-white/10" />
+      <div className="mt-8 grid gap-8 md:grid-cols-[1.1fr_0.9fr]">
+        <div>
+          <div className="mb-4 flex items-center justify-between">
+            <div className="h-4 w-28 animate-pulse rounded-full bg-white/10" />
+            <div className="flex gap-2">
+              <div className="h-8 w-8 animate-pulse rounded-full bg-white/10" />
+              <div className="h-8 w-8 animate-pulse rounded-full bg-white/10" />
+            </div>
+          </div>
+          <div className="grid grid-cols-7 gap-2">
+            {Array.from({ length: 35 }).map((_, i) => (
+              <div
+                key={i}
+                className="aspect-square animate-pulse rounded-lg bg-white/[0.06]"
+                style={{ animationDelay: `${(i % 7) * 40}ms` }}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="space-y-3">
+          <div className="mb-4 h-4 w-32 animate-pulse rounded-full bg-white/10" />
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div
+              key={i}
+              className="h-11 animate-pulse rounded-xl border border-white/10 bg-white/[0.04]"
+              style={{ animationDelay: `${i * 60}ms` }}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function BookDemoPage() {
+  const [formReady, setFormReady] = useState(false);
+
   useEffect(() => {
-    if (document.querySelector(`script[src="${MEETINGS_SCRIPT_SRC}"]`)) return;
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = MEETINGS_SCRIPT_SRC;
-    script.async = true;
-    document.body.appendChild(script);
+    const reveal = window.setTimeout(() => setFormReady(true), 10000);
+
+    function onMessage(event) {
+      if (event.origin !== "https://meetings.hubspot.com") return;
+      let data = event.data;
+      if (typeof data === "string") {
+        try {
+          data = JSON.parse(data);
+        } catch {
+          return;
+        }
+      }
+      const iframe = document.getElementById("bookademo-meetings");
+      if (!iframe || !data || typeof data !== "object" || !data.height) return;
+      iframe.style.height = `${data.height}px`;
+      setFormReady(true);
+    }
+
+    window.addEventListener("message", onMessage);
+    return () => {
+      window.clearTimeout(reveal);
+      window.removeEventListener("message", onMessage);
+    };
   }, []);
 
   // Conversion tracking: page view plus completed booking.
@@ -65,10 +125,21 @@ export default function BookDemoPage() {
       {/* HubSpot Meetings Embed */}
       <section className="py-16 border-t border-white/10">
         <div className="site-container max-w-4xl">
-          <div className="rounded-[2rem] bg-black overflow-hidden">
-            <div
-              className="meetings-iframe-container bg-black"
-              data-src="https://meetings.hubspot.com/booka/initial-meeting?embed=true"
+          <div
+            className="relative min-h-[640px] overflow-hidden rounded-[2rem] bg-black md:min-h-[756px]"
+            aria-busy={formReady ? "false" : "true"}
+          >
+            {formReady ? null : (
+              <>
+                <p className="sr-only">Loading the booking form</p>
+                <BookingFormSkeleton />
+              </>
+            )}
+            <iframe
+              id="bookademo-meetings"
+              title="Schedule a demo with eatOS"
+              src={MEETINGS_URL}
+              className="h-[756px] min-h-[615px] w-full border-0"
             />
           </div>
 

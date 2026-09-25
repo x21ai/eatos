@@ -32,23 +32,6 @@ import placeholderVideo from "../../../app/tap-to-pay/assets/hero-video.mp4.asse
 
 const PLACEHOLDER_VIDEO = placeholderVideo.url;
 
-function StatusPill({ status }) {
-  const styles =
-    status === "Priority"
-      ? "text-[#F5B23B] border-[#F5B23B]/40 bg-[#F5B23B]/10"
-      : status === "Live"
-        ? "text-white border-white/15 bg-white/10"
-        : "text-[#9CA3AF] border-white/15 bg-transparent";
-
-  return (
-    <span
-      className={`shrink-0 rounded-full border px-3 py-1 text-xs font-medium ${styles}`}
-    >
-      {status}
-    </span>
-  );
-}
-
 export function AgentsSection() {
   const [activeRole, setActiveRole] = useState(null);
   const [activeCapability, setActiveCapability] = useState(null);
@@ -63,21 +46,18 @@ export function AgentsSection() {
         capabilities: [
           {
             title: "Multi-location intelligence",
-            status: "Candidate",
             Icon: MapPin,
             desc: "Compares locations side by side on the same metrics, so you see which site is underperforming this month and why.",
             sources: "Cross-site gross sales, labor cost %, refund rate",
           },
           {
             title: "Revenue & margin intelligence",
-            status: "Priority",
             Icon: LineChart,
             desc: "Shows where margin is being lost and why refunds spiked this week, rolled up across the whole business.",
             sources: "Gross sales, product sales, itemized sales, tax report",
           },
           {
             title: "Executive brief intelligence",
-            status: "Candidate",
             Icon: FileText,
             desc: "Pulls one daily snapshot of revenue, guests and labor across every location, so the day starts already briefed.",
             sources: "Dashboard home, gross sales, guests, payroll",
@@ -91,14 +71,12 @@ export function AgentsSection() {
         capabilities: [
           {
             title: "Labor intelligence",
-            status: "Live",
             Icon: CalendarDays,
             desc: "Builds schedules from demand forecasts, identifies coverage gaps before they hit the floor, and cuts labor cost 18%.",
             sources: "Payroll, cashout, tip",
           },
           {
             title: "Loss prevention intelligence",
-            status: "Priority",
             Icon: ShieldAlert,
             desc: "Catches discount abuse, void patterns & tax discrepancies while they're still small, they surface as a finance review issue.",
             sources:
@@ -106,7 +84,6 @@ export function AgentsSection() {
           },
           {
             title: "Covers forecast intelligence",
-            status: "Candidate",
             Icon: TrendingUp,
             desc: "Projects next week's covers and revenue so staffing and ordering decisions get made ahead of the problem, not after.",
             sources: "Daily services transactions, online order report trends",
@@ -120,21 +97,18 @@ export function AgentsSection() {
         capabilities: [
           {
             title: "Revenue & margin intelligence",
-            status: "Priority",
             Icon: LineChart,
             desc: "Surfaces which location is underperforming, where margin is being lost, and why refunds spiked this week.",
             sources: "Gross sales, product sales, itemized sales, tax report",
           },
           {
             title: "Payments intelligence",
-            status: "Live",
             Icon: ShieldCheck,
             desc: "Monitors failures by card and device, catches fee spikes as they happen, and flags fraud patterns early.",
             sources: "Cash drawers, deposits, service charges",
           },
           {
             title: "Pricing & discount intelligence",
-            status: "Candidate",
             Icon: Tag,
             desc: "Tracks discount and promo abuse, showing exactly where discounting is eating margin than it drives volume.",
             sources: "Discounts, promo code, tax itemized sales",
@@ -148,21 +122,18 @@ export function AgentsSection() {
         capabilities: [
           {
             title: "Guest intelligence",
-            status: "Live",
             Icon: Heart,
             desc: "Predicts churn, triggers retention offers, remembers preferences, and increases repeat visits 23%.",
             sources: "Guests, feedback",
           },
           {
             title: "Guest traffic intelligence",
-            status: "Priority",
             Icon: Users,
             desc: "Tracks whether the restaurant is full, why not, and which hours matter most for seating and staffing.",
             sources: "Guests, daily services transactions, online order report",
           },
           {
             title: "Voice order intelligence",
-            status: "Candidate",
             Icon: Mic,
             desc: "Captures a voice order on the guest portal and hands it to order intelligence; a spoken order moves like a typed one.",
             sources: "Guest ordering portal, voice channel",
@@ -176,21 +147,18 @@ export function AgentsSection() {
         capabilities: [
           {
             title: "Order intelligence",
-            status: "Live",
             Icon: DollarSign,
             desc: "Captures orders via voice or text, routes to kitchen intelligence, and suggests upsells, 40% faster than manual.",
             sources: "Sales transaction, online order report",
           },
           {
             title: "Guest intelligence",
-            status: "Live",
             Icon: Heart,
             desc: "Remembers specific guest preferences table-side and flags who's a repeat visitor before the initial greeting.",
             sources: "Guests, feedback",
           },
           {
             title: "Tips intelligence",
-            status: "Candidate",
             Icon: HandCoins,
             desc: "Tracks tip trends per shift and flags gratuity anomalies, so servers see where they stand in real time.",
             sources: "Tip report",
@@ -204,21 +172,18 @@ export function AgentsSection() {
         capabilities: [
           {
             title: "Kitchen intelligence",
-            status: "Live",
             Icon: Flame,
             desc: "Detects bottlenecks, balances stations, and predicts delays before they happen.",
             sources: "Live ticket flow, station load, prep timing",
           },
           {
             title: "Inventory intelligence",
-            status: "Live",
             Icon: Package,
             desc: "Tracks real consumption, auto-reorders, flags waste, and protects your margins.",
             sources: "86 report, product sales",
           },
           {
             title: "Menu performance intelligence",
-            status: "Candidate",
             Icon: BookOpen,
             desc: "Flags underperforming products to cut & modifiers that are quietly killing margin.",
             sources: "Menu builder, products, price category, variant sales report",
@@ -299,11 +264,8 @@ export function AgentsSection() {
                       className="h-full w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#8B5CF6] rounded-3xl"
                     >
                       <Card className="flex h-full flex-col p-6 md:p-7 transition-colors hover:border-[#8B5CF6]/50">
-                        <div className="flex items-start justify-between gap-3">
-                          <div className="w-11 h-11 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center">
-                            <Icon size={20} className="text-[#A855F7]" />
-                          </div>
-                          <StatusPill status={c.status} />
+                        <div className="w-11 h-11 rounded-2xl bg-black/30 border border-white/10 flex items-center justify-center">
+                          <Icon size={20} className="text-[#A855F7]" />
                         </div>
                         <h3 className="mt-5 text-xl font-semibold tracking-tight">
                           {c.title}

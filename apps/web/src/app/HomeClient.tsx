@@ -46,7 +46,7 @@ const serviceStyles = [
     iconClass: 'bg-orange-500/20 text-orange-400',
     checkClass: 'text-orange-500',
     description: 'Speed is everything. Take orders and move queues fast.',
-    bullets: ['Lightning-fast order entry', 'Self-service kiosk mode', 'cloud-based ecosystem'],
+    bullets: ['Lightning-fast order entry', 'Self-service kiosk mode', 'Cloud-based ecosystem'],
   },
   {
     name: 'Full Service',
@@ -490,7 +490,7 @@ export default function HomePage() {
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#d70480]/30 bg-[#d70480]/10 text-[#d70480] text-sm font-medium mb-6">
                 <BarChart2 size={12} />
-                <span>Real-time Reporting</span>
+                <span>Real-time reporting</span>
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-6xl font-bold tracking-tighter mb-6">
                 Know your numbers.
@@ -510,9 +510,9 @@ export default function HomePage() {
                   { label: 'End-of-day summary reports', color: 'text-[#d70480]' },
                   { label: 'Export to CSV or your accountant', color: 'text-[#d70480]' },
                 ].map((item) => (
-                  <div key={item.label} className="flex items-center gap-3 text-gray-300 text-sm">
-                    <Check size={16} className={`${item.color} shrink-0`} />
-                    {item.label}
+                  <div key={item.label} className="flex items-start gap-3 text-gray-300 text-sm">
+                    <Check size={16} className={`${item.color} mt-0.5 shrink-0`} />
+                    <span>{item.label}</span>
                   </div>
                 ))}
               </div>
