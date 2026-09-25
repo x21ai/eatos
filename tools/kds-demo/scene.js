@@ -38,7 +38,7 @@ const TICKETS = [
     base: 164, tone: 'amber', tags: ['EGG allergy'],
     sec: ['APPETIZER', '1 items'],
     items: [
-      { q: '4', nm: 'Samosa', tr: 'Samosa', mods: ['+ Tamarind chutney', '+ Tamarind chutney'], al: ['GLUTEN allergy'], tm: 2 },
+      { q: '4', nm: 'Mozzarella Sticks', tr: 'Mozzarella Sticks', mods: ['+ Marinara sauce', '+ Marinara sauce'], al: ['GLUTEN allergy'], tm: 2 },
     ],
     sec2: ['ENTREE', '&#9201; Fires 1:00 pm'],
   },
@@ -48,7 +48,7 @@ const TICKETS = [
     noteh: ['Point of Sale terminal 1', '5m ago'],
     notes: ['Guest calling back in 10 minutes to confirm pickup time.', 'Pack sauces separately, guest is collecting on the way home'],
     items: [
-      { q: '1', nm: 'Prawn Curry', tr: 'Prawn Curry', mods: ['Extra hot', 'Extra hot'], al: ['SHELLFISH allergy'], tm: 14 },
+      { q: '1', nm: 'Grilled Shrimp', tr: 'Grilled Shrimp', mods: ['Extra hot', 'Extra hot'], al: ['SHELLFISH allergy'], tm: 14 },
       { q: '2', nm: 'Steamed Rice', tr: 'Steamed Rice', mods: [], al: [], tm: 8 },
     ],
   },
@@ -56,9 +56,9 @@ const TICKETS = [
     num: '45', icon: '&#9645;', type: 'Take Out', sub: '&#9998; Counter 1 &middot; 12:11',
     base: 269, tone: 'amber', tags: ['GLUTEN allergy'],
     items: [
-      { q: '2', nm: 'Chicken Biryani', tr: 'Chicken Biryani', mods: ['Medium spice', '+ Raita'], al: [], tm: 0 },
-      { q: '1', nm: 'Butter Naan', tr: 'Butter Naan', mods: [], al: ['GLUTEN allergy', 'DAIRY allergy'], tm: 0 },
-      { q: '2', nm: 'Mango Lassi', tr: 'Mango Lassi', mods: ['No sugar'], al: ['DAIRY allergy'], tm: 0 },
+      { q: '2', nm: 'BBQ Chicken Plate', tr: 'BBQ Chicken Plate', mods: ['BBQ sauce', '+ Ranch'], al: [], tm: 0 },
+      { q: '1', nm: 'Garlic Bread', tr: 'Garlic Bread', mods: [], al: ['GLUTEN allergy', 'DAIRY allergy'], tm: 0 },
+      { q: '2', nm: 'Vanilla Shake', tr: 'Vanilla Shake', mods: ['No sugar'], al: ['DAIRY allergy'], tm: 0 },
     ],
   },
   {
