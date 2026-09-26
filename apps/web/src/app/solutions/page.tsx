@@ -192,12 +192,6 @@ export default function SolutionsPage() {
             >
               Book a Demo
             </a>
-            <a
-              href="/bookademo"
-              className="px-8 py-4 border border-white/20 text-white rounded-full font-semibold hover:bg-white/10 transition-all"
-            >
-              Book a Demo
-            </a>
           </motion.div>
         </div>
       </section>

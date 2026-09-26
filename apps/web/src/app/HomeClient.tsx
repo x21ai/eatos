@@ -498,8 +498,8 @@ export default function HomePage() {
                 <span className="text-gray-500">Every shift.</span>
               </h2>
               <p className="text-gray-400 text-base sm:text-lg md:text-xl mb-8 leading-relaxed">
-                Live sales dashboards, labor cost tracking, and menu performance reports give full
-                image before service ends.
+                Live sales dashboards, labor cost tracking, and menu performance reports provide a complete
+                picture before service ends.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-8 md:mb-10">
                 {[

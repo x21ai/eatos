@@ -10,7 +10,7 @@ const contentSecurityPolicy = [
   "font-src 'self' data: https:",
   "media-src 'self' blob: https:",
   "connect-src 'self' https: wss:",
-  "frame-src 'self' https://client.crisp.chat https://*.lovable.app https://*.hubspot.com https://*.hsforms.com https://go.fliplink.me",
+  "frame-src 'self' https://client.crisp.chat https://*.lovable.app https://*.hubspot.com https://*.hsforms.com https://go.fliplink.me https://player.vimeo.com https://www.youtube.com",
   "worker-src 'self' blob:",
   "manifest-src 'self'",
   'upgrade-insecure-requests',

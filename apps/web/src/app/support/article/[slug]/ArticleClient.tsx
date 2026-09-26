@@ -6,6 +6,7 @@ import { motion } from 'motion/react';
 import { toast } from 'sonner';
 import { ArrowLeft, ArrowRight, ChevronRight, Share2, ThumbsDown, ThumbsUp } from 'lucide-react';
 import ArticleBody from '../../ArticleBody';
+import { isTocHeading, sectionDomId } from '../../articleBodyModel';
 import { articleHref, categoryHref, getArticle, getRelatedArticles } from '../../content';
 
 function useToc(blocks) {
@@ -13,8 +14,8 @@ function useToc(blocks) {
     () =>
       blocks
         .map((b, i) => ({ ...b, i }))
-        .filter((b) => b.type === 'h2' || b.type === 'h3')
-        .map((b) => ({ id: `section-${b.i}`, text: b.text, level: b.type })),
+        .filter((b) => (b.type === 'h2' || b.type === 'h3') && !isTocHeading(b.text))
+        .map((b) => ({ id: sectionDomId(b.i), text: b.text, level: b.type })),
     [blocks],
   );
 }
@@ -171,7 +172,7 @@ export default function ArticleClient({ slug }) {
         <div className="site-container">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_260px]">
             <div className="min-w-0 max-w-[760px]">
-              <ArticleBody blocks={article.blocks} />
+              <ArticleBody blocks={article.blocks} slug={article.slug} />
               <Helpful slug={article.slug} />
               <a
                 href={article.categorySlug ? categoryHref(article.categorySlug) : '/support'}
@@ -191,7 +192,12 @@ export default function ArticleClient({ slug }) {
                   <ul className="mt-4 space-y-2.5">
                     {toc.slice(0, 14).map((item) => (
                       <li key={item.id} className={item.level === 'h3' ? 'pl-3' : ''}>
-                        <span className="block text-sm leading-6 text-zinc-400">{item.text}</span>
+                        <a
+                          href={`#${item.id}`}
+                          className="block text-sm leading-6 text-zinc-400 transition-colors hover:text-white"
+                        >
+                          {item.text}
+                        </a>
                       </li>
                     ))}
                   </ul>
