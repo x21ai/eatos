@@ -1,12 +1,7 @@
 // @ts-nocheck
 import './global.css';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import Providers from '@/components/Providers';
-import CookieBanner from '@/components/CookieBanner';
-import BookDemoTracker from '@/components/BookDemoTracker';
-import StaticLinkFix from '@/components/StaticLinkFix';
-import PublicChatWidgets from './components/agent/PublicChatWidgets';
+import SiteChrome from '@/components/SiteChrome';
 
 const CRISP_WEBSITE_ID = 'cf9ee4db-97df-4864-8fa6-194ad4762b95';
 
@@ -76,13 +71,7 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning
       >
         <Providers>
-          <Header />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-          <CookieBanner />
-          <BookDemoTracker />
-          <StaticLinkFix />
-          <PublicChatWidgets crispWebsiteId={crispWebsiteId} />
+          <SiteChrome crispWebsiteId={crispWebsiteId}>{children}</SiteChrome>
         </Providers>
       </body>
     </html>
