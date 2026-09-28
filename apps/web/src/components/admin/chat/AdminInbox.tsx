@@ -3,24 +3,17 @@
 import { useMemo, useState } from 'react';
 import {
   ArrowLeft, Check, CircleUserRound, Clock3, Globe2,
-  Info, Laptop, Mail, MessageCircle, MoreHorizontal, PanelRight, Plus,
+  Info, Laptop, Mail, MessageCircle, MoreHorizontal, PanelRight,
   Send, Smile, Sparkles, UserRound, Users, X,
 } from 'lucide-react';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import AdminChatShell from './AdminChatShell';
-import { ConversationToolbar, conversationViews, matchesCustomFilter, type ConversationView } from './ConversationToolbar';
+import { ConversationToolbar, matchesCustomFilter, type ConversationView } from './ConversationToolbar';
 import { initialConversations, type Conversation, type Message as ChatMessage } from './mock-data';
 
 type InboxKey = Conversation['inbox'] | 'all';
-
-const inboxItems: { key: InboxKey; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
-  { key: 'main', label: 'Main Inbox', icon: MessageCircle },
-  { key: 'assigned', label: 'Assigned to me', icon: UserRound },
-  { key: 'automated', label: 'Automated', icon: MessageCircle },
-  { key: 'spam', label: 'Spam', icon: MessageCircle },
-];
 
 function ConversationList({ conversations, activeId, onSelect, onCreateConversation }: { conversations: Conversation[]; activeId: string; onSelect: (id: string) => void; onCreateConversation: (values: { email: string; name: string; subject: string }) => void }) {
   const [view, setView] = useState<ConversationView>('all');
