@@ -16,9 +16,9 @@ export default function SiteChrome({
   crispWebsiteId?: string | null;
 }) {
   const pathname = usePathname();
-  const isAdmin = pathname?.startsWith('/admin');
+  const isWorkspace = pathname?.startsWith('/admin') || pathname?.startsWith('/chatapp');
 
-  if (isAdmin) return <main className="min-h-dvh">{children}</main>;
+  if (isWorkspace) return <main className="min-h-dvh">{children}</main>;
 
   return (
     <>
