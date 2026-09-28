@@ -34,7 +34,7 @@ function ConversationList({ conversations, activeId, onSelect, onCreateConversat
     return view === 'waiting' ? [...items].reverse() : items;
   }, [conversations, customFilter, view]);
   return (
-    <section className="flex min-w-0 flex-1 flex-col border-r bg-background lg:max-w-100 xl:max-w-112">
+    <section className="flex min-w-0 flex-1 flex-col border-r bg-background">
       <header className="flex h-14 shrink-0 items-center gap-2 border-b px-3">
         <ConversationToolbar view={view} onViewChange={setView} customFilter={customFilter} onCustomFilterChange={setCustomFilter} onCreateConversation={onCreateConversation} />
       </header>
@@ -274,7 +274,7 @@ export default function AdminInbox() {
   function setSubject(subject: string) { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, subject: subject || undefined } : item)); }
   return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed} inbox={inbox} onInboxChange={changeInbox}>
     <div className="flex h-full min-w-0">
-      <div className={cn('min-w-0 flex-1 md:flex', mobileChat ? 'hidden md:flex' : 'flex')}><ConversationList conversations={visible} activeId={active.id} onSelect={selectConversation} onCreateConversation={createConversation} /></div>
+      <div className={cn('min-w-0 flex-1 md:flex lg:max-w-100 xl:max-w-112', mobileChat ? 'hidden md:flex' : 'flex')}><ConversationList conversations={visible} activeId={active.id} onSelect={selectConversation} onCreateConversation={createConversation} /></div>
       <div className={cn('min-w-0 flex-[1.55] md:flex', mobileChat ? 'flex' : 'hidden')}><Transcript conversation={active} onBack={() => setMobileChat(false)} onShowDetails={() => setShowDetails(true)} onResolve={() => setConversations((items) => items.map((item) => item.id === active.id ? { ...item, resolved: !item.resolved } : item))} onSend={send} onNavigate={navigate} onMarkUnread={markUnread} onMoveToInbox={moveToInbox} onDelete={removeActive} onSetSubject={setSubject} /></div>
       <div className="hidden xl:block"><VisitorDetails conversation={active} onAssign={assign} /></div>
       {showDetails && <div className="fixed inset-0 z-50 flex justify-end bg-foreground/20 xl:hidden" onClick={() => setShowDetails(false)}><div className="h-full w-[min(90vw,22rem)] shadow-xl" onClick={(event) => event.stopPropagation()}><VisitorDetails conversation={active} onClose={() => setShowDetails(false)} onAssign={assign} /></div></div>}
