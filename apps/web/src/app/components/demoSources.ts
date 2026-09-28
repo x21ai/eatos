@@ -1,4 +1,5 @@
 import aiMp4 from './assets/ai-intelligence-demo.mp4.asset.json';
+import aiWebm from './assets/ai-intelligence-demo.webm.asset.json';
 import aiPoster from './assets/ai-intelligence-demo-poster.jpg.asset.json';
 import posMp4 from './assets/pos-demo.mp4.asset.json';
 import posWebm from './assets/pos-demo.webm.asset.json';
@@ -30,6 +31,8 @@ export type DemoMedia = {
   caption: string;
   /** Tall kiosk style clip. Defaults to landscape when omitted. */
   orientation?: 'portrait' | 'landscape';
+  /** The clip has a real audio track, so show a mute/unmute control. */
+  hasAudio?: boolean;
 };
 
 export type DemoSource = {
@@ -49,9 +52,10 @@ export const demoSources: DemoSource[] = [
     blurb: 'Maya automates the busy work across front of house, kitchen and back office.',
     device: 'laptop',
     media: {
-      sources: [{ src: aiMp4.url, type: 'video/mp4' }],
+      sources: videoSources(aiWebm, aiMp4),
       poster: aiPoster.url,
       caption: 'Ask Maya, and the work gets done across every location.',
+      hasAudio: true,
     },
   },
   {
