@@ -2,9 +2,9 @@
 
 import { useMemo, useState } from 'react';
 import {
-  ArrowLeft, Check, CircleUserRound, Clock3, Globe2,
-  Info, Laptop, Mail, MessageCircle, MoreHorizontal, PanelRight,
-  Send, Smile, Sparkles, UserRound, Users, X,
+  ArrowLeft, BadgeCheck, Check, ChevronDown, CircleUserRound, Clock3, Globe2,
+  Info, Laptop, Mail, MapPin, MessageCircle, MoreHorizontal, PanelRight,
+  Send, Smile, Sparkles, UserRound, Users, X, Zap,
 } from 'lucide-react';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -154,7 +154,7 @@ export default function AdminInbox() {
   function createConversation({ email, name, subject }: { email: string; name: string; subject: string }) {
     const displayName = name.trim() || email.split('@')[0] || 'New visitor';
     const id = `conversation-${Date.now()}`;
-    const created: Conversation = { id, name: displayName, initials: displayName.split(/\s+/).slice(0, 2).map((part) => part[0]?.toUpperCase()).join('') || 'NV', email, location: 'Unknown', country: 'Unknown', flag: '🌐', localTime: 'Now', browser: 'Unknown device', ip: 'Pending', page: 'Email conversation', preview: subject.trim() || 'New email conversation', date: 'Now', inbox: 'main', unread: false, resolved: false, assignee: 'Unassigned', messages: subject.trim() ? [{ id: `message-${Date.now()}`, author: 'note', body: `Subject: ${subject.trim()}`, time: 'Now' }] : [] };
+    const created: Conversation = { id, name: displayName, initials: displayName.split(/\s+/).slice(0, 2).map((part) => part[0]?.toUpperCase()).join('') || 'NV', email, location: 'Unknown', country: 'Unknown', flag: '🌐', localTime: 'Now', browser: 'Unknown device', ip: 'Pending', isp: 'Pending', languages: '🌐', verified: false, participants: [email], page: 'Email conversation', preview: subject.trim() || 'New email conversation', date: 'Now', inbox: 'main', unread: false, resolved: false, assignee: 'Unassigned', messages: subject.trim() ? [{ id: `message-${Date.now()}`, author: 'note', body: `Subject: ${subject.trim()}`, time: 'Now' }] : [] };
     setConversations((items) => [created, ...items]); setInbox('main'); setActiveId(id); setMobileChat(true);
   }
   return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed} inbox={inbox} onInboxChange={changeInbox}>
