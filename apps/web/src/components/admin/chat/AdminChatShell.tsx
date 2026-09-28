@@ -60,7 +60,7 @@ export default function AdminChatShell({
             {nav.map((item) => {
               const active = item.href ? currentPath === item.href : false;
               const content = <><item.icon className="size-4 shrink-0" />{!collapsed && <span className="truncate">{item.label}</span>}{!collapsed && item.badge && <span className="ml-auto rounded-full bg-brand px-1.5 py-0.5 text-[10px] font-bold text-primary-foreground">{item.badge}</span>}</>;
-              if (item.href && active && !collapsed && inboxOptions) return <details key={item.label} open className="group/inbox" onClick={(event) => { if (event.target instanceof HTMLElement && event.target.closest('summary')) event.currentTarget.removeAttribute('open'); }}>
+              if (item.href && active && !collapsed && inboxOptions) return <details key={item.label} open className="group/inbox">
                 <summary className="flex h-10 cursor-pointer list-none items-center gap-3 rounded-md bg-accent px-3 text-sm font-medium text-foreground shadow-xs marker:hidden [&::-webkit-details-marker]:hidden">{content}</summary>
                 <div className="px-2 pb-3 pt-4">{inboxOptions}</div>
               </details>;
