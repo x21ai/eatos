@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 const nav = [
-  { label: 'Inbox', icon: Inbox, href: '/admin/inbox' },
+  { label: 'Inbox', icon: Inbox, href: '/chatapp' },
   { label: 'AI Agent', icon: Zap },
   { label: 'Visitors', icon: Users, badge: '4' },
   { label: 'Contacts', icon: Contact },
@@ -48,17 +48,17 @@ export default function AdminChatShell({
         </nav>
         <div className="space-y-1 border-t p-3">
           {[{ label: 'Get help', icon: HelpCircle }, { label: 'Search', icon: Search }, { label: 'Plugins', icon: Plug }].map(({ label, icon: Icon }) => <div key={label} className="flex h-9 items-center gap-3 rounded-md px-3 text-sm text-muted-foreground"><Icon className="size-4" />{!collapsed && label}</div>)}
-          <Link href="/admin/settings" className={cn('flex h-10 items-center gap-3 rounded-md px-3 text-sm font-medium', pathname === '/admin/settings' ? 'bg-accent shadow-xs' : 'hover:bg-accent')}><Settings className="size-4" />{!collapsed && 'Settings'}</Link>
+          <Link href="/chatapp/settings" className={cn('flex h-10 items-center gap-3 rounded-md px-3 text-sm font-medium', pathname === '/chatapp/settings' ? 'bg-accent shadow-xs' : 'hover:bg-accent')}><Settings className="size-4" />{!collapsed && 'Settings'}</Link>
           <div className="flex items-center gap-3 pt-3"><span className="grid size-9 shrink-0 place-items-center rounded-full bg-brand text-xs font-bold text-primary-foreground">JS</span>{!collapsed && <div className="min-w-0"><p className="truncate text-xs font-semibold">eatOS Support</p><p className="truncate text-[11px] text-muted-foreground">Admin team</p></div>}</div>
         </div>
         <Button variant="outline" size="icon-sm" onClick={() => onCollapsedChange(!collapsed)} className="absolute bottom-4 z-10 hidden md:inline-flex" style={{ left: collapsed ? 56 : 236 }} aria-label={collapsed ? 'Expand navigation' : 'Collapse navigation'}>{collapsed ? <PanelLeftOpen /> : <PanelLeftClose />}</Button>
       </aside>
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="flex h-14 shrink-0 items-center justify-between border-b bg-background px-4 md:hidden">
-          <Link href="/admin/inbox" className="flex items-center gap-2 text-sm font-bold"><span className="grid size-8 place-items-center rounded-md bg-brand text-primary-foreground"><MessageCircle className="size-4" /></span>eatOS Chat</Link>
+          <Link href="/chatapp" className="flex items-center gap-2 text-sm font-bold"><span className="grid size-8 place-items-center rounded-md bg-brand text-primary-foreground"><MessageCircle className="size-4" /></span>eatOS Chat</Link>
           <div className="flex items-center gap-1">
-            <Button asChild variant={pathname?.startsWith('/admin/inbox') ? 'secondary' : 'ghost'} size="sm"><Link href="/admin/inbox"><Inbox /> Inbox</Link></Button>
-            <Button asChild variant={pathname === '/admin/settings' ? 'secondary' : 'ghost'} size="icon-sm"><Link href="/admin/settings" aria-label="Settings"><Settings /></Link></Button>
+            <Button asChild variant={pathname === '/chatapp' ? 'secondary' : 'ghost'} size="sm"><Link href="/chatapp"><Inbox /> Inbox</Link></Button>
+            <Button asChild variant={pathname === '/chatapp/settings' ? 'secondary' : 'ghost'} size="icon-sm"><Link href="/chatapp/settings" aria-label="Settings"><Settings /></Link></Button>
           </div>
         </header>
         <div className="min-h-0 flex-1">{children}</div>
