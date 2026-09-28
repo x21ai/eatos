@@ -2,9 +2,9 @@
 
 import { useMemo, useState } from 'react';
 import {
-  ArrowLeft, Bot, Check, CircleUserRound, Clock3, Filter, Globe2,
+  ArrowLeft, Check, CircleUserRound, Clock3, Filter, Globe2,
   Info, Laptop, Mail, MessageCircle, MoreHorizontal, PanelRight, Plus,
-  Search, Send, ShieldCheck, Smile, Sparkles, UserRound, Users, X,
+  Search, Send, Smile, Sparkles, UserRound, Users, X,
 } from 'lucide-react';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -18,27 +18,9 @@ type InboxKey = Conversation['inbox'] | 'all';
 const inboxItems: { key: InboxKey; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
   { key: 'main', label: 'Main Inbox', icon: MessageCircle },
   { key: 'assigned', label: 'Assigned to me', icon: UserRound },
-  { key: 'automated', label: 'Automated', icon: Bot },
-  { key: 'spam', label: 'Spam', icon: ShieldCheck },
+  { key: 'automated', label: 'Automated', icon: MessageCircle },
+  { key: 'spam', label: 'Spam', icon: MessageCircle },
 ];
-
-function InboxTree({ selected, onSelect }: { selected: InboxKey; onSelect: (key: InboxKey) => void }) {
-  return (
-    <aside className="scrollbar-hidden hidden w-54 shrink-0 overflow-y-auto border-r bg-background p-3 lg:block">
-      <div className="mb-4 flex h-10 items-center gap-2 rounded-md border px-3 font-semibold shadow-xs"><MessageCircle className="size-4" /> Inbox</div>
-      <p className="px-2 text-xs font-medium text-muted-foreground">Default Inboxes</p>
-      <div className="mt-1 space-y-1">
-        {inboxItems.slice(0, 2).map((item) => <Button key={item.key} variant="ghost" onClick={() => onSelect(item.key)} className={cn('h-10 w-full justify-start', selected === item.key && 'bg-accent')}><item.icon />{item.label}</Button>)}
-      </div>
-      <p className="mt-5 px-2 text-xs font-medium text-muted-foreground">Your Inboxes</p>
-      <Button variant="ghost" className="mt-1 h-10 w-full justify-start"><Plus /> New sub-inbox</Button>
-      <p className="mt-5 px-2 text-xs font-medium text-muted-foreground">Other Inboxes</p>
-      <div className="mt-1 space-y-1">
-        {inboxItems.slice(2).map((item) => <Button key={item.key} variant="ghost" onClick={() => onSelect(item.key)} className={cn('h-10 w-full justify-start', selected === item.key && 'bg-accent')}><item.icon />{item.label}</Button>)}
-      </div>
-    </aside>
-  );
-}
 
 function ConversationList({ conversations, activeId, onSelect, inbox, onInboxChange }: { conversations: Conversation[]; activeId: string; onSelect: (id: string) => void; inbox: InboxKey; onInboxChange: (key: InboxKey) => void }) {
   const [query, setQuery] = useState('');
@@ -135,10 +117,10 @@ export default function AdminInbox() {
   function selectConversation(id: string) { setActiveId(id); setMobileChat(true); setConversations((items) => items.map((item) => item.id === id ? { ...item, unread: false } : item)); }
   function send(body: string, note: boolean) { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, preview: body, messages: [...item.messages, { id: `${Date.now()}`, author: note ? 'note' : 'agent', body, time: 'Now' }] } : item)); }
   function assign(assignee: string) { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, assignee } : item)); }
-  return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed}>
+  function changeInbox(key: InboxKey) { setInbox(key); const next = conversations.find((item) => item.inbox === key); if (next) setActiveId(next.id); }
+  return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed} inbox={inbox} onInboxChange={changeInbox}>
     <div className="flex h-full min-w-0">
-      <InboxTree selected={inbox} onSelect={(key) => { setInbox(key); const next = conversations.find((item) => item.inbox === key); if (next) setActiveId(next.id); }} />
-      <div className={cn('min-w-0 flex-1 md:flex', mobileChat ? 'hidden md:flex' : 'flex')}><ConversationList conversations={visible} activeId={active.id} onSelect={selectConversation} inbox={inbox} onInboxChange={setInbox} /></div>
+      <div className={cn('min-w-0 flex-1 md:flex', mobileChat ? 'hidden md:flex' : 'flex')}><ConversationList conversations={visible} activeId={active.id} onSelect={selectConversation} inbox={inbox} onInboxChange={changeInbox} /></div>
       <div className={cn('min-w-0 flex-[1.55] md:flex', mobileChat ? 'flex' : 'hidden')}><Transcript conversation={active} onBack={() => setMobileChat(false)} onShowDetails={() => setShowDetails(true)} onResolve={() => setConversations((items) => items.map((item) => item.id === active.id ? { ...item, resolved: !item.resolved } : item))} onSend={send} /></div>
       <div className="hidden xl:block"><VisitorDetails conversation={active} onAssign={assign} /></div>
       {showDetails && <div className="fixed inset-0 z-50 flex justify-end bg-foreground/20 xl:hidden" onClick={() => setShowDetails(false)}><div className="h-full w-[min(90vw,22rem)] shadow-xl" onClick={(event) => event.stopPropagation()}><VisitorDetails conversation={active} onClose={() => setShowDetails(false)} onAssign={assign} /></div></div>}
