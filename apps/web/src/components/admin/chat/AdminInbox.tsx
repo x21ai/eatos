@@ -2,9 +2,9 @@
 
 import { useMemo, useState } from 'react';
 import {
-  ArrowLeft, Check, CircleUserRound, Clock3, Globe2,
-  Info, Laptop, Mail, MessageCircle, MoreHorizontal, PanelRight,
-  Send, Smile, Sparkles, UserRound, Users, X,
+  ArrowLeft, BadgeCheck, Check, ChevronDown, CircleUserRound, Clock3, Globe2,
+  Info, Laptop, Mail, MapPin, MessageCircle, MoreHorizontal, PanelRight,
+  Send, Smile, Sparkles, UserRound, Users, X, Zap,
 } from 'lucide-react';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -92,16 +92,50 @@ function MessageBubble({ message, initials }: { message: ChatMessage; initials: 
 }
 
 function VisitorDetails({ conversation, onClose, onAssign }: { conversation: Conversation; onClose?: () => void; onAssign: (assignee: string) => void }) {
+  const [participants, setParticipants] = useState(conversation.participants);
   return <aside className="scrollbar-hidden h-full w-full overflow-y-auto bg-background xl:w-86 xl:border-l">
     <div className="flex items-center justify-between border-b p-4 xl:hidden"><p className="font-semibold">Visitor details</p><Button variant="ghost" size="icon" onClick={onClose} aria-label="Close visitor details"><X /></Button></div>
-    <div className="border-b p-5 text-center"><Avatar className="mx-auto size-16"><AvatarFallback className="bg-brand-soft text-lg font-semibold text-brand">{conversation.initials}</AvatarFallback></Avatar><h2 className="mt-3 truncate font-bold">{conversation.name}</h2><p className="mt-1 text-xs text-muted-foreground">{conversation.location}</p><Button className="mt-4 w-full bg-brand text-primary-foreground hover:bg-brand-strong"><CircleUserRound /> View visitor profile</Button></div>
-    <DetailSection title="Conversation routing"><DetailRow icon={Users} text={conversation.assignee} /><select value={conversation.assignee} onChange={(event) => onAssign(event.target.value)} className="mt-3 h-9 w-full rounded-md border bg-background px-3 text-sm"><option>eatOS Support Team</option><option>Jaspreet Singh</option><option>Maya AI</option><option>Unassigned</option></select></DetailSection>
-    <DetailSection title="Main information"><DetailRow icon={Globe2} text={conversation.location} /><DetailRow icon={Clock3} text={conversation.localTime} /><DetailRow icon={MessageCircle} text="Chat" /><DetailRow icon={Mail} text={conversation.email} /></DetailSection>
-    <DetailSection title="Visitor device"><DetailRow icon={Laptop} text={conversation.browser} /><DetailRow icon={Globe2} text={conversation.ip} /><DetailRow icon={Info} text={conversation.page} /></DetailSection>
+    <div className="border-b p-5 text-center">
+      <Avatar className="mx-auto size-16"><AvatarFallback className="bg-brand-soft text-lg font-semibold text-brand">{conversation.initials}</AvatarFallback></Avatar>
+      <h2 className="mt-3 truncate font-bold">{conversation.name}</h2>
+      <p className="mt-1 flex items-center justify-center gap-1 truncate text-xs text-muted-foreground">{conversation.verified && <BadgeCheck className="size-3.5 shrink-0 text-chart-2" />}<span className="truncate underline">{conversation.email}</span></p>
+      <p className="mt-1 text-xs text-muted-foreground">{conversation.flag} {conversation.location}</p>
+      <Button className="mt-4 w-full bg-brand text-primary-foreground hover:bg-brand-strong"><CircleUserRound /> View {conversation.name.split(' ')[0]} profile</Button>
+    </div>
+    <DetailSection title="Conversation Routing">
+      <DetailRow icon={Users} text={conversation.assignee} />
+      <select value={conversation.assignee} onChange={(event) => onAssign(event.target.value)} className="mt-3 h-9 w-full rounded-md border bg-background px-3 text-sm"><option>eatOS Support Team</option><option>Jaspreet Singh</option><option>Maya AI</option><option>Unassigned</option></select>
+    </DetailSection>
+    <DetailSection title="Main information">
+      <DetailRow icon={MapPin} text={conversation.location} />
+      <DetailRow icon={Clock3} text={conversation.localTime} />
+      <DetailRow icon={Globe2} text={conversation.languages} />
+      <DetailRow icon={MessageCircle} text="Chat" />
+      <DetailRow icon={Info} text={conversation.page} />
+      <DetailRow icon={Mail} text={conversation.email} />
+    </DetailSection>
+    <DetailSection title="Visitor device">
+      <DetailRow icon={Laptop} text={conversation.browser} />
+      <DetailRow icon={Globe2} text={`${conversation.ip} ${conversation.isp}`} />
+    </DetailSection>
+    <DetailSection title="Conversation participants" action={<Button variant="link" size="xs" className="text-brand" onClick={() => setParticipants((items) => [...items, `guest${items.length + 1}@example.com`])}>Add</Button>}>
+      {participants.map((participant) => <DetailRow key={participant} icon={Mail} text={participant} />)}
+    </DetailSection>
+    <DetailSection title="Quick jump">
+      <DetailRow icon={Zap} text="No quick jump links yet." />
+    </DetailSection>
   </aside>;
 }
 
-function DetailSection({ title, children }: { title: string; children: React.ReactNode }) { return <div className="border-b p-5"><h3 className="mb-4 text-xs font-bold">{title}</h3><div className="space-y-3">{children}</div></div>; }
+function DetailSection({ title, action, children }: { title: string; action?: React.ReactNode; children: React.ReactNode }) {
+  const [open, setOpen] = useState(true);
+  return <div className="border-b">
+    <button type="button" onClick={() => setOpen(!open)} className="flex w-full items-center gap-2 px-5 py-3 text-left text-xs font-bold" aria-expanded={open}>
+      <span className="flex-1">{title}</span>{action}<ChevronDown className={cn('size-4 text-muted-foreground transition-transform', !open && '-rotate-90')} />
+    </button>
+    {open && <div className="space-y-3 px-5 pb-4">{children}</div>}
+  </div>;
+}
 function DetailRow({ icon: Icon, text }: { icon: React.ComponentType<{ className?: string }>; text: string }) { return <div className="flex min-w-0 items-start gap-3 text-xs text-muted-foreground"><Icon className="mt-0.5 size-4 shrink-0" /><span className="min-w-0 break-words">{text}</span></div>; }
 
 export default function AdminInbox() {
@@ -120,7 +154,7 @@ export default function AdminInbox() {
   function createConversation({ email, name, subject }: { email: string; name: string; subject: string }) {
     const displayName = name.trim() || email.split('@')[0] || 'New visitor';
     const id = `conversation-${Date.now()}`;
-    const created: Conversation = { id, name: displayName, initials: displayName.split(/\s+/).slice(0, 2).map((part) => part[0]?.toUpperCase()).join('') || 'NV', email, location: 'Unknown', country: 'Unknown', flag: '🌐', localTime: 'Now', browser: 'Unknown device', ip: 'Pending', page: 'Email conversation', preview: subject.trim() || 'New email conversation', date: 'Now', inbox: 'main', unread: false, resolved: false, assignee: 'Unassigned', messages: subject.trim() ? [{ id: `message-${Date.now()}`, author: 'note', body: `Subject: ${subject.trim()}`, time: 'Now' }] : [] };
+    const created: Conversation = { id, name: displayName, initials: displayName.split(/\s+/).slice(0, 2).map((part) => part[0]?.toUpperCase()).join('') || 'NV', email, location: 'Unknown', country: 'Unknown', flag: '🌐', localTime: 'Now', browser: 'Unknown device', ip: 'Pending', isp: 'Pending', languages: '🌐', verified: false, participants: [email], page: 'Email conversation', preview: subject.trim() || 'New email conversation', date: 'Now', inbox: 'main', unread: false, resolved: false, assignee: 'Unassigned', messages: subject.trim() ? [{ id: `message-${Date.now()}`, author: 'note', body: `Subject: ${subject.trim()}`, time: 'Now' }] : [] };
     setConversations((items) => [created, ...items]); setInbox('main'); setActiveId(id); setMobileChat(true);
   }
   return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed} inbox={inbox} onInboxChange={changeInbox}>
