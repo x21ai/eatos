@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  BarChart3, BookOpen, Contact, HelpCircle,
+  BarChart3, BookOpen, Bot, Contact, HelpCircle,
   Inbox, Megaphone, MessageCircle, PanelLeftClose, PanelLeftOpen, Plug,
-  Search, Settings, Users, Zap,
+  Plus, Search, Settings, ShieldCheck, UserRound, Users, Zap,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -24,10 +24,14 @@ export default function AdminChatShell({
   children,
   collapsed,
   onCollapsedChange,
+  inbox,
+  onInboxChange,
 }: {
   children: React.ReactNode;
   collapsed: boolean;
   onCollapsedChange: (value: boolean) => void;
+  inbox?: 'all' | 'main' | 'assigned' | 'automated' | 'spam';
+  onInboxChange?: (value: 'all' | 'main' | 'assigned' | 'automated' | 'spam') => void;
 }) {
   const pathname = usePathname();
   return (
@@ -40,9 +44,23 @@ export default function AdminChatShell({
         <nav className="scrollbar-hidden flex-1 overflow-y-auto p-3">
           <div className="space-y-1">
             {nav.map((item) => {
-              const active = item.href ? pathname?.startsWith(item.href) : false;
+              const active = item.href ? pathname === item.href : false;
               const content = <><item.icon className="size-4 shrink-0" />{!collapsed && <span className="truncate">{item.label}</span>}{!collapsed && item.badge && <span className="ml-auto rounded-full bg-brand px-1.5 py-0.5 text-[10px] font-bold text-primary-foreground">{item.badge}</span>}</>;
-              return item.href ? <Link key={item.label} href={item.href} title={collapsed ? item.label : undefined} className={cn('flex h-10 items-center gap-3 rounded-md px-3 text-sm font-medium transition-colors', active ? 'bg-accent text-foreground shadow-xs' : 'text-muted-foreground hover:bg-accent hover:text-foreground')}>{content}</Link> : <div key={item.label} title={collapsed ? item.label : undefined} className="flex h-10 items-center gap-3 rounded-md px-3 text-sm font-medium text-muted-foreground"><item.icon className="size-4 shrink-0" />{!collapsed && <span className="truncate">{item.label}</span>}{!collapsed && item.badge && <span className="ml-auto rounded-full bg-brand px-1.5 py-0.5 text-[10px] font-bold text-primary-foreground">{item.badge}</span>}</div>;
+              return <div key={item.label}>
+                {item.href ? <Link href={item.href} title={collapsed ? item.label : undefined} className={cn('flex h-10 items-center gap-3 rounded-md px-3 text-sm font-medium transition-colors', active ? 'bg-accent text-foreground shadow-xs' : 'text-muted-foreground hover:bg-accent hover:text-foreground')}>{content}</Link> : <div title={collapsed ? item.label : undefined} className="flex h-10 items-center gap-3 rounded-md px-3 text-sm font-medium text-muted-foreground"><item.icon className="size-4 shrink-0" />{!collapsed && <span className="truncate">{item.label}</span>}{!collapsed && item.badge && <span className="ml-auto rounded-full bg-brand px-1.5 py-0.5 text-[10px] font-bold text-primary-foreground">{item.badge}</span>}</div>}
+                {item.label === 'Inbox' && active && !collapsed && inbox && onInboxChange && <div className="hidden px-2 pb-3 pt-4 lg:block">
+                  <p className="px-2 text-xs font-medium text-muted-foreground">Default Inboxes</p>
+                  <div className="mt-1 space-y-1">
+                    {[{ key: 'main' as const, label: 'Main Inbox', icon: MessageCircle }, { key: 'assigned' as const, label: 'Assigned to me', icon: UserRound }].map(({ key, label, icon: Icon }) => <Button key={key} variant="ghost" onClick={() => onInboxChange(key)} className={cn('h-9 w-full justify-start px-2', inbox === key && 'bg-accent')}><Icon />{label}</Button>)}
+                  </div>
+                  <p className="mt-4 px-2 text-xs font-medium text-muted-foreground">Your Inboxes</p>
+                  <Button variant="ghost" className="mt-1 h-9 w-full justify-start px-2"><Plus />New sub-inbox</Button>
+                  <p className="mt-4 px-2 text-xs font-medium text-muted-foreground">Other Inboxes</p>
+                  <div className="mt-1 space-y-1">
+                    {[{ key: 'automated' as const, label: 'Automated', icon: Bot }, { key: 'spam' as const, label: 'Spam', icon: ShieldCheck }].map(({ key, label, icon: Icon }) => <Button key={key} variant="ghost" onClick={() => onInboxChange(key)} className={cn('h-9 w-full justify-start px-2', inbox === key && 'bg-accent')}><Icon />{label}</Button>)}
+                  </div>
+                </div>}
+              </div>;
             })}
           </div>
         </nav>
