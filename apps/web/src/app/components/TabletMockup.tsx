@@ -1,5 +1,7 @@
 'use client';
 
+import { useRef, useState } from 'react';
+import { Volume2, VolumeX } from 'lucide-react';
 import LazyVideo from '@/components/marketing/LazyVideo';
 
 export type VideoSource = { src: string; type: string };
@@ -11,6 +13,8 @@ interface TabletMockupProps {
   className?: string;
   /** Portrait renders a tall kiosk shell instead of the wide tablet shell. */
   orientation?: 'portrait' | 'landscape';
+  /** The clip has a real audio track, so show a mute/unmute control. */
+  hasAudio?: boolean;
 }
 
 export function TabletMockup({
@@ -19,8 +23,21 @@ export function TabletMockup({
   label,
   className = '',
   orientation = 'landscape',
+  hasAudio = false,
 }: TabletMockupProps) {
   const portrait = orientation === 'portrait';
+  const [muted, setMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const toggleMute = () => {
+    const next = !muted;
+    setMuted(next);
+    const el = videoRef.current;
+    if (el) {
+      el.muted = next;
+      if (!next) el.play?.().catch(() => {});
+    }
+  };
 
   return (
     <div
@@ -45,7 +62,20 @@ export function TabletMockup({
               poster={poster}
               sources={sources}
               ariaLabel={`${label} demo animation`}
+              muted={muted}
+              videoRef={videoRef}
             />
+            {hasAudio && (
+              <button
+                type="button"
+                onClick={toggleMute}
+                aria-label={muted ? `Unmute ${label} video` : `Mute ${label} video`}
+                aria-pressed={!muted}
+                className="absolute bottom-3 right-3 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/60 text-white backdrop-blur-sm transition-colors hover:bg-black/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+              >
+                {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+              </button>
+            )}
           </div>
         </div>
       </div>

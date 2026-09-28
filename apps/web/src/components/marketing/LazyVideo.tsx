@@ -1,12 +1,15 @@
 // @ts-nocheck
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useImperativeHandle, useRef, useState } from 'react';
 
 /**
  * A muted, looping, inline video that only starts downloading once it is close
  * to the screen. The poster shows immediately, so nothing looks empty, and the
  * video file itself never competes with the first screen for bandwidth.
+ *
+ * Pass `muted` to control sound from the parent (defaults to muted, which
+ * autoplay requires). `videoRef` exposes the underlying element.
  */
 export default function LazyVideo({
   sources = [],
@@ -14,10 +17,14 @@ export default function LazyVideo({
   className = '',
   ariaLabel,
   rootMargin = '300px',
+  muted = true,
+  videoRef,
   ...rest
 }) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
+
+  useImperativeHandle(videoRef, () => ref.current);
 
   useEffect(() => {
     const node = ref.current;
@@ -39,6 +46,10 @@ export default function LazyVideo({
     return () => observer.disconnect();
   }, [rootMargin]);
 
+  useEffect(() => {
+    if (ref.current) ref.current.muted = muted;
+  }, [muted, visible]);
+
   return (
     <video
       ref={ref}
@@ -46,7 +57,7 @@ export default function LazyVideo({
       poster={poster}
       autoPlay={visible}
       loop
-      muted
+      muted={muted}
       playsInline
       preload="none"
       aria-label={ariaLabel}

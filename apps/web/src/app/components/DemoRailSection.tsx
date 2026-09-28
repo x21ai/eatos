@@ -236,6 +236,7 @@ export function DemoRailSection({
                   poster={demo.media.poster}
                   label={displayLabel(demo.id)}
                   orientation={demo.media.orientation}
+                  hasAudio={demo.media.hasAudio}
                   className="h-full"
                 />
               </div>
