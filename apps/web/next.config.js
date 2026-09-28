@@ -87,6 +87,7 @@ const nextConfig = {
       ['/support/en-us/article/:slug', '/support/article/:slug'],
       ['/support/en-us/category/:slug', '/support/category/:slug'],
       ['/help', '/support'],
+      ['/chatapp.html', '/chatapp'],
 
       // Slugs used during the rebuild now point at the live canonical URLs.
       ['/about', '/about-eatos'],
