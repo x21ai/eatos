@@ -251,9 +251,27 @@ export default function AdminInbox() {
   function createConversation({ email, name, subject }: { email: string; name: string; subject: string }) {
     const displayName = name.trim() || email.split('@')[0] || 'New visitor';
     const id = `conversation-${Date.now()}`;
-    const created: Conversation = { id, name: displayName, initials: displayName.split(/\s+/).slice(0, 2).map((part) => part[0]?.toUpperCase()).join('') || 'NV', email, location: 'Unknown', country: 'Unknown', flag: '🌐', localTime: 'Now', browser: 'Unknown device', ip: 'Pending', isp: 'Pending', languages: '🌐', verified: false, participants: [email], page: 'Email conversation', preview: subject.trim() || 'New email conversation', date: 'Now', inbox: 'main', unread: false, resolved: false, assignee: 'Unassigned', messages: subject.trim() ? [{ id: `message-${Date.now()}`, author: 'note', body: `Subject: ${subject.trim()}`, time: 'Now' }] : [] };
+    const created: Conversation = { id, name: displayName, initials: displayName.split(/\s+/).slice(0, 2).map((part) => part[0]?.toUpperCase()).join('') || 'NV', email, location: 'Unknown', country: 'Unknown', flag: '🌐', localTime: 'Now', browser: 'Unknown device', ip: 'Pending', isp: 'Pending', languages: '🌐', verified: false, participants: [email], page: 'Email conversation', subject: subject.trim() || undefined, preview: subject.trim() || 'New email conversation', date: 'Now', inbox: 'main', unread: false, resolved: false, assignee: 'Unassigned', messages: subject.trim() ? [{ id: `message-${Date.now()}`, author: 'note', body: `Subject: ${subject.trim()}`, time: 'Now' }] : [] };
     setConversations((items) => [created, ...items]); setInbox('main'); setActiveId(id); setMobileChat(true);
   }
+  function navigate(direction: 1 | -1) {
+    const index = visible.findIndex((item) => item.id === active.id);
+    if (index === -1 || visible.length < 2) return;
+    const next = visible[(index + direction + visible.length) % visible.length];
+    if (next) selectConversation(next.id);
+  }
+  function markUnread() { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, unread: true } : item)); }
+  function moveToInbox(key: Conversation['inbox']) {
+    setConversations((items) => items.map((item) => item.id === active.id ? { ...item, inbox: key } : item));
+    setInbox(key); setActiveId(active.id); setMobileChat(false);
+  }
+  function removeActive() {
+    const remaining = conversations.filter((item) => item.id !== active.id);
+    if (!remaining.length) return;
+    setConversations(remaining);
+    setActiveId(remaining[0].id);
+  }
+  function setSubject(subject: string) { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, subject: subject || undefined } : item)); }
   return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed} inbox={inbox} onInboxChange={changeInbox}>
     <div className="flex h-full min-w-0">
       <div className={cn('min-w-0 flex-1 md:flex', mobileChat ? 'hidden md:flex' : 'flex')}><ConversationList conversations={visible} activeId={active.id} onSelect={selectConversation} onCreateConversation={createConversation} /></div>
