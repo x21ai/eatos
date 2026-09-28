@@ -1,13 +1,16 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
-  ArrowLeft, BadgeCheck, Check, ChevronDown, CircleUserRound, Clock3, Globe2,
-  Info, Laptop, Mail, MapPin, MessageCircle, MoreHorizontal, PanelRight,
-  Send, Smile, Sparkles, UserRound, Users, X, Zap,
+  ArrowLeft, ArrowRight, BadgeCheck, Ban, Check, ChevronDown, CircleUserRound, Clock3, Download, Globe2,
+  Info, Laptop, Link, Mail, MapPin, MessageCircle, MessageSquareOff, MoreHorizontal, PanelRight,
+  PenLine, Phone, Send, Smile, Sparkles, Trash2, UserRound, Users, Video, X, Zap,
 } from 'lucide-react';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import AdminChatShell from './AdminChatShell';
 import { ConversationToolbar, matchesCustomFilter, type ConversationView } from './ConversationToolbar';
@@ -48,19 +51,100 @@ function ConversationList({ conversations, activeId, onSelect, onCreateConversat
   );
 }
 
-function Transcript({ conversation, onBack, onShowDetails, onResolve, onSend }: { conversation: Conversation; onBack: () => void; onShowDetails: () => void; onResolve: () => void; onSend: (body: string, note: boolean) => void }) {
+const inboxTargets: { key: Conversation['inbox']; label: string }[] = [
+  { key: 'main', label: 'Main Inbox' },
+  { key: 'assigned', label: 'Assigned to me' },
+  { key: 'automated', label: 'Automated' },
+  { key: 'spam', label: 'Spam' },
+];
+
+function copyConversationLink() {
+  try { void navigator.clipboard?.writeText(window.location.href); } catch { /* clipboard unavailable */ }
+}
+
+function Transcript({
+  conversation, onBack, onShowDetails, onResolve, onSend, onNavigate, onMarkUnread, onMoveToInbox, onDelete, onSetSubject,
+}: {
+  conversation: Conversation;
+  onBack: () => void;
+  onShowDetails: () => void;
+  onResolve: () => void;
+  onSend: (body: string, note: boolean) => void;
+  onNavigate: (direction: 1 | -1) => void;
+  onMarkUnread: () => void;
+  onMoveToInbox: (inbox: Conversation['inbox']) => void;
+  onDelete: () => void;
+  onSetSubject: (subject: string) => void;
+}) {
   const [draft, setDraft] = useState('');
   const [note, setNote] = useState(false);
+  const [subjectOpen, setSubjectOpen] = useState(false);
+  const [subjectDraft, setSubjectDraft] = useState(conversation.subject ?? '');
+  const navigateRef = useRef(onNavigate);
+  useEffect(() => { navigateRef.current = onNavigate; });
+  useEffect(() => {
+    function onKey(event: KeyboardEvent) {
+      if (!event.ctrlKey || !event.altKey) return;
+      if (event.key === 'ArrowUp') { event.preventDefault(); navigateRef.current(-1); }
+      else if (event.key === 'ArrowDown') { event.preventDefault(); navigateRef.current(1); }
+    }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
   function submit() { const body = draft.trim(); if (!body) return; onSend(body, note); setDraft(''); }
+  function saveSubject() { onSetSubject(subjectDraft.trim()); setSubjectOpen(false); }
   return (
     <section className="flex min-w-0 flex-1 flex-col bg-background">
-      <header className="flex h-14 shrink-0 items-center gap-2 border-b px-3">
+      <header className="flex h-14 shrink-0 items-center gap-1 border-b px-2 md:gap-1.5 md:px-3">
         <Button variant="ghost" size="icon" className="md:hidden" onClick={onBack} aria-label="Back to conversations"><ArrowLeft /></Button>
         <Avatar><AvatarFallback className="bg-brand-soft text-brand">{conversation.initials}</AvatarFallback></Avatar>
         <div className="min-w-0 flex-1"><h1 className="truncate text-sm font-semibold">{conversation.name}</h1><p className="text-[11px] text-muted-foreground">{conversation.flag} {conversation.location}</p></div>
-        <Button variant="ghost" size="icon" aria-label="Conversation actions"><MoreHorizontal /></Button>
-        <Button variant={conversation.resolved ? 'outline' : 'default'} size="sm" onClick={onResolve}><Check />{conversation.resolved ? 'Reopen' : 'Resolve'}</Button>
-        <Button variant="ghost" size="icon" className="xl:hidden" onClick={onShowDetails} aria-label="Show visitor details"><PanelRight /></Button>
+        <div className="flex shrink-0 items-center gap-0.5">
+          <Button variant="ghost" size="icon-sm" aria-label="Call visitor"><Phone /></Button>
+          <Button variant="ghost" size="icon-sm" aria-label="Start video call"><Video /></Button>
+          <Button variant="ghost" size="icon-sm" aria-label="Block visitor"><Ban /></Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild><Button variant="ghost" size="icon-sm" aria-label="Conversation actions"><MoreHorizontal /></Button></DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-64">
+              <DropdownMenuItem onSelect={onMarkUnread}><MessageSquareOff /> Mark as unread</DropdownMenuItem>
+              <DropdownMenuItem onSelect={copyConversationLink}><Link /> Copy link</DropdownMenuItem>
+              <DropdownMenuItem onSelect={() => { setSubjectDraft(conversation.subject ?? ''); setSubjectOpen(true); }}><PenLine /> Set Subject</DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger><Mail /> Transcript</DropdownMenuSubTrigger>
+                <DropdownMenuSubContent>
+                  <DropdownMenuItem><Mail /> Email transcript</DropdownMenuItem>
+                  <DropdownMenuItem><Download /> Download transcript</DropdownMenuItem>
+                </DropdownMenuSubContent>
+              </DropdownMenuSub>
+              <DropdownMenuSeparator />
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger><ArrowRight /> Move to inbox</DropdownMenuSubTrigger>
+                <DropdownMenuSubContent>
+                  {inboxTargets.map((target) => (
+                    <DropdownMenuItem key={target.key} onSelect={() => onMoveToInbox(target.key)}>{target.label}</DropdownMenuItem>
+                  ))}
+                </DropdownMenuSubContent>
+              </DropdownMenuSub>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onSelect={() => onNavigate(1)}>Next<DropdownMenuShortcut>Ctrl Alt ↑</DropdownMenuShortcut></DropdownMenuItem>
+              <DropdownMenuItem onSelect={() => onNavigate(-1)}>Previous<DropdownMenuShortcut>Ctrl Alt ↓</DropdownMenuShortcut></DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onSelect={() => onMoveToInbox('spam')}><Trash2 /> Mark as spam</DropdownMenuItem>
+              <DropdownMenuItem variant="destructive" onSelect={onDelete}><Trash2 /> Delete conversation</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={onResolve}
+          className={cn('ml-1 shrink-0 gap-1.5 text-white', conversation.resolved ? 'bg-chart-2 hover:bg-chart-2/90' : 'bg-chart-5 hover:bg-chart-5/90')}
+        >
+          {conversation.resolved ? <Check /> : <ArrowRight />}
+          <span className="whitespace-nowrap">{conversation.resolved ? 'Resolved' : 'Unresolved'}</span>
+        </Button>
+        <Button variant="ghost" size="icon" className="hidden xl:inline-flex" onClick={onShowDetails} aria-label="Show visitor details"><PanelRight /></Button>
       </header>
       <div className="scrollbar-hidden flex-1 space-y-5 overflow-y-auto p-4 md:p-6">
         <div className="mx-auto w-fit rounded-full bg-muted px-3 py-1 text-[11px] text-muted-foreground">21 September</div>
@@ -77,6 +161,19 @@ function Transcript({ conversation, onBack, onShowDetails, onResolve, onSend }: 
           <div className="flex items-center gap-1 px-2 pb-2"><Button variant="ghost" size="icon-sm" aria-label="Add emoji"><Smile /></Button><Button variant="ghost" size="icon-sm" aria-label="AI tools"><Sparkles /></Button><Button onClick={submit} size="icon" className="ml-auto bg-brand text-primary-foreground hover:bg-brand-strong" aria-label={note ? 'Add note' : 'Send reply'}><Send /></Button></div>
         </div>
       </div>
+      <Dialog open={subjectOpen} onOpenChange={setSubjectOpen}>
+        <DialogContent className="sm:max-w-sm">
+          <DialogHeader>
+            <DialogTitle>Set Subject</DialogTitle>
+            <DialogDescription>Add a subject to this conversation.</DialogDescription>
+          </DialogHeader>
+          <Input value={subjectDraft} onChange={(event) => setSubjectDraft(event.target.value)} onKeyDown={(event) => { if (event.key === 'Enter') { event.preventDefault(); saveSubject(); } }} placeholder="Subject" aria-label="Conversation subject" />
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setSubjectOpen(false)}>Cancel</Button>
+            <Button onClick={saveSubject}>Save</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
@@ -154,13 +251,31 @@ export default function AdminInbox() {
   function createConversation({ email, name, subject }: { email: string; name: string; subject: string }) {
     const displayName = name.trim() || email.split('@')[0] || 'New visitor';
     const id = `conversation-${Date.now()}`;
-    const created: Conversation = { id, name: displayName, initials: displayName.split(/\s+/).slice(0, 2).map((part) => part[0]?.toUpperCase()).join('') || 'NV', email, location: 'Unknown', country: 'Unknown', flag: '🌐', localTime: 'Now', browser: 'Unknown device', ip: 'Pending', isp: 'Pending', languages: '🌐', verified: false, participants: [email], page: 'Email conversation', preview: subject.trim() || 'New email conversation', date: 'Now', inbox: 'main', unread: false, resolved: false, assignee: 'Unassigned', messages: subject.trim() ? [{ id: `message-${Date.now()}`, author: 'note', body: `Subject: ${subject.trim()}`, time: 'Now' }] : [] };
+    const created: Conversation = { id, name: displayName, initials: displayName.split(/\s+/).slice(0, 2).map((part) => part[0]?.toUpperCase()).join('') || 'NV', email, location: 'Unknown', country: 'Unknown', flag: '🌐', localTime: 'Now', browser: 'Unknown device', ip: 'Pending', isp: 'Pending', languages: '🌐', verified: false, participants: [email], page: 'Email conversation', subject: subject.trim() || undefined, preview: subject.trim() || 'New email conversation', date: 'Now', inbox: 'main', unread: false, resolved: false, assignee: 'Unassigned', messages: subject.trim() ? [{ id: `message-${Date.now()}`, author: 'note', body: `Subject: ${subject.trim()}`, time: 'Now' }] : [] };
     setConversations((items) => [created, ...items]); setInbox('main'); setActiveId(id); setMobileChat(true);
   }
+  function navigate(direction: 1 | -1) {
+    const index = visible.findIndex((item) => item.id === active.id);
+    if (index === -1 || visible.length < 2) return;
+    const next = visible[(index + direction + visible.length) % visible.length];
+    if (next) selectConversation(next.id);
+  }
+  function markUnread() { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, unread: true } : item)); }
+  function moveToInbox(key: Conversation['inbox']) {
+    setConversations((items) => items.map((item) => item.id === active.id ? { ...item, inbox: key } : item));
+    setInbox(key); setActiveId(active.id); setMobileChat(false);
+  }
+  function removeActive() {
+    const remaining = conversations.filter((item) => item.id !== active.id);
+    if (!remaining.length) return;
+    setConversations(remaining);
+    setActiveId(remaining[0].id);
+  }
+  function setSubject(subject: string) { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, subject: subject || undefined } : item)); }
   return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed} inbox={inbox} onInboxChange={changeInbox}>
     <div className="flex h-full min-w-0">
       <div className={cn('min-w-0 flex-1 md:flex', mobileChat ? 'hidden md:flex' : 'flex')}><ConversationList conversations={visible} activeId={active.id} onSelect={selectConversation} onCreateConversation={createConversation} /></div>
-      <div className={cn('min-w-0 flex-[1.55] md:flex', mobileChat ? 'flex' : 'hidden')}><Transcript conversation={active} onBack={() => setMobileChat(false)} onShowDetails={() => setShowDetails(true)} onResolve={() => setConversations((items) => items.map((item) => item.id === active.id ? { ...item, resolved: !item.resolved } : item))} onSend={send} /></div>
+      <div className={cn('min-w-0 flex-[1.55] md:flex', mobileChat ? 'flex' : 'hidden')}><Transcript conversation={active} onBack={() => setMobileChat(false)} onShowDetails={() => setShowDetails(true)} onResolve={() => setConversations((items) => items.map((item) => item.id === active.id ? { ...item, resolved: !item.resolved } : item))} onSend={send} onNavigate={navigate} onMarkUnread={markUnread} onMoveToInbox={moveToInbox} onDelete={removeActive} onSetSubject={setSubject} /></div>
       <div className="hidden xl:block"><VisitorDetails conversation={active} onAssign={assign} /></div>
       {showDetails && <div className="fixed inset-0 z-50 flex justify-end bg-foreground/20 xl:hidden" onClick={() => setShowDetails(false)}><div className="h-full w-[min(90vw,22rem)] shadow-xl" onClick={(event) => event.stopPropagation()}><VisitorDetails conversation={active} onClose={() => setShowDetails(false)} onAssign={assign} /></div></div>}
     </div>
