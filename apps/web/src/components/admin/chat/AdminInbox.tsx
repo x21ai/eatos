@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowLeft, ArrowRight, BadgeCheck, Ban, Check, ChevronDown, CircleUserRound, Clock3, Download, Globe2,
   Info, Laptop, Link, Mail, MapPin, MessageCircle, MessageSquareOff, MoreHorizontal, PanelRight,
