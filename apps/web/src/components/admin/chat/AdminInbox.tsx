@@ -2,8 +2,8 @@
 
 import { useMemo, useState } from 'react';
 import {
-  ArrowLeft, Bot, Check, ChevronDown, CircleUserRound, Clock3, Filter, Globe2,
-  Info, Laptop, Mail, Menu, MessageCircle, MoreHorizontal, PanelRight, Plus,
+  ArrowLeft, Bot, Check, CircleUserRound, Clock3, Filter, Globe2,
+  Info, Laptop, Mail, MessageCircle, MoreHorizontal, PanelRight, Plus,
   Search, Send, ShieldCheck, Smile, Sparkles, UserRound, Users, X,
 } from 'lucide-react';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
@@ -42,7 +42,8 @@ function InboxTree({ selected, onSelect }: { selected: InboxKey; onSelect: (key:
 
 function ConversationList({ conversations, activeId, onSelect, inbox, onInboxChange }: { conversations: Conversation[]; activeId: string; onSelect: (id: string) => void; inbox: InboxKey; onInboxChange: (key: InboxKey) => void }) {
   const [query, setQuery] = useState('');
-  const filtered = conversations.filter((item) => `${item.name} ${item.email} ${item.preview}`.toLowerCase().includes(query.toLowerCase()));
+  const [openOnly, setOpenOnly] = useState(false);
+  const filtered = conversations.filter((item) => (!openOnly || !item.resolved) && `${item.name} ${item.email} ${item.preview}`.toLowerCase().includes(query.toLowerCase()));
   return (
     <section className="flex min-w-0 flex-1 flex-col border-r bg-background lg:max-w-100 xl:max-w-112">
       <header className="flex h-14 shrink-0 items-center gap-2 border-b px-3">
@@ -50,7 +51,7 @@ function ConversationList({ conversations, activeId, onSelect, inbox, onInboxCha
           <option value="all">All conversations</option>{inboxItems.map((item) => <option key={item.key} value={item.key}>{item.label}</option>)}
         </select>
         <div className="relative min-w-0 flex-1"><Search className="absolute left-2.5 top-2.5 size-4 text-muted-foreground" /><Input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search conversations" className="pl-8" /></div>
-        <Button variant="ghost" size="icon" aria-label="Filter conversations"><Filter /></Button>
+        <Button variant={openOnly ? 'secondary' : 'ghost'} size="icon" onClick={() => setOpenOnly((value) => !value)} aria-label={openOnly ? 'Show all conversations' : 'Show open conversations only'} title={openOnly ? 'Showing open conversations' : 'Filter open conversations'}><Filter /></Button>
         <Button variant="ghost" size="icon" aria-label="Start conversation"><Plus /></Button>
       </header>
       <div className="scrollbar-hidden flex-1 overflow-y-auto">
@@ -109,11 +110,11 @@ function MessageBubble({ message, initials }: { message: ChatMessage; initials: 
   </div>;
 }
 
-function VisitorDetails({ conversation, onClose }: { conversation: Conversation; onClose?: () => void }) {
+function VisitorDetails({ conversation, onClose, onAssign }: { conversation: Conversation; onClose?: () => void; onAssign: (assignee: string) => void }) {
   return <aside className="scrollbar-hidden h-full w-full overflow-y-auto bg-background xl:w-86 xl:border-l">
     <div className="flex items-center justify-between border-b p-4 xl:hidden"><p className="font-semibold">Visitor details</p><Button variant="ghost" size="icon" onClick={onClose} aria-label="Close visitor details"><X /></Button></div>
     <div className="border-b p-5 text-center"><Avatar className="mx-auto size-16"><AvatarFallback className="bg-brand-soft text-lg font-semibold text-brand">{conversation.initials}</AvatarFallback></Avatar><h2 className="mt-3 truncate font-bold">{conversation.name}</h2><p className="mt-1 text-xs text-muted-foreground">{conversation.location}</p><Button className="mt-4 w-full bg-brand text-primary-foreground hover:bg-brand-strong"><CircleUserRound /> View visitor profile</Button></div>
-    <DetailSection title="Conversation routing"><DetailRow icon={Users} text={conversation.assignee} /><select className="mt-3 h-9 w-full rounded-md border bg-background px-3 text-sm"><option>eatOS Support Team</option><option>Jaspreet Singh</option><option>Maya AI</option><option>Unassigned</option></select></DetailSection>
+    <DetailSection title="Conversation routing"><DetailRow icon={Users} text={conversation.assignee} /><select value={conversation.assignee} onChange={(event) => onAssign(event.target.value)} className="mt-3 h-9 w-full rounded-md border bg-background px-3 text-sm"><option>eatOS Support Team</option><option>Jaspreet Singh</option><option>Maya AI</option><option>Unassigned</option></select></DetailSection>
     <DetailSection title="Main information"><DetailRow icon={Globe2} text={conversation.location} /><DetailRow icon={Clock3} text={conversation.localTime} /><DetailRow icon={MessageCircle} text="Chat" /><DetailRow icon={Mail} text={conversation.email} /></DetailSection>
     <DetailSection title="Visitor device"><DetailRow icon={Laptop} text={conversation.browser} /><DetailRow icon={Globe2} text={conversation.ip} /><DetailRow icon={Info} text={conversation.page} /></DetailSection>
   </aside>;
@@ -133,13 +134,14 @@ export default function AdminInbox() {
   const active = conversations.find((item) => item.id === activeId) ?? visible[0] ?? conversations[0];
   function selectConversation(id: string) { setActiveId(id); setMobileChat(true); setConversations((items) => items.map((item) => item.id === id ? { ...item, unread: false } : item)); }
   function send(body: string, note: boolean) { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, preview: body, messages: [...item.messages, { id: `${Date.now()}`, author: note ? 'note' : 'agent', body, time: 'Now' }] } : item)); }
+  function assign(assignee: string) { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, assignee } : item)); }
   return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed}>
     <div className="flex h-full min-w-0">
       <InboxTree selected={inbox} onSelect={(key) => { setInbox(key); const next = conversations.find((item) => item.inbox === key); if (next) setActiveId(next.id); }} />
       <div className={cn('min-w-0 flex-1 md:flex', mobileChat ? 'hidden md:flex' : 'flex')}><ConversationList conversations={visible} activeId={active.id} onSelect={selectConversation} inbox={inbox} onInboxChange={setInbox} /></div>
       <div className={cn('min-w-0 flex-[1.55] md:flex', mobileChat ? 'flex' : 'hidden')}><Transcript conversation={active} onBack={() => setMobileChat(false)} onShowDetails={() => setShowDetails(true)} onResolve={() => setConversations((items) => items.map((item) => item.id === active.id ? { ...item, resolved: !item.resolved } : item))} onSend={send} /></div>
-      <div className="hidden xl:block"><VisitorDetails conversation={active} /></div>
-      {showDetails && <div className="fixed inset-0 z-50 flex justify-end bg-foreground/20 xl:hidden" onClick={() => setShowDetails(false)}><div className="h-full w-[min(90vw,22rem)] shadow-xl" onClick={(event) => event.stopPropagation()}><VisitorDetails conversation={active} onClose={() => setShowDetails(false)} /></div></div>}
+      <div className="hidden xl:block"><VisitorDetails conversation={active} onAssign={assign} /></div>
+      {showDetails && <div className="fixed inset-0 z-50 flex justify-end bg-foreground/20 xl:hidden" onClick={() => setShowDetails(false)}><div className="h-full w-[min(90vw,22rem)] shadow-xl" onClick={(event) => event.stopPropagation()}><VisitorDetails conversation={active} onClose={() => setShowDetails(false)} onAssign={assign} /></div></div>}
     </div>
   </AdminChatShell>;
 }
