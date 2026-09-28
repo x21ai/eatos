@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  Activity, BarChart3, Bot, BookOpen, ChevronLeft, ChevronRight, Contact, HelpCircle,
-  Inbox, Mail, Megaphone, MessageCircle, PanelLeftClose, PanelLeftOpen, Plug,
+  BarChart3, BookOpen, Contact, HelpCircle,
+  Inbox, Megaphone, MessageCircle, PanelLeftClose, PanelLeftOpen, Plug,
   Search, Settings, Users, Zap,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -53,7 +53,16 @@ export default function AdminChatShell({
         </div>
         <Button variant="outline" size="icon-sm" onClick={() => onCollapsedChange(!collapsed)} className="absolute bottom-4 z-10 hidden md:inline-flex" style={{ left: collapsed ? 56 : 236 }} aria-label={collapsed ? 'Expand navigation' : 'Collapse navigation'}>{collapsed ? <PanelLeftOpen /> : <PanelLeftClose />}</Button>
       </aside>
-      <div className="min-w-0 flex-1">{children}</div>
+      <div className="flex min-w-0 flex-1 flex-col">
+        <header className="flex h-14 shrink-0 items-center justify-between border-b bg-background px-4 md:hidden">
+          <Link href="/admin/inbox" className="flex items-center gap-2 text-sm font-bold"><span className="grid size-8 place-items-center rounded-md bg-brand text-primary-foreground"><MessageCircle className="size-4" /></span>eatOS Chat</Link>
+          <div className="flex items-center gap-1">
+            <Button asChild variant={pathname?.startsWith('/admin/inbox') ? 'secondary' : 'ghost'} size="sm"><Link href="/admin/inbox"><Inbox /> Inbox</Link></Button>
+            <Button asChild variant={pathname === '/admin/settings' ? 'secondary' : 'ghost'} size="icon-sm"><Link href="/admin/settings" aria-label="Settings"><Settings /></Link></Button>
+          </div>
+        </header>
+        <div className="min-h-0 flex-1">{children}</div>
+      </div>
     </div>
   );
 }
