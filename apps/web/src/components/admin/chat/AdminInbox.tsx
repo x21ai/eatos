@@ -97,15 +97,13 @@ function Transcript({
     <section className="flex min-w-0 flex-1 flex-col bg-background">
       <header className="flex h-14 shrink-0 items-center gap-1 border-b px-2 md:gap-1.5 md:px-3">
         <Button variant="ghost" size="icon" className="md:hidden" onClick={onBack} aria-label="Back to conversations"><ArrowLeft /></Button>
-        <Avatar><AvatarFallback className="bg-brand-soft text-brand">{conversation.initials}</AvatarFallback></Avatar>
-        <div className="min-w-0 flex-1"><h1 className="truncate text-sm font-semibold">{conversation.name}</h1><p className="text-[11px] text-muted-foreground">{conversation.flag} {conversation.location}</p></div>
         <div className="flex shrink-0 items-center gap-0.5">
           <Button variant="ghost" size="icon-sm" aria-label="Call visitor"><Phone /></Button>
           <Button variant="ghost" size="icon-sm" aria-label="Start video call"><Video /></Button>
           <Button variant="ghost" size="icon-sm" aria-label="Block visitor"><Ban /></Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild><Button variant="ghost" size="icon-sm" aria-label="Conversation actions"><MoreHorizontal /></Button></DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-64">
+            <DropdownMenuContent align="start" className="w-64">
               <DropdownMenuItem onSelect={onMarkUnread}><MessageSquareOff /> Mark as unread</DropdownMenuItem>
               <DropdownMenuItem onSelect={copyConversationLink}><Link /> Copy link</DropdownMenuItem>
               <DropdownMenuItem onSelect={() => { setSubjectDraft(conversation.subject ?? ''); setSubjectOpen(true); }}><PenLine /> Set Subject</DropdownMenuItem>
@@ -135,16 +133,17 @@ function Transcript({
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
+        <div className="min-w-0 flex-1" />
         <Button
           variant="ghost"
           size="sm"
           onClick={onResolve}
-          className={cn('ml-1 shrink-0 gap-1.5 text-white', conversation.resolved ? 'bg-chart-2 hover:bg-chart-2/90' : 'bg-chart-5 hover:bg-chart-5/90')}
+          className={cn('shrink-0 gap-1.5 text-white', conversation.resolved ? 'bg-chart-2 hover:bg-chart-2/90' : 'bg-chart-5 hover:bg-chart-5/90')}
         >
           {conversation.resolved ? <Check /> : <ArrowRight />}
           <span className="whitespace-nowrap">{conversation.resolved ? 'Resolved' : 'Unresolved'}</span>
         </Button>
-        <Button variant="ghost" size="icon" className="hidden xl:inline-flex" onClick={onShowDetails} aria-label="Show visitor details"><PanelRight /></Button>
+        <Button variant="ghost" size="icon" className="xl:hidden" onClick={onShowDetails} aria-label="Show visitor details"><PanelRight /></Button>
       </header>
       <div className="scrollbar-hidden flex-1 space-y-5 overflow-y-auto p-4 md:p-6">
         <div className="mx-auto w-fit rounded-full bg-muted px-3 py-1 text-[11px] text-muted-foreground">21 September</div>
