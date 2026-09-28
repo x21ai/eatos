@@ -21,6 +21,7 @@ export type Conversation = {
   verified: boolean;
   participants: string[];
   page: string;
+  subject?: string;
   preview: string;
   date: string;
   inbox: 'main' | 'assigned' | 'automated' | 'spam';

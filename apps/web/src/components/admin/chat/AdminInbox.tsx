@@ -1,13 +1,16 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
-  ArrowLeft, BadgeCheck, Check, ChevronDown, CircleUserRound, Clock3, Globe2,
-  Info, Laptop, Mail, MapPin, MessageCircle, MoreHorizontal, PanelRight,
-  Send, Smile, Sparkles, UserRound, Users, X, Zap,
+  ArrowLeft, ArrowRight, BadgeCheck, Ban, Check, ChevronDown, CircleUserRound, Clock3, Download, Globe2,
+  Info, Laptop, Link, Mail, MapPin, MessageCircle, MessageSquareOff, MoreHorizontal, PanelRight,
+  PenLine, Phone, Send, Smile, Sparkles, Trash2, UserRound, Users, Video, X, Zap,
 } from 'lucide-react';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import AdminChatShell from './AdminChatShell';
 import { ConversationToolbar, matchesCustomFilter, type ConversationView } from './ConversationToolbar';
