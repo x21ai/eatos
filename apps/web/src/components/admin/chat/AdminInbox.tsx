@@ -2,15 +2,15 @@
 
 import { useMemo, useState } from 'react';
 import {
-  ArrowLeft, Check, CircleUserRound, Clock3, Filter, Globe2,
+  ArrowLeft, Check, CircleUserRound, Clock3, Globe2,
   Info, Laptop, Mail, MessageCircle, MoreHorizontal, PanelRight, Plus,
-  Search, Send, Smile, Sparkles, UserRound, Users, X,
+  Send, Smile, Sparkles, UserRound, Users, X,
 } from 'lucide-react';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import AdminChatShell from './AdminChatShell';
+import { ConversationToolbar, conversationViews, matchesCustomFilter, type ConversationView } from './ConversationToolbar';
 import { initialConversations, type Conversation, type Message as ChatMessage } from './mock-data';
 
 type InboxKey = Conversation['inbox'] | 'all';
@@ -22,19 +22,25 @@ const inboxItems: { key: InboxKey; label: string; icon: React.ComponentType<{ cl
   { key: 'spam', label: 'Spam', icon: MessageCircle },
 ];
 
-function ConversationList({ conversations, activeId, onSelect, inbox, onInboxChange }: { conversations: Conversation[]; activeId: string; onSelect: (id: string) => void; inbox: InboxKey; onInboxChange: (key: InboxKey) => void }) {
-  const [query, setQuery] = useState('');
-  const [openOnly, setOpenOnly] = useState(false);
-  const filtered = conversations.filter((item) => (!openOnly || !item.resolved) && `${item.name} ${item.email} ${item.preview}`.toLowerCase().includes(query.toLowerCase()));
+function ConversationList({ conversations, activeId, onSelect, onCreateConversation }: { conversations: Conversation[]; activeId: string; onSelect: (id: string) => void; onCreateConversation: (values: { email: string; name: string; subject: string }) => void }) {
+  const [view, setView] = useState<ConversationView>('all');
+  const [customFilter, setCustomFilter] = useState<Parameters<typeof matchesCustomFilter>[1]>();
+  const filtered = useMemo(() => {
+    const items = conversations.filter((item) => {
+      if (!matchesCustomFilter(item, customFilter)) return false;
+      if (customFilter || view === 'all' || view === 'recent' || view === 'waiting') return true;
+      if (view === 'unread') return item.unread;
+      if (view === 'pending') return !item.resolved && item.assignee === 'Unassigned';
+      if (view === 'unresolved') return !item.resolved;
+      if (view === 'resolved') return item.resolved;
+      return item.messages.some((message) => message.author === 'note' && message.body.includes('@'));
+    });
+    return view === 'waiting' ? [...items].reverse() : items;
+  }, [conversations, customFilter, view]);
   return (
     <section className="flex min-w-0 flex-1 flex-col border-r bg-background lg:max-w-100 xl:max-w-112">
       <header className="flex h-14 shrink-0 items-center gap-2 border-b px-3">
-        <select value={inbox} onChange={(event) => onInboxChange(event.target.value as InboxKey)} aria-label="Select inbox" className="h-9 min-w-0 rounded-md border bg-background px-3 text-sm font-semibold outline-none focus:ring-2 focus:ring-ring lg:hidden">
-          <option value="all">All conversations</option>{inboxItems.map((item) => <option key={item.key} value={item.key}>{item.label}</option>)}
-        </select>
-        <div className="relative min-w-0 flex-1"><Search className="absolute left-2.5 top-2.5 size-4 text-muted-foreground" /><Input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search conversations" className="pl-8" /></div>
-        <Button variant={openOnly ? 'secondary' : 'ghost'} size="icon" onClick={() => setOpenOnly((value) => !value)} aria-label={openOnly ? 'Show all conversations' : 'Show open conversations only'} title={openOnly ? 'Showing open conversations' : 'Filter open conversations'}><Filter /></Button>
-        <Button variant="ghost" size="icon" aria-label="Start conversation"><Plus /></Button>
+        <ConversationToolbar view={view} onViewChange={setView} customFilter={customFilter} onCustomFilterChange={setCustomFilter} onCreateConversation={onCreateConversation} />
       </header>
       <div className="scrollbar-hidden flex-1 overflow-y-auto">
         {filtered.length ? filtered.map((conversation) => (
@@ -118,9 +124,15 @@ export default function AdminInbox() {
   function send(body: string, note: boolean) { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, preview: body, messages: [...item.messages, { id: `${Date.now()}`, author: note ? 'note' : 'agent', body, time: 'Now' }] } : item)); }
   function assign(assignee: string) { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, assignee } : item)); }
   function changeInbox(key: InboxKey) { setInbox(key); const next = conversations.find((item) => item.inbox === key); if (next) setActiveId(next.id); }
+  function createConversation({ email, name, subject }: { email: string; name: string; subject: string }) {
+    const displayName = name.trim() || email.split('@')[0] || 'New visitor';
+    const id = `conversation-${Date.now()}`;
+    const created: Conversation = { id, name: displayName, initials: displayName.split(/\s+/).slice(0, 2).map((part) => part[0]?.toUpperCase()).join('') || 'NV', email, location: 'Unknown', country: 'Unknown', flag: '🌐', localTime: 'Now', browser: 'Unknown device', ip: 'Pending', page: 'Email conversation', preview: subject.trim() || 'New email conversation', date: 'Now', inbox: 'main', unread: false, resolved: false, assignee: 'Unassigned', messages: subject.trim() ? [{ id: `message-${Date.now()}`, author: 'note', body: `Subject: ${subject.trim()}`, time: 'Now' }] : [] };
+    setConversations((items) => [created, ...items]); setInbox('main'); setActiveId(id); setMobileChat(true);
+  }
   return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed} inbox={inbox} onInboxChange={changeInbox}>
     <div className="flex h-full min-w-0">
-      <div className={cn('min-w-0 flex-1 md:flex', mobileChat ? 'hidden md:flex' : 'flex')}><ConversationList conversations={visible} activeId={active.id} onSelect={selectConversation} inbox={inbox} onInboxChange={changeInbox} /></div>
+      <div className={cn('min-w-0 flex-1 md:flex', mobileChat ? 'hidden md:flex' : 'flex')}><ConversationList conversations={visible} activeId={active.id} onSelect={selectConversation} onCreateConversation={createConversation} /></div>
       <div className={cn('min-w-0 flex-[1.55] md:flex', mobileChat ? 'flex' : 'hidden')}><Transcript conversation={active} onBack={() => setMobileChat(false)} onShowDetails={() => setShowDetails(true)} onResolve={() => setConversations((items) => items.map((item) => item.id === active.id ? { ...item, resolved: !item.resolved } : item))} onSend={send} /></div>
       <div className="hidden xl:block"><VisitorDetails conversation={active} onAssign={assign} /></div>
       {showDetails && <div className="fixed inset-0 z-50 flex justify-end bg-foreground/20 xl:hidden" onClick={() => setShowDetails(false)}><div className="h-full w-[min(90vw,22rem)] shadow-xl" onClick={(event) => event.stopPropagation()}><VisitorDetails conversation={active} onClose={() => setShowDetails(false)} onAssign={assign} /></div></div>}
