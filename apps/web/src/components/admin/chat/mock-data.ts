@@ -16,6 +16,10 @@ export type Conversation = {
   localTime: string;
   browser: string;
   ip: string;
+  isp: string;
+  languages: string;
+  verified: boolean;
+  participants: string[];
   page: string;
   preview: string;
   date: string;
