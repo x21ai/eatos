@@ -212,16 +212,23 @@ function MessageBubble({ message, initials }: { message: ChatMessage; initials: 
 function VisitorDetails({ conversation, onClose, onAssign }: { conversation: Conversation; onClose?: () => void; onAssign: (assignee: string) => void }) {
   const [participants, setParticipants] = useState(conversation.participants);
   useEffect(() => setParticipants(conversation.participants), [conversation.id, conversation.participants]);
-  return <aside className="scrollbar-hidden h-full w-full overflow-y-auto bg-background lg:w-72 lg:border-l 2xl:w-86">
+  return <aside className="scrollbar-hidden h-full w-full overflow-y-auto bg-background lg:w-80 lg:border-l 2xl:w-96">
     <div className="flex items-center justify-between border-b p-4 lg:hidden"><p className="font-semibold">Visitor details</p><Button variant="ghost" size="icon" onClick={onClose} aria-label="Close visitor details"><X /></Button></div>
-    <div className="border-b p-5 text-center">
-      <Avatar className="mx-auto size-16"><AvatarFallback className="bg-brand-soft text-lg font-semibold text-brand">{conversation.initials}</AvatarFallback></Avatar>
-      <h2 className="mt-3 truncate font-bold">{conversation.name}</h2>
-      <p className="mt-1 flex items-center justify-center gap-1 truncate text-xs text-muted-foreground">{conversation.verified && <BadgeCheck className="size-3.5 shrink-0 text-chart-2" />}<span className="truncate underline">{conversation.email}</span></p>
-      <p className="mt-1 text-xs text-muted-foreground">{conversation.flag} {conversation.location}</p>
-      <Button className="mt-4 w-full bg-brand text-primary-foreground hover:bg-brand-strong"><CircleUserRound /> View {conversation.name.split(' ')[0]} profile</Button>
+    <div className="border-b px-6 py-6">
+      <div className="flex min-w-0 items-center gap-4">
+        <div className="relative shrink-0">
+          <Avatar className="size-18"><AvatarFallback className="bg-brand-soft text-2xl font-medium text-brand">{conversation.initials}</AvatarFallback></Avatar>
+          <span className="absolute -left-0.5 -top-0.5 size-4 rounded-full border-2 border-background bg-chart-4" aria-label="Online" />
+        </div>
+        <div className="min-w-0 flex-1">
+          <h2 className="truncate text-lg font-bold">{conversation.name}</h2>
+          <p className="mt-1 flex min-w-0 items-center gap-1 text-sm font-semibold text-foreground">{conversation.verified && <BadgeCheck className="size-4 shrink-0 text-chart-4" />}<span className="truncate underline">{conversation.email}</span></p>
+          <p className="mt-1 truncate text-sm text-muted-foreground">{conversation.flag} {conversation.location}</p>
+        </div>
+      </div>
+      <Button className="mt-5 w-full"><CircleUserRound /> View {conversation.name.split(' ')[0]} Profile</Button>
     </div>
-    <DetailSection title="Conversation Routing">
+    <DetailSection title="Conversation Routing" defaultOpen>
       <DetailRow icon={Users} text={conversation.assignee} />
       <select value={conversation.assignee} onChange={(event) => onAssign(event.target.value)} className="mt-3 h-9 w-full rounded-md border bg-background px-3 text-sm"><option>eatOS Support Team</option><option>Jaspreet Singh</option><option>Maya AI</option><option>Unassigned</option></select>
     </DetailSection>
@@ -243,20 +250,47 @@ function VisitorDetails({ conversation, onClose, onAssign }: { conversation: Con
     <DetailSection title="Quick jump">
       <DetailRow icon={Zap} text="No quick jump links yet." />
     </DetailSection>
+    <DetailSection title="Segments for conversation">
+      <DetailRow icon={Users} text="No segments assigned." />
+    </DetailSection>
+    <DetailSection title="Custom data">
+      <DetailRow icon={Info} text="No custom data available." />
+    </DetailSection>
+    <DetailSection title="Last profile events">
+      <DetailRow icon={Clock3} text={`Conversation viewed ${conversation.date}.`} />
+    </DetailSection>
+    <DetailSection title="Private notepad">
+      <DetailRow icon={MessageCircle} text="No private notes yet." />
+    </DetailSection>
+    <DetailSection title="Videosupport" icon={Video}>
+      <DetailRow icon={Video} text="Start a demo video support session." />
+    </DetailSection>
+    <DetailSection title="Bot (Beta)" icon={Sparkles}>
+      <DetailRow icon={Sparkles} text="Maya AI assistance is available." />
+    </DetailSection>
+    <DetailSection title="Message Scheduler" icon={Clock3}>
+      <DetailRow icon={Clock3} text="No messages scheduled." />
+    </DetailSection>
+    <DetailSection title="Ask Rating" icon={BadgeCheck}>
+      <DetailRow icon={BadgeCheck} text="Send a satisfaction rating request." />
+    </DetailSection>
+    <DetailSection title="Hugo" icon={CircleUserRound}>
+      <DetailRow icon={CircleUserRound} text="Hugo is ready for this conversation." />
+    </DetailSection>
   </aside>;
 }
 
-function DetailSection({ title, action, children }: { title: string; action?: React.ReactNode; children: React.ReactNode }) {
-  const [open, setOpen] = useState(true);
-  return <div className="border-b">
-    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center px-5 py-1">
-      <Button type="button" variant="ghost" onClick={() => setOpen(!open)} className="h-auto min-w-0 justify-start rounded-none px-0 py-2 text-left text-xs font-bold" aria-expanded={open}>
-        <span className="truncate">{title}</span><ChevronDown className={cn('ml-auto size-4 shrink-0 text-muted-foreground transition-transform', !open && '-rotate-90')} />
-      </Button>
-      {action}
+function DetailSection({ title, action, children, icon: Icon, defaultOpen = false }: { title: string; action?: React.ReactNode; children: React.ReactNode; icon?: React.ComponentType<{ className?: string }>; defaultOpen?: boolean }) {
+  return <details className="group/details border-b" open={defaultOpen || undefined}>
+    <summary className="flex h-12 cursor-pointer list-none items-center px-6 text-left text-sm font-medium outline-none hover:bg-accent focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring [&::-webkit-details-marker]:hidden">
+        {Icon && <span className="mr-2 grid size-5 shrink-0 place-items-center rounded border bg-muted"><Icon className="size-3.5" /></span>}
+        <span className="min-w-0 flex-1 truncate">{title}</span><ChevronDown className="ml-auto size-4 shrink-0 -rotate-90 text-muted-foreground transition-transform group-open/details:rotate-0" />
+    </summary>
+    <div className="space-y-3 px-6 pb-5">
+      {action && <div className="flex justify-end">{action}</div>}
+      {children}
     </div>
-    {open && <div className="space-y-3 px-5 pb-4">{children}</div>}
-  </div>;
+  </details>;
 }
 function DetailRow({ icon: Icon, text }: { icon: React.ComponentType<{ className?: string }>; text: string }) { return <div className="flex min-w-0 items-start gap-3 text-xs text-muted-foreground"><Icon className="mt-0.5 size-4 shrink-0" /><span className="min-w-0 break-words">{text}</span></div>; }
 
