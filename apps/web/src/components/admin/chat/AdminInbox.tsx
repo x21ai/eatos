@@ -135,8 +135,12 @@ function Transcript({
               <details className="group/transcript relative">
                 <summary className="flex h-10 cursor-pointer list-none items-center gap-2 px-4 text-[15px] hover:bg-accent [&::-webkit-details-marker]:hidden"><Mail className="size-4 text-muted-foreground" /> Transcript <span className="ml-auto">›</span></summary>
                 <div className="absolute left-full top-0 z-50 ml-1 w-56 overflow-hidden rounded-md border bg-popover p-1 shadow-lg max-md:left-0 max-md:top-full max-md:ml-0">
-                  <Button variant="ghost" className="h-10 w-full justify-start" onClick={() => toast.success(`Transcript queued for ${conversation.email}`)}><Mail /> Email transcript</Button>
-                  <Button variant="ghost" className="h-10 w-full justify-start" onClick={downloadTranscript}><Download /> Download transcript</Button>
+                  <Button variant="ghost" className="h-10 w-full justify-start" onClick={() => toast.success('Transcript will be sent to you')}>Send to me</Button>
+                  <Button variant="ghost" className="h-10 w-full justify-start" onClick={() => toast.success('Transcript will be sent to Wazirabad')}>Send to Wazirabad</Button>
+                  <Button variant="ghost" className="h-10 w-full justify-start" onClick={() => toast.info('Choose a teammate to receive the transcript')}>Send to someone else</Button>
+                  <div className="my-1 h-px bg-border" />
+                  <Button variant="ghost" className="h-10 w-full justify-start" onClick={() => toast.success(`Text transcript queued for ${conversation.email}`)}><Mail /> Email text transcript</Button>
+                  <Button variant="ghost" className="h-10 w-full justify-start" onClick={downloadTranscript}><Download /> Download</Button>
                 </div>
               </details>
               <div className="h-px bg-border" />
