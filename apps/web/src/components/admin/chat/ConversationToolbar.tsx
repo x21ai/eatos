@@ -53,8 +53,6 @@ export function ConversationToolbar({
   onCreateConversation: (values: { email: string; name: string; subject: string }) => void;
 }) {
   const [filters, setFilters] = useState<CustomFilter[]>([]);
-  const [filterDialogOpen, setFilterDialogOpen] = useState(false);
-  const [conversationDialogOpen, setConversationDialogOpen] = useState(false);
   const currentView = conversationViews.find((item) => item.value === view) ?? conversationViews[0];
 
   const menuItem = 'flex h-10 w-full items-center gap-3 rounded-md px-3 text-left text-sm hover:bg-accent focus-visible:bg-accent focus-visible:outline-none';
