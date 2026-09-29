@@ -40,10 +40,10 @@ function ConversationList({ conversations, activeId, onSelect, onCreateConversat
       </header>
       <div className="scrollbar-hidden flex-1 overflow-y-auto">
         {filtered.length ? filtered.map((conversation) => (
-          <Button key={conversation.id} variant="ghost" onClick={() => onSelect(conversation.id)} className={cn('h-auto w-full rounded-none border-b px-4 py-4 text-left hover:bg-accent/60', activeId === conversation.id && 'bg-accent')}>
+          <Button key={conversation.id} asChild variant="ghost" className={cn('h-auto w-full justify-start rounded-none border-b px-4 py-4 text-left hover:bg-accent/60', activeId === conversation.id && 'bg-accent')}><a href={`/chatapp?c=${encodeURIComponent(conversation.id)}`} aria-current={activeId === conversation.id ? 'true' : undefined} onClick={(event) => { event.preventDefault(); onSelect(conversation.id); window.history.replaceState(null, '', `/chatapp?c=${encodeURIComponent(conversation.id)}`); }}>
             <Avatar className="size-11"><AvatarFallback className="bg-brand-soft font-semibold text-brand">{conversation.initials}</AvatarFallback></Avatar>
             <span className="min-w-0 flex-1"><span className="flex items-center gap-2"><span className="truncate font-semibold">{conversation.name}</span><span className="ml-auto shrink-0 text-[11px] font-normal text-muted-foreground">{conversation.date}</span></span><span className="mt-1 flex items-center gap-2 text-xs font-normal text-muted-foreground"><span>{conversation.flag}</span><span className="truncate">{conversation.preview}</span>{conversation.unread && <span className="ml-auto size-2 shrink-0 rounded-full bg-brand" />}</span></span>
-          </Button>
+          </a></Button>
         )) : <div className="grid h-48 place-items-center px-8 text-center text-sm text-muted-foreground">No conversations match this view.</div>}
       </div>
       <footer className="flex h-13 items-center justify-between border-t px-4 text-xs text-muted-foreground"><span>{filtered.length} conversations</span><span className="inline-flex items-center gap-1"><span className="size-2 rounded-full bg-chart-2" /> Team online</span></footer>
@@ -298,12 +298,13 @@ function DetailSection({ title, action, children, icon: Icon, defaultOpen = fals
 }
 function DetailRow({ icon: Icon, text }: { icon: React.ComponentType<{ className?: string }>; text: string }) { return <div className="flex min-w-0 items-start gap-3 text-xs text-muted-foreground"><Icon className="mt-0.5 size-4 shrink-0" /><span className="min-w-0 break-words">{text}</span></div>; }
 
-export default function AdminInbox() {
+export default function AdminInbox({ initialId }: { initialId?: string }) {
+  const startConversation = initialConversations.find((item) => item.id === initialId);
   const [collapsed, setCollapsed] = useState(false);
-  const [inbox, setInbox] = useState<InboxKey>('main');
-  const [conversations, setConversations] = useState(initialConversations);
-  const [activeId, setActiveId] = useState(initialConversations[0].id);
-  const [mobileChat, setMobileChat] = useState(false);
+  const [inbox, setInbox] = useState<InboxKey>(startConversation?.inbox ?? 'main');
+  const [conversations, setConversations] = useState(() => initialConversations.map((item) => item.id === startConversation?.id ? { ...item, unread: false } : item));
+  const [activeId, setActiveId] = useState(startConversation?.id ?? initialConversations[0].id);
+  const [mobileChat, setMobileChat] = useState(Boolean(startConversation));
   const [showDetails, setShowDetails] = useState(false);
   const visible = useMemo(() => inbox === 'all' ? conversations : conversations.filter((item) => item.inbox === inbox), [conversations, inbox]);
   const active = conversations.find((item) => item.id === activeId) ?? visible[0] ?? conversations[0];
