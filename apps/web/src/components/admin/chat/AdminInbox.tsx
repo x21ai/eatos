@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { toast } from 'sonner';
 import {
   ArrowLeft, ArrowRight, BadgeCheck, Ban, Check, ChevronDown, CircleUserRound, Clock3, Download, Globe2,
   Info, Laptop, Link, Mail, MapPin, MessageCircle, MessageSquareOff, MoreHorizontal, PanelRight,
@@ -93,26 +94,45 @@ function Transcript({
   }, []);
   function submit() { const body = draft.trim(); if (!body) return; onSend(body, note); setDraft(''); }
   function saveSubject() { onSetSubject(subjectDraft.trim()); setSubjectOpen(false); }
+  async function copyLink() {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      toast.success('Conversation link copied');
+    } catch {
+      toast.error('The conversation link could not be copied');
+    }
+  }
+  function downloadTranscript() {
+    const lines = conversation.messages.map((message) => `${message.time}  ${message.author}: ${message.body}`);
+    const blob = new Blob([[conversation.subject, ...lines].filter(Boolean).join('\n\n')], { type: 'text/plain' });
+    const href = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = href;
+    anchor.download = `${conversation.id}-transcript.txt`;
+    anchor.click();
+    URL.revokeObjectURL(href);
+    toast.success('Transcript downloaded');
+  }
   return (
     <section className="flex min-w-0 flex-1 flex-col bg-background">
       <header className="flex h-14 shrink-0 items-center gap-1 border-b px-2 md:gap-1.5 md:px-3">
         <Button variant="ghost" size="icon" className="md:hidden" onClick={onBack} aria-label="Back to conversations"><ArrowLeft /></Button>
         <div className="flex shrink-0 items-center gap-0.5">
-          <Button variant="ghost" size="icon-sm" aria-label="Call visitor"><Phone /></Button>
-          <Button variant="ghost" size="icon-sm" aria-label="Start video call"><Video /></Button>
-          <Button variant="ghost" size="icon-sm" aria-label="Block visitor"><Ban /></Button>
+          <Button variant="ghost" size="icon-sm" onClick={() => toast.info(`Demo call started with ${conversation.name}`)} aria-label="Call visitor"><Phone /></Button>
+          <Button variant="ghost" size="icon-sm" onClick={() => toast.info(`Demo video call started with ${conversation.name}`)} aria-label="Start video call"><Video /></Button>
+          <Button variant="ghost" size="icon-sm" onClick={() => toast.warning(`${conversation.name} is blocked for this demo session`)} aria-label="Block visitor"><Ban /></Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild><Button variant="ghost" size="icon-sm" aria-label="Conversation actions"><MoreHorizontal /></Button></DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-64">
               <DropdownMenuItem onSelect={onMarkUnread}><MessageSquareOff /> Mark as unread</DropdownMenuItem>
-              <DropdownMenuItem onSelect={copyConversationLink}><Link /> Copy link</DropdownMenuItem>
+              <DropdownMenuItem onSelect={() => void copyLink()}><Link /> Copy link</DropdownMenuItem>
               <DropdownMenuItem onSelect={() => { setSubjectDraft(conversation.subject ?? ''); setSubjectOpen(true); }}><PenLine /> Set Subject</DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuSub>
                 <DropdownMenuSubTrigger><Mail /> Transcript</DropdownMenuSubTrigger>
                 <DropdownMenuSubContent>
-                  <DropdownMenuItem><Mail /> Email transcript</DropdownMenuItem>
-                  <DropdownMenuItem><Download /> Download transcript</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => toast.success(`Transcript queued for ${conversation.email}`)}><Mail /> Email transcript</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={downloadTranscript}><Download /> Download transcript</DropdownMenuItem>
                 </DropdownMenuSubContent>
               </DropdownMenuSub>
               <DropdownMenuSeparator />
@@ -143,7 +163,7 @@ function Transcript({
           {conversation.resolved ? <Check /> : <ArrowRight />}
           <span className="whitespace-nowrap">{conversation.resolved ? 'Resolved' : 'Unresolved'}</span>
         </Button>
-        <Button variant="ghost" size="icon" className="xl:hidden" onClick={onShowDetails} aria-label="Show visitor details"><PanelRight /></Button>
+        <Button variant="ghost" size="icon" className="lg:hidden" onClick={onShowDetails} aria-label="Show visitor details"><PanelRight /></Button>
       </header>
       <div className="scrollbar-hidden flex-1 space-y-5 overflow-y-auto p-4 md:p-6">
         <div className="mx-auto w-fit rounded-full bg-muted px-3 py-1 text-[11px] text-muted-foreground">21 September</div>
@@ -189,8 +209,9 @@ function MessageBubble({ message, initials }: { message: ChatMessage; initials: 
 
 function VisitorDetails({ conversation, onClose, onAssign }: { conversation: Conversation; onClose?: () => void; onAssign: (assignee: string) => void }) {
   const [participants, setParticipants] = useState(conversation.participants);
-  return <aside className="scrollbar-hidden h-full w-full overflow-y-auto bg-background xl:w-86 xl:border-l">
-    <div className="flex items-center justify-between border-b p-4 xl:hidden"><p className="font-semibold">Visitor details</p><Button variant="ghost" size="icon" onClick={onClose} aria-label="Close visitor details"><X /></Button></div>
+  useEffect(() => setParticipants(conversation.participants), [conversation.id, conversation.participants]);
+  return <aside className="scrollbar-hidden h-full w-full overflow-y-auto bg-background lg:w-72 lg:border-l 2xl:w-86">
+    <div className="flex items-center justify-between border-b p-4 lg:hidden"><p className="font-semibold">Visitor details</p><Button variant="ghost" size="icon" onClick={onClose} aria-label="Close visitor details"><X /></Button></div>
     <div className="border-b p-5 text-center">
       <Avatar className="mx-auto size-16"><AvatarFallback className="bg-brand-soft text-lg font-semibold text-brand">{conversation.initials}</AvatarFallback></Avatar>
       <h2 className="mt-3 truncate font-bold">{conversation.name}</h2>
@@ -226,9 +247,9 @@ function VisitorDetails({ conversation, onClose, onAssign }: { conversation: Con
 function DetailSection({ title, action, children }: { title: string; action?: React.ReactNode; children: React.ReactNode }) {
   const [open, setOpen] = useState(true);
   return <div className="border-b">
-    <button type="button" onClick={() => setOpen(!open)} className="flex w-full items-center gap-2 px-5 py-3 text-left text-xs font-bold" aria-expanded={open}>
+    <Button type="button" variant="ghost" onClick={() => setOpen(!open)} className="h-auto w-full justify-start rounded-none px-5 py-3 text-left text-xs font-bold" aria-expanded={open}>
       <span className="flex-1">{title}</span>{action}<ChevronDown className={cn('size-4 text-muted-foreground transition-transform', !open && '-rotate-90')} />
-    </button>
+    </Button>
     {open && <div className="space-y-3 px-5 pb-4">{children}</div>}
   </div>;
 }
@@ -244,14 +265,14 @@ export default function AdminInbox() {
   const visible = useMemo(() => inbox === 'all' ? conversations : conversations.filter((item) => item.inbox === inbox), [conversations, inbox]);
   const active = conversations.find((item) => item.id === activeId) ?? visible[0] ?? conversations[0];
   function selectConversation(id: string) { setActiveId(id); setMobileChat(true); setConversations((items) => items.map((item) => item.id === id ? { ...item, unread: false } : item)); }
-  function send(body: string, note: boolean) { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, preview: body, messages: [...item.messages, { id: `${Date.now()}`, author: note ? 'note' : 'agent', body, time: 'Now' }] } : item)); }
-  function assign(assignee: string) { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, assignee } : item)); }
+  function send(body: string, note: boolean) { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, preview: body, messages: [...item.messages, { id: `${Date.now()}`, author: note ? 'note' : 'agent', body, time: 'Now' }] } : item)); toast.success(note ? 'Internal note added' : 'Demo reply sent'); }
+  function assign(assignee: string) { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, assignee } : item)); toast.success(`Conversation assigned to ${assignee}`); }
   function changeInbox(key: InboxKey) { setInbox(key); const next = conversations.find((item) => item.inbox === key); if (next) setActiveId(next.id); }
   function createConversation({ email, name, subject }: { email: string; name: string; subject: string }) {
     const displayName = name.trim() || email.split('@')[0] || 'New visitor';
     const id = `conversation-${Date.now()}`;
     const created: Conversation = { id, name: displayName, initials: displayName.split(/\s+/).slice(0, 2).map((part) => part[0]?.toUpperCase()).join('') || 'NV', email, location: 'Unknown', country: 'Unknown', flag: '🌐', localTime: 'Now', browser: 'Unknown device', ip: 'Pending', isp: 'Pending', languages: '🌐', verified: false, participants: [email], page: 'Email conversation', subject: subject.trim() || undefined, preview: subject.trim() || 'New email conversation', date: 'Now', inbox: 'main', unread: false, resolved: false, assignee: 'Unassigned', messages: subject.trim() ? [{ id: `message-${Date.now()}`, author: 'note', body: `Subject: ${subject.trim()}`, time: 'Now' }] : [] };
-    setConversations((items) => [created, ...items]); setInbox('main'); setActiveId(id); setMobileChat(true);
+    setConversations((items) => [created, ...items]); setInbox('main'); setActiveId(id); setMobileChat(true); toast.success('Demo conversation created');
   }
   function navigate(direction: 1 | -1) {
     const index = visible.findIndex((item) => item.id === active.id);
@@ -259,24 +280,24 @@ export default function AdminInbox() {
     const next = visible[(index + direction + visible.length) % visible.length];
     if (next) selectConversation(next.id);
   }
-  function markUnread() { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, unread: true } : item)); }
+  function markUnread() { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, unread: true } : item)); toast.success('Conversation marked as unread'); }
   function moveToInbox(key: Conversation['inbox']) {
     setConversations((items) => items.map((item) => item.id === active.id ? { ...item, inbox: key } : item));
-    setInbox(key); setActiveId(active.id); setMobileChat(false);
+    setInbox(key); setActiveId(active.id); toast.success(`Conversation moved to ${inboxTargets.find((target) => target.key === key)?.label ?? key}`);
   }
   function removeActive() {
     const remaining = conversations.filter((item) => item.id !== active.id);
-    if (!remaining.length) return;
+    if (!remaining.length) { toast.error('The final demo conversation cannot be deleted'); return; }
     setConversations(remaining);
-    setActiveId(remaining[0].id);
+    setActiveId(remaining[0].id); toast.success('Conversation deleted from this demo session');
   }
-  function setSubject(subject: string) { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, subject: subject || undefined } : item)); }
+  function setSubject(subject: string) { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, subject: subject || undefined } : item)); toast.success(subject ? 'Conversation subject updated' : 'Conversation subject cleared'); }
   return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed} inbox={inbox} onInboxChange={changeInbox}>
     <div className="flex h-full min-w-0">
-      <div className={cn('min-w-0 flex-1 md:flex lg:max-w-100 xl:max-w-112', mobileChat ? 'hidden md:flex' : 'flex')}><ConversationList conversations={visible} activeId={active.id} onSelect={selectConversation} onCreateConversation={createConversation} /></div>
+       <div className={cn('min-w-0 flex-1 md:flex lg:max-w-72 2xl:max-w-112', mobileChat ? 'hidden md:flex' : 'flex')}><ConversationList conversations={visible} activeId={active.id} onSelect={selectConversation} onCreateConversation={createConversation} /></div>
       <div className={cn('min-w-0 flex-[1.55] md:flex', mobileChat ? 'flex' : 'hidden')}><Transcript conversation={active} onBack={() => setMobileChat(false)} onShowDetails={() => setShowDetails(true)} onResolve={() => setConversations((items) => items.map((item) => item.id === active.id ? { ...item, resolved: !item.resolved } : item))} onSend={send} onNavigate={navigate} onMarkUnread={markUnread} onMoveToInbox={moveToInbox} onDelete={removeActive} onSetSubject={setSubject} /></div>
-      <div className="hidden xl:block"><VisitorDetails conversation={active} onAssign={assign} /></div>
-      {showDetails && <div className="fixed inset-0 z-50 flex justify-end bg-foreground/20 xl:hidden" onClick={() => setShowDetails(false)}><div className="h-full w-[min(90vw,22rem)] shadow-xl" onClick={(event) => event.stopPropagation()}><VisitorDetails conversation={active} onClose={() => setShowDetails(false)} onAssign={assign} /></div></div>}
+       <div className="hidden shrink-0 lg:block"><VisitorDetails conversation={active} onAssign={assign} /></div>
+       {showDetails && <div className="fixed inset-0 z-50 flex justify-end bg-foreground/20 lg:hidden" onClick={() => setShowDetails(false)}><div className="h-full w-[min(90vw,22rem)] shadow-xl" onClick={(event) => event.stopPropagation()}><VisitorDetails conversation={active} onClose={() => setShowDetails(false)} onAssign={assign} /></div></div>}
     </div>
   </AdminChatShell>;
 }
