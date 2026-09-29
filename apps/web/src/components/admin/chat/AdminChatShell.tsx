@@ -19,7 +19,7 @@ const nav = [
   { label: 'AI Agent', icon: Zap },
   { label: 'Visitors', icon: Users, href: '/chatapp/visitors', badge: '6' },
   { label: 'Contacts', icon: Contact, href: '/chatapp/contacts' },
-  { label: 'Knowledge Base', icon: BookOpen },
+  { label: 'Knowledge Base', icon: BookOpen, href: '/chatapp/knowledge-base' },
   { label: 'Campaigns', icon: Megaphone },
   { label: 'Analytics', icon: BarChart3 },
 ];
