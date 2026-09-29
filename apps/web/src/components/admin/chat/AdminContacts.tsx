@@ -45,7 +45,7 @@ function ContactPreview({ contact }: { contact: ChatContact }) {
     <div className="scrollbar-hidden min-h-0 flex-1 overflow-y-auto p-3">
       <section className="overflow-hidden rounded-lg border bg-background">
         <ContactMap contact={contact} className="h-40" />
-        <div className="px-5 py-6 text-center"><ContactAvatar contact={contact} large /><h3 className="mt-4 text-xl font-bold">{contact.name}</h3><p className="mt-1 text-sm text-muted-foreground">Last active: <strong>{contact.lastActivity}</strong></p><Button className="mt-5 bg-chart-1 text-primary-foreground hover:bg-chart-1/90" onClick={() => toast.success(`Conversation opened with ${contact.name}`)}><MessageCircle />Send a message</Button></div>
+        <div className="flex flex-col items-center px-5 py-6 text-center"><ContactAvatar contact={contact} large /><h3 className="mt-4 text-xl font-bold">{contact.name}</h3><p className="mt-1 text-sm text-muted-foreground">Last active: <strong>{contact.lastActivity}</strong></p><Button className="mt-5 bg-chart-1 text-primary-foreground hover:bg-chart-1/90" onClick={() => toast.success(`Conversation opened with ${contact.name}`)}><MessageCircle />Send a message</Button></div>
       </section>
       <div className="mt-4 space-y-4"><ContactInformationCard contact={contact} /><SegmentsCard contact={contact} /><CompanyCard contact={contact} /></div>
     </div>
