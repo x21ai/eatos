@@ -287,14 +287,17 @@ export default function AdminInbox() {
   function removeActive() {
     const remaining = conversations.filter((item) => item.id !== active.id);
     if (!remaining.length) { toast.error('The final demo conversation cannot be deleted'); return; }
+    const next = inbox === 'all' ? remaining[0] : remaining.find((item) => item.inbox === inbox) ?? remaining[0];
     setConversations(remaining);
-    setActiveId(remaining[0].id); toast.success('Conversation deleted from this demo session');
+    setActiveId(next.id);
+    if (inbox !== 'all' && next.inbox !== inbox) setInbox(next.inbox);
+    toast.success('Conversation deleted from this demo session');
   }
   function setSubject(subject: string) { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, subject: subject || undefined } : item)); toast.success(subject ? 'Conversation subject updated' : 'Conversation subject cleared'); }
   return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed} inbox={inbox} onInboxChange={changeInbox}>
     <div className="flex h-full min-w-0">
        <div className={cn('min-w-0 flex-1 md:flex lg:max-w-72 2xl:max-w-112', mobileChat ? 'hidden md:flex' : 'flex')}><ConversationList conversations={visible} activeId={active.id} onSelect={selectConversation} onCreateConversation={createConversation} /></div>
-      <div className={cn('min-w-0 flex-[1.55] md:flex', mobileChat ? 'flex' : 'hidden')}><Transcript conversation={active} onBack={() => setMobileChat(false)} onShowDetails={() => setShowDetails(true)} onResolve={() => setConversations((items) => items.map((item) => item.id === active.id ? { ...item, resolved: !item.resolved } : item))} onSend={send} onNavigate={navigate} onMarkUnread={markUnread} onMoveToInbox={moveToInbox} onDelete={removeActive} onSetSubject={setSubject} /></div>
+       <div className={cn('min-w-0 flex-[1.55] md:flex', mobileChat ? 'flex' : 'hidden')}><Transcript conversation={active} onBack={() => setMobileChat(false)} onShowDetails={() => setShowDetails(true)} onResolve={() => { setConversations((items) => items.map((item) => item.id === active.id ? { ...item, resolved: !item.resolved } : item)); toast.success(active.resolved ? 'Conversation reopened' : 'Conversation resolved'); }} onSend={send} onNavigate={navigate} onMarkUnread={markUnread} onMoveToInbox={moveToInbox} onDelete={removeActive} onSetSubject={setSubject} /></div>
        <div className="hidden shrink-0 lg:block"><VisitorDetails conversation={active} onAssign={assign} /></div>
        {showDetails && <div className="fixed inset-0 z-50 flex justify-end bg-foreground/20 lg:hidden" onClick={() => setShowDetails(false)}><div className="h-full w-[min(90vw,22rem)] shadow-xl" onClick={(event) => event.stopPropagation()}><VisitorDetails conversation={active} onClose={() => setShowDetails(false)} onAssign={assign} /></div></div>}
     </div>
