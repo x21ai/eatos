@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import {
   BarChart3, Bell, BookOpen, Bookmark, Bot, Calendar, CirclePlus, Contact, Flag, Folder,
-  Heart, HelpCircle, Inbox, Megaphone, MessageCircle, PanelLeftClose, PanelLeftOpen, Plug,
+  Heart, HelpCircle, Inbox, ListFilter as FilterIcon, Megaphone, MessageCircle, PanelLeftClose, PanelLeftOpen, Plug,
   Plus, Search, Settings, ShieldCheck, Star, Tag, UserRound, Users, X, Zap,
 } from 'lucide-react';
 import { toast } from 'sonner';
@@ -30,12 +30,18 @@ export default function AdminChatShell({
   onCollapsedChange,
   inbox,
   onInboxChange,
+  contactFilters,
+  activeContactFilter,
+  onContactFilterChange,
 }: {
   children: React.ReactNode;
   collapsed: boolean;
   onCollapsedChange: (value: boolean) => void;
   inbox?: 'all' | 'main' | 'assigned' | 'automated' | 'spam';
   onInboxChange?: (value: 'all' | 'main' | 'assigned' | 'automated' | 'spam') => void;
+  contactFilters?: { id: string; name: string }[];
+  activeContactFilter?: string;
+  onContactFilterChange?: (id: string) => void;
 }) {
   const pathname = usePathname();
   const currentPath = pathname?.replace(/\.html$/, '').replace(/\/$/, '') || '/';
@@ -122,6 +128,9 @@ export default function AdminChatShell({
                  <Link href="/chatapp/contacts" className="flex h-10 items-center gap-3 rounded-md bg-accent px-3 text-sm font-medium text-foreground shadow-xs">{content}</Link>
                  <div className="px-2 pb-3 pt-3">
                    <p className="px-2 text-xs font-medium text-muted-foreground">Filters</p>
+                    {contactFilters && contactFilters.length > 0 && <div className="mt-1 space-y-1">
+                      {contactFilters.map((filter) => <Button key={filter.id} variant="ghost" onClick={() => onContactFilterChange?.(filter.id)} className={cn('h-9 w-full justify-start px-2', activeContactFilter === filter.id && 'bg-accent text-foreground')}><FilterIcon />{filter.name}</Button>)}
+                    </div>}
                    <button type="button" popoverTarget="contacts-filter-create" className="mt-1 flex h-9 w-full items-center gap-2 rounded-md px-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground"><Plus className="size-4" />Create filter</button>
                  </div>
                </div>;
