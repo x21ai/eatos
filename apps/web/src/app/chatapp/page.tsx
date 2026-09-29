@@ -6,8 +6,9 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-export default async function ChatAppPage({ searchParams }: { searchParams: Promise<{ c?: string | string[] }> }) {
-  const { c } = await searchParams;
+export default async function ChatAppPage({ searchParams }: { searchParams: Promise<{ c?: string | string[]; inbox?: string | string[] }> }) {
+  const { c, inbox } = await searchParams;
+  const box = Array.isArray(inbox) ? inbox[0] : inbox;
   const id = Array.isArray(c) ? c[0] : c;
-  return <AdminInbox key={id ?? 'default'} initialId={id} />;
+  return <AdminInbox key={`${id ?? ''}-${box ?? ''}`} initialId={id} initialInbox={box} />;
 }
