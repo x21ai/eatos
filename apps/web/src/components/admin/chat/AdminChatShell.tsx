@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import {
   BarChart3, Bell, BookOpen, Bookmark, Bot, Calendar, CirclePlus, Contact, Flag, Folder,
   Heart, HelpCircle, Inbox, Megaphone, MessageCircle, PanelLeftClose, PanelLeftOpen, Plug,
@@ -50,7 +50,6 @@ export default function AdminChatShell({
     toast.success(`Sub-inbox "${name}" created`);
     setNewName('');
     setNewIcon(0);
-    closeDialog();
   };
   const SelectedIcon = iconChoices[newIcon] ?? Calendar;
   const inboxOptions = onInboxChange && inbox ? <>
