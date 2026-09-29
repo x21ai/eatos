@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import {
-  ArrowLeft, Ban, ChevronDown, FileText, Globe2, Languages, MessageCircle, Minus, MonitorUp,
+  ArrowLeft, Ban, ChevronDown, FileText, Languages, MessageCircle, Minus, MonitorUp,
   MoreHorizontal, Phone, Plus, Search, Send, Smile, Sparkle, UserRound, Video,
 } from 'lucide-react';
 import { toast } from 'sonner';
