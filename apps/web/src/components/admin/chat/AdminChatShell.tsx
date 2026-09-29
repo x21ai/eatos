@@ -61,7 +61,42 @@ export default function AdminChatShell({
       {[{ key: 'main' as const, label: 'Main Inbox', icon: MessageCircle }, { key: 'assigned' as const, label: 'Assigned to me', icon: UserRound }].map(({ key, label, icon: Icon }) => <Button key={key} variant="ghost" onClick={() => onInboxChange(key)} className={cn('h-9 w-full justify-start px-2', inbox === key && 'bg-accent')}><Icon />{label}</Button>)}
     </div>
     <p className="mt-4 px-2 text-xs font-medium text-muted-foreground">Your Inboxes</p>
-    <Button variant="ghost" className="mt-1 h-9 w-full justify-start px-2"><Plus />New sub-inbox</Button>
+    {subInboxes.length > 0 && <div className="mt-1 space-y-1">
+      {subInboxes.map((box) => { const BoxIcon = iconChoices[box.icon] ?? Calendar; return <Button key={box.name} variant="ghost" className="h-9 w-full justify-start px-2"><BoxIcon />{box.name}</Button>; })}
+    </div>}
+    <details ref={dialogRef} className="group/subinbox mt-1">
+      <summary className="flex h-9 w-full cursor-pointer list-none items-center gap-2 rounded-md px-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground marker:hidden [&::-webkit-details-marker]:hidden"><Plus className="size-4 shrink-0" />New sub-inbox</summary>
+      <div className="fixed inset-0 z-50 grid place-items-center bg-black/50 p-4" onClick={closeDialog}>
+        <div role="dialog" aria-modal="true" aria-label="Create New Sub-Inbox" className="w-full max-w-[54rem] rounded-xl bg-background p-6 shadow-xl sm:p-8" onClick={(event) => event.stopPropagation()}>
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <h2 className="text-xl font-bold">Create New Sub-Inbox</h2>
+              <p className="mt-1 text-sm text-muted-foreground">Pick an icon and a name for your sub-inbox</p>
+            </div>
+            <Button variant="ghost" size="icon-sm" aria-label="Close" onClick={closeDialog}><X /></Button>
+          </div>
+          <div className="mt-6 grid gap-4 sm:grid-cols-[auto_1fr] sm:items-end">
+            <div>
+              <p className="text-sm font-medium">Icon <span className="text-destructive">*</span></p>
+              <details className="group/iconpicker relative mt-2">
+                <summary className="grid size-14 cursor-pointer list-none place-items-center rounded-lg border bg-muted text-brand marker:hidden [&::-webkit-details-marker]:hidden"><SelectedIcon className="size-6" /></summary>
+                <div className="absolute left-0 top-full z-10 mt-2 grid w-56 grid-cols-4 gap-1 rounded-lg border bg-popover p-2 shadow-lg">
+                  {iconChoices.map((Icon, index) => <Button key={index} variant={index === newIcon ? 'secondary' : 'ghost'} size="icon" aria-label={`Icon ${index + 1}`} onClick={(event) => { setNewIcon(index); const picker = (event.currentTarget.closest('details')); if (picker) picker.open = false; }}><Icon /></Button>)}
+                </div>
+              </details>
+            </div>
+            <div>
+              <label htmlFor="sub-inbox-name" className="text-sm font-medium">Name of the Sub-Inbox <span className="text-destructive">*</span></label>
+              <input id="sub-inbox-name" value={newName} onChange={(event) => setNewName(event.target.value)} placeholder="Enter the name of the sub-inbox" className="mt-2 h-14 w-full rounded-lg border bg-muted px-4 text-sm outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring" />
+            </div>
+          </div>
+          <div className="mt-8 flex items-center justify-between gap-4">
+            <a href="https://docs.lovable.dev" target="_blank" rel="noreferrer" className="text-sm font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground">Learn more</a>
+            <Button size="lg" disabled={!newName.trim()} onClick={createSubInbox}>Create <CirclePlus /></Button>
+          </div>
+        </div>
+      </div>
+    </details>
     <p className="mt-4 px-2 text-xs font-medium text-muted-foreground">Other Inboxes</p>
     <div className="mt-1 space-y-1">
       {[{ key: 'automated' as const, label: 'Automated', icon: Bot }, { key: 'spam' as const, label: 'Spam', icon: ShieldCheck }].map(({ key, label, icon: Icon }) => <Button key={key} variant="ghost" onClick={() => onInboxChange(key)} className={cn('h-9 w-full justify-start px-2', inbox === key && 'bg-accent')}><Icon />{label}</Button>)}
