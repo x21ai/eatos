@@ -2,13 +2,17 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useRef, useState } from 'react';
 import {
-  BarChart3, BookOpen, Bot, Contact, HelpCircle,
-  Inbox, Megaphone, MessageCircle, PanelLeftClose, PanelLeftOpen, Plug,
-  Plus, Search, Settings, ShieldCheck, UserRound, Users, Zap,
+  BarChart3, Bell, BookOpen, Bookmark, Bot, Calendar, CirclePlus, Contact, Flag, Folder,
+  Heart, HelpCircle, Inbox, Megaphone, MessageCircle, PanelLeftClose, PanelLeftOpen, Plug,
+  Plus, Search, Settings, ShieldCheck, Star, Tag, UserRound, Users, X, Zap,
 } from 'lucide-react';
+import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+
+const iconChoices = [Calendar, Star, Heart, Flag, Tag, Bell, Bookmark, Folder];
 
 const nav = [
   { label: 'Inbox', icon: Inbox, href: '/chatapp' },
