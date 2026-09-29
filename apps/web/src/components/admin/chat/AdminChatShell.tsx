@@ -18,7 +18,7 @@ const nav = [
   { label: 'Inbox', icon: Inbox, href: '/chatapp' },
   { label: 'AI Agent', icon: Zap },
   { label: 'Visitors', icon: Users, href: '/chatapp/visitors', badge: '6' },
-  { label: 'Contacts', icon: Contact },
+  { label: 'Contacts', icon: Contact, href: '/chatapp/contacts' },
   { label: 'Knowledge Base', icon: BookOpen },
   { label: 'Campaigns', icon: Megaphone },
   { label: 'Analytics', icon: BarChart3 },
@@ -118,6 +118,13 @@ export default function AdminChatShell({
                 <summary className="flex h-10 cursor-pointer list-none items-center gap-3 rounded-md bg-accent px-3 text-sm font-medium text-foreground shadow-xs marker:hidden [&::-webkit-details-marker]:hidden">{content}</summary>
                 <div className="px-2 pb-3 pt-4">{inboxOptions}</div>
               </details>;
+               if (item.label === 'Contacts' && active && !collapsed) return <div key={item.label}>
+                 <Link href="/chatapp/contacts" className="flex h-10 items-center gap-3 rounded-md bg-accent px-3 text-sm font-medium text-foreground shadow-xs">{content}</Link>
+                 <div className="px-2 pb-3 pt-3">
+                   <p className="px-2 text-xs font-medium text-muted-foreground">Filters</p>
+                   <button type="button" popoverTarget="contacts-filter-create" className="mt-1 flex h-9 w-full items-center gap-2 rounded-md px-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground"><Plus className="size-4" />Create filter</button>
+                 </div>
+               </div>;
               return <div key={item.label}>
                 {item.href ? <Link href={item.href} title={collapsed ? item.label : undefined} onClick={() => { if (collapsed) onCollapsedChange(false); }} className={cn('flex h-10 items-center gap-3 rounded-md px-3 text-sm font-medium transition-colors', active ? 'bg-accent text-foreground shadow-xs' : 'text-muted-foreground hover:bg-accent hover:text-foreground')}>{content}</Link> : <div title={collapsed ? item.label : undefined} className="flex h-10 items-center gap-3 rounded-md px-3 text-sm font-medium text-muted-foreground"><item.icon className="size-4 shrink-0" />{!collapsed && <span className="truncate">{item.label}</span>}{!collapsed && item.badge && <span className="ml-auto rounded-full bg-brand px-1.5 py-0.5 text-[10px] font-bold text-primary-foreground">{item.badge}</span>}</div>}
               </div>;
