@@ -298,13 +298,15 @@ function DetailSection({ title, action, children, icon: Icon, defaultOpen = fals
 }
 function DetailRow({ icon: Icon, text }: { icon: React.ComponentType<{ className?: string }>; text: string }) { return <div className="flex min-w-0 items-start gap-3 text-xs text-muted-foreground"><Icon className="mt-0.5 size-4 shrink-0" /><span className="min-w-0 break-words">{text}</span></div>; }
 
-export default function AdminInbox({ initialId }: { initialId?: string }) {
-  const startConversation = initialConversations.find((item) => item.id === initialId);
+export default function AdminInbox({ initialId, initialInbox }: { initialId?: string; initialInbox?: string }) {
+  const inboxKeys: InboxKey[] = ['all', 'main', 'assigned', 'automated', 'spam'];
+  const startInbox = inboxKeys.find((key) => key === initialInbox);
+  const startConversation = initialConversations.find((item) => item.id === initialId) ?? (startInbox && startInbox !== 'all' ? initialConversations.find((item) => item.inbox === startInbox) : undefined);
   const [collapsed, setCollapsed] = useState(false);
-  const [inbox, setInbox] = useState<InboxKey>(startConversation?.inbox ?? 'main');
+  const [inbox, setInbox] = useState<InboxKey>(startInbox ?? startConversation?.inbox ?? 'main');
   const [conversations, setConversations] = useState(() => initialConversations.map((item) => item.id === startConversation?.id ? { ...item, unread: false } : item));
   const [activeId, setActiveId] = useState(startConversation?.id ?? initialConversations[0].id);
-  const [mobileChat, setMobileChat] = useState(Boolean(startConversation));
+  const [mobileChat, setMobileChat] = useState(Boolean(initialId && startConversation));
   const [showDetails, setShowDetails] = useState(false);
   const visible = useMemo(() => inbox === 'all' ? conversations : conversations.filter((item) => item.inbox === inbox), [conversations, inbox]);
   const active = conversations.find((item) => item.id === activeId) ?? visible[0] ?? conversations[0];

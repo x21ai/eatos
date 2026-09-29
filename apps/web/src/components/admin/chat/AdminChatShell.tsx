@@ -61,7 +61,7 @@ export default function AdminChatShell({
   const inboxOptions = onInboxChange && inbox ? <>
     <p className="px-2 text-xs font-medium text-muted-foreground">Default Inboxes</p>
     <div className="mt-1 space-y-1">
-      {[{ key: 'main' as const, label: 'Main Inbox', icon: MessageCircle }, { key: 'assigned' as const, label: 'Assigned to me', icon: UserRound }].map(({ key, label, icon: Icon }) => <Button key={key} variant="ghost" onClick={() => onInboxChange(key)} className={cn('h-9 w-full justify-start px-2', inbox === key && 'bg-accent')}><Icon />{label}</Button>)}
+      {[{ key: 'main' as const, label: 'Main Inbox', icon: MessageCircle }, { key: 'assigned' as const, label: 'Assigned to me', icon: UserRound }].map(({ key, label, icon: Icon }) => <Button key={key} asChild variant="ghost" className={cn('h-9 w-full justify-start px-2', inbox === key && 'bg-accent')}><a href={`/chatapp?inbox=${key}`} aria-current={inbox === key ? 'page' : undefined} onClick={(event) => { event.preventDefault(); onInboxChange(key); window.history.replaceState(null, '', `/chatapp?inbox=${key}`); }}><Icon />{label}</a></Button>)}
     </div>
     <p className="mt-4 px-2 text-xs font-medium text-muted-foreground">Your Inboxes</p>
     {subInboxes.length > 0 && <div className="mt-1 space-y-1">
@@ -72,7 +72,7 @@ export default function AdminChatShell({
     </div>
     <p className="mt-4 px-2 text-xs font-medium text-muted-foreground">Other Inboxes</p>
     <div className="mt-1 space-y-1">
-      {[{ key: 'automated' as const, label: 'Automated', icon: Bot }, { key: 'spam' as const, label: 'Spam', icon: ShieldCheck }].map(({ key, label, icon: Icon }) => <Button key={key} variant="ghost" onClick={() => onInboxChange(key)} className={cn('h-9 w-full justify-start px-2', inbox === key && 'bg-accent')}><Icon />{label}</Button>)}
+      {[{ key: 'automated' as const, label: 'Automated', icon: Bot }, { key: 'spam' as const, label: 'Spam', icon: ShieldCheck }].map(({ key, label, icon: Icon }) => <Button key={key} asChild variant="ghost" className={cn('h-9 w-full justify-start px-2', inbox === key && 'bg-accent')}><a href={`/chatapp?inbox=${key}`} aria-current={inbox === key ? 'page' : undefined} onClick={(event) => { event.preventDefault(); onInboxChange(key); window.history.replaceState(null, '', `/chatapp?inbox=${key}`); }}><Icon />{label}</a></Button>)}
     </div>
   </> : null;
   const subInboxDialog = <div id="chat-sub-inbox" popover="auto" className="fixed inset-0 z-50 m-0 grid h-full w-full max-w-none place-items-center border-none bg-black/50 p-4 [&:not(:popover-open)]:hidden">
