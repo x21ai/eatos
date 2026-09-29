@@ -168,7 +168,7 @@ function CreateFilterDialog({ onSave }: { onSave: (filter: SavedContactFilter) =
             <div className="flex items-center gap-2">
               <label className="relative min-w-0 flex-1">
                 <UserRound className="pointer-events-none absolute left-4 top-1/2 z-10 size-4 -translate-y-1/2 text-muted-foreground" />
-                <select value={criterion.field} onChange={(event) => updateCriterion(criterion.id, { field: event.target.value as FilterField | '', value: '' })} aria-label="Select a criterion" className="h-12 w-full appearance-none rounded-lg border bg-muted/35 pl-12 pr-10 text-sm font-semibold outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                <select value={criterion.field} onChange={(event) => updateCriterion(criterion.id, { field: event.target.value as FilterField | '', operator: 'is_not', value: '' })} aria-label="Select a criterion" className="h-12 w-full appearance-none rounded-lg border bg-muted/35 pl-12 pr-10 text-sm font-semibold outline-none focus-visible:ring-2 focus-visible:ring-ring">
                   <option value="">Select a criterion</option>
                   {filterChoices.map((group) => <optgroup key={group.group} label={group.group}>{group.values.map((choice) => <option key={`${group.group}-${choice.field}`} value={choice.field}>{choice.label}</option>)}</optgroup>)}
                 </select>
@@ -176,15 +176,17 @@ function CreateFilterDialog({ onSave }: { onSave: (filter: SavedContactFilter) =
               </label>
               <Button type="button" variant="ghost" size="icon-sm" aria-label="Remove criterion" disabled={criteria.length === 1} onClick={() => setCriteria((current) => current.filter((item) => item.id !== criterion.id))}><X /></Button>
             </div>
-            <div className="my-5 border-t" />
-            <div className="space-y-2">
-              <label className="relative block">
-                <Hash className="pointer-events-none absolute left-4 top-1/2 z-10 size-4 -translate-y-1/2 text-muted-foreground" />
-                <select value={criterion.operator} onChange={(event) => updateCriterion(criterion.id, { operator: event.target.value as FilterOperator })} aria-label="Filter operator" className="h-11 w-full appearance-none rounded-lg border bg-muted/35 pl-12 pr-10 text-sm font-semibold outline-none focus-visible:ring-2 focus-visible:ring-ring">{filterOperators.map((operator) => <option key={operator.value} value={operator.value}>{operator.label}</option>)}</select>
-                <ChevronDown className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-              </label>
-              <input value={criterion.value} onChange={(event) => updateCriterion(criterion.id, { value: event.target.value })} placeholder="Enter a value (and hit enter)" aria-label={`${filterLabel(criterion.field)} value`} className="h-11 w-full min-w-0 rounded-lg border bg-muted/35 px-4 text-sm outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring" />
-            </div>
+            {criterion.field && <>
+              <div className="my-5 border-t" />
+              <div className="space-y-2">
+                <label className="relative block">
+                  <Hash className="pointer-events-none absolute left-4 top-1/2 z-10 size-4 -translate-y-1/2 text-muted-foreground" />
+                  <select value={criterion.operator} onChange={(event) => updateCriterion(criterion.id, { operator: event.target.value as FilterOperator })} aria-label="Filter operator" className="h-11 w-full appearance-none rounded-lg border bg-muted/35 pl-12 pr-10 text-sm font-semibold outline-none focus-visible:ring-2 focus-visible:ring-ring">{filterOperators.map((operator) => <option key={operator.value} value={operator.value}>{operator.label}</option>)}</select>
+                  <ChevronDown className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+                </label>
+                <input value={criterion.value} onChange={(event) => updateCriterion(criterion.id, { value: event.target.value })} placeholder="Enter a value (and hit enter)" aria-label={`${filterLabel(criterion.field)} value`} className="h-11 w-full min-w-0 rounded-lg border bg-muted/35 px-4 text-sm outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring" />
+              </div>
+            </>}
           </div>)}
           <Button type="button" variant="ghost" className="w-full" onClick={() => setCriteria((current) => [...current, { id: `criterion-${Date.now()}`, field: '', operator: 'is_not', value: '' }])}><CirclePlus />Add another condition</Button>
         </div>
