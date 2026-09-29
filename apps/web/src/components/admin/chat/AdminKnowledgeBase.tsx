@@ -1,39 +1,69 @@
 'use client';
 
+import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import {
-  AlertCircle, ArrowLeft, Bold, BookOpen, ChevronDown, ChevronRight, Code, CloudUpload, FileText, Film, Folder,
-  Image as ImageIcon, Info, Italic, Link2, List, ListFilter, ListOrdered, MoreVertical, PanelLeftClose, Pencil, Quote,
-  Search, Settings, Settings2, SeparatorHorizontal, Table, Underline, Type, X, Zap, Globe, Plus, Baseline,
+  AlertCircle, ArrowLeft, Baseline, Bold, BookOpen, ChevronDown, ChevronRight, CloudUpload, Code, FileText, Film,
+  Folder, Globe, Image as ImageIcon, Info, Italic, Link2, List, ListFilter, ListOrdered, MoreVertical, PanelLeftClose,
+  Pencil, Plus, Quote, Search, Settings, Settings2, SeparatorHorizontal, Table, Type, Underline, X, Zap,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import AdminChatShell from './AdminChatShell';
-import { initialArticles, kbTotalArticles, type KbArticle } from './kb-data';
+import type { KbArticle } from './kb-data';
+import { kbStore, useKbArticles } from './kb-store';
 
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
 export default function AdminKnowledgeBase() {
   const [collapsed, setCollapsed] = useState(false);
-  const [articles, setArticles] = useState<KbArticle[]>(initialArticles);
-  const [selectedId, setSelectedId] = useState(initialArticles[0].id);
+  const articles = useKbArticles();
+  const [selectedId, setSelectedId] = useState('');
   const [query, setQuery] = useState('');
   const [mobileEditor, setMobileEditor] = useState(false);
   const [editingTitle, setEditingTitle] = useState(false);
 
-  const filtered = useMemo(() => articles.filter((a) => a.title.toLowerCase().includes(query.toLowerCase())), [articles, query]);
+  const filtered = useMemo(
+    () => articles.filter((a) => a.title.toLowerCase().includes(query.toLowerCase())),
+    [articles, query],
+  );
+
+  // The list groups from the data itself, so a new article lands in its category
+  // instead of a hardcoded heading.
+  const groups = useMemo(() => {
+    const map = new Map<string, KbArticle[]>();
+    for (const a of filtered) {
+      const list = map.get(a.category) ?? [];
+      list.push(a);
+      map.set(a.category, list);
+    }
+    return Array.from(map.entries());
+  }, [filtered]);
+
   const article = articles.find((a) => a.id === selectedId) ?? articles[0];
-  const update = (patch: Partial<KbArticle>) => setArticles((list) => list.map((a) => a.id === article.id ? { ...a, ...patch } : a));
+  const publishedCount = articles.filter((a) => a.status === 'published').length;
+
+  const update = (patch: Partial<KbArticle>) => {
+    if (article) kbStore.update(article.id, patch);
+  };
 
   const open = (id: string) => { setSelectedId(id); setMobileEditor(true); setEditingTitle(false); };
   const newArticle = () => {
     const id = `new-${Date.now()}`;
-    setArticles((list) => [{ id, title: 'Untitled article', category: 'Frequently Asked Questions', status: 'unpublished', subtitle: 'Add a subtitle', intro: 'Start writing your article here.', sections: [] }, ...list]);
+    kbStore.add({
+      id,
+      title: 'Untitled article',
+      category: 'Frequently Asked Questions',
+      status: 'unpublished',
+      subtitle: 'Add a subtitle',
+      intro: 'Start writing your article here.',
+      sections: [],
+    });
     open(id);
     toast.success('New article created');
   };
-  const republish = () => { update({ status: 'published' }); toast.success('Article republished'); };
+  const republish = () => { update({ status: 'published' }); toast.success('Article published'); };
   const exec = (cmd: string, value?: string) => { if (typeof document !== 'undefined') document.execCommand(cmd, false, value); };
 
   const tools: { icon: typeof Bold; label: string; run: () => void }[][] = [
@@ -48,6 +78,18 @@ export default function AdminKnowledgeBase() {
 
   const calloutColor = (label: string) => label === 'Tip callout' ? 'text-emerald-600' : label === 'Info callout' ? 'text-amber-500' : label === 'Warning callout' ? 'text-orange-600' : '';
 
+  if (!article) {
+    return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed}>
+      <div className="grid h-full place-items-center bg-muted/40 p-6">
+        <div className="text-center">
+          <p className="text-sm font-semibold">No articles yet</p>
+          <p className="mt-1 text-sm text-muted-foreground">Create your first article to start filling the Knowledge Base.</p>
+          <Button className="mt-4" onClick={newArticle}><Plus />New Article</Button>
+        </div>
+      </div>
+    </AdminChatShell>;
+  }
+
   return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed}>
     <div className="flex h-full min-h-0 gap-2 bg-muted/40 p-2">
       {/* Knowledge base sidebar */}
@@ -56,7 +98,7 @@ export default function AdminKnowledgeBase() {
         <button type="button" className="mt-5 flex h-10 items-center justify-center gap-2 rounded-md border px-3 text-sm font-medium shadow-xs lg:justify-start" title="User Docs"><BookOpen className="size-4" /><span className="hidden lg:inline">User Docs</span></button>
         <div className="mt-auto space-y-3">
           <button type="button" onClick={() => toast('Knowledge Base settings')} className="flex h-9 w-full items-center justify-center gap-2 rounded-md px-3 text-sm text-muted-foreground hover:bg-accent lg:justify-start"><Settings className="size-4" /><span className="hidden lg:inline">Settings</span></button>
-          <Button asChild className="w-full" title="View Online"><a href="/support" target="_blank" rel="noreferrer"><Globe /><span className="hidden lg:inline">View Online</span></a></Button>
+          <Button asChild className="w-full" title="View published Knowledge Base"><Link href="/kb-demo"><Globe /><span className="hidden lg:inline">View Online</span></Link></Button>
         </div>
       </aside>
 
@@ -77,20 +119,22 @@ export default function AdminKnowledgeBase() {
           </div>
         </div>
         <div className="scrollbar-hidden min-h-0 flex-1 overflow-y-auto p-3">
-          <p className="flex items-center gap-2 px-1 py-2 text-sm font-semibold"><Folder className="size-4" />Frequently Asked Questions</p>
-          <ul className="ml-2 space-y-0.5 border-l pl-2">
-            {filtered.map((a) => <li key={a.id}>
-              <button type="button" onClick={() => open(a.id)} className={cn('flex w-full items-center gap-2 rounded-md px-2 py-2 text-left text-sm hover:bg-accent', a.id === article.id && 'bg-accent', a.status === 'unpublished' && 'text-muted-foreground')}>
-                <FileText className={cn('size-4 shrink-0', a.status === 'unpublished' ? 'text-muted-foreground' : 'text-brand')} />
-                <span className="min-w-0 flex-1 truncate">{a.title}</span>
-                {a.status !== 'published' && <span className="shrink-0 rounded bg-muted px-2 py-0.5 text-[11px] font-medium text-muted-foreground">{a.status === 'hidden' ? 'Hidden' : 'Unpublished'}</span>}
-              </button>
-            </li>)}
-            {filtered.length === 0 && <li className="px-2 py-4 text-sm text-muted-foreground">No articles found.</li>}
-          </ul>
+          {groups.map(([category, list]) => <div key={category}>
+            <p className="flex items-center gap-2 px-1 py-2 text-sm font-semibold"><Folder className="size-4" />{category}</p>
+            <ul className="ml-2 space-y-0.5 border-l pl-2">
+              {list.map((a) => <li key={a.id}>
+                <button type="button" onClick={() => open(a.id)} className={cn('flex w-full items-center gap-2 rounded-md px-2 py-2 text-left text-sm hover:bg-accent', a.id === article.id && 'bg-accent', a.status === 'unpublished' && 'text-muted-foreground')}>
+                  <FileText className={cn('size-4 shrink-0', a.status === 'unpublished' ? 'text-muted-foreground' : 'text-brand')} />
+                  <span className="min-w-0 flex-1 truncate">{a.title}</span>
+                  {a.status !== 'published' && <span className="shrink-0 rounded bg-muted px-2 py-0.5 text-[11px] font-medium text-muted-foreground">{a.status === 'hidden' ? 'Hidden' : 'Unpublished'}</span>}
+                </button>
+              </li>)}
+            </ul>
+          </div>)}
+          {filtered.length === 0 && <p className="px-2 py-4 text-sm text-muted-foreground">No articles found.</p>}
         </div>
         <div className="space-y-2 border-t p-3">
-          <div className="flex items-center justify-between text-xs text-muted-foreground"><span className="flex items-center gap-1"><Info className="size-3.5" />{kbTotalArticles + articles.length - initialArticles.length} articles</span><span className="flex items-center gap-1 font-medium text-foreground">English (United States)<ChevronDown className="size-3.5" /></span></div>
+          <div className="flex items-center justify-between text-xs text-muted-foreground"><span className="flex items-center gap-1"><Info className="size-3.5" />{articles.length} articles, {publishedCount} published</span><span className="flex items-center gap-1 font-medium text-foreground">English (United States)<ChevronDown className="size-3.5" /></span></div>
           <div className="flex items-center gap-2">
             <label className="flex h-10 flex-1 items-center gap-2 rounded-md border px-3"><Search className="size-4 text-muted-foreground" /><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search in your articles..." className="w-full bg-transparent text-sm outline-none" /></label>
             <Button variant="ghost" size="icon-sm" aria-label="Filter articles"><ListFilter /></Button>
@@ -111,9 +155,11 @@ export default function AdminKnowledgeBase() {
           <details className="relative">
             <summary className="grid size-8 cursor-pointer list-none place-items-center rounded-md border [&::-webkit-details-marker]:hidden"><MoreVertical className="size-4" /></summary>
             <div className="absolute right-0 z-30 mt-1 w-48 rounded-md border bg-popover p-1 shadow-lg">
-              <button type="button" onClick={() => { update({ status: 'hidden' }); toast('Article hidden'); }} className="w-full rounded px-2 py-1.5 text-left text-sm hover:bg-accent">Hide article</button>
+              {article.status === 'hidden'
+                ? <button type="button" onClick={() => { update({ status: 'published' }); toast('Article unhidden and published'); }} className="w-full rounded px-2 py-1.5 text-left text-sm hover:bg-accent">Unhide article</button>
+                : <button type="button" onClick={() => { update({ status: 'hidden' }); toast('Article hidden'); }} className="w-full rounded px-2 py-1.5 text-left text-sm hover:bg-accent">Hide article</button>}
               <button type="button" onClick={() => { update({ status: 'unpublished' }); toast('Article unpublished'); }} className="w-full rounded px-2 py-1.5 text-left text-sm hover:bg-accent">Unpublish</button>
-              <button type="button" onClick={() => { const rest = articles.filter((a) => a.id !== article.id); setArticles(rest); if (rest[0]) setSelectedId(rest[0].id); setMobileEditor(false); toast('Article deleted'); }} className="w-full rounded px-2 py-1.5 text-left text-sm text-destructive hover:bg-accent">Delete article</button>
+              <button type="button" onClick={() => { const rest = articles.filter((a) => a.id !== article.id); kbStore.remove(article.id); if (rest[0]) setSelectedId(rest[0].id); setMobileEditor(false); toast('Article deleted'); }} className="w-full rounded px-2 py-1.5 text-left text-sm text-destructive hover:bg-accent">Delete article</button>
             </div>
           </details>
           <Button variant="outline" size="icon-sm" onClick={() => setMobileEditor(false)} aria-label="Close"><X /></Button>
