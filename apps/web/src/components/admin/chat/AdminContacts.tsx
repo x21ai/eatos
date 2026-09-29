@@ -49,7 +49,7 @@ function NewContactDialog({ onCreate }: { onCreate: (contact: ChatContact) => vo
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   return <div id="contacts-new" popover="auto" className="fixed inset-0 z-50 m-0 h-full w-full max-w-none border-none bg-foreground/35 p-4 [&:not(:popover-open)]:hidden">
-    <form className="absolute left-1/2 top-1/2 w-[calc(100%-2rem)] max-w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-lg bg-background px-10 py-9 shadow-xl max-sm:px-5" onSubmit={(event) => {
+    <form className="group/new absolute left-1/2 top-1/2 w-[calc(100%-2rem)] max-w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-lg bg-background px-10 py-9 shadow-xl max-sm:px-5" onSubmit={(event) => {
       event.preventDefault(); const data = new FormData(event.currentTarget); const name = String(data.get('name') || '').trim(); const email = String(data.get('email') || '').trim(); if (!name || !email) return;
       onCreate({ id: `contact-${Date.now()}`, name, initials: name.split(/\s+/).slice(0, 2).map((part) => part[0]).join('').toUpperCase(), email, location: 'United States', flag: '🇺🇸', segments: [], lastActivity: 'Now', tone: 'blue' }); event.currentTarget.reset(); setName(''); setEmail('');
     }}>
@@ -57,7 +57,7 @@ function NewContactDialog({ onCreate }: { onCreate: (contact: ChatContact) => vo
         <label className="block text-sm font-semibold text-muted-foreground">Name of the Contact <span className="text-destructive">*</span><input name="name" value={name} onChange={(event) => setName(event.target.value)} required placeholder="Enter the full name of the contact..." className="mt-2 h-14 w-full rounded-xl border bg-muted/55 px-4 text-base text-foreground outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring" /></label>
         <label className="block text-sm font-semibold text-muted-foreground">Email of the Contact <span className="text-destructive">*</span><input name="email" value={email} onChange={(event) => setEmail(event.target.value)} type="email" required placeholder="Enter the email of the contact..." className="mt-2 h-14 w-full rounded-xl border bg-muted/55 px-4 text-base text-foreground outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring" /></label>
       </div>
-      <div className="mt-8 flex justify-end gap-3"><Button type="button" variant="outline" size="lg" popoverTarget="contacts-new" popoverTargetAction="hide">Cancel</Button><Button type="submit" size="lg" disabled={!name.trim() || !email.includes('@')} className="bg-visitor-pending text-primary-foreground hover:bg-visitor-pending/90" popoverTarget="contacts-new" popoverTargetAction="hide"><Plus className="rounded-full border" />Add Contact</Button></div>
+      <div className="mt-8 flex justify-end gap-3"><Button type="button" variant="outline" size="lg" popoverTarget="contacts-new" popoverTargetAction="hide">Cancel</Button><Button type="submit" size="lg" aria-disabled={!name.trim() || !email.includes('@')} className="bg-visitor-pending text-primary-foreground hover:bg-visitor-pending/90 group-has-[input:invalid]/new:pointer-events-none group-has-[input:invalid]/new:bg-visitor-pending/20" popoverTarget="contacts-new" popoverTargetAction="hide"><Plus className="rounded-full border" />Add Contact</Button></div>
     </form>
   </div>;
 }
