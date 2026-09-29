@@ -63,7 +63,7 @@ export default function AdminChatShell({
     </div>}
     <div className="mt-1">
       <button type="button" popoverTarget="chat-sub-inbox" className="flex h-9 w-full cursor-pointer items-center gap-2 rounded-md px-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"><Plus className="size-4 shrink-0" />New sub-inbox</button>
-      <div id="chat-sub-inbox" popover="auto" className="fixed inset-0 z-50 m-0 grid h-full w-full max-w-none place-items-center border-none bg-black/50 p-4">
+      <div id="chat-sub-inbox" popover="auto" className="fixed inset-0 z-50 m-0 grid h-full w-full max-w-none place-items-center border-none bg-black/50 p-4 [&:not(:popover-open)]:hidden">
         <div role="dialog" aria-modal="true" aria-label="Create New Sub-Inbox" className="w-full max-w-[54rem] rounded-xl bg-background p-6 shadow-xl sm:p-8">
           <div className="flex items-start justify-between gap-4">
             <div>
