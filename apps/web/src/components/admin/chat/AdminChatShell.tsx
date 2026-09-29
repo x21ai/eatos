@@ -40,6 +40,21 @@ export default function AdminChatShell({
   const pathname = usePathname();
   const currentPath = pathname?.replace(/\.html$/, '').replace(/\/$/, '') || '/';
   const isInbox = currentPath === '/chatapp';
+  const dialogRef = useRef<HTMLDetailsElement>(null);
+  const [subInboxes, setSubInboxes] = useState<{ name: string; icon: number }[]>([]);
+  const [newName, setNewName] = useState('');
+  const [newIcon, setNewIcon] = useState(0);
+  const closeDialog = () => { if (dialogRef.current) dialogRef.current.open = false; };
+  const createSubInbox = () => {
+    const name = newName.trim();
+    if (!name) return;
+    setSubInboxes((list) => [...list, { name, icon: newIcon }]);
+    toast.success(`Sub-inbox "${name}" created`);
+    setNewName('');
+    setNewIcon(0);
+    closeDialog();
+  };
+  const SelectedIcon = iconChoices[newIcon] ?? Calendar;
   const inboxOptions = onInboxChange && inbox ? <>
     <p className="px-2 text-xs font-medium text-muted-foreground">Default Inboxes</p>
     <div className="mt-1 space-y-1">
