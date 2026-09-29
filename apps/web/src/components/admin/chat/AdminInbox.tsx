@@ -243,9 +243,12 @@ function VisitorDetails({ conversation, onClose, onAssign }: { conversation: Con
 function DetailSection({ title, action, children }: { title: string; action?: React.ReactNode; children: React.ReactNode }) {
   const [open, setOpen] = useState(true);
   return <div className="border-b">
-    <Button type="button" variant="ghost" onClick={() => setOpen(!open)} className="h-auto w-full justify-start rounded-none px-5 py-3 text-left text-xs font-bold" aria-expanded={open}>
-      <span className="flex-1">{title}</span>{action}<ChevronDown className={cn('size-4 text-muted-foreground transition-transform', !open && '-rotate-90')} />
-    </Button>
+    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center px-5 py-1">
+      <Button type="button" variant="ghost" onClick={() => setOpen(!open)} className="h-auto min-w-0 justify-start rounded-none px-0 py-2 text-left text-xs font-bold" aria-expanded={open}>
+        <span className="truncate">{title}</span><ChevronDown className={cn('ml-auto size-4 shrink-0 text-muted-foreground transition-transform', !open && '-rotate-90')} />
+      </Button>
+      {action}
+    </div>
     {open && <div className="space-y-3 px-5 pb-4">{children}</div>}
   </div>;
 }
