@@ -121,7 +121,7 @@ function Transcript({
   return (
     <section className="flex min-w-0 flex-1 flex-col bg-background">
       <header className="relative z-50 flex h-14 shrink-0 items-center gap-1 border-b px-2 md:gap-1.5 md:px-3">
-        <Button variant="ghost" size="icon" className="md:hidden" onClick={onBack} aria-label="Back to conversations"><ArrowLeft /></Button>
+        <Button asChild variant="ghost" size="icon" className="md:hidden"><a href="/chatapp" aria-label="Back to conversations" onClick={(event) => { event.preventDefault(); onBack(); }}><ArrowLeft /></a></Button>
         <div className="flex shrink-0 items-center gap-0.5">
           <Button variant="ghost" size="icon-sm" onClick={() => toast.info(`Demo call started with ${conversation.name}`)} aria-label="Call visitor"><Phone /></Button>
           <Button variant="ghost" size="icon-sm" onClick={() => toast.info(`Demo video call started with ${conversation.name}`)} aria-label="Start video call"><Video /></Button>
