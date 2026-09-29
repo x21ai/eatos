@@ -281,17 +281,16 @@ function VisitorDetails({ conversation, onClose, onAssign }: { conversation: Con
 }
 
 function DetailSection({ title, action, children, icon: Icon, defaultOpen = false }: { title: string; action?: React.ReactNode; children: React.ReactNode; icon?: React.ComponentType<{ className?: string }>; defaultOpen?: boolean }) {
-  const [open, setOpen] = useState(defaultOpen);
-  return <div className="border-b">
-    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center px-6">
-      <Button type="button" variant="ghost" onClick={() => setOpen(!open)} className="h-12 min-w-0 justify-start rounded-none px-0 text-left text-sm font-medium" aria-expanded={open}>
+  return <details className="group/details border-b" open={defaultOpen || undefined}>
+    <summary className="flex h-12 cursor-pointer list-none items-center px-6 text-left text-sm font-medium outline-none hover:bg-accent focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring [&::-webkit-details-marker]:hidden">
         {Icon && <span className="mr-2 grid size-5 shrink-0 place-items-center rounded border bg-muted"><Icon className="size-3.5" /></span>}
-        <span className="truncate">{title}</span><ChevronDown className={cn('ml-auto size-4 shrink-0 text-muted-foreground transition-transform', !open && '-rotate-90')} />
-      </Button>
-      {action}
+        <span className="min-w-0 flex-1 truncate">{title}</span><ChevronDown className="ml-auto size-4 shrink-0 -rotate-90 text-muted-foreground transition-transform group-open/details:rotate-0" />
+    </summary>
+    <div className="space-y-3 px-6 pb-5">
+      {action && <div className="flex justify-end">{action}</div>}
+      {children}
     </div>
-    {open && <div className="space-y-3 px-6 pb-5">{children}</div>}
-  </div>;
+  </details>;
 }
 function DetailRow({ icon: Icon, text }: { icon: React.ComponentType<{ className?: string }>; text: string }) { return <div className="flex min-w-0 items-start gap-3 text-xs text-muted-foreground"><Icon className="mt-0.5 size-4 shrink-0" /><span className="min-w-0 break-words">{text}</span></div>; }
 
