@@ -5,7 +5,7 @@ import { useMemo, useState } from 'react';
 import {
   ArrowRight, Building2, Check, ChevronDown, ChevronLeft, CircleCheck, CircleHelp, CloudDownload,
   CloudUpload, Copy, Eye, FileText, Filter, Mail, MapPin, MessageCircle, Phone, Plus,
-  Search, Tag, UploadCloud, UserRound, Users, X, Pencil, Trash2,
+  Search, Tag, UploadCloud, UserRound, Users, X, Pencil, CirclePlus, Hash,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
@@ -31,7 +31,8 @@ const columns = [
 ] as const;
 
 type FilterField = 'email' | 'custom' | 'language' | 'country' | 'segments' | 'name' | 'gender';
-type FilterCriterion = { id: string; field: FilterField | ''; operator: 'contains' | 'is'; value: string };
+type FilterOperator = 'is' | 'is_not' | 'contains' | 'not_contains' | 'starts_with' | 'ends_with';
+type FilterCriterion = { id: string; field: FilterField | ''; operator: FilterOperator; value: string };
 type SavedContactFilter = { id: string; name: string; criteria: FilterCriterion[] };
 
 const filterChoices: { group: string; values: { field: FilterField; label: string }[] }[] = [
@@ -48,6 +49,15 @@ const filterChoices: { group: string; values: { field: FilterField; label: strin
 ];
 
 const filterLabel = (field: FilterField | '') => filterChoices.flatMap((group) => group.values).find((choice) => choice.field === field)?.label ?? 'Select a criterion';
+
+const filterOperators: { value: FilterOperator; label: string }[] = [
+  { value: 'is_not', label: 'Differs from' },
+  { value: 'is', label: 'Is exactly' },
+  { value: 'contains', label: 'Contains' },
+  { value: 'not_contains', label: 'Does not contain' },
+  { value: 'starts_with', label: 'Starts with' },
+  { value: 'ends_with', label: 'Ends with' },
+];
 
 function ContactAvatar({ contact, large = false }: { contact: ChatContact; large?: boolean }) {
   return <span className={cn('grid shrink-0 place-items-center rounded-full font-semibold text-foreground', large ? 'size-16 text-lg' : 'size-8 text-xs', toneClasses[contact.tone])}>{contact.initials}</span>;
@@ -130,9 +140,8 @@ function ImportContactsDialog({ onImport }: { onImport: (contacts: ChatContact[]
 
 function CreateFilterDialog({ onSave }: { onSave: (filter: SavedContactFilter) => void }) {
   const [name, setName] = useState('Filter 1');
-  const [search, setSearch] = useState('');
   const [collapsed, setCollapsed] = useState(false);
-  const [criteria, setCriteria] = useState<FilterCriterion[]>([{ id: 'criterion-1', field: '', operator: 'contains', value: '' }]);
+  const [criteria, setCriteria] = useState<FilterCriterion[]>([{ id: 'criterion-1', field: '', operator: 'is_not', value: '' }]);
   const valid = name.trim() && criteria.length > 0 && criteria.every((criterion) => criterion.field && criterion.value.trim());
   const updateCriterion = (id: string, patch: Partial<FilterCriterion>) => setCriteria((current) => current.map((criterion) => criterion.id === id ? { ...criterion, ...patch } : criterion));
   const closePanel = () => {
@@ -150,30 +159,34 @@ function CreateFilterDialog({ onSave }: { onSave: (filter: SavedContactFilter) =
       if (!valid) return;
       onSave({ id: `filter-${Date.now()}`, name: name.trim(), criteria });
       toast.success(`Filter “${name.trim()}” created`);
-      setName('Filter 1'); setSearch(''); setCriteria([{ id: `criterion-${Date.now()}`, field: '', operator: 'contains', value: '' }]); closePanel();
+       setName('Filter 1'); setCriteria([{ id: `criterion-${Date.now()}`, field: '', operator: 'is_not', value: '' }]); closePanel();
     }}>
       <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
         <label className="flex h-14 shrink-0 items-center gap-2 border-b px-6 font-semibold"><input value={name} onChange={(event) => setName(event.target.value)} aria-label="Filter name" className="min-w-0 flex-1 bg-transparent outline-none" /><Pencil className="size-4 text-muted-foreground" /></label>
         <div className="space-y-3 p-4">
-          {criteria.map((criterion) => <div key={criterion.id} className="rounded-lg border bg-muted/20 p-3">
+          {criteria.map((criterion) => <div key={criterion.id} className="rounded-xl border bg-background px-5 py-5">
             <div className="flex items-center gap-2">
-              <details className="group/criterion relative min-w-0 flex-1">
-                <summary className="flex h-11 cursor-pointer list-none items-center justify-between rounded-md border bg-background px-3 text-sm [&::-webkit-details-marker]:hidden"><span className={criterion.field ? '' : 'text-muted-foreground'}>{filterLabel(criterion.field)}</span><ChevronDown className="size-4 text-muted-foreground transition-transform group-open/criterion:rotate-180" /></summary>
-                <div className="absolute left-0 right-0 top-full z-20 mt-1 max-h-[25rem] overflow-hidden rounded-md border bg-popover shadow-xl">
-                  <label className="m-2 flex h-10 items-center gap-2 rounded-md border px-3 text-muted-foreground"><Search className="size-4" /><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Filter choices..." className="min-w-0 flex-1 bg-transparent text-sm text-foreground outline-none" /></label>
-                  <div className="scrollbar-hidden max-h-[20rem] overflow-y-auto px-2 pb-2">
-                    {filterChoices.map((group) => { const values = group.values.filter((choice) => choice.label.toLowerCase().includes(search.toLowerCase())); return values.length > 0 && <div key={group.group}><p className="px-2 pb-1 pt-3 text-xs font-medium text-muted-foreground">{group.group}</p>{values.map((choice) => <Button key={`${group.group}-${choice.field}`} type="button" variant="ghost" className="w-full justify-start" onClick={(event) => { updateCriterion(criterion.id, { field: choice.field, value: '' }); setSearch(''); const details = event.currentTarget.closest('details'); if (details) details.open = false; }}><UserRound />{choice.label}</Button>)}</div>; })}
-                  </div>
-                </div>
-              </details>
+              <label className="relative min-w-0 flex-1">
+                <UserRound className="pointer-events-none absolute left-4 top-1/2 z-10 size-4 -translate-y-1/2 text-muted-foreground" />
+                <select value={criterion.field} onChange={(event) => updateCriterion(criterion.id, { field: event.target.value as FilterField | '', value: '' })} aria-label="Select a criterion" className="h-12 w-full appearance-none rounded-lg border bg-muted/35 pl-12 pr-10 text-sm font-semibold outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                  <option value="">Select a criterion</option>
+                  {filterChoices.map((group) => <optgroup key={group.group} label={group.group}>{group.values.map((choice) => <option key={`${group.group}-${choice.field}`} value={choice.field}>{choice.label}</option>)}</optgroup>)}
+                </select>
+                <ChevronDown className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+              </label>
               <Button type="button" variant="ghost" size="icon-sm" aria-label="Remove criterion" disabled={criteria.length === 1} onClick={() => setCriteria((current) => current.filter((item) => item.id !== criterion.id))}><X /></Button>
             </div>
-            {criterion.field && <div className="mt-3 grid grid-cols-[7rem_1fr] gap-2">
-              <select value={criterion.operator} onChange={(event) => updateCriterion(criterion.id, { operator: event.target.value as FilterCriterion['operator'] })} aria-label="Filter operator" className="h-10 rounded-md border bg-background px-2 text-sm outline-none"><option value="contains">contains</option><option value="is">is exactly</option></select>
-              <input value={criterion.value} onChange={(event) => updateCriterion(criterion.id, { value: event.target.value })} placeholder="Enter a value" aria-label={`${filterLabel(criterion.field)} value`} className="h-10 min-w-0 rounded-md border bg-background px-3 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring" />
-            </div>}
+            <div className="my-5 border-t" />
+            <div className="space-y-2">
+              <label className="relative block">
+                <Hash className="pointer-events-none absolute left-4 top-1/2 z-10 size-4 -translate-y-1/2 text-muted-foreground" />
+                <select value={criterion.operator} onChange={(event) => updateCriterion(criterion.id, { operator: event.target.value as FilterOperator })} aria-label="Filter operator" className="h-11 w-full appearance-none rounded-lg border bg-muted/35 pl-12 pr-10 text-sm font-semibold outline-none focus-visible:ring-2 focus-visible:ring-ring">{filterOperators.map((operator) => <option key={operator.value} value={operator.value}>{operator.label}</option>)}</select>
+                <ChevronDown className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+              </label>
+              <input value={criterion.value} onChange={(event) => updateCriterion(criterion.id, { value: event.target.value })} placeholder="Enter a value (and hit enter)" aria-label={`${filterLabel(criterion.field)} value`} className="h-11 w-full min-w-0 rounded-lg border bg-muted/35 px-4 text-sm outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring" />
+            </div>
           </div>)}
-          <Button type="button" variant="outline" className="w-full" onClick={() => setCriteria((current) => [...current, { id: `criterion-${Date.now()}`, field: '', operator: 'contains', value: '' }])}><Plus />Add criterion</Button>
+          <Button type="button" variant="ghost" className="w-full" onClick={() => setCriteria((current) => [...current, { id: `criterion-${Date.now()}`, field: '', operator: 'is_not', value: '' }])}><CirclePlus />Add another condition</Button>
         </div>
       </div>
       <footer className="grid shrink-0 grid-cols-2 gap-3 border-t p-3"><Button type="button" variant="outline" popoverTarget="contacts-filter-create" popoverTargetAction="hide"><CircleCheck />Cancel</Button><Button type="submit" disabled={!valid} className="bg-chart-1 text-primary-foreground hover:bg-chart-1/90"><CircleCheck />Save Filter</Button></footer>
@@ -197,7 +210,12 @@ export default function AdminContacts() {
     const matchesSaved = !savedFilter || savedFilter.criteria.every((criterion) => {
       if (!criterion.field) return true;
       const actual = profileText[criterion.field].toLowerCase(); const expected = criterion.value.toLowerCase();
-      return criterion.operator === 'is' ? actual === expected : actual.includes(expected);
+      if (criterion.operator === 'is') return actual === expected;
+      if (criterion.operator === 'is_not') return actual !== expected;
+      if (criterion.operator === 'not_contains') return !actual.includes(expected);
+      if (criterion.operator === 'starts_with') return actual.startsWith(expected);
+      if (criterion.operator === 'ends_with') return actual.endsWith(expected);
+      return actual.includes(expected);
     });
     return matchesQuery && matchesSaved && (segment === 'all' || (segment === 'segmented' ? contact.segments.length > 0 : contact.segments.includes(segment)));
   }), [activeSavedFilter, contacts, query, savedFilters, segment]);
