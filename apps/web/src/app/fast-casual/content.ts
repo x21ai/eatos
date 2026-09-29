@@ -46,7 +46,7 @@ export const pillars = [
       'Optimise your service speed to support faster table turnovers during the busiest parts of the day.',
     more:
       'eatOS Point of Sale keeps a high volume of guests moving at peak hours without adding pressure to your team.',
-    imageLabel: 'Fast-casual counter service',
+    imageLabel: 'Guest ordering at the counter while staff prepare the order',
     image: turnaroundImg.url,
   },
   {
