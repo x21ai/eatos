@@ -13,7 +13,7 @@ export default function KbDemoHeader() {
     <div className="border-b bg-muted/40">
       <div className="mx-auto flex max-w-4xl flex-wrap items-center gap-x-3 gap-y-2 px-5 py-3">
         <span className="text-sm font-semibold tracking-tight">Knowledge Base</span>
-        <span className="text-xs text-muted-foreground">Demo preview of your published articles</span>
+
         <Link
           href="/chatapp/knowledge-base"
           className="ms-auto inline-flex items-center gap-2 rounded-md border bg-background px-3 py-1.5 text-sm font-medium hover:bg-accent"
