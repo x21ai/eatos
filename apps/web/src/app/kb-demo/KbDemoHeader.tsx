@@ -26,6 +26,7 @@ export default function KbDemoHeader() {
           Back to editor
         </Link>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
