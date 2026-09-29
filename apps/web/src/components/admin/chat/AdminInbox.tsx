@@ -59,6 +59,16 @@ const inboxTargets: { key: Conversation['inbox']; label: string }[] = [
   { key: 'spam', label: 'Spam' },
 ];
 
+function ShortcutKeys({ direction }: { direction: 'up' | 'down' }) {
+  return (
+    <DropdownMenuShortcut className="flex items-center gap-1 tracking-normal">
+      <kbd className="grid h-6 min-w-7 place-items-center rounded border border-muted-foreground bg-muted px-1 text-[11px] font-semibold leading-none text-foreground shadow-[inset_0_-1px_0_var(--color-muted-foreground)]">Ctrl</kbd>
+      <kbd className="grid h-6 min-w-7 place-items-center rounded border border-muted-foreground bg-muted px-1 text-[11px] font-semibold leading-none text-foreground shadow-[inset_0_-1px_0_var(--color-muted-foreground)]">Alt</kbd>
+      <kbd className="grid size-6 place-items-center rounded border border-muted-foreground bg-muted text-sm font-semibold leading-none text-foreground shadow-[inset_0_-1px_0_var(--color-muted-foreground)]" aria-label={direction === 'up' ? 'Up arrow' : 'Down arrow'}>{direction === 'up' ? '↑' : '↓'}</kbd>
+    </DropdownMenuShortcut>
+  );
+}
+
 function Transcript({
   conversation, onBack, onShowDetails, onResolve, onSend, onNavigate, onMarkUnread, onMoveToInbox, onDelete, onSetSubject,
 }: {
@@ -119,33 +129,32 @@ function Transcript({
           <Button variant="ghost" size="icon-sm" onClick={() => toast.warning(`${conversation.name} is blocked for this demo session`)} aria-label="Block visitor"><Ban /></Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild><Button variant="ghost" size="icon-sm" aria-label="Conversation actions"><MoreHorizontal /></Button></DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-64">
-              <DropdownMenuItem onSelect={onMarkUnread}><MessageSquareOff /> Mark as unread</DropdownMenuItem>
-              <DropdownMenuItem onSelect={() => void copyLink()}><Link /> Copy link</DropdownMenuItem>
-              <DropdownMenuItem onSelect={() => { setSubjectDraft(conversation.subject ?? ''); setSubjectOpen(true); }}><PenLine /> Set Subject</DropdownMenuItem>
-              <DropdownMenuSeparator />
+            <DropdownMenuContent align="start" sideOffset={6} className="w-68 overflow-hidden rounded-lg p-0 shadow-lg">
+              <DropdownMenuItem className="h-10 rounded-none px-4 text-[15px]" onSelect={onMarkUnread}><MessageCircle /> Mark as unread</DropdownMenuItem>
+              <DropdownMenuItem className="h-10 rounded-none px-4 text-[15px]" onSelect={() => void copyLink()}><Link /> Copy link</DropdownMenuItem>
+              <DropdownMenuItem className="h-10 rounded-none px-4 text-[15px]" onSelect={() => { setSubjectDraft(conversation.subject ?? ''); setSubjectOpen(true); }}><Mail /> Set Subject</DropdownMenuItem>
               <DropdownMenuSub>
-                <DropdownMenuSubTrigger><Mail /> Transcript</DropdownMenuSubTrigger>
-                <DropdownMenuSubContent>
-                  <DropdownMenuItem onSelect={() => toast.success(`Transcript queued for ${conversation.email}`)}><Mail /> Email transcript</DropdownMenuItem>
-                  <DropdownMenuItem onSelect={downloadTranscript}><Download /> Download transcript</DropdownMenuItem>
+                <DropdownMenuSubTrigger className="h-10 rounded-none px-4 text-[15px]"><Mail /> Transcript</DropdownMenuSubTrigger>
+                <DropdownMenuSubContent className="w-56">
+                  <DropdownMenuItem className="h-10" onSelect={() => toast.success(`Transcript queued for ${conversation.email}`)}><Mail /> Email transcript</DropdownMenuItem>
+                  <DropdownMenuItem className="h-10" onSelect={downloadTranscript}><Download /> Download transcript</DropdownMenuItem>
                 </DropdownMenuSubContent>
               </DropdownMenuSub>
-              <DropdownMenuSeparator />
+              <DropdownMenuSeparator className="my-0" />
               <DropdownMenuSub>
-                <DropdownMenuSubTrigger><ArrowRight /> Move to inbox</DropdownMenuSubTrigger>
-                <DropdownMenuSubContent>
+                <DropdownMenuSubTrigger className="h-12 rounded-none px-4 text-[15px]"><ArrowRight /> Move to inbox</DropdownMenuSubTrigger>
+                <DropdownMenuSubContent className="w-52">
                   {inboxTargets.map((target) => (
-                    <DropdownMenuItem key={target.key} onSelect={() => onMoveToInbox(target.key)}>{target.label}</DropdownMenuItem>
+                    <DropdownMenuItem className="h-10" key={target.key} onSelect={() => onMoveToInbox(target.key)}>{target.label}</DropdownMenuItem>
                   ))}
                 </DropdownMenuSubContent>
               </DropdownMenuSub>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onSelect={() => onNavigate(1)}>Next<DropdownMenuShortcut>Ctrl Alt ↑</DropdownMenuShortcut></DropdownMenuItem>
-              <DropdownMenuItem onSelect={() => onNavigate(-1)}>Previous<DropdownMenuShortcut>Ctrl Alt ↓</DropdownMenuShortcut></DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onSelect={() => onMoveToInbox('spam')}><Trash2 /> Mark as spam</DropdownMenuItem>
-              <DropdownMenuItem variant="destructive" onSelect={onDelete}><Trash2 /> Delete conversation</DropdownMenuItem>
+              <DropdownMenuSeparator className="my-0" />
+              <DropdownMenuItem className="h-12 rounded-none pl-12 pr-4 text-[15px]" onSelect={() => onNavigate(-1)}>Next<ShortcutKeys direction="up" /></DropdownMenuItem>
+              <DropdownMenuItem className="h-12 rounded-none pl-12 pr-4 text-[15px]" onSelect={() => onNavigate(1)}>Previous<ShortcutKeys direction="down" /></DropdownMenuItem>
+              <DropdownMenuSeparator className="my-0" />
+              <DropdownMenuItem className="h-10 rounded-none px-4 text-[15px]" onSelect={() => onMoveToInbox('spam')}><Trash2 /> Mark as spam</DropdownMenuItem>
+              <DropdownMenuItem className="h-10 rounded-none px-4 text-[15px]" variant="destructive" onSelect={onDelete}><Trash2 /> Delete conversation</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
