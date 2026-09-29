@@ -10,7 +10,11 @@ import { ArrowLeft } from 'lucide-react';
  */
 export default function KbDemoHeader() {
   return (
-    <div className="border-b bg-muted/40">
+    <>
+      {/* The site header is fixed, so the preview clears it the same way /support does. */}
+      <div className="h-[128px] md:h-[176px]" aria-hidden />
+      <div className="border-b bg-muted/40">
+
       <div className="mx-auto flex max-w-4xl flex-wrap items-center gap-x-3 gap-y-2 px-5 py-3">
         <span className="text-sm font-semibold tracking-tight">Knowledge Base</span>
 
