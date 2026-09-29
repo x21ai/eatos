@@ -12,6 +12,20 @@ export type ChatContact = {
   segments: string[];
   lastActivity: string;
   tone: ContactTone;
+  address?: string;
+  website?: string;
+  createdAt?: string;
+  gender?: string;
+  notifications?: boolean;
+  jobTitle?: string;
+  jobRole?: string;
+  websiteDomain?: string;
+  city?: string;
+  country?: string;
+  employees?: string;
+  localTime?: string;
+  mapX?: number;
+  mapY?: number;
 };
 
 export const initialContacts: ChatContact[] = [
@@ -32,3 +46,27 @@ export const initialContacts: ChatContact[] = [
   { id: 'warren-dempsey-2', name: 'Warren Dempsey', initials: 'WD', email: 'francis.obera7@eigital.com', location: 'Makati City, Philippines', flag: '🇵🇭', segments: [], lastActivity: '26 Aug', tone: 'peach' },
   { id: 'linda-pham', name: 'Linda Pham', initials: 'LP', email: 'lindalepham@gmail.com', phone: '18326337187', location: 'Houston, United States', flag: '🇺🇸', segments: ['loyalty'], lastActivity: '26 Aug', tone: 'stone' },
 ];
+
+export function findContact(contactId: string) {
+  return initialContacts.find((contact) => contact.id === contactId);
+}
+
+export function contactProfile(contact: ChatContact) {
+  const locationParts = contact.location.split(',').map((part) => part.trim());
+  return {
+    address: contact.address ?? '',
+    website: contact.website ?? '',
+    createdAt: contact.createdAt ?? 'Jul 2024',
+    gender: contact.gender ?? '',
+    notifications: contact.notifications ?? true,
+    jobTitle: contact.jobTitle ?? '',
+    jobRole: contact.jobRole ?? '',
+    websiteDomain: contact.websiteDomain ?? '',
+    city: contact.city ?? locationParts[0] ?? '',
+    country: contact.country ?? locationParts.at(-1) ?? 'United States',
+    employees: contact.employees ?? '',
+    localTime: contact.localTime ?? '5:08pm UTC-4',
+    mapX: contact.mapX ?? 72,
+    mapY: contact.mapY ?? 48,
+  };
+}
