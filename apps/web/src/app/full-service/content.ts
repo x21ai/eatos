@@ -3,7 +3,7 @@
 
 import heroImg from '@/assets/svc-full-service.jpg.asset.json';
 import tablesImg from './assets/fs-v4-1.jpg.asset.json';
-import paymentsImg from './assets/fs-v4-2.png.asset.json';
+import paymentsImg from './assets/fs-v4-2.jpg.asset.json';
 import coursingImg from './assets/fs-v4-3.jpg.asset.json';
 
 export const hero = {
@@ -48,7 +48,7 @@ export const pillars = [
       'Our all-in-one food-service and restaurant management suite is designed to make it easier to manage guests, staff, marketing, finances, and the menu.',
     more:
       'Everything runs on one cloud platform, so operators thrive no matter their size, from single dining room to group of restaurants.',
-    imageLabel: 'Table management on a tablet',
+    imageLabel: 'Server taking an order from two guests on a tablet at the counter',
     image: tablesImg.url,
   },
   {
@@ -58,7 +58,7 @@ export const pillars = [
       'Fully functioning in online and offline modes, eatOS keeps business running even when the Wi-Fi is down, so service and payments never stop mid-course.',
     more:
       'The multi-user and multi-device environment makes seamless teamwork a breeze, with checks and totals syncing the moment you are back online.',
-    imageLabel: 'Tableside contactless payment',
+    imageLabel: 'Guest ordering at an eatOS self-service kiosk',
     image: paymentsImg.url,
   },
   {
