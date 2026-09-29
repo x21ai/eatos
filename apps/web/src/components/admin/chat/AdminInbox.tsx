@@ -4,8 +4,8 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { toast } from 'sonner';
 import {
   ArrowLeft, ArrowRight, BadgeCheck, Ban, Check, ChevronDown, CircleUserRound, Clock3, Download, Globe2,
-  Info, Laptop, Link, Mail, MapPin, MessageCircle, MessageSquareOff, MoreHorizontal, PanelRight,
-  PenLine, Phone, Send, Smile, Sparkles, Trash2, UserRound, Users, Video, X, Zap,
+  Info, Laptop, Link, Mail, MapPin, MessageCircle, MoreHorizontal, PanelRight,
+  Phone, Send, Smile, Sparkles, Trash2, UserRound, Users, Video, X, Zap,
 } from 'lucide-react';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
