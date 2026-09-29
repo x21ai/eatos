@@ -10,7 +10,6 @@ import {
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import AdminChatShell from './AdminChatShell';
@@ -61,11 +60,11 @@ const inboxTargets: { key: Conversation['inbox']; label: string }[] = [
 
 function ShortcutKeys({ direction }: { direction: 'up' | 'down' }) {
   return (
-    <DropdownMenuShortcut className="flex items-center gap-1 tracking-normal">
+    <span className="ml-auto flex items-center gap-1 tracking-normal text-muted-foreground">
       <kbd className="grid h-6 min-w-7 place-items-center rounded border border-muted-foreground bg-muted px-1 text-[11px] font-semibold leading-none text-foreground shadow-[inset_0_-1px_0_var(--color-muted-foreground)]">Ctrl</kbd>
       <kbd className="grid h-6 min-w-7 place-items-center rounded border border-muted-foreground bg-muted px-1 text-[11px] font-semibold leading-none text-foreground shadow-[inset_0_-1px_0_var(--color-muted-foreground)]">Alt</kbd>
       <kbd className="grid size-6 place-items-center rounded border border-muted-foreground bg-muted text-sm font-semibold leading-none text-foreground shadow-[inset_0_-1px_0_var(--color-muted-foreground)]" aria-label={direction === 'up' ? 'Up arrow' : 'Down arrow'}>{direction === 'up' ? '↑' : '↓'}</kbd>
-    </DropdownMenuShortcut>
+    </span>
   );
 }
 
@@ -127,36 +126,34 @@ function Transcript({
           <Button variant="ghost" size="icon-sm" onClick={() => toast.info(`Demo call started with ${conversation.name}`)} aria-label="Call visitor"><Phone /></Button>
           <Button variant="ghost" size="icon-sm" onClick={() => toast.info(`Demo video call started with ${conversation.name}`)} aria-label="Start video call"><Video /></Button>
           <Button variant="ghost" size="icon-sm" onClick={() => toast.warning(`${conversation.name} is blocked for this demo session`)} aria-label="Block visitor"><Ban /></Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild><Button variant="ghost" size="icon-sm" aria-label="Conversation actions"><MoreHorizontal /></Button></DropdownMenuTrigger>
-            <DropdownMenuContent align="start" sideOffset={6} className="w-68 overflow-hidden rounded-lg p-0 shadow-lg">
-              <DropdownMenuItem className="h-10 rounded-none px-4 text-[15px]" onSelect={onMarkUnread}><MessageCircle /> Mark as unread</DropdownMenuItem>
-              <DropdownMenuItem className="h-10 rounded-none px-4 text-[15px]" onSelect={() => void copyLink()}><Link /> Copy link</DropdownMenuItem>
-              <DropdownMenuItem className="h-10 rounded-none px-4 text-[15px]" onSelect={() => { setSubjectDraft(conversation.subject ?? ''); setSubjectOpen(true); }}><Mail /> Set Subject</DropdownMenuItem>
-              <DropdownMenuSub>
-                <DropdownMenuSubTrigger className="h-10 rounded-none px-4 text-[15px]"><Mail /> Transcript</DropdownMenuSubTrigger>
-                <DropdownMenuSubContent className="w-56">
-                  <DropdownMenuItem className="h-10" onSelect={() => toast.success(`Transcript queued for ${conversation.email}`)}><Mail /> Email transcript</DropdownMenuItem>
-                  <DropdownMenuItem className="h-10" onSelect={downloadTranscript}><Download /> Download transcript</DropdownMenuItem>
-                </DropdownMenuSubContent>
-              </DropdownMenuSub>
-              <DropdownMenuSeparator className="my-0" />
-              <DropdownMenuSub>
-                <DropdownMenuSubTrigger className="h-12 rounded-none px-4 text-[15px]"><ArrowRight /> Move to inbox</DropdownMenuSubTrigger>
-                <DropdownMenuSubContent className="w-52">
-                  {inboxTargets.map((target) => (
-                    <DropdownMenuItem className="h-10" key={target.key} onSelect={() => onMoveToInbox(target.key)}>{target.label}</DropdownMenuItem>
-                  ))}
-                </DropdownMenuSubContent>
-              </DropdownMenuSub>
-              <DropdownMenuSeparator className="my-0" />
-              <DropdownMenuItem className="h-12 rounded-none pl-12 pr-4 text-[15px]" onSelect={() => onNavigate(-1)}>Next<ShortcutKeys direction="up" /></DropdownMenuItem>
-              <DropdownMenuItem className="h-12 rounded-none pl-12 pr-4 text-[15px]" onSelect={() => onNavigate(1)}>Previous<ShortcutKeys direction="down" /></DropdownMenuItem>
-              <DropdownMenuSeparator className="my-0" />
-              <DropdownMenuItem className="h-10 rounded-none px-4 text-[15px]" onSelect={() => onMoveToInbox('spam')}><Trash2 /> Mark as spam</DropdownMenuItem>
-              <DropdownMenuItem className="h-10 rounded-none px-4 text-[15px]" variant="destructive" onSelect={onDelete}><Trash2 /> Delete conversation</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <details className="group/actions relative">
+            <summary className="flex size-8 cursor-pointer list-none items-center justify-center rounded-md text-foreground outline-none hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden" aria-label="Conversation actions"><MoreHorizontal className="size-4" /></summary>
+            <div role="menu" className="absolute left-0 top-full z-50 mt-1.5 w-68 overflow-visible rounded-lg border bg-popover text-popover-foreground shadow-lg">
+              <Button variant="ghost" className="h-10 w-full justify-start rounded-none px-4 text-[15px] font-normal" onClick={onMarkUnread}><MessageCircle /> Mark as unread</Button>
+              <Button variant="ghost" className="h-10 w-full justify-start rounded-none px-4 text-[15px] font-normal" onClick={() => void copyLink()}><Link /> Copy link</Button>
+              <Button variant="ghost" className="h-10 w-full justify-start rounded-none px-4 text-[15px] font-normal" onClick={() => { setSubjectDraft(conversation.subject ?? ''); setSubjectOpen(true); }}><Mail /> Set Subject</Button>
+              <details className="group/transcript relative">
+                <summary className="flex h-10 cursor-pointer list-none items-center gap-2 px-4 text-[15px] hover:bg-accent [&::-webkit-details-marker]:hidden"><Mail className="size-4 text-muted-foreground" /> Transcript <span className="ml-auto">›</span></summary>
+                <div className="absolute left-full top-0 z-50 ml-1 w-56 overflow-hidden rounded-md border bg-popover p-1 shadow-lg max-md:left-0 max-md:top-full max-md:ml-0">
+                  <Button variant="ghost" className="h-10 w-full justify-start" onClick={() => toast.success(`Transcript queued for ${conversation.email}`)}><Mail /> Email transcript</Button>
+                  <Button variant="ghost" className="h-10 w-full justify-start" onClick={downloadTranscript}><Download /> Download transcript</Button>
+                </div>
+              </details>
+              <div className="h-px bg-border" />
+              <details className="group/inbox relative">
+                <summary className="flex h-12 cursor-pointer list-none items-center gap-2 px-4 text-[15px] hover:bg-accent [&::-webkit-details-marker]:hidden"><ArrowRight className="size-4 text-muted-foreground" /> Move to inbox <span className="ml-auto">›</span></summary>
+                <div className="absolute left-full top-0 z-50 ml-1 w-52 overflow-hidden rounded-md border bg-popover p-1 shadow-lg max-md:left-0 max-md:top-full max-md:ml-0">
+                  {inboxTargets.map((target) => <Button variant="ghost" className="h-10 w-full justify-start" key={target.key} onClick={() => onMoveToInbox(target.key)}>{target.label}</Button>)}
+                </div>
+              </details>
+              <div className="h-px bg-border" />
+              <Button variant="ghost" className="h-12 w-full justify-start rounded-none pl-12 pr-4 text-[15px] font-normal" onClick={() => onNavigate(-1)}>Next<ShortcutKeys direction="up" /></Button>
+              <Button variant="ghost" className="h-12 w-full justify-start rounded-none pl-12 pr-4 text-[15px] font-normal" onClick={() => onNavigate(1)}>Previous<ShortcutKeys direction="down" /></Button>
+              <div className="h-px bg-border" />
+              <Button variant="ghost" className="h-10 w-full justify-start rounded-none px-4 text-[15px] font-normal" onClick={() => onMoveToInbox('spam')}><Trash2 /> Mark as spam</Button>
+              <Button variant="ghost" className="h-10 w-full justify-start rounded-none px-4 text-[15px] font-normal text-destructive hover:bg-destructive/10 hover:text-destructive" onClick={onDelete}><Trash2 /> Delete conversation</Button>
+            </div>
+          </details>
         </div>
         <div className="min-w-0 flex-1" />
         <Button
