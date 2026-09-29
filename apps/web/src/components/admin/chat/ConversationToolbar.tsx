@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { toast } from 'sonner';
 import {
   ArrowRight, AtSign, Check, ChevronDown, CircleDashed, Clock3, Filter,
   ListFilter, Mail, Plus, RotateCcw, SortAsc, UserRound,
@@ -98,7 +99,7 @@ export function ConversationToolbar({
         <Button variant="ghost" size="icon" onClick={() => setConversationDialogOpen(true)} aria-label="Create a new conversation"><Plus /></Button>
       </div>
     </div>
-    <AdvancedFilterDialog open={filterDialogOpen} onOpenChange={setFilterDialogOpen} onSave={(filter) => { setFilters((items) => [...items, filter]); onCustomFilterChange(filter); }} />
+    <AdvancedFilterDialog open={filterDialogOpen} onOpenChange={setFilterDialogOpen} onSave={(filter) => { setFilters((items) => [...items, filter]); onCustomFilterChange(filter); toast.success(`Filter “${filter.label}” created`); }} />
     <NewConversationDialog open={conversationDialogOpen} onOpenChange={setConversationDialogOpen} onCreate={onCreateConversation} />
   </>;
 }
