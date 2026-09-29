@@ -59,10 +59,6 @@ const inboxTargets: { key: Conversation['inbox']; label: string }[] = [
   { key: 'spam', label: 'Spam' },
 ];
 
-function copyConversationLink() {
-  try { void navigator.clipboard?.writeText(window.location.href); } catch { /* clipboard unavailable */ }
-}
-
 function Transcript({
   conversation, onBack, onShowDetails, onResolve, onSend, onNavigate, onMarkUnread, onMoveToInbox, onDelete, onSetSubject,
 }: {
