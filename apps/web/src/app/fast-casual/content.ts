@@ -1,7 +1,7 @@
 // @ts-nocheck
 // All copy for the Fast-Casual solution page. Edit here.
 
-import turnaroundImg from './assets/fc-turnaround.png.asset.json';
+import turnaroundImg from '@/assets/svc-fast-casual-v2.jpg.asset.json';
 import fulfillmentImg from './assets/fc-fulfillment.png.asset.json';
 import managementImg from './assets/fc-management.jpg.asset.json';
 
@@ -46,7 +46,7 @@ export const pillars = [
       'Optimise your service speed to support faster table turnovers during the busiest parts of the day.',
     more:
       'eatOS Point of Sale keeps a high volume of guests moving at peak hours without adding pressure to your team.',
-    imageLabel: 'Fast-casual counter service',
+    imageLabel: 'Guest ordering at the counter while staff prepare the order',
     image: turnaroundImg.url,
   },
   {
