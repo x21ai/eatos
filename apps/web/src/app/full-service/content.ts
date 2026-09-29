@@ -2,9 +2,9 @@
 // All copy for the Full Service solution page. Edit here.
 
 import heroImg from '@/assets/svc-full-service.jpg.asset.json';
-import tablesImg from './assets/fs-v4-1.jpg.asset.json';
-import paymentsImg from './assets/fs-v4-2.jpg.asset.json';
-import coursingImg from './assets/fs-v4-3.jpg.asset.json';
+import posImg from './assets/fs-v5-pos.jpg.asset.json';
+import kioskImg from './assets/fs-v5-kiosk.jpg.asset.json';
+import handheldImg from './assets/fs-v5-handheld.jpg.asset.json';
 
 export const hero = {
   eyebrow: 'Restaurant Technology Cloud',
@@ -48,8 +48,8 @@ export const pillars = [
       'Our all-in-one food-service and restaurant management suite is designed to make it easier to manage guests, staff, marketing, finances, and the menu.',
     more:
       'Everything runs on one cloud platform, so operators thrive no matter their size, from single dining room to group of restaurants.',
-    imageLabel: 'Server taking an order from two guests on a tablet at the counter',
-    image: tablesImg.url,
+    imageLabel: 'Staff taking an order on an eatOS Point of Sale terminal at a busy restaurant counter',
+    image: posImg.url,
   },
   {
     id: 'offline',
@@ -59,7 +59,7 @@ export const pillars = [
     more:
       'The multi-user and multi-device environment makes seamless teamwork a breeze, with checks and totals syncing the moment you are back online.',
     imageLabel: 'Guest ordering at an eatOS self-service kiosk',
-    image: paymentsImg.url,
+    image: kioskImg.url,
   },
   {
     id: 'guests',
@@ -68,8 +68,8 @@ export const pillars = [
       'With menu and table management, seating and serving your guests is more efficient than ever before, from the first greeting to the final check.',
     more:
       'We streamline communication across the restaurant so altering orders and accounting for dietary restrictions is easy, and plates come out right the first time.',
-    imageLabel: 'Kitchen pass with coursing display',
-    image: coursingImg.url,
+    imageLabel: 'Server taking an order from guests at their table on an eatOS handheld',
+    image: handheldImg.url,
   },
 ];
 
