@@ -62,16 +62,16 @@ export default function AdminChatShell({
     {subInboxes.length > 0 && <div className="mt-1 space-y-1">
       {subInboxes.map((box) => { const BoxIcon = iconChoices[box.icon] ?? Calendar; return <Button key={box.name} variant="ghost" className="h-9 w-full justify-start px-2"><BoxIcon />{box.name}</Button>; })}
     </div>}
-    <details ref={dialogRef} className="group/subinbox mt-1">
-      <summary className="flex h-9 w-full cursor-pointer list-none items-center gap-2 rounded-md px-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground marker:hidden [&::-webkit-details-marker]:hidden"><Plus className="size-4 shrink-0" />New sub-inbox</summary>
-      <div className="fixed inset-0 z-50 grid place-items-center bg-black/50 p-4" onClick={closeDialog}>
-        <div role="dialog" aria-modal="true" aria-label="Create New Sub-Inbox" className="w-full max-w-[54rem] rounded-xl bg-background p-6 shadow-xl sm:p-8" onClick={(event) => event.stopPropagation()}>
+    <div className="mt-1">
+      <button type="button" popoverTarget="chat-sub-inbox" className="flex h-9 w-full cursor-pointer items-center gap-2 rounded-md px-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"><Plus className="size-4 shrink-0" />New sub-inbox</button>
+      <div id="chat-sub-inbox" popover="auto" className="fixed inset-0 z-50 m-0 grid h-full w-full max-w-none place-items-center border-none bg-black/50 p-4">
+        <div role="dialog" aria-modal="true" aria-label="Create New Sub-Inbox" className="w-full max-w-[54rem] rounded-xl bg-background p-6 shadow-xl sm:p-8">
           <div className="flex items-start justify-between gap-4">
             <div>
               <h2 className="text-xl font-bold">Create New Sub-Inbox</h2>
               <p className="mt-1 text-sm text-muted-foreground">Pick an icon and a name for your sub-inbox</p>
             </div>
-            <Button variant="ghost" size="icon-sm" aria-label="Close" onClick={closeDialog}><X /></Button>
+            <Button variant="ghost" size="icon-sm" aria-label="Close" popoverTarget="chat-sub-inbox" popoverTargetAction="hide"><X /></Button>
           </div>
           <div className="mt-6 grid gap-4 sm:grid-cols-[auto_1fr] sm:items-end">
             <div>
@@ -90,11 +90,11 @@ export default function AdminChatShell({
           </div>
           <div className="mt-8 flex items-center justify-between gap-4">
             <a href="https://docs.lovable.dev" target="_blank" rel="noreferrer" className="text-sm font-medium text-muted-foreground underline underline-offset-4 hover:text-foreground">Learn more</a>
-            <Button size="lg" disabled={!newName.trim()} onClick={createSubInbox}>Create <CirclePlus /></Button>
+            <Button size="lg" disabled={!newName.trim()} onClick={createSubInbox} popoverTarget="chat-sub-inbox" popoverTargetAction="hide">Create <CirclePlus /></Button>
           </div>
         </div>
       </div>
-    </details>
+    </div>
     <p className="mt-4 px-2 text-xs font-medium text-muted-foreground">Other Inboxes</p>
     <div className="mt-1 space-y-1">
       {[{ key: 'automated' as const, label: 'Automated', icon: Bot }, { key: 'spam' as const, label: 'Spam', icon: ShieldCheck }].map(({ key, label, icon: Icon }) => <Button key={key} variant="ghost" onClick={() => onInboxChange(key)} className={cn('h-9 w-full justify-start px-2', inbox === key && 'bg-accent')}><Icon />{label}</Button>)}
