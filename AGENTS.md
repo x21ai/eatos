@@ -1,4 +1,4 @@
 # Project architecture
 
-- The public `/chatapp` workspace uses a dedicated full-height shell without website chrome or login while its interface is being built; `/admin` remains protected.
-- Front-end chat prototype data lives in a typed local module, so persistence can later be added without redesigning the interface.
+- The public `/chatapp` workspace and its `/chatapp/visitors` view use a dedicated full-height shell without website chrome or login while the interface is being built; `/admin` remains protected.
+- Front-end chat and live-visitor prototype data lives in typed local modules, so persistence can later be added without redesigning the interface.
