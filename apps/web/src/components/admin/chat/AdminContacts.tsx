@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import {
   ArrowRight, Building2, Check, ChevronDown, CircleCheck, CircleHelp, CloudDownload,
-  CloudUpload, Copy, Eye, FileText, Filter, Mail, MessageCircle, Plus, Search,
-  UploadCloud, UserRound, Users, X,
+  CloudUpload, Copy, Eye, FileText, Filter, Mail, MapPin, MessageCircle, Phone, Plus,
+  Search, Tag, UploadCloud, UserRound, Users, X,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
