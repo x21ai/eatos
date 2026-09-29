@@ -2,8 +2,9 @@
 
 import { useMemo, useState } from 'react';
 import {
-  BadgePlus, Building2, Check, ChevronDown, CircleHelp, Eye, Filter, Mail, MapPin,
-  Phone, Plus, Search, Tag, Trash2, UserRound, Users, X,
+  ArrowRight, Building2, Check, ChevronDown, CircleCheck, CircleHelp, CloudDownload,
+  CloudUpload, Download, Eye, FileText, Filter, Mail, MapPin, Phone, Plus, Search,
+  Tag, UploadCloud, UserRound, Users, X,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
@@ -46,14 +47,55 @@ function ContactPreview({ contact }: { contact: ChatContact }) {
 
 function NewContactDialog({ onCreate }: { onCreate: (contact: ChatContact) => void }) {
   return <div id="contacts-new" popover="auto" className="fixed inset-0 z-50 m-0 h-full w-full max-w-none border-none bg-foreground/35 p-4 [&:not(:popover-open)]:hidden">
-    <form className="absolute left-1/2 top-1/2 w-[calc(100%-2rem)] max-w-[35rem] -translate-x-1/2 -translate-y-1/2 rounded-lg bg-background p-6 shadow-xl" onSubmit={(event) => {
+    <form className="absolute left-1/2 top-1/2 w-[calc(100%-2rem)] max-w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-lg bg-background px-10 py-9 shadow-xl max-sm:px-5" onSubmit={(event) => {
       event.preventDefault(); const data = new FormData(event.currentTarget); const name = String(data.get('name') || '').trim(); const email = String(data.get('email') || '').trim(); if (!name || !email) return;
-      onCreate({ id: `contact-${Date.now()}`, name, initials: name.split(/\s+/).slice(0, 2).map((part) => part[0]).join('').toUpperCase(), email, phone: String(data.get('phone') || '').trim() || undefined, location: String(data.get('location') || 'United States'), flag: '🇺🇸', company: String(data.get('company') || '').trim() || undefined, segments: String(data.get('segment') || '').trim() ? [String(data.get('segment'))] : [], lastActivity: 'Now', tone: 'blue' }); event.currentTarget.reset();
+      onCreate({ id: `contact-${Date.now()}`, name, initials: name.split(/\s+/).slice(0, 2).map((part) => part[0]).join('').toUpperCase(), email, location: 'United States', flag: '🇺🇸', segments: [], lastActivity: 'Now', tone: 'blue' }); event.currentTarget.reset();
     }}>
-      <div className="flex items-start justify-between"><div><h2 className="text-xl font-bold">New Contact</h2><p className="mt-1 text-sm text-muted-foreground">Add a contact to this demo workspace.</p></div><Button type="button" variant="ghost" size="icon-sm" aria-label="Close" popoverTarget="contacts-new" popoverTargetAction="hide"><X /></Button></div>
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">{[{ name: 'name', label: 'Full name', required: true }, { name: 'email', label: 'Email', required: true, type: 'email' }, { name: 'phone', label: 'Phone' }, { name: 'location', label: 'Location' }, { name: 'company', label: 'Company' }, { name: 'segment', label: 'Segment' }].map((field) => <label key={field.name} className="text-sm font-medium">{field.label}{field.required && <span className="text-destructive"> *</span>}<input name={field.name} type={field.type || 'text'} required={field.required} className="mt-2 h-11 w-full rounded-md border bg-background px-3 outline-none focus-visible:ring-2 focus-visible:ring-ring" /></label>)}</div>
-      <div className="mt-6 flex justify-end gap-2"><Button type="button" variant="outline" popoverTarget="contacts-new" popoverTargetAction="hide">Cancel</Button><Button type="submit" popoverTarget="contacts-new" popoverTargetAction="hide"><Plus />Create Contact</Button></div>
+      <div className="space-y-6">
+        <label className="block text-sm font-semibold text-muted-foreground">Name of the Contact <span className="text-destructive">*</span><input name="name" required placeholder="Enter the full name of the contact..." className="mt-2 h-14 w-full rounded-xl border bg-muted/55 px-4 text-base text-foreground outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring" /></label>
+        <label className="block text-sm font-semibold text-muted-foreground">Email of the Contact <span className="text-destructive">*</span><input name="email" type="email" required placeholder="Enter the email of the contact..." className="mt-2 h-14 w-full rounded-xl border bg-muted/55 px-4 text-base text-foreground outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring" /></label>
+      </div>
+      <div className="mt-8 flex justify-end gap-3"><Button type="button" variant="outline" size="lg" popoverTarget="contacts-new" popoverTargetAction="hide">Cancel</Button><Button type="submit" size="lg" className="bg-chart-1 text-primary-foreground hover:bg-chart-1/90" popoverTarget="contacts-new" popoverTargetAction="hide"><Plus className="rounded-full border" />Add Contact</Button></div>
     </form>
+  </div>;
+}
+
+function ExportContactsDialog({ count }: { count: number }) {
+  return <div id="contacts-export" popover="auto" className="fixed inset-0 z-50 m-0 h-full w-full max-w-none border-none bg-foreground/70 p-4 [&:not(:popover-open)]:hidden">
+    <div role="dialog" aria-modal="true" aria-labelledby="contacts-export-title" className="absolute left-1/2 top-1/2 w-[calc(100%-2rem)] max-w-[55rem] -translate-x-1/2 -translate-y-1/2 rounded-lg bg-background px-10 py-9 shadow-xl max-sm:px-5">
+      <h2 id="contacts-export-title" className="text-xl font-bold">You are going to export your contacts</h2>
+      <p className="mt-3 text-base text-muted-foreground"><strong>All contacts</strong> are going to be exported. To export only some contacts, use a filter or select contacts.</p>
+      <p className="mt-6 text-base text-muted-foreground">It will take a few minutes. You will get an email when the export is over.</p>
+      <div className="mt-8 flex flex-wrap items-center gap-3"><a href="https://docs.lovable.dev" target="_blank" rel="noreferrer" className="mr-auto text-sm font-semibold text-muted-foreground underline underline-offset-2">Learn more</a><Button variant="outline" size="lg" popoverTarget="contacts-export" popoverTargetAction="hide">Cancel</Button><Button size="lg" className="bg-chart-1 text-primary-foreground hover:bg-chart-1/90" popoverTarget="contacts-export" popoverTargetAction="hide" onClick={() => toast.success(`${count} contacts queued for export`)}><CircleCheck />Export Contacts</Button></div>
+    </div>
+  </div>;
+}
+
+function ImportContactsDialog({ onImport }: { onImport: (contacts: ChatContact[]) => void }) {
+  const [step, setStep] = useState(1);
+  const [fileName, setFileName] = useState('');
+  const [rows, setRows] = useState<ChatContact[]>([]);
+  const chooseFile = async (file?: File) => {
+    if (!file) return;
+    if (!file.name.toLowerCase().endsWith('.csv')) { toast.error('Please select a CSV file'); return; }
+    const text = await file.text();
+    const lines = text.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+    const parsed = lines.slice(1).map((line, index) => {
+      const [name = '', email = ''] = line.split(',').map((value) => value.trim().replace(/^"|"$/g, ''));
+      if (!name || !email.includes('@')) return undefined;
+      return { id: `import-${Date.now()}-${index}`, name, initials: name.split(/\s+/).slice(0, 2).map((part) => part[0]).join('').toUpperCase(), email, location: 'United States', flag: '🇺🇸', segments: [], lastActivity: 'Now', tone: 'mint' as const };
+    }).filter((contact): contact is ChatContact => Boolean(contact));
+    setFileName(file.name); setRows(parsed);
+  };
+  const reset = () => { setStep(1); setFileName(''); setRows([]); };
+  return <div id="contacts-import" popover="auto" className="fixed inset-0 z-50 m-0 h-full w-full max-w-none overflow-y-auto border-none bg-foreground/70 p-4 [&:not(:popover-open)]:hidden">
+    <div role="dialog" aria-modal="true" aria-labelledby="contacts-import-title" className="relative mx-auto my-[4vh] w-full max-w-[62rem] overflow-hidden rounded-lg bg-background shadow-xl">
+      <header className="flex items-center justify-between px-9 py-7"><h2 id="contacts-import-title" className="text-lg font-bold">Import Contact Profiles</h2><Button variant="ghost" size="icon-sm" aria-label="Close import" popoverTarget="contacts-import" popoverTargetAction="hide" onClick={reset}><X /></Button></header>
+      <div className="flex gap-3 border-b px-9 text-sm max-sm:overflow-x-auto">{['Select File', 'Configure Import', 'Proceed Import'].map((label, index) => <div key={label} className={cn('shrink-0 border-b-2 px-0 pb-3', step === index + 1 ? 'border-chart-1 font-semibold text-chart-1' : 'border-transparent text-muted-foreground/55')}><span>{index + 1}</span> {label}</div>)}</div>
+      {step === 1 && <div className="px-9 py-7 max-sm:px-5"><h3 className="font-bold">Upload a CSV file to import contact profiles</h3><p className="mt-2 max-w-[42rem] text-sm leading-6 text-muted-foreground">You can upload a standard CSV file containing the full name and email of your contacts, to add them to your contact database.</p><label className="mt-6 grid min-h-[20rem] cursor-pointer place-items-center rounded-lg border border-dashed bg-muted/10 text-center hover:bg-muted/30"><input type="file" accept=".csv,text/csv" className="sr-only" onChange={(event) => chooseFile(event.target.files?.[0])} /><span><Plus className="mx-auto size-5 rounded-full border" /><strong className="mt-3 block text-sm">{fileName || 'Paste, select or drag file'}</strong><span className="mt-1 block text-sm text-muted-foreground">{fileName ? `${rows.length} valid contacts detected` : 'Upload CSV file (UTF-8 encoded)'}</span></span></label><div className="mt-6 flex flex-wrap items-center gap-4"><p className="mr-auto text-sm text-muted-foreground"><a href="https://docs.lovable.dev" target="_blank" rel="noreferrer" className="font-semibold underline">Learn more</a> about contacts import, or <a href="data:text/csv;charset=utf-8,full_name%2Cemail%0AJane%20Smith%2Cjane%40example.com" download="contacts-sample.csv" className="font-semibold underline">download this sample CSV file</a></p><Button size="lg" disabled={!fileName || rows.length === 0} onClick={() => setStep(2)} className="bg-chart-1 text-primary-foreground"><span>Continue</span><ArrowRight /></Button></div></div>}
+      {step === 2 && <div className="px-9 py-10 max-sm:px-5"><FileText className="size-8 text-chart-1" /><h3 className="mt-4 text-lg font-bold">Configure your import</h3><p className="mt-2 text-sm text-muted-foreground">We found {rows.length} valid contacts in {fileName}. Full name and email columns are ready to import.</p><div className="mt-7 flex justify-end gap-3"><Button variant="outline" onClick={() => setStep(1)}>Back</Button><Button className="bg-chart-1 text-primary-foreground" onClick={() => setStep(3)}>Proceed Import <ArrowRight /></Button></div></div>}
+      {step === 3 && <div className="grid min-h-[24rem] place-items-center px-9 py-10 text-center max-sm:px-5"><div><CircleCheck className="mx-auto size-12 text-chart-2" /><h3 className="mt-5 text-xl font-bold">Ready to import {rows.length} contacts</h3><p className="mt-2 text-sm text-muted-foreground">The contacts will be added to this demo workspace.</p><Button className="mt-7 bg-chart-1 text-primary-foreground" popoverTarget="contacts-import" popoverTargetAction="hide" onClick={() => { onImport(rows); reset(); }}><UploadCloud />Import Contacts</Button></div></div>}
+    </div>
   </div>;
 }
 
@@ -84,6 +126,8 @@ export default function AdminContacts() {
 
   return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed}>
     <NewContactDialog onCreate={createContact} />
+    <ExportContactsDialog count={selected.length || shown.length} />
+    <ImportContactsDialog onImport={(imported) => { setContacts((current) => [...imported, ...current]); toast.success(`${imported.length} contacts imported`); }} />
     <CreateFilterDialog />
     <main className="relative flex h-full min-h-0 flex-col overflow-hidden bg-muted/25">
       <header className="flex min-h-20 shrink-0 flex-wrap items-center gap-3 border-b bg-background px-4 py-3 lg:flex-nowrap lg:px-6">
@@ -93,7 +137,7 @@ export default function AdminContacts() {
           <details className="relative"><summary className="grid size-11 cursor-pointer list-none place-items-center rounded-md border bg-background hover:bg-accent [&::-webkit-details-marker]:hidden" aria-label="Filter contacts"><Filter className="size-4" /></summary><div className="absolute right-0 top-full z-20 mt-2 w-[13rem] rounded-md border bg-popover p-2 shadow-lg"><p className="px-2 py-1 text-xs font-semibold text-muted-foreground">Show contacts</p>{[['all','All contacts'],['segmented','With segments'],['chat','Chat'],['shopify','Shopify']].map(([value,label]) => <Button key={value} variant="ghost" className="w-full justify-start" onClick={() => setSegment(value)}>{segment === value && <Check />}{label}</Button>)}</div></details>
           <Button variant="outline" className="hidden h-11 text-chart-1 sm:inline-flex"><CircleHelp />Documentation</Button>
           <Button className="h-11 bg-foreground text-background hover:bg-foreground/90" popoverTarget="contacts-new"><Plus />New Contact</Button>
-          <details className="relative hidden sm:block"><summary className="flex h-11 cursor-pointer list-none items-center gap-2 rounded-md border bg-background px-4 text-sm font-medium hover:bg-accent [&::-webkit-details-marker]:hidden">Actions<ChevronDown className="size-4" /></summary><div className="absolute right-0 top-full z-20 mt-2 w-[13rem] rounded-md border bg-popover p-1 shadow-lg"><Button variant="ghost" className="w-full justify-start" onClick={() => toast.success(`${selected.length} contacts exported`)}><BadgePlus />Export selected</Button><Button variant="ghost" className="w-full justify-start text-destructive hover:text-destructive" onClick={removeSelected}><Trash2 />Delete selected</Button></div></details>
+          <details className="group/actions relative hidden sm:block"><summary className="flex h-11 cursor-pointer list-none items-center gap-2 rounded-md border bg-background px-4 text-sm font-medium hover:bg-accent [&::-webkit-details-marker]:hidden">Actions<ChevronDown className="size-4 transition-transform group-open/actions:rotate-180" /></summary><div className="absolute right-0 top-full z-20 mt-2 w-[16rem] rounded-md border bg-popover p-1 shadow-lg"><Button variant="ghost" className="h-11 w-full justify-start" popoverTarget="contacts-export"><CloudDownload />Export contact profiles</Button><Button variant="ghost" className="h-11 w-full justify-start" popoverTarget="contacts-import"><CloudUpload />Import contact profiles</Button></div></details>
         </div>
       </header>
       {selected.length > 0 && <div className="flex h-11 shrink-0 items-center gap-3 border-b bg-chart-1/10 px-5 text-sm"><strong>{selected.length} selected</strong><Button variant="ghost" size="sm" className="ml-auto" onClick={() => setSelected([])}>Clear</Button></div>}
