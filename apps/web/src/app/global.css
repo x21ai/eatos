@@ -57,6 +57,13 @@
     --brand-strong: #b0036a;
     --brand-soft: rgb(215 4 128 / 0.14);
 
+    --visitor-map: hsl(213 78% 57%);
+    --visitor-map-panel: hsl(215 42% 31%);
+    --visitor-map-highlight: hsl(211 86% 70%);
+    --visitor-online: hsl(122 67% 49%);
+    --visitor-away: hsl(25 96% 54%);
+    --visitor-pending: hsl(215 91% 54%);
+
     --background: hsl(0 0% 100%);
 
     --foreground: hsl(240 10% 3.9%);
@@ -179,6 +186,12 @@
     --color-brand-on-dark: var(--brand-on-dark);
     --color-brand-strong: var(--brand-strong);
     --color-brand-soft: var(--brand-soft);
+    --color-visitor-map: var(--visitor-map);
+    --color-visitor-map-panel: var(--visitor-map-panel);
+    --color-visitor-map-highlight: var(--visitor-map-highlight);
+    --color-visitor-online: var(--visitor-online);
+    --color-visitor-away: var(--visitor-away);
+    --color-visitor-pending: var(--visitor-pending);
 }
 
 
