@@ -1,15 +1,18 @@
 'use client';
 
+import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import {
   ArrowRight, Building2, Check, ChevronDown, CircleCheck, CircleHelp, CloudDownload,
-  CloudUpload, Eye, FileText, Filter, Mail, MapPin, Phone, Plus, Search,
-  Tag, UploadCloud, UserRound, Users, X,
+  CloudUpload, Copy, Eye, FileText, Filter, Mail, MessageCircle, Plus, Search,
+  UploadCloud, UserRound, Users, X,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import AdminChatShell from './AdminChatShell';
+import ContactMap from './ContactMap';
+import { CompanyCard, ContactInformationCard, SegmentsCard } from './ContactProfileCards';
 import { initialContacts, type ChatContact, type ContactTone } from './contact-data';
 
 const toneClasses: Record<ContactTone, string> = {
@@ -33,15 +36,20 @@ function ContactAvatar({ contact, large = false }: { contact: ChatContact; large
 
 function ContactPreview({ contact }: { contact: ChatContact }) {
   const popoverId = `contact-preview-${contact.id}`;
-  return <aside id={popoverId} popover="auto" className="fixed inset-y-0 right-0 left-auto z-40 m-0 hidden h-full w-full max-w-[24rem] flex-col border-y-0 border-l bg-background p-0 shadow-xl open:flex sm:w-[24rem]">
-    <header className="flex h-16 items-center justify-between border-b px-5"><h2 className="font-bold">Contact preview</h2><Button variant="ghost" size="icon-sm" popoverTarget={popoverId} popoverTargetAction="hide" aria-label="Close contact preview"><X /></Button></header>
-    <div className="scrollbar-hidden flex-1 overflow-y-auto p-6">
-      <div className="flex flex-col items-center text-center"><ContactAvatar contact={contact} large /><h3 className="mt-4 text-lg font-bold">{contact.name}</h3><p className="mt-1 text-sm text-muted-foreground">{contact.email}</p><span className="mt-4 inline-flex items-center gap-2 rounded-full bg-chart-2/15 px-3 py-1 text-xs font-semibold text-chart-2"><Check className="size-3" />Contact</span></div>
-      <div className="mt-7 divide-y border-y">
-        {[{ icon: Mail, label: 'Email', value: contact.email }, { icon: Phone, label: 'Phone', value: contact.phone || 'Unknown' }, { icon: MapPin, label: 'Location', value: `${contact.flag} ${contact.location}` }, { icon: Building2, label: 'Company', value: contact.company || 'Unknown' }, { icon: Tag, label: 'Segments', value: contact.segments.join(', ') || 'No segments' }].map(({ icon: Icon, label, value }) => <div key={label} className="flex gap-3 py-4"><Icon className="mt-0.5 size-4 shrink-0 text-muted-foreground" /><div className="min-w-0"><p className="text-xs text-muted-foreground">{label}</p><p className="mt-1 break-words text-sm font-medium">{value}</p></div></div>)}
-      </div>
-      <Button className="mt-6 w-full" onClick={() => toast.success(`Conversation opened with ${contact.name}`)}>Start conversation</Button>
+  async function copyProfileLink() {
+    try { await navigator.clipboard.writeText(`${window.location.origin}/chatapp/contacts/${contact.id}`); toast.success('Contact profile link copied'); }
+    catch { toast.error('The profile link could not be copied'); }
+  }
+  return <aside id={popoverId} popover="auto" className="fixed inset-y-0 right-0 left-auto z-40 m-0 hidden h-full w-full max-w-[28rem] flex-col border-y-0 border-l bg-muted/35 p-0 shadow-xl open:flex sm:w-[28rem]">
+    <header className="flex h-15 shrink-0 items-center justify-between border-b bg-background px-5"><div className="flex items-center gap-3"><UserRound className="size-5" /><h2 className="font-medium">Profile</h2></div><Button variant="ghost" size="icon-sm" popoverTarget={popoverId} popoverTargetAction="hide" aria-label="Close contact preview"><X /></Button></header>
+    <div className="scrollbar-hidden min-h-0 flex-1 overflow-y-auto p-3">
+      <section className="overflow-hidden rounded-lg border bg-background">
+        <ContactMap contact={contact} className="h-40" />
+        <div className="px-5 py-6 text-center"><ContactAvatar contact={contact} large /><h3 className="mt-4 text-xl font-bold">{contact.name}</h3><p className="mt-1 text-sm text-muted-foreground">Last active: <strong>{contact.lastActivity}</strong></p><Button className="mt-5 bg-chart-1 text-primary-foreground hover:bg-chart-1/90" onClick={() => toast.success(`Conversation opened with ${contact.name}`)}><MessageCircle />Send a message</Button></div>
+      </section>
+      <div className="mt-4 space-y-4"><ContactInformationCard contact={contact} /><SegmentsCard contact={contact} /><CompanyCard contact={contact} /></div>
     </div>
+    <footer className="grid shrink-0 grid-cols-2 gap-3 border-t bg-background p-3"><Button className="bg-chart-1 text-primary-foreground hover:bg-chart-1/90" onClick={() => void copyProfileLink()}><Copy />Copy link</Button><Button asChild><Link href={`/chatapp/contacts/${contact.id}`}><UserRound />Open profile</Link></Button></footer>
   </aside>;
 }
 
