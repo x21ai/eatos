@@ -40,11 +40,9 @@ export default function AdminChatShell({
   const pathname = usePathname();
   const currentPath = pathname?.replace(/\.html$/, '').replace(/\/$/, '') || '/';
   const isInbox = currentPath === '/chatapp';
-  const dialogRef = useRef<HTMLDetailsElement>(null);
   const [subInboxes, setSubInboxes] = useState<{ name: string; icon: number }[]>([]);
   const [newName, setNewName] = useState('');
   const [newIcon, setNewIcon] = useState(0);
-  const closeDialog = () => { if (dialogRef.current) dialogRef.current.open = false; };
   const createSubInbox = () => {
     const name = newName.trim();
     if (!name) return;
