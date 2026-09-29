@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import {
-  ArrowRight, Building2, Check, ChevronDown, CircleCheck, CircleHelp, CloudDownload,
+  ArrowRight, Building2, Check, ChevronDown, ChevronLeft, CircleCheck, CircleHelp, CloudDownload,
   CloudUpload, Copy, Eye, FileText, Filter, Mail, MapPin, MessageCircle, Phone, Plus,
-  Search, Tag, UploadCloud, UserRound, Users, X,
+  Search, Tag, UploadCloud, UserRound, Users, X, Pencil, Trash2,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
@@ -29,6 +29,25 @@ const columns = [
   { key: 'segments', label: 'Segments', icon: Tag, width: 'w-[11rem]' },
   { key: 'activity', label: 'Last Activity', icon: CircleHelp, width: 'w-[9rem]' },
 ] as const;
+
+type FilterField = 'email' | 'custom' | 'language' | 'country' | 'segments' | 'name' | 'gender';
+type FilterCriterion = { id: string; field: FilterField | ''; operator: 'contains' | 'is'; value: string };
+type SavedContactFilter = { id: string; name: string; criteria: FilterCriterion[] };
+
+const filterChoices: { group: string; values: { field: FilterField; label: string }[] }[] = [
+  { group: 'MOST USED CRITERIA', values: [
+    { field: 'email', label: 'Email address' }, { field: 'custom', label: 'Contact custom data' },
+    { field: 'language', label: 'Contact language' }, { field: 'country', label: 'Contact country' },
+    { field: 'segments', label: 'Contact segments' },
+  ] },
+  { group: 'ALL CRITERIA', values: [
+    { field: 'email', label: 'Email address' }, { field: 'name', label: 'Contact full name' },
+    { field: 'gender', label: 'Contact gender' }, { field: 'country', label: 'Contact country' },
+    { field: 'segments', label: 'Contact segments' },
+  ] },
+];
+
+const filterLabel = (field: FilterField | '') => filterChoices.flatMap((group) => group.values).find((choice) => choice.field === field)?.label ?? 'Select a criterion';
 
 function ContactAvatar({ contact, large = false }: { contact: ChatContact; large?: boolean }) {
   return <span className={cn('grid shrink-0 place-items-center rounded-full font-semibold text-foreground', large ? 'size-16 text-lg' : 'size-8 text-xs', toneClasses[contact.tone])}>{contact.initials}</span>;
@@ -109,15 +128,58 @@ function ImportContactsDialog({ onImport }: { onImport: (contacts: ChatContact[]
   </div>;
 }
 
-function CreateFilterDialog() {
-  return <div id="contacts-filter-create" popover="auto" className="fixed inset-0 z-50 m-0 h-full w-full max-w-none border-none bg-foreground/35 p-4 [&:not(:popover-open)]:hidden">
-    <form className="absolute left-1/2 top-1/2 w-[calc(100%-2rem)] max-w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-lg bg-background p-6 shadow-xl" onSubmit={(event) => { event.preventDefault(); const data = new FormData(event.currentTarget); const name = String(data.get('filter-name') || '').trim(); if (name) toast.success(`Filter “${name}” created`); event.currentTarget.reset(); }}>
-      <div className="flex items-start justify-between"><div><h2 className="text-xl font-bold">Create filter</h2><p className="mt-1 text-sm text-muted-foreground">Save a contact view for this demo session.</p></div><Button type="button" variant="ghost" size="icon-sm" aria-label="Close" popoverTarget="contacts-filter-create" popoverTargetAction="hide"><X /></Button></div>
-      <label className="mt-6 block text-sm font-medium">Filter name <span className="text-destructive">*</span><input name="filter-name" required placeholder="Enter a filter name" className="mt-2 h-11 w-full rounded-md border bg-background px-3 outline-none focus-visible:ring-2 focus-visible:ring-ring" /></label>
-      <label className="mt-4 block text-sm font-medium">Condition<select name="condition" className="mt-2 h-11 w-full rounded-md border bg-background px-3 outline-none"><option>Has a segment</option><option>Location contains United States</option><option>Last active this week</option><option>Phone is known</option></select></label>
-      <div className="mt-6 flex justify-end gap-2"><Button type="button" variant="outline" popoverTarget="contacts-filter-create" popoverTargetAction="hide">Cancel</Button><Button type="submit" popoverTarget="contacts-filter-create" popoverTargetAction="hide">Create filter</Button></div>
-    </form>
-  </div>;
+function CreateFilterDialog({ onSave }: { onSave: (filter: SavedContactFilter) => void }) {
+  const [name, setName] = useState('Filter 1');
+  const [search, setSearch] = useState('');
+  const [collapsed, setCollapsed] = useState(false);
+  const [criteria, setCriteria] = useState<FilterCriterion[]>([{ id: 'criterion-1', field: '', operator: 'contains', value: '' }]);
+  const valid = name.trim() && criteria.length > 0 && criteria.every((criterion) => criterion.field && criterion.value.trim());
+  const updateCriterion = (id: string, patch: Partial<FilterCriterion>) => setCriteria((current) => current.map((criterion) => criterion.id === id ? { ...criterion, ...patch } : criterion));
+  const closePanel = () => {
+    const panel = document.getElementById('contacts-filter-create') as (HTMLElement & { hidePopover?: () => void }) | null;
+    panel?.hidePopover?.();
+  };
+  return <aside id="contacts-filter-create" popover="auto" className="fixed inset-y-0 right-0 left-auto z-50 m-0 hidden h-full w-full max-w-[25rem] flex-col border-y-0 border-l bg-background p-0 shadow-xl open:flex sm:w-[25rem]">
+    <header className="flex h-14 shrink-0 items-center gap-3 border-b px-4">
+      <Filter className="size-5" /><h2 className="font-semibold">Advanced Filter</h2>
+      <Button type="button" variant="ghost" size="icon-sm" className="ml-auto" onClick={() => setCollapsed((value) => !value)} aria-label={collapsed ? 'Expand filter panel' : 'Collapse filter panel'}><ChevronLeft className={cn('transition-transform', collapsed && 'rotate-180')} /></Button>
+      <Button type="button" variant="ghost" size="icon-sm" aria-label="Close filter panel" popoverTarget="contacts-filter-create" popoverTargetAction="hide"><X /></Button>
+    </header>
+    {!collapsed && <form className="flex min-h-0 flex-1 flex-col" onSubmit={(event) => {
+      event.preventDefault();
+      if (!valid) return;
+      onSave({ id: `filter-${Date.now()}`, name: name.trim(), criteria });
+      toast.success(`Filter “${name.trim()}” created`);
+      setName('Filter 1'); setSearch(''); setCriteria([{ id: `criterion-${Date.now()}`, field: '', operator: 'contains', value: '' }]); closePanel();
+    }}>
+      <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
+        <label className="flex h-14 shrink-0 items-center gap-2 border-b px-6 font-semibold"><input value={name} onChange={(event) => setName(event.target.value)} aria-label="Filter name" className="min-w-0 flex-1 bg-transparent outline-none" /><Pencil className="size-4 text-muted-foreground" /></label>
+        <div className="space-y-3 p-4">
+          {criteria.map((criterion) => <div key={criterion.id} className="rounded-lg border bg-muted/20 p-3">
+            <div className="flex items-center gap-2">
+              <details className="group/criterion relative min-w-0 flex-1">
+                <summary className="flex h-11 cursor-pointer list-none items-center justify-between rounded-md border bg-background px-3 text-sm [&::-webkit-details-marker]:hidden"><span className={criterion.field ? '' : 'text-muted-foreground'}>{filterLabel(criterion.field)}</span><ChevronDown className="size-4 text-muted-foreground transition-transform group-open/criterion:rotate-180" /></summary>
+                <div className="absolute left-0 right-0 top-full z-20 mt-1 max-h-[25rem] overflow-hidden rounded-md border bg-popover shadow-xl">
+                  <label className="m-2 flex h-10 items-center gap-2 rounded-md border px-3 text-muted-foreground"><Search className="size-4" /><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Filter choices..." className="min-w-0 flex-1 bg-transparent text-sm text-foreground outline-none" /></label>
+                  <div className="scrollbar-hidden max-h-[20rem] overflow-y-auto px-2 pb-2">
+                    {filterChoices.map((group) => { const values = group.values.filter((choice) => choice.label.toLowerCase().includes(search.toLowerCase())); return values.length > 0 && <div key={group.group}><p className="px-2 pb-1 pt-3 text-xs font-medium text-muted-foreground">{group.group}</p>{values.map((choice) => <Button key={`${group.group}-${choice.field}`} type="button" variant="ghost" className="w-full justify-start" onClick={(event) => { updateCriterion(criterion.id, { field: choice.field, value: '' }); setSearch(''); const details = event.currentTarget.closest('details'); if (details) details.open = false; }}><UserRound />{choice.label}</Button>)}</div>; })}
+                  </div>
+                </div>
+              </details>
+              <Button type="button" variant="ghost" size="icon-sm" aria-label="Remove criterion" disabled={criteria.length === 1} onClick={() => setCriteria((current) => current.filter((item) => item.id !== criterion.id))}><X /></Button>
+            </div>
+            {criterion.field && <div className="mt-3 grid grid-cols-[7rem_1fr] gap-2">
+              <select value={criterion.operator} onChange={(event) => updateCriterion(criterion.id, { operator: event.target.value as FilterCriterion['operator'] })} aria-label="Filter operator" className="h-10 rounded-md border bg-background px-2 text-sm outline-none"><option value="contains">contains</option><option value="is">is exactly</option></select>
+              <input value={criterion.value} onChange={(event) => updateCriterion(criterion.id, { value: event.target.value })} placeholder="Enter a value" aria-label={`${filterLabel(criterion.field)} value`} className="h-10 min-w-0 rounded-md border bg-background px-3 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring" />
+            </div>}
+          </div>)}
+          <Button type="button" variant="outline" className="w-full" onClick={() => setCriteria((current) => [...current, { id: `criterion-${Date.now()}`, field: '', operator: 'contains', value: '' }])}><Plus />Add criterion</Button>
+        </div>
+      </div>
+      <footer className="grid shrink-0 grid-cols-2 gap-3 border-t p-3"><Button type="button" variant="outline" popoverTarget="contacts-filter-create" popoverTargetAction="hide"><CircleCheck />Cancel</Button><Button type="submit" disabled={!valid} className="bg-chart-1 text-primary-foreground hover:bg-chart-1/90"><CircleCheck />Save Filter</Button></footer>
+    </form>}
+    {collapsed && <div className="grid flex-1 place-items-center px-8 text-center text-sm text-muted-foreground">Filter panel collapsed</div>}
+  </aside>;
 }
 
 export default function AdminContacts() {
@@ -126,18 +188,27 @@ export default function AdminContacts() {
   const [query, setQuery] = useState('');
   const [segment, setSegment] = useState('all');
   const [selected, setSelected] = useState<string[]>([]);
+  const [savedFilters, setSavedFilters] = useState<SavedContactFilter[]>([]);
+  const [activeSavedFilter, setActiveSavedFilter] = useState('');
   const shown = useMemo(() => contacts.filter((contact) => {
     const matchesQuery = `${contact.name} ${contact.email} ${contact.phone || ''} ${contact.location} ${contact.company || ''} ${contact.segments.join(' ')}`.toLowerCase().includes(query.toLowerCase());
-    return matchesQuery && (segment === 'all' || (segment === 'segmented' ? contact.segments.length > 0 : contact.segments.includes(segment)));
-  }), [contacts, query, segment]);
+    const savedFilter = savedFilters.find((filter) => filter.id === activeSavedFilter);
+    const profileText: Record<FilterField, string> = { email: contact.email, custom: `${contact.company || ''} ${contact.phone || ''}`, language: 'English', country: contact.country || contact.location, segments: contact.segments.join(' '), name: contact.name, gender: contact.gender || '' };
+    const matchesSaved = !savedFilter || savedFilter.criteria.every((criterion) => {
+      if (!criterion.field) return true;
+      const actual = profileText[criterion.field].toLowerCase(); const expected = criterion.value.toLowerCase();
+      return criterion.operator === 'is' ? actual === expected : actual.includes(expected);
+    });
+    return matchesQuery && matchesSaved && (segment === 'all' || (segment === 'segmented' ? contact.segments.length > 0 : contact.segments.includes(segment)));
+  }), [activeSavedFilter, contacts, query, savedFilters, segment]);
   const allSelected = shown.length > 0 && shown.every((contact) => selected.includes(contact.id));
   const createContact = (contact: ChatContact) => { setContacts((current) => [contact, ...current]); toast.success(`${contact.name} added`); };
 
-  return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed}>
+  return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed} contactFilters={savedFilters} activeContactFilter={activeSavedFilter} onContactFilterChange={(id) => setActiveSavedFilter((current) => current === id ? '' : id)}>
     <NewContactDialog onCreate={createContact} />
     <ExportContactsDialog count={selected.length || shown.length} scope={selected.length ? 'selected' : query || segment !== 'all' ? 'filtered' : 'all'} />
     <ImportContactsDialog onImport={(imported) => { setContacts((current) => [...imported, ...current]); toast.success(`${imported.length} contacts imported`); }} />
-    <CreateFilterDialog />
+    <CreateFilterDialog onSave={(filter) => { setSavedFilters((current) => [...current, filter]); setActiveSavedFilter(filter.id); }} />
     <main className="relative flex h-full min-h-0 flex-col overflow-hidden bg-muted/25">
       <header className="flex min-h-20 shrink-0 flex-wrap items-center gap-3 border-b bg-background px-4 py-3 lg:flex-nowrap lg:px-6">
         <div className="flex shrink-0 items-center gap-3 font-bold"><Users className="size-5" /><span>{contacts.length.toLocaleString()} Contacts</span></div>
