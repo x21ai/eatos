@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import {
   BadgePlus, Building2, Check, ChevronDown, CircleHelp, Eye, Filter, Mail, MapPin,
-  MoreHorizontal, Phone, Plus, Search, Tag, Trash2, UserRound, Users, X,
+  Phone, Plus, Search, Tag, Trash2, UserRound, Users, X,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
@@ -56,6 +56,17 @@ function NewContactDialog({ onCreate }: { onCreate: (contact: ChatContact) => vo
   </div>;
 }
 
+function CreateFilterDialog() {
+  return <div id="contacts-filter-create" popover="auto" className="fixed inset-0 z-50 m-0 h-full w-full max-w-none border-none bg-foreground/35 p-4 [&:not(:popover-open)]:hidden">
+    <form className="absolute left-1/2 top-1/2 w-[calc(100%-2rem)] max-w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-lg bg-background p-6 shadow-xl" onSubmit={(event) => { event.preventDefault(); const data = new FormData(event.currentTarget); const name = String(data.get('filter-name') || '').trim(); if (name) toast.success(`Filter “${name}” created`); event.currentTarget.reset(); }}>
+      <div className="flex items-start justify-between"><div><h2 className="text-xl font-bold">Create filter</h2><p className="mt-1 text-sm text-muted-foreground">Save a contact view for this demo session.</p></div><Button type="button" variant="ghost" size="icon-sm" aria-label="Close" popoverTarget="contacts-filter-create" popoverTargetAction="hide"><X /></Button></div>
+      <label className="mt-6 block text-sm font-medium">Filter name <span className="text-destructive">*</span><input name="filter-name" required placeholder="Enter a filter name" className="mt-2 h-11 w-full rounded-md border bg-background px-3 outline-none focus-visible:ring-2 focus-visible:ring-ring" /></label>
+      <label className="mt-4 block text-sm font-medium">Condition<select name="condition" className="mt-2 h-11 w-full rounded-md border bg-background px-3 outline-none"><option>Has a segment</option><option>Location contains United States</option><option>Last active this week</option><option>Phone is known</option></select></label>
+      <div className="mt-6 flex justify-end gap-2"><Button type="button" variant="outline" popoverTarget="contacts-filter-create" popoverTargetAction="hide">Cancel</Button><Button type="submit" popoverTarget="contacts-filter-create" popoverTargetAction="hide">Create filter</Button></div>
+    </form>
+  </div>;
+}
+
 export default function AdminContacts() {
   const [collapsed, setCollapsed] = useState(false);
   const [contacts, setContacts] = useState(initialContacts);
@@ -73,6 +84,7 @@ export default function AdminContacts() {
 
   return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed}>
     <NewContactDialog onCreate={createContact} />
+    <CreateFilterDialog />
     <main className="relative flex h-full min-h-0 flex-col overflow-hidden bg-muted/25">
       <header className="flex min-h-20 shrink-0 flex-wrap items-center gap-3 border-b bg-background px-4 py-3 lg:flex-nowrap lg:px-6">
         <div className="flex shrink-0 items-center gap-3 font-bold"><Users className="size-5" /><span>{contacts.length.toLocaleString()} Contacts</span></div>
