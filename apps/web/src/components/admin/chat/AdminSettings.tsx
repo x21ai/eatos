@@ -40,20 +40,22 @@ const groups: { key: SettingsKey; label: string; icon: React.ComponentType<{ cla
   { key: 'status', label: 'Status Page', icon: Shield },
 ];
 
-function SettingsSidebar({ active, onSelect }: { active: SettingsKey; onSelect: (key: SettingsKey) => void }) {
+function SettingsSidebar({ active }: { active: SettingsKey }) {
   return (
     <aside className="scrollbar-hidden hidden w-72 shrink-0 overflow-y-auto border-r bg-background p-4 lg:flex lg:flex-col">
       <nav aria-label="Settings categories" className="space-y-1">
         {groups.map((group) => (
           <Button
             key={group.key}
+            asChild
             variant="ghost"
-            onClick={() => onSelect(group.key)}
             className={cn('h-11 w-full justify-start px-3 text-sm', active === group.key && 'bg-accent text-foreground')}
           >
-            <group.icon className="size-4" />
-            {group.label}
-            <ChevronDown className={cn('ml-auto size-4 transition-transform', active === group.key && 'rotate-180')} />
+            <a href={`/chatapp/settings?category=${group.key}`} aria-current={active === group.key ? 'page' : undefined}>
+              <group.icon className="size-4" />
+              {group.label}
+              <ChevronDown className={cn('ml-auto size-4 transition-transform', active === group.key && 'rotate-180')} />
+            </a>
           </Button>
         ))}
       </nav>
@@ -99,23 +101,21 @@ function VisitorWidgetPreview() {
 }
 
 function AvailabilityPanel() {
-  const [editing, setEditing] = useState(false);
   const [online, setOnline] = useState(true);
   const [weekends, setWeekends] = useState(false);
 
   return (
     <Panel title="Set your Availability days and hours" description="Let visitors know when you're available to chat by setting up your schedule.">
       <VisitorWidgetPreview />
-      {!editing ? (
-        <Button size="lg" className="mt-6 bg-brand text-primary-foreground hover:bg-brand-strong" onClick={() => setEditing(true)}>Define availability schedule<ArrowRight /></Button>
-      ) : (
-        <div className="mt-6 rounded-md border bg-muted/20 p-4 sm:p-5">
-          <div className="flex items-center justify-between gap-3"><div><h3 className="text-sm font-bold">Availability schedule</h3><p className="mt-1 text-xs text-muted-foreground">Set the hours your team appears online.</p></div><Button variant="ghost" size="sm" onClick={() => setEditing(false)}>Done</Button></div>
+      <details className="group/schedule mt-6">
+        <Button asChild size="lg" className="bg-brand text-primary-foreground hover:bg-brand-strong"><summary className="cursor-pointer list-none marker:hidden [&::-webkit-details-marker]:hidden">Define availability schedule<ArrowRight className="group-open/schedule:rotate-90" /></summary></Button>
+        <div className="mt-4 rounded-md border bg-muted/20 p-4 sm:p-5">
+          <div><h3 className="text-sm font-bold">Availability schedule</h3><p className="mt-1 text-xs text-muted-foreground">Set the hours your team appears online.</p></div>
           <SettingRow title="Show team as online" description="The chatbox displays your team as available during scheduled hours." enabled={online} onChange={setOnline} />
           <SettingRow title="Weekend coverage" description="Include Saturday and Sunday in the support schedule." enabled={weekends} onChange={setWeekends} />
           <div className="grid gap-3 pt-5 sm:grid-cols-2"><label className="text-xs font-medium">Weekday start<Input type="time" defaultValue="09:00" className="mt-2" /></label><label className="text-xs font-medium">Weekday end<Input type="time" defaultValue="18:00" className="mt-2" /></label></div>
         </div>
-      )}
+      </details>
     </Panel>
   );
 }
@@ -152,19 +152,19 @@ function Panel({ title, description, children }: { title: string; description: s
   return <section className="mx-auto w-full max-w-4xl rounded-md border bg-card p-5 shadow-sm md:p-7"><h1 className="text-xl font-bold">{title}</h1><p className="mt-2 text-sm text-muted-foreground">{description}</p><div className="mt-5">{children}</div></section>;
 }
 
-export default function AdminSettings() {
+export default function AdminSettings({ initialActive = 'chatbox' }: { initialActive?: SettingsKey }) {
   const [collapsed, setCollapsed] = useState(false);
-  const [active, setActive] = useState<SettingsKey>('chatbox');
+  const active = initialActive;
   return (
     <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed}>
       <div className="flex h-full min-w-0">
-        <SettingsSidebar active={active} onSelect={setActive} />
+        <SettingsSidebar active={active} />
         <main className="scrollbar-hidden min-w-0 flex-1 overflow-y-auto bg-muted/20">
           <header className="sticky top-0 z-10 flex h-14 items-center gap-1 border-b bg-background/95 px-3 backdrop-blur sm:px-5">
             <Button variant="ghost" size="icon-sm" aria-label="Back" onClick={() => window.history.back()}><ArrowLeft /></Button>
             <Button variant="ghost" size="icon-sm" aria-label="Forward" onClick={() => window.history.forward()}><ArrowRight /></Button>
             <h2 className="ml-2 text-sm font-medium text-muted-foreground">Settings</h2>
-            <select value={active} onChange={(event) => setActive(event.target.value as SettingsKey)} className="ml-auto h-9 max-w-36 rounded-md border bg-background px-3 text-sm lg:hidden">{groups.map((group) => <option key={group.key} value={group.key}>{group.label}</option>)}</select>
+            <nav aria-label="Settings categories" className="scrollbar-hidden ml-auto flex max-w-[55%] gap-1 overflow-x-auto lg:hidden">{groups.map((group) => <Button key={group.key} asChild variant={active === group.key ? 'secondary' : 'ghost'} size="sm"><a href={`/chatapp/settings?category=${group.key}`}>{group.label}</a></Button>)}</nav>
             <Button variant="ghost" size="sm" className="ml-auto hidden text-muted-foreground lg:inline-flex"><Search />Search</Button>
           </header>
           <div className="px-4 py-8 sm:px-6 md:py-12 xl:px-12 xl:py-20">
