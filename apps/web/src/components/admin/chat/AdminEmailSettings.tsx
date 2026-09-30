@@ -14,7 +14,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
-import { Card, PageHeading, ToggleRow } from './AdminAccountSettings';
+import { Card, PageHeading } from './AdminAccountSettings';
 
 export type EmailSection = 'behavior' | 'domains' | 'delivery';
 
@@ -27,16 +27,25 @@ function StatusBadge({ children, tone = 'success' }: { children: React.ReactNode
   );
 }
 
+function NativeToggleRow({ label, initial = false }: { label: string; initial?: boolean }) {
+  return (
+    <label className="flex min-h-11 cursor-pointer items-center justify-between gap-4 border-b py-2.5 last:border-0">
+      <span className="text-sm font-medium">{label}</span>
+      <input type="checkbox" defaultChecked={initial} aria-label={label} className="h-5 w-9 shrink-0 cursor-pointer accent-brand" />
+    </label>
+  );
+}
+
 function EmailBehavior() {
   return (
     <div>
       <PageHeading title="Email Behavior" />
       <div className="space-y-5">
         <Card title="General Options" icon={Settings}>
-          <ToggleRow label="Email users transcripts of conversations" initial />
-          <ToggleRow label="Enable ratings (in chatbox and transcript emails)" initial />
-          <ToggleRow label="Include tracking pixels in emails sent to users (from Inbox and Campaigns)" initial />
-          <ToggleRow label="Send emails that might be junk to the Spam inbox" initial />
+          <NativeToggleRow label="Email users transcripts of conversations" initial />
+          <NativeToggleRow label="Enable ratings (in chatbox and transcript emails)" initial />
+          <NativeToggleRow label="Include tracking pixels in emails sent to users (from Inbox and Campaigns)" initial />
+          <NativeToggleRow label="Send emails that might be junk to the Spam inbox" initial />
         </Card>
 
         <section className="overflow-hidden rounded-md border bg-card shadow-sm">
@@ -95,8 +104,6 @@ function Domains() {
 }
 
 function EmailDelivery() {
-  const [installing, setInstalling] = useState(false);
-
   return (
     <div>
       <PageHeading title="Email Delivery" />
@@ -116,7 +123,9 @@ function EmailDelivery() {
             <div className="flex flex-col gap-5 p-4 sm:p-5">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-sm">You are using the shared email IP pool</p>
-                <Button variant="outline" onClick={() => setInstalling(true)}><CheckCircle2 />{installing ? 'Request noted' : 'Install the Dedicated Email IP plugin'}</Button>
+                <details className="group/install">
+                  <Button asChild variant="outline"><summary className="cursor-pointer list-none marker:hidden [&::-webkit-details-marker]:hidden"><CheckCircle2 /><span className="group-open/install:hidden">Install the Dedicated Email IP plugin</span><span className="hidden group-open/install:inline">Request noted</span></summary></Button>
+                </details>
               </div>
               <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-chart-2"><StatusBadge>High</StatusBadge><span>Using high-reputation shared pool</span><Button variant="link" size="sm" className="h-auto p-0 text-brand"><CircleHelp />Why?</Button></div>
             </div>
