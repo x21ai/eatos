@@ -2,11 +2,12 @@
 
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
+import type { ComponentType, ReactNode } from 'react';
 import { useMemo, useState } from 'react';
 import {
   ArrowLeft, Check, ChevronRight, CircleAlert, CloudDownload, CloudUpload, Code2, Copy, Database,
   ExternalLink, FileUp, Globe2, Image as ImageIcon, KeyRound, Languages, Link2, List, MoreHorizontal,
-  Paintbrush, Plus, RefreshCw, RotateCcw, Search, Settings, SlidersHorizontal, Trash2, Upload, X,
+  Paintbrush, Plus, RefreshCw, RotateCcw, Search, Settings, SlidersHorizontal, Trash2, Upload,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
@@ -43,7 +44,7 @@ const details: Record<SectionId, { title: string; description: string }> = {
   advanced: { title: 'Advanced settings for your Knowledge Base', description: 'Advanced options for special needs can be configured here.' },
 };
 
-function Panel({ title, icon: Icon, children }: { title: string; icon: IconType; children: React.ReactNode }) {
+function Panel({ title, icon: Icon, children }: { title: string; icon: IconType; children: ReactNode }) {
   return <section className="overflow-hidden rounded-lg border bg-background shadow-xs">
     <header className="flex min-h-12 items-center gap-2 border-b px-4 py-3"><Icon className="size-4 text-muted-foreground" /><h2 className="text-sm font-semibold">{title}</h2></header>
     {children}
@@ -118,10 +119,10 @@ function DataSettings() {
 
 function AdvancedSettings() {
   const [code, setCode] = useState('<!-- Add custom Knowledge Base HTML here -->');
-  return <div className="space-y-5"><Panel title="Code includes" icon={Code2}><div className="flex flex-col gap-4 p-4 sm:flex-row sm:items-center"><p className="text-sm text-muted-foreground sm:mr-auto">Include custom HTML code</p><Dialog><DialogTrigger asChild><Button><Code2 />Edit included HTML code</Button></DialogTrigger><DialogContent><DialogHeader><DialogTitle>Included HTML code</DialogTitle><DialogDescription>Add demo HTML that would be included on Knowledge Base pages.</DialogDescription></DialogHeader><Textarea value={code} onChange={(event) => setCode(event.target.value)} className="min-h-44 font-mono text-xs" /><DialogFooter><DialogClose asChild><Button variant="outline">Cancel</Button></DialogClose><DialogClose asChild><Button onClick={() => toast.success('Custom HTML saved')}>Save code</Button></DialogClose></DialogFooter></DialogContent></Dialog></div></Panel><Panel title="Maintenance tasks" icon={RefreshCw}><div className="p-4"><div className="flex gap-3 rounded-md border border-warning/30 bg-warning/10 p-4 text-sm text-warning"><CircleAlert className="size-5 shrink-0" /><p>You normally do not have to run these tasks, but if something feels broken then it might be a good time to run maintenance.</p></div><div className="mt-4 flex flex-col gap-4 rounded-md border p-4 sm:flex-row sm:items-center"><div className="sm:mr-auto"><h3 className="text-sm font-semibold">Re-generate all your Knowledge Base pages</h3><p className="mt-2 max-w-2xl text-xs leading-relaxed text-muted-foreground">Request a full re-synchronization of all online pages and force a manual refresh of the demo Knowledge Base.</p></div><Dialog><DialogTrigger asChild><Button variant="destructive"><RefreshCw />Run full re-synchronization</Button></DialogTrigger><DialogContent><DialogHeader><DialogTitle>Run full re-synchronization?</DialogTitle><DialogDescription>This demo action will simulate rebuilding every Knowledge Base page.</DialogDescription></DialogHeader><DialogFooter><DialogClose asChild><Button variant="outline">Cancel</Button></DialogClose><DialogClose asChild><Button variant="destructive" onClick={() => toast.success('Knowledge Base pages re-synchronized')}>Run task</Button></DialogClose></DialogFooter></DialogContent></Dialog></div></div></Panel></div>;
+  return <div className="space-y-5"><Panel title="Code includes" icon={Code2}><div className="flex flex-col gap-4 p-4 sm:flex-row sm:items-center"><p className="text-sm text-muted-foreground sm:mr-auto">Include custom HTML code</p><Dialog><DialogTrigger asChild><Button><Code2 />Edit included HTML code</Button></DialogTrigger><DialogContent><DialogHeader><DialogTitle>Included HTML code</DialogTitle><DialogDescription>Add demo HTML that would be included on Knowledge Base pages.</DialogDescription></DialogHeader><Textarea value={code} onChange={(event) => setCode(event.target.value)} className="min-h-44 font-mono text-xs" /><DialogFooter><DialogClose asChild><Button variant="outline">Cancel</Button></DialogClose><DialogClose asChild><Button onClick={() => toast.success('Custom HTML saved')}>Save code</Button></DialogClose></DialogFooter></DialogContent></Dialog></div></Panel><Panel title="Maintenance tasks" icon={RefreshCw}><div className="p-4"><div className="flex gap-3 rounded-md border border-chart-3/30 bg-chart-3/10 p-4 text-sm text-chart-3"><CircleAlert className="size-5 shrink-0" /><p>You normally do not have to run these tasks, but if something feels broken then it might be a good time to run maintenance.</p></div><div className="mt-4 flex flex-col gap-4 rounded-md border p-4 sm:flex-row sm:items-center"><div className="sm:mr-auto"><h3 className="text-sm font-semibold">Re-generate all your Knowledge Base pages</h3><p className="mt-2 max-w-2xl text-xs leading-relaxed text-muted-foreground">Request a full re-synchronization of all online pages and force a manual refresh of the demo Knowledge Base.</p></div><Dialog><DialogTrigger asChild><Button variant="destructive"><RefreshCw />Run full re-synchronization</Button></DialogTrigger><DialogContent><DialogHeader><DialogTitle>Run full re-synchronization?</DialogTitle><DialogDescription>This demo action will simulate rebuilding every Knowledge Base page.</DialogDescription></DialogHeader><DialogFooter><DialogClose asChild><Button variant="outline">Cancel</Button></DialogClose><DialogClose asChild><Button variant="destructive" onClick={() => toast.success('Knowledge Base pages re-synchronized')}>Run task</Button></DialogClose></DialogFooter></DialogContent></Dialog></div></div></Panel></div>;
 }
 
-const screens: Record<SectionId, () => React.JSX.Element> = { domain: DomainSettings, localization: LocalizationSettings, customization: CustomizationSettings, features: FeaturesSettings, authentication: AuthenticationSettings, redirections: RedirectionsSettings, data: DataSettings, advanced: AdvancedSettings };
+const screens: Record<SectionId, ComponentType> = { domain: DomainSettings, localization: LocalizationSettings, customization: CustomizationSettings, features: FeaturesSettings, authentication: AuthenticationSettings, redirections: RedirectionsSettings, data: DataSettings, advanced: AdvancedSettings };
 
 export default function AdminKnowledgeBaseSettings() {
   const searchParams = useSearchParams();
