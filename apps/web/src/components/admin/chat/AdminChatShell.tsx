@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import {
-  BarChart3, Bell, BookOpen, Bookmark, Bot, Calendar, CirclePlus, Contact, Flag, Folder,
+  BarChart3, Bell, BookOpen, Bookmark, Bot, Calendar, CirclePlus, Contact, ExternalLink, Flag, Folder, Globe2,
   Heart, HelpCircle, Inbox, ListFilter as FilterIcon, Megaphone, MessageCircle, PanelLeftClose, PanelLeftOpen, Plug,
   Plus, Search, Settings, ShieldCheck, Star, Tag, UserRound, Users, X, Zap,
 } from 'lucide-react';
@@ -55,6 +55,7 @@ export default function AdminChatShell({
   }, []);
   const currentPath = pathname?.replace(/\.html$/, '').replace(/\/$/, '') || '/';
   const isInbox = currentPath === '/chatapp';
+  const isKnowledgeBase = currentPath === '/chatapp/knowledge-base' || currentPath.startsWith('/chatapp/knowledge-base/');
   const [subInboxes, setSubInboxes] = useState<{ name: string; icon: number }[]>([]);
   const [newName, setNewName] = useState('');
   const [newIcon, setNewIcon] = useState(0);
@@ -84,6 +85,20 @@ export default function AdminChatShell({
       {[{ key: 'automated' as const, label: 'Automated', icon: Bot }, { key: 'spam' as const, label: 'Spam', icon: ShieldCheck }].map(({ key, label, icon: Icon }) => <Button key={key} asChild variant="ghost" className={cn('h-9 w-full justify-start px-2', inbox === key && 'bg-accent')}><a href={`/chatapp?inbox=${key}`} aria-current={inbox === key ? 'page' : undefined} onClick={(event) => { event.preventDefault(); onInboxChange(key); window.history.replaceState(null, '', `/chatapp?inbox=${key}`); }}><Icon />{label}</a></Button>)}
     </div>
   </> : null;
+  const knowledgeBaseOptions = <>
+    <p className="px-2 text-xs font-medium text-muted-foreground">Knowledge Base</p>
+    <div className="mt-1 space-y-1">
+      <Button asChild variant="ghost" className={cn('h-9 w-full justify-start px-2', currentPath === '/chatapp/knowledge-base' && 'bg-accent text-foreground')}>
+        <Link href="/chatapp/knowledge-base" aria-current={currentPath === '/chatapp/knowledge-base' ? 'page' : undefined}><BookOpen />User Docs</Link>
+      </Button>
+      <Button asChild variant="ghost" className={cn('h-9 w-full justify-start px-2', currentPath.startsWith('/chatapp/knowledge-base/settings') && 'bg-accent text-foreground')}>
+        <Link href="/chatapp/knowledge-base/settings?menu=sections" aria-current={currentPath.startsWith('/chatapp/knowledge-base/settings') ? 'page' : undefined}><Settings />Settings</Link>
+      </Button>
+      <Button asChild variant="ghost" className="h-9 w-full justify-start px-2">
+        <Link href="/kb-demo"><Globe2 />View Online<ExternalLink className="ml-auto size-3" /></Link>
+      </Button>
+    </div>
+  </>;
   const subInboxDialog = <div id="chat-sub-inbox" popover="auto" className="fixed inset-0 z-50 m-0 grid h-full w-full max-w-none place-items-center border-none bg-foreground/50 p-4 [&:not(:popover-open)]:hidden">
     <div role="dialog" aria-modal="true" aria-label="Create New Sub-Inbox" className="w-full max-w-[54rem] rounded-xl bg-background p-6 shadow-xl sm:p-8">
       <div className="flex items-start justify-between gap-4">
@@ -143,6 +158,10 @@ export default function AdminChatShell({
                    <button type="button" popoverTarget="contacts-filter-create" className="mt-1 flex h-9 w-full items-center gap-2 rounded-md px-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground"><Plus className="size-4" />Create filter</button>
                  </div>
                </div>;
+               if (item.label === 'Knowledge Base' && active && !collapsed) return <details key={item.label} open className="group/knowledge">
+                 <summary className="flex h-10 cursor-pointer list-none items-center gap-3 rounded-md bg-accent px-3 text-sm font-medium text-foreground shadow-xs marker:hidden [&::-webkit-details-marker]:hidden">{content}</summary>
+                 <nav aria-label="Knowledge Base" className="px-2 pb-3 pt-3">{knowledgeBaseOptions}</nav>
+               </details>;
               return <div key={item.label}>
                 {item.href ? <Link href={item.href} title={collapsed ? item.label : undefined} onClick={() => { if (collapsed) onCollapsedChange(false); }} className={cn('flex h-10 items-center gap-3 rounded-md px-3 text-sm font-medium transition-colors', active ? 'bg-accent text-foreground shadow-xs' : 'text-muted-foreground hover:bg-accent hover:text-foreground')}>{content}</Link> : <div title={collapsed ? item.label : undefined} className="flex h-10 items-center gap-3 rounded-md px-3 text-sm font-medium text-muted-foreground"><item.icon className="size-4 shrink-0" />{!collapsed && <span className="truncate">{item.label}</span>}{!collapsed && item.badge && <span className="ml-auto rounded-full bg-brand px-1.5 py-0.5 text-[10px] font-bold text-primary-foreground">{item.badge}</span>}</div>}
               </div>;
@@ -161,6 +180,7 @@ export default function AdminChatShell({
           <Link href="/chatapp" className="flex items-center gap-2 text-sm font-bold"><span className="grid size-8 place-items-center rounded-md bg-brand text-primary-foreground"><MessageCircle className="size-4" /></span>eatOS Chat</Link>
           <div className="flex items-center gap-1">
             {isInbox && inboxOptions ? <details className="group/mobile-inbox"><Button asChild variant="secondary" size="sm"><summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden"><Inbox /> Inbox</summary></Button><nav aria-label="Inbox folders" className="scrollbar-hidden absolute inset-x-0 top-full z-30 max-h-[calc(100dvh-3.5rem)] overflow-y-auto border-b bg-sidebar px-4 py-4 shadow-lg">{inboxOptions}</nav></details> : <Button asChild variant="ghost" size="sm"><Link href="/chatapp"><Inbox /> Inbox</Link></Button>}
+            {isKnowledgeBase && <details className="group/mobile-knowledge"><Button asChild variant="secondary" size="sm"><summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden"><BookOpen /> Knowledge Base</summary></Button><nav aria-label="Knowledge Base" className="absolute inset-x-0 top-full z-30 border-b bg-sidebar px-4 py-4 shadow-lg">{knowledgeBaseOptions}</nav></details>}
             <Button asChild variant={currentPath === '/chatapp/settings' ? 'secondary' : 'ghost'} size="icon-sm"><Link href="/chatapp/settings" aria-label="Settings"><Settings /></Link></Button>
           </div>
         </header>
