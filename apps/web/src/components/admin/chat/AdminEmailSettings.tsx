@@ -1,6 +1,4 @@
 'use client';
-
-import { useState } from 'react';
 import {
   AtSign,
   CheckCircle2,
@@ -64,8 +62,6 @@ function EmailBehavior() {
 }
 
 function Domains() {
-  const [customDomain, setCustomDomain] = useState('');
-
   return (
     <div>
       <PageHeading title="Domains" />
@@ -84,7 +80,7 @@ function Domains() {
             </label>
             <label className="max-w-md text-sm font-medium">
               Custom domain
-              <Input value={customDomain} onChange={(event) => setCustomDomain(event.target.value)} placeholder="emails.your-restaurant.com" className="mt-2" />
+              <Input defaultValue="" placeholder="emails.your-restaurant.com" className="mt-2" />
             </label>
           </div>
         </Card>
