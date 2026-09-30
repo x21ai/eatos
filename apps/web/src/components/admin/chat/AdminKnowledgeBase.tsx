@@ -1,3 +1,6 @@
+@@
+-          <button type="button" onClick={() => toast('Knowledge Base settings')} className="flex h-9 w-full items-center justify-center gap-2 rounded-md px-3 text-sm text-muted-foreground hover:bg-accent lg:justify-start"><Settings className="size-4" /><span className="hidden lg:inline">Settings</span></button>
++          <Button asChild variant="ghost" className="w-full justify-center text-muted-foreground lg:justify-start"><Link href="/chatapp/knowledge-base/settings"><Settings /><span className="hidden lg:inline">Settings</span></Link></Button>
 'use client';
 
 import Link from 'next/link';

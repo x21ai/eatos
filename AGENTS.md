@@ -1,3 +1,6 @@
+@@
+ - Scope the legacy admin dark palette through `AdminChatShell` semantic tokens so every `/chatapp` view and portaled control stays consistent without changing public pages.
++- Keep Knowledge Base configuration under `/chatapp/knowledge-base/settings`, with URL-addressable sections and session-only prototype state, so the article editor stays focused.
 # Project architecture
 
 - The public `/chatapp` workspace and its `/chatapp/visitors` view use a dedicated full-height shell without website chrome or login while the interface is being built; `/admin` remains protected.
