@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import AdminKnowledgeBaseSettings from '@/components/admin/chat/AdminKnowledgeBaseSettings';
 
 export const metadata = {
@@ -7,5 +8,9 @@ export const metadata = {
 };
 
 export default function KnowledgeBaseSettingsPage() {
-  return <AdminKnowledgeBaseSettings />;
+  return (
+    <Suspense fallback={null}>
+      <AdminKnowledgeBaseSettings />
+    </Suspense>
+  );
 }
