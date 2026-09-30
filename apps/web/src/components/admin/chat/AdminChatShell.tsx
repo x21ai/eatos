@@ -86,7 +86,6 @@ export default function AdminChatShell({
     </div>
   </> : null;
   const knowledgeBaseOptions = <>
-    <p className="px-2 text-xs font-medium text-muted-foreground">Knowledge Base</p>
     <div className="mt-1 space-y-1">
       <Button asChild variant="ghost" className={cn('h-9 w-full justify-start px-2', currentPath === '/chatapp/knowledge-base' && 'bg-accent text-foreground')}>
         <Link href="/chatapp/knowledge-base" aria-current={currentPath === '/chatapp/knowledge-base' ? 'page' : undefined}><BookOpen />User Docs</Link>
