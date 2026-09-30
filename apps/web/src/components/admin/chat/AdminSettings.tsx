@@ -83,14 +83,6 @@ function SettingsSidebar({ active, accountSection }: { active: SettingsKey; acco
         ))}
       </nav>
 
-      <div className="mt-auto space-y-1 pt-10">
-        <Button variant="ghost" className="w-full justify-start text-brand"><CirclePlus />Create a new workspace</Button>
-        <Button variant="ghost" className="w-full justify-start text-muted-foreground"><Languages />Help translate the chatbox</Button>
-        <Button variant="ghost" className="w-full justify-start text-muted-foreground"><CircleHelp />Get help using eatOS Chat</Button>
-        <Button variant="ghost" className="w-full justify-start text-muted-foreground"><Bot />Service status</Button>
-        <Button variant="ghost" className="w-full justify-start text-muted-foreground"><Sparkles />What's new?</Button>
-        <p className="px-3 pt-6 text-[11px] text-muted-foreground">Version: 2026.09.30, 11:08</p>
-      </div>
     </aside>
   );
 }
