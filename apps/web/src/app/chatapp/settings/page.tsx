@@ -6,6 +6,10 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function ChatAppSettingsPage() {
-  return <AdminSettings />;
+const categories = ['account', 'billing', 'workspace', 'chatbox', 'inbox', 'email', 'status'] as const;
+
+export default async function ChatAppSettingsPage({ searchParams }: { searchParams: Promise<{ category?: string }> }) {
+  const { category } = await searchParams;
+  const initialActive = categories.find((item) => item === category) ?? 'chatbox';
+  return <AdminSettings initialActive={initialActive} />;
 }
