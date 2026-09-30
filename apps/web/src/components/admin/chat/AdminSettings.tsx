@@ -24,6 +24,7 @@ import {
 import AdminChatShell from './AdminChatShell';
 import AdminAccountSettings, { type AccountSection } from './AdminAccountSettings';
 import AdminWorkspaceSettings, { type WorkspaceSection } from './AdminWorkspaceSettings';
+import AdminChatboxSettings, { type ChatboxSection } from './AdminChatboxSettings';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
@@ -59,6 +60,15 @@ const workspaceSections: { key: WorkspaceSection; label: string; icon: React.Com
   { key: 'danger', label: 'Danger Zone', icon: Shield },
 ];
 
+const chatboxSections: { key: ChatboxSection; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
+  { key: 'appearance', label: 'Appearance', icon: MessageCircle },
+  { key: 'behavior', label: 'Behavior', icon: SquareActivity },
+  { key: 'search-ai', label: 'Search AI', icon: Search },
+  { key: 'security', label: 'Security', icon: Shield },
+  { key: 'restrictions', label: 'Restrictions', icon: Shield },
+  { key: 'push-notifications', label: 'Push Notifications', icon: Bell },
+];
+
 function WorkspaceGroup({ active, section }: { active: SettingsKey; section: WorkspaceSection }) {
   return (
     <details className="group/ws" open={active === 'workspace'}>
@@ -78,7 +88,26 @@ function WorkspaceGroup({ active, section }: { active: SettingsKey; section: Wor
   );
 }
 
-function SettingsSidebar({ active, accountSection, workspaceSection }: { active: SettingsKey; accountSection: AccountSection; workspaceSection: WorkspaceSection }) {
+function ChatboxGroup({ active, section }: { active: SettingsKey; section: ChatboxSection }) {
+  return (
+    <details className="group/chatbox" open={active === 'chatbox'}>
+      <Button asChild variant="ghost" className={cn('h-11 w-full justify-start px-3 text-sm', active === 'chatbox' && 'bg-accent text-foreground')}>
+        <summary className="cursor-pointer list-none marker:hidden [&::-webkit-details-marker]:hidden">
+          <MessageCircle className="size-4" />Chatbox<ChevronDown className="ml-auto size-4 transition-transform group-open/chatbox:rotate-180" />
+        </summary>
+      </Button>
+      <div className="ml-4 mt-1 space-y-1 border-l pl-2">
+        {chatboxSections.map((item) => (
+          <Button key={item.key} asChild variant="ghost" className={cn('h-9 w-full justify-start px-3 text-xs', active === 'chatbox' && section === item.key && 'bg-accent text-foreground')}>
+            <a href={`/chatapp/settings?category=chatbox&section=${item.key}`} aria-current={active === 'chatbox' && section === item.key ? 'page' : undefined}><item.icon className="size-4" />{item.label}</a>
+          </Button>
+        ))}
+      </div>
+    </details>
+  );
+}
+
+function SettingsSidebar({ active, accountSection, workspaceSection, chatboxSection }: { active: SettingsKey; accountSection: AccountSection; workspaceSection: WorkspaceSection; chatboxSection: ChatboxSection }) {
   return (
     <aside className="scrollbar-hidden hidden w-72 shrink-0 overflow-y-auto border-r bg-background p-4 lg:flex lg:flex-col">
       <nav aria-label="Settings categories" className="space-y-1">
@@ -100,7 +129,7 @@ function SettingsSidebar({ active, accountSection, workspaceSection }: { active:
             ))}
           </div>
         </details>
-        {groups.filter((group) => group.key !== 'account').map((group) => group.key === 'workspace' ? <WorkspaceGroup key="workspace" active={active} section={workspaceSection} /> : (
+        {groups.filter((group) => group.key !== 'account').map((group) => group.key === 'workspace' ? <WorkspaceGroup key="workspace" active={active} section={workspaceSection} /> : group.key === 'chatbox' ? <ChatboxGroup key="chatbox" active={active} section={chatboxSection} /> : (
           <Button key={group.key} asChild variant="ghost" className={cn('h-11 w-full justify-start px-3 text-sm', active === group.key && 'bg-accent text-foreground')}>
             <a href={`/chatapp/settings?category=${group.key}`} aria-current={active === group.key ? 'page' : undefined}><group.icon className="size-4" />{group.label}<ChevronDown className={cn('ml-auto size-4 transition-transform', active === group.key && 'rotate-180')} /></a>
           </Button>
@@ -186,25 +215,26 @@ function Panel({ title, description, children }: { title: string; description: s
   return <section className="mx-auto w-full max-w-4xl rounded-md border bg-card p-5 shadow-sm md:p-7"><h1 className="text-xl font-bold">{title}</h1><p className="mt-2 text-sm text-muted-foreground">{description}</p><div className="mt-5">{children}</div></section>;
 }
 
-export default function AdminSettings({ initialActive = 'chatbox', initialAccountSection = 'information', initialWorkspaceSection = 'information' }: { initialActive?: SettingsKey; initialAccountSection?: AccountSection; initialWorkspaceSection?: WorkspaceSection }) {
+export default function AdminSettings({ initialActive = 'chatbox', initialAccountSection = 'information', initialWorkspaceSection = 'information', initialChatboxSection = 'appearance' }: { initialActive?: SettingsKey; initialAccountSection?: AccountSection; initialWorkspaceSection?: WorkspaceSection; initialChatboxSection?: ChatboxSection }) {
   const [collapsed, setCollapsed] = useState(false);
   const active = initialActive;
   return (
     <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed}>
       <div className="flex h-full min-w-0">
-        <SettingsSidebar active={active} accountSection={initialAccountSection} workspaceSection={initialWorkspaceSection} />
+        <SettingsSidebar active={active} accountSection={initialAccountSection} workspaceSection={initialWorkspaceSection} chatboxSection={initialChatboxSection} />
         <main className="scrollbar-hidden min-w-0 flex-1 overflow-y-auto bg-muted/20">
           <header className="sticky top-0 z-10 flex h-14 items-center gap-1 border-b bg-background/95 px-3 backdrop-blur sm:px-5">
             <Button variant="ghost" size="icon-sm" aria-label="Back" onClick={() => window.history.back()}><ArrowLeft /></Button>
             <Button variant="ghost" size="icon-sm" aria-label="Forward" onClick={() => window.history.forward()}><ArrowRight /></Button>
-            <h2 className="ml-2 text-sm font-medium text-muted-foreground">Settings</h2>
-             <nav aria-label="Settings categories" className="scrollbar-hidden ml-auto flex max-w-[55%] gap-1 overflow-x-auto lg:hidden">{groups.map((group) => <Button key={group.key} asChild variant={active === group.key ? 'secondary' : 'ghost'} size="sm"><a href={group.key === 'account' ? '/chatapp/settings?category=account&section=information' : group.key === 'workspace' ? '/chatapp/settings?category=workspace&section=information' : `/chatapp/settings?category=${group.key}`}>{group.label}</a></Button>)}</nav>
+             <h2 className="ml-2 text-sm font-medium text-muted-foreground">Settings</h2>
+              <nav aria-label="Settings categories" className="scrollbar-hidden ml-auto flex max-w-[55%] gap-1 overflow-x-auto lg:hidden">{groups.map((group) => <Button key={group.key} asChild variant={active === group.key ? 'secondary' : 'ghost'} size="sm"><a href={group.key === 'account' ? '/chatapp/settings?category=account&section=information' : group.key === 'workspace' ? '/chatapp/settings?category=workspace&section=information' : group.key === 'chatbox' ? '/chatapp/settings?category=chatbox&section=appearance' : `/chatapp/settings?category=${group.key}`}>{group.label}</a></Button>)}</nav>
             <Button variant="ghost" size="sm" className="ml-auto hidden text-muted-foreground lg:inline-flex"><Search />Search</Button>
           </header>
            {active === 'account' ? <nav aria-label="Account settings" className="scrollbar-hidden flex gap-1 overflow-x-auto border-b px-3 py-2 lg:hidden">{accountSections.map((section) => <Button key={section.key} asChild variant={initialAccountSection === section.key ? 'secondary' : 'ghost'} size="sm" className="shrink-0"><a href={`/chatapp/settings?category=account&section=${section.key}`}>{section.label}</a></Button>)}</nav> : null}
            {active === 'workspace' ? <nav aria-label="Workspace settings" className="scrollbar-hidden flex gap-1 overflow-x-auto border-b px-3 py-2 lg:hidden">{workspaceSections.map((s) => <Button key={s.key} asChild variant={initialWorkspaceSection === s.key ? 'secondary' : 'ghost'} size="sm" className="shrink-0"><a href={`/chatapp/settings?category=workspace&section=${s.key}`}>{s.label}</a></Button>)}</nav> : null}
+            {active === 'chatbox' ? <nav aria-label="Chatbox settings" className="scrollbar-hidden flex gap-1 overflow-x-auto border-b px-3 py-2 lg:hidden">{chatboxSections.map((item) => <Button key={item.key} asChild variant={initialChatboxSection === item.key ? 'secondary' : 'ghost'} size="sm" className="shrink-0"><a href={`/chatapp/settings?category=chatbox&section=${item.key}`}>{item.label}</a></Button>)}</nav> : null}
            <div className="px-4 py-8 sm:px-6 md:py-12 xl:px-12 xl:py-16">
-             {active === 'account' ? <div className="mx-auto w-full max-w-4xl"><AdminAccountSettings section={initialAccountSection} /></div> : active === 'chatbox' ? <AvailabilityPanel /> : active === 'workspace' ? <div className="mx-auto w-full max-w-4xl"><AdminWorkspaceSettings section={initialWorkspaceSection} /></div> : active === 'inbox' ? <InboxPanel /> : active === 'email' ? <EmailPanel /> : active === 'status' ? <StatusPanel /> : <BasicPanel active={active} />}
+              {active === 'account' ? <div className="mx-auto w-full max-w-4xl"><AdminAccountSettings section={initialAccountSection} /></div> : active === 'chatbox' ? <div className="mx-auto w-full max-w-6xl"><AdminChatboxSettings section={initialChatboxSection} /></div> : active === 'workspace' ? <div className="mx-auto w-full max-w-4xl"><AdminWorkspaceSettings section={initialWorkspaceSection} /></div> : active === 'inbox' ? <InboxPanel /> : active === 'email' ? <EmailPanel /> : active === 'status' ? <StatusPanel /> : <BasicPanel active={active} />}
           </div>
           <div className="mx-auto flex max-w-4xl justify-end px-4 pb-8 sm:px-6 xl:px-12"><Button variant="ghost" size="sm" className="text-muted-foreground"><ExternalLink />Open help center</Button></div>
         </main>
