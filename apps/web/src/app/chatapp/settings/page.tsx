@@ -7,9 +7,11 @@ export const metadata = {
 };
 
 const categories = ['account', 'billing', 'workspace', 'chatbox', 'inbox', 'email', 'status'] as const;
+const accountSections = ['information', 'notifications', 'availability', 'security', 'interface', 'shortcuts'] as const;
 
-export default async function ChatAppSettingsPage({ searchParams }: { searchParams: Promise<{ category?: string }> }) {
-  const { category } = await searchParams;
+export default async function ChatAppSettingsPage({ searchParams }: { searchParams: Promise<{ category?: string; section?: string }> }) {
+  const { category, section } = await searchParams;
   const initialActive = categories.find((item) => item === category) ?? 'chatbox';
-  return <AdminSettings initialActive={initialActive} />;
+  const initialAccountSection = accountSections.find((item) => item === section) ?? 'information';
+  return <AdminSettings initialActive={initialActive} initialAccountSection={initialAccountSection} />;
 }
