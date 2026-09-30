@@ -60,7 +60,7 @@ function DomainSettings() {
   const copy = async (value: string) => { await navigator.clipboard?.writeText(value); toast.success('Copied to clipboard'); };
   return <div className="space-y-5">
     <Panel title="Domain name" icon={Globe2}><div className="grid gap-5 p-4 sm:p-5">
-      <label className="grid max-w-xl gap-2 text-sm font-medium">Base domain <span className="flex"><Input value={baseDomain} onChange={(event) => setBaseDomain(event.target.value)} className="rounded-r-none" /><span className="grid min-w-24 place-items-center rounded-r-md border border-l-0 bg-muted px-3 text-xs text-muted-foreground">.help.eatos.com</span></span></label>
+      <label className="grid max-w-xl gap-2 text-sm font-medium">Base domain <span className="flex"><Input value={baseDomain} onChange={(event) => setBaseDomain(event.target.value)} className="rounded-r-none" /><span className="grid min-w-24 place-items-center rounded-r-md border border-l-0 bg-muted px-3 text-xs text-muted-foreground">eatos.com</span></span></label>
       <label className="grid max-w-xl gap-2 text-sm font-medium">Custom domain <span className="flex items-center gap-3"><Input defaultValue="support.eatos.com" /><span className="hidden shrink-0 items-center gap-1 text-xs text-emerald-500 sm:flex"><Check className="size-4" />Custom domain online</span></span></label>
     </div></Panel>
     <Panel title="Setup instructions" icon={Check}><div className="space-y-4 p-4 sm:p-5">
