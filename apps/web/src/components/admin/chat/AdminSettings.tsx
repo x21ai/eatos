@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import AdminChatShell from './AdminChatShell';
 import AdminAccountSettings, { type AccountSection } from './AdminAccountSettings';
+import AdminWorkspaceSettings, { type WorkspaceSection } from './AdminWorkspaceSettings';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
@@ -49,7 +50,35 @@ const accountSections: { key: AccountSection; label: string; icon: React.Compone
   { key: 'shortcuts', label: 'Keyboard Shortcuts', icon: SquareActivity },
 ];
 
-function SettingsSidebar({ active, accountSection }: { active: SettingsKey; accountSection: AccountSection }) {
+const workspaceSections: { key: WorkspaceSection; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
+  { key: 'information', label: 'Information', icon: UserRound },
+  { key: 'setup', label: 'Setup & Integrations', icon: Settings },
+  { key: 'operators', label: 'Operators & Teams', icon: Users },
+  { key: 'log', label: 'Team Transparency Log', icon: SquareActivity },
+  { key: 'advanced', label: 'Advanced Configuration', icon: Settings },
+  { key: 'danger', label: 'Danger Zone', icon: Shield },
+];
+
+function WorkspaceGroup({ active, section }: { active: SettingsKey; section: WorkspaceSection }) {
+  return (
+    <details className="group/ws" open={active === 'workspace'}>
+      <Button asChild variant="ghost" className={cn('h-11 w-full justify-start px-3 text-sm', active === 'workspace' && 'bg-accent text-foreground')}>
+        <summary className="cursor-pointer list-none marker:hidden [&::-webkit-details-marker]:hidden">
+          <Settings className="size-4" />Workspace<ChevronDown className="ml-auto size-4 transition-transform group-open/ws:rotate-180" />
+        </summary>
+      </Button>
+      <div className="ml-4 mt-1 space-y-1 border-l pl-2">
+        {workspaceSections.map((s) => (
+          <Button key={s.key} asChild variant="ghost" className={cn('h-9 w-full justify-start px-3 text-xs', active === 'workspace' && section === s.key && 'bg-accent text-foreground')}>
+            <a href={`/chatapp/settings?category=workspace&section=${s.key}`} aria-current={active === 'workspace' && section === s.key ? 'page' : undefined}><s.icon className="size-4" />{s.label}</a>
+          </Button>
+        ))}
+      </div>
+    </details>
+  );
+}
+
+function SettingsSidebar({ active, accountSection, workspaceSection }: { active: SettingsKey; accountSection: AccountSection; workspaceSection: WorkspaceSection }) {
   return (
     <aside className="scrollbar-hidden hidden w-72 shrink-0 overflow-y-auto border-r bg-background p-4 lg:flex lg:flex-col">
       <nav aria-label="Settings categories" className="space-y-1">
@@ -71,7 +100,7 @@ function SettingsSidebar({ active, accountSection }: { active: SettingsKey; acco
             ))}
           </div>
         </details>
-        {groups.filter((group) => group.key !== 'account').map((group) => (
+        {groups.filter((group) => group.key !== 'account').map((group) => group.key === 'workspace' ? <WorkspaceGroup key="workspace" active={active} section={workspaceSection} /> : (
           <Button key={group.key} asChild variant="ghost" className={cn('h-11 w-full justify-start px-3 text-sm', active === group.key && 'bg-accent text-foreground')}>
             <a href={`/chatapp/settings?category=${group.key}`} aria-current={active === group.key ? 'page' : undefined}><group.icon className="size-4" />{group.label}<ChevronDown className={cn('ml-auto size-4 transition-transform', active === group.key && 'rotate-180')} /></a>
           </Button>
@@ -130,11 +159,6 @@ function AvailabilityPanel() {
   );
 }
 
-function WorkspacePanel() {
-  const [mentions, setMentions] = useState(true);
-  const [digest, setDigest] = useState(false);
-  return <Panel title="Workspace preferences" description="Manage how the eatOS support workspace behaves for your team."><label className="text-xs font-medium">Workspace name<Input defaultValue="eatOS POS inc." className="mt-2 max-w-md" /></label><div className="mt-5"><SettingRow title="Mention notifications" description="Notify team members when they are mentioned in an internal note." enabled={mentions} onChange={setMentions} /><SettingRow title="Daily activity digest" description="Show a summary of open and resolved conversations." enabled={digest} onChange={setDigest} /></div></Panel>;
-}
 
 function InboxPanel() {
   const [autoAssign, setAutoAssign] = useState(true);
@@ -162,24 +186,25 @@ function Panel({ title, description, children }: { title: string; description: s
   return <section className="mx-auto w-full max-w-4xl rounded-md border bg-card p-5 shadow-sm md:p-7"><h1 className="text-xl font-bold">{title}</h1><p className="mt-2 text-sm text-muted-foreground">{description}</p><div className="mt-5">{children}</div></section>;
 }
 
-export default function AdminSettings({ initialActive = 'chatbox', initialAccountSection = 'information' }: { initialActive?: SettingsKey; initialAccountSection?: AccountSection }) {
+export default function AdminSettings({ initialActive = 'chatbox', initialAccountSection = 'information', initialWorkspaceSection = 'information' }: { initialActive?: SettingsKey; initialAccountSection?: AccountSection; initialWorkspaceSection?: WorkspaceSection }) {
   const [collapsed, setCollapsed] = useState(false);
   const active = initialActive;
   return (
     <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed}>
       <div className="flex h-full min-w-0">
-        <SettingsSidebar active={active} accountSection={initialAccountSection} />
+        <SettingsSidebar active={active} accountSection={initialAccountSection} workspaceSection={initialWorkspaceSection} />
         <main className="scrollbar-hidden min-w-0 flex-1 overflow-y-auto bg-muted/20">
           <header className="sticky top-0 z-10 flex h-14 items-center gap-1 border-b bg-background/95 px-3 backdrop-blur sm:px-5">
             <Button variant="ghost" size="icon-sm" aria-label="Back" onClick={() => window.history.back()}><ArrowLeft /></Button>
             <Button variant="ghost" size="icon-sm" aria-label="Forward" onClick={() => window.history.forward()}><ArrowRight /></Button>
             <h2 className="ml-2 text-sm font-medium text-muted-foreground">Settings</h2>
-             <nav aria-label="Settings categories" className="scrollbar-hidden ml-auto flex max-w-[55%] gap-1 overflow-x-auto lg:hidden">{groups.map((group) => <Button key={group.key} asChild variant={active === group.key ? 'secondary' : 'ghost'} size="sm"><a href={group.key === 'account' ? '/chatapp/settings?category=account&section=information' : `/chatapp/settings?category=${group.key}`}>{group.label}</a></Button>)}</nav>
+             <nav aria-label="Settings categories" className="scrollbar-hidden ml-auto flex max-w-[55%] gap-1 overflow-x-auto lg:hidden">{groups.map((group) => <Button key={group.key} asChild variant={active === group.key ? 'secondary' : 'ghost'} size="sm"><a href={group.key === 'account' ? '/chatapp/settings?category=account&section=information' : group.key === 'workspace' ? '/chatapp/settings?category=workspace&section=information' : `/chatapp/settings?category=${group.key}`}>{group.label}</a></Button>)}</nav>
             <Button variant="ghost" size="sm" className="ml-auto hidden text-muted-foreground lg:inline-flex"><Search />Search</Button>
           </header>
            {active === 'account' ? <nav aria-label="Account settings" className="scrollbar-hidden flex gap-1 overflow-x-auto border-b px-3 py-2 lg:hidden">{accountSections.map((section) => <Button key={section.key} asChild variant={initialAccountSection === section.key ? 'secondary' : 'ghost'} size="sm" className="shrink-0"><a href={`/chatapp/settings?category=account&section=${section.key}`}>{section.label}</a></Button>)}</nav> : null}
+           {active === 'workspace' ? <nav aria-label="Workspace settings" className="scrollbar-hidden flex gap-1 overflow-x-auto border-b px-3 py-2 lg:hidden">{workspaceSections.map((s) => <Button key={s.key} asChild variant={initialWorkspaceSection === s.key ? 'secondary' : 'ghost'} size="sm" className="shrink-0"><a href={`/chatapp/settings?category=workspace&section=${s.key}`}>{s.label}</a></Button>)}</nav> : null}
            <div className="px-4 py-8 sm:px-6 md:py-12 xl:px-12 xl:py-16">
-             {active === 'account' ? <div className="mx-auto w-full max-w-4xl"><AdminAccountSettings section={initialAccountSection} /></div> : active === 'chatbox' ? <AvailabilityPanel /> : active === 'workspace' ? <WorkspacePanel /> : active === 'inbox' ? <InboxPanel /> : active === 'email' ? <EmailPanel /> : active === 'status' ? <StatusPanel /> : <BasicPanel active={active} />}
+             {active === 'account' ? <div className="mx-auto w-full max-w-4xl"><AdminAccountSettings section={initialAccountSection} /></div> : active === 'chatbox' ? <AvailabilityPanel /> : active === 'workspace' ? <div className="mx-auto w-full max-w-4xl"><AdminWorkspaceSettings section={initialWorkspaceSection} /></div> : active === 'inbox' ? <InboxPanel /> : active === 'email' ? <EmailPanel /> : active === 'status' ? <StatusPanel /> : <BasicPanel active={active} />}
           </div>
           <div className="mx-auto flex max-w-4xl justify-end px-4 pb-8 sm:px-6 xl:px-12"><Button variant="ghost" size="sm" className="text-muted-foreground"><ExternalLink />Open help center</Button></div>
         </main>

@@ -23,7 +23,7 @@ import { Switch } from '@/components/ui/switch';
 
 export type AccountSection = 'information' | 'notifications' | 'availability' | 'security' | 'interface' | 'shortcuts';
 
-function PageHeading({ title, description }: { title: string; description?: string }) {
+export function PageHeading({ title, description }: { title: string; description?: string }) {
   return (
     <div className="mb-7 flex flex-wrap items-start justify-between gap-4">
       <div>
@@ -37,7 +37,7 @@ function PageHeading({ title, description }: { title: string; description?: stri
   );
 }
 
-function Card({ title, icon: Icon, children }: { title: string; icon: React.ComponentType<{ className?: string }>; children: React.ReactNode }) {
+export function Card({ title, icon: Icon, children }: { title: string; icon: React.ComponentType<{ className?: string }>; children: React.ReactNode }) {
   return (
     <section className="overflow-hidden rounded-md border bg-card shadow-sm">
       <div className="flex items-center gap-2 border-b px-4 py-3 text-sm font-semibold sm:px-5">
@@ -48,7 +48,7 @@ function Card({ title, icon: Icon, children }: { title: string; icon: React.Comp
   );
 }
 
-function ToggleRow({ label, initial = false, disabled = false }: { label: string; initial?: boolean; disabled?: boolean }) {
+export function ToggleRow({ label, initial = false, disabled = false }: { label: string; initial?: boolean; disabled?: boolean }) {
   const [checked, setChecked] = useState(initial);
   return (
     <div className="flex min-h-11 items-center justify-between gap-4 border-b py-2.5 last:border-0">
