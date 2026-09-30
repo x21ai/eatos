@@ -164,7 +164,7 @@ function Transcript({
           variant="ghost"
           size="sm"
           onClick={onResolve}
-          className={cn('shrink-0 gap-1.5 text-white', conversation.resolved ? 'bg-chart-2 hover:bg-chart-2/90' : 'bg-chart-5 hover:bg-chart-5/90')}
+          className={cn('shrink-0 gap-1.5 text-primary-foreground', conversation.resolved ? 'bg-chart-2 hover:bg-chart-2/90' : 'bg-chart-5 hover:bg-chart-5/90')}
         >
           {conversation.resolved ? <Check /> : <ArrowRight />}
           <span className="whitespace-nowrap">{conversation.resolved ? 'Resolved' : 'Unresolved'}</span>

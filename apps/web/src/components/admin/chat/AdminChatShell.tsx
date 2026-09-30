@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   BarChart3, Bell, BookOpen, Bookmark, Bot, Calendar, CirclePlus, Contact, Flag, Folder,
   Heart, HelpCircle, Inbox, ListFilter as FilterIcon, Megaphone, MessageCircle, PanelLeftClose, PanelLeftOpen, Plug,
@@ -44,6 +44,15 @@ export default function AdminChatShell({
   onContactFilterChange?: (id: string) => void;
 }) {
   const pathname = usePathname();
+  useEffect(() => {
+    const root = document.documentElement;
+    const hadDarkTheme = root.classList.contains('dark');
+    root.classList.add('dark', 'chatapp-admin-theme');
+    return () => {
+      root.classList.remove('chatapp-admin-theme');
+      if (!hadDarkTheme) root.classList.remove('dark');
+    };
+  }, []);
   const currentPath = pathname?.replace(/\.html$/, '').replace(/\/$/, '') || '/';
   const isInbox = currentPath === '/chatapp';
   const [subInboxes, setSubInboxes] = useState<{ name: string; icon: number }[]>([]);
@@ -75,7 +84,7 @@ export default function AdminChatShell({
       {[{ key: 'automated' as const, label: 'Automated', icon: Bot }, { key: 'spam' as const, label: 'Spam', icon: ShieldCheck }].map(({ key, label, icon: Icon }) => <Button key={key} asChild variant="ghost" className={cn('h-9 w-full justify-start px-2', inbox === key && 'bg-accent')}><a href={`/chatapp?inbox=${key}`} aria-current={inbox === key ? 'page' : undefined} onClick={(event) => { event.preventDefault(); onInboxChange(key); window.history.replaceState(null, '', `/chatapp?inbox=${key}`); }}><Icon />{label}</a></Button>)}
     </div>
   </> : null;
-  const subInboxDialog = <div id="chat-sub-inbox" popover="auto" className="fixed inset-0 z-50 m-0 grid h-full w-full max-w-none place-items-center border-none bg-black/50 p-4 [&:not(:popover-open)]:hidden">
+  const subInboxDialog = <div id="chat-sub-inbox" popover="auto" className="fixed inset-0 z-50 m-0 grid h-full w-full max-w-none place-items-center border-none bg-foreground/50 p-4 [&:not(:popover-open)]:hidden">
     <div role="dialog" aria-modal="true" aria-label="Create New Sub-Inbox" className="w-full max-w-[54rem] rounded-xl bg-background p-6 shadow-xl sm:p-8">
       <div className="flex items-start justify-between gap-4">
         <div>
@@ -108,7 +117,7 @@ export default function AdminChatShell({
     </div>
   </div>;
   return (
-    <div className="flex h-dvh overflow-hidden bg-background text-foreground">
+    <div className="chatapp-admin-theme dark flex h-dvh overflow-hidden bg-background text-foreground">
       {subInboxDialog}
       <aside className={cn('hidden shrink-0 flex-col border-r bg-sidebar transition-[width] md:flex', collapsed ? 'w-18' : 'w-62')}>
         <div className="flex h-22 items-center gap-3 border-b px-4">
