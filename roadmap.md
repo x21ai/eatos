@@ -8,3 +8,4 @@
 - [x] Verify the simplified Knowledge Base layouts on desktop, tablet, and phone.
 - [x] Add the six collapsible Account settings screens from the supplied references.
 - [x] Verify Account settings navigation and layouts on desktop, tablet, and phone.
+- [x] Remove the sidebar footer links and version line from the Settings workspace.
