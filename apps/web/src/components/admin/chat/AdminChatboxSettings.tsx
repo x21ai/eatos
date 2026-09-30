@@ -4,11 +4,8 @@ import { useState } from 'react';
 import {
   Bell,
   Bot,
-  CheckCircle2,
   FileAudio,
-  FileUp,
   Globe2,
-  ImageIcon,
   Languages,
   LayoutPanelTop,
   ListPlus,
@@ -26,16 +23,6 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
 import { Card, PageHeading, ToggleRow } from './AdminAccountSettings';
 
 export type ChatboxSection = 'appearance' | 'behavior' | 'search-ai' | 'security' | 'restrictions' | 'push-notifications';
