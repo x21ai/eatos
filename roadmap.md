@@ -10,3 +10,4 @@
 - [x] Verify Account settings navigation and layouts on desktop, tablet, and phone.
 - [x] Remove the sidebar footer links and version line from the Settings workspace.
 - [x] Add the six responsive Chatbox settings screens and collapsible navigation.
+- [x] Add the three responsive Email settings screens and collapsible navigation.
