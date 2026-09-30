@@ -97,7 +97,7 @@ export default function AdminKnowledgeBase() {
         <div className="hidden items-center justify-between lg:flex"><h2 className="text-sm font-bold">Knowledge Base</h2><PanelLeftClose className="size-4 text-muted-foreground" /></div>
         <button type="button" className="mt-5 flex h-10 items-center justify-center gap-2 rounded-md border px-3 text-sm font-medium shadow-xs lg:justify-start" title="User Docs"><BookOpen className="size-4" /><span className="hidden lg:inline">User Docs</span></button>
         <div className="mt-auto space-y-3">
-          <button type="button" onClick={() => toast('Knowledge Base settings')} className="flex h-9 w-full items-center justify-center gap-2 rounded-md px-3 text-sm text-muted-foreground hover:bg-accent lg:justify-start"><Settings className="size-4" /><span className="hidden lg:inline">Settings</span></button>
+          <Button asChild variant="ghost" className="w-full justify-center text-muted-foreground lg:justify-start"><Link href="/chatapp/knowledge-base/settings?menu=sections"><Settings /><span className="hidden lg:inline">Settings</span></Link></Button>
           <Button asChild className="w-full" title="View published Knowledge Base"><Link href="/kb-demo"><Globe /><span className="hidden lg:inline">View Online</span></Link></Button>
         </div>
       </aside>
