@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import {
-  AlertCircle, ArrowLeft, Baseline, Bold, BookOpen, ChevronDown, ChevronRight, CloudUpload, Code, FileText, Film,
-  Folder, Globe, Image as ImageIcon, Info, Italic, Link2, List, ListFilter, ListOrdered, MoreVertical, PanelLeftClose,
-  Pencil, Plus, Quote, Search, Settings, Settings2, SeparatorHorizontal, Table, Type, Underline, X, Zap,
+  AlertCircle, ArrowLeft, Baseline, Bold, ChevronDown, ChevronRight, CloudUpload, Code, FileText, Film,
+  Folder, Image as ImageIcon, Info, Italic, Link2, List, ListFilter, ListOrdered, MoreVertical,
+  Pencil, Plus, Quote, Search, Settings2, SeparatorHorizontal, Table, Type, Underline, X, Zap,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
@@ -92,16 +92,6 @@ export default function AdminKnowledgeBase() {
 
   return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed}>
     <div className="flex h-full min-h-0 gap-2 bg-muted/40 p-2">
-      {/* Knowledge base sidebar */}
-      <aside className="hidden w-14 shrink-0 flex-col rounded-xl border bg-background p-2 lg:w-56 lg:p-4 md:flex">
-        <div className="hidden items-center justify-between lg:flex"><h2 className="text-sm font-bold">Knowledge Base</h2><PanelLeftClose className="size-4 text-muted-foreground" /></div>
-        <button type="button" className="mt-5 flex h-10 items-center justify-center gap-2 rounded-md border px-3 text-sm font-medium shadow-xs lg:justify-start" title="User Docs"><BookOpen className="size-4" /><span className="hidden lg:inline">User Docs</span></button>
-        <div className="mt-auto space-y-3">
-          <Button asChild variant="ghost" className="w-full justify-center text-muted-foreground lg:justify-start"><Link href="/chatapp/knowledge-base/settings?menu=sections"><Settings /><span className="hidden lg:inline">Settings</span></Link></Button>
-          <Button asChild className="w-full" title="View published Knowledge Base"><Link href="/kb-demo"><Globe /><span className="hidden lg:inline">View Online</span></Link></Button>
-        </div>
-      </aside>
-
       {/* Article list */}
       <section className={cn('min-h-0 w-full shrink-0 flex-col rounded-xl border bg-background md:flex md:w-72 lg:w-80', mobileEditor ? 'hidden' : 'flex')}>
         <div className="flex items-center gap-2 border-b p-3">
