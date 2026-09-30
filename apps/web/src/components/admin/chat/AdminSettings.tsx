@@ -4,7 +4,9 @@ import { useState } from 'react';
 import {
   ArrowLeft,
   ArrowRight,
+  Bell,
   Bot,
+  CalendarClock,
   ChevronDown,
   CircleHelp,
   CirclePlus,
@@ -17,12 +19,15 @@ import {
   Search,
   Settings,
   Shield,
+  SquareActivity,
   Sparkles,
+  SquareUserRound,
   UserRound,
   Users,
   X,
 } from 'lucide-react';
 import AdminChatShell from './AdminChatShell';
+import AdminAccountSettings, { type AccountSection } from './AdminAccountSettings';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
@@ -40,22 +45,40 @@ const groups: { key: SettingsKey; label: string; icon: React.ComponentType<{ cla
   { key: 'status', label: 'Status Page', icon: Shield },
 ];
 
-function SettingsSidebar({ active }: { active: SettingsKey }) {
+const accountSections: { key: AccountSection; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
+  { key: 'information', label: 'Information', icon: UserRound },
+  { key: 'notifications', label: 'Notification', icon: Bell },
+  { key: 'availability', label: 'Availability', icon: CalendarClock },
+  { key: 'security', label: 'Security', icon: Shield },
+  { key: 'interface', label: 'Interface', icon: SquareUserRound },
+  { key: 'shortcuts', label: 'Keyboard Shortcuts', icon: SquareActivity },
+];
+
+function SettingsSidebar({ active, accountSection }: { active: SettingsKey; accountSection: AccountSection }) {
   return (
     <aside className="scrollbar-hidden hidden w-72 shrink-0 overflow-y-auto border-r bg-background p-4 lg:flex lg:flex-col">
       <nav aria-label="Settings categories" className="space-y-1">
-        {groups.map((group) => (
+        <details className="group/account" open={active === 'account'}>
           <Button
-            key={group.key}
             asChild
             variant="ghost"
-            className={cn('h-11 w-full justify-start px-3 text-sm', active === group.key && 'bg-accent text-foreground')}
+            className={cn('h-11 w-full justify-start px-3 text-sm', active === 'account' && 'bg-accent text-foreground')}
           >
-            <a href={`/chatapp/settings?category=${group.key}`} aria-current={active === group.key ? 'page' : undefined}>
-              <group.icon className="size-4" />
-              {group.label}
-              <ChevronDown className={cn('ml-auto size-4 transition-transform', active === group.key && 'rotate-180')} />
-            </a>
+            <summary className="cursor-pointer list-none marker:hidden [&::-webkit-details-marker]:hidden">
+              <UserRound className="size-4" />Account<ChevronDown className="ml-auto size-4 transition-transform group-open/account:rotate-180" />
+            </summary>
+          </Button>
+          <div className="ml-4 mt-1 space-y-1 border-l pl-2">
+            {accountSections.map((section) => (
+              <Button key={section.key} asChild variant="ghost" className={cn('h-9 w-full justify-start px-3 text-xs', active === 'account' && accountSection === section.key && 'bg-accent text-foreground')}>
+                <a href={`/chatapp/settings?category=account&section=${section.key}`} aria-current={active === 'account' && accountSection === section.key ? 'page' : undefined}><section.icon className="size-4" />{section.label}</a>
+              </Button>
+            ))}
+          </div>
+        </details>
+        {groups.filter((group) => group.key !== 'account').map((group) => (
+          <Button key={group.key} asChild variant="ghost" className={cn('h-11 w-full justify-start px-3 text-sm', active === group.key && 'bg-accent text-foreground')}>
+            <a href={`/chatapp/settings?category=${group.key}`} aria-current={active === group.key ? 'page' : undefined}><group.icon className="size-4" />{group.label}<ChevronDown className={cn('ml-auto size-4 transition-transform', active === group.key && 'rotate-180')} /></a>
           </Button>
         ))}
       </nav>
@@ -152,23 +175,24 @@ function Panel({ title, description, children }: { title: string; description: s
   return <section className="mx-auto w-full max-w-4xl rounded-md border bg-card p-5 shadow-sm md:p-7"><h1 className="text-xl font-bold">{title}</h1><p className="mt-2 text-sm text-muted-foreground">{description}</p><div className="mt-5">{children}</div></section>;
 }
 
-export default function AdminSettings({ initialActive = 'chatbox' }: { initialActive?: SettingsKey }) {
+export default function AdminSettings({ initialActive = 'chatbox', initialAccountSection = 'information' }: { initialActive?: SettingsKey; initialAccountSection?: AccountSection }) {
   const [collapsed, setCollapsed] = useState(false);
   const active = initialActive;
   return (
     <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed}>
       <div className="flex h-full min-w-0">
-        <SettingsSidebar active={active} />
+        <SettingsSidebar active={active} accountSection={initialAccountSection} />
         <main className="scrollbar-hidden min-w-0 flex-1 overflow-y-auto bg-muted/20">
           <header className="sticky top-0 z-10 flex h-14 items-center gap-1 border-b bg-background/95 px-3 backdrop-blur sm:px-5">
             <Button variant="ghost" size="icon-sm" aria-label="Back" onClick={() => window.history.back()}><ArrowLeft /></Button>
             <Button variant="ghost" size="icon-sm" aria-label="Forward" onClick={() => window.history.forward()}><ArrowRight /></Button>
             <h2 className="ml-2 text-sm font-medium text-muted-foreground">Settings</h2>
-            <nav aria-label="Settings categories" className="scrollbar-hidden ml-auto flex max-w-[55%] gap-1 overflow-x-auto lg:hidden">{groups.map((group) => <Button key={group.key} asChild variant={active === group.key ? 'secondary' : 'ghost'} size="sm"><a href={`/chatapp/settings?category=${group.key}`}>{group.label}</a></Button>)}</nav>
+             <nav aria-label="Settings categories" className="scrollbar-hidden ml-auto flex max-w-[55%] gap-1 overflow-x-auto lg:hidden">{groups.map((group) => <Button key={group.key} asChild variant={active === group.key ? 'secondary' : 'ghost'} size="sm"><a href={group.key === 'account' ? '/chatapp/settings?category=account&section=information' : `/chatapp/settings?category=${group.key}`}>{group.label}</a></Button>)}</nav>
             <Button variant="ghost" size="sm" className="ml-auto hidden text-muted-foreground lg:inline-flex"><Search />Search</Button>
           </header>
-          <div className="px-4 py-8 sm:px-6 md:py-12 xl:px-12 xl:py-20">
-            {active === 'chatbox' ? <AvailabilityPanel /> : active === 'workspace' ? <WorkspacePanel /> : active === 'inbox' ? <InboxPanel /> : active === 'email' ? <EmailPanel /> : active === 'status' ? <StatusPanel /> : <BasicPanel active={active} />}
+           {active === 'account' ? <nav aria-label="Account settings" className="scrollbar-hidden flex gap-1 overflow-x-auto border-b px-3 py-2 lg:hidden">{accountSections.map((section) => <Button key={section.key} asChild variant={initialAccountSection === section.key ? 'secondary' : 'ghost'} size="sm" className="shrink-0"><a href={`/chatapp/settings?category=account&section=${section.key}`}>{section.label}</a></Button>)}</nav> : null}
+           <div className="px-4 py-8 sm:px-6 md:py-12 xl:px-12 xl:py-16">
+             {active === 'account' ? <div className="mx-auto w-full max-w-4xl"><AdminAccountSettings section={initialAccountSection} /></div> : active === 'chatbox' ? <AvailabilityPanel /> : active === 'workspace' ? <WorkspacePanel /> : active === 'inbox' ? <InboxPanel /> : active === 'email' ? <EmailPanel /> : active === 'status' ? <StatusPanel /> : <BasicPanel active={active} />}
           </div>
           <div className="mx-auto flex max-w-4xl justify-end px-4 pb-8 sm:px-6 xl:px-12"><Button variant="ghost" size="sm" className="text-muted-foreground"><ExternalLink />Open help center</Button></div>
         </main>

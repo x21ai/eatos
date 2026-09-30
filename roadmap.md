@@ -6,3 +6,5 @@
 - [x] Verify main Settings interactions and desktop, tablet, and phone layouts.
 - [x] Move User Docs, Settings, and View Online into the main Knowledge Base navigation.
 - [x] Verify the simplified Knowledge Base layouts on desktop, tablet, and phone.
+- [ ] Add the six collapsible Account settings screens from the supplied references.
+- [ ] Verify Account settings navigation and layouts on desktop, tablet, and phone.
