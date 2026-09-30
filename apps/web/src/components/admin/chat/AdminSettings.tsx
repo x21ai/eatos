@@ -2,8 +2,25 @@
 
 import { useState } from 'react';
 import {
+  ArrowLeft,
+  ArrowRight,
+  Bot,
   ChevronDown,
-  CreditCard, Inbox, Mail, MessageCircle, Settings, Shield, UserRound,
+  CircleHelp,
+  CirclePlus,
+  CreditCard,
+  ExternalLink,
+  Inbox,
+  Languages,
+  Mail,
+  MessageCircle,
+  Search,
+  Settings,
+  Shield,
+  Sparkles,
+  UserRound,
+  Users,
+  X,
 } from 'lucide-react';
 import AdminChatShell from './AdminChatShell';
 import { Button } from '@/components/ui/button';
@@ -24,42 +41,89 @@ const groups: { key: SettingsKey; label: string; icon: React.ComponentType<{ cla
 ];
 
 function SettingsSidebar({ active, onSelect }: { active: SettingsKey; onSelect: (key: SettingsKey) => void }) {
-  return <aside className="scrollbar-hidden hidden w-72 shrink-0 overflow-y-auto border-r bg-background p-4 lg:flex lg:flex-col">
-    <div className="space-y-1">{groups.map((group) => <Button key={group.key} variant="ghost" onClick={() => onSelect(group.key)} className={cn('h-11 w-full justify-start', active === group.key && 'bg-accent')}><group.icon />{group.label}<ChevronDown className="ml-auto size-4" /></Button>)}</div>
-    <div className="mt-auto space-y-1 pt-10 text-sm text-muted-foreground"><p className="px-3 py-2">Create a new workspace</p><p className="px-3 py-2">Help translate the chatbox</p><p className="px-3 py-2">Get help using eatOS Chat</p><p className="px-3 py-2">Service status</p><p className="px-3 py-2">What's new?</p><p className="px-3 pt-5 text-[11px]">Front-end preview</p></div>
-  </aside>;
+  return (
+    <aside className="scrollbar-hidden hidden w-72 shrink-0 overflow-y-auto border-r bg-background p-4 lg:flex lg:flex-col">
+      <nav aria-label="Settings categories" className="space-y-1">
+        {groups.map((group) => (
+          <Button
+            key={group.key}
+            variant="ghost"
+            onClick={() => onSelect(group.key)}
+            className={cn('h-11 w-full justify-start px-3 text-sm', active === group.key && 'bg-accent text-foreground')}
+          >
+            <group.icon className="size-4" />
+            {group.label}
+            <ChevronDown className={cn('ml-auto size-4 transition-transform', active === group.key && 'rotate-180')} />
+          </Button>
+        ))}
+      </nav>
+
+      <div className="mt-auto space-y-1 pt-10">
+        <Button variant="ghost" className="w-full justify-start text-brand"><CirclePlus />Create a new workspace</Button>
+        <Button variant="ghost" className="w-full justify-start text-muted-foreground"><Languages />Help translate the chatbox</Button>
+        <Button variant="ghost" className="w-full justify-start text-muted-foreground"><CircleHelp />Get help using eatOS Chat</Button>
+        <Button variant="ghost" className="w-full justify-start text-muted-foreground"><Bot />Service status</Button>
+        <Button variant="ghost" className="w-full justify-start text-muted-foreground"><Sparkles />What's new?</Button>
+        <p className="px-3 pt-6 text-[11px] text-muted-foreground">Version: 2026.09.30, 11:08</p>
+      </div>
+    </aside>
+  );
 }
 
 function SettingRow({ title, description, enabled, onChange }: { title: string; description: string; enabled: boolean; onChange: (value: boolean) => void }) {
   return <div className="flex items-start gap-4 border-b py-5 last:border-0"><div className="min-w-0 flex-1"><p className="text-sm font-semibold">{title}</p><p className="mt-1 text-xs leading-5 text-muted-foreground">{description}</p></div><Switch checked={enabled} onCheckedChange={onChange} aria-label={title} className="data-[state=checked]:bg-brand" /></div>;
 }
 
+function VisitorWidgetPreview() {
+  return (
+    <div className="grid min-h-64 place-items-center rounded-md border bg-muted/20 p-4 sm:p-7">
+      <div className="w-full max-w-xl rounded-lg border bg-card p-5 shadow-lg sm:p-7">
+        <div className="flex items-start justify-between gap-4">
+          <h2 className="text-lg font-bold sm:text-xl">Do you have any question?</h2>
+          <X className="size-5 text-muted-foreground" />
+        </div>
+        <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
+          <p className="flex items-center gap-2 text-base font-semibold text-brand sm:text-lg"><span className="size-3 rounded-full bg-chart-2" />eatOS team is online</p>
+          <div className="flex -space-x-2" aria-label="Available team members">
+            {['JM', 'AS', 'RB'].map((initials) => <span key={initials} className="grid size-9 place-items-center rounded-full border-2 border-card bg-secondary text-[10px] font-bold">{initials}</span>)}
+            <span className="grid size-9 place-items-center rounded-full border-2 border-card bg-brand text-primary-foreground"><MessageCircle className="size-4" /></span>
+          </div>
+        </div>
+        <div className="mt-6 grid gap-3 sm:grid-cols-[1.3fr_1fr]">
+          <Button size="lg" className="h-12 bg-brand text-primary-foreground hover:bg-brand-strong"><MessageCircle />Chat with eatOS</Button>
+          <Button size="lg" variant="secondary" className="h-12"><Search />Helpdesk</Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function AvailabilityPanel() {
+  const [editing, setEditing] = useState(false);
   const [online, setOnline] = useState(true);
   const [weekends, setWeekends] = useState(false);
-  return <Panel title="Set your availability days and hours" description="Let visitors know when your team is available to chat by setting up your schedule.">
-    <div className="grid gap-6 xl:grid-cols-[1fr_18rem]">
-      <div>
-        <SettingRow title="Show team as online" description="The chatbox displays your team as available during scheduled hours." enabled={online} onChange={setOnline} />
-        <SettingRow title="Weekend coverage" description="Include Saturday and Sunday in the support schedule." enabled={weekends} onChange={setWeekends} />
-        <div className="mt-5 grid gap-3 sm:grid-cols-2"><label className="text-xs font-medium">Weekday start<Input type="time" defaultValue="09:00" className="mt-2" /></label><label className="text-xs font-medium">Weekday end<Input type="time" defaultValue="18:00" className="mt-2" /></label></div>
-        <div className="mt-6 border-t pt-6"><ChatboxControls /></div>
-      </div>
-      <div className="self-start rounded-md border bg-muted/30 p-5 shadow-sm"><div className="flex items-center justify-between"><span className="size-3 rounded-full bg-chart-2" /><span className="text-xs text-muted-foreground">Preview</span></div><h3 className="mt-5 text-lg font-bold">Do you have any questions?</h3><p className="mt-3 flex items-center gap-2 text-sm font-semibold text-brand"><span className="size-2 rounded-full bg-chart-2" />eatOS team is online</p><div className="mt-5 grid grid-cols-2 gap-2"><Button className="bg-brand text-primary-foreground hover:bg-brand-strong"><MessageCircle /> Chat</Button><Button variant="secondary">Helpdesk</Button></div></div>
-    </div>
-  </Panel>;
+
+  return (
+    <Panel title="Set your Availability days and hours" description="Let visitors know when you're available to chat by setting up your schedule.">
+      <VisitorWidgetPreview />
+      {!editing ? (
+        <Button size="lg" className="mt-6 bg-brand text-primary-foreground hover:bg-brand-strong" onClick={() => setEditing(true)}>Define availability schedule<ArrowRight /></Button>
+      ) : (
+        <div className="mt-6 rounded-md border bg-muted/20 p-4 sm:p-5">
+          <div className="flex items-center justify-between gap-3"><div><h3 className="text-sm font-bold">Availability schedule</h3><p className="mt-1 text-xs text-muted-foreground">Set the hours your team appears online.</p></div><Button variant="ghost" size="sm" onClick={() => setEditing(false)}>Done</Button></div>
+          <SettingRow title="Show team as online" description="The chatbox displays your team as available during scheduled hours." enabled={online} onChange={setOnline} />
+          <SettingRow title="Weekend coverage" description="Include Saturday and Sunday in the support schedule." enabled={weekends} onChange={setWeekends} />
+          <div className="grid gap-3 pt-5 sm:grid-cols-2"><label className="text-xs font-medium">Weekday start<Input type="time" defaultValue="09:00" className="mt-2" /></label><label className="text-xs font-medium">Weekday end<Input type="time" defaultValue="18:00" className="mt-2" /></label></div>
+        </div>
+      )}
+    </Panel>
+  );
 }
 
 function WorkspacePanel() {
   const [mentions, setMentions] = useState(true);
   const [digest, setDigest] = useState(false);
   return <Panel title="Workspace preferences" description="Manage how the eatOS support workspace behaves for your team."><label className="text-xs font-medium">Workspace name<Input defaultValue="eatOS POS inc." className="mt-2 max-w-md" /></label><div className="mt-5"><SettingRow title="Mention notifications" description="Notify team members when they are mentioned in an internal note." enabled={mentions} onChange={setMentions} /><SettingRow title="Daily activity digest" description="Show a summary of open and resolved conversations." enabled={digest} onChange={setDigest} /></div></Panel>;
-}
-
-function ChatboxControls() {
-  const [greeting, setGreeting] = useState(true);
-  const [helpdesk, setHelpdesk] = useState(true);
-  return <div><h2 className="text-sm font-bold">Chatbox appearance</h2><p className="mt-1 text-xs text-muted-foreground">Preview the experience visitors see on the eatOS website.</p><label className="mt-5 block text-xs font-medium">Welcome message<Input defaultValue="Welcome to eatOS. How can we help?" className="mt-2" /></label><div className="mt-3"><SettingRow title="Show welcome greeting" description="Display a short greeting before a visitor starts a conversation." enabled={greeting} onChange={setGreeting} /><SettingRow title="Show Helpdesk option" description="Let visitors search help articles before starting a chat." enabled={helpdesk} onChange={setHelpdesk} /></div></div>;
 }
 
 function InboxPanel() {
@@ -84,18 +148,31 @@ function BasicPanel({ active }: { active: 'account' | 'billing' }) {
   return <Panel title={active === 'account' ? 'Account settings' : 'Billing settings'} description={active === 'account' ? 'Manage your profile and notification preferences.' : 'Review the workspace plan and billing contact.'}>{active === 'account' ? <div className="grid gap-4 sm:grid-cols-2"><label className="text-xs font-medium">Display name<Input defaultValue="eatOS Support" className="mt-2" /></label><label className="text-xs font-medium">Email<Input defaultValue="support@eatos.com" className="mt-2" /></label></div> : <div className="rounded-md border p-5"><p className="text-sm font-semibold">eatOS Chat Preview</p><p className="mt-2 text-xs text-muted-foreground">No billing is connected to this front-end prototype.</p></div>}</Panel>;
 }
 
-function Panel({ title, description, children }: { title: string; description: string; children: React.ReactNode }) { return <section className="mx-auto w-full max-w-3xl rounded-md border bg-card p-5 shadow-sm md:p-7"><h1 className="text-xl font-bold">{title}</h1><p className="mt-2 text-sm text-muted-foreground">{description}</p><div className="mt-6">{children}</div></section>; }
+function Panel({ title, description, children }: { title: string; description: string; children: React.ReactNode }) {
+  return <section className="mx-auto w-full max-w-4xl rounded-md border bg-card p-5 shadow-sm md:p-7"><h1 className="text-xl font-bold">{title}</h1><p className="mt-2 text-sm text-muted-foreground">{description}</p><div className="mt-5">{children}</div></section>;
+}
 
 export default function AdminSettings() {
   const [collapsed, setCollapsed] = useState(false);
   const [active, setActive] = useState<SettingsKey>('chatbox');
-  return <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed}>
-    <div className="flex h-full min-w-0">
-      <SettingsSidebar active={active} onSelect={setActive} />
-      <main className="scrollbar-hidden min-w-0 flex-1 overflow-y-auto bg-muted/20">
-        <header className="sticky top-0 z-10 flex h-14 items-center gap-3 border-b bg-background/95 px-4 backdrop-blur md:px-6"><h2 className="text-sm font-semibold">Settings</h2><select value={active} onChange={(event) => setActive(event.target.value as SettingsKey)} className="ml-auto h-9 rounded-md border bg-background px-3 text-sm lg:hidden">{groups.map((group) => <option key={group.key} value={group.key}>{group.label}</option>)}</select></header>
-        <div className="p-4 md:p-8 xl:p-12">{active === 'chatbox' ? <AvailabilityPanel /> : active === 'workspace' ? <WorkspacePanel /> : active === 'inbox' ? <InboxPanel /> : active === 'email' ? <EmailPanel /> : active === 'status' ? <StatusPanel /> : <BasicPanel active={active} />}</div>
-      </main>
-    </div>
-  </AdminChatShell>;
+  return (
+    <AdminChatShell collapsed={collapsed} onCollapsedChange={setCollapsed}>
+      <div className="flex h-full min-w-0">
+        <SettingsSidebar active={active} onSelect={setActive} />
+        <main className="scrollbar-hidden min-w-0 flex-1 overflow-y-auto bg-muted/20">
+          <header className="sticky top-0 z-10 flex h-14 items-center gap-1 border-b bg-background/95 px-3 backdrop-blur sm:px-5">
+            <Button variant="ghost" size="icon-sm" aria-label="Back" onClick={() => window.history.back()}><ArrowLeft /></Button>
+            <Button variant="ghost" size="icon-sm" aria-label="Forward" onClick={() => window.history.forward()}><ArrowRight /></Button>
+            <h2 className="ml-2 text-sm font-medium text-muted-foreground">Settings</h2>
+            <select value={active} onChange={(event) => setActive(event.target.value as SettingsKey)} className="ml-auto h-9 max-w-36 rounded-md border bg-background px-3 text-sm lg:hidden">{groups.map((group) => <option key={group.key} value={group.key}>{group.label}</option>)}</select>
+            <Button variant="ghost" size="sm" className="ml-auto hidden text-muted-foreground lg:inline-flex"><Search />Search</Button>
+          </header>
+          <div className="px-4 py-8 sm:px-6 md:py-12 xl:px-12 xl:py-20">
+            {active === 'chatbox' ? <AvailabilityPanel /> : active === 'workspace' ? <WorkspacePanel /> : active === 'inbox' ? <InboxPanel /> : active === 'email' ? <EmailPanel /> : active === 'status' ? <StatusPanel /> : <BasicPanel active={active} />}
+          </div>
+          <div className="mx-auto flex max-w-4xl justify-end px-4 pb-8 sm:px-6 xl:px-12"><Button variant="ghost" size="sm" className="text-muted-foreground"><ExternalLink />Open help center</Button></div>
+        </main>
+      </div>
+    </AdminChatShell>
+  );
 }
