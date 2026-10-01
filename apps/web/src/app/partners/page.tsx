@@ -1,14 +1,17 @@
 // @ts-nocheck
 import { ArrowRight, Users, Megaphone, BarChart3, Puzzle, CheckCircle2 } from 'lucide-react';
+import { marketingMetadata } from '@/lib/seo';
 import PartnerForm from './PartnerForm';
 import { heroImage, programsImage, partnerTracks, integrationPartners } from './content';
 
-export const metadata = {
-  alternates: { canonical: '/partners' },
-  title: 'Partner Program',
-  description:
-    'Join the eatOS partner ecosystem as a referral partner, ambassador, reseller or integration partner and grow alongside restaurants of every size.',
-};
+const pageTitle = 'eatOS Partner Program';
+const pageDescription = 'Join eatOS as a referral partner, ambassador, reseller, or integration partner for restaurant point of sale.';
+
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/partners',
+});
 
 const trackIcons = [Users, Megaphone, BarChart3, Puzzle];
 

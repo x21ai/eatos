@@ -1,6 +1,8 @@
 // @ts-nocheck
+import { notFound } from 'next/navigation';
 import CategoryClient from './CategoryClient';
 import { categories, getCategory, getCategoryArticles } from '../../content';
+import { marketingMetadata } from '@/lib/seo';
 
 export const dynamicParams = true;
 
@@ -11,23 +13,22 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const category = getCategory(slug);
-  if (!category) return { title: 'Category not found | eatOS Help Center' };
+  if (!category) notFound();
   const canonical = `/support/category/${category.slug}`;
   const description =
     category.description ||
     `${category.title} help articles for eatOS restaurant technology, including setup, configuration and troubleshooting.`;
-  return {
+  return marketingMetadata({
     title: `${category.title} | eatOS Help Center`,
     description,
-    alternates: { canonical },
-    openGraph: { type: 'website', url: canonical, title: `${category.title} | eatOS Help Center`, description },
-    twitter: { card: 'summary_large_image', title: `${category.title} | eatOS Help Center`, description },
-  };
+    path: canonical,
+  });
 }
 
 export default async function SupportCategoryPage({ params }) {
   const { slug } = await params;
   const category = getCategory(slug);
+  if (!category) notFound();
   const articles = getCategoryArticles(slug);
   const jsonLd = category
     ? {

@@ -1,7 +1,9 @@
 // @ts-nocheck
+import { notFound } from 'next/navigation';
 import CollectionClient from './CollectionClient';
 import { collections } from '../../catalog';
 import { getCollectionBySlug, getCollectionProducts } from '@/lib/shop/data';
+import { marketingMetadata } from '@/lib/seo';
 
 export const dynamicParams = true;
 
@@ -12,21 +14,20 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const collection = await getCollectionBySlug(slug);
-  if (!collection) return { title: 'Collection not found | eatOS Shop' };
+  if (!collection) notFound();
   const canonical = `/shop/collections/${collection.slug}`;
   const description = `Shop ${collection.title} from eatOS. Restaurant hardware built for the floor, with support and setup included.`;
-  return {
+  return marketingMetadata({
     title: `${collection.title} | eatOS Shop`,
     description,
-    alternates: { canonical },
-    openGraph: { type: 'website', url: canonical, title: `${collection.title} | eatOS Shop`, description },
-    twitter: { card: 'summary_large_image', title: `${collection.title} | eatOS Shop`, description },
-  };
+    path: canonical,
+  });
 }
 
 export default async function ShopCollectionPage({ params }) {
   const { slug } = await params;
   const collection = await getCollectionBySlug(slug);
+  if (!collection) notFound();
   const items = await getCollectionProducts(slug);
   const jsonLd = collection
     ? {

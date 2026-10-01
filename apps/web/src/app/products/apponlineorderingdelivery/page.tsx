@@ -1,26 +1,20 @@
 // @ts-nocheck
 import OrderingPageClient from './OrderingPageClient';
+import { JsonLd, marketingMetadata, softwareApplicationJsonLd } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/products/apponlineorderingdelivery' },
-  title: 'Online Ordering & Delivery App for Restaurants',
-  description:
-    'OrderOS gives you a white-labeled ordering app and website with guest profiles and zero third party commissions on every order.',
-  openGraph: {
-    url: '/products/apponlineorderingdelivery',
-    type: 'website',
-    title: 'Online Ordering & Delivery App for Restaurants | eatOS',
-    description:
-      'A white-labeled ordering app and website with guest profiles and no third party commissions.',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Online Ordering & Delivery App for Restaurants | eatOS',
-    description:
-      'A white-labeled ordering app and website with guest profiles and no third party commissions.',
-  },
-};
+const pageTitle = 'eatOS Online Ordering and Delivery';
+const pageDescription = 'eatOS online ordering and delivery: a white-label app and site with guest profiles and no third-party commissions.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/products/apponlineorderingdelivery',
+});
 export default function OnlineOrderingPage() {
-  return <OrderingPageClient />;
+  return (
+    <>
+      <JsonLd data={softwareApplicationJsonLd({ name: pageTitle, description: pageDescription, path: metadata.alternates.canonical })} />
+      <OrderingPageClient />
+    </>
+  );
 }

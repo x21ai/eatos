@@ -1,14 +1,30 @@
 // @ts-nocheck
 import HomeClient from './HomeClient';
+import {
+  HOME_DESCRIPTION,
+  HOME_TITLE,
+  JsonLd,
+  marketingMetadata,
+  softwareApplicationJsonLd,
+} from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/' },
-  openGraph: {
-    type: 'website',
-    url: '/',
-  },
-};
+export const metadata = marketingMetadata({
+  title: HOME_TITLE,
+  description: HOME_DESCRIPTION,
+  path: '/',
+});
 
 export default function Page() {
-  return <HomeClient />;
+  return (
+    <>
+      <JsonLd
+        data={softwareApplicationJsonLd({
+          name: 'eatOS Restaurant Point of Sale',
+          description: HOME_DESCRIPTION,
+          path: '/',
+        })}
+      />
+      <HomeClient />
+    </>
+  );
 }

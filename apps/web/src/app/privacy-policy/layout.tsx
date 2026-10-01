@@ -1,10 +1,12 @@
 // @ts-nocheck
+import { defaultSocialImages } from '@/lib/seo';
 export const metadata = {
   alternates: { canonical: '/privacy-policy' },
   title: 'Privacy Policy',
   description:
     'How eatOS collects, uses, stores and protects personal information across our restaurant technology products and services.',
   openGraph: {
+    images: defaultSocialImages,
     url: '/privacy-policy',
     type: 'website',
     title: 'Privacy Policy | eatOS',

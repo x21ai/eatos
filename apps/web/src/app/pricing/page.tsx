@@ -1,19 +1,18 @@
 // @ts-nocheck
 import PricingPageClient from './PricingPageClient';
+import { JsonLd, marketingMetadata, softwareApplicationJsonLd } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/pricing' },
-  title: 'Pricing',
-  description:
-    'Simple restaurant Point of Sale pricing. $0 upfront hardware cost at 2.99%+15¢ per tap, dip or swipe, or build your own bundle at 2.59%+15¢. Send us your quote and we will beat it.',
-  openGraph: {
-    url: '/pricing',
-    title: 'eatOS Pricing - Simple Pricing',
-    description:
-      'No hardware to purchase, no monthly SaaS fees. Upload your statement or quote and we will beat it.',
-  },
-};
+const title = 'eatOS Pricing | Restaurant Point of Sale';
+const description =
+  'eatOS restaurant point of sale pricing: $0 upfront hardware at 2.99% + 15¢, or build your own bundle at 2.59% + 15¢.';
+
+export const metadata = marketingMetadata({ title, description, path: '/pricing' });
 
 export default function PricingPage() {
-  return <PricingPageClient />;
+  return (
+    <>
+      <JsonLd data={softwareApplicationJsonLd({ name: title, description, path: '/pricing' })} />
+      <PricingPageClient />
+    </>
+  );
 }

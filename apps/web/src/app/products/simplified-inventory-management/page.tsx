@@ -1,26 +1,15 @@
 // @ts-nocheck
 import InventoryPageClient from './InventoryPageClient';
+import { marketingMetadata } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/products/simplified-inventory-management' },
-  title: 'Inventory Management',
-  description:
-    'eatOS Inventory Management simplifies real-time tracking, automated stock alerts, vendor management, recipe costing, and menu engineering for restaurants.',
-  openGraph: {
-    url: '/products/simplified-inventory-management',
-    type: 'website',
-    title: 'Inventory Management | eatOS',
-    description:
-      'Simplify real-time tracking, stock alerts, vendor management, and recipe costing for your restaurant with eatOS Inventory Management.',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Inventory Management | eatOS',
-    description:
-      'Simplify real-time tracking, stock alerts, vendor management, and recipe costing for your restaurant with eatOS Inventory Management.',
-  },
-};
+const pageTitle = 'eatOS Inventory Management';
+const pageDescription = 'eatOS inventory management for restaurants: live stock, vendor orders, recipe costing, and menu engineering.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/products/simplified-inventory-management',
+});
 export default function InventoryManagementPage() {
   return <InventoryPageClient />;
 }

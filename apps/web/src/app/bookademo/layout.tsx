@@ -1,26 +1,13 @@
 // @ts-nocheck
-export const metadata = {
-  title: 'Book a Restaurant Technology Demo',
-  description:
-    'Pick a time with an eatOS specialist for a walkthrough of Point of Sale, payments, kitchen display, kiosk and reporting built for your service style.',
-  alternates: {
-    canonical: 'https://eatos.com/book-demo',
-  },
-  openGraph: {
-    type: 'website',
-    url: 'https://eatos.com/book-demo',
-    title: 'Book a Restaurant Technology Demo | eatOS',
-    description:
-      'Pick a time with an eatOS specialist for a walkthrough built around your service style.',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Book a Restaurant Technology Demo | eatOS',
-    description:
-      'Pick a time with an eatOS specialist for a walkthrough built around your service style.',
-  },
-};
+import { marketingMetadata } from '@/lib/seo';
+const pageTitle = 'eatOS Restaurant Point of Sale Demo';
+const pageDescription = 'Book a walkthrough of the eatOS restaurant point of sale, payments, kitchen display, and kiosk.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: 'https://eatos.com/book-demo',
+});
 export default function BookDemoLayout({ children }) {
   return (
     <>

@@ -1,21 +1,15 @@
 // @ts-nocheck
 import FoodTruckClient from "./FoodTruckClient";
+import { marketingMetadata } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/food-truck' },
-  title: "Point of Sale System for Food Trucks",
-  description:
-    "Food truck Point of Sale built for mobile service: compact hardware, fast tap payments, live inventory and offline ready order taking.",
-  openGraph: {
-    url: '/food-truck',
-    title: "Point of Sale System for Food Trucks | eatOS",
-    description:
-      "Clear long queues, track inventory and take payments anywhere you park with the eatOS food truck Point of Sale.",
-    type: "website",
-  },
-  twitter: { card: "summary_large_image" },
-};
+const pageTitle = 'eatOS Food Truck Point of Sale';
+const pageDescription = 'eatOS food truck point of sale with compact hardware, tap payments, live inventory, and offline order taking.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/food-truck',
+});
 export default function FoodTruckPage() {
   return <FoodTruckClient />;
 }

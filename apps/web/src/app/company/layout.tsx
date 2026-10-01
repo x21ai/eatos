@@ -1,10 +1,12 @@
 // @ts-nocheck
+import { defaultSocialImages } from '@/lib/seo';
 export const metadata = {
   alternates: { canonical: '/company' },
   title: 'Company, Careers and Partners',
   description:
     'Learn about eatOS, explore careers, partner programs, customer stories, comparisons and how to reach our team.',
   openGraph: {
+    images: defaultSocialImages,
     url: '/company',
     type: 'website',
     title: 'Company, Careers and Partners | eatOS',

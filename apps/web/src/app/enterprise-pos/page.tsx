@@ -1,21 +1,15 @@
 // @ts-nocheck
 import EnterpriseClient from "./EnterpriseClient";
+import { marketingMetadata } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/enterprise-pos' },
-  title: "Enterprise Restaurant Point of Sale",
-  description:
-    "Enterprise Point of Sale from eatOS: streamline transactions, manage staff and attendance, and get real-time insights across every location.",
-  openGraph: {
-    url: '/enterprise-pos',
-    title: "Enterprise Restaurant Point of Sale | eatOS",
-    description:
-      "Run multi-property restaurant operations on one platform, with payments, workforce, business intelligence and an open API.",
-    type: "website",
-  },
-  twitter: { card: "summary_large_image" },
-};
+const pageTitle = 'eatOS Enterprise Restaurant Point of Sale';
+const pageDescription = 'eatOS enterprise point of sale for multi-location payments, workforce, and real-time reporting.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/enterprise-pos',
+});
 export default function EnterprisePage() {
   return <EnterpriseClient />;
 }

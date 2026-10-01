@@ -1,28 +1,17 @@
 // @ts-nocheck
 import ShopHomeClient from './ShopHomeClient';
+import { marketingMetadata } from '@/lib/seo';
 import { products as importedProducts, railCollections as importedRail } from './catalog';
 import { getShopCatalog, listCollections, getCollectionProducts } from '@/lib/shop/data';
 
-export const metadata = {
-  title: 'Shop Restaurant Hardware',
-  description:
-    'Buy eatOS Point of Sale terminals, handhelds, kitchen displays, self service kiosks, guest facing displays and accessories, or build a custom bundle.',
-  alternates: { canonical: '/shop' },
-  openGraph: {
-    type: 'website',
-    url: '/shop',
-    title: 'Shop Restaurant Hardware | eatOS',
-    description:
-      'Point of Sale terminals, handhelds, kitchen displays, kiosks, guest facing displays and accessories for restaurants.',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Shop Restaurant Hardware | eatOS',
-    description:
-      'Point of Sale terminals, handhelds, kitchen displays, kiosks, guest facing displays and accessories for restaurants.',
-  },
-};
+const pageTitle = 'eatOS Shop | Restaurant Point of Sale Hardware';
+const pageDescription = 'Shop eatOS point of sale terminals, handhelds, kitchen displays, kiosks, and guest-facing displays.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/shop',
+});
 export default async function ShopPage() {
   const { products } = await getShopCatalog();
   const railCollections = await listCollections();

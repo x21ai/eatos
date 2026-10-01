@@ -1,6 +1,8 @@
 // @ts-nocheck
+import { notFound } from 'next/navigation';
 import ProductDetailClient from './ProductDetailClient';
-import { getAllProductSlugs } from '../products';
+import { getAllProductSlugs, getProductBySlug } from '../products';
+import { marketingMetadata } from '@/lib/seo';
 
 export function generateStaticParams() {
   // Pages with dedicated static routes are excluded here to avoid duplicate
@@ -13,7 +15,19 @@ export function generateStaticParams() {
 
 
 
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
+  if (!product) notFound();
+  return marketingMetadata({
+    title: `eatOS ${product.title}`,
+    description: product.description,
+    path: `/products/${product.slug}`,
+  });
+}
+
 export default async function ProductDetailPage({ params }) {
   const { slug } = await params;
+  if (!getProductBySlug(slug)) notFound();
   return <ProductDetailClient slug={slug} />;
 }

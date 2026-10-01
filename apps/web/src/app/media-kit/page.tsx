@@ -1,5 +1,6 @@
 // @ts-nocheck
 import MediaKitClient from './MediaKitClient';
+import { defaultSocialImages } from '@/lib/seo';
 
 export const metadata = {
   alternates: { canonical: '/media-kit' },
@@ -7,6 +8,7 @@ export const metadata = {
   description:
     'Download eatOS brand guidelines, logos, icons, emblem and approved product and lifestyle imagery for press, partners and marketing teams.',
   openGraph: {
+    images: defaultSocialImages,
     url: '/media-kit',
     title: 'Media Kit | eatOS',
     description:

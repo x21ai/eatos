@@ -1,21 +1,15 @@
 // @ts-nocheck
 import QuickServiceClient from "./QuickServiceClient";
+import { marketingMetadata } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/quick-service' },
-  title: "Quick Service Point of Sale",
-  description:
-    "A versatile Point of Sale for quick-service and fast-casual restaurants, counter, kiosk, handheld and online orders in one cloud platform.",
-  openGraph: {
-    url: '/quick-service',
-    title: "Quick Service Point of Sale | RESTAURANT TECHNOLOGY CLOUD",
-    description:
-      "Keep the line moving with eatOS quick-service Point of Sale, online and offline ordering, kiosks, KDS and analytics in one platform.",
-    type: "website",
-  },
-  twitter: { card: "summary_large_image" },
-};
+const pageTitle = 'eatOS Quick Service Point of Sale';
+const pageDescription = 'eatOS quick-service point of sale for counter, kiosk, handheld, and online orders on one cloud platform.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/quick-service',
+});
 export default function QuickServicePage() {
   return <QuickServiceClient />;
 }

@@ -1,5 +1,6 @@
 // @ts-nocheck
 import ReportFraudClient from "./ReportFraudClient";
+import { defaultSocialImages } from '@/lib/seo';
 
 export const metadata = {
   alternates: { canonical: '/report-fraud' },
@@ -7,6 +8,7 @@ export const metadata = {
   description:
     "Report fraud, phishing emails or suspicious account activity to the eatOS fraud prevention team, and learn how to protect your restaurant and guests.",
   openGraph: {
+    images: defaultSocialImages,
     url: '/report-fraud',
     title: "Report Fraud | eatOS Trust & Safety",
     description:

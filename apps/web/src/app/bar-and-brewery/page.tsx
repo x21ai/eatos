@@ -1,21 +1,15 @@
 // @ts-nocheck
 import BarClient from "./BarClient";
+import { marketingMetadata } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/bar-and-brewery' },
-  title: "Point of Sale System for Bars and Nightclubs",
-  description:
-    "Bar Point of Sale with fast tab management, card on file, real-time keg and bottle inventory, and built-in age verification.",
-  openGraph: {
-    url: '/bar-and-brewery',
-    title: "Point of Sale System for Bars and Nightclubs | eatOS",
-    description:
-      "Open and close tabs in seconds, track pours in real time, and verify IDs at the door, all on eatOS.",
-    type: "website",
-  },
-  twitter: { card: "summary_large_image" },
-};
+const pageTitle = 'eatOS Bar and Brewery Point of Sale';
+const pageDescription = 'eatOS bar point of sale with fast tabs, card on file, keg and bottle inventory, and age verification.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/bar-and-brewery',
+});
 export default function BarPage() {
   return <BarClient />;
 }

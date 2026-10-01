@@ -1,26 +1,15 @@
 // @ts-nocheck
 import AiOrderingPageClient from './AiOrderingPageClient';
+import { marketingMetadata } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/products/ai-enabled-ordering-automation' },
-  title: 'AI-Enabled Ordering Automation',
-  description:
-    'VoiceOS from eatOS answers calls, takes orders and books reservations with AI, sending every order straight to your Point of Sale and kitchen displays.',
-  openGraph: {
-    url: '/products/ai-enabled-ordering-automation',
-    type: 'website',
-    title: 'AI-Enabled Ordering Automation | eatOS',
-    description:
-      'Let VoiceOS handle your voice ordering process. Automate phone orders, capture accurate customizations and free your team for service.',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'AI-Enabled Ordering Automation | eatOS',
-    description:
-      'Let VoiceOS handle your voice ordering process. Automate phone orders, capture accurate customizations and free your team for service.',
-  },
-};
+const pageTitle = 'eatOS AI Ordering';
+const pageDescription = 'eatOS AI ordering answers calls and sends every order to the restaurant point of sale and kitchen display.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/products/ai-enabled-ordering-automation',
+});
 export default function AiEnabledOrderingPage() {
   return <AiOrderingPageClient />;
 }

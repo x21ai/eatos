@@ -1,7 +1,9 @@
 // @ts-nocheck
+import { notFound } from 'next/navigation';
 import ProductClient from './ProductClient';
 import { products } from '../../catalog';
 import { getProductBySlug, listProducts } from '@/lib/shop/data';
+import { marketingMetadata } from '@/lib/seo';
 
 export const dynamicParams = true;
 
@@ -22,35 +24,24 @@ function plainText(html, limit = 155) {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
-  if (!product) return { title: 'Product not found | eatOS Shop' };
+  if (!product) notFound();
   const canonical = `/shop/products/${product.slug}`;
   const description =
     plainText(product.descriptionHtml) ||
     `${product.title} from eatOS. Restaurant hardware built for the floor, with setup and support included.`;
   const image = product.images[0]?.url;
-  return {
+  return marketingMetadata({
     title: `${product.title} | eatOS Shop`,
     description,
-    alternates: { canonical },
-    openGraph: {
-      type: 'website',
-      url: canonical,
-      title: `${product.title} | eatOS Shop`,
-      description,
-      ...(image ? { images: [image] } : {}),
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${product.title} | eatOS Shop`,
-      description,
-      ...(image ? { images: [image] } : {}),
-    },
-  };
+    path: canonical,
+    image: image || undefined,
+  });
 }
 
 export default async function ShopProductPage({ params }) {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
+  if (!product) notFound();
   const all = await listProducts();
   const related = product
     ? all
