@@ -1,26 +1,15 @@
 // @ts-nocheck
 import LoyaltyPageClient from './LoyaltyPageClient';
+import { marketingMetadata } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/products/loyalty' },
-  title: 'Loyalty Program for Restaurants',
-  description:
-    'Build loyalty programs that drive repeat business with personalized rewards, referrals, birthday perks and omnichannel points from eatOS.',
-  openGraph: {
-    url: '/products/loyalty',
-    type: 'website',
-    title: 'Loyalty Program for Restaurants | eatOS',
-    description:
-      'Build loyalty programs that drive repeat business with personalized rewards, referrals, birthday perks and omnichannel points.',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Loyalty Program for Restaurants | eatOS',
-    description:
-      'Build loyalty programs that drive repeat business with personalized rewards, referrals, birthday perks and omnichannel points.',
-  },
-};
+const pageTitle = 'eatOS Restaurant Loyalty';
+const pageDescription = 'eatOS restaurant loyalty with points, referrals, birthday perks, and rewards at the point of sale.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/products/loyalty',
+});
 export default function LoyaltyPage() {
   return <LoyaltyPageClient />;
 }

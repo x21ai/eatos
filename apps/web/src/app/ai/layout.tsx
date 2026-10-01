@@ -1,26 +1,13 @@
 // @ts-nocheck
-export const metadata = {
-  alternates: { canonical: '/ai' },
-  title: {
-    default: 'Restaurant AI Intelligence',
-    template: '%s | eatOS',
-  },
+import { marketingMetadata } from '@/lib/seo';
+
+export const metadata = marketingMetadata({
+  title: 'eatOS Restaurant AI',
   description:
-    'AI built into restaurant operations: demand forecasting, menu performance insight, labor planning and guest personalization on one platform.',
-  openGraph: {
-    url: '/ai',
-    type: 'website',
-    title: 'Restaurant AI Intelligence | eatOS',
-    description:
-      'Forecasting, menu insight, labor planning and guest personalization powered by AI across every eatOS product.',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Restaurant AI Intelligence | eatOS',
-    description:
-      'Forecasting, menu insight, labor planning and guest personalization powered by AI across every eatOS product.',
-  },
-};
+    'AI inside the eatOS restaurant point of sale: forecasting, menu insight, labor planning, and guest personalization.',
+  path: '/ai',
+  template: '%s | eatOS',
+});
 
 export default function AiLayout({ children }) {
   return children;

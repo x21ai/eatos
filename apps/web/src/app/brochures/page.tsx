@@ -1,5 +1,6 @@
 // @ts-nocheck
 import BrochuresClient from './BrochuresClient';
+import { defaultSocialImages } from '@/lib/seo';
 
 export const metadata = {
   alternates: { canonical: '/brochures' },
@@ -7,6 +8,7 @@ export const metadata = {
   description:
     'Browse and download eatOS product brochures, Point of Sale, Kiosk, KDS, Online Ordering, Workforce Management, Reporting and more.',
   openGraph: {
+    images: defaultSocialImages,
     url: '/brochures',
     title: 'Product Brochures | eatOS',
     description:

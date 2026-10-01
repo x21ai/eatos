@@ -6,6 +6,7 @@ import {
   overallStatus,
 } from './systems';
 import StatusTimestamp from './StatusTimestamp';
+import { defaultSocialImages } from '@/lib/seo';
 
 
 export const metadata = {
@@ -14,6 +15,7 @@ export const metadata = {
   description:
     'Live status of eatOS services including Point of Sale, Dashboard, Online Ordering, Payments, and API. Real-time uptime and incident information.',
   openGraph: {
+    images: defaultSocialImages,
     url: '/system-status',
     title: 'eatOS System Status',
     description:

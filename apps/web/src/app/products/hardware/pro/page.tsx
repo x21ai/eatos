@@ -7,30 +7,22 @@ import {
   ArrowRight,
   Layers,
 } from "lucide-react";
+import { JsonLd, marketingMetadata, productJsonLd } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/products/hardware/pro' },
-  title: 'Point of Sale Pro Terminal',
-  description:
-    'The eatOS Pro terminal: a commercial grade countertop Point of Sale with a bright touch display, built in payments and offline reliability.',
-  openGraph: {
-    url: '/products/hardware/pro',
-    type: 'website',
-    title: 'Point of Sale Pro Terminal | eatOS',
-    description:
-      'The eatOS Pro terminal: a commercial grade countertop Point of Sale with a bright touch display, built in payments and offline reliability.',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Point of Sale Pro Terminal | eatOS',
-    description:
-      'The eatOS Pro terminal: a commercial grade countertop Point of Sale with a bright touch display, built in payments and offline reliability.',
-  },
-};
+const pageTitle = 'eatOS Pro Point of Sale Terminal';
+const pageDescription =
+  'The eatOS Pro terminal is a countertop point of sale with a touch display, built-in payments, and offline mode.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/products/hardware/pro',
+});
 
 export default function ProPage() {
   return (
+    <>
+      <JsonLd data={productJsonLd({ name: pageTitle, description: pageDescription, path: '/products/hardware/pro' })} />
     <div className="bg-black min-h-screen text-white font-sans selection:bg-white/20">
       {/* Sticky Sub-nav */}
       <div className="fixed top-0 left-0 right-0 h-16 bg-black/80 backdrop-blur-md z-40 flex items-center border-b border-white/10 mt-[96px] md:mt-[106px]">
@@ -170,5 +162,6 @@ export default function ProPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

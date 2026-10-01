@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { defaultSocialImages } from '@/lib/seo';
 import {
   ArrowRight,
   Briefcase,
@@ -15,6 +16,7 @@ export const metadata = {
   description:
     'Join the eatOS team building restaurant technology used by operators across the country. See open engineering, design and go to market roles.',
   openGraph: {
+    images: defaultSocialImages,
     url: '/work-with-us',
     type: 'website',
     title: 'Careers at eatOS | Restaurant Technology Cloud',

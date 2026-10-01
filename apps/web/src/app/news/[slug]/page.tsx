@@ -1,7 +1,9 @@
 // @ts-nocheck
+import { notFound } from 'next/navigation';
 import NewsPostClient from './NewsPostClient';
 import { newsItems } from '../content';
 import { getArticle, getRelatedArticles } from '@/lib/blog/data';
+import { marketingMetadata } from '@/lib/seo';
 
 export const dynamicParams = true;
 
@@ -12,32 +14,23 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = await getArticle(slug, 'news');
-  if (!post) return { title: 'Story not found | eatOS Newsroom' };
+  if (!post) notFound();
   const canonical = `/news/${encodeURIComponent(post.slug)}`;
-  return {
+  return marketingMetadata({
     title: `${post.title} | eatOS Newsroom`,
     description: post.excerpt,
-    alternates: { canonical },
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      type: 'article',
-      url: canonical,
-      images: post.image ? [post.image] : undefined,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt,
-      images: post.image ? [post.image] : undefined,
-    },
-  };
+    path: canonical,
+    ogTitle: post.title,
+    image: post.image || undefined,
+    type: 'article',
+  });
 }
 
 export default async function NewsPostPage({ params }) {
   const { slug } = await params;
   const post = await getArticle(slug, 'news');
-  const related = post ? await getRelatedArticles(slug, 'news', 3) : [];
+  if (!post) notFound();
+  const related = await getRelatedArticles(slug, 'news', 3);
   const jsonLd = post
     ? {
         '@context': 'https://schema.org',

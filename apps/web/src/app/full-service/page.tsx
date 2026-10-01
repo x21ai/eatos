@@ -1,21 +1,15 @@
 // @ts-nocheck
 import FullServiceClient from "./FullServiceClient";
+import { marketingMetadata } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/full-service' },
-  title: "Full-Service Restaurant Point of Sale",
-  description:
-    "Full-service restaurant Point of Sale with reservations, table management and order coursing, online and offline, in one cloud platform.",
-  openGraph: {
-    url: '/full-service',
-    title: "Full-Service Restaurant Point of Sale | eatOS",
-    description:
-      "Reservations, table management, coursing, tableside pay and kitchen displays for full-service restaurants, all on eatOS.",
-    type: "website",
-  },
-  twitter: { card: "summary_large_image" },
-};
+const pageTitle = 'eatOS Full Service Point of Sale';
+const pageDescription = 'eatOS full-service restaurant point of sale with reservations, table management, coursing, and offline mode.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/full-service',
+});
 export default function FullServicePage() {
   return <FullServiceClient />;
 }

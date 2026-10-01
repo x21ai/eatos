@@ -1,26 +1,20 @@
 // @ts-nocheck
 import KdsPageClient from './KdsPageClient';
+import { JsonLd, marketingMetadata, softwareApplicationJsonLd } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/products/kitchen-display-system' },
-  title: 'Kitchen Display System',
-  description:
-    'The eatOS Kitchen Display System streamlines kitchen communication with prep station routing, multi-lingual kitchen tickets, kitchen-grade hardware and real-time analytics.',
-  openGraph: {
-    url: '/products/kitchen-display-system',
-    type: 'website',
-    title: 'Kitchen Display System | eatOS',
-    description:
-      'Digital command center for your kitchen: prep station routing, multi-lingual kitchen tickets, kitchen-grade hardware and real-time reporting.',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Kitchen Display System | eatOS',
-    description:
-      'Digital command center for your kitchen: prep station routing, multi-lingual kitchen tickets, kitchen-grade hardware and real-time reporting.',
-  },
-};
+const pageTitle = 'eatOS Kitchen Display System';
+const pageDescription = 'eatOS Kitchen Display System routes prep stations, shows multilingual tickets, and reports kitchen speed.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/products/kitchen-display-system',
+});
 export default function KitchenDisplaySystemPage() {
-  return <KdsPageClient />;
+  return (
+    <>
+      <JsonLd data={softwareApplicationJsonLd({ name: pageTitle, description: pageDescription, path: metadata.alternates.canonical })} />
+      <KdsPageClient />
+    </>
+  );
 }

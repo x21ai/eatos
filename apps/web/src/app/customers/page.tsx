@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { ArrowRight, Users } from "lucide-react";
+import { marketingMetadata } from '@/lib/seo';
 import customer1 from "./assets/customer-1.jpg.asset.json";
 import customer2 from "./assets/customer-2.jpg.asset.json";
 import customer3 from "./assets/customer-3.png.asset.json";
@@ -7,13 +8,14 @@ import customer4 from "./assets/customer-4.jpg.asset.json";
 import customer5 from "./assets/customer-5.png.asset.json";
 import customer6 from "./assets/customer-6.jpg.asset.json";
 
-export const metadata = {
-  alternates: { canonical: '/customers' },
-  title: "Customers | eatOS | Restaurant Success Stories",
-  description:
-    "See how restaurants across the country use eatOS to streamline operations, increase revenue, and delight their guests.",
-};
+const pageTitle = 'eatOS Customer Stories';
+const pageDescription = 'See how restaurants use the eatOS point of sale to run service, grow revenue, and bring guests back.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/customers',
+});
 const caseStudies = [
   {
     name: "The Corner Kitchen",

@@ -1,21 +1,15 @@
 // @ts-nocheck
 import FastCasualClient from "./FastCasualClient";
+import { marketingMetadata } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/fast-casual' },
-  title: "Fast-Casual Restaurant Point of Sale",
-  description:
-    "Fast-casual Point of Sale from eatOS: faster table turnaround, accurate order fulfillment and efficient order management in one platform.",
-  openGraph: {
-    url: '/fast-casual',
-    title: "Fast-Casual Restaurant Point of Sale | eatOS",
-    description:
-      "Counter, kiosk, handheld and kitchen display in one connected system built for fast-casual restaurants.",
-    type: "website",
-  },
-  twitter: { card: "summary_large_image" },
-};
+const pageTitle = 'eatOS Fast Casual Point of Sale';
+const pageDescription = 'eatOS fast-casual point of sale for faster table turns, accurate orders, and counter, kiosk, and kitchen flow.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/fast-casual',
+});
 export default function FastCasualPage() {
   return <FastCasualClient />;
 }

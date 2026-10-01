@@ -1,26 +1,13 @@
 // @ts-nocheck
-export const metadata = {
-  alternates: { canonical: '/products' },
-  title: {
-    default: 'Restaurant Products and Devices',
-    template: '%s | eatOS',
-  },
+import { marketingMetadata } from '@/lib/seo';
+
+export const metadata = marketingMetadata({
+  title: 'eatOS Restaurant Point of Sale Products',
   description:
-    'Explore the eatOS product family: Point of Sale terminals, handhelds, kitchen displays, kiosks, guest facing displays and payment devices.',
-  openGraph: {
-    url: '/products',
-    type: 'website',
-    title: 'Restaurant Products and Devices | eatOS',
-    description:
-      'Point of Sale terminals, handhelds, kitchen displays, kiosks, guest facing displays and payment devices.',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Restaurant Products and Devices | eatOS',
-    description:
-      'Point of Sale terminals, handhelds, kitchen displays, kiosks, guest facing displays and payment devices.',
-  },
-};
+    'eatOS restaurant point of sale products: terminals, handhelds, kitchen displays, kiosks, guest-facing displays, and payment devices.',
+  path: '/products',
+  template: '%s | eatOS',
+});
 
 export default function ProductsLayout({ children }) {
   return children;

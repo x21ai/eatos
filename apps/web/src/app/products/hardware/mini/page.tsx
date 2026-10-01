@@ -6,30 +6,23 @@ import {
   CreditCard,
   Scan,
 } from "lucide-react";
+import { JsonLd, marketingMetadata, productJsonLd } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/products/hardware/mini' },
-  title: 'Mini Handheld Terminal',
-  description:
-    'The eatOS Mini puts a full Point of Sale in your hand for tableside ordering, payments and inventory checks.',
-  openGraph: {
-    url: '/products/hardware/mini',
-    type: 'website',
-    title: 'Mini Handheld Terminal | eatOS',
-    description:
-      'The eatOS Mini puts a full Point of Sale in your hand for tableside ordering, payments and inventory checks.',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Mini Handheld Terminal | eatOS',
-    description:
-      'The eatOS Mini puts a full Point of Sale in your hand for tableside ordering, payments and inventory checks.',
-  },
-};
+const pageTitle = 'eatOS Mini Point of Sale Handheld';
+const pageDescription =
+  'The eatOS Mini is a handheld point of sale for tableside ordering, payments, and inventory checks.';
+
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/products/hardware/mini',
+});
 
 
 export default function MiniPage() {
   return (
+    <>
+      <JsonLd data={productJsonLd({ name: pageTitle, description: pageDescription, path: '/products/hardware/mini' })} />
     <div className="bg-black min-h-screen text-white font-sans selection:bg-purple-500/30">
       {/* Sticky Sub-nav */}
       <div className="fixed top-0 left-0 right-0 h-16 bg-black/80 backdrop-blur-md z-40 flex items-center border-b border-white/10 mt-[96px] md:mt-[106px]">
@@ -122,5 +115,6 @@ export default function MiniPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

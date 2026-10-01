@@ -1,26 +1,15 @@
 // @ts-nocheck
 import MarketingPageClient from './MarketingPageClient';
+import { marketingMetadata } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/products/automated-marketing' },
-  title: 'Automated Marketing for Restaurants',
-  description:
-    'Boost guest engagement with personalized promotions, lead scoring, email marketing automation and data-driven insights from eatOS.',
-  openGraph: {
-    url: '/products/automated-marketing',
-    type: 'website',
-    title: 'Automated Marketing for Restaurants | eatOS',
-    description:
-      'Boost guest engagement with personalized promotions, lead scoring, email marketing automation and data-driven insights.',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Automated Marketing for Restaurants | eatOS',
-    description:
-      'Boost guest engagement with personalized promotions, lead scoring, email marketing automation and data-driven insights.',
-  },
-};
+const pageTitle = 'eatOS Restaurant Marketing';
+const pageDescription = 'eatOS restaurant marketing with personalized promotions, lead scoring, and email automation.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/products/automated-marketing',
+});
 export default function AutomatedMarketingPage() {
   return <MarketingPageClient />;
 }

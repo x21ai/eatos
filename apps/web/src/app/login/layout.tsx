@@ -1,9 +1,11 @@
 // @ts-nocheck
+import { defaultSocialImages } from '@/lib/seo';
 export const metadata = {
   title: "Sign In",
   description: "Sign in to your eatOS account to manage your restaurant, orders, menu and reporting.",
   alternates: { canonical: '/login' },
   openGraph: {
+    images: defaultSocialImages,
     type: 'website',
     url: '/login',
     title: "Sign In | eatOS",

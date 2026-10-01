@@ -1,26 +1,15 @@
 // @ts-nocheck
 import CfdPageClient from './CfdPageClient';
+import { marketingMetadata } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/products/guest-facing-display' },
-  title: 'Guest Facing Display for Restaurants',
-  description:
-    'Enhance transparency with real-time ordering, contactless payments, digital tips, electronic receipts and smartphone transactions on the eatOS Guest Facing Display.',
-  openGraph: {
-    url: '/products/guest-facing-display',
-    type: 'website',
-    title: 'Guest Facing Display for Restaurants | eatOS',
-    description:
-      'Enhance transparency with real-time ordering, contactless payments, digital tips, electronic receipts and smartphone transactions.',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Guest Facing Display for Restaurants | eatOS',
-    description:
-      'Enhance transparency with real-time ordering, contactless payments, digital tips, electronic receipts and smartphone transactions.',
-  },
-};
+const pageTitle = 'eatOS Guest Facing Display';
+const pageDescription = 'eatOS guest facing display for live orders, contactless payments, tips, and electronic receipts.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/products/guest-facing-display',
+});
 export default function CfdPage() {
   return <CfdPageClient />;
 }

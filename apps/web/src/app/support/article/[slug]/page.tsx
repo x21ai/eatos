@@ -1,6 +1,8 @@
 // @ts-nocheck
+import { notFound } from 'next/navigation';
 import ArticleClient from './ArticleClient';
 import { articles, getArticle } from '../../content';
+import { marketingMetadata } from '@/lib/seo';
 
 export const dynamicParams = true;
 
@@ -11,22 +13,23 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const article = getArticle(slug);
-  if (!article) return { title: 'Article not found | eatOS Help Center' };
+  if (!article) notFound();
   const canonical = `/support/article/${article.slug}`;
   const description =
     article.excerpt || `${article.title}: step-by-step help from the eatOS support team.`;
-  return {
+  return marketingMetadata({
     title: `${article.title} | eatOS Help Center`,
     description,
-    alternates: { canonical },
-    openGraph: { type: 'article', url: canonical, title: article.title, description },
-    twitter: { card: 'summary_large_image', title: article.title, description },
-  };
+    path: canonical,
+    ogTitle: article.title,
+    type: 'article',
+  });
 }
 
 export default async function SupportArticlePage({ params }) {
   const { slug } = await params;
   const article = getArticle(slug);
+  if (!article) notFound();
   const jsonLd = article
     ? {
         '@context': 'https://schema.org',

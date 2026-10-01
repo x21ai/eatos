@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { effectiveDate, sections } from "./content";
+import { defaultSocialImages } from '@/lib/seo';
 
 export const metadata = {
   alternates: { canonical: '/terms-and-conditions' },
@@ -7,6 +8,7 @@ export const metadata = {
   description:
     'The terms that govern use of eatOS restaurant technology software, hardware and payment services.',
   openGraph: {
+    images: defaultSocialImages,
     url: '/terms-and-conditions',
     type: 'website',
     title: 'Terms of Service | eatOS',

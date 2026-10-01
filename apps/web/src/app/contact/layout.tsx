@@ -1,24 +1,13 @@
 // @ts-nocheck
-export const metadata = {
-  alternates: { canonical: '/contact' },
-  title: 'Contact eatOS Sales',
-  description:
-    'Talk to the eatOS sales team about pricing, hardware bundles, multi location rollouts and migrating from your current Point of Sale.',
-  openGraph: {
-    url: '/contact',
-    type: 'website',
-    title: 'Contact eatOS Sales | Restaurant Technology Cloud',
-    description:
-      'Talk to our team about pricing, hardware bundles, rollouts and migrating from your current Point of Sale.',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Contact eatOS Sales | Restaurant Technology Cloud',
-    description:
-      'Talk to our team about pricing, hardware bundles, rollouts and migrating from your current Point of Sale.',
-  },
-};
+import { marketingMetadata } from '@/lib/seo';
+const pageTitle = 'Contact eatOS Sales';
+const pageDescription = 'Talk to eatOS about restaurant point of sale pricing, hardware bundles, and moving off your current system.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/contact',
+});
 export default function ContactSalesLayout({ children }) {
   return children;
 }

@@ -1,21 +1,15 @@
 // @ts-nocheck
 import PizzeriaClient from "./PizzeriaClient";
+import { marketingMetadata } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/pizzeria' },
-  title: "Pizzeria Point of Sale",
-  description:
-    "A Point of Sale built for pizzerias, fast pizza builder modifiers, delivery dispatch, online ordering, kitchen display and recipe-level inventory in one cloud platform.",
-  openGraph: {
-    url: '/pizzeria',
-    title: "Pizzeria Point of Sale | RESTAURANT TECHNOLOGY CLOUD",
-    description:
-      "Run your pizzeria on eatOS, custom pizza builds in seconds, delivery and pickup in one queue, and true cost per pie.",
-    type: "website",
-  },
-  twitter: { card: "summary_large_image" },
-};
+const pageTitle = 'eatOS Pizzeria Point of Sale';
+const pageDescription = 'eatOS pizzeria point of sale with pizza modifiers, delivery dispatch, online ordering, and kitchen display.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/pizzeria',
+});
 export default function PizzeriaPage() {
   return <PizzeriaClient />;
 }

@@ -1,26 +1,15 @@
 // @ts-nocheck
 import AutonomousPageClient from './AutonomousPageClient';
+import { marketingMetadata } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/products/autonomous-and-automated-delivery' },
-  title: 'Autonomous Delivery Robot for Restaurants',
-  description:
-    'ServeBot is a fully autonomous restaurant robot with collective automation and weight responsive auto return, so your team can focus on guests.',
-  openGraph: {
-    url: '/products/autonomous-and-automated-delivery',
-    type: 'website',
-    title: 'Autonomous Delivery Robot for Restaurants | eatOS',
-    description:
-      'A fully autonomous restaurant robot with collective automation and weight responsive auto return.',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Autonomous Delivery Robot for Restaurants | eatOS',
-    description:
-      'A fully autonomous restaurant robot with collective automation and weight responsive auto return.',
-  },
-};
+const pageTitle = 'eatOS Autonomous Delivery';
+const pageDescription = 'ServeBot from eatOS is an autonomous restaurant robot that returns on its own so the team can serve guests.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/products/autonomous-and-automated-delivery',
+});
 export default function AutonomousDeliveryPage() {
   return <AutonomousPageClient />;
 }

@@ -1,11 +1,13 @@
 // @ts-nocheck
 import { notFound } from 'next/navigation';
+import { defaultSocialImages } from '@/lib/seo';
 
 export const metadata = {
   title: "Homepage Variant A",
   description: "Internal homepage layout variant used by the eatOS team.",
   alternates: { canonical: '/home-1' },
   openGraph: {
+    images: defaultSocialImages,
     type: 'website',
     url: '/home-1',
     title: "Homepage Variant A | eatOS",

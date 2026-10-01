@@ -1,21 +1,15 @@
 // @ts-nocheck
 import CafeClient from "./CafeClient";
+import { marketingMetadata } from '@/lib/seo';
 
-export const metadata = {
-  alternates: { canonical: '/cafe-pos' },
-  title: "Point of Sale System for Cafes",
-  description:
-    "Cafe Point of Sale that is easy to learn, with menu and inventory control, employee management and self-service kiosk ordering.",
-  openGraph: {
-    url: '/cafe-pos',
-    title: "Point of Sale System for Cafes | eatOS",
-    description:
-      "Fast order entry, modifiers, inventory control, loyalty and kiosk ordering for cafes and coffee shops, all on eatOS.",
-    type: "website",
-  },
-  twitter: { card: "summary_large_image" },
-};
+const pageTitle = 'eatOS Cafe Point of Sale';
+const pageDescription = 'eatOS cafe point of sale with fast order entry, modifiers, inventory, loyalty, and self-service kiosk ordering.';
 
+export const metadata = marketingMetadata({
+  title: pageTitle,
+  description: pageDescription,
+  path: '/cafe-pos',
+});
 export default function CafePage() {
   return <CafeClient />;
 }

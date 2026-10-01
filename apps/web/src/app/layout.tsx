@@ -2,47 +2,40 @@
 import './global.css';
 import Providers from '@/components/Providers';
 import SiteChrome from '@/components/SiteChrome';
+import { HOME_DESCRIPTION, HOME_TITLE, JsonLd, defaultSocialImages, siteJsonLd } from '@/lib/seo';
 
 const CRISP_WEBSITE_ID = 'cf9ee4db-97df-4864-8fa6-194ad4762b95';
 
 export const metadata = {
   metadataBase: new URL('https://eatos.com'),
   title: {
-    default: 'The Restaurant Management System of the Future | eatOS RMS',
+    default: HOME_TITLE,
     template: '%s | eatOS',
   },
-  description:
-    'eatOS is the all-in-one restaurant operating system. Point of sale, payments, kitchen display, online ordering, inventory, and AI intelligence built for restaurants of every size.',
+  description: HOME_DESCRIPTION,
   keywords: [
-    'restaurant Point of Sale',
+    'eatOS',
+    'restaurant POS',
+    'restaurant point of sale',
     'restaurant software',
     'point of sale',
     'restaurant management',
     'kitchen display system',
     'restaurant payments',
-    'eatOS',
   ],
   openGraph: {
     type: 'website',
     siteName: 'eatOS',
-    title: 'The Restaurant Management System of the Future | eatOS RMS',
-    description:
-      'All-in-one restaurant software: Point of Sale, payments, kitchen display, online ordering, and AI intelligence.',
-    images: [
-      {
-        url: 'https://ucarecdn.com/c0c7e8e9-324d-4d51-8fa6-8a867032ad32/-/format/auto/',
-        width: 1200,
-        height: 630,
-        alt: 'eatOS Restaurant Operating System',
-      },
-    ],
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    images: defaultSocialImages,
   },
   twitter: {
     card: 'summary_large_image',
     site: '@myeatos',
-    title: 'The Restaurant Management System of the Future | eatOS RMS',
-    description:
-      'All-in-one restaurant software: Point of Sale, payments, kitchen display, online ordering, and AI intelligence.',
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    images: defaultSocialImages,
   },
   robots: {
     index: true,
@@ -71,6 +64,7 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning
       >
         <Providers>
+          <JsonLd data={siteJsonLd()} />
           <SiteChrome crispWebsiteId={crispWebsiteId}>{children}</SiteChrome>
         </Providers>
       </body>

@@ -1,10 +1,12 @@
 // @ts-nocheck
+import { defaultSocialImages } from '@/lib/seo';
 export const metadata = {
   alternates: { canonical: '/grow' },
   title: 'Grow Your Restaurant Revenue',
   description:
     'Analytics, loyalty, gift cards, marketing and order at table tools that help restaurants grow repeat visits and average check size.',
   openGraph: {
+    images: defaultSocialImages,
     url: '/grow',
     type: 'website',
     title: 'Grow Your Restaurant Revenue | eatOS',
